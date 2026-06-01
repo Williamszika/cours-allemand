@@ -61,6 +61,21 @@ window.COURS = {
   modules: [window.MODULE_A11, window.MODULE_A12]
 };
 
+/* Intercale les 12 leçons de grammaire entre les leçons thématiques (total ~31) */
+(function () {
+  const G = window.GRAMMAIRE || {};
+  const byId = {};
+  window.COURS.modules.forEach((m) => m.lecons.forEach((l) => (byId[l.id] = l)));
+  Object.keys(G).forEach((k) => (byId[k] = G[k]));
+  const L = (id) => byId[id];
+  const ordreA11 = ["l01", "g01", "l02", "l03", "g02", "l04", "l05", "g03", "l06", "l07", "g06", "l08", "g05", "l09", "g04"];
+  const ordreA12 = ["l10", "l11", "g07", "l12", "l13", "g08", "l14", "g09", "l15", "l16", "g10", "g11", "l17", "l18", "g12", "l19"];
+  window.MODULE_A11.lecons = ordreA11.map(L).filter(Boolean);
+  window.MODULE_A12.lecons = ordreA12.map(L).filter(Boolean);
+  let n = 1;
+  window.COURS.modules.forEach((m) => m.lecons.forEach((l) => { l.numero = n++; }));
+})();
+
 /* Fusion des exercices de compréhension puis de production dans chaque leçon */
 window.COURS.modules.forEach((m) =>
   m.lecons.forEach((l) => {

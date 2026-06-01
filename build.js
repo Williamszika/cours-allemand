@@ -23,6 +23,7 @@ const scripts = [
   "data/lecons-a12.js",
   "data/production.js",
   "data/comprehension.js",
+  "data/grammaire.js",
   "data/cours.js",
   "data/illustrations.js",
   "js/speech.js",

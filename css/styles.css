@@ -579,3 +579,9 @@ a.stats-lecon:hover { border-color: var(--blue); transform: translateX(2px); }
 .sl-etat { font-size: 13px; color: var(--muted); white-space: nowrap; }
 [data-tg-scheme="dark"] .stats-lecon { background: var(--card); }
 [data-tg-scheme="dark"] .stats-lecon.ok { background: linear-gradient(90deg, #122a1d, var(--card)); }
+
+/* Leçons de grammaire : accent violet pour les distinguer */
+.lecon-card.grammaire { --mod-color: #7c3aed; }
+.lecon-card.grammaire .lecon-num { background: #ede9fe; color: #6d28d9; }
+.lecon-card.grammaire.done .lecon-num { background: #7c3aed; color: #fff; }
+[data-tg-scheme="dark"] .lecon-card.grammaire .lecon-num { background: #2e2150; color: #c4b5fd; }

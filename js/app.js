@@ -161,14 +161,16 @@
           '<div class="lecon-row"><span class="lecon-num">' + l.numero + (done ? ' <span class="check">✓</span>' : "") + "</span>" +
           '<div class="lecon-titles"><h3>' + l.titre + '</h3><p class="lecon-de">' + l.titreDE + "</p></div></div>" +
           '<div class="lecon-tags">' + tags + "</div>" +
-          '<div class="lecon-meta"><span>⏱️ ' + l.duree + " min</span><span>🗂️ " + l.vocabulaire.length + " mots</span><span>✍️ " + l.exercices.length + "</span></div>" +
+          '<div class="lecon-meta"><span>⏱️ ' + l.duree + " min</span><span>" +
+          (l.type === "grammaire" ? "📐 grammaire" : "🗂️ " + (l.vocabulaire || []).length + " mots") +
+          "</span><span>✍️ " + l.exercices.length + "</span></div>" +
           "</div>";
         let card;
         if (unlocked) {
-          card = el("a", "lecon-card" + (done ? " done" : ""));
+          card = el("a", "lecon-card" + (done ? " done" : "") + (l.type === "grammaire" ? " grammaire" : ""));
           card.href = "#/lecon/" + l.id;
         } else {
-          card = el("div", "lecon-card locked");
+          card = el("div", "lecon-card locked" + (l.type === "grammaire" ? " grammaire" : ""));
         }
         card.innerHTML = banner + body;
         grid.appendChild(card);
@@ -301,11 +303,14 @@
     frag.appendChild(top);
 
     /* En-tête */
+    const estGram = l.type === "grammaire";
+    const hasVoc = !!(l.vocabulaire && l.vocabulaire.length);
+    const hasDlg = !!(l.dialogue && l.dialogue.lignes);
     const head = el("header", "lesson-head");
     head.style.setProperty("--mod-color", mod.couleur);
     head.innerHTML =
       '<div class="lesson-hero"><img loading="lazy" src="' + lessonPhoto(l.id, 900, 320) + '" alt="" onerror="this.style.display=\'none\'"></div>' +
-      '<div class="lesson-num">Leçon ' + l.numero + "</div>" +
+      '<div class="lesson-num">' + (estGram ? "📐 Grammaire · Leçon " : "Leçon ") + l.numero + "</div>" +
       "<h1>" + l.titre + ' <span class="de">· ' + l.titreDE + "</span></h1>" +
       '<p class="lesson-theme">Thème : ' + l.theme + '  ·  ⏱️ ' + l.duree + " min</p>" +
       (window.introFor && window.introFor(l.id) ? '<p class="lesson-intro">' + window.introFor(l.id) + "</p>" : "");
@@ -320,13 +325,14 @@
     /* Navigation par onglets (ancres) */
     const tabs = el("nav", "lesson-tabs");
     tabs.innerHTML =
-      '<a href="#voc">🗂️ Vocabulaire</a>' +
+      (hasVoc ? '<a href="#voc">🗂️ Vocabulaire</a>' : "") +
       '<a href="#gram">📐 Grammaire</a>' +
-      '<a href="#dlg">💬 Dialogue</a>' +
+      (hasDlg ? '<a href="#dlg">💬 Dialogue</a>' : "") +
       '<a href="#exo">✍️ Exercices</a>';
     frag.appendChild(tabs);
 
-    /* --- Vocabulaire --- */
+    /* --- Vocabulaire (absent pour les leçons de grammaire) --- */
+    if (hasVoc) {
     const voc = el("section", "lesson-section");
     voc.id = "voc";
     const vocHead = el("div", "ls-head");
@@ -353,6 +359,7 @@
     });
     voc.appendChild(vocGrid);
     frag.appendChild(voc);
+    }
 
     /* --- Grammaire --- */
     const gram = el("section", "lesson-section");
@@ -368,7 +375,8 @@
     });
     frag.appendChild(gram);
 
-    /* --- Dialogue --- */
+    /* --- Dialogue (absent pour les leçons de grammaire) --- */
+    if (hasDlg) {
     const dlg = el("section", "lesson-section");
     dlg.id = "dlg";
     const dHead = el("div", "ls-head");
@@ -394,6 +402,7 @@
     });
     dlg.appendChild(conv);
     frag.appendChild(dlg);
+    }
 
     /* --- Exercices --- */
     const exo = el("section", "lesson-section");

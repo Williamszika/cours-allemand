@@ -39,3 +39,19 @@ window.introFor = function (leconId) {
   const info = window.ILLUSTRATIONS && window.ILLUSTRATIONS[leconId];
   return info && info.intro ? info.intro : "";
 };
+
+// Leçons de grammaire (photos d'étude + intro simple pour la compréhension)
+Object.assign(window.ILLUSTRATIONS, {
+  g01: { kw: "chalkboard,school", intro: "La base de tout : qui fait l'action (les pronoms) et comment conjuguer un verbe au présent." },
+  g02: { kw: "notebook,writing", intro: "Conjuguer les verbes, y compris ceux qui changent de voyelle (sprechen → spricht)." },
+  g03: { kw: "dictionary,words", intro: "Chaque nom a un genre : der (masc.), die (fém.), das (neutre). On apprend à le repérer." },
+  g04: { kw: "stop,sign", intro: "Dire « non » : quand employer nicht et quand employer kein." },
+  g05: { kw: "shelf,boxes", intro: "Situer les choses : sur, sous, à côté de… avec le datif." },
+  g06: { kw: "target,arrow", intro: "L'accusatif (complément d'objet direct). Astuce : seul le masculin change (der → den)." },
+  g07: { kw: "office,calendar", intro: "Les verbes du quotidien : pouvoir/devoir/vouloir, verbes séparables et passé composé." },
+  g08: { kw: "clock,calendar", intro: "Dire QUAND : am (jour), um (heure), im (mois/saison)…" },
+  g09: { kw: "puzzle,pieces", intro: "Relier ses idées : und, aber, denn… et weil (qui envoie le verbe à la fin)." },
+  g10: { kw: "mail,letter", intro: "Le datif : après mit, zu, bei… et pour dire « à qui »." },
+  g11: { kw: "map,direction", intro: "Dire OÙ et OÙ ALLER : nach, zu, in." },
+  g12: { kw: "paint,colors", intro: "Décrire avec des adjectifs et comparer (groß → größer)." }
+});
