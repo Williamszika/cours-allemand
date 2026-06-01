@@ -333,6 +333,7 @@
     playAll.addEventListener("click", () => playSequence(l.vocabulaire.map((v) => v.de)));
     vocHead.appendChild(playAll);
     voc.appendChild(vocHead);
+    voc.appendChild(el("p", "exo-group-sub", "🔊 Cliquez sur l'icône d'un mot (ou « Tout écouter »), écoutez la prononciation allemande, puis répétez à voix haute."));
 
     const vocGrid = el("div", "voc-grid");
     l.vocabulaire.forEach((v) => {
@@ -395,6 +396,8 @@
     const exo = el("section", "lesson-section");
     exo.id = "exo";
     exo.appendChild(el("h2", "", "✍️ Exercices interactifs"));
+    const seuil = COURS.seuilLecon || 70;
+    exo.appendChild(el("p", "exo-group-sub", "Faites tous les exercices. Atteignez <strong>" + seuil + "% de bonnes réponses</strong> pour valider la leçon : la suivante se débloque et s'ouvre automatiquement."));
     const exProg = el("div", "exo-progress");
     const bar = el("div", "bar");
     const fill = el("div", "bar-fill");
@@ -407,13 +410,16 @@
     const total = l.exercices.length;
     const done = new Set();
     const success = new Set();
+    let completionShown = false;
     function refresh() {
-      label.textContent = done.size + "/" + total + " exercices faits";
+      const sc = done.size ? Math.round((success.size / done.size) * 100) : 0;
+      label.textContent = done.size + "/" + total + " faits · " + sc + "% justes (requis " + seuil + "%)";
       fill.style.width = total ? (done.size / total) * 100 + "%" : "0%";
       if (done.size === total && total > 0) {
         const score = Math.round((success.size / total) * 100);
-        window.Progress.marquerTermine(l.id, score);
-        showCompletion(exo, score, idx);
+        const passed = score >= seuil;
+        if (passed) window.Progress.marquerTermine(l.id, score);
+        if (!completionShown) { completionShown = true; showCompletion(exo, score, idx, passed); }
       }
     }
 
@@ -480,24 +486,62 @@
     window.scrollTo(0, 0);
   }
 
-  function showCompletion(container, score, idx) {
-    if (container.querySelector(".completion")) {
-      container.querySelector(".completion .comp-score").textContent = score + "%";
+  function showCompletion(container, score, idx, passed) {
+    const old = container.querySelector(".completion");
+    if (old) old.remove();
+    const seuil = COURS.seuilLecon || 70;
+    const c = el("div", "completion " + (passed ? "ok" : "ko"));
+
+    /* --- Échec : pas assez de points → reprendre --- */
+    if (!passed) {
+      c.innerHTML =
+        '<div class="comp-emoji">📚</div>' +
+        "<h3>Presque !</h3>" +
+        '<p>Votre score : <span class="comp-score ko">' + score + "%</span> — il faut <strong>" + seuil +
+        "%</strong> pour valider la leçon et débloquer la suivante.</p>" +
+        "<p>Reprenez les exercices (surtout ceux marqués en rouge) pour gagner les points.</p>";
+      const retry = el("button", "btn btn-primary", "🔁 Recommencer la leçon");
+      retry.type = "button";
+      retry.addEventListener("click", () => renderLecon(flat[idx].lecon.id));
+      c.appendChild(retry);
+      container.appendChild(c);
+      if (window.TG) { window.TG.haptic("warning"); window.TG.setMainButton("🔁 Recommencer", () => renderLecon(flat[idx].lecon.id)); }
+      c.scrollIntoView({ behavior: "smooth" });
       return;
     }
-    const c = el("div", "completion");
-    const nextBtn =
-      idx < flat.length - 1
-        ? '<a class="btn btn-primary" href="#/lecon/' + flat[idx + 1].lecon.id + '">Leçon suivante →</a>'
-        : (allLessonsDone()
-            ? '<a class="btn btn-primary" href="#/examen">🎓 Passer l\'examen final</a>'
-            : '<a class="btn btn-primary" href="#/">Retour à l\'aperçu</a>');
+
+    /* --- Réussite : leçon validée → passage automatique --- */
+    const isLast = idx >= flat.length - 1;
+    const target = isLast ? "#/examen" : "#/lecon/" + flat[idx + 1].lecon.id;
+    const cible = isLast ? "l'examen final 🎓" : "la leçon " + (idx + 2);
     c.innerHTML =
       '<div class="comp-emoji">🎉</div>' +
-      "<h3>Leçon terminée !</h3>" +
-      '<p>Score d\'exercices : <span class="comp-score">' + score + "%</span></p>" +
-      nextBtn;
+      "<h3>Leçon validée !</h3>" +
+      '<p>Score : <span class="comp-score">' + score + "%</span> (requis " + seuil + "%) — " +
+      (isLast ? "examen final débloqué !" : "leçon suivante débloquée !") + "</p>" +
+      '<p class="comp-auto">➡️ Ouverture de ' + cible + ' dans <span id="cd">4</span> s…</p>';
+    const actions = el("div", "rev-actions");
+    const now = el("button", "btn btn-primary", "Continuer maintenant →");
+    const stay = el("button", "btn btn-ghost", "Rester ici");
+    now.type = stay.type = "button";
+    actions.appendChild(now);
+    actions.appendChild(stay);
+    c.appendChild(actions);
     container.appendChild(c);
+    if (window.TG) window.TG.haptic("success");
+
+    let n = 4, timer;
+    const cd = c.querySelector("#cd");
+    const go = () => { clearInterval(timer); location.hash = target; };
+    timer = setInterval(() => { n--; if (cd) cd.textContent = n; if (n <= 0) go(); }, 1000);
+    now.addEventListener("click", go);
+    stay.addEventListener("click", () => {
+      clearInterval(timer);
+      const a = c.querySelector(".comp-auto");
+      if (a) a.textContent = "✅ " + (isLast ? "Examen final débloqué" : "Leçon suivante débloquée") + " — continuez quand vous voulez.";
+      now.textContent = "Continuer →";
+    });
+    c.scrollIntoView({ behavior: "smooth" });
   }
 
   /* Lecture séquentielle (mots ou dialogue) */

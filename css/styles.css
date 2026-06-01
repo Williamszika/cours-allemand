@@ -554,3 +554,11 @@ html.in-telegram .lesson-top a.btn-link { display: none; }
 [data-tg-scheme="dark"] .lesson-intro { background: #13202b; }
 [data-tg-scheme="dark"] .examen-final.unlocked { background: linear-gradient(135deg, #241b3d, var(--card)); border-color: #7c3aed; }
 [data-tg-scheme="dark"] .examen-final.locked { background: var(--card); }
+
+/* Panneau de fin de leçon : réussite (points atteints) vs reprise */
+.completion.ok { background: linear-gradient(135deg, var(--green-light), #fff); border: 2px solid var(--green); }
+.completion.ko { background: linear-gradient(135deg, #fef3c7, #fff); border: 2px solid var(--gold); }
+.comp-score.ko { color: var(--gold); }
+.comp-auto { font-weight: 600; color: var(--muted); margin: 6px 0 14px; }
+[data-tg-scheme="dark"] .completion.ok { background: linear-gradient(135deg, #122a1d, var(--card)); }
+[data-tg-scheme="dark"] .completion.ko { background: linear-gradient(135deg, #2a2410, var(--card)); }

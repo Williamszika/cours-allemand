@@ -55,6 +55,8 @@ window.COURS = {
 
   // Seuil de réussite pour les tests de fin de module (en %)
   seuilReussite: 60,
+  // Score requis sur les exercices d'une lecon pour la valider (en %)
+  seuilLecon: 70,
 
   modules: [window.MODULE_A11, window.MODULE_A12]
 };
