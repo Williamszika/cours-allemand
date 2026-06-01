@@ -107,6 +107,9 @@
     revBtn.href = "#/revision";
     revBtn.innerHTML = "🔁 Réviser" + (srs.due ? ' <span class="pill">' + srs.due + "</span>" : "");
     secondRow.appendChild(revBtn);
+    const statsBtn = el("a", "btn btn-ghost", "📊 Statistiques");
+    statsBtn.href = "#/stats";
+    secondRow.appendChild(statsBtn);
     cta.appendChild(secondRow);
 
     const audioInfo = el("p", "hero-audio-info", window.Speech && window.Speech.isSupported()
@@ -588,6 +591,114 @@
   /* ====================================================================
      MODE RÉVISION (répétition espacée — flashcards)
      ==================================================================== */
+  /* ====================================================================
+     TABLEAU DE BORD — statistiques par compétence
+     ==================================================================== */
+  function renderDashboard() {
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/">← Aperçu du programme</a><span class="lesson-top-mod">📊 Mes statistiques</span>';
+    frag.appendChild(top);
+
+    const res = window.Progress.resumeGlobal(COURS);
+    const srs = window.Revision.stats(COURS);
+    const exam = window.Progress.getTestScore("final");
+
+    // Agrégation par compétence (à partir des réponses enregistrées)
+    const cats = {
+      comp: { a: 0, ok: 0, label: "📖 Compréhension" },
+      appro: { a: 0, ok: 0, label: "🎯 Grammaire / Approfondi" },
+      prod: { a: 0, ok: 0, label: "✍️ Production" }
+    };
+    flat.forEach((f) => {
+      const lp = window.Progress.getLecon(f.lecon.id);
+      (f.lecon.exercices || []).forEach((ex, i) => {
+        const cat = exoCat(ex);
+        if (lp.exercices && i in lp.exercices) { cats[cat].a++; if (lp.exercices[i]) cats[cat].ok++; }
+      });
+    });
+
+    const head = el("header", "lesson-head");
+    head.innerHTML =
+      '<div class="lesson-num">Tableau de bord</div><h1>Ma progression</h1>' +
+      '<p class="lesson-theme">Suivi de votre apprentissage de l\'allemand A1.</p>';
+    frag.appendChild(head);
+
+    // Vue d'ensemble
+    const cards = el("div", "stats-row");
+    [
+      ["📖", res.faites + "/" + res.total, "leçons validées"],
+      ["📈", res.pourcent + "%", "du parcours"],
+      ["🔥", res.streak + " j", "série"],
+      ["🗂️", srs.apprises + "/" + srs.total, "mots maîtrisés"],
+      ["🎓", exam ? exam.meilleur + "%" : "—", "examen final"]
+    ].forEach(([ic, n, l]) => {
+      const c = el("div", "stat");
+      c.innerHTML = '<span class="stat-ic">' + ic + '</span><span class="stat-n">' + n + '</span><span class="stat-l">' + l + "</span>";
+      cards.appendChild(c);
+    });
+    const sec1 = el("section", "lesson-section");
+    sec1.appendChild(el("h2", "", "🌍 Vue d'ensemble"));
+    sec1.appendChild(cards);
+    frag.appendChild(sec1);
+
+    // Réussite par compétence
+    const sec2 = el("section", "lesson-section");
+    sec2.appendChild(el("h2", "", "🎯 Réussite par compétence"));
+    Object.keys(cats).forEach((k) => {
+      const c = cats[k];
+      const pct = c.a ? Math.round((c.ok / c.a) * 100) : 0;
+      const row = el("div", "stat-bar");
+      row.innerHTML =
+        '<div class="stat-bar-head"><span>' + c.label + "</span><span>" +
+        (c.a ? pct + "% (" + c.ok + "/" + c.a + ")" : "pas encore") + "</span></div>" +
+        '<div class="bar"><div class="bar-fill" style="width:' + pct + '%"></div></div>';
+      sec2.appendChild(row);
+    });
+    sec2.appendChild(el("p", "exo-group-sub", "Calculé à partir de vos réponses aux exercices. Refaites une leçon pour améliorer un score."));
+    frag.appendChild(sec2);
+
+    // Détail des leçons
+    const sec3 = el("section", "lesson-section");
+    sec3.appendChild(el("h2", "", "📚 Détail des leçons"));
+    const list = el("div", "stats-lecons");
+    flat.forEach((f, idx) => {
+      const lp = window.Progress.getLecon(f.lecon.id);
+      const done = window.Progress.estTermine(f.lecon.id);
+      const unlocked = isUnlocked(idx);
+      let etat, cls;
+      if (done) { etat = "✅ validée · " + (lp.score || 0) + "%"; cls = "ok"; }
+      else if (!unlocked) { etat = "🔒 verrouillée"; cls = "lock"; }
+      else { etat = "▶️ à faire"; cls = "todo"; }
+      const row = el(unlocked ? "a" : "div", "stats-lecon " + cls);
+      if (unlocked) row.href = "#/lecon/" + f.lecon.id;
+      row.innerHTML =
+        '<span class="sl-num">' + f.lecon.numero + '</span><span class="sl-titre">' + f.lecon.titre +
+        '</span><span class="sl-etat">' + etat + "</span>";
+      list.appendChild(row);
+    });
+    sec3.appendChild(list);
+    frag.appendChild(sec3);
+
+    const nav = el("div", "lesson-nav");
+    const a1 = el("a", "btn btn-ghost", "🔁 Réviser le vocabulaire");
+    a1.href = "#/revision";
+    nav.appendChild(a1);
+    const a2 = el("a", "btn btn-primary", allLessonsDone() ? "🎓 Examen final" : "▶ Continuer");
+    a2.href = allLessonsDone() ? "#/examen" : "#/lecon/" + nextLeconId(res);
+    nav.appendChild(a2);
+    frag.appendChild(nav);
+
+    app.innerHTML = "";
+    app.appendChild(frag);
+    if (window.TG) {
+      window.TG.showBackButton(() => { location.hash = "#/"; });
+      window.TG.hideMainButton();
+      window.TG.closingConfirmation(false);
+    }
+    window.scrollTo(0, 0);
+  }
+
   function renderRevision() {
     const cards = window.Revision.getDue(COURS, window.Revision.SESSION_MAX);
     const frag = document.createDocumentFragment();
@@ -811,6 +922,7 @@
     else if (hash.match(/^#\/examen/)) renderTest("final");
     else if ((m = hash.match(/^#\/test\/(.+)$/))) renderTest(m[1]);
     else if (hash.match(/^#\/revision/)) renderRevision();
+    else if (hash.match(/^#\/stats/)) renderDashboard();
     else renderHome();
   }
 

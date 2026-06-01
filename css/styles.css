@@ -562,3 +562,20 @@ html.in-telegram .lesson-top a.btn-link { display: none; }
 .comp-auto { font-weight: 600; color: var(--muted); margin: 6px 0 14px; }
 [data-tg-scheme="dark"] .completion.ok { background: linear-gradient(135deg, #122a1d, var(--card)); }
 [data-tg-scheme="dark"] .completion.ko { background: linear-gradient(135deg, #2a2410, var(--card)); }
+
+/* ====================================================================
+   TABLEAU DE BORD (statistiques)
+   ==================================================================== */
+.stat-bar { margin-bottom: 16px; }
+.stat-bar-head { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.stats-lecons { display: flex; flex-direction: column; gap: 8px; }
+.stats-lecon { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); transition: .12s; }
+a.stats-lecon:hover { border-color: var(--blue); transform: translateX(2px); }
+.stats-lecon.ok { border-color: #86efac; background: linear-gradient(90deg, var(--green-light), #fff); }
+.stats-lecon.lock { opacity: .55; }
+.sl-num { flex: 0 0 30px; height: 30px; border-radius: 8px; background: var(--blue-light); color: var(--blue-dark); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; }
+.stats-lecon.ok .sl-num { background: var(--green); color: #fff; }
+.sl-titre { flex: 1; font-weight: 600; font-size: 14.5px; }
+.sl-etat { font-size: 13px; color: var(--muted); white-space: nowrap; }
+[data-tg-scheme="dark"] .stats-lecon { background: var(--card); }
+[data-tg-scheme="dark"] .stats-lecon.ok { background: linear-gradient(90deg, #122a1d, var(--card)); }
