@@ -59,14 +59,13 @@ window.COURS = {
   modules: [window.MODULE_A11, window.MODULE_A12]
 };
 
-/* Fusion des exercices de production écrite/orale dans chaque leçon */
-if (window.PRODUCTION) {
-  window.COURS.modules.forEach((m) =>
-    m.lecons.forEach((l) => {
-      if (window.PRODUCTION[l.id]) l.exercices = l.exercices.concat(window.PRODUCTION[l.id]);
-    })
-  );
-}
+/* Fusion des exercices de compréhension puis de production dans chaque leçon */
+window.COURS.modules.forEach((m) =>
+  m.lecons.forEach((l) => {
+    if (window.COMPREHENSION && window.COMPREHENSION[l.id]) l.exercices = l.exercices.concat(window.COMPREHENSION[l.id]);
+    if (window.PRODUCTION && window.PRODUCTION[l.id]) l.exercices = l.exercices.concat(window.PRODUCTION[l.id]);
+  })
+);
 
 /* Petites statistiques calculées automatiquement (pour l'aperçu) */
 window.COURS.stats = (function () {

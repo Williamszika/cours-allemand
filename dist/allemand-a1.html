@@ -515,6 +515,59 @@ html.in-telegram .lesson-top a.btn-link { display: none; }
 /* Indicateur de synchronisation cloud (Telegram) */
 .sync-badge { color: var(--green); font-weight: 600; font-size: 13px; margin: 6px 0; }
 
+/* ====================================================================
+   PHOTOS, PARCOURS SÉQUENTIEL, GROUPES D'EXERCICES, EXAMEN FINAL
+   ==================================================================== */
+/* Cartes leçon : photo en bannière + verrouillage */
+.lecon-card { flex-direction: column; gap: 0; padding: 0; align-items: stretch; }
+.lecon-card::before { display: none; }
+.lecon-banner { position: relative; aspect-ratio: 16 / 9; background: linear-gradient(135deg, #dbeafe, #bfdbfe); overflow: hidden; }
+.lecon-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lock-badge { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 34px; background: rgba(15, 23, 42, .45); color: #fff; }
+.lecon-card.done .lecon-banner::after { content: "✓"; position: absolute; top: 8px; right: 8px; width: 26px; height: 26px; background: var(--green); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; }
+.lecon-card.locked { cursor: default; opacity: .9; }
+.lecon-card.locked .lecon-banner img { filter: grayscale(1) brightness(.65); }
+.lecon-card.locked:hover { transform: none; box-shadow: var(--shadow); border-color: var(--line); }
+.lecon-body { padding: 14px 16px; }
+.lecon-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.lecon-titles h3 { margin: 0; font-size: 16px; }
+.lecon-titles .lecon-de { margin: 2px 0 0; }
+
+/* Hero photo + intro de leçon */
+.lesson-hero { margin: 0 0 18px; aspect-ratio: 40 / 13; border-radius: 14px; overflow: hidden; background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+.lesson-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lesson-intro { margin: 14px 0 0; font-size: 15.5px; background: #f8fafc; border-left: 4px solid var(--mod-color); padding: 12px 16px; border-radius: 8px; }
+
+/* Groupes d'exercices (compréhension / approfondi / production) */
+.exo-group { margin-top: 26px; padding-top: 18px; border-top: 2px dashed var(--line); }
+.exo-group:first-of-type { border-top: none; padding-top: 0; margin-top: 6px; }
+.exo-group-title { margin: 0 0 2px; font-size: 18px; }
+.exo-group-sub { margin: 0 0 14px; color: var(--muted); font-size: 13.5px; }
+.exo-group-comp .exo-group-title { color: #0891b2; }
+.exo-group-appro .exo-group-title { color: var(--blue-dark); }
+.exo-group-prod .exo-group-title { color: #b45309; }
+
+/* Examen final */
+.examen-final { text-align: center; border-radius: 24px; padding: 32px; border: 2px solid var(--line); }
+.examen-final.unlocked { background: linear-gradient(135deg, #ede9fe, #fff); border-color: #7c3aed; }
+.examen-final.locked { background: linear-gradient(135deg, #f1f5f9, #fff); }
+.examen-ic { font-size: 44px; }
+.examen-final h2 { margin: 6px 0 8px; }
+.examen-final p { max-width: 640px; margin: 0 auto 16px; }
+.examen-final.locked p { color: var(--muted); }
+
+/* Notice « leçon verrouillée » */
+.locked-notice { text-align: center; }
+.locked-notice .comp-emoji { font-size: 44px; }
+.locked-notice .btn { margin: 6px 6px 0; }
+
+/* Adaptations thème sombre */
+[data-tg-scheme="dark"] .lecon-banner,
+[data-tg-scheme="dark"] .lesson-hero { background: linear-gradient(135deg, #1b2c41, #10202c); }
+[data-tg-scheme="dark"] .lesson-intro { background: #13202b; }
+[data-tg-scheme="dark"] .examen-final.unlocked { background: linear-gradient(135deg, #241b3d, var(--card)); border-color: #7c3aed; }
+[data-tg-scheme="dark"] .examen-final.locked { background: var(--card); }
+
 </style>
     <link
       rel="icon"
@@ -3334,6 +3387,104 @@ window.PRODUCTION = {
 </script>
     <script>
 /* =====================================================================
+   comprehension.js — Exercices de COMPRÉHENSION (basés sur le dialogue)
+   2 par leçon : une question de contenu + un « vrai / faux ».
+   Marqués cat:"comp" pour être regroupés sous « Exercices de
+   compréhension » (avant les exercices approfondis).
+   Fusionnés dans les leçons par data/cours.js.
+   ===================================================================== */
+(function () {
+  const VF = ["Richtig (vrai)", "Falsch (faux)"];
+  function contenu(question, options, correct, explication) {
+    return { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue — choisissez la bonne réponse.", question, options, correct, explication };
+  }
+  function vraiFaux(question, correct, explication) {
+    return { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue — vrai ou faux ?", question, options: VF, correct, explication };
+  }
+
+  window.COMPREHENSION = {
+    l01: [
+      contenu("Woher kommt Anna?", ["Aus Österreich", "Aus Frankreich", "Aus Berlin"], 0, "Anna sagt: « Ich komme aus Österreich, aus Wien. »"),
+      vraiFaux("Tom wohnt jetzt in Berlin.", 0, "Tom: « Ich wohne jetzt in Berlin. »")
+    ],
+    l02: [
+      contenu("Wie heißt der Mann?", ["Schäfer", "Schneider", "Schreiber"], 0, "Er buchstabiert: S-C-H-Ä-F-E-R."),
+      vraiFaux("Der Mann buchstabiert seinen Namen.", 0, "Die Sekretärin sagt: « Buchstabieren Sie bitte! »")
+    ],
+    l03: [
+      contenu("Welche Sprachen spricht Yusuf?", ["Türkisch, Deutsch und ein bisschen Englisch", "Nur Spanisch", "Französisch und Italienisch"], 0, "Yusuf: « Ich spreche Türkisch, Deutsch und ein bisschen Englisch. »"),
+      vraiFaux("Maria kommt aus Mexiko.", 0, "Maria: « Aus Mexiko. »")
+    ],
+    l04: [
+      contenu("Was macht Paul gern?", ["Gitarre spielen und Musik hören", "Kochen", "Tanzen"], 0, "Paul: « Ich spiele gern Gitarre und höre Musik. »"),
+      vraiFaux("Lena kocht sehr gern.", 0, "Lena: « ich koche sehr gern. »")
+    ],
+    l05: [
+      contenu("Was ist Herr Bauer von Beruf?", ["Ingenieur", "Arzt", "Lehrer"], 0, "Herr Bauer: « Ich bin Ingenieur. »"),
+      vraiFaux("Frau Weber arbeitet im Krankenhaus.", 0, "Frau Weber: « Ich arbeite im Krankenhaus. »")
+    ],
+    l06: [
+      contenu("Was macht Jan am Abend?", ["Er sieht fern oder ruft Freunde an", "Er arbeitet", "Er kauft ein"], 0, "Jan: « Am Abend sehe ich fern oder ich rufe Freunde an. »"),
+      vraiFaux("Jan steht am Samstag früh auf.", 1, "Jan steht SPÄT auf: « Ich stehe spät auf. »")
+    ],
+    l07: [
+      contenu("Was kostet das Zimmer mit Frühstück?", ["90 Euro", "19 Euro", "70 Euro"], 0, "Die Rezeption: « Das macht 90 Euro mit Frühstück. »"),
+      vraiFaux("Es gibt kostenloses WLAN im Hotel.", 0, "« Ja, es gibt kostenloses WLAN. »")
+    ],
+    l08: [
+      contenu("Wo ist der Bahnhof?", ["Neben der Post", "Neben der Bank", "Im Hotel"], 0, "« Der Bahnhof ist neben der Post. »"),
+      vraiFaux("Der Bahnhof ist sehr weit.", 1, "Es sind nur fünf Minuten: « fünf Minuten »."),
+    ],
+    l09: [
+      contenu("Was möchte der Gast trinken?", ["Ein Wasser", "Ein Bier", "Einen Wein"], 0, "Der Gast: « Ein Wasser, bitte. »"),
+      vraiFaux("Der Gast trinkt keinen Alkohol.", 0, "« Ich trinke keinen Alkohol. »")
+    ],
+    l10: [
+      contenu("Wann wacht Frau Lang auf?", ["Um sechs Uhr", "Um acht Uhr", "Um zehn Uhr"], 0, "« Zuerst wache ich um sechs auf. »"),
+      vraiFaux("Am Abend kocht Frau Lang.", 0, "« Am Abend koche ich und dann sehe ich fern. »")
+    ],
+    l11: [
+      contenu("Was muss Nora heute machen?", ["Drei Berichte schreiben", "Eine Reise buchen", "Einkaufen"], 0, "Nora: « Ich muss heute drei Berichte schreiben. »"),
+      vraiFaux("Tim hilft Nora.", 0, "Tim: « Kann ich dir helfen? » — « Kannst du die E-Mails beantworten? »")
+    ],
+    l12: [
+      contenu("Was ist Lisas Problem?", ["Der Computer funktioniert nicht", "Das Telefon ist kaputt", "Sie ist krank"], 0, "Lisa: « Mein Computer funktioniert nicht! »"),
+      vraiFaux("Man speichert mit Strg + S.", 0, "Der IT-Mann: « Drücken Sie Strg + S. »")
+    ],
+    l13: [
+      contenu("Wann passt der Termin?", ["Am Dienstag um 16 Uhr", "Am Montag um 10 Uhr", "Am Freitag"], 0, "« Und am Dienstag um 16 Uhr? — Ja, das passt! »"),
+      vraiFaux("Am Montag muss Herr Kurt arbeiten.", 0, "« Am Montag muss ich arbeiten. »")
+    ],
+    l14: [
+      contenu("Wie ist das Wetter in Hamburg?", ["Es regnet und es ist kalt", "Sonnig und warm", "Es schneit"], 0, "Ben: « Es regnet und es ist kalt. »"),
+      vraiFaux("Bei Mia sind es 22 Grad.", 0, "Mia: « 22 Grad! Ein schöner Frühlingstag. »")
+    ],
+    l15: [
+      contenu("Wohin ist Lars gereist?", ["Nach Italien", "Nach Spanien", "Nach Frankreich"], 0, "Lars: « Ich bin nach Italien geflogen. »"),
+      vraiFaux("Lars hat Rom besucht.", 0, "« Ich habe Rom besucht und viel Pizza gegessen! »")
+    ],
+    l16: [
+      contenu("Wohin fährt die Reisende?", ["Nach München", "Nach Stuttgart", "Nach Berlin"], 0, "« Eine Fahrkarte nach München, bitte. »"),
+      vraiFaux("Der Zug hat Verspätung.", 1, "Der Zug ist pünktlich: « Nein, er ist pünktlich. »")
+    ],
+    l17: [
+      contenu("Wo ist die Küche?", ["Neben dem Bad", "Im Wohnzimmer", "Neben dem Balkon"], 0, "Der Makler: « Neben dem Bad. »"),
+      vraiFaux("Die Wohnung hat einen Balkon.", 0, "« Es gibt auch einen Balkon. »")
+    ],
+    l18: [
+      contenu("Was hat der Patient?", ["Eine Erkältung", "Bauchschmerzen", "Nichts"], 0, "Die Ärztin: « Sie haben eine Erkältung. »"),
+      vraiFaux("Der Patient soll viel Tee trinken.", 0, "« Trinken Sie viel Tee und nehmen Sie diese Tabletten. »")
+    ],
+    l19: [
+      contenu("Warum ist Herr Berg heute zu spät?", ["Wegen eines Staus", "Weil er krank ist", "Wegen des Wetters"], 0, "« Ich bin zu spät, weil es einen Stau gab. »"),
+      vraiFaux("Gestern hat Herr Berg verschlafen.", 0, "« Gestern habe ich verschlafen. »")
+    ]
+  };
+})();
+
+</script>
+    <script>
+/* =====================================================================
    COURS D'ALLEMAND INTENSIF — Niveau A1 (CECRL / GER)
    Assemble les modules A1.1 et A1.2 et expose la structure globale.
    Méthode communicative inspirée des manuels allemands (Menschen,
@@ -3394,14 +3545,13 @@ window.COURS = {
   modules: [window.MODULE_A11, window.MODULE_A12]
 };
 
-/* Fusion des exercices de production écrite/orale dans chaque leçon */
-if (window.PRODUCTION) {
-  window.COURS.modules.forEach((m) =>
-    m.lecons.forEach((l) => {
-      if (window.PRODUCTION[l.id]) l.exercices = l.exercices.concat(window.PRODUCTION[l.id]);
-    })
-  );
-}
+/* Fusion des exercices de compréhension puis de production dans chaque leçon */
+window.COURS.modules.forEach((m) =>
+  m.lecons.forEach((l) => {
+    if (window.COMPREHENSION && window.COMPREHENSION[l.id]) l.exercices = l.exercices.concat(window.COMPREHENSION[l.id]);
+    if (window.PRODUCTION && window.PRODUCTION[l.id]) l.exercices = l.exercices.concat(window.PRODUCTION[l.id]);
+  })
+);
 
 /* Petites statistiques calculées automatiquement (pour l'aperçu) */
 window.COURS.stats = (function () {
@@ -3423,6 +3573,50 @@ window.COURS.stats = (function () {
     heures: Math.round(minutes / 60)
   };
 })();
+
+</script>
+    <script>
+/* =====================================================================
+   illustrations.js — Photos (réelles) et intros explicatives par leçon
+   Les photos viennent de LoremFlickr (images Flickr sous licence Creative
+   Commons), par mots-clés concrets, en HTTPS, sans clé API. Le paramètre
+   `lock` rend chaque photo déterministe (toujours la même par leçon).
+   ===================================================================== */
+window.ILLUSTRATIONS = {
+  l01: { kw: "handshake", intro: "Première leçon : on apprend à saluer, à dire son nom, son pays d'origine et où l'on habite — les toutes premières phrases pour entrer en contact en allemand." },
+  l02: { kw: "blackboard", intro: "On épelle son nom et on compte de 0 à 100. Indispensable pour donner son âge, un numéro de téléphone ou comprendre un prix." },
+  l03: { kw: "flags", intro: "On parle des pays et des langues : dire d'où l'on vient et quelles langues on parle, avec le verbe « sprechen »." },
+  l04: { kw: "guitar", intro: "Les loisirs et le temps libre : dire ce que l'on aime faire grâce au petit mot « gern » (volontiers)." },
+  l05: { kw: "office,desk", intro: "Le monde du travail : nommer les professions et dire où l'on travaille, avec les articles « ein/eine » et les possessifs « mein/dein »." },
+  l06: { kw: "park,picnic", intro: "Le temps libre et l'heure : lire l'heure, nommer les jours et utiliser les verbes à particule séparable (aufstehen, einkaufen…)." },
+  l07: { kw: "hotel,room", intro: "À l'hôtel : réserver une chambre poliment avec « möchten » et dire ce qu'il y a avec « es gibt » + accusatif." },
+  l08: { kw: "map,city", intro: "S'orienter en ville : demander et indiquer le chemin, situer des lieux avec les prépositions (neben, zwischen, vor…)." },
+  l09: { kw: "restaurant,table", intro: "Au restaurant : commander un plat et une boisson (accusatif) et utiliser la négation « kein »." },
+  l10: { kw: "breakfast,coffee", intro: "La routine quotidienne : décrire sa journée du matin au soir avec « zuerst, dann, danach » et les verbes séparables." },
+  l11: { kw: "office,computer", intro: "Le stress au bureau : exprimer obligations et capacités avec les verbes de modalité « müssen, können, wollen »." },
+  l12: { kw: "laptop,keyboard", intro: "L'ordinateur : le vocabulaire technique et l'impératif pour donner des instructions (Öffnen Sie…, Klick…)." },
+  l13: { kw: "calendar,planner", intro: "Prendre rendez-vous : proposer un créneau poliment et maîtriser les prépositions de temps (am, um, im, von…bis)." },
+  l14: { kw: "sky,clouds", intro: "Le temps et les saisons : décrire la météo avec « es » et relier les idées avec les conjonctions (und, aber, denn)." },
+  l15: { kw: "suitcase,airport", intro: "Voyages : préparer un voyage et raconter au passé composé (Perfekt) avec « haben » ou « sein »." },
+  l16: { kw: "train,station", intro: "Les transports : dire comment on se déplace avec « mit » + datif et les indicateurs de lieu (nach, zu, in)." },
+  l17: { kw: "sofa,living-room", intro: "Le logement : décrire son habitation et situer les meubles avec les prépositions mixtes + datif." },
+  l18: { kw: "stethoscope,doctor", intro: "La santé : nommer les parties du corps, décrire ses symptômes et donner un conseil avec « sollen »." },
+  l19: { kw: "alarm,clock", intro: "Les excuses : se justifier poliment et donner une raison avec « weil » (verbe à la fin)." }
+};
+
+window.ILLUSTRATIONS.examen = { kw: "graduation,certificate" };
+
+/* Construit une URL de photo réelle, déterministe (lock) et redimensionnée. */
+window.photoUrl = function (leconId, w, h) {
+  const info = (window.ILLUSTRATIONS && window.ILLUSTRATIONS[leconId]) || null;
+  const kw = info && info.kw ? info.kw : "books,learning";
+  const lock = parseInt(String(leconId || "l0").replace(/\D/g, ""), 10) || (leconId === "examen" ? 99 : 1);
+  return "https://loremflickr.com/" + w + "/" + h + "/" + encodeURIComponent(kw) + "?lock=" + lock;
+};
+window.introFor = function (leconId) {
+  const info = window.ILLUSTRATIONS && window.ILLUSTRATIONS[leconId];
+  return info && info.intro ? info.intro : "";
+};
 
 </script>
     <!-- Modules applicatifs -->
@@ -4634,6 +4828,23 @@ window.Exercises = (function () {
   function leconIndex(id) {
     return flat.findIndex((x) => x.lecon.id === id);
   }
+  /* Parcours séquentiel : une leçon se débloque quand la précédente est terminée. */
+  function isUnlocked(idx) {
+    return idx <= 0 || window.Progress.estTermine(flat[idx - 1].lecon.id);
+  }
+  function allLessonsDone() {
+    return flat.every((f) => window.Progress.estTermine(f.lecon.id));
+  }
+  /* Catégorie d'un exercice : comp (compréhension), appro (approfondi), prod (production) */
+  function exoCat(ex) {
+    if (ex.cat) return ex.cat;
+    if (ex.type === "production" || ex.type === "oral") return "prod";
+    if (ex.type === "ecoute" || ex.type === "association") return "comp";
+    return "appro";
+  }
+  function lessonPhoto(id, w, h) {
+    return window.photoUrl ? window.photoUrl(id, w, h) : "";
+  }
 
   function el(tag, cls, html) {
     const e = document.createElement(tag);
@@ -4696,9 +4907,12 @@ window.Exercises = (function () {
 
     const cta = el("div", "hero-cta");
     const startId = nextLeconId(res);
+    const allDone = allLessonsDone();
     const btn = el("a", "btn btn-primary big");
-    btn.href = "#/lecon/" + startId;
-    btn.textContent = res.faites > 0 ? "▶ Continuer la leçon " + (leconIndex(startId) + 1) : "▶ Commencer la leçon 1";
+    btn.href = allDone ? "#/examen" : "#/lecon/" + startId;
+    btn.textContent = allDone
+      ? "🎓 Passer l'examen final"
+      : res.faites > 0 ? "▶ Continuer la leçon " + (leconIndex(startId) + 1) : "▶ Commencer la leçon 1";
     cta.appendChild(btn);
 
     // Actions secondaires : révision espacée
@@ -4742,43 +4956,59 @@ window.Exercises = (function () {
 
       const grid = el("div", "lecon-grid");
       mod.lecons.forEach((l) => {
+        const gidx = leconIndex(l.id);
         const done = window.Progress.estTermine(l.id);
-        const card = el("a", "lecon-card" + (done ? " done" : ""));
-        card.href = "#/lecon/" + l.id;
+        const unlocked = isUnlocked(gidx);
         const tags = (l.grammairePoints || [])
           .slice(0, 2)
           .map((g) => '<span class="tag">' + g + "</span>")
           .join("");
-        card.innerHTML =
-          '<div class="lecon-num">' + l.numero + (done ? ' <span class="check">✓</span>' : "") + "</div>" +
-          '<div class="lecon-info">' +
-          "<h3>" + l.titre + "</h3>" +
-          '<p class="lecon-de">' + l.titreDE + "</p>" +
+        const banner =
+          '<div class="lecon-banner">' +
+          '<img loading="lazy" src="' + lessonPhoto(l.id, 400, 220) + '" alt="" onerror="this.style.display=\'none\'">' +
+          (unlocked ? "" : '<span class="lock-badge" title="Terminez la leçon précédente">🔒</span>') +
+          "</div>";
+        const body =
+          '<div class="lecon-body">' +
+          '<div class="lecon-row"><span class="lecon-num">' + l.numero + (done ? ' <span class="check">✓</span>' : "") + "</span>" +
+          '<div class="lecon-titles"><h3>' + l.titre + '</h3><p class="lecon-de">' + l.titreDE + "</p></div></div>" +
           '<div class="lecon-tags">' + tags + "</div>" +
           '<div class="lecon-meta"><span>⏱️ ' + l.duree + " min</span><span>🗂️ " + l.vocabulaire.length + " mots</span><span>✍️ " + l.exercices.length + "</span></div>" +
           "</div>";
+        let card;
+        if (unlocked) {
+          card = el("a", "lecon-card" + (done ? " done" : ""));
+          card.href = "#/lecon/" + l.id;
+        } else {
+          card = el("div", "lecon-card locked");
+        }
+        card.innerHTML = banner + body;
         grid.appendChild(card);
       });
       sec.appendChild(grid);
-
-      // Bandeau « Test de fin de module »
-      const ts = window.Progress.getTestScore(mod.id);
-      const testBar = el("div", "module-test");
-      const left = el("div", "module-test-info");
-      left.innerHTML =
-        "<h3>📝 Test de fin de module</h3>" +
-        "<p>20 questions tirées du module · seuil de réussite : " + COURS.seuilReussite + "%" +
-        (ts ? '  ·  meilleur score : <strong>' + ts.meilleur + "%</strong> " + (ts.reussi ? "🏅" : "") : "") +
-        "</p>";
-      const testBtn = el("a", "btn btn-primary");
-      testBtn.href = "#/test/" + mod.id;
-      testBtn.textContent = ts ? "Repasser le test" : "Passer le test";
-      testBar.appendChild(left);
-      testBar.appendChild(testBtn);
-      sec.appendChild(testBar);
-
       frag.appendChild(sec);
     });
+
+    /* --- Examen final (débloqué après les 19 leçons) --- */
+    const examOk = allLessonsDone();
+    const ets = window.Progress.getTestScore("final");
+    const examSec = el("section", "section");
+    const examCard = el("div", "examen-final " + (examOk ? "unlocked" : "locked"));
+    examCard.innerHTML =
+      '<div class="examen-ic">' + (examOk ? "🎓" : "🔒") + "</div>" +
+      "<h2>Examen final — Niveau A1</h2>" +
+      (examOk
+        ? "<p>Vous avez terminé les 19 leçons ! L'examen final tire <strong>20 questions de tout le niveau A1</strong>. Seuil de réussite : " +
+          COURS.seuilReussite + "%." + (ets ? ' Meilleur score : <strong>' + ets.meilleur + "%</strong> " + (ets.reussi ? "🏅" : "") : "") + "</p>"
+        : "<p>Terminez les <strong>" + res.total + " leçons</strong> pour débloquer l'examen final. Progression : <strong>" +
+          res.faites + "/" + res.total + "</strong> leçons.</p>");
+    if (examOk) {
+      const eb = el("a", "btn btn-primary big", ets ? "Repasser l'examen final" : "🎓 Passer l'examen final");
+      eb.href = "#/examen";
+      examCard.appendChild(eb);
+    }
+    examSec.appendChild(examCard);
+    frag.appendChild(examSec);
 
     /* --- Aperçu grammaire --- */
     const gram = el("section", "section");
@@ -4827,10 +5057,13 @@ window.Exercises = (function () {
     if (window.TG) {
       window.TG.hideBackButton();
       window.TG.closingConfirmation(false);
-      window.TG.setMainButton(
-        res.faites > 0 ? "▶ Continuer la leçon " + (leconIndex(startId) + 1) : "▶ Commencer la leçon 1",
-        () => { location.hash = "#/lecon/" + startId; }
-      );
+      if (allDone)
+        window.TG.setMainButton("🎓 Passer l'examen final", () => { location.hash = "#/examen"; });
+      else
+        window.TG.setMainButton(
+          res.faites > 0 ? "▶ Continuer la leçon " + (leconIndex(startId) + 1) : "▶ Commencer la leçon 1",
+          () => { location.hash = "#/lecon/" + startId; }
+        );
     }
     window.scrollTo(0, 0);
   }
@@ -4847,6 +5080,30 @@ window.Exercises = (function () {
     const idx = leconIndex(id);
     if (idx < 0) return renderHome();
     const { module: mod, lecon: l } = flat[idx];
+
+    /* Garde séquentielle : leçon verrouillée tant que la précédente n'est pas terminée */
+    if (!isUnlocked(idx)) {
+      const prev = flat[idx - 1].lecon;
+      app.innerHTML = "";
+      const top = el("div", "lesson-top");
+      top.innerHTML = '<a class="btn-link" href="#/">← Aperçu du programme</a>';
+      app.appendChild(top);
+      const lock = el("section", "lesson-section locked-notice");
+      lock.innerHTML =
+        '<div class="comp-emoji">🔒</div><h2>Leçon verrouillée</h2>' +
+        "<p>Pour suivre le cours pas à pas, terminez d'abord la <strong>leçon " + prev.numero + " — " + prev.titre + "</strong>.</p>";
+      const goPrev = el("a", "btn btn-primary", "→ Aller à la leçon " + prev.numero);
+      goPrev.href = "#/lecon/" + prev.id;
+      lock.appendChild(goPrev);
+      app.appendChild(lock);
+      if (window.TG) {
+        window.TG.showBackButton(() => { location.hash = "#/"; });
+        window.TG.setMainButton("→ Leçon " + prev.numero, () => { location.hash = "#/lecon/" + prev.id; });
+      }
+      window.scrollTo(0, 0);
+      return;
+    }
+
     const frag = document.createDocumentFragment();
 
     /* Barre supérieure */
@@ -4859,9 +5116,11 @@ window.Exercises = (function () {
     const head = el("header", "lesson-head");
     head.style.setProperty("--mod-color", mod.couleur);
     head.innerHTML =
+      '<div class="lesson-hero"><img loading="lazy" src="' + lessonPhoto(l.id, 900, 320) + '" alt="" onerror="this.style.display=\'none\'"></div>' +
       '<div class="lesson-num">Leçon ' + l.numero + "</div>" +
       "<h1>" + l.titre + ' <span class="de">· ' + l.titreDE + "</span></h1>" +
-      '<p class="lesson-theme">Thème : ' + l.theme + '  ·  ⏱️ ' + l.duree + " min</p>";
+      '<p class="lesson-theme">Thème : ' + l.theme + '  ·  ⏱️ ' + l.duree + " min</p>" +
+      (window.introFor && window.introFor(l.id) ? '<p class="lesson-intro">' + window.introFor(l.id) + "</p>" : "");
     const obj = el("div", "objectifs");
     obj.appendChild(el("h3", "", "🎯 Objectifs"));
     const ulo = el("ul", "");
@@ -4973,6 +5232,21 @@ window.Exercises = (function () {
       }
     }
 
+    const groupDefs = {
+      comp: ["📖 Exercices de compréhension", "Vérifiez que vous avez bien compris le dialogue et le sens."],
+      appro: ["🎯 Exercices approfondis", "Grammaire et application, pour ancrer la leçon."],
+      prod: ["✍️ Production écrite & orale", "À votre tour de produire en allemand."]
+    };
+    const groups = {};
+    function groupOf(cat) {
+      if (!groups[cat]) {
+        const g = el("div", "exo-group exo-group-" + cat);
+        g.appendChild(el("h3", "exo-group-title", groupDefs[cat][0]));
+        g.appendChild(el("p", "exo-group-sub", groupDefs[cat][1]));
+        groups[cat] = g;
+      }
+      return groups[cat];
+    }
     l.exercices.forEach((ex, i) => {
       const node = window.Exercises.render(ex, i, (ok) => {
         done.add(i);
@@ -4981,8 +5255,9 @@ window.Exercises = (function () {
         window.Progress.setExercice(l.id, i, ok);
         refresh();
       });
-      exo.appendChild(node);
+      groupOf(exoCat(ex)).appendChild(node);
     });
+    ["comp", "appro", "prod"].forEach((cat) => { if (groups[cat]) exo.appendChild(groups[cat]); });
     refresh();
     frag.appendChild(exo);
 
@@ -4998,8 +5273,8 @@ window.Exercises = (function () {
       next.href = "#/lecon/" + flat[idx + 1].lecon.id;
       nav.appendChild(next);
     } else {
-      const fin = el("a", "btn btn-primary", "🎉 Retour à l'aperçu");
-      fin.href = "#/";
+      const fin = el("a", "btn btn-primary", allLessonsDone() ? "🎓 Examen final" : "🎉 Retour à l'aperçu");
+      fin.href = allLessonsDone() ? "#/examen" : "#/";
       nav.appendChild(fin);
     }
     frag.appendChild(nav);
@@ -5015,7 +5290,7 @@ window.Exercises = (function () {
         window.TG.setMainButton(flat[idx + 1].lecon.titre + " →", () => {
           location.hash = "#/lecon/" + flat[idx + 1].lecon.id;
         });
-      else window.TG.setMainButton("🎉 Terminer le cours", () => { location.hash = "#/"; });
+      else window.TG.setMainButton(allLessonsDone() ? "🎓 Examen final" : "🎉 Terminer le cours", () => { location.hash = allLessonsDone() ? "#/examen" : "#/"; });
     }
     window.scrollTo(0, 0);
   }
@@ -5029,7 +5304,9 @@ window.Exercises = (function () {
     const nextBtn =
       idx < flat.length - 1
         ? '<a class="btn btn-primary" href="#/lecon/' + flat[idx + 1].lecon.id + '">Leçon suivante →</a>'
-        : '<a class="btn btn-primary" href="#/">Retour à l\'aperçu</a>';
+        : (allLessonsDone()
+            ? '<a class="btn btn-primary" href="#/examen">🎓 Passer l\'examen final</a>'
+            : '<a class="btn btn-primary" href="#/">Retour à l\'aperçu</a>');
     c.innerHTML =
       '<div class="comp-emoji">🎉</div>' +
       "<h3>Leçon terminée !</h3>" +
@@ -5194,12 +5471,16 @@ window.Exercises = (function () {
   /* ====================================================================
      TEST DE FIN DE MODULE (noté)
      ==================================================================== */
-  function renderTest(moduleId) {
-    const mod = COURS.modules.find((m) => m.id === moduleId);
-    if (!mod) return renderHome();
+  function renderTest(key) {
+    const isFinal = key === "final";
+    if (isFinal && !allLessonsDone()) { location.hash = "#/"; return; }
+    const mod = isFinal ? null : COURS.modules.find((m) => m.id === key);
+    if (!isFinal && !mod) return renderHome();
+    const lecons = isFinal ? flat.map((f) => f.lecon) : mod.lecons;
+    const testId = isFinal ? "final" : mod.id;
 
     const pool = [];
-    mod.lecons.forEach((l) =>
+    lecons.forEach((l) =>
       l.exercices.forEach((ex) => {
         if (window.Exercises.GRADABLE.indexOf(ex.type) >= 0) pool.push(ex);
       })
@@ -5209,16 +5490,18 @@ window.Exercises = (function () {
 
     const frag = document.createDocumentFragment();
     const top = el("div", "lesson-top");
-    top.innerHTML = '<a class="btn-link" href="#/">← Aperçu du programme</a><span class="lesson-top-mod">📝 Test noté</span>';
+    top.innerHTML = '<a class="btn-link" href="#/">← Aperçu du programme</a><span class="lesson-top-mod">' +
+      (isFinal ? "🎓 Examen final" : "📝 Test noté") + "</span>";
     frag.appendChild(top);
 
     const head = el("header", "test-head");
-    head.style.setProperty("--mod-color", mod.couleur);
+    head.style.setProperty("--mod-color", isFinal ? "#7c3aed" : mod.couleur);
     head.innerHTML =
-      '<div class="lesson-num">Test · ' + mod.titre + "</div>" +
-      "<h1>Évaluation de fin de module</h1>" +
-      "<p>" + N + " questions · seuil de réussite : <strong>" + COURS.seuilReussite +
-      "%</strong>. Répondez à tout, puis cliquez sur « Terminer le test ». Les corrections s'afficheront à la fin.</p>";
+      '<div class="lesson-num">' + (isFinal ? "Examen final · Niveau A1" : "Test · " + mod.titre) + "</div>" +
+      "<h1>" + (isFinal ? "Examen final" : "Évaluation de fin de module") + "</h1>" +
+      "<p>" + N + " questions tirées " + (isFinal ? "de tout le niveau A1" : "du module") +
+      " · seuil de réussite : <strong>" + COURS.seuilReussite +
+      "%</strong>. Répondez à tout, puis cliquez sur « Terminer ». Les corrections s'afficheront à la fin.</p>";
     frag.appendChild(head);
 
     const list = el("div", "test-list");
@@ -5231,7 +5514,7 @@ window.Exercises = (function () {
     frag.appendChild(list);
 
     const result = el("div", "test-result hidden");
-    const submit = el("button", "btn btn-primary big", "Terminer le test");
+    const submit = el("button", "btn btn-primary big", isFinal ? "Terminer l'examen" : "Terminer le test");
     submit.type = "button";
     const submitRow = el("div", "test-submit");
     submitRow.appendChild(submit);
@@ -5250,27 +5533,27 @@ window.Exercises = (function () {
       });
       const score = Math.round((correct / N) * 100);
       const reussi = score >= COURS.seuilReussite;
-      window.Progress.setTestScore(mod.id, score, reussi);
+      window.Progress.setTestScore(testId, score, reussi);
 
       result.className = "test-result " + (reussi ? "pass" : "fail");
       result.innerHTML =
         '<div class="score-ring ' + (reussi ? "pass" : "fail") + '"><span>' + score + "%</span></div>" +
-        "<h2>" + (reussi ? "🏅 Module réussi !" : "📚 Encore un effort") + "</h2>" +
+        "<h2>" + (reussi ? (isFinal ? "🎓 Examen réussi !" : "🏅 Module réussi !") : "📚 Encore un effort") + "</h2>" +
         '<p class="score-detail">✓ ' + correct + " correct(s) · ✗ " + wrong + " erreur(s)" + (blank ? " · ⊘ " + blank + " sans réponse" : "") + "</p>" +
         "<p>" + (reussi
-          ? "Félicitations, vous maîtrisez l'essentiel de ce module. Continuez !"
-          : "Vous y êtes presque. Revoyez les questions en rouge, révisez le vocabulaire, puis repassez le test.") +
+          ? (isFinal ? "Félicitations, vous validez l'essentiel du niveau A1 ! 🎉" : "Bravo, vous maîtrisez l'essentiel. Continuez !")
+          : "Vous y êtes presque. Revoyez les questions en rouge, révisez le vocabulaire, puis recommencez.") +
         "</p>" +
         '<div class="rev-actions">' +
         '<a class="btn btn-ghost" href="#/">Retour à l\'aperçu</a>' +
         '<a class="btn btn-ghost" href="#/revision">🔁 Réviser le vocabulaire</a>' +
-        '<button class="btn btn-primary" id="test-again">Recommencer le test</button>' +
+        '<button class="btn btn-primary" id="test-again">' + (isFinal ? "Recommencer l'examen" : "Recommencer le test") + "</button>" +
         "</div>";
       result.classList.remove("hidden");
       submit.disabled = true;
-      submit.textContent = "Test terminé";
+      submit.textContent = isFinal ? "Examen terminé" : "Test terminé";
       const again = document.getElementById("test-again");
-      if (again) again.addEventListener("click", () => renderTest(moduleId));
+      if (again) again.addEventListener("click", () => renderTest(key));
       if (window.TG) {
         window.TG.haptic(reussi ? "success" : "warning");
         window.TG.closingConfirmation(false);
@@ -5284,7 +5567,7 @@ window.Exercises = (function () {
     if (window.TG) {
       window.TG.showBackButton(() => { location.hash = "#/"; });
       window.TG.closingConfirmation(true);
-      window.TG.setMainButton("Terminer le test", () => submit.click());
+      window.TG.setMainButton(isFinal ? "Terminer l'examen" : "Terminer le test", () => submit.click());
     }
     window.scrollTo(0, 0);
   }
@@ -5296,6 +5579,7 @@ window.Exercises = (function () {
     const hash = location.hash || "#/";
     let m;
     if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);
+    else if (hash.match(/^#\/examen/)) renderTest("final");
     else if ((m = hash.match(/^#\/test\/(.+)$/))) renderTest(m[1]);
     else if (hash.match(/^#\/revision/)) renderRevision();
     else renderHome();
