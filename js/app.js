@@ -370,6 +370,7 @@
       block.appendChild(el("h3", "", g.titre));
       if (g.intro) block.appendChild(el("p", "gram-intro", g.intro));
       if (g.tableau) block.appendChild(buildTable(g.tableau));
+      if (g.schemas) block.appendChild(buildSchemas(g.schemas));
       if (g.note) block.appendChild(el("p", "gram-note", g.note));
       gram.appendChild(block);
     });
@@ -594,6 +595,30 @@
     });
     table.appendChild(tbody);
     wrap.appendChild(table);
+    return wrap;
+  }
+
+  /* Schémas colorés de structure de phrase (sujet/verbe/complément/fin…) */
+  function buildSchemas(schemas) {
+    const wrap = el("div", "schemas");
+    schemas.forEach((s) => {
+      if (s.legende) wrap.appendChild(el("p", "schema-legende", s.legende));
+      const row = el("div", "schema-phrase");
+      (s.mots || []).forEach((seg) => {
+        const box = el("div", "schema-box " + (seg.c || "neutre"));
+        box.innerHTML = '<span class="schema-mot">' + seg.m + '</span><span class="schema-role">' + (seg.r || "") + "</span>";
+        row.appendChild(box);
+      });
+      wrap.appendChild(row);
+    });
+    // Légende des couleurs
+    const lg = el("div", "schema-legendecouleur");
+    lg.innerHTML =
+      '<span class="schema-tag sujet">sujet</span>' +
+      '<span class="schema-tag verbe">verbe conjugué</span>' +
+      '<span class="schema-tag fin">élément en fin</span>' +
+      '<span class="schema-tag conj">connecteur</span>';
+    wrap.appendChild(lg);
     return wrap;
   }
 

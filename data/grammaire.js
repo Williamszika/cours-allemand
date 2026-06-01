@@ -18,6 +18,7 @@ window.GRAMMAIRE = {
         note: "« Sie » (majuscule) = vouvoiement poli." },
       { titre: "Le présent", intro: "Radical (infinitif sans -en) + terminaison.",
         tableau: { entetes: ["Pronom", "mach-en", "sein"], lignes: [["ich", "mache", "bin"], ["du", "machst", "bist"], ["er/sie/es", "macht", "ist"], ["wir", "machen", "sind"], ["ihr", "macht", "seid"], ["sie/Sie", "machen", "sind"]] },
+        schemas: [{ legende: "Phrase de base : le verbe conjugué est toujours en 2e position.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "mache", r: "verbe (2)", c: "verbe" }, { m: "eine Pause", r: "complément", c: "objet" }] }],
         note: "« sein » est irrégulier : à apprendre par cœur." }
     ],
     exercices: [
@@ -72,6 +73,7 @@ window.GRAMMAIRE = {
     grammaire: [
       { titre: "nicht ou kein ?", intro: "« kein » nie un nom (indéfini ou sans article). « nicht » nie le reste.",
         tableau: { entetes: ["Cas", "Négation", "Exemple"], lignes: [["nom indéfini", "kein", "Ich habe keinen Hund."], ["nom défini", "nicht", "Ich mag den Film nicht."], ["verbe", "nicht", "Ich arbeite nicht."], ["adjectif", "nicht", "Das ist nicht gut."]] },
+        schemas: [{ legende: "« nicht » se place généralement à la fin de la phrase.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "arbeite", r: "verbe (2)", c: "verbe" }, { m: "heute", r: "temps", c: "objet" }, { m: "nicht", r: "négation", c: "fin" }] }],
         note: "kein se décline comme « ein » : keinen (m. acc.), keine (f./pl.), kein (n.)." }
     ],
     exercices: [
@@ -108,6 +110,7 @@ window.GRAMMAIRE = {
     grammaire: [
       { titre: "Articles à l'accusatif", intro: "Le COD est à l'accusatif. Seul le MASCULIN change.",
         tableau: { entetes: ["Genre", "Nominatif", "Accusatif"], lignes: [["masculin", "der / ein", "den / einen"], ["féminin", "die / eine", "die / eine"], ["neutre", "das / ein", "das / ein"], ["pluriel", "die", "die"]] },
+        schemas: [{ legende: "Le complément d'objet direct (COD) est à l'accusatif — seul le masculin change (der → den).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "sehe", r: "verbe (2)", c: "verbe" }, { m: "den Mann", r: "COD (accusatif)", c: "objet" }] }],
         note: "Ex. : Ich sehe den Mann / einen Hund." },
       { titre: "Pronoms personnels à l'accusatif", intro: "",
         tableau: { entetes: ["Nominatif", "Accusatif"], lignes: [["ich", "mich"], ["du", "dich"], ["er/sie/es", "ihn / sie / es"], ["wir", "uns"], ["ihr", "euch"], ["sie/Sie", "sie / Sie"]] },
@@ -133,6 +136,11 @@ window.GRAMMAIRE = {
         note: "ich et er/sie/es n'ont pas de terminaison." },
       { titre: "Séparables & Perfekt", intro: "Séparable : le préfixe part à la fin (Ich stehe um 7 auf). Perfekt : haben/sein + participe (à la fin).",
         tableau: { entetes: ["Infinitif", "Présent / Perfekt"], lignes: [["aufstehen", "ich stehe … auf"], ["machen", "ich habe … gemacht"], ["fahren", "ich bin … gefahren"]] },
+        schemas: [
+          { legende: "Verbe de modalité — la « parenthèse verbale » (Satzklammer).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "muss", r: "modal (2)", c: "verbe" }, { m: "heute", r: "…", c: "objet" }, { m: "arbeiten", r: "infinitif (fin)", c: "fin" }] },
+          { legende: "Verbe séparable — le préfixe part à la fin.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "stehe", r: "verbe (2)", c: "verbe" }, { m: "um 7 Uhr", r: "…", c: "objet" }, { m: "auf", r: "préfixe (fin)", c: "fin" }] },
+          { legende: "Passé composé (Perfekt) — participe à la fin.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "habe", r: "auxiliaire (2)", c: "verbe" }, { m: "Pizza", r: "…", c: "objet" }, { m: "gegessen", r: "participe (fin)", c: "fin" }] }
+        ],
         note: "Mouvement (fahren, gehen, fliegen) → auxiliaire SEIN. Sinon HABEN." }
     ],
     exercices: [
@@ -172,6 +180,10 @@ window.GRAMMAIRE = {
         note: "Ces 4 conjonctions gardent l'ordre normal sujet-verbe." },
       { titre: "Subordination : weil (verbe à la FIN)", intro: "« weil » (parce que) envoie le verbe conjugué à la toute fin.",
         tableau: { entetes: ["Phrase", "Sens"], lignes: [["Ich bleibe, weil es regnet.", "… parce qu'il pleut."], ["…, weil ich krank bin.", "… parce que je suis malade."]] },
+        schemas: [
+          { legende: "Coordination (und / aber / denn) : le verbe reste en 2e position.", mots: [{ m: "Es ist kalt,", r: "phrase 1", c: "objet" }, { m: "aber", r: "connecteur", c: "conj" }, { m: "die Sonne", r: "sujet", c: "sujet" }, { m: "scheint", r: "verbe (2)", c: "verbe" }] },
+          { legende: "Subordination (weil) : le verbe est rejeté à la FIN.", mots: [{ m: "Ich bleibe,", r: "principale", c: "objet" }, { m: "weil", r: "connecteur", c: "conj" }, { m: "es", r: "sujet", c: "sujet" }, { m: "regnet", r: "verbe (fin)", c: "fin" }] }
+        ],
         note: "Comparez : « denn ich bin krank » (2e) vs « weil ich krank bin » (fin)." }
     ],
     exercices: [
