@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- SDK Telegram Mini App (sans effet hors de Telegram) -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>Allemand intensif A1 — Cours interactif</title>
+    <meta
+      name="description"
+      content="Cours d'allemand intensif niveau A1 (CECRL) : vocabulaire, grammaire, dialogues et exercices interactifs avec prononciation audio."
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='33' y='0' fill='%23111'/><rect width='100' height='33' y='33' fill='%23b91c1c'/><rect width='100' height='34' y='66' fill='%23f59e0b'/></svg>"
+    />
+  </head>
+  <body>
+    <main id="app">
+      <noscript>
+        <p style="padding: 40px; text-align: center">
+          Ce cours interactif nécessite JavaScript. Veuillez l'activer dans votre navigateur.
+        </p>
+      </noscript>
+    </main>
+
+    <!-- Données du cours -->
+    <script src="data/lecons-a11.js"></script>
+    <script src="data/lecons-a12.js"></script>
+    <script src="data/production.js"></script>
+    <script src="data/cours.js"></script>
+    <!-- Modules applicatifs -->
+    <script src="js/speech.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/revision.js"></script>
+    <script src="js/telegram.js"></script>
+    <script src="js/sync.js"></script>
+    <script src="js/exercises.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
