@@ -136,3 +136,41 @@ Object.assign(window.ILLUSTRATIONS, {
   b1g22: { kw: "list,points,structure", intro: "Les connecteurs doubles : sowohl…als auch, weder…noch, entweder…oder." },
   b1g23: { kw: "dominoes,cause,effect", intro: "Cause et conséquence : weil/da/denn et deshalb/deswegen/daher." }
 });
+
+// === Niveau B2 — thèmes (B2.1 + B2.2) : photos réelles + intros explicatives ===
+Object.assign(window.ILLUSTRATIONS, {
+  b2t01: { kw: "education,training,classroom", intro: "École et formation : parler de son parcours et nuancer son avis sur l'éducation, avec un style plus soutenu (nominalisation)." },
+  b2t02: { kw: "friends,relationship,people", intro: "Relations interpersonnelles : décrire confiance, sentiments et désaccords, et gérer un conflit avec tact." },
+  b2t03: { kw: "apartment,keys,rent", intro: "Vivre et louer : comprendre une annonce et un bail, décrire un logement et situer les choses (prépositions à deux cas)." },
+  b2t04: { kw: "travel,complaint,luggage", intro: "Voyages et réclamations : exposer un problème en vacances et rédiger une lettre de réclamation formelle." },
+  b2t05: { kw: "business,culture,office", intro: "Différences culturelles au travail : comparer des cultures professionnelles et généraliser avec prudence (gelten als, man)." },
+  b2t06: { kw: "europe,flags,parliament", intro: "L'Europe et les Allemands : argumenter le pour et le contre (einerseits … andererseits) et employer le passif." },
+  b2t07: { kw: "conversation,networking,event", intro: "Le small talk : engager et entretenir une conversation légère, et éviter les sujets sensibles." },
+  b2t08: { kw: "email,phone,office", intro: "Travail quotidien : rédiger un e-mail professionnel et mener un appel téléphonique formel." },
+  b2t09: { kw: "hiking,hobby,leisure", intro: "Activités et loisirs : parler de ses loisirs en détail et nuancer préférence et fréquence." },
+  b2t10: { kw: "university,campus,lecture", intro: "L'université : décrire la vie universitaire et rapporter un contenu avec « dass »." },
+  b2t11: { kw: "history,parliament,monument", intro: "Histoire et politique : raconter des événements (prétérit, passif) et comprendre le système politique allemand." },
+  b2t12: { kw: "newspaper,news,world", intro: "Actualités du monde : comprendre une information et la rapporter au discours indirect (Konjunktiv I)." },
+  b2t13: { kw: "detective,crime,investigation", intro: "Histoires criminelles : raconter un fait divers et formuler des hypothèses sur un coupable." }
+});
+
+// === Niveau B2 — fiches de grammaire : photos d'étude variées + intro courte ===
+Object.assign(window.ILLUSTRATIONS, {
+  b2g01: { kw: "signpost,rules,choice", intro: "Les modaux au sens objectif et subjectif (supposition : müsste, dürfte, könnte)." },
+  b2g02: { kw: "history,timeline,clock", intro: "Perfekt, Präteritum, Plusquamperfekt : registre et antériorité." },
+  b2g03: { kw: "grammar,words,book", intro: "La déclinaison de l'adjectif après der / ein / sans article." },
+  b2g04: { kw: "boxes,shelf,position", intro: "Les prépositions à deux cas : datif (Wo?) ou accusatif (Wohin?)." },
+  b2g05: { kw: "factory,construction,process", intro: "Le passif : processus, état et passif avec modal." },
+  b2g06: { kw: "connection,grammar,study", intro: "Les verbes à préposition fixe (sich bewerben um, bestehen aus)." },
+  b2g07: { kw: "letters,alphabet,grammar", intro: "La n-déclinaison : ces masculins en -(e)n hors du nominatif." },
+  b2g08: { kw: "dominoes,cause,effect", intro: "Cause et conséquence : weil, denn, deshalb, so … dass." },
+  b2g09: { kw: "thinking,idea,dream", intro: "Le subjonctif II : politesse, souhait et irréel (présent et passé)." },
+  b2g10: { kw: "balance,scales,match", intro: "L'accord du verbe avec le sujet (collectifs, sujets coordonnés)." },
+  b2g11: { kw: "blocks,order,sequence", intro: "L'ordre des mots : TeKaMoLo et la place de « nicht »." },
+  b2g12: { kw: "clock,hourglass,calendar", intro: "Les indicateurs de temps : conjonction, préposition ou adverbe." },
+  b2g13: { kw: "imagination,cloud,fantasy", intro: "L'emploi du conditionnel : souhait irréel et comparaison (als ob)." },
+  b2g14: { kw: "speech,quote,microphone", intro: "Le discours indirect avec le Konjunktiv I (sei, habe, könne)." },
+  b2g15: { kw: "exchange,arrows,swap", intro: "Les formes de substitution du Konjunktiv I (→ Konjunktiv II / würde)." },
+  b2g16: { kw: "puzzle,phrase,book", intro: "Les locutions verbo-nominales (eine Entscheidung treffen, zur Verfügung stehen)." },
+  b2g17: { kw: "grammar,notebook,study", intro: "Les prépositions à génitif : wegen, trotz, während, aufgrund." }
+});

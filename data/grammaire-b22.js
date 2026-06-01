@@ -1,0 +1,165 @@
+/* =====================================================================
+   grammaire-b22.js — 9 LEÇONS DE GRAMMAIRE du module B2.2
+   (extension de window.GRAMMAIRE_B2). Suit les 9 points B2.2 du
+   programme « Erkundungen » : Konjunktiv II, congruence, ordre des mots,
+   temps, emploi du conditionnel, Konjunktiv I (discours indirect +
+   formes de substitution), locutions verbo-nominales, prépositions.
+   ===================================================================== */
+window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
+  b2g09: {
+    id: "b2g09", titre: "Le subjonctif II", titreDE: "Der Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
+    objectifs: ["Former le Konjunktiv II présent et passé", "Exprimer politesse, souhait et irréel"],
+    grammairePoints: ["würde, hätte, wäre, könnte", "hätte/wäre + participe (passé)"],
+    grammaire: [
+      { titre: "Présent et passé", intro: "Présent : würde + infinitif, ou les formes propres (hätte, wäre, könnte…). Passé : hätte/wäre + participe II.",
+        tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["politesse", "könnte / würde", "Könnten Sie mir helfen?"], ["souhait", "hätte/wäre gern", "Ich hätte gern mehr Zeit."], ["irréel présent", "würde + infinitif", "Ich würde sofort kündigen."], ["irréel passé", "hätte/wäre + participe", "Ich hätte das nie gesagt."], ["conseil", "An deiner Stelle würde ich …", "An deiner Stelle würde ich warten."]] },
+        schemas: [{ legende: "Irréel passé : hätte (2) … participe (fin).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "hätte", r: "hätte (2)", c: "verbe" }, { m: "das anders", r: "complément", c: "objet" }, { m: "gemacht", r: "participe (fin)", c: "fin" }] }],
+        note: "Avec un modal au passé : « Ich hätte kommen können » (j'aurais pu venir) — double infinitif à la fin." }
+    ],
+    exercices: [
+      { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "L'irréel du passé se forme avec…", options: ["hätte/wäre + participe II", "würde + infinitif", "haben + infinitif"], correct: 0, explication: "Ich hätte gesagt / Ich wäre gegangen." },
+      { type: "qcm", consigne: "Choisissez (politesse).", question: "___ Sie mir bitte helfen?", options: ["Könnten", "Können", "Konnten", "Kannst"], correct: 0, explication: "Konjunktiv II poli : Könnten Sie…?" },
+      { type: "trou", consigne: "Complétez (irréel passé de sein).", texte: "An deiner Stelle {0} ich früher gegangen.", accepte: [["wäre"]], indice: "gehen → sein → wäre gegangen" },
+      { type: "association", consigne: "Associez l'infinitif et sa forme.", paires: [{ gauche: "haben", droite: "hätte" }, { gauche: "sein", droite: "wäre" }, { gauche: "können", droite: "könnte" }, { gauche: "werden", droite: "würde" }] },
+      { type: "ordre", consigne: "Construisez la phrase (irréel passé).", mots: ["Ich", "hätte", "das", "nie", "gesagt"], correct: "Ich hätte das nie gesagt", traduction: "Je n'aurais jamais dit ça." }
+    ]
+  },
+  b2g10: {
+    id: "b2g10", titre: "L'accord du verbe", titreDE: "Die Verbkongruenz", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B2",
+    objectifs: ["Accorder le verbe avec le sujet", "Gérer les sujets collectifs et coordonnés"],
+    grammairePoints: ["singulier / pluriel", "sowohl…als auch, eine Reihe von"],
+    grammaire: [
+      { titre: "Le verbe s'accorde avec le vrai sujet", intro: "On repère le noyau du sujet pour choisir le singulier ou le pluriel.",
+        tableau: { entetes: ["Sujet", "Accord", "Exemple"], lignes: [["nom singulier", "singulier", "Die Gruppe arbeitet gut."], ["eine Reihe von + pluriel", "singulier (noyau Reihe)", "Eine Reihe von Studenten fehlt."], ["A und B", "pluriel", "Anna und Tom kommen."], ["sowohl … als auch", "pluriel", "Sowohl er als auch sie sind da."], ["weder … noch", "souvent pluriel", "Weder er noch sie waren da."]] },
+        note: "« es gibt » est toujours suivi… du verbe au singulier (es gibt viele Möglichkeiten). Le noyau « eine Reihe / eine Gruppe » impose le singulier." }
+    ],
+    exercices: [
+      { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« Anna und Tom ___ » prend…", options: ["le pluriel (kommen)", "le singulier (kommt)", "peu importe"], correct: 0, explication: "deux sujets coordonnés → pluriel." },
+      { type: "qcm", consigne: "Choisissez.", question: "Eine Reihe von Studenten ___ heute.", options: ["fehlt", "fehlen", "fehlst", "fehle"], correct: 0, explication: "noyau « eine Reihe » → singulier." },
+      { type: "trou", consigne: "Complétez (accord).", texte: "Sowohl er als auch seine Kollegen {0} eingeladen. (sein)", accepte: [["sind"]], indice: "sowohl … als auch → pluriel : sind" },
+      { type: "association", consigne: "Associez le sujet et l'accord.", paires: [{ gauche: "die Gruppe", droite: "singulier" }, { gauche: "Anna und Tom", droite: "pluriel" }, { gauche: "eine Reihe von …", droite: "singulier" }, { gauche: "es gibt", droite: "singulier" }] },
+      { type: "qcm", consigne: "Choisissez.", question: "Es ___ viele Möglichkeiten.", options: ["gibt", "geben", "gibst", "gäbe"], correct: 0, explication: "es gibt = toujours singulier." }
+    ]
+  },
+  b2g11: {
+    id: "b2g11", titre: "L'ordre des mots", titreDE: "Die Wortstellung", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
+    objectifs: ["Ordonner les compléments (TeKaMoLo)", "Placer correctement « nicht »"],
+    grammairePoints: ["Te-Ka-Mo-Lo", "parenthèse verbale, position de nicht"],
+    grammaire: [
+      { titre: "Le champ central : TeKaMoLo", intro: "Dans le Mittelfeld, l'ordre habituel des compléments est : Temporel – Kausal – Modal – Lokal. Le verbe conjugué reste en 2e position, le reste du verbe à la fin (parenthèse verbale).",
+        tableau: { entetes: ["Ordre", "Question", "Exemple"], lignes: [["Te (temps)", "wann?", "Ich fahre morgen"], ["Ka (cause)", "warum?", "… wegen der Arbeit"], ["Mo (manière)", "wie?", "… mit dem Zug"], ["Lo (lieu)", "wohin?", "… nach Berlin."]] },
+        schemas: [{ legende: "Parenthèse verbale : verbe (2) … reste du verbe (fin).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "habe", r: "auxiliaire (2)", c: "verbe" }, { m: "gestern in Berlin", r: "Te … Lo", c: "objet" }, { m: "gearbeitet", r: "participe (fin)", c: "fin" }] }],
+        note: "« nicht » se place en fin de Mittelfeld, mais AVANT l'élément nié (adjectif, lieu, partie du verbe) : « Ich fahre nicht nach Berlin »." }
+    ],
+    exercices: [
+      { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "TeKaMoLo signifie l'ordre…", options: ["temps – cause – manière – lieu", "lieu – manière – cause – temps", "sujet – verbe – objet"], correct: 0, explication: "Temporal, Kausal, Modal, Lokal." },
+      { type: "qcm", consigne: "Choisissez le bon ordre.", question: "Ich fahre …", options: ["morgen mit dem Zug nach Köln", "nach Köln morgen mit dem Zug", "mit dem Zug morgen nach Köln", "nach Köln mit dem Zug morgen"], correct: 0, explication: "Temps (morgen) – manière (mit dem Zug) – lieu (nach Köln)." },
+      { type: "trou", consigne: "Complétez (négation de lieu).", texte: "Ich fahre {0} nach Berlin, ich bleibe hier.", accepte: [["nicht"]], indice: "négation avant l'élément nié : nicht nach Berlin" },
+      { type: "association", consigne: "Associez la lettre et la catégorie.", paires: [{ gauche: "Te", droite: "temps" }, { gauche: "Ka", droite: "cause" }, { gauche: "Mo", droite: "manière" }, { gauche: "Lo", droite: "lieu" }] },
+      { type: "ordre", consigne: "Construisez la phrase (TeKaMoLo).", mots: ["Ich", "gehe", "heute", "zu", "Fuß", "ins", "Büro"], correct: "Ich gehe heute zu Fuß ins Büro", traduction: "Aujourd'hui je vais au bureau à pied." }
+    ]
+  },
+  b2g12: {
+    id: "b2g12", titre: "Les indicateurs de temps", titreDE: "Temporalangaben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
+    objectifs: ["Relier des actions dans le temps", "Choisir conjonction, préposition ou adverbe"],
+    grammairePoints: ["als, während, nachdem, seitdem", "vor/seit/bis, danach"],
+    grammaire: [
+      { titre: "Conjonctions, prépositions et adverbes temporels", intro: "Trois moyens d'exprimer le temps : la subordonnée (verbe fin), la préposition (+ groupe nominal), l'adverbe.",
+        tableau: { entetes: ["Type", "Mot", "Exemple"], lignes: [["conjonction", "während / als / nachdem", "Während ich aß, las ich."], ["conjonction", "seitdem / sobald / bis", "Seitdem er hier ist, geht es besser."], ["préposition", "vor / seit / nach (+ Dat.)", "Nach dem Essen ging ich."], ["adverbe", "danach / vorher / inzwischen", "Inzwischen war es spät."]] },
+        note: "Même idée, trois formes : « nachdem ich gegessen hatte » (conj.) = « nach dem Essen » (prép.) = « danach » (adv.)." }
+    ],
+    exercices: [
+      { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« seitdem » introduit…", options: ["une subordonnée (verbe à la fin)", "un groupe nominal", "rien"], correct: 0, explication: "Conjonction → verbe à la fin." },
+      { type: "qcm", consigne: "Conjonction ou préposition ?", question: "___ dem Essen gingen wir spazieren.", options: ["Nach", "Nachdem", "Während", "Seitdem"], correct: 0, explication: "+ groupe nominal (dem Essen) → préposition « nach »." },
+      { type: "trou", consigne: "Complétez (conjonction, verbe à la fin).", texte: "Seitdem er Sport {0}, fühlt er sich besser. (machen)", accepte: [["macht"]], indice: "seitdem → verbe à la fin" },
+      { type: "association", consigne: "Associez le mot et son type.", paires: [{ gauche: "während", droite: "conjonction" }, { gauche: "nach", droite: "préposition" }, { gauche: "danach", droite: "adverbe" }, { gauche: "seitdem", droite: "conjonction" }] },
+      { type: "ordre", consigne: "Construisez la subordonnée temporelle.", mots: ["während", "ich", "kochte"], correct: "während ich kochte", traduction: "pendant que je cuisinais" }
+    ]
+  },
+  b2g13: {
+    id: "b2g13", titre: "L'emploi du conditionnel", titreDE: "Gebrauch des Konjunktivs II", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
+    objectifs: ["Exprimer souhait irréel et comparaison irréelle", "Employer « als ob »"],
+    grammairePoints: ["wenn … doch nur", "als ob / als wenn + Konjunktiv II"],
+    grammaire: [
+      { titre: "Souhaits et comparaisons irréels", intro: "Le Konjunktiv II sert au souhait irréel (wenn … doch nur) et à la comparaison irréelle (als ob).",
+        tableau: { entetes: ["Emploi", "Structure", "Exemple"], lignes: [["souhait irréel", "Wenn … doch nur + KII", "Wenn ich doch nur mehr Zeit hätte!"], ["comparaison", "als ob + KII (fin)", "Er tut, als ob er alles wüsste."], ["comparaison", "als + KII (verbe 2e)", "Er tut, als wüsste er alles."], ["politesse/conseil", "würde / sollte", "Du solltest dich ausruhen."]] },
+        schemas: [{ legende: "als ob : verbe au Konjunktiv II à la FIN.", mots: [{ m: "Er tut so,", r: "principale", c: "objet" }, { m: "als ob", r: "comparaison irréelle", c: "conj" }, { m: "er alles", r: "sujet + complément", c: "sujet" }, { m: "wüsste", r: "Konjunktiv II (fin)", c: "fin" }] }],
+        note: "Après « als ob », le verbe va à la fin ; après « als » seul, le verbe vient juste après (« als wüsste er »)." }
+    ],
+    exercices: [
+      { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Après « als ob », le verbe (Konjunktiv II) se place…", options: ["à la fin", "en 2e position", "au début"], correct: 0, explication: "als ob → subordination → verbe à la fin." },
+      { type: "qcm", consigne: "Choisissez (souhait irréel).", question: "Wenn ich doch nur mehr Geld ___!", options: ["hätte", "habe", "hatte", "haben"], correct: 0, explication: "souhait irréel → Konjunktiv II : hätte." },
+      { type: "trou", consigne: "Complétez (als ob, verbe à la fin).", texte: "Er tut, als ob er krank {0}. (sein)", accepte: [["wäre"]], indice: "als ob + Konjunktiv II → wäre" },
+      { type: "association", consigne: "Associez l'emploi et la structure.", paires: [{ gauche: "souhait irréel", droite: "wenn … doch nur" }, { gauche: "comparaison", droite: "als ob" }, { gauche: "conseil", droite: "du solltest" }, { gauche: "politesse", droite: "würde" }] },
+      { type: "traduction", consigne: "Traduisez.", source: "Si seulement j'avais plus de temps !", accepte: ["Wenn ich doch nur mehr Zeit hätte", "Hätte ich doch nur mehr Zeit"], aide: "souhait irréel : wenn … doch nur + Konjunktiv II" }
+    ]
+  },
+  b2g14: {
+    id: "b2g14", titre: "Le discours indirect (Konjunktiv I)", titreDE: "Indirekte Rede: Konjunktiv I", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
+    objectifs: ["Former le Konjunktiv I", "Rapporter des propos (presse)"],
+    grammairePoints: ["sei, habe, könne, werde", "rapport neutre"],
+    grammaire: [
+      { titre: "Citer sans s'engager", intro: "Le Konjunktiv I (3e personne) sert au discours indirect, surtout dans la presse et les comptes rendus.",
+        tableau: { entetes: ["Direct", "Indirect (Konjunktiv I)"], lignes: [["« Ich bin müde. »", "Er sagt, er sei müde."], ["« Ich habe Zeit. »", "Sie sagt, sie habe Zeit."], ["« Ich kann kommen. »", "Er sagt, er könne kommen."], ["« Ich werde anrufen. »", "Sie sagt, sie werde anrufen."], ["« Ich machte das. »", "Er sagt, er habe das gemacht. (passé → Perfekt KI)"]] },
+        note: "Le passé du discours indirect se rend par le Perfekt au Konjunktiv I : « er habe … gemacht », « sie sei … gegangen »." }
+    ],
+    exercices: [
+      { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Le Konjunktiv I sert surtout…", options: ["au discours indirect (presse)", "à l'irréel", "à la politesse"], correct: 0, explication: "Citer des propos de façon neutre." },
+      { type: "qcm", consigne: "Choisissez (Konjunktiv I de sein).", question: "Er sagt, er ___ krank.", options: ["sei", "ist", "wäre", "war"], correct: 0, explication: "discours indirect → Konjunktiv I : sei." },
+      { type: "trou", consigne: "Complétez (Konjunktiv I de haben).", texte: "Sie sagt, sie {0} keine Zeit.", accepte: [["habe"]], indice: "haben → habe (Konjunktiv I, 3e sing.)" },
+      { type: "association", consigne: "Associez l'infinitif et le Konjunktiv I (er).", paires: [{ gauche: "sein", droite: "sei" }, { gauche: "haben", droite: "habe" }, { gauche: "können", droite: "könne" }, { gauche: "werden", droite: "werde" }] },
+      { type: "qcm", consigne: "Choisissez (passé indirect).", question: "« Ich habe es gemacht. » → Er sagt, er ___ es gemacht.", options: ["habe", "hatte", "hat", "haben"], correct: 0, explication: "passé indirect → Perfekt KI : habe gemacht." }
+    ]
+  },
+  b2g15: {
+    id: "b2g15", titre: "Konjunktiv I : formes de substitution", titreDE: "Ersatzformen des Konjunktivs I", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
+    objectifs: ["Savoir quand remplacer le Konjunktiv I", "Utiliser le Konjunktiv II / würde à la place"],
+    grammairePoints: ["KI = indicatif → KII", "würde + infinitif"],
+    grammaire: [
+      { titre: "Quand le Konjunktiv I se confond avec l'indicatif", intro: "Si la forme du Konjunktiv I est identique à l'indicatif (souvent au pluriel et à « ich »), on la remplace par le Konjunktiv II, ou par « würde + infinitif ».",
+        tableau: { entetes: ["Direct", "KI ambigu", "Forme de substitution"], lignes: [["« Sie haben Zeit. »", "sie haben (= indicatif)", "Sie hätten Zeit. (KII)"], ["« Wir kommen. »", "wir kommen (= indicatif)", "Sie kämen / würden kommen."], ["« Ich bin müde. »", "ich sei (rare à la 1re)", "Ich sei / wäre müde."], ["« Sie lernen viel. »", "sie lernen (= indicatif)", "Sie würden viel lernen."]] },
+        note: "Règle pratique : 3e personne du singulier → Konjunktiv I (er sei, er habe) ; pluriel et « ich » → Konjunktiv II ou würde." }
+    ],
+    exercices: [
+      { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "On remplace le Konjunktiv I quand…", options: ["il se confond avec l'indicatif", "il est trop court", "le sujet est « er »"], correct: 0, explication: "Pour rester clair, on passe au Konjunktiv II / würde." },
+      { type: "qcm", consigne: "Choisissez (substitution, pluriel).", question: "Sie sagen, sie ___ keine Zeit. (haben)", options: ["hätten", "haben", "habe", "hätte"], correct: 0, explication: "pluriel ambigu → Konjunktiv II : hätten." },
+      { type: "trou", consigne: "Complétez (würde + infinitif).", texte: "Er sagt, die Leute {0} mehr lesen. (würde + lesen → forme conjuguée)", accepte: [["würden"]], indice: "pluriel → würden + infinitif" },
+      { type: "association", consigne: "Associez la personne et la forme conseillée.", paires: [{ gauche: "er/sie (3e sing.)", droite: "Konjunktiv I (sei, habe)" }, { gauche: "sie (pluriel)", droite: "Konjunktiv II / würde" }, { gauche: "ich", droite: "Konjunktiv II / würde" }, { gauche: "wir", droite: "Konjunktiv II / würde" }] },
+      { type: "qcm", consigne: "Choisissez.", question: "Pourquoi « sie haben » devient « sie hätten » au discours indirect ?", options: ["Sinon = indicatif (ambigu)", "Pour faire poli", "C'est obligatoire partout"], correct: 0, explication: "« sie haben » KI = indicatif → on passe au KII." }
+    ]
+  },
+  b2g16: {
+    id: "b2g16", titre: "Locutions verbo-nominales", titreDE: "Nomen-Verb-Verbindungen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
+    objectifs: ["Employer des locutions figées nom + verbe", "Reformuler avec un verbe simple"],
+    grammairePoints: ["in Frage stellen, zur Verfügung stehen", "Bezug nehmen auf"],
+    grammaire: [
+      { titre: "Les Funktionsverbgefüge (style soutenu)", intro: "Ces locutions associent un nom et un verbe « support ». Elles donnent un style formel et ont souvent un équivalent verbal simple.",
+        tableau: { entetes: ["Locution", "Sens", "Équivalent simple"], lignes: [["eine Entscheidung treffen", "prendre une décision", "(sich) entscheiden"], ["in Frage stellen", "remettre en question", "bezweifeln"], ["zur Verfügung stehen", "être à disposition", "verfügbar sein"], ["Bezug nehmen auf", "se référer à", "sich beziehen auf"], ["in Kraft treten", "entrer en vigueur", "gelten"]] },
+        note: "À l'écrit formel, ces tournures sont fréquentes ; à l'oral, on préfère souvent le verbe simple." }
+    ],
+    exercices: [
+      { type: "qcm", cat: "comp", consigne: "Choisissez le verbe support.", question: "eine Entscheidung ___", options: ["treffen", "machen", "geben", "nehmen"], correct: 0, explication: "eine Entscheidung treffen." },
+      { type: "qcm", consigne: "Choisissez l'équivalent.", question: "« in Frage stellen » signifie…", options: ["bezweifeln", "fragen", "antworten", "verfügen"], correct: 0, explication: "remettre en question = bezweifeln." },
+      { type: "trou", consigne: "Complétez (locution).", texte: "Das Material steht Ihnen zur {0}.", accepte: [["Verfügung"]], indice: "zur Verfügung stehen" },
+      { type: "association", consigne: "Associez la locution et son sens.", paires: [{ gauche: "in Frage stellen", droite: "remettre en question" }, { gauche: "zur Verfügung stehen", droite: "être à disposition" }, { gauche: "Bezug nehmen auf", droite: "se référer à" }, { gauche: "in Kraft treten", droite: "entrer en vigueur" }] },
+      { type: "traduction", consigne: "Traduisez.", source: "Nous prenons une décision.", accepte: ["Wir treffen eine Entscheidung"], aide: "eine Entscheidung treffen" }
+    ]
+  },
+  b2g17: {
+    id: "b2g17", titre: "Les prépositions (génitif)", titreDE: "Präpositionen mit Genitiv", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
+    objectifs: ["Employer les prépositions à génitif", "Exprimer cause, opposition, lieu, moyen"],
+    grammairePoints: ["wegen, trotz, während", "aufgrund, innerhalb, statt"],
+    grammaire: [
+      { titre: "Les prépositions qui régissent le génitif", intro: "Au registre soutenu, plusieurs prépositions imposent le génitif (causales, concessives, temporelles, locales).",
+        tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["wegen", "à cause de", "wegen des Wetters"], ["trotz", "malgré", "trotz der Probleme"], ["während", "pendant", "während der Sitzung"], ["aufgrund", "en raison de", "aufgrund der Krise"], ["innerhalb / außerhalb", "à l'intérieur / en dehors de", "innerhalb einer Woche"], ["statt / anstatt", "au lieu de", "statt eines Briefes"]] },
+        note: "À l'oral, « wegen » et « trotz » sont souvent suivis du datif, mais le génitif reste correct et soutenu." }
+    ],
+    exercices: [
+      { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« trotz » exprime…", options: ["l'opposition (malgré)", "la cause", "le but"], correct: 0, explication: "trotz = malgré (concession)." },
+      { type: "qcm", consigne: "Choisissez (génitif masculin).", question: "Wegen ___ Staus kam ich zu spät.", options: ["des", "der", "dem", "den"], correct: 0, explication: "wegen + génitif, der Stau → des Staus." },
+      { type: "trou", consigne: "Complétez (génitif féminin).", texte: "Während {0} Sitzung war es still.", accepte: [["der"]], indice: "während + génitif, die Sitzung → der" },
+      { type: "association", consigne: "Associez la préposition et son sens.", paires: [{ gauche: "wegen", droite: "à cause de" }, { gauche: "trotz", droite: "malgré" }, { gauche: "aufgrund", droite: "en raison de" }, { gauche: "statt", droite: "au lieu de" }] },
+      { type: "traduction", consigne: "Traduisez.", source: "Malgré la pluie, nous sommes sortis.", accepte: ["Trotz des Regens sind wir rausgegangen", "Trotz des Regens gingen wir raus", "Trotz des Regens sind wir nach draußen gegangen"], aide: "trotz + génitif : trotz des Regens" }
+    ]
+  }
+});
