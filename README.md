@@ -1,10 +1,10 @@
 # 🇩🇪 Allemand intensif — Niveau A1
 
-Une **application web d'apprentissage de l'allemand** interactive, complète et
-auto-corrigée, couvrant l'intégralité du niveau **A1 du CECRL**. Méthode
-**communicative** inspirée des manuels utilisés en Allemagne (*Menschen, Schritte
-international, Netzwerk*), explications en français. Prête comme **Telegram Mini App**
-et déployable sur **Vercel**.
+Application web d'apprentissage de l'allemand, **interactive et auto-corrigée**,
+couvrant **tout le niveau A1** (CECRL). Méthode communicative inspirée des manuels
+allemands (*Menschen, Schritte international, Netzwerk*), explications en français.
+Le cours se suit **leçon par leçon** et se conclut par un **examen final**.
+Prête comme **Telegram Mini App** et déployable sur **Vercel**.
 
 > *Von Null auf Deutsch — De zéro à l'allemand.*
 
@@ -12,55 +12,31 @@ et déployable sur **Vercel**.
 
 ## 📸 Aperçu
 
-| Page d'accueil (programme complet) | Une leçon |
+| Une leçon (vraie photo + explication) | Accueil (thème Telegram sombre) |
 |:---:|:---:|
-| ![Accueil](apercu/apercu-01-accueil.png) | ![Leçon](apercu/apercu-03-lecon.png) |
+| ![Leçon](apercu/apercu-16-lecon-photo.png) | ![Telegram](apercu/apercu-13-tg-dark-accueil.png) |
 
-| Exercice auto-corrigé | Telegram (thème sombre) |
+| Exercice auto-corrigé | Version mobile |
 |:---:|:---:|
-| ![Exercice](apercu/apercu-04-exercice.png) | ![Telegram sombre](apercu/apercu-13-tg-dark-accueil.png) |
+| ![Exercice](apercu/apercu-04-exercice.png) | ![Mobile](apercu/apercu-05-mobile.png) |
 
 ---
 
-## ▶️ Comment l'ouvrir / le tester
+## ✨ Au programme
 
-Aucune installation, aucun serveur, aucun build.
-
-- **Version multi-fichiers** : ouvrez `index.html`.
-- **Version « 1 seul fichier »** : ouvrez `dist/allemand-a1.html` (tout est inclus —
-  téléchargeable, ouvrable d'un double-clic, même hors-ligne). Régénération :
-  `node build.js`.
-
-> 🔊 **Prononciation audio** : synthèse vocale du navigateur (allemand). Activez le son.
-> 🎤 **Production orale** : reconnaissance vocale (Chrome/Edge) ou écoute-modèle + auto-évaluation.
-
-### 🌐 Déploiement
-Site 100 % statique → voir **[DEPLOY.md](DEPLOY.md)** (Vercel en quelques clics).
-
-### 🤖 Telegram Mini App
-SDK intégré, **thème clair/sombre synchronisé**, **bouton principal** et **bouton
-retour** natifs, **retour haptique**, et **synchronisation de la progression entre
-appareils** (CloudStorage). Mise en place via @BotFather → **[TELEGRAM.md](TELEGRAM.md)**.
-
----
-
-## 📚 Contenu
-
-- **2 modules** : A1.1 (*Grundlagen*) et A1.2 (*Alltag*)
-- **19 leçons** thématiques
-- **267 mots** de vocabulaire (avec exemples et audio)
-- **153 exercices** : 115 auto-corrigés + 19 de production écrite + 19 de production orale
-- **~16 heures** de cours
-
-### Module A1.1 — Les fondations
-1. Se présenter · 2. L'alphabet et les chiffres · 3. Langues et pays ·
-4. Personnes et loisirs · 5. Le travail · 6. Le temps libre ·
-7. À l'hôtel · 8. Le plan de la ville · 9. Nourriture & restaurant
-
-### Module A1.2 — Le quotidien
-10. La routine quotidienne · 11. Le stress au bureau · 12. L'ordinateur ·
-13. Prendre un rendez-vous · 14. Saisons & météo · 15. Voyages ·
-16. Transports · 17. Logement & meubles · 18. Santé · 19. Excuses
+- **2 modules · 19 leçons** couvrant les thèmes A1 (se présenter, hôtel, restaurant,
+  travail, transports, santé, etc.)
+- **Parcours séquentiel** : chaque leçon se **déverrouille** lorsque la précédente est
+  terminée (seule la leçon 1 est ouverte au départ).
+- **Chaque leçon est illustrée** d'une **vraie photo** et introduite par une
+  **explication** claire du thème et de la grammaire.
+- **267 mots** de vocabulaire avec **prononciation audio** (de-DE).
+- **191 exercices** organisés en trois temps :
+  **📖 Compréhension** (basée sur le dialogue) → **🎯 Approfondi** (grammaire) →
+  **✍️ Production** écrite & orale.
+- **🎓 Examen final** unique, **débloqué après les 19 leçons** : 20 questions tirées de
+  tout l'A1, seuil de réussite 60 %, corrections détaillées.
+- **🔁 Révision espacée** (système de Leitner) et **suivi de progression**.
 
 ### Grammaire couverte
 - **A1.1** : pronoms & présent · articles der/die/das · verbes (réguliers, irréguliers,
@@ -70,15 +46,28 @@ appareils** (CloudStorage). Mise en place via @BotFather → **[TELEGRAM.md](TEL
 
 ---
 
-## 🧩 9 types d'exercices interactifs
+## ▶️ Ouvrir / tester
 
-Choix multiple · texte à trous · association · conjugaison · remise en ordre ·
-compréhension orale · traduction · **production écrite** (feedback mots-clés + modèle) ·
-**production orale** (reconnaissance vocale ou écoute-modèle).
+Aucune installation, aucun build.
 
-Chaque exercice se corrige **instantanément**, avec **explication pédagogique** et
-**barre de progression**. Mode **révision** (répétition espacée — système de Leitner) et
-**test de fin de module noté** (20 questions, score /100, seuil 60 %).
+- **Version multi-fichiers** : ouvrez `index.html`.
+- **Version « 1 seul fichier »** : ouvrez `dist/allemand-a1.html` (tout est inclus —
+  ouvrable d'un double-clic, même hors-ligne). Régénération : `node build.js`.
+
+> 🔊 **Audio** : synthèse vocale du navigateur. 🎤 **Production orale** : reconnaissance
+> vocale (Chrome/Edge) ou écoute-modèle + auto-évaluation. 🖼️ Les **photos** se chargent
+> en ligne (le HTTPS de Vercel/Telegram est requis).
+
+---
+
+## 🌐 Déploiement (Vercel)
+Site 100 % statique, cours **à la racine** → voir **[DEPLOY.md](DEPLOY.md)**
+(import du dépôt → Deploy, sans réglage « Root Directory »).
+
+## 🤖 Telegram Mini App
+SDK intégré, **thème clair/sombre synchronisé**, **bouton principal** et **bouton retour**
+natifs, **retour haptique**, et **synchronisation de la progression entre appareils**
+(CloudStorage). Mise en place via @BotFather → **[TELEGRAM.md](TELEGRAM.md)**.
 
 ---
 
@@ -86,26 +75,23 @@ Chaque exercice se corrige **instantanément**, avec **explication pédagogique*
 
 ```
 .
-├── index.html              # Point d'entrée (application monopage)
-├── build.js                # Génère la version « 1 seul fichier »
-├── vercel.json             # Config de déploiement statique
-├── css/styles.css          # Design responsive + thème sombre Telegram
+├── index.html · build.js · vercel.json
+├── css/styles.css                 # design responsive + thème sombre Telegram
 ├── js/
-│   ├── app.js              # Routage + rendu (aperçu, leçons, révision, test)
-│   ├── exercises.js        # Moteur des 9 types d'exercices (+ mode test)
-│   ├── speech.js           # Synthèse + reconnaissance vocale (de-DE)
-│   ├── revision.js         # Répétition espacée (Leitner)
-│   ├── telegram.js         # Intégration Telegram Mini App
-│   ├── sync.js             # Synchro multi-appareils (CloudStorage)
-│   └── progress.js         # Suivi de progression (localStorage)
+│   ├── app.js                     # routage, parcours séquentiel, examen final
+│   ├── exercises.js               # 9 types d'exercices (+ mode examen)
+│   ├── speech.js                  # synthèse + reconnaissance vocale (de-DE)
+│   ├── revision.js                # répétition espacée (Leitner)
+│   ├── telegram.js · sync.js      # Mini App + synchro CloudStorage
+│   └── progress.js                # suivi de progression
 ├── data/
-│   ├── lecons-a11.js       # Module A1.1 (9 leçons)
-│   ├── lecons-a12.js       # Module A1.2 (10 leçons)
-│   ├── production.js       # Exercices de production écrite/orale
-│   └── cours.js            # Assemblage + métadonnées
-├── dist/allemand-a1.html   # Version autonome (générée)
-├── apercu/                 # Captures d'écran
-└── README.md · DEPLOY.md · TELEGRAM.md
+│   ├── lecons-a11.js · lecons-a12.js   # les 19 leçons
+│   ├── comprehension.js                # exercices de compréhension (dialogue)
+│   ├── production.js                   # production écrite & orale
+│   ├── illustrations.js                # photos + intros par leçon
+│   └── cours.js                        # assemblage + métadonnées
+├── dist/allemand-a1.html          # version autonome (générée)
+└── apercu/                        # captures d'écran
 ```
 
 *Cours d'allemand intensif · Niveau A1 · Méthode communicative (CECRL).*
