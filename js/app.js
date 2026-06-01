@@ -27,6 +27,8 @@
     const prevOk = window.Progress.estTermine(flat[idx - 1].lecon.id);
     // Les leçons A2 ne s'ouvrent qu'après avoir RÉUSSI l'examen A1
     if (l.niveau === "A2") return prevOk && examPasse("a1");
+    // Les leçons B1 ne s'ouvrent qu'après l'examen final A1 + A2
+    if (l.niveau === "B1") return prevOk && examPasse("final");
     return prevOk;
   }
   function allLessonsDone() {
@@ -39,6 +41,8 @@
     for (const f of flat) if (f.lecon.niveau === "A2" && !window.Progress.estTermine(f.lecon.id)) return "#/lecon/" + f.lecon.id;
     if (!examPasse("a2")) return "#/examen/a2";
     if (!examPasse("final")) return "#/examen/final";
+    for (const f of flat) if (f.lecon.niveau === "B1" && !window.Progress.estTermine(f.lecon.id)) return "#/lecon/" + f.lecon.id;
+    if (!examPasse("b1")) return "#/examen/b1";
     return "#/";
   }
   /* Étape après une leçon : leçon suivante du même niveau, sinon examen du niveau */
@@ -46,7 +50,7 @@
     const l = flat[idx].lecon;
     const next = flat[idx + 1];
     if (next && next.lecon.niveau === l.niveau) return "#/lecon/" + next.lecon.id;
-    return "#/examen/" + (l.niveau === "A1" ? "a1" : "a2");
+    return "#/examen/" + (l.niveau === "A1" ? "a1" : l.niveau === "A2" ? "a2" : "b1");
   }
   /* Catégorie d'un exercice : comp (compréhension), appro (approfondi), prod (production) */
   function exoCat(ex) {
@@ -123,10 +127,11 @@
     const btn = el("a", "btn btn-primary big");
     btn.href = etape;
     btn.textContent =
-      etape === "#/" ? "🎉 Parcours A1 + A2 terminé !"
+      etape === "#/" ? "🎉 Parcours A1 → B1 terminé !"
       : /examen\/a1/.test(etape) ? "🎓 Passer l'examen A1"
       : /examen\/a2/.test(etape) ? "🎓 Passer l'examen A2"
       : /examen\/final/.test(etape) ? "🎓 Passer l'examen final A1+A2"
+      : /examen\/b1/.test(etape) ? "🎓 Passer l'examen B1"
       : res.faites > 0 ? "▶ Continuer le parcours" : "▶ Commencer la leçon 1";
     cta.appendChild(btn);
 
@@ -201,11 +206,12 @@
       return card;
     }
 
-    [{ code: "A1", exam: "a1" }, { code: "A2", exam: "a2" }].forEach((niv) => {
-      const a2locked = niv.code === "A2" && !examPasse("a1");
+    /* Rendu générique d'un niveau : séparateur + modules + carte d'examen */
+    function renderNiveau(niv) {
+      const prevPassed = niv.prevExam ? examPasse(niv.prevExam) : true;
       const sep = el("section", "section niveau-sep");
       sep.innerHTML = '<h2 class="niveau-titre">Niveau ' + niv.code +
-        (a2locked ? ' <span class="niveau-lock">🔒 réussissez l\'examen A1 pour débloquer</span>' : "") + "</h2>";
+        (!prevPassed ? ' <span class="niveau-lock">🔒 réussissez ' + niv.prevLabel + ' pour débloquer</span>' : "") + "</h2>";
       frag.appendChild(sep);
 
       COURS.modules.filter((m) => (m.niveau || "A1") === niv.code).forEach((mod) => {
@@ -220,41 +226,45 @@
         frag.appendChild(sec);
       });
 
-      const done = niveauTermine(niv.code);
-      const reussiPrec = niv.code === "A2" ? examPasse("a1") : true;
-      const unlocked = done && reussiPrec;
-      const sousTitre = niv.code === "A1"
-        ? "20 questions de tout l'A1 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour débloquer le niveau A2 !"
-        : "20 questions de tout l'A2 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour débloquer l'examen final.";
-      const lockText = niv.code === "A1"
-        ? "Terminez les leçons du niveau A1 pour passer l'examen."
-        : (!reussiPrec ? "Réussissez d'abord l'examen A1." : "Terminez les leçons du niveau A2 pour passer l'examen.");
+      const unlocked = niveauTermine(niv.code) && prevPassed;
+      const lockText = !prevPassed
+        ? ("Réussissez d'abord " + niv.prevLabel + ".")
+        : ("Terminez les leçons du niveau " + niv.code + " pour passer l'examen.");
       const examSec = el("section", "section");
-      examSec.appendChild(carteExamen(niv.exam, "Examen du niveau " + niv.code, unlocked, sousTitre, lockText));
+      examSec.appendChild(carteExamen(niv.exam, "Examen du niveau " + niv.code, unlocked, niv.examSous, lockText));
       frag.appendChild(examSec);
-    });
+    }
 
-    /* --- Examen final A1 + A2 --- */
+    renderNiveau({ code: "A1", exam: "a1", prevExam: null, prevLabel: null,
+      examSous: "20 questions de tout l'A1 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour débloquer le niveau A2 !" });
+    renderNiveau({ code: "A2", exam: "a2", prevExam: "a1", prevLabel: "l'examen A1",
+      examSous: "20 questions de tout l'A2 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour débloquer l'examen final." });
+
+    /* --- Examen final A1 + A2 (verrou vers le B1) --- */
     const finalSec = el("section", "section");
     finalSec.appendChild(carteExamen("final", "🎓 Examen final A1 + A2", examPasse("a2"),
       "30 questions tirées de tout l'A1 et l'A2 · seuil " + COURS.seuilReussite + "%. La consécration !",
       "Réussissez l'examen du niveau A2 pour débloquer l'examen final."));
     frag.appendChild(finalSec);
 
-    /* --- Niveau suivant (B1) --- */
-    const b1Ok = examPasse("final");
-    const b1Sec = el("section", "section");
-    const b1 = el("div", "examen-final " + (b1Ok ? "unlocked" : "locked"));
-    b1.innerHTML = '<div class="examen-ic">' + (b1Ok ? "🚀" : "🔒") + "</div><h2>Niveau B1 — la suite</h2>" +
-      (b1Ok
-        ? "<p>🎉 Félicitations, vous avez validé <strong>A1 + A2</strong> ! Le niveau <strong>B1</strong> arrive bientôt.</p>"
-        : "<p>Réussissez l'examen final A1 + A2 pour accéder au niveau suivant (B1).</p>");
-    b1Sec.appendChild(b1);
-    frag.appendChild(b1Sec);
+    /* --- Niveau B1 (débloqué après l'examen final A1 + A2) --- */
+    renderNiveau({ code: "B1", exam: "b1", prevExam: "final", prevLabel: "l'examen final A1 + A2",
+      examSous: "25 questions de tout le B1 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour accéder au niveau B2 !" });
+
+    /* --- Niveau suivant (B2) --- */
+    const b2Ok = examPasse("b1");
+    const b2Sec = el("section", "section");
+    const b2 = el("div", "examen-final " + (b2Ok ? "unlocked" : "locked"));
+    b2.innerHTML = '<div class="examen-ic">' + (b2Ok ? "🚀" : "🔒") + "</div><h2>Niveau B2 — la suite</h2>" +
+      (b2Ok
+        ? "<p>🎉 Félicitations, vous avez validé <strong>A1 + A2 + B1</strong> ! Le niveau <strong>B2</strong> arrive bientôt.</p>"
+        : "<p>Réussissez l'examen du niveau B1 pour accéder au niveau suivant (B2).</p>");
+    b2Sec.appendChild(b2);
+    frag.appendChild(b2Sec);
 
     /* --- Aperçu grammaire --- */
     const gram = el("section", "section");
-    gram.appendChild(el("h2", "section-title", "📐 Grammaire couverte (niveau A1)"));
+    gram.appendChild(el("h2", "section-title", "📐 Les bases de grammaire (fondations A1)"));
     const gg = el("div", "gram-grid");
     Object.keys(COURS.grammaireGlobale).forEach((k) => {
       const col = el("div", "gram-col");
@@ -269,7 +279,7 @@
 
     /* --- Compétences CECRL --- */
     const comp = el("section", "section comp");
-    comp.appendChild(el("h2", "section-title", "🎓 À la fin du niveau A1, vous saurez…"));
+    comp.appendChild(el("h2", "section-title", "🎓 Dès le niveau A1, vous saurez…"));
     const ul = el("ul", "comp-list");
     COURS.competences.forEach((c) => ul.appendChild(el("li", "", c)));
     comp.appendChild(ul);
@@ -890,19 +900,20 @@
      TEST DE FIN DE MODULE (noté)
      ==================================================================== */
   function renderTest(key) {
-    // key ∈ "a1" | "a2" | "final" — gardes d'accès au parcours
-    const niveau = key === "a1" ? "A1" : key === "a2" ? "A2" : null;
+    // key ∈ "a1" | "a2" | "final" | "b1" — gardes d'accès au parcours
+    const niveau = key === "a1" ? "A1" : key === "a2" ? "A2" : key === "b1" ? "B1" : null;
     if (key === "a1" && !niveauTermine("A1")) { location.hash = "#/"; return; }
     if (key === "a2" && !(examPasse("a1") && niveauTermine("A2"))) { location.hash = "#/"; return; }
     if (key === "final" && !examPasse("a2")) { location.hash = "#/"; return; }
+    if (key === "b1" && !(examPasse("final") && niveauTermine("B1"))) { location.hash = "#/"; return; }
 
     const lecons = key === "final" ? flat.map((f) => f.lecon) : flat.filter((f) => f.lecon.niveau === niveau).map((f) => f.lecon);
-    const titre = key === "a1" ? "Examen du niveau A1" : key === "a2" ? "Examen du niveau A2" : "Examen final A1 + A2";
-    const couleur = key === "a1" ? "#1d4ed8" : key === "a2" ? "#0e7490" : "#7c3aed";
+    const titre = key === "a1" ? "Examen du niveau A1" : key === "a2" ? "Examen du niveau A2" : key === "b1" ? "Examen du niveau B1" : "Examen final A1 + A2";
+    const couleur = key === "a1" ? "#1d4ed8" : key === "a2" ? "#0e7490" : key === "b1" ? "#9333ea" : "#7c3aed";
 
     const pool = [];
     lecons.forEach((l) => l.exercices.forEach((ex) => { if (window.Exercises.GRADABLE.indexOf(ex.type) >= 0) pool.push(ex); }));
-    const N = Math.min(key === "final" ? 30 : 20, pool.length);
+    const N = Math.min(key === "final" ? 30 : key === "b1" ? 25 : 20, pool.length);
     const chosen = window.Exercises.shuffle(pool).slice(0, N);
 
     const frag = document.createDocumentFragment();
@@ -938,7 +949,8 @@
     function messageReussite() {
       if (key === "a1") return "🎉 Examen A1 réussi ! Le <strong>niveau A2</strong> est débloqué.";
       if (key === "a2") return "🎉 Examen A2 réussi ! L'<strong>examen final A1 + A2</strong> est débloqué.";
-      return "🚀 Bravo ! Vous validez <strong>A1 + A2</strong> — le niveau <strong>B1</strong> vous attend !";
+      if (key === "final") return "🚀 Bravo ! Vous validez <strong>A1 + A2</strong> — le <strong>niveau B1</strong> est débloqué !";
+      return "🏆 Magnifique ! Vous validez le <strong>niveau B1</strong> — le niveau <strong>B2</strong> arrive bientôt !";
     }
 
     submit.addEventListener("click", () => {
@@ -947,7 +959,7 @@
       const score = Math.round((correct / N) * 100);
       const reussi = score >= COURS.seuilReussite;
       window.Progress.setTestScore(key, score, reussi);
-      const suite = key === "a1" ? prochaineEtape() : key === "a2" ? "#/examen/final" : "#/";
+      const suite = (key === "a1" || key === "final") ? prochaineEtape() : key === "a2" ? "#/examen/final" : "#/";
 
       result.className = "test-result " + (reussi ? "pass" : "fail");
       result.innerHTML =
@@ -991,7 +1003,7 @@
     const hash = location.hash || "#/";
     let m;
     if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);
-    else if ((m = hash.match(/^#\/examen\/(a1|a2|final)/))) renderTest(m[1]);
+    else if ((m = hash.match(/^#\/examen\/(a1|a2|final|b1)/))) renderTest(m[1]);
     else if (hash.match(/^#\/examen/)) renderTest("a1");
     else if (hash.match(/^#\/revision/)) renderRevision();
     else if (hash.match(/^#\/stats/)) renderDashboard();

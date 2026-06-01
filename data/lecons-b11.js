@@ -1,0 +1,538 @@
+/* =====================================================================
+   MODULE B1.1 — Vie quotidienne, travail et médias
+   Niveau B1 (CECRL). Approfondissement : temps du passé (dont
+   plus-que-parfait), passif, propositions relatives, Konjunktiv II passé.
+   Explications en français, contenu en allemand.
+   ===================================================================== */
+window.MODULE_B11 = {
+  id: "b1-1",
+  titre: "B1.1 — Quotidien, travail & médias",
+  sousTitre: "Alltag, Beruf & Medien",
+  niveau: "B1",
+  description:
+    "On gagne en nuance : gérer son temps, le monde du travail et ses codes, " +
+    "la lecture, les souvenirs d'enfance, les médias, la publicité et les réclamations.",
+  couleur: "#9333ea",
+  lecons: [
+    {
+      id: "b1t01", numero: 1, titre: "Temps et activités", titreDE: "Zeit und Aktivitäten",
+      theme: "Temps et activités", duree: 55,
+      objectifs: ["Organiser et raconter ses activités", "Situer deux actions passées dans le temps"],
+      grammairePoints: ["Plus-que-parfait (Plusquamperfekt)", "nachdem / bevor"],
+      vocabulaire: [
+        { de: "die Aktivität", fr: "l'activité", ex: "Ich plane meine Aktivitäten." },
+        { de: "der Zeitplan", fr: "l'emploi du temps", ex: "Mein Zeitplan ist voll." },
+        { de: "erledigen", fr: "régler / faire (une tâche)", ex: "Ich habe alles erledigt." },
+        { de: "sich beeilen", fr: "se dépêcher", ex: "Beeil dich!" },
+        { de: "verschwenden", fr: "gaspiller", ex: "Verschwende keine Zeit." },
+        { de: "gleichzeitig", fr: "en même temps", ex: "Ich kann nicht alles gleichzeitig machen." },
+        { de: "vorher", fr: "avant (cela)", ex: "Vorher hatte ich gegessen." },
+        { de: "anschließend", fr: "ensuite", ex: "Anschließend bin ich gegangen." }
+      ],
+      grammaire: [
+        { titre: "Le plus-que-parfait (Plusquamperfekt)", intro: "Pour une action ANTÉRIEURE à une autre action passée. hatte/war + participe.",
+          tableau: { entetes: ["Auxiliaire (prétérit)", "...", "Participe (fin)"], lignes: [["Ich hatte schon", "", "gegessen."], ["Er war schon", "", "gegangen."], ["Nachdem ich gegessen hatte,", "", "ging ich."]] },
+          note: "Avec « nachdem » (après que) : subordonnée au plus-que-parfait, principale au prétérit/Perfekt." }
+      ],
+      dialogue: {
+        titre: "Ein voller Tag", lieu: "Gespräch",
+        lignes: [
+          { loc: "Anna", de: "Du siehst gestresst aus.", fr: "Tu as l'air stressé." },
+          { loc: "Tom", de: "Ja, ich hatte zu viel auf einmal geplant.", fr: "Oui, j'avais planifié trop de choses à la fois." },
+          { loc: "Anna", de: "Was hast du gemacht?", fr: "Qu'as-tu fait ?" },
+          { loc: "Tom", de: "Nachdem ich gearbeitet hatte, bin ich noch einkaufen gegangen.", fr: "Après avoir travaillé, je suis encore allé faire les courses." }
+        ]
+      },
+      exercices: [
+        { type: "qcm", cat: "comp", consigne: "D'après le dialogue.", question: "Warum ist Tom gestresst?", options: ["Er hatte zu viel geplant", "Er hat geschlafen", "Er war im Urlaub"], correct: 0, explication: "« ich hatte zu viel auf einmal geplant »." },
+        { type: "qcm", consigne: "Choisissez (plus-que-parfait).", question: "Nachdem ich gegessen ___, ging ich.", options: ["hatte", "habe", "war", "bin"], correct: 0, explication: "essen → hatte gegessen." },
+        { type: "trou", consigne: "Complétez (war/hatte).", texte: "Als ich ankam, {0} der Zug schon abgefahren.", accepte: [["war"]], indice: "abfahren → sein → war abgefahren" },
+        { type: "ordre", consigne: "Construisez la phrase.", mots: ["Ich", "hatte", "alles", "erledigt"], correct: "Ich hatte alles erledigt", traduction: "J'avais tout réglé." },
+        { type: "oral", consigne: "Production orale.", prompt: "Racontez ce que vous aviez fait avant de venir aujourd'hui (plus-que-parfait).", attendus: ["hatte", "war"], modele: "Bevor ich kam, hatte ich gefrühstückt und meine Mails gelesen." }
+      ]
+    },
+    {
+      id: "b1t02", numero: 2, titre: "La ponctualité", titreDE: "Pünktlichkeit",
+      theme: "Ponctualité", duree: 50,
+      objectifs: ["Parler de ponctualité et de retard", "Exprimer une habitude / une attente sociale"],
+      grammairePoints: ["Indicateurs de temps", "pünktlich, rechtzeitig"],
+      vocabulaire: [
+        { de: "pünktlich", fr: "ponctuel", ex: "Sei bitte pünktlich!" },
+        { de: "die Verspätung", fr: "le retard", ex: "Entschuldige die Verspätung." },
+        { de: "rechtzeitig", fr: "à temps", ex: "Komm rechtzeitig an." },
+        { de: "der Termin", fr: "le rendez-vous", ex: "Ich habe einen wichtigen Termin." },
+        { de: "verpassen", fr: "rater", ex: "Ich habe den Bus verpasst." },
+        { de: "zuverlässig", fr: "fiable", ex: "Er ist sehr zuverlässig." },
+        { de: "die Gewohnheit", fr: "l'habitude", ex: "Pünktlichkeit ist eine gute Gewohnheit." },
+        { de: "sich verspäten", fr: "être en retard", ex: "Ich habe mich verspätet." }
+      ],
+      grammaire: [
+        { titre: "Indicateurs de temps fréquents", intro: "Pour préciser quand et à quelle fréquence.",
+          tableau: { entetes: ["Expression", "Sens"], lignes: [["rechtzeitig", "à temps"], ["pünktlich", "ponctuellement"], ["normalerweise", "normalement"], ["meistens", "la plupart du temps"], ["selten / kaum", "rarement / à peine"]] },
+          note: "En Allemagne, la ponctualité est très valorisée : « 5 Minuten vorher » = arriver 5 min en avance." }
+      ],
+      dialogue: {
+        titre: "Zu spät!", lieu: "Vor dem Meeting",
+        lignes: [
+          { loc: "Chef", de: "Sie kommen zehn Minuten zu spät.", fr: "Vous arrivez avec dix minutes de retard." },
+          { loc: "Lena", de: "Es tut mir leid, ich habe den Bus verpasst.", fr: "Je suis désolée, j'ai raté le bus." },
+          { loc: "Chef", de: "Bitte seien Sie das nächste Mal pünktlich.", fr: "Soyez ponctuelle la prochaine fois." },
+          { loc: "Lena", de: "Natürlich, normalerweise bin ich sehr zuverlässig.", fr: "Bien sûr, normalement je suis très fiable." }
+        ]
+      },
+      exercices: [
+        { type: "qcm", cat: "comp", consigne: "D'après le dialogue.", question: "Warum kam Lena zu spät?", options: ["Sie hat den Bus verpasst", "Sie hat verschlafen", "Sie war krank"], correct: 0, explication: "« ich habe den Bus verpasst »." },
+        { type: "qcm", consigne: "Choisissez.", question: "Komm bitte ___ ! (à temps)", options: ["rechtzeitig", "spät", "selten", "kaum"], correct: 0, explication: "rechtzeitig = à temps." },
+        { type: "trou", consigne: "Complétez.", texte: "Ich habe mich {0}. (être en retard, Perfekt)", accepte: [["verspätet"]], indice: "sich verspäten → habe mich verspätet" },
+        { type: "association", consigne: "Associez.", paires: [{ gauche: "pünktlich", droite: "ponctuel" }, { gauche: "die Verspätung", droite: "le retard" }, { gauche: "zuverlässig", droite: "fiable" }, { gauche: "verpassen", droite: "rater" }] },
+        { type: "traduction", consigne: "Traduisez.", source: "Sois ponctuel !", accepte: ["Sei pünktlich", "Sei pünktlich!"], aide: "impératif de sein" }
+      ]
+    },
+    {
+      id: "b1t03", numero: 3, titre: "Temps libre : les musées", titreDE: "Freizeit: Museen",
+      theme: "Le temps libre: Musées", duree: 50,
+      objectifs: ["Parler d'une visite culturelle", "Donner une appréciation"],
+      grammairePoints: ["Propositions relatives", "Adjectifs"],
+      vocabulaire: [
+        { de: "das Museum", fr: "le musée", ex: "Das Museum ist berühmt." },
+        { de: "die Ausstellung", fr: "l'exposition", ex: "Die Ausstellung ist sehenswert." },
+        { de: "der Eintritt", fr: "l'entrée (prix)", ex: "Der Eintritt ist frei." },
+        { de: "die Führung", fr: "la visite guidée", ex: "Wir machen eine Führung." },
+        { de: "das Gemälde", fr: "le tableau", ex: "Dieses Gemälde ist beeindruckend." },
+        { de: "die Sammlung", fr: "la collection", ex: "Eine große Sammlung." },
+        { de: "beeindruckend", fr: "impressionnant", ex: "Die Kunst war beeindruckend." },
+        { de: "sich lohnen", fr: "valoir la peine", ex: "Der Besuch lohnt sich." }
+      ],
+      grammaire: [
+        { titre: "Les propositions relatives", intro: "« der/die/das » relatifs reprennent un nom ; le verbe va à la fin de la relative.",
+          tableau: { entetes: ["Antécédent", "Pronom relatif", "Exemple"], lignes: [["masculin", "der", "der Mann, der dort steht"], ["féminin", "die", "die Frau, die singt"], ["neutre", "das", "das Bild, das ich mag"], ["pluriel", "die", "die Leute, die warten"]] },
+          schemas: [{ legende: "Relative : le verbe va à la fin.", mots: [{ m: "Das ist das Museum,", r: "principale", c: "objet" }, { m: "das", r: "pronom relatif", c: "conj" }, { m: "ich gestern", r: "sujet+…", c: "sujet" }, { m: "besucht habe", r: "verbe (fin)", c: "fin" }] }],
+          note: "Le pronom relatif s'accorde en genre/nombre avec l'antécédent ; son cas dépend de sa fonction dans la relative." }
+      ],
+      dialogue: {
+        titre: "Im Museum", lieu: "Kunstmuseum",
+        lignes: [
+          { loc: "Mia", de: "Das ist das Gemälde, das ich so liebe.", fr: "C'est le tableau que j'aime tant." },
+          { loc: "Jan", de: "Wirklich beeindruckend. Gibt es eine Führung?", fr: "Vraiment impressionnant. Y a-t-il une visite guidée ?" },
+          { loc: "Mia", de: "Ja, und der Eintritt ist heute frei.", fr: "Oui, et l'entrée est gratuite aujourd'hui." },
+          { loc: "Jan", de: "Super, der Besuch lohnt sich!", fr: "Super, la visite vaut la peine !" }
+        ]
+      },
+      exercices: [
+        { type: "qcm", cat: "comp", consigne: "D'après le dialogue.", question: "Wie ist der Eintritt heute?", options: ["Frei", "Teuer", "Geschlossen"], correct: 0, explication: "« der Eintritt ist heute frei »." },
+        { type: "qcm", consigne: "Pronom relatif.", question: "Das ist die Frau, ___ singt.", options: ["die", "der", "das", "den"], correct: 0, explication: "die Frau (fém., sujet) → die." },
+        { type: "trou", consigne: "Complétez le pronom relatif.", texte: "Das ist das Bild, {0} ich mag.", accepte: [["das"]], indice: "das Bild (neutre, COD) → das" },
+        { type: "ordre", consigne: "Construisez la relative.", mots: ["der", "Mann", "der", "dort", "steht"], correct: "der Mann der dort steht", traduction: "l'homme qui est là" },
+        { type: "traduction", consigne: "Traduisez.", source: "La visite vaut la peine.", accepte: ["Der Besuch lohnt sich"], aide: "sich lohnen" }
+      ]
+    },
+    {
+      id: "b1t04", numero: 4, titre: "Temps libre : les beaux-arts", titreDE: "Freizeit: Bildende Kunst",
+      theme: "Le temps libre: Beaux-arts", duree: 50,
+      objectifs: ["Décrire une œuvre d'art", "Exprimer goûts et opinions"],
+      grammairePoints: ["Adjectifs (comparatif/superlatif)", "gefallen + datif"],
+      vocabulaire: [
+        { de: "die Kunst", fr: "l'art", ex: "Ich interessiere mich für Kunst." },
+        { de: "der Künstler", fr: "l'artiste", ex: "Ein berühmter Künstler." },
+        { de: "das Kunstwerk", fr: "l'œuvre d'art", ex: "Ein modernes Kunstwerk." },
+        { de: "die Farbe", fr: "la couleur", ex: "Die Farben sind kräftig." },
+        { de: "die Skulptur", fr: "la sculpture", ex: "Eine Skulptur aus Stein." },
+        { de: "abstrakt", fr: "abstrait", ex: "Abstrakte Kunst." },
+        { de: "ausdrücken", fr: "exprimer", ex: "Kunst drückt Gefühle aus." },
+        { de: "der Geschmack", fr: "le goût", ex: "Das ist Geschmackssache." }
+      ],
+      grammaire: [
+        { titre: "Comparatif et superlatif (révision B1)", intro: "Pour comparer des œuvres, des goûts.",
+          tableau: { entetes: ["Adjectif", "Comparatif", "Superlatif"], lignes: [["schön", "schöner", "am schönsten"], ["gut", "besser", "am besten"], ["interessant", "interessanter", "am interessantesten"], ["hoch", "höher", "am höchsten"]] },
+          note: "« gefallen » + datif : Das Bild gefällt mir (mieux) → … gefällt mir besser." }
+      ],
+      dialogue: {
+        titre: "Geschmackssache", lieu: "Galerie",
+        lignes: [
+          { loc: "Eva", de: "Wie findest du diese Skulptur?", fr: "Comment trouves-tu cette sculpture ?" },
+          { loc: "Ben", de: "Mir gefällt das Gemälde dort besser.", fr: "Je préfère le tableau là-bas." },
+          { loc: "Eva", de: "Wirklich? Ich finde die Skulptur am interessantesten.", fr: "Vraiment ? Je trouve la sculpture la plus intéressante." },
+          { loc: "Ben", de: "Na ja, das ist Geschmackssache.", fr: "Bon, c'est une affaire de goût." }
+        ]
+      },
+      exercices: [
+        { type: "qcm", cat: "comp", consigne: "D'après le dialogue.", question: "Was gefällt Ben besser?", options: ["Das Gemälde", "Die Skulptur", "Die Galerie"], correct: 0, explication: "« Mir gefällt das Gemälde besser »." },
+        { type: "qcm", consigne: "Superlatif.", question: "Diese Kunst ist am ___. (interessant)", options: ["interessantesten", "interessanter", "interessant", "interessanteste"], correct: 0, explication: "am interessantesten." },
+        { type: "trou", consigne: "Complétez (gefallen + datif).", texte: "Das Bild gefällt {0}. (à moi)", accepte: [["mir"]], indice: "gefallen + datif" },
+        { type: "association", consigne: "Associez.", paires: [{ gauche: "die Kunst", droite: "l'art" }, { gauche: "der Künstler", droite: "l'artiste" }, { gauche: "die Farbe", droite: "la couleur" }, { gauche: "abstrakt", droite: "abstrait" }] },
+        { type: "oral", consigne: "Production orale.", prompt: "Dites quelle œuvre vous préférez et pourquoi (comparatif).", attendus: ["gefällt", "besser"], modele: "Mir gefällt das moderne Gemälde besser, weil die Farben kräftiger sind." }
+      ]
+    },
+    {
+      id: "b1t05", numero: 5, titre: "Professions", titreDE: "Berufe",
+      theme: "Professions", duree: 50,
+      objectifs: ["Décrire un métier en détail", "Parler de compétences"],
+      grammairePoints: ["Verbes + prépositions", "als / wie"],
+      vocabulaire: [
+        { de: "die Stelle", fr: "le poste", ex: "Ich habe eine neue Stelle." },
+        { de: "die Fähigkeit", fr: "la compétence", ex: "Er hat viele Fähigkeiten." },
+        { de: "die Verantwortung", fr: "la responsabilité", ex: "Ich trage Verantwortung." },
+        { de: "sich bewerben um", fr: "postuler pour", ex: "Ich bewerbe mich um die Stelle." },
+        { de: "der Lohn / das Gehalt", fr: "le salaire", ex: "Das Gehalt ist gut." },
+        { de: "die Teilzeit", fr: "le temps partiel", ex: "Ich arbeite Teilzeit." },
+        { de: "die Erfahrung", fr: "l'expérience", ex: "Ich habe viel Erfahrung." },
+        { de: "der Vertrag", fr: "le contrat", ex: "Ich unterschreibe den Vertrag." }
+      ],
+      grammaire: [
+        { titre: "Verbes + prépositions (travail)", intro: "Préposition fixe imposant son cas.",
+          tableau: { entetes: ["Verbe + prép.", "Cas", "Exemple"], lignes: [["sich bewerben um", "accusatif", "Ich bewerbe mich um die Stelle."], ["sich freuen auf", "accusatif", "Ich freue mich auf den Job."], ["arbeiten an", "datif", "Ich arbeite an einem Projekt."], ["sich kümmern um", "accusatif", "Er kümmert sich um die Kunden."]] },
+          note: "À apprendre verbe + préposition + cas ensemble." }
+      ],
+      dialogue: {
+        titre: "Neue Stelle", lieu: "Im Büro",
+        lignes: [
+          { loc: "Tim", de: "Ich habe mich um eine neue Stelle beworben.", fr: "J'ai postulé pour un nouveau poste." },
+          { loc: "Sara", de: "Toll! Mehr Verantwortung?", fr: "Super ! Plus de responsabilités ?" },
+          { loc: "Tim", de: "Ja, und das Gehalt ist besser.", fr: "Oui, et le salaire est meilleur." },
+          { loc: "Sara", de: "Ich drücke dir die Daumen!", fr: "Je croise les doigts pour toi !" }
+        ]
+      },
+      exercices: [
+        { type: "qcm", cat: "comp", consigne: "D'après le dialogue.", question: "Worum hat sich Tim beworben?", options: ["Um eine neue Stelle", "Um Urlaub", "Um eine Wohnung"], correct: 0, explication: "« um eine neue Stelle beworben »." },
+        { type: "qcm", consigne: "Préposition.", question: "Ich bewerbe mich ___ die Stelle.", options: ["um", "auf", "für", "an"], correct: 0, explication: "sich bewerben um + accusatif." },
+        { type: "trou", consigne: "Complétez.", texte: "Ich arbeite {0} einem wichtigen Projekt. (préposition)", accepte: [["an"]], indice: "arbeiten an + datif" },
+        { type: "association", consigne: "Associez.", paires: [{ gauche: "die Stelle", droite: "le poste" }, { gauche: "das Gehalt", droite: "le salaire" }, { gauche: "der Vertrag", droite: "le contrat" }, { gauche: "die Fähigkeit", droite: "la compétence" }] },
+        { type: "traduction", consigne: "Traduisez.", source: "Je postule pour le poste.", accepte: ["Ich bewerbe mich um die Stelle"], aide: "sich bewerben um" }
+      ]
+    },
+    {
+      id: "b1t06", numero: 6, titre: "Problèmes au travail", titreDE: "Probleme am Arbeitsplatz",
+      theme: "Problèmes au travail", duree: 55,
+      objectifs: ["Exprimer un problème et une solution", "Nuancer avec le Konjunktiv II"],
+      grammairePoints: ["Konjunktiv II (conseil/reproche)", "sollte / könnte"],
+      vocabulaire: [
+        { de: "der Konflikt", fr: "le conflit", ex: "Es gibt einen Konflikt im Team." },
+        { de: "der Kollege", fr: "le collègue", ex: "Mein Kollege ist schwierig." },
+        { de: "die Überstunde", fr: "l'heure sup", ex: "Ich mache zu viele Überstunden." },
+        { de: "sich beschweren", fr: "se plaindre", ex: "Ich beschwere mich beim Chef." },
+        { de: "die Lösung", fr: "la solution", ex: "Wir suchen eine Lösung." },
+        { de: "der Druck", fr: "la pression", ex: "Der Druck ist hoch." },
+        { de: "kündigen", fr: "démissionner/licencier", ex: "Er hat gekündigt." },
+        { de: "die Pause", fr: "la pause", ex: "Du solltest eine Pause machen." }
+      ],
+      grammaire: [
+        { titre: "Konjunktiv II : conseil et reproche", intro: "sollte (devrait), könnte (pourrait), würde + infinitif.",
+          tableau: { entetes: ["Forme", "Exemple", "Sens"], lignes: [["sollte", "Du solltest mit dem Chef reden.", "Tu devrais parler au chef."], ["könnte", "Du könntest eine Pause machen.", "Tu pourrais faire une pause."], ["An deiner Stelle würde…", "An deiner Stelle würde ich kündigen.", "À ta place, je démissionnerais."]] },
+          note: "« An deiner Stelle würde ich… » = à ta place, je…rais (conseil très courant)." }
+      ],
+      dialogue: {
+        titre: "Zu viel Stress", lieu: "In der Kaffeeküche",
+        lignes: [
+          { loc: "Nora", de: "Ich mache jeden Tag Überstunden.", fr: "Je fais des heures sup tous les jours." },
+          { loc: "Lars", de: "Du solltest mit dem Chef reden.", fr: "Tu devrais parler au chef." },
+          { loc: "Nora", de: "Meinst du? Es gibt schon genug Konflikte.", fr: "Tu crois ? Il y a déjà assez de conflits." },
+          { loc: "Lars", de: "An deiner Stelle würde ich es trotzdem versuchen.", fr: "À ta place, j'essaierais quand même." }
+        ]
+      },
+      exercices: [
+        { type: "qcm", cat: "comp", consigne: "D'après le dialogue.", question: "Was rät Lars?", options: ["Mit dem Chef reden", "Kündigen", "Nichts tun"], correct: 0, explication: "« Du solltest mit dem Chef reden »." },
+        { type: "qcm", consigne: "Conseil (Konjunktiv II).", question: "Du ___ eine Pause machen.", options: ["solltest", "sollst", "musst", "willst"], correct: 0, explication: "conseil → solltest." },
+        { type: "trou", consigne: "Complétez (könnte).", texte: "Ihr {0} zusammen eine Lösung suchen.", accepte: [["könntet"]], indice: "ihr → könntet" },
+        { type: "association", consigne: "Associez.", paires: [{ gauche: "der Konflikt", droite: "le conflit" }, { gauche: "der Druck", droite: "la pression" }, { gauche: "sich beschweren", droite: "se plaindre" }, { gauche: "kündigen", droite: "démissionner" }] },
+        { type: "oral", consigne: "Production orale.", prompt: "Donnez un conseil à un collègue stressé (Konjunktiv II).", attendus: ["solltest", "könntest"], modele: "Du solltest mit dem Chef sprechen und weniger Überstunden machen." }
+      ]
+    },
+    {
+      id: "b1t07", numero: 7, titre: "Prendre des rendez-vous (pro)", titreDE: "Termine vereinbaren",
+      theme: "Prendre des rendez-vous", duree: 50,
+      objectifs: ["Fixer/décaler un rendez-vous professionnel", "Proposer poliment"],
+      grammairePoints: ["Konjunktiv II (politesse)", "würde / könnte"],
+      vocabulaire: [
+        { de: "vereinbaren", fr: "convenir", ex: "Wir vereinbaren einen Termin." },
+        { de: "verschieben", fr: "décaler", ex: "Können wir verschieben?" },
+        { de: "absagen", fr: "annuler", ex: "Ich muss leider absagen." },
+        { de: "passen", fr: "convenir (à qqn)", ex: "Passt Ihnen Montag?" },
+        { de: "der Vorschlag", fr: "la proposition", ex: "Ein guter Vorschlag." },
+        { de: "frei", fr: "libre", ex: "Bin ich da frei?" },
+        { de: "die Besprechung", fr: "la réunion", ex: "Die Besprechung dauert eine Stunde." },
+        { de: "bestätigen", fr: "confirmer", ex: "Ich bestätige den Termin." }
+      ],
+      grammaire: [
+        { titre: "Demander poliment (Konjunktiv II)", intro: "Plus poli que le présent.",
+          tableau: { entetes: ["Présent", "Poli (Konjunktiv II)"], lignes: [["Können Sie…?", "Könnten Sie…?"], ["Passt Ihnen…?", "Würde Ihnen … passen?"], ["Ich will…", "Ich würde gern…"], ["Haben Sie Zeit?", "Hätten Sie Zeit?"]] },
+          note: "« Würde es Ihnen passen, wenn…? » = est-ce que ça vous conviendrait si… ?" }
+      ],
+      dialogue: {
+        titre: "Am Telefon", lieu: "Büroanruf",
+        lignes: [
+          { loc: "Herr Vogel", de: "Könnten wir einen Termin vereinbaren?", fr: "Pourrions-nous convenir d'un rendez-vous ?" },
+          { loc: "Sekretärin", de: "Gern. Würde Ihnen Dienstag passen?", fr: "Volontiers. Mardi vous conviendrait-il ?" },
+          { loc: "Herr Vogel", de: "Leider nicht. Könnten wir verschieben?", fr: "Malheureusement non. Pourrions-nous décaler ?" },
+          { loc: "Sekretärin", de: "Natürlich. Ich bestätige Mittwoch um 10 Uhr.", fr: "Bien sûr. Je confirme mercredi à 10h." }
+        ]
+      },
+      exercices: [
+        { type: "qcm", cat: "comp", consigne: "D'après le dialogue.", question: "Wann ist der Termin am Ende?", options: ["Mittwoch um 10 Uhr", "Dienstag", "Montag"], correct: 0, explication: "« Ich bestätige Mittwoch um 10 Uhr »." },
+        { type: "qcm", consigne: "Forme polie.", question: "___ Sie Zeit am Freitag?", options: ["Hätten", "Haben", "Habt", "Hast"], correct: 0, explication: "poli → Hätten Sie…" },
+        { type: "trou", consigne: "Complétez (poli).", texte: "{0} Sie mir helfen? (pouvoir, poli)", accepte: [["Könnten"]], indice: "Konjunktiv II de können" },
+        { type: "association", consigne: "Associez.", paires: [{ gauche: "vereinbaren", droite: "convenir" }, { gauche: "verschieben", droite: "décaler" }, { gauche: "absagen", droite: "annuler" }, { gauche: "bestätigen", droite: "confirmer" }] },
+        { type: "traduction", consigne: "Traduisez (poli).", source: "Pourriez-vous décaler le rendez-vous ?", accepte: ["Könnten Sie den Termin verschieben", "Könnten Sie den Termin verschieben?"], aide: "Könnten Sie…" }
+      ]
+    },
+    {
+      id: "b1t08", numero: 8, titre: "Les bonnes manières au travail", titreDE: "Umgangsformen im Beruf",
+      theme: "Les bonnes manières dans le monde du travail", duree: 50,
+      objectifs: ["Connaître les codes professionnels", "Exprimer ce qui se fait / ne se fait pas"],
+      grammairePoints: ["man / es ist üblich", "sollen (norme)"],
+      vocabulaire: [
+        { de: "höflich", fr: "poli", ex: "Man sollte höflich sein." },
+        { de: "die Umgangsform", fr: "les bonnes manières", ex: "Gute Umgangsformen sind wichtig." },
+        { de: "siezen / duzen", fr: "vouvoyer / tutoyer", ex: "Im Büro siezt man sich." },
+        { de: "grüßen", fr: "saluer", ex: "Man grüßt die Kollegen." },
+        { de: "üblich", fr: "habituel / d'usage", ex: "Das ist hier üblich." },
+        { de: "respektieren", fr: "respecter", ex: "Man muss die Regeln respektieren." },
+        { de: "die Kleidung", fr: "la tenue", ex: "Die Kleidung ist formell." },
+        { de: "der Respekt", fr: "le respect", ex: "Respekt ist wichtig." }
+      ],
+      grammaire: [
+        { titre: "Exprimer une norme : man / es ist üblich", intro: "Pour ce qui se fait habituellement.",
+          tableau: { entetes: ["Structure", "Exemple", "Sens"], lignes: [["man + verbe", "Man grüßt zuerst.", "On salue d'abord."], ["es ist üblich, zu…", "Es ist üblich, pünktlich zu sein.", "Il est d'usage d'être à l'heure."], ["man soll(te)", "Man sollte höflich sein.", "On devrait être poli."]] },
+          note: "« zu + infinitif » après certaines expressions : Es ist wichtig, zu grüßen." }
+      ],
+      dialogue: {
+        titre: "Der erste Arbeitstag", lieu: "Neuer Job",
+        lignes: [
+          { loc: "Neue", de: "Duzt oder siezt man sich hier?", fr: "On se tutoie ou se vouvoie ici ?" },
+          { loc: "Kollege", de: "Im Büro siezt man sich meistens.", fr: "Au bureau, on se vouvoie le plus souvent." },
+          { loc: "Neue", de: "Und die Kleidung?", fr: "Et la tenue ?" },
+          { loc: "Kollege", de: "Eher formell. Und man grüßt immer.", fr: "Plutôt formelle. Et on salue toujours." }
+        ]
+      },
+      exercices: [
+        { type: "qcm", cat: "comp", consigne: "D'après le dialogue.", question: "Wie spricht man sich im Büro an?", options: ["Man siezt sich", "Man duzt sich", "Egal"], correct: 0, explication: "« Im Büro siezt man sich meistens »." },
+        { type: "qcm", consigne: "Choisissez.", question: "Es ist ___, pünktlich zu sein.", options: ["üblich", "üblicher", "unhöflich", "selten"], correct: 0, explication: "es ist üblich = il est d'usage." },
+        { type: "trou", consigne: "Complétez (man + verbe).", texte: "Man {0} die Kollegen am Morgen. (saluer)", accepte: [["grüßt"]], indice: "man grüßt" },
+        { type: "association", consigne: "Associez.", paires: [{ gauche: "höflich", droite: "poli" }, { gauche: "siezen", droite: "vouvoyer" }, { gauche: "üblich", droite: "d'usage" }, { gauche: "der Respekt", droite: "le respect" }] },
+        { type: "oral", consigne: "Production orale.", prompt: "Donnez deux règles de politesse au travail (man…).", attendus: ["man", "sollte"], modele: "Man sollte pünktlich sein und man grüßt immer die Kollegen." }
+      ]
+    },
+    {
+      id: "b1t09", numero: 9, titre: "La lecture", titreDE: "Lesen und Bücher",
+      theme: "La lecture", duree: 50,
+      objectifs: ["Parler de ses lectures", "Résumer / recommander un livre"],
+      grammairePoints: ["Propositions relatives", "Genre littéraire"],
+      vocabulaire: [
+        { de: "das Buch", fr: "le livre", ex: "Ich lese ein spannendes Buch." },
+        { de: "der Roman", fr: "le roman", ex: "Ein historischer Roman." },
+        { de: "der Autor", fr: "l'auteur", ex: "Wer ist der Autor?" },
+        { de: "die Handlung", fr: "l'intrigue", ex: "Die Handlung ist spannend." },
+        { de: "die Figur", fr: "le personnage", ex: "Die Hauptfigur ist sympathisch." },
+        { de: "empfehlen", fr: "recommander", ex: "Ich empfehle dir dieses Buch." },
+        { de: "spannend", fr: "captivant", ex: "Der Krimi ist spannend." },
+        { de: "langweilig", fr: "ennuyeux", ex: "Das Ende war langweilig." }
+      ],
+      grammaire: [
+        { titre: "Relatives avec préposition (B1)", intro: "La préposition se place AVANT le pronom relatif.",
+          tableau: { entetes: ["Exemple", "Sens"], lignes: [["das Buch, über das ich spreche", "le livre dont je parle"], ["der Autor, von dem ich lese", "l'auteur que je lis"], ["die Figur, mit der ich mitfühle", "le personnage avec qui je compatis"]] },
+          note: "Préposition + pronom relatif accordé : über das, von dem, mit der…" }
+      ],
+      dialogue: {
+        titre: "Buchtipp", lieu: "In der Bibliothek",
+        lignes: [
+          { loc: "Lea", de: "Kannst du mir ein Buch empfehlen?", fr: "Tu peux me recommander un livre ?" },
+          { loc: "Tom", de: "Ja, der Roman, den ich gerade lese, ist super.", fr: "Oui, le roman que je lis en ce moment est super." },
+          { loc: "Lea", de: "Worum geht es?", fr: "De quoi ça parle ?" },
+          { loc: "Tom", de: "Um eine Figur, die in die Vergangenheit reist.", fr: "D'un personnage qui voyage dans le passé." }
+        ]
+      },
+      exercices: [
+        { type: "qcm", cat: "comp", consigne: "D'après le dialogue.", question: "Worum geht es im Roman?", options: ["Eine Figur, die in die Vergangenheit reist", "Eine Liebesgeschichte", "Einen Krieg"], correct: 0, explication: "« eine Figur, die in die Vergangenheit reist »." },
+        { type: "qcm", consigne: "Pronom relatif (COD).", question: "Der Roman, ___ ich lese, ist gut.", options: ["den", "der", "dem", "das"], correct: 0, explication: "der Roman, COD masc. → den." },
+        { type: "trou", consigne: "Complétez (relative).", texte: "Das Buch, über {0} ich spreche, ist spannend.", accepte: [["das"]], indice: "über + das (neutre)" },
+        { type: "association", consigne: "Associez.", paires: [{ gauche: "der Roman", droite: "le roman" }, { gauche: "die Handlung", droite: "l'intrigue" }, { gauche: "empfehlen", droite: "recommander" }, { gauche: "spannend", droite: "captivant" }] },
+        { type: "traduction", consigne: "Traduisez.", source: "Je te recommande ce livre.", accepte: ["Ich empfehle dir dieses Buch"], aide: "empfehlen + datif" }
+      ]
+    },
+    {
+      id: "b1t10", numero: 10, titre: "Passé et enfance", titreDE: "Vergangenheit und Kindheit",
+      theme: "Passé et enfance", duree: 55,
+      objectifs: ["Raconter des souvenirs d'enfance", "Utiliser le prétérit pour le récit"],
+      grammairePoints: ["Prétérit (récit)", "als / wenn (passé)"],
+      vocabulaire: [
+        { de: "die Kindheit", fr: "l'enfance", ex: "Meine Kindheit war glücklich." },
+        { de: "die Erinnerung", fr: "le souvenir", ex: "Ich habe schöne Erinnerungen." },
+        { de: "früher", fr: "autrefois", ex: "Früher spielte ich draußen." },
+        { de: "aufwachsen", fr: "grandir", ex: "Ich bin auf dem Land aufgewachsen." },
+        { de: "der Nachbar", fr: "le voisin", ex: "Wir spielten mit den Nachbarn." },
+        { de: "damals", fr: "à l'époque", ex: "Damals gab es kein Internet." },
+        { de: "sich erinnern an", fr: "se souvenir de", ex: "Ich erinnere mich an die Schule." },
+        { de: "das Spielzeug", fr: "le jouet", ex: "Mein Lieblingsspielzeug war ein Bär." }
+      ],
+      grammaire: [
+        { titre: "« als » vs « wenn » au passé", intro: "« als » = une fois précise dans le passé ; « wenn » = chaque fois / répétition.",
+          tableau: { entetes: ["Mot", "Usage", "Exemple"], lignes: [["als", "une fois (passé)", "Als ich klein war, …"], ["wenn", "chaque fois", "Immer wenn es regnete, …"], ["prétérit", "récit", "Ich spielte, ich ging, ich war"]] },
+          note: "« Als » (subordonnée) envoie le verbe à la fin : « Als ich Kind war, … »." }
+      ],
+      dialogue: {
+        titre: "Erinnerungen", lieu: "Beim Kaffee",
+        lignes: [
+          { loc: "Mia", de: "Wie war deine Kindheit?", fr: "Comment était ton enfance ?" },
+          { loc: "Ben", de: "Schön. Als ich klein war, wohnten wir auf dem Land.", fr: "Belle. Quand j'étais petit, on habitait à la campagne." },
+          { loc: "Mia", de: "Und was hast du gemacht?", fr: "Et que faisais-tu ?" },
+          { loc: "Ben", de: "Immer wenn es schneite, baute ich einen Schneemann.", fr: "Chaque fois qu'il neigeait, je faisais un bonhomme de neige." }
+        ]
+      },
+      exercices: [
+        { type: "qcm", cat: "comp", consigne: "D'après le dialogue.", question: "Wo wohnte Ben als Kind?", options: ["Auf dem Land", "In der Stadt", "Am Meer"], correct: 0, explication: "« wohnten wir auf dem Land »." },
+        { type: "qcm", consigne: "als ou wenn ?", question: "___ ich gestern ankam, regnete es.", options: ["Als", "Wenn", "Wann", "Ob"], correct: 0, explication: "une fois précise au passé → als." },
+        { type: "trou", consigne: "Complétez (sich erinnern an).", texte: "Ich erinnere {0} an meine Kindheit.", accepte: [["mich"]], indice: "sich erinnern an" },
+        { type: "ordre", consigne: "Construisez la subordonnée.", mots: ["Als", "ich", "klein", "war"], correct: "Als ich klein war", traduction: "Quand j'étais petit" },
+        { type: "oral", consigne: "Production orale.", prompt: "Racontez un souvenir d'enfance (prétérit / als).", attendus: ["als", "war"], modele: "Als ich klein war, spielte ich jeden Tag mit meinen Nachbarn im Garten." }
+      ]
+    },
+    {
+      id: "b1t11", numero: 11, titre: "Les médias", titreDE: "Medien",
+      theme: "Médias", duree: 50,
+      objectifs: ["Parler des médias et de leur usage", "Comprendre le passif"],
+      grammairePoints: ["Le passif (Passiv)", "werden + participe"],
+      vocabulaire: [
+        { de: "die Medien", fr: "les médias", ex: "Die Medien berichten darüber." },
+        { de: "die Nachricht", fr: "l'information", ex: "Die Nachricht wurde gesendet." },
+        { de: "senden", fr: "diffuser", ex: "Die Sendung wird live gesendet." },
+        { de: "die Sendung", fr: "l'émission", ex: "Eine interessante Sendung." },
+        { de: "berichten", fr: "rapporter", ex: "Man berichtet über das Ereignis." },
+        { de: "die Quelle", fr: "la source", ex: "Eine zuverlässige Quelle." },
+        { de: "veröffentlichen", fr: "publier", ex: "Der Artikel wurde veröffentlicht." },
+        { de: "der Beitrag", fr: "l'article / la contribution", ex: "Ein guter Beitrag." }
+      ],
+      grammaire: [
+        { titre: "Le passif (Passiv)", intro: "werden (conjugué) + participe II (à la fin). On met en avant l'action, pas l'auteur.",
+          tableau: { entetes: ["Temps", "Forme", "Exemple"], lignes: [["présent", "wird + participe", "Die Nachricht wird gesendet."], ["prétérit", "wurde + participe", "Der Artikel wurde veröffentlicht."], ["avec auteur", "von + datif", "… wurde von der Zeitung veröffentlicht."]] },
+          schemas: [{ legende: "Passif présent : werden (2) + participe (fin).", mots: [{ m: "Die Nachricht", r: "sujet", c: "sujet" }, { m: "wird", r: "werden (2)", c: "verbe" }, { m: "live", r: "…", c: "objet" }, { m: "gesendet", r: "participe (fin)", c: "fin" }] }],
+          note: "L'auteur (facultatif) est introduit par « von + datif »." }
+      ],
+      dialogue: {
+        titre: "Über Nachrichten", lieu: "Diskussion",
+        lignes: [
+          { loc: "Jan", de: "Wo hast du das gelesen?", fr: "Où as-tu lu ça ?" },
+          { loc: "Eva", de: "Der Artikel wurde gestern veröffentlicht.", fr: "L'article a été publié hier." },
+          { loc: "Jan", de: "Ist die Quelle zuverlässig?", fr: "La source est fiable ?" },
+          { loc: "Eva", de: "Ja, es wird von einer großen Zeitung berichtet.", fr: "Oui, c'est rapporté par un grand journal." }
+        ]
+      },
+      exercices: [
+        { type: "qcm", cat: "comp", consigne: "D'après le dialogue.", question: "Wann wurde der Artikel veröffentlicht?", options: ["Gestern", "Heute", "Letzte Woche"], correct: 0, explication: "« wurde gestern veröffentlicht »." },
+        { type: "qcm", consigne: "Passif présent.", question: "Die Sendung ___ live gesendet.", options: ["wird", "ist", "hat", "wurde"], correct: 0, explication: "passif présent → wird + participe." },
+        { type: "trou", consigne: "Complétez (passif prétérit).", texte: "Der Artikel {0} veröffentlicht. (werden, prétérit)", accepte: [["wurde"]], indice: "wurde + participe" },
+        { type: "association", consigne: "Associez.", paires: [{ gauche: "die Medien", droite: "les médias" }, { gauche: "die Quelle", droite: "la source" }, { gauche: "senden", droite: "diffuser" }, { gauche: "veröffentlichen", droite: "publier" }] },
+        { type: "traduction", consigne: "Traduisez (passif).", source: "L'information est diffusée.", accepte: ["Die Nachricht wird gesendet"], aide: "wird + participe" }
+      ]
+    },
+    {
+      id: "b1t12", numero: 12, titre: "Publicité : impact et histoire", titreDE: "Werbung: Wirkung und Geschichte",
+      theme: "Publicité: Impact et histoire", duree: 50,
+      objectifs: ["Parler de l'impact de la publicité", "Exprimer cause et conséquence"],
+      grammairePoints: ["deshalb / weil", "Cause et conséquence"],
+      vocabulaire: [
+        { de: "die Werbung", fr: "la publicité", ex: "Die Werbung ist überall." },
+        { de: "die Wirkung", fr: "l'effet", ex: "Werbung hat eine starke Wirkung." },
+        { de: "beeinflussen", fr: "influencer", ex: "Werbung beeinflusst uns." },
+        { de: "die Marke", fr: "la marque", ex: "Eine bekannte Marke." },
+        { de: "der Verbraucher", fr: "le consommateur", ex: "Der Verbraucher entscheidet." },
+        { de: "überzeugen", fr: "convaincre", ex: "Die Werbung überzeugt mich nicht." },
+        { de: "der Slogan", fr: "le slogan", ex: "Ein einprägsamer Slogan." },
+        { de: "wirken", fr: "agir / faire effet", ex: "Werbung wirkt unbewusst." }
+      ],
+      grammaire: [
+        { titre: "Cause et conséquence : weil / deshalb", intro: "« weil » (subordonnée, verbe à la fin) ; « deshalb » (principale, verbe en 2e).",
+          tableau: { entetes: ["Connecteur", "Position du verbe", "Exemple"], lignes: [["weil", "à la fin", "…, weil sie überzeugt."], ["deshalb", "2e position", "Sie überzeugt, deshalb kaufe ich."], ["denn", "2e position", "Ich kaufe, denn es ist gut."]] },
+          note: "deshalb / deswegen / darum = c'est pourquoi (le verbe suit immédiatement)." }
+      ],
+      dialogue: {
+        titre: "Werbung wirkt", lieu: "Vor dem Fernseher",
+        lignes: [
+          { loc: "Lea", de: "Diese Werbung sehe ich ständig.", fr: "Cette pub, je la vois sans arrêt." },
+          { loc: "Tom", de: "Genau, deshalb kennt jeder die Marke.", fr: "Exactement, c'est pourquoi tout le monde connaît la marque." },
+          { loc: "Lea", de: "Beeinflusst dich Werbung?", fr: "La pub t'influence ?" },
+          { loc: "Tom", de: "Manchmal, weil die Slogans einprägsam sind.", fr: "Parfois, parce que les slogans sont mémorables." }
+        ]
+      },
+      exercices: [
+        { type: "qcm", cat: "comp", consigne: "D'après le dialogue.", question: "Warum kennt jeder die Marke?", options: ["Wegen der ständigen Werbung", "Wegen des Preises", "Wegen der Qualität"], correct: 0, explication: "« deshalb kennt jeder die Marke » (pub constante)." },
+        { type: "qcm", consigne: "Choisissez.", question: "Die Werbung ist gut, ___ kaufe ich das Produkt.", options: ["deshalb", "weil", "obwohl", "dass"], correct: 0, explication: "conséquence → deshalb (verbe en 2e)." },
+        { type: "trou", consigne: "Complétez (weil, verbe à la fin).", texte: "Ich kaufe es, weil es mich {0}. (convaincre)", accepte: [["überzeugt"]], indice: "weil → verbe à la fin" },
+        { type: "association", consigne: "Associez.", paires: [{ gauche: "die Werbung", droite: "la publicité" }, { gauche: "die Marke", droite: "la marque" }, { gauche: "beeinflussen", droite: "influencer" }, { gauche: "der Verbraucher", droite: "le consommateur" }] },
+        { type: "ordre", consigne: "Construisez la phrase (deshalb).", mots: ["Es", "ist", "gut,", "deshalb", "kaufe", "ich", "es"], correct: "Es ist gut, deshalb kaufe ich es", traduction: "C'est bon, c'est pourquoi je l'achète." }
+      ]
+    },
+    {
+      id: "b1t13", numero: 13, titre: "Publicité : produits et propriétés", titreDE: "Produkte und Eigenschaften",
+      theme: "Publicité: Les produits et leurs propriétés", duree: 50,
+      objectifs: ["Décrire les qualités d'un produit", "Décliner l'adjectif épithète"],
+      grammairePoints: ["Déclinaison de l'adjectif", "Comparatif (Werbesprache)"],
+      vocabulaire: [
+        { de: "die Eigenschaft", fr: "la propriété/qualité", ex: "Das Produkt hat gute Eigenschaften." },
+        { de: "praktisch", fr: "pratique", ex: "Ein praktisches Gerät." },
+        { de: "hochwertig", fr: "de haute qualité", ex: "Ein hochwertiges Material." },
+        { de: "günstig", fr: "avantageux", ex: "Ein günstiger Preis." },
+        { de: "umweltfreundlich", fr: "écologique", ex: "Eine umweltfreundliche Verpackung." },
+        { de: "haltbar", fr: "durable / résistant", ex: "Das Produkt ist haltbar." },
+        { de: "das Gerät", fr: "l'appareil", ex: "Ein modernes Gerät." },
+        { de: "die Garantie", fr: "la garantie", ex: "Zwei Jahre Garantie." }
+      ],
+      grammaire: [
+        { titre: "L'adjectif épithète (déclinaison B1)", intro: "Après l'article indéfini, l'adjectif prend la marque du genre/cas.",
+          tableau: { entetes: ["Cas / genre", "Exemple"], lignes: [["m. nominatif", "ein praktischer Stift"], ["m. accusatif", "einen praktischen Stift"], ["f. nom./acc.", "eine günstige Lampe"], ["n. nom./acc.", "ein hochwertiges Gerät"]] },
+          note: "Au pluriel sans article : haltbare Produkte (-e). La langue publicitaire en abuse !" }
+      ],
+      dialogue: {
+        titre: "Im Werbespot", lieu: "Produktvorstellung",
+        lignes: [
+          { loc: "Sprecher", de: "Unser neues, umweltfreundliches Gerät!", fr: "Notre nouvel appareil écologique !" },
+          { loc: "Kundin", de: "Ist es haltbar?", fr: "Est-il résistant ?" },
+          { loc: "Sprecher", de: "Ja, mit zwei Jahren Garantie und einem günstigen Preis.", fr: "Oui, avec deux ans de garantie et un prix avantageux." },
+          { loc: "Kundin", de: "Klingt nach einem praktischen Produkt.", fr: "Ça a l'air d'un produit pratique." }
+        ]
+      },
+      exercices: [
+        { type: "qcm", cat: "comp", consigne: "D'après le dialogue.", question: "Welche Eigenschaft hat das Gerät?", options: ["Umweltfreundlich", "Schwer", "Teuer"], correct: 0, explication: "« umweltfreundliches Gerät »." },
+        { type: "qcm", consigne: "Déclinaison.", question: "Das ist ein ___ Gerät. (praktisch, neutre)", options: ["praktisches", "praktischer", "praktische", "praktisch"], correct: 0, explication: "ein + neutre → -es." },
+        { type: "trou", consigne: "Complétez (günstig, m. nominatif).", texte: "Das ist ein {0} Preis.", accepte: [["günstiger"]], indice: "ein + masc. nom. → -er" },
+        { type: "association", consigne: "Associez.", paires: [{ gauche: "praktisch", droite: "pratique" }, { gauche: "hochwertig", droite: "de haute qualité" }, { gauche: "haltbar", droite: "résistant" }, { gauche: "umweltfreundlich", droite: "écologique" }] },
+        { type: "oral", consigne: "Production orale.", prompt: "Vantez un produit avec 2 adjectifs déclinés (ein … Produkt).", attendus: ["ein", "produkt"], modele: "Das ist ein praktisches und umweltfreundliches Produkt mit einem günstigen Preis." }
+      ]
+    },
+    {
+      id: "b1t14", numero: 14, titre: "Les réclamations", titreDE: "Reklamationen",
+      theme: "Les réclamations", duree: 55,
+      objectifs: ["Faire une réclamation", "Demander un remboursement / échange poliment"],
+      grammairePoints: ["Konjunktiv II (politesse)", "weil / deshalb"],
+      vocabulaire: [
+        { de: "die Reklamation", fr: "la réclamation", ex: "Ich habe eine Reklamation." },
+        { de: "sich beschweren über", fr: "se plaindre de", ex: "Ich beschwere mich über das Produkt." },
+        { de: "kaputt", fr: "cassé", ex: "Das Gerät ist kaputt." },
+        { de: "umtauschen", fr: "échanger", ex: "Kann ich es umtauschen?" },
+        { de: "zurückgeben", fr: "rendre", ex: "Ich möchte es zurückgeben." },
+        { de: "die Rückerstattung", fr: "le remboursement", ex: "Ich verlange eine Rückerstattung." },
+        { de: "der Mangel", fr: "le défaut", ex: "Das Produkt hat einen Mangel." },
+        { de: "funktionieren", fr: "fonctionner", ex: "Es funktioniert nicht." }
+      ],
+      grammaire: [
+        { titre: "Réclamer poliment (Konjunktiv II)", intro: "Plus efficace et courtois.",
+          tableau: { entetes: ["Direct", "Poli"], lignes: [["Ich will mein Geld zurück.", "Ich hätte gern mein Geld zurück."], ["Tauschen Sie das um!", "Könnten Sie das umtauschen?"], ["Das ist kaputt.", "Leider funktioniert das Gerät nicht."]] },
+          note: "Structure type : « Ich möchte mich über … beschweren, weil … (verbe à la fin) »." }
+      ],
+      dialogue: {
+        titre: "An der Servicetheke", lieu: "Im Geschäft",
+        lignes: [
+          { loc: "Kunde", de: "Ich möchte mich über dieses Gerät beschweren.", fr: "Je voudrais me plaindre de cet appareil." },
+          { loc: "Verkäufer", de: "Was ist das Problem?", fr: "Quel est le problème ?" },
+          { loc: "Kunde", de: "Es funktioniert nicht. Könnte ich es umtauschen?", fr: "Il ne marche pas. Pourrais-je l'échanger ?" },
+          { loc: "Verkäufer", de: "Natürlich, oder Sie bekommen eine Rückerstattung.", fr: "Bien sûr, ou vous obtenez un remboursement." }
+        ]
+      },
+      exercices: [
+        { type: "qcm", cat: "comp", consigne: "D'après le dialogue.", question: "Was ist das Problem?", options: ["Das Gerät funktioniert nicht", "Es ist zu teuer", "Es ist zu groß"], correct: 0, explication: "« Es funktioniert nicht »." },
+        { type: "qcm", consigne: "Poli.", question: "___ ich es umtauschen?", options: ["Könnte", "Kann", "Muss", "Will"], correct: 0, explication: "poli → Könnte ich…" },
+        { type: "trou", consigne: "Complétez (sich beschweren über).", texte: "Ich beschwere mich {0} das Produkt.", accepte: [["über"]], indice: "sich beschweren über + accusatif" },
+        { type: "association", consigne: "Associez.", paires: [{ gauche: "kaputt", droite: "cassé" }, { gauche: "umtauschen", droite: "échanger" }, { gauche: "die Rückerstattung", droite: "le remboursement" }, { gauche: "der Mangel", droite: "le défaut" }] },
+        { type: "oral", consigne: "Production orale.", prompt: "Faites une réclamation polie (produit cassé).", attendus: ["könnte", "funktioniert"], modele: "Leider funktioniert das Gerät nicht. Könnte ich es umtauschen oder mein Geld zurückbekommen?" }
+      ]
+    }
+  ]
+};

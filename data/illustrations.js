@@ -78,3 +78,61 @@ Object.assign(window.ILLUSTRATIONS, {
   a2t18: { kw: "nature,recycling,environment", intro: "L'environnement : écologie et verbes à préposition fixe." },
   a2t19: { kw: "technology,smartphone", intro: "La technologie : avantages/inconvénients et la subordonnée « wenn »." }
 });
+
+// === Niveau B1 — thèmes (B1.1 + B1.2) : photos réelles + intros explicatives ===
+Object.assign(window.ILLUSTRATIONS, {
+  b1t01: { kw: "clock,planner,schedule", intro: "Organiser et raconter ses activités, et situer deux actions passées l'une par rapport à l'autre grâce au plus-que-parfait." },
+  b1t02: { kw: "wristwatch,time,punctual", intro: "La ponctualité : parler de retard et d'habitudes, et comprendre les attentes sociales autour du temps." },
+  b1t03: { kw: "museum,exhibition,gallery", intro: "Au musée : décrire une visite et relier ses idées avec les propositions relatives (das Museum, das ich besucht habe)." },
+  b1t04: { kw: "art,painting,gallery", intro: "Les beaux-arts : donner son avis sur une œuvre et comparer (schöner, am schönsten)." },
+  b1t05: { kw: "professional,workplace,job", intro: "Les professions : décrire un métier et les verbes à préposition fixe (arbeiten als, sich kümmern um)." },
+  b1t06: { kw: "office,stress,meeting", intro: "Problèmes au travail : exposer un souci et donner un conseil au subjonctif II (du solltest, an deiner Stelle würde ich…)." },
+  b1t07: { kw: "appointment,calendar,phone", intro: "Prendre rendez-vous : proposer, accepter, reporter — poliment, avec le subjonctif II (könnten Sie…?)." },
+  b1t08: { kw: "handshake,business,team", intro: "Les bonnes manières au travail : ce qui se fait ou non, exprimé avec « man » et « üblich »." },
+  b1t09: { kw: "books,reading,library", intro: "La lecture : parler de ses goûts et préciser avec des relatives, y compris avec préposition (das Buch, von dem ich spreche)." },
+  b1t10: { kw: "childhood,vintage,memories", intro: "Le passé et l'enfance : raconter des souvenirs avec le prétérit et distinguer « als » (une fois) et « wenn » (chaque fois)." },
+  b1t11: { kw: "television,media,broadcast", intro: "Les médias : présenter une information et employer le passif (die Nachricht wird gesendet)." },
+  b1t12: { kw: "advertising,billboard,poster", intro: "La publicité : son impact et son histoire — exprimer cause et conséquence (weil, deshalb)." },
+  b1t13: { kw: "product,marketing,shop", intro: "Décrire des produits et leurs qualités avec des adjectifs déclinés (ein praktisches Gerät)." },
+  b1t14: { kw: "complaint,customer,service", intro: "Les réclamations : se plaindre poliment et demander réparation au subjonctif II." },
+  b1t15: { kw: "language,learning,books", intro: "Apprendre une langue : parler de sa méthode et exprimer une condition (wenn ich Zeit hätte, würde ich…)." },
+  b1t16: { kw: "education,seminar,training", intro: "L'apprentissage tout au long de la vie : la formation continue et l'expression du but (um … zu, damit)." },
+  b1t17: { kw: "study,notes,desk", intro: "Des conseils concrets pour apprendre, et comment structurer un récit (zuerst, dann, schließlich)." },
+  b1t18: { kw: "graduation,diploma,exam", intro: "École, diplômes et notes : raconter son parcours scolaire au passé et comprendre le système allemand." },
+  b1t19: { kw: "traffic,jam,cars", intro: "Problèmes de circulation : décrire embouteillages et incidents, et relier les actions (während, als)." },
+  b1t20: { kw: "tram,subway,transport", intro: "Les moyens de transport : comparer et choisir, avec « mit + datif » et le comparatif." },
+  b1t21: { kw: "train,platform,station", intro: "En route : demander un chemin ou un horaire poliment grâce à la question indirecte (Können Sie mir sagen, wann…?)." },
+  b1t22: { kw: "travel,suitcase,journey", intro: "Partir en voyage : organiser un séjour et exprimer souhaits et conditions (würde gern, wenn … hätte)." },
+  b1t23: { kw: "happy,smile,joy", intro: "Sentiments de bonheur : exprimer joie et gratitude avec les adjectifs à préposition (stolz auf, dankbar für)." },
+  b1t24: { kw: "teamwork,people,trust", intro: "Les qualités : décrire le caractère d'une personne avec des adjectifs déclinés (ein zuverlässiger Mensch)." },
+  b1t25: { kw: "emotion,stress,relax", intro: "Stress, colère et joie : exprimer ses émotions et leurs causes (weil, deshalb)." },
+  b1t26: { kw: "cooking,recipe,restaurant", intro: "Cuisine et restaurant : suivre une recette (impératif, passif) et commander un repas." },
+  b1t27: { kw: "celebration,party,gift", intro: "Invitations et vœux : inviter, accepter ou décliner poliment et présenter ses félicitations." }
+});
+
+// === Niveau B1 — fiches de grammaire : photos d'étude variées + intro courte ===
+Object.assign(window.ILLUSTRATIONS, {
+  b1g01: { kw: "history,timeline,clock", intro: "Les trois temps du passé : Perfekt (oral), Präteritum (récit écrit), Plusquamperfekt (antériorité)." },
+  b1g02: { kw: "grammar,notebook,study", intro: "Les verbes qui imposent une préposition fixe — et donc un cas (warten auf, denken an)." },
+  b1g03: { kw: "question,signs,doubt", intro: "Interroger et reprendre les choses avec wo(r)- et da(r)- (Worauf? → darauf)." },
+  b1g04: { kw: "checklist,rules,document", intro: "Les modaux et « (nicht) brauchen … zu » pour nuancer obligation et permission." },
+  b1g05: { kw: "thinking,idea,dream", intro: "Le subjonctif II : politesse, souhaits, conseils et irréel (présent et passé)." },
+  b1g06: { kw: "gift,giving,hands", intro: "Les verbes à deux compléments : datif (à qui) + accusatif (quoi)." },
+  b1g07: { kw: "letters,alphabet,grammar", intro: "La N-Deklination : ces masculins qui prennent -(e)n hors du nominatif singulier." },
+  b1g08: { kw: "calendar,clock,time", intro: "Les prépositions de temps : vor, seit, bis, ab… et leurs cas." },
+  b1g09: { kw: "timeline,sequence,steps", intro: "Les adverbes de temps pour situer et enchaîner (damals, zuerst, schließlich)." },
+  b1g10: { kw: "mirror,reflection,study", intro: "Les verbes réfléchis et le pronom (mich/mir) accordé au sujet." },
+  b1g11: { kw: "factory,process,machine", intro: "Le passif : werden + participe II, pour mettre l'action en avant." },
+  b1g12: { kw: "compare,scales,ranking", intro: "Comparatif et superlatif des adjectifs (schneller, am schnellsten)." },
+  b1g13: { kw: "key,ownership,document", intro: "Le génitif : exprimer l'appartenance et les prépositions wegen, trotz, während." },
+  b1g14: { kw: "chain,link,connection", intro: "Les propositions relatives, avec ou sans préposition (der Mann, der… / mit dem…)." },
+  b1g15: { kw: "road,fork,choice", intro: "La condition irréelle : wenn + subjonctif II, et « sonst »." },
+  b1g16: { kw: "target,goal,arrow", intro: "Exprimer le but : um … zu (même sujet) ou damit (sujet différent)." },
+  b1g17: { kw: "puzzle,connection,pieces", intro: "Locutions nom + verbe et connecteurs (eine Entscheidung treffen, trotzdem, deswegen)." },
+  b1g18: { kw: "storytelling,writing,book", intro: "Choisir et combiner les temps du passé dans un récit cohérent." },
+  b1g19: { kw: "hourglass,time,clock", intro: "Propositions temporelles : simultanéité (während, solange) et succession (bevor, nachdem, sobald)." },
+  b1g20: { kw: "boxes,shelf,position", intro: "Les prépositions mixtes : datif (Wo?) ou accusatif (Wohin?)." },
+  b1g21: { kw: "description,words,study", intro: "Les adjectifs à préposition fixe (stolz auf, zufrieden mit, abhängig von)." },
+  b1g22: { kw: "list,points,structure", intro: "Les connecteurs doubles : sowohl…als auch, weder…noch, entweder…oder." },
+  b1g23: { kw: "dominoes,cause,effect", intro: "Cause et conséquence : weil/da/denn et deshalb/deswegen/daher." }
+});

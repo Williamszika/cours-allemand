@@ -8,12 +8,13 @@ window.COURS = {
   langue: "Deutsch",
   niveau: "A1",
   cadre: "CECRL / GER (Gemeinsamer Europäischer Referenzrahmen)",
-  titre: "Allemand intensif — A1",
-  slogan: "Von Null auf Deutsch — De zéro à l'allemand",
+  titre: "Allemand intensif — A1 · A2 · B1",
+  slogan: "Von Null bis B1 — De zéro au niveau B1",
   description:
-    "Un parcours complet et progressif pour atteindre le niveau A1 du Cadre Européen. " +
+    "Un parcours complet et progressif de A1 à B1 (Cadre Européen). " +
     "Chaque leçon combine vocabulaire vivant, grammaire claire, dialogue authentique, " +
-    "prononciation audio et exercices interactifs auto-corrigés.",
+    "prononciation audio et exercices interactifs auto-corrigés. " +
+    "Les niveaux se débloquent l'un après l'autre grâce aux examens.",
 
   // Compétences visées au niveau A1 (selon le CECRL)
   competences: [
@@ -65,29 +66,36 @@ window.COURS = {
 window.COURS.examens = [
   { id: "a1", niveau: "A1", titre: "Examen du niveau A1" },
   { id: "a2", niveau: "A2", titre: "Examen du niveau A2" },
-  { id: "final", niveau: "A1+A2", titre: "Examen final A1 + A2" }
+  { id: "final", niveau: "A1+A2", titre: "Examen final A1 + A2" },
+  { id: "b1", niveau: "B1", titre: "Examen du niveau B1" }
 ];
 
 /* Intercale la grammaire et assemble les niveaux A1 et A2 (parcours unique) */
 (function () {
   const byId = {};
-  [window.MODULE_A11, window.MODULE_A12, window.MODULE_A21, window.MODULE_A22].forEach(
+  [window.MODULE_A11, window.MODULE_A12, window.MODULE_A21, window.MODULE_A22, window.MODULE_B11, window.MODULE_B12].forEach(
     (m) => m && m.lecons.forEach((l) => (byId[l.id] = l))
   );
-  Object.assign(byId, window.GRAMMAIRE || {}, window.GRAMMAIRE_A2 || {});
+  Object.assign(byId, window.GRAMMAIRE || {}, window.GRAMMAIRE_A2 || {}, window.GRAMMAIRE_B1 || {});
   const L = (id) => byId[id];
   const ordreA11 = ["l01", "g01", "l02", "l03", "g02", "l04", "l05", "g03", "l06", "l07", "g06", "l08", "g05", "l09", "g04"];
   const ordreA12 = ["l10", "l11", "g07", "l12", "l13", "g08", "l14", "g09", "l15", "l16", "g10", "g11", "l17", "l18", "g12", "l19"];
   const ordreA21 = ["a2t01", "a2g03", "a2t02", "a2g01", "a2t03", "a2g02", "a2t04", "a2g08", "a2t05", "a2g06", "a2t06", "a2g04", "a2t07", "a2g09", "a2t08", "a2g07", "a2t09", "a2g05"];
   const ordreA22 = ["a2t10", "a2g10", "a2t11", "a2g17", "a2t12", "a2g13", "a2t13", "a2g12", "a2t14", "a2g11", "a2t15", "a2g16", "a2t16", "a2g14", "a2t17", "a2g15", "a2t18", "a2t19"];
+  const ordreB11 = ["b1t01", "b1g01", "b1t02", "b1g08", "b1t03", "b1g14", "b1t04", "b1g12", "b1t05", "b1g02", "b1t06", "b1g05", "b1t07", "b1g04", "b1t08", "b1g09", "b1t09", "b1g03", "b1t10", "b1g13", "b1t11", "b1g11", "b1t12", "b1g06", "b1t13", "b1g07", "b1t14", "b1g10"];
+  const ordreB12 = ["b1t15", "b1g15", "b1t16", "b1g16", "b1t17", "b1g17", "b1t18", "b1g18", "b1t19", "b1g19", "b1t20", "b1g20", "b1t21", "b1t22", "b1t23", "b1g21", "b1t24", "b1g22", "b1t25", "b1g23", "b1t26", "b1t27"];
   window.MODULE_A11.lecons = ordreA11.map(L).filter(Boolean);
   window.MODULE_A12.lecons = ordreA12.map(L).filter(Boolean);
   if (window.MODULE_A21) window.MODULE_A21.lecons = ordreA21.map(L).filter(Boolean);
   if (window.MODULE_A22) window.MODULE_A22.lecons = ordreA22.map(L).filter(Boolean);
+  if (window.MODULE_B11) window.MODULE_B11.lecons = ordreB11.map(L).filter(Boolean);
+  if (window.MODULE_B12) window.MODULE_B12.lecons = ordreB12.map(L).filter(Boolean);
   window.MODULE_A11.niveau = "A1";
   window.MODULE_A12.niveau = "A1";
   if (window.MODULE_A21) window.COURS.modules.push(window.MODULE_A21);
   if (window.MODULE_A22) window.COURS.modules.push(window.MODULE_A22);
+  if (window.MODULE_B11) window.COURS.modules.push(window.MODULE_B11);
+  if (window.MODULE_B12) window.COURS.modules.push(window.MODULE_B12);
   // Tag de niveau + numérotation qui repart à 1 pour chaque niveau
   const cpt = {};
   window.COURS.modules.forEach((m) =>
