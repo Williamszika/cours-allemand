@@ -61,19 +61,42 @@ window.COURS = {
   modules: [window.MODULE_A11, window.MODULE_A12]
 };
 
-/* Intercale les 12 leçons de grammaire entre les leçons thématiques (total ~31) */
+/* Examens qui jalonnent le parcours (verrous entre niveaux) */
+window.COURS.examens = [
+  { id: "a1", niveau: "A1", titre: "Examen du niveau A1" },
+  { id: "a2", niveau: "A2", titre: "Examen du niveau A2" },
+  { id: "final", niveau: "A1+A2", titre: "Examen final A1 + A2" }
+];
+
+/* Intercale la grammaire et assemble les niveaux A1 et A2 (parcours unique) */
 (function () {
-  const G = window.GRAMMAIRE || {};
   const byId = {};
-  window.COURS.modules.forEach((m) => m.lecons.forEach((l) => (byId[l.id] = l)));
-  Object.keys(G).forEach((k) => (byId[k] = G[k]));
+  [window.MODULE_A11, window.MODULE_A12, window.MODULE_A21, window.MODULE_A22].forEach(
+    (m) => m && m.lecons.forEach((l) => (byId[l.id] = l))
+  );
+  Object.assign(byId, window.GRAMMAIRE || {}, window.GRAMMAIRE_A2 || {});
   const L = (id) => byId[id];
   const ordreA11 = ["l01", "g01", "l02", "l03", "g02", "l04", "l05", "g03", "l06", "l07", "g06", "l08", "g05", "l09", "g04"];
   const ordreA12 = ["l10", "l11", "g07", "l12", "l13", "g08", "l14", "g09", "l15", "l16", "g10", "g11", "l17", "l18", "g12", "l19"];
+  const ordreA21 = ["a2t01", "a2g03", "a2t02", "a2g01", "a2t03", "a2g02", "a2t04", "a2g08", "a2t05", "a2g06", "a2t06", "a2g04", "a2t07", "a2g09", "a2t08", "a2g07", "a2t09", "a2g05"];
+  const ordreA22 = ["a2t10", "a2g10", "a2t11", "a2g17", "a2t12", "a2g13", "a2t13", "a2g12", "a2t14", "a2g11", "a2t15", "a2g16", "a2t16", "a2g14", "a2t17", "a2g15", "a2t18", "a2t19"];
   window.MODULE_A11.lecons = ordreA11.map(L).filter(Boolean);
   window.MODULE_A12.lecons = ordreA12.map(L).filter(Boolean);
-  let n = 1;
-  window.COURS.modules.forEach((m) => m.lecons.forEach((l) => { l.numero = n++; }));
+  if (window.MODULE_A21) window.MODULE_A21.lecons = ordreA21.map(L).filter(Boolean);
+  if (window.MODULE_A22) window.MODULE_A22.lecons = ordreA22.map(L).filter(Boolean);
+  window.MODULE_A11.niveau = "A1";
+  window.MODULE_A12.niveau = "A1";
+  if (window.MODULE_A21) window.COURS.modules.push(window.MODULE_A21);
+  if (window.MODULE_A22) window.COURS.modules.push(window.MODULE_A22);
+  // Tag de niveau + numérotation qui repart à 1 pour chaque niveau
+  const cpt = {};
+  window.COURS.modules.forEach((m) =>
+    m.lecons.forEach((l) => {
+      l.niveau = m.niveau || "A1";
+      cpt[l.niveau] = (cpt[l.niveau] || 0) + 1;
+      l.numero = cpt[l.niveau];
+    })
+  );
 })();
 
 /* Fusion des exercices de compréhension puis de production dans chaque leçon */

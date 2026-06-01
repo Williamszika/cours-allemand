@@ -612,3 +612,10 @@ a.stats-lecon:hover { border-color: var(--blue); transform: translateX(2px); }
 [data-tg-scheme="dark"] .schema-box.fin { background: #10241a; color: #86efac; }
 [data-tg-scheme="dark"] .schema-box.conj { background: #2a2410; color: #fcd34d; }
 [data-tg-scheme="dark"] .schema-box.objet, [data-tg-scheme="dark"] .schema-box.neutre { background: #17212b; }
+
+/* Séparateur de niveau + état des examens */
+.niveau-sep { margin: 48px 0 0; }
+.niveau-titre { font-size: 28px; margin: 0; padding-bottom: 10px; border-bottom: 3px solid var(--blue); display: inline-block; }
+.niveau-lock { font-size: 13px; font-weight: 600; color: var(--gold); border: none; display: inline; margin-left: 8px; }
+.examen-final.reussi { background: linear-gradient(135deg, #dcfce7, #fff); border-color: var(--green); }
+[data-tg-scheme="dark"] .examen-final.reussi { background: linear-gradient(135deg, #122a1d, var(--card)); border-color: var(--green); }

@@ -55,3 +55,26 @@ Object.assign(window.ILLUSTRATIONS, {
   g11: { kw: "map,direction", intro: "Dire OÙ et OÙ ALLER : nach, zu, in." },
   g12: { kw: "paint,colors", intro: "Décrire avec des adjectifs et comparer (groß → größer)." }
 });
+
+// Photos + intros des thèmes A2 (les leçons de grammaire A2 utilisent le repli)
+Object.assign(window.ILLUSTRATIONS, {
+  a2t01: { kw: "people,meeting", intro: "On se présente plus en détail : famille, situation, et les adjectifs possessifs." },
+  a2t02: { kw: "work,profession", intro: "Décrire son métier et ses tâches, et dire « comme » (als) + profession." },
+  a2t03: { kw: "old,photos,memories", intro: "Raconter le passé : passé composé et le prétérit de sein/haben (war, hatte)." },
+  a2t04: { kw: "resume,interview", intro: "École, formation et CV : parler de son parcours et dire des dates (von… bis)." },
+  a2t05: { kw: "routine,hobby", intro: "La journée en détail et les loisirs, avec les verbes pronominaux (sich)." },
+  a2t06: { kw: "shopping,store", intro: "Acheter et dépenser : comparer les prix (comparatif et superlatif)." },
+  a2t07: { kw: "money,coins,bank", intro: "L'argent : banque, paiement, et le datif (à qui ?)." },
+  a2t08: { kw: "lottery,dream,money", intro: "« Et si… ? » : exprimer un souhait au Konjunktiv II (würde, wäre, hätte)." },
+  a2t09: { kw: "office,telephone", intro: "Au bureau et au téléphone : prendre rendez-vous et la subordonnée « dass »." },
+  a2t10: { kw: "vacation,beach", intro: "Les vacances : raconter un séjour et dire où l'on va / où l'on est." },
+  a2t11: { kw: "flags,world,map", intro: "Pays et nationalités : d'où l'on vient et où l'on va (nach / in)." },
+  a2t12: { kw: "travel,planning,airport", intro: "Planifier un voyage : billets, réservations, et le futur avec werden." },
+  a2t13: { kw: "animals,wildlife", intro: "Les animaux (et les dangereux) : décrire et dire ce qu'ils savent faire." },
+  a2t14: { kw: "portrait,people", intro: "Décrire les personnes : apparence et caractère, avec les adjectifs." },
+  a2t15: { kw: "house,garden", intro: "Habiter : ville ou campagne, jardin, voisins — et comparer." },
+  a2t16: { kw: "vegetables,healthy,food", intro: "Alimentation saine : donner des conseils avec « man soll »." },
+  a2t17: { kw: "newspaper,news", intro: "Les actualités : comprendre une info et donner son avis (ich finde, dass…)." },
+  a2t18: { kw: "nature,recycling,environment", intro: "L'environnement : écologie et verbes à préposition fixe." },
+  a2t19: { kw: "technology,smartphone", intro: "La technologie : avantages/inconvénients et la subordonnée « wenn »." }
+});
