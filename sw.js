@@ -4,7 +4,7 @@
    cache-first (instantané et hors-ligne) avec mise à jour en arrière-plan.
    Les photos LoremFlickr sont mises en cache au fil de la navigation.
    ===================================================================== */
-var VERSION = "v1.5.0";
+var VERSION = "v1.5.1";
 var CACHE = "deutsch-a1c2-" + VERSION;
 
 var SHELL = [
@@ -16,7 +16,7 @@ var SHELL = [
   "./data/lecons-b21.js", "./data/lecons-b22.js", "./data/grammaire-b21.js", "./data/grammaire-b22.js",
   "./data/lecons-c11.js", "./data/lecons-c12.js", "./data/grammaire-c11.js", "./data/grammaire-c12.js",
   "./data/lecons-c21.js", "./data/lecons-c22.js", "./data/grammaire-c21.js", "./data/grammaire-c22.js",
-  "./data/cours.js", "./data/illustrations.js", "./data/placement.js", "./data/pflege.js",
+  "./data/cours.js", "./data/illustrations.js", "./data/placement.js", "./data/pflege.js", "./data/dictees.js",
   "./js/i18n.js", "./js/speech.js", "./js/progress.js", "./js/revision.js", "./js/telegram.js", "./js/sync.js", "./js/exercises.js", "./js/app.js"
 ];
 

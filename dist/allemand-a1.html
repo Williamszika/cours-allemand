@@ -1021,6 +1021,45 @@ a.pflege-exam:hover { background: #ccfbf1; }
 .lang-required { color: var(--blue-dark); font-weight: 700; font-size: .95rem; background: var(--blue-light); border-radius: 10px; padding: 10px 14px; }
 [data-tg-scheme="dark"] .lang-required { background: #15263f; color: #bfdbfe; }
 
+/* =====================================================================
+   DICTÉE (par module, adaptée au niveau)
+   ===================================================================== */
+.dictee-voice { display: flex; align-items: center; gap: 14px; background: var(--blue-light); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 16px; }
+.dictee-play { flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; border: none; background: var(--blue); color: #fff; font-size: 1.2rem; cursor: pointer; display: grid; place-items: center; }
+.dictee-play:hover { background: var(--blue-dark); }
+.dictee-voice-info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.dictee-voice-info strong { font-size: .95rem; }
+.dictee-status { color: var(--muted); font-size: .85rem; margin-top: 2px; }
+.dictee-timer { flex: 0 0 auto; font-variant-numeric: tabular-nums; font-weight: 700; color: var(--blue-dark); background: var(--card); border-radius: 10px; padding: 5px 10px; }
+.dictee-timer.done { color: var(--red); }
+.dictee-input { width: 100%; padding: 14px; border: 1.5px solid var(--line); border-radius: 12px; font-size: 1rem; line-height: 1.6; background: var(--card); color: var(--ink); resize: vertical; min-height: 160px; font-family: inherit; }
+.dictee-input:focus { outline: none; border-color: var(--blue); }
+.dictee-actions { margin-top: 14px; }
+.dictee-result { margin-top: 18px; padding: 18px; border-radius: 14px; border: 1px solid var(--line); background: var(--card); text-align: center; }
+.dictee-result.pass { background: linear-gradient(180deg, var(--card), var(--green-light)); }
+.dictee-result.fail { background: linear-gradient(180deg, var(--card), var(--rose)); }
+.dictee-coach { display: flex; align-items: center; gap: 8px; justify-content: center; margin-bottom: 8px; }
+.coach-avatar-sm { font-size: 1.4rem; }
+.dictee-feedback { text-align: left; font-size: .92rem; color: var(--ink); background: var(--bg); border-radius: 10px; padding: 10px 12px; margin: 10px 0; }
+.dictee-correct { text-align: left; margin-top: 10px; }
+.dictee-ref { line-height: 2.1; margin-top: 6px; }
+.dw { padding: 1px 3px; border-radius: 4px; }
+.dw-manquant { background: var(--rose); color: #991b1b; text-decoration: line-through; }
+.dw-maj { background: #fef3c7; color: #92400e; }
+[data-tg-scheme="dark"] .dw-manquant { background: #3a1518; color: #fecaca; }
+[data-tg-scheme="dark"] .dw-maj { background: #3a2e10; color: #fde68a; }
+.dictee-card { display: flex; align-items: center; gap: 14px; margin-top: 12px; padding: 14px 16px; border-radius: 14px; border: 1.5px dashed var(--blue); background: var(--blue-light); text-decoration: none; color: var(--ink); }
+a.dictee-card:hover { background: #cfe0fb; }
+.dictee-card.done { border-style: solid; background: var(--green-light); border-color: var(--green); }
+.dictee-card.locked { opacity: .6; }
+.dictee-card-ic { font-size: 1.6rem; flex: 0 0 auto; }
+.dictee-card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.dictee-card-body strong { font-size: 1rem; }
+.dictee-card-body span { color: var(--muted); font-size: .86rem; margin-top: 2px; }
+[data-tg-scheme="dark"] .dictee-voice, [data-tg-scheme="dark"] .dictee-card { background: #15263f; }
+[data-tg-scheme="dark"] a.dictee-card:hover { background: #1b3157; }
+[data-tg-scheme="dark"] .dictee-feedback { background: #0b121b; }
+
 </style>
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="theme-color" content="#1e3a8a" />
@@ -16750,6 +16789,35 @@ window.PFLEGE = {
 };
 
 </script>
+    <script>
+/* =====================================================================
+   dictees.js — Une dictée par module du cours général, adaptée au niveau.
+   Le texte (allemand) est lu à voix haute (vitesse + répétitions selon le
+   niveau), l'utilisateur l'écrit, puis le tuteur corrige (orthographe,
+   ponctuation, construction des phrases).
+   ===================================================================== */
+window.DICTEES = {
+  // ---- A1 (court, simple) ----
+  "a1-1": { texte: "Hallo! Ich heiße Lena. Ich komme aus Italien und wohne jetzt in Hamburg. Ich bin Studentin und lerne Deutsch. Meine Muttersprache ist Italienisch, aber ich spreche auch ein bisschen Englisch. Auf Wiedersehen!" },
+  "a1-2": { texte: "Am Morgen stehe ich um sieben Uhr auf. Ich frühstücke und trinke einen Kaffee. Dann fahre ich mit dem Bus in die Stadt. Am Abend koche ich und sehe fern. Um elf Uhr gehe ich ins Bett." },
+  // ---- A2 ----
+  "a2-1": { texte: "Gestern war ich im Supermarkt. Ich habe Obst, Brot und Käse gekauft. Alles war nicht teuer. Danach habe ich einen Freund getroffen. Wir sind ins Café gegangen und haben lange gesprochen. Es war ein schöner Tag." },
+  "a2-2": { texte: "Letzten Sommer haben wir eine Reise nach Österreich gemacht. Wir sind mit dem Zug gefahren und haben in einem kleinen Hotel gewohnt. Jeden Tag sind wir in den Bergen gewandert. Das Wetter war warm und sonnig. Am Ende waren wir müde, aber sehr glücklich." },
+  // ---- B1 ----
+  "b1-1": { texte: "In meinem Job arbeite ich oft am Computer und schreibe viele E-Mails. Manchmal ist der Stress groß, besonders wenn ich Überstunden machen muss. Trotzdem mag ich meine Arbeit, weil die Kollegen freundlich sind. In meiner Freizeit lese ich gern die Nachrichten im Internet. Allerdings glaube ich nicht alles, was dort steht. Man sollte die Quelle einer Information immer prüfen." },
+  "b1-2": { texte: "Seit zwei Jahren lerne ich Deutsch, und es macht mir großen Spaß. Am Anfang hatte ich Angst vor Fehlern, aber inzwischen spreche ich viel mutiger. Wichtig ist, dass man regelmäßig übt und geduldig bleibt. Wenn ich einen Rückschlag habe, ärgere ich mich kurz und mache dann einfach weiter. Mein Ziel ist es, eines Tages fließend zu sprechen." },
+  // ---- B2 ----
+  "b2-1": { texte: "Die Vereinbarkeit von Beruf und Familie ist für viele Menschen eine große Herausforderung. Wer Kinder hat, muss seinen Alltag sorgfältig organisieren und manchmal auf Karrierechancen verzichten. Unternehmen, die flexible Arbeitszeiten anbieten, sind deshalb besonders attraktiv. Eine offene Kommunikation zwischen Mitarbeitern und Vorgesetzten trägt ebenfalls dazu bei, Konflikte frühzeitig zu lösen. Letztlich profitieren beide Seiten von gegenseitigem Vertrauen und Respekt." },
+  "b2-2": { texte: "Lebenslanges Lernen gilt heute als Schlüssel zum beruflichen Erfolg. Wer sich regelmäßig weiterbildet, kann mit den schnellen Veränderungen in der Arbeitswelt Schritt halten. Neue Technologien verlangen ständig neue Fähigkeiten, und wer stehen bleibt, verliert schnell den Anschluss. Allerdings bedeutet Weiterbildung nicht nur Pflicht, sondern auch eine Chance, die eigenen Interessen zu entdecken und sich persönlich weiterzuentwickeln." },
+  // ---- C1 ----
+  "c1-1": { texte: "Erfolg bedeutet für jeden Menschen etwas anderes. Während die einen nach Anerkennung und Wohlstand streben, suchen die anderen vor allem innere Zufriedenheit und Gelassenheit. Wer ständig nur auf das nächste Ziel blickt, läuft Gefahr, die kleinen Freuden des Augenblicks zu übersehen. Rückschläge gehören unweigerlich dazu, doch gerade aus ihnen können wir am meisten lernen. Wichtig ist, dass wir nach einem Misserfolg nicht den Mut verlieren, sondern uns wieder aufraffen und unseren Weg mit Zuversicht fortsetzen." },
+  "c1-2": { texte: "Der technische Fortschritt verändert unser Leben in einem atemberaubenden Tempo. Künstliche Intelligenz, die noch vor wenigen Jahren wie Science-Fiction klang, ist längst Teil unseres Alltags geworden. Diese Entwicklung bringt zweifellos enorme Chancen mit sich, wirft jedoch zugleich heikle ethische Fragen auf. Wer trägt die Verantwortung, wenn eine Maschine einen Fehler macht? Es liegt an uns, den Fortschritt klug zu gestalten und dabei den Menschen stets in den Mittelpunkt zu stellen." },
+  // ---- C2 (long, soutenu) ----
+  "c2-1": { texte: "In einer Zeit, in der wir täglich mit einer Flut von Informationen konfrontiert werden, fällt es zunehmend schwer, Wesentliches von Belanglosem zu unterscheiden. Die sozialen Medien verstärken diese Reizüberflutung, indem sie uns vorwiegend das zeigen, was unsere bestehende Meinung bestätigt. Wer sich dieser Mechanismen nicht bewusst ist, läuft Gefahr, in einer sogenannten Filterblase gefangen zu bleiben. Umso wichtiger ist es, Quellen kritisch zu hinterfragen und sich aktiv mit gegensätzlichen Standpunkten auseinanderzusetzen. Nur so lässt sich eine fundierte und eigenständige Meinung bilden." },
+  "c2-2": { texte: "Kunst und Wissenschaft werden häufig als Gegensätze betrachtet, dabei haben sie mehr gemeinsam, als man auf den ersten Blick vermuten würde. Beide entspringen der menschlichen Neugier und dem unbändigen Wunsch, die Welt zu verstehen und zu deuten. Während die Wissenschaft nach überprüfbaren Erkenntnissen strebt, eröffnet die Kunst Räume für Interpretation und Empfindung. Eine Gesellschaft, die nur das Messbare schätzt und das Schöpferische vernachlässigt, beraubt sich eines wesentlichen Teils ihrer Identität. Erst im Zusammenspiel von Vernunft und Fantasie entfaltet sich das volle Potenzial des menschlichen Geistes." }
+};
+
+</script>
     <!-- Modules applicatifs -->
     <script>
 /* =====================================================================
@@ -17225,6 +17293,8 @@ window.Speech = (function () {
     if (germanVoice) u.voice = germanVoice;
     u.rate = opts.rate || 0.9; // un peu plus lent pour l'apprentissage
     u.pitch = opts.pitch || 1;
+    if (opts.onend) u.onend = opts.onend;
+    if (opts.onerror) u.onerror = opts.onerror;
     window.speechSynthesis.speak(u);
     return true;
   }
@@ -18717,7 +18787,7 @@ window.Exercises = (function () {
   // JAMAIS traduit par localizeUI.
   const NOLOC = [
     ".voc-de", ".voc-nom", ".art", ".voc-ex", ".cours-ex-de", ".cours-ex-gl-de", ".hl-de", ".conv-de", ".conv-loc",
-    ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag", ".pflege-de",
+    ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag", ".pflege-de", ".dictee-ref",
     ".cours-tag", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points",
     ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
     ".trou-input", ".trou-phrase", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript",
@@ -19060,6 +19130,18 @@ window.Exercises = (function () {
       }
       return card;
     }
+    function carteDictee(mod) {
+      const done = (mod.lecons || []).length > 0 && mod.lecons.every((l) => window.Progress.estTermine(l.id));
+      const ts = window.Progress.getTestScore("dictee-" + mod.id);
+      const niveau = mod.niveau || "A1";
+      const P = DICTEE_PARAMS[niveau] || DICTEE_PARAMS.A1;
+      const card = el(done ? "a" : "div", "dictee-card" + (ts && ts.reussi ? " done" : "") + (done ? "" : " locked"));
+      if (done) card.href = "#/dictee/" + mod.id;
+      card.innerHTML = '<span class="dictee-card-ic">✍️</span><div class="dictee-card-body"><strong>Dictée du module · ' + niveau + "</strong><span>" +
+        (done ? (ts ? "Meilleur score : " + ts.meilleur + "% — réécoute et améliore" : P.min + " min · " + P.vitesse + " · " + P.ecoutes + (P.ecoutes > 1 ? " écoutes" : " écoute")) : "Termine les leçons du module pour débloquer la dictée") +
+        "</span></div><span class=\"menu-go\">" + (ts && ts.reussi ? "✓" : (done ? "→" : "🔒")) + "</span>";
+      return card;
+    }
 
     /* Rendu générique d'un niveau : séparateur + modules + carte d'examen */
     function renderNiveau(niv) {
@@ -19078,6 +19160,7 @@ window.Exercises = (function () {
         const grid = el("div", "lecon-grid");
         mod.lecons.forEach((l) => grid.appendChild(carteLecon(l)));
         sec.appendChild(grid);
+        if (window.DICTEES && window.DICTEES[mod.id]) sec.appendChild(carteDictee(mod));
         frag.appendChild(sec);
       });
 
@@ -20748,6 +20831,157 @@ window.Exercises = (function () {
      réussi. Affiche le programme A2 → C2 (le contenu interactif des
      leçons sera ajouté ensuite). Données : window.PFLEGE (data/pflege.js).
      ==================================================================== */
+  /* ====================================================================
+     DICTÉE — une par module, adaptée au niveau. Le texte allemand est lu
+     à voix haute (vitesse + nombre d'écoutes selon le niveau), l'apprenant
+     l'écrit, puis Zika corrige : orthographe, majuscules, ponctuation et
+     mots manquants / en trop (construction des phrases).
+     ==================================================================== */
+  const DICTEE_PARAMS = {
+    A1: { min: 3, rate: 0.7, ecoutes: 2, vitesse: "lente" },
+    A2: { min: 5, rate: 0.75, ecoutes: 2, vitesse: "lente" },
+    B1: { min: 10, rate: 0.95, ecoutes: 2, vitesse: "normale" },
+    B2: { min: 15, rate: 1.0, ecoutes: 1, vitesse: "normale" },
+    C1: { min: 20, rate: 1.0, ecoutes: 1, vitesse: "normale" },
+    C2: { min: 30, rate: 1.0, ecoutes: 1, vitesse: "normale" }
+  };
+  function dicteePhrases(texte) {
+    return (String(texte).match(/[^.!?]+[.!?]*/g) || [texte]).map((s) => s.trim()).filter(Boolean);
+  }
+  let _dicteeStop = null;
+  function jouerDictee(phrases, rate, ecoutes, onProgress, onDone) {
+    if (_dicteeStop) _dicteeStop();
+    let stopped = false, rep = 0, i = 0;
+    _dicteeStop = function () { stopped = true; try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (e) {} };
+    function pauseFor(ph) { return Math.max(2600, ph.split(/\s+/).length * 700); }
+    function suite() {
+      if (stopped) return;
+      if (i >= phrases.length) {
+        rep++;
+        if (rep >= ecoutes) { _dicteeStop = null; onDone && onDone(); return; }
+        i = 0; onProgress && onProgress({ ecoute: rep + 1, total: ecoutes, phrase: 0, nb: phrases.length });
+        setTimeout(suite, 2800); return;
+      }
+      onProgress && onProgress({ ecoute: rep + 1, total: ecoutes, phrase: i + 1, nb: phrases.length });
+      const ph = phrases[i];
+      if (window.Speech && window.Speech.isSupported()) {
+        window.Speech.speak(ph, { rate: rate, onend: function () { if (stopped) return; i++; setTimeout(suite, pauseFor(ph)); }, onerror: function () { if (stopped) return; i++; setTimeout(suite, 900); } });
+      } else { i++; setTimeout(suite, 1200); }
+    }
+    suite();
+  }
+  function corrigerDictee(reference, saisie) {
+    const refW = reference.trim().split(/\s+/);
+    const usrW = saisie.trim().split(/\s+/).filter(Boolean);
+    const stripP = (w) => String(w).replace(/[.,;:!?»«„“”'’\-–—()]/g, "");
+    const norm = (w) => stripP(w).toLowerCase();
+    const a = refW.map(norm), c = usrW.map(norm);
+    const n = a.length, m = c.length;
+    const dp = []; for (let x = 0; x <= n; x++) dp.push(new Array(m + 1).fill(0));
+    for (let x = n - 1; x >= 0; x--) for (let y = m - 1; y >= 0; y--) dp[x][y] = a[x] === c[y] ? dp[x + 1][y + 1] + 1 : Math.max(dp[x + 1][y], dp[x][y + 1]);
+    const status = new Array(n).fill("manquant");
+    let x = 0, y = 0, correct = 0, majErr = 0;
+    while (x < n && y < m) {
+      if (a[x] === c[y]) {
+        if (stripP(refW[x]) === stripP(usrW[y])) { status[x] = "ok"; correct++; }
+        else { status[x] = "maj"; correct++; majErr++; }
+        x++; y++;
+      } else if (dp[x + 1][y] >= dp[x][y + 1]) x++; else y++;
+    }
+    const punct = (s) => (String(s).match(/[.,;:!?»«„“”]/g) || []).length;
+    return { refW: refW, status: status, correct: correct, total: n, score: n ? Math.round((correct / n) * 100) : 0, majErr: majErr, manquants: n - correct, motsEnTrop: Math.max(0, m - correct), pRef: punct(reference), pUsr: punct(saisie), vide: usrW.length === 0 };
+  }
+
+  function renderDictee(moduleId) {
+    const mod = (COURS.modules || []).find((mm) => mm.id === moduleId);
+    const data = window.DICTEES && window.DICTEES[moduleId];
+    if (!mod || !data) { location.hash = "#/"; return; }
+    const niveau = mod.niveau || "A1";
+    const P = DICTEE_PARAMS[niveau] || DICTEE_PARAMS.A1;
+    const phrases = dicteePhrases(data.texte);
+
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/">← Aperçu du programme</a><span class="lesson-top-mod">✍️ Dictée ' + niveau + "</span>";
+    frag.appendChild(top);
+
+    const head = el("header", "test-head"); head.style.setProperty("--mod-color", mod.couleur || "#0d9488");
+    head.innerHTML = '<div class="lesson-num">' + mod.titre + " · Dictée</div><h1>✍️ Dictée — niveau " + niveau + "</h1>" +
+      "<p>Durée conseillée : <strong>" + P.min + " min</strong> · vitesse <strong>" + P.vitesse + "</strong> · <strong>" + P.ecoutes + (P.ecoutes > 1 ? " écoutes" : " écoute") + "</strong>. Écoute la note vocale, écris le texte, puis fais corriger.</p>";
+    frag.appendChild(head);
+
+    const sec = el("section", "lesson-section");
+    const vn = el("div", "dictee-voice");
+    const playBtn = el("button", "dictee-play", "▶︎"); playBtn.type = "button";
+    const vnInfo = el("div", "dictee-voice-info");
+    vnInfo.innerHTML = "<strong>🎙️ Note vocale — Zika</strong><span class=\"dictee-status\">Appuie sur ▶︎ pour commencer la dictée.</span>";
+    const timer = el("span", "dictee-timer", P.min + ":00");
+    vn.appendChild(playBtn); vn.appendChild(vnInfo); vn.appendChild(timer);
+    sec.appendChild(vn);
+    const status = vnInfo.querySelector(".dictee-status");
+
+    const ta = el("textarea", "dictee-input");
+    ta.setAttribute("placeholder", "Écris ici la dictée que tu entends…"); ta.setAttribute("rows", "8");
+    sec.appendChild(ta);
+
+    const actions = el("div", "dictee-actions");
+    const corrige = el("button", "btn btn-primary", "✅ Faire corriger ma dictée"); corrige.type = "button";
+    actions.appendChild(corrige); sec.appendChild(actions);
+    const result = el("div", "dictee-result hidden"); sec.appendChild(result);
+    frag.appendChild(sec);
+
+    let remaining = P.min * 60, timerId = null;
+    function fmt(s) { const mm = Math.floor(s / 60), ss = s % 60; return mm + ":" + (ss < 10 ? "0" : "") + ss; }
+    function startTimer() {
+      if (timerId) return;
+      timerId = setInterval(() => {
+        remaining--; if (remaining <= 0) { remaining = 0; clearInterval(timerId); timerId = null; timer.classList.add("done"); status.textContent = "⏱️ Temps écoulé — tu peux faire corriger."; }
+        timer.textContent = fmt(remaining);
+      }, 1000);
+    }
+    let playing = false;
+    function play() {
+      if (playing) { if (_dicteeStop) _dicteeStop(); _dicteeStop = null; playing = false; playBtn.textContent = "▶︎"; status.textContent = "En pause. ▶︎ pour réécouter depuis le début."; return; }
+      playing = true; playBtn.textContent = "⏸"; startTimer();
+      jouerDictee(phrases, P.rate, P.ecoutes,
+        (pr) => { status.textContent = "🔊 Écoute " + pr.ecoute + "/" + pr.total + (pr.phrase ? " — phrase " + pr.phrase + "/" + pr.nb : "") + "…"; },
+        () => { playing = false; playBtn.textContent = "▶︎"; status.textContent = "✅ Lecture terminée. Écris ta dictée, puis fais corriger (▶︎ pour réécouter)."; }
+      );
+    }
+    playBtn.addEventListener("click", play);
+
+    corrige.addEventListener("click", () => {
+      if (_dicteeStop) { _dicteeStop(); _dicteeStop = null; playing = false; playBtn.textContent = "▶︎"; }
+      const r = corrigerDictee(data.texte, ta.value || "");
+      if (r.vide) { toast("Écris d'abord la dictée, puis fais corriger. ✍️"); return; }
+      window.Progress.setTestScore("dictee-" + moduleId, r.score, r.score >= 70);
+      const refHtml = r.refW.map((w, idx) => '<span class="dw dw-' + r.status[idx] + '">' + escapeHtml(w) + "</span>").join(" ");
+      const reussi = r.score >= 70;
+      result.className = "dictee-result " + (reussi ? "pass" : "fail");
+      result.innerHTML =
+        '<div class="dictee-coach"><span class="coach-avatar-sm">🧑‍🏫</span> <strong>Zika a corrigé ta dictée</strong></div>' +
+        '<div class="score-ring ' + (reussi ? "pass" : "fail") + '"><span>' + r.score + "%</span></div>" +
+        '<p class="score-detail">✓ ' + r.correct + " mots justes sur " + r.total +
+        (r.majErr ? " · 🔠 " + r.majErr + " majuscule(s)" : "") +
+        (r.manquants ? " · ✗ " + r.manquants + " manquant(s)/faux" : "") +
+        (r.motsEnTrop ? " · ➕ " + r.motsEnTrop + " en trop" : "") + "</p>" +
+        '<p class="dictee-feedback">📝 <strong>Ponctuation :</strong> le texte original a ' + r.pRef + " signe(s) ; tu en as " + r.pUsr + ". " +
+        (Math.abs(r.pRef - r.pUsr) <= 1 ? "Très bien !" : "Surveille les points, les virgules et les majuscules des noms.") + "</p>" +
+        '<div class="dictee-correct"><span class="cours-tag">✅ Texte correct — tes mots faux/oubliés en rouge, casse en orange</span><p class="dictee-ref">' + refHtml + "</p></div>" +
+        '<div class="rev-actions"><button class="btn btn-ghost" id="dictee-retry">↺ Recommencer</button><a class="btn btn-primary" href="#/">Retour au programme</a></div>';
+      result.classList.remove("hidden");
+      const retry = document.getElementById("dictee-retry"); if (retry) retry.addEventListener("click", () => renderDictee(moduleId));
+      if (window.TG) window.TG.haptic(reussi ? "success" : "warning");
+      try { localizeUI(result); } catch (e) {}
+      result.scrollIntoView({ behavior: "smooth" });
+    });
+
+    app.innerHTML = ""; app.appendChild(frag);
+    if (window.TG) { window.TG.showBackButton(() => { if (_dicteeStop) { _dicteeStop(); _dicteeStop = null; } location.hash = "#/"; }); try { window.TG.hideMainButton && window.TG.hideMainButton(); } catch (e) {} }
+    try { localizeUI(app); } catch (e) {}
+    window.scrollTo(0, 0);
+  }
+
   function pflegeDebloque() { return examPasse("final"); }
   function renderPflege() {
     const P = window.PFLEGE;
@@ -21284,6 +21518,7 @@ window.Exercises = (function () {
     else if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);
     else if ((m = hash.match(/^#\/examen\/(a1|a2|finalb|finalc|final|b1|b2|c1|c2)/))) renderTest(m[1]);
     else if (hash.match(/^#\/examen/)) renderTest("a1");
+    else if ((m = hash.match(/^#\/dictee\/([a-z0-9-]+)/))) renderDictee(m[1]);
     else if (hash.match(/^#\/revision/)) renderRevision();
     else if (hash.match(/^#\/langue/)) renderLanguagePage();
     else if (hash.match(/^#\/stats/)) renderDashboard();

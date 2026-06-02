@@ -60,6 +60,8 @@ window.Speech = (function () {
     if (germanVoice) u.voice = germanVoice;
     u.rate = opts.rate || 0.9; // un peu plus lent pour l'apprentissage
     u.pitch = opts.pitch || 1;
+    if (opts.onend) u.onend = opts.onend;
+    if (opts.onerror) u.onerror = opts.onerror;
     window.speechSynthesis.speak(u);
     return true;
   }

@@ -1007,3 +1007,42 @@ a.pflege-exam:hover { background: #ccfbf1; }
 /* Choix de langue obligatoire : indice quand aucune langue n'est encore choisie */
 .lang-required { color: var(--blue-dark); font-weight: 700; font-size: .95rem; background: var(--blue-light); border-radius: 10px; padding: 10px 14px; }
 [data-tg-scheme="dark"] .lang-required { background: #15263f; color: #bfdbfe; }
+
+/* =====================================================================
+   DICTÉE (par module, adaptée au niveau)
+   ===================================================================== */
+.dictee-voice { display: flex; align-items: center; gap: 14px; background: var(--blue-light); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 16px; }
+.dictee-play { flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; border: none; background: var(--blue); color: #fff; font-size: 1.2rem; cursor: pointer; display: grid; place-items: center; }
+.dictee-play:hover { background: var(--blue-dark); }
+.dictee-voice-info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.dictee-voice-info strong { font-size: .95rem; }
+.dictee-status { color: var(--muted); font-size: .85rem; margin-top: 2px; }
+.dictee-timer { flex: 0 0 auto; font-variant-numeric: tabular-nums; font-weight: 700; color: var(--blue-dark); background: var(--card); border-radius: 10px; padding: 5px 10px; }
+.dictee-timer.done { color: var(--red); }
+.dictee-input { width: 100%; padding: 14px; border: 1.5px solid var(--line); border-radius: 12px; font-size: 1rem; line-height: 1.6; background: var(--card); color: var(--ink); resize: vertical; min-height: 160px; font-family: inherit; }
+.dictee-input:focus { outline: none; border-color: var(--blue); }
+.dictee-actions { margin-top: 14px; }
+.dictee-result { margin-top: 18px; padding: 18px; border-radius: 14px; border: 1px solid var(--line); background: var(--card); text-align: center; }
+.dictee-result.pass { background: linear-gradient(180deg, var(--card), var(--green-light)); }
+.dictee-result.fail { background: linear-gradient(180deg, var(--card), var(--rose)); }
+.dictee-coach { display: flex; align-items: center; gap: 8px; justify-content: center; margin-bottom: 8px; }
+.coach-avatar-sm { font-size: 1.4rem; }
+.dictee-feedback { text-align: left; font-size: .92rem; color: var(--ink); background: var(--bg); border-radius: 10px; padding: 10px 12px; margin: 10px 0; }
+.dictee-correct { text-align: left; margin-top: 10px; }
+.dictee-ref { line-height: 2.1; margin-top: 6px; }
+.dw { padding: 1px 3px; border-radius: 4px; }
+.dw-manquant { background: var(--rose); color: #991b1b; text-decoration: line-through; }
+.dw-maj { background: #fef3c7; color: #92400e; }
+[data-tg-scheme="dark"] .dw-manquant { background: #3a1518; color: #fecaca; }
+[data-tg-scheme="dark"] .dw-maj { background: #3a2e10; color: #fde68a; }
+.dictee-card { display: flex; align-items: center; gap: 14px; margin-top: 12px; padding: 14px 16px; border-radius: 14px; border: 1.5px dashed var(--blue); background: var(--blue-light); text-decoration: none; color: var(--ink); }
+a.dictee-card:hover { background: #cfe0fb; }
+.dictee-card.done { border-style: solid; background: var(--green-light); border-color: var(--green); }
+.dictee-card.locked { opacity: .6; }
+.dictee-card-ic { font-size: 1.6rem; flex: 0 0 auto; }
+.dictee-card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.dictee-card-body strong { font-size: 1rem; }
+.dictee-card-body span { color: var(--muted); font-size: .86rem; margin-top: 2px; }
+[data-tg-scheme="dark"] .dictee-voice, [data-tg-scheme="dark"] .dictee-card { background: #15263f; }
+[data-tg-scheme="dark"] a.dictee-card:hover { background: #1b3157; }
+[data-tg-scheme="dark"] .dictee-feedback { background: #0b121b; }
