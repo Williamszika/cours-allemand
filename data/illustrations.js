@@ -270,5 +270,11 @@ Object.assign(window.ILLUSTRATIONS, {
   "pb1-3": { kw: "medication,pills,nurse" },
   "pb1-4": { kw: "nurses,team,hospital" },
   "pb1-5": { kw: "family,hospital,visit" },
-  "pb1-6": { kw: "emergency,hospital" }
+  "pb1-6": { kw: "emergency,hospital" },
+  "pb2-1": { kw: "documents,writing,nurse" },
+  "pb2-2": { kw: "elderly,care,hospital" },
+  "pb2-3": { kw: "bandage,wound,care" },
+  "pb2-4": { kw: "doctor,nurse,hospital" },
+  "pb2-5": { kw: "home,care,nurse" },
+  "pb2-6": { kw: "conversation,elderly,care" }
 });

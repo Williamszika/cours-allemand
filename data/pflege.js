@@ -693,12 +693,306 @@ window.PFLEGE = {
         ] } }
     ]},
     { code: "B2", titre: "Langue professionnelle et documentation", lecons: [
-      { id: "pb2-1", dom: "grund", titreDE: "Pflegedokumentation", titre: "La documentation des soins", desc: "Rédiger le rapport et la planification de soins." },
-      { id: "pb2-2", dom: "kh", titreDE: "Krankheitsbilder I", titre: "Tableaux cliniques I", desc: "Diabète, démence, AVC : décrire et accompagner." },
-      { id: "pb2-3", dom: "grund", titreDE: "Wundversorgung und Dekubitus", titre: "Plaies et escarres", desc: "Prévention et soins des plaies." },
-      { id: "pb2-4", dom: "kh", titreDE: "Ärztliche Anordnungen umsetzen", titre: "Appliquer les prescriptions", desc: "Comprendre et exécuter les consignes du médecin." },
-      { id: "pb2-5", dom: "ambul", titreDE: "Ambulante Pflege: der Hausbesuch", titre: "Soins à domicile : la visite", desc: "Organiser et documenter une visite à domicile." },
-      { id: "pb2-6", dom: "grund", titreDE: "Schwierige Gespräche führen", titre: "Conversations difficiles", desc: "Refus de soin, agressivité, désorientation." }
+      { id: "pb2-1", dom: "grund", titreDE: "Pflegedokumentation", titre: "La documentation des soins", desc: "Rédiger le rapport et la planification de soins.",
+        vocCoursDE: [
+          "Die **Pflegedokumentation** ist Pflicht. Du **hältst** alles **fest**, was du beobachtest und tust. Ein guter **Pflegebericht** ist kurz, **objektiv** und **nachvollziehbar**.",
+          "Schreib Fakten, keine Meinungen. Nicht *Der Patient ist faul*, sondern *Der Patient lehnt die Mobilisation ab*. Notiere immer die **Maßnahme**, die Uhrzeit und die Wirkung."
+        ],
+        vocabulaire: [
+          { de: "die Pflegedokumentation", fr: "la documentation des soins", ex: "Die Pflegedokumentation ist gesetzlich vorgeschrieben." },
+          { de: "der Pflegebericht", fr: "le rapport de soins", ex: "Ich schreibe den Pflegebericht am Ende der Schicht." },
+          { de: "die Pflegeplanung", fr: "la planification des soins", ex: "In der Pflegeplanung stehen die Ziele." },
+          { de: "dokumentieren", fr: "documenter", ex: "Bitte dokumentieren Sie jede Maßnahme." },
+          { de: "der Eintrag", fr: "l'entrée / la note", ex: "Jeder Eintrag braucht Datum und Uhrzeit." },
+          { de: "objektiv", fr: "objectif", ex: "Bleiben Sie objektiv, nur Fakten." },
+          { de: "nachvollziehbar", fr: "traçable / compréhensible", ex: "Die Doku muss nachvollziehbar sein." },
+          { de: "die Maßnahme", fr: "la mesure / l'action", ex: "Welche Maßnahme haben Sie durchgeführt?" },
+          { de: "festhalten", fr: "consigner", ex: "Halten Sie die Beobachtung schriftlich fest." },
+          { de: "die Wirkung", fr: "l'effet", ex: "Notieren Sie auch die Wirkung des Medikaments." }
+        ],
+        grammaire: [
+          { titre: "Le passif pour documenter", titreDE: "Passiv im Pflegebericht",
+            regle: "Pour décrire une action faite, on utilise souvent le passif : werden + participe passé. Présent : « Die Wunde wird täglich versorgt. » Passé (Präteritum) : « Der Patient wurde gewaschen. » C'est neutre et professionnel.",
+            points: [ "« Der Verband wurde gewechselt. »", "« Die Medikamente werden um 8 Uhr gegeben. »", "« Der Patient wurde mobilisiert. »" ],
+            exemples: [
+              { de: "Der Verband wurde gewechselt.", fr: "Passiv Präteritum: *wurde* + Partizip." },
+              { de: "Die Wunde wird täglich gereinigt.", fr: "Passiv Präsens für eine Routine." },
+              { de: "Der Patient wurde um 14 Uhr mobilisiert.", fr: "dokumentierte Maßnahme mit Uhrzeit." }
+            ],
+            note: "Règle d'or : on documente des faits observables, jamais un jugement personnel." }
+        ],
+        dialogue: { titre: "Richtig dokumentieren", lieu: "Im Stationszimmer", lignes: [
+          { loc: "Une collègue expérimentée te guide", de: "Wie schreibe ich das am besten in den Bericht?", fr: "Comment écrire ça au mieux dans le rapport ?" },
+          { de: "Schreib nur, was du beobachtet hast — objektiv.", fr: "Écris seulement ce que tu as observé — de façon objective." },
+          { de: "Also nicht *Er war unfreundlich*?", fr: "Donc pas « il était désagréable » ?" },
+          { de: "Genau. Schreib: *Der Patient lehnte das Waschen ab*.", fr: "Exactement. Écris : « Le patient a refusé la toilette. »" },
+          { de: "Und die Uhrzeit dazu?", fr: "Et l'heure avec ça ?" },
+          { de: "Immer. Datum, Uhrzeit, Maßnahme und Wirkung.", fr: "Toujours. Date, heure, mesure et effet." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Was gehört in jeden Eintrag?", options: ["Eine persönliche Meinung", "Datum, Uhrzeit, Maßnahme, Wirkung", "Nur der Name"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "der Pflegebericht", droite: "le rapport de soins" }, { gauche: "objektiv", droite: "objectif" }, { gauche: "die Maßnahme", droite: "la mesure" }, { gauche: "festhalten", droite: "consigner" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète le passif (Präteritum).", texte: "Der Verband {0} gewechselt.", accepte: [["wurde"]], indice: "werden au passé → wurde + participe." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la formulation objective.", question: "Quelle phrase est correcte pour un rapport ?", options: ["Der Patient ist faul.", "Der Patient lehnt die Mobilisation ab.", "Der Patient nervt."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase au passif.", mots: ["Der", "Patient", "wurde", "um", "14", "Uhr", "mobilisiert"], correct: "Der Patient wurde um 14 Uhr mobilisiert", traduction: "Le patient a été mobilisé à 14h." },
+          { type: "production", cat: "prod", prompt: "Reformule de façon objective : « Le patient n'a pas voulu manger. »", modele: "Der Patient lehnte das Essen ab." }
+        ],
+        documentation: { task: "Rédige une entrée : pansement de la jambe gauche changé à 9h, plaie propre, pas de rougeur.", modele: "09:00 Uhr: Verband am linken Bein gewechselt, Wunde sauber, keine Rötung." },
+        rp: { scene: "Zika spielt deine erfahrene Kollegin. Sie hilft dir, einen Eintrag zu formulieren.", intro: "Formuliere objektiv und vollständig (Uhrzeit, Maßnahme, Wirkung).", fin: "Sehr gut! Dein Eintrag ist objektiv, präzise und nachvollziehbar.", tours: [
+          { de: "Der Patient wollte heute nicht aufstehen. Wie schreibe ich das?", options: [ { de: "Der Patient lehnte die Mobilisation ab.", ok: true }, { de: "Der Patient ist faul.", ok: false }, { de: "Der Patient hat schlechte Laune.", ok: false } ] },
+          { de: "Und wenn ich ihm Medikamente gegeben habe?", options: [ { de: "Medikamente um 8 Uhr verabreicht, gut vertragen.", ok: true }, { de: "Hab ihm halt was gegeben.", ok: false } ] },
+          { de: "Reicht das so?", options: [ { de: "Ja, mit Datum und Uhrzeit ist es vollständig.", ok: true }, { de: "Die Uhrzeit ist egal.", ok: false } ] }
+        ] } },
+      { id: "pb2-2", dom: "kh", titreDE: "Krankheitsbilder I", titre: "Tableaux cliniques I", desc: "Diabète, démence, AVC : décrire et accompagner.",
+        vocCoursDE: [
+          "In der Pflege triffst du oft auf typische **Krankheitsbilder**: **Diabetes** (Probleme mit dem **Blutzucker**), **Demenz** (Probleme mit dem Gedächtnis) und den **Schlaganfall** (oft mit einer **Lähmung**).",
+          "Bei Demenz ist der Patient manchmal **verwirrt** und verliert die **Orientierung**. Bleib ruhig, sprich einfach und gib ihm Sicherheit."
+        ],
+        vocabulaire: [
+          { de: "das Krankheitsbild", fr: "le tableau clinique", ex: "Demenz ist ein häufiges Krankheitsbild." },
+          { de: "der Diabetes", fr: "le diabète", ex: "Der Patient hat Diabetes Typ 2." },
+          { de: "der Blutzucker", fr: "la glycémie", ex: "Wir messen den Blutzucker vor dem Essen." },
+          { de: "die Demenz", fr: "la démence", ex: "Bei Demenz hilft eine feste Routine." },
+          { de: "der Schlaganfall", fr: "l'AVC", ex: "Nach dem Schlaganfall ist die rechte Seite gelähmt." },
+          { de: "die Lähmung", fr: "la paralysie", ex: "Die Lähmung betrifft den linken Arm." },
+          { de: "verwirrt", fr: "confus / désorienté", ex: "Die Bewohnerin ist heute sehr verwirrt." },
+          { de: "die Orientierung", fr: "l'orientation", ex: "Er verliert oft die Orientierung." },
+          { de: "das Symptom", fr: "le symptôme", ex: "Welche Symptome haben Sie bemerkt?" },
+          { de: "betreuen", fr: "prendre en charge / encadrer", ex: "Wir betreuen den Patienten rund um die Uhr." }
+        ],
+        grammaire: [
+          { titre: "Décrire avec la proposition relative", titreDE: "Der Relativsatz",
+            regle: "Pour décrire un patient avec plus de précision, on utilise une relative : der Patient, der Diabetes hat… / die Bewohnerin, die an Demenz leidet… Le pronom relatif (der, die, das) reprend le nom et le verbe va à la fin.",
+            points: [ "« der Patient, der einen Schlaganfall hatte »", "« die Frau, die verwirrt ist »", "Le verbe de la relative va à la fin." ],
+            exemples: [
+              { de: "Der Patient, der Diabetes hat, braucht eine Diät.", fr: "Relativsatz mit *der*." },
+              { de: "Die Bewohnerin, die an Demenz leidet, ist oft verwirrt.", fr: "Relativsatz mit *die*." },
+              { de: "Das ist der Mann, dem wir geholfen haben.", fr: "Relativpronomen im Dativ: *dem*." }
+            ],
+            note: "Astuce démence : phrases courtes, ton calme, et on ne contredit pas brutalement la personne." }
+        ],
+        dialogue: { titre: "Eine verwirrte Bewohnerin", lieu: "Im Pflegeheim", lignes: [
+          { loc: "Une résidente atteinte de démence est désorientée", de: "Wo bin ich hier? Ich muss nach Hause!", fr: "Où suis-je ici ? Je dois rentrer à la maison !" },
+          { de: "Sie sind hier sicher, Frau Stein. Ich bin bei Ihnen.", fr: "Vous êtes en sécurité ici, Mme Stein. Je suis avec vous." },
+          { de: "Aber meine Kinder warten doch!", fr: "Mais mes enfants attendent pourtant !" },
+          { de: "Ich verstehe. Möchten Sie sich kurz mit mir setzen?", fr: "Je comprends. Voulez-vous vous asseoir un instant avec moi ?" },
+          { de: "Ja… vielleicht ist das gut.", fr: "Oui… c'est peut-être bien." },
+          { de: "Wir trinken einen Tee, dann fühlen Sie sich besser.", fr: "On boit un thé, vous vous sentirez mieux." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Wie reagiert die Pflegekraft auf die Verwirrung?", options: ["Sie widerspricht laut.", "Sie bleibt ruhig und gibt Sicherheit.", "Sie ignoriert die Bewohnerin."], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe la maladie/le mot à sa traduction.", paires: [ { gauche: "der Diabetes", droite: "le diabète" }, { gauche: "die Demenz", droite: "la démence" }, { gauche: "der Schlaganfall", droite: "l'AVC" }, { gauche: "die Lähmung", droite: "la paralysie" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète le pronom relatif.", texte: "Der Patient, {0} Diabetes hat, braucht eine Diät.", accepte: [["der"]], indice: "Sujet masculin → der." },
+          { type: "qcm", cat: "appro", consigne: "Choisis le bon comportement face à la démence.", question: "Que faire avec une personne désorientée ?", options: ["Laut widersprechen", "Ruhig bleiben und Sicherheit geben", "Allein lassen"], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Forme la relative.", mots: ["die", "Frau", "die", "verwirrt", "ist"], correct: "die Frau die verwirrt ist", traduction: "la femme qui est désorientée" },
+          { type: "production", cat: "prod", prompt: "Rassure une résidente désorientée qui veut « rentrer à la maison ».", modele: "Sie sind hier sicher, ich bin bei Ihnen. Möchten Sie sich kurz setzen?" }
+        ],
+        documentation: { task: "Note : Mme Stein désorientée en fin d'après-midi, voulait rentrer chez elle, rassurée et calmée.", modele: "Frau Stein am späten Nachmittag desorientiert, wollte nach Hause, durch Zuwendung beruhigt." },
+        rp: { scene: "Zika spielt einen verwirrten Bewohner mit Demenz. Du beruhigst ihn.", intro: "Bleib ruhig, gib Sicherheit, widersprich nicht hart.", fin: "Sehr gut! Ruhig, empathisch und sicher — genau richtig bei Demenz.", tours: [
+          { de: "Wer sind Sie? Was machen Sie in meinem Haus?", options: [ { de: "Ich bin Ihre Pflegekraft und ich bin hier, um Ihnen zu helfen.", ok: true }, { de: "Das ist nicht Ihr Haus, seien Sie still.", ok: false }, { de: "Das wissen Sie doch!", ok: false } ] },
+          { de: "Ich will zu meiner Mutter!", options: [ { de: "Ich verstehe. Erzählen Sie mir von Ihrer Mutter.", ok: true }, { de: "Ihre Mutter lebt nicht mehr.", ok: false } ] },
+          { de: "Vielleicht setze ich mich kurz.", options: [ { de: "Gute Idee. Wir setzen uns zusammen und trinken einen Tee.", ok: true }, { de: "Endlich, bleiben Sie einfach sitzen.", ok: false } ] }
+        ] } },
+      { id: "pb2-3", dom: "grund", titreDE: "Wundversorgung und Dekubitus", titre: "Plaies et escarres", desc: "Prévention et soins des plaies.",
+        vocCoursDE: [
+          "Bei der **Wundversorgung** arbeitest du **steril**: Hände desinfizieren, alten **Verband** entfernen, **Wunde** reinigen, neuen Verband anlegen.",
+          "Ein **Dekubitus** entsteht durch zu langen Druck auf eine **Druckstelle**. Am besten **beugst** du **vor**: regelmäßig lagern und die Haut auf **Rötungen** kontrollieren."
+        ],
+        vocabulaire: [
+          { de: "die Wunde", fr: "la plaie", ex: "Die Wunde heilt gut." },
+          { de: "die Wundversorgung", fr: "le soin des plaies", ex: "Die Wundversorgung erfolgt täglich." },
+          { de: "der Dekubitus", fr: "l'escarre", ex: "Wir wollen einen Dekubitus vermeiden." },
+          { de: "der Verband", fr: "le pansement", ex: "Ich wechsle den Verband." },
+          { de: "desinfizieren", fr: "désinfecter", ex: "Zuerst desinfiziere ich die Hände." },
+          { de: "die Rötung", fr: "la rougeur", ex: "Achten Sie auf eine Rötung der Haut." },
+          { de: "die Druckstelle", fr: "le point de pression", ex: "Am Steiß ist eine Druckstelle." },
+          { de: "steril", fr: "stérile", ex: "Der Verband muss steril sein." },
+          { de: "vorbeugen", fr: "prévenir", ex: "Regelmäßiges Lagern beugt einem Dekubitus vor." },
+          { de: "die Heilung", fr: "la cicatrisation", ex: "Die Heilung dauert zwei Wochen." }
+        ],
+        grammaire: [
+          { titre: "Décrire les étapes d'un soin", titreDE: "Reihenfolge: zuerst, dann, anschließend",
+            regle: "Pour expliquer un soin étape par étape, on utilise des connecteurs : zuerst (d'abord), dann (ensuite), anschließend (après), zum Schluss (pour finir). Après ces mots en tête de phrase, le verbe reste en 2ᵉ position : « Zuerst desinfiziere ich die Hände. »",
+            points: [ "« Zuerst reinige ich die Wunde. »", "« Dann lege ich einen sterilen Verband an. »", "Inversion : connecteur + verbe + sujet." ],
+            exemples: [
+              { de: "Zuerst desinfiziere ich die Hände.", fr: "*zuerst* + Verb an Position 2." },
+              { de: "Dann reinige ich die Wunde vorsichtig.", fr: "Schritt 2 mit *dann*." },
+              { de: "Anschließend lege ich einen neuen Verband an.", fr: "Schritt 3 mit *anschließend*." }
+            ],
+            note: "Prévention du Dekubitus : changer la position régulièrement (alle 2 Stunden lagern)." }
+        ],
+        dialogue: { titre: "Der Verbandwechsel", lieu: "Am Patientenbett", lignes: [
+          { loc: "Le soignant explique le soin de plaie", de: "Ich wechsle jetzt den Verband an Ihrem Bein. Ist das in Ordnung?", fr: "Je change maintenant le pansement de votre jambe. C'est d'accord ?" },
+          { de: "Ja. Tut das weh?", fr: "Oui. Est-ce que ça fait mal ?" },
+          { de: "Nur ganz kurz. Zuerst reinige ich die Wunde.", fr: "Juste un court instant. D'abord je nettoie la plaie." },
+          { de: "Und dann?", fr: "Et ensuite ?" },
+          { de: "Dann lege ich einen sterilen Verband an.", fr: "Ensuite je pose un pansement stérile." },
+          { de: "Die Wunde sieht heute besser aus, keine Rötung.", fr: "La plaie a l'air meilleure aujourd'hui, pas de rougeur." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Wie sieht die Wunde heute aus?", options: ["Schlechter", "Besser, keine Rötung", "Stark gerötet"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "die Wunde", droite: "la plaie" }, { gauche: "der Dekubitus", droite: "l'escarre" }, { gauche: "steril", droite: "stérile" }, { gauche: "die Rötung", droite: "la rougeur" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète l'ordre des étapes.", texte: "{0} desinfiziere ich die Hände, dann reinige ich die Wunde.", accepte: [["Zuerst"]], indice: "1ʳᵉ étape = d'abord." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la bonne prévention du Dekubitus.", question: "Comment prévenir une escarre ?", options: ["Den Patienten liegen lassen", "Regelmäßig lagern und die Haut kontrollieren", "Nichts tun"], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets l'étape dans l'ordre.", mots: ["Dann", "lege", "ich", "einen", "sterilen", "Verband", "an"], correct: "Dann lege ich einen sterilen Verband an", traduction: "Ensuite je pose un pansement stérile." },
+          { type: "production", cat: "prod", prompt: "Explique en une phrase la 1ʳᵉ étape : d'abord se désinfecter les mains.", modele: "Zuerst desinfiziere ich die Hände." }
+        ],
+        documentation: { task: "Note le soin : pansement de la jambe gauche refait en stérile à 10h, plaie propre, en voie de cicatrisation, pas de rougeur.", modele: "10:00 Uhr: steriler Verbandwechsel li. Bein, Wunde sauber, Heilung im Gang, keine Rötung." },
+        rp: { scene: "Zika spielt einen Patienten beim Verbandwechsel. Du erklärst und beruhigst.", intro: "Erkläre die Schritte (zuerst, dann) und beruhige den Patienten.", fin: "Sehr gut! Klare Schritte, ruhiger Ton und saubere Wundkontrolle.", tours: [
+          { de: "Müssen Sie wirklich an die Wunde? Ich habe Angst.", options: [ { de: "Keine Sorge, ich erkläre Ihnen jeden Schritt.", ok: true }, { de: "Stellen Sie sich nicht so an.", ok: false }, { de: "Das geht Sie nichts an.", ok: false } ] },
+          { de: "Was machen Sie zuerst?", options: [ { de: "Zuerst desinfiziere ich die Hände und reinige die Wunde.", ok: true }, { de: "Das weiß ich noch nicht.", ok: false } ] },
+          { de: "Und ist die Wunde schlimm?", options: [ { de: "Nein, sie heilt gut, keine Rötung. Ich dokumentiere das.", ok: true }, { de: "Sieht furchtbar aus, ehrlich gesagt.", ok: false } ] }
+        ] } },
+      { id: "pb2-4", dom: "kh", titreDE: "Ärztliche Anordnungen umsetzen", titre: "Appliquer les prescriptions", desc: "Comprendre et exécuter les consignes du médecin.",
+        vocCoursDE: [
+          "Der Arzt gibt eine **Anordnung** (eine **Verordnung**), und du **setzt** sie **um**. Wichtig: genau zuhören, bei Unklarheit **nachfragen** und im Zweifel **Rücksprache** halten.",
+          "Wiederhole die Anordnung zur Sicherheit und **bestätige** sie. So vermeidest du Fehler bei **Dosierung** oder **Infusion**."
+        ],
+        vocabulaire: [
+          { de: "die Anordnung", fr: "la prescription / consigne", ex: "Ich setze die Anordnung des Arztes um." },
+          { de: "anordnen", fr: "prescrire / ordonner", ex: "Der Arzt ordnet eine Blutkontrolle an." },
+          { de: "umsetzen", fr: "appliquer / mettre en œuvre", ex: "Wir setzen die Verordnung sofort um." },
+          { de: "die Verordnung", fr: "l'ordonnance", ex: "Die Verordnung steht in der Akte." },
+          { de: "die Infusion", fr: "la perfusion", ex: "Die Infusion läuft über zwei Stunden." },
+          { de: "die Dosierung", fr: "le dosage", ex: "Bitte kontrollieren Sie die Dosierung." },
+          { de: "die Rücksprache", fr: "la concertation", ex: "Ich halte Rücksprache mit dem Arzt." },
+          { de: "nachfragen", fr: "demander confirmation", ex: "Bei Unklarheit fragen Sie nach." },
+          { de: "bestätigen", fr: "confirmer", ex: "Ich bestätige die Anordnung." },
+          { de: "kontrollieren", fr: "contrôler / vérifier", ex: "Wir kontrollieren die Werte regelmäßig." }
+        ],
+        grammaire: [
+          { titre: "Rapporter une consigne avec « sollen »", titreDE: "Anordnungen mit sollen / indirekte Rede",
+            regle: "Pour rapporter ce que le médecin a prescrit, on utilise sollen : « Ich soll die Infusion vorbereiten. » (Je dois préparer la perfusion.) Ou la subordonnée : « Der Arzt hat angeordnet, dass die Werte kontrolliert werden. »",
+            points: [ "« Der Patient soll nüchtern bleiben. »", "« Ich soll den Blutdruck stündlich messen. »", "« Der Arzt sagt, dass die Dosis halbiert wird. »" ],
+            exemples: [
+              { de: "Der Patient soll nüchtern bleiben.", fr: "Anordnung mit *sollen*." },
+              { de: "Ich soll die Infusion um 10 Uhr anhängen.", fr: "weitergegebene Anweisung." },
+              { de: "Der Arzt hat angeordnet, dass wir die Werte kontrollieren.", fr: "indirekte Rede mit *dass*." }
+            ],
+            note: "Sécurité : répète et confirme toujours une consigne (« Also, ich soll … »), surtout pour les doses." }
+        ],
+        dialogue: { titre: "Die Visite", lieu: "Im Patientenzimmer, bei der Arztvisite", lignes: [
+          { loc: "Le médecin donne ses consignes", de: "Frau Kraft, bitte erhöhen Sie die Infusion auf 100 ml pro Stunde.", fr: "Mme Kraft, augmentez la perfusion à 100 ml par heure." },
+          { de: "Also, ich soll die Infusion auf 100 ml pro Stunde stellen?", fr: "Donc, je dois régler la perfusion à 100 ml par heure ?" },
+          { de: "Genau. Und kontrollieren Sie den Blutdruck stündlich.", fr: "Exactement. Et contrôlez la tension toutes les heures." },
+          { de: "In Ordnung. Soll der Patient nüchtern bleiben?", fr: "D'accord. Le patient doit-il rester à jeun ?" },
+          { de: "Ja, bis morgen früh.", fr: "Oui, jusqu'à demain matin." },
+          { de: "Gut, ich setze das um und dokumentiere alles.", fr: "Bien, j'applique ça et je documente tout." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Auf wie viel soll die Infusion gestellt werden?", options: ["50 ml/h", "100 ml/h", "200 ml/h"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "die Anordnung", droite: "la consigne" }, { gauche: "die Infusion", droite: "la perfusion" }, { gauche: "die Dosierung", droite: "le dosage" }, { gauche: "die Rücksprache", droite: "la concertation" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète avec le modal des consignes.", texte: "Der Patient {0} nüchtern bleiben.", accepte: [["soll"]], indice: "modal sollen (3ᵉ pers.)." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la bonne réaction de sécurité.", question: "Tu n'es pas sûr d'une consigne. Que fais-tu ?", options: ["Ich rate einfach.", "Ich frage beim Arzt nach.", "Ich mache es später."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase dans l'ordre.", mots: ["Ich", "soll", "den", "Blutdruck", "stündlich", "messen"], correct: "Ich soll den Blutdruck stündlich messen", traduction: "Je dois mesurer la tension toutes les heures." },
+          { type: "production", cat: "prod", prompt: "Reformule et confirme la consigne : régler la perfusion à 100 ml/h.", modele: "Also, ich soll die Infusion auf 100 ml pro Stunde stellen." }
+        ],
+        documentation: { task: "Note l'exécution : perfusion réglée à 100 ml/h selon prescription, tension contrôlée toutes les heures, patient à jeun.", modele: "Laut Anordnung Infusion auf 100 ml/h gestellt, RR stündlich kontrolliert, Patient nüchtern." },
+        rp: { scene: "Zika spielt den Arzt bei der Visite. Du nimmst die Anordnungen entgegen.", intro: "Hör genau zu, wiederhole zur Sicherheit, frag bei Unklarheit nach.", fin: "Ausgezeichnet! Du hast die Anordnung bestätigt und sicher umgesetzt.", tours: [
+          { de: "Bitte geben Sie Herrn Roth zweimal täglich das neue Medikament.", options: [ { de: "Also zweimal täglich — morgens und abends?", ok: true }, { de: "Ok, irgendwann halt.", ok: false }, { de: "Das mache ich nicht.", ok: false } ] },
+          { de: "Genau. Und kontrollieren Sie den Blutzucker.", options: [ { de: "Wie oft soll ich den Blutzucker kontrollieren?", ok: true }, { de: "Blutzucker ist nicht so wichtig.", ok: false } ] },
+          { de: "Dreimal täglich, vor dem Essen.", options: [ { de: "Verstanden, ich setze das um und dokumentiere es.", ok: true }, { de: "Ich schreibe das lieber nicht auf.", ok: false } ] }
+        ] } },
+      { id: "pb2-5", dom: "ambul", titreDE: "Ambulante Pflege: der Hausbesuch", titre: "Soins à domicile : la visite", desc: "Organiser et documenter une visite à domicile.",
+        vocCoursDE: [
+          "In der **ambulanten Pflege** fährst du eine **Tour** und machst **Hausbesuche**. Du kommst zum Patienten nach Hause und übernimmst dort die **Versorgung**.",
+          "Sei **pünktlich**, sei freundlich und **organisiere** dich gut: Schlüssel, Material und Zeit. Nach jedem Besuch schreibst du einen kurzen **Bericht**."
+        ],
+        vocabulaire: [
+          { de: "die ambulante Pflege", fr: "les soins à domicile", ex: "Sie arbeitet in der ambulanten Pflege." },
+          { de: "der Hausbesuch", fr: "la visite à domicile", ex: "Der erste Hausbesuch ist um acht Uhr." },
+          { de: "die Tour", fr: "la tournée", ex: "Meine Tour hat heute zehn Patienten." },
+          { de: "der Pflegedienst", fr: "le service de soins", ex: "Der Pflegedienst kommt zweimal am Tag." },
+          { de: "die Versorgung", fr: "la prise en charge", ex: "Die Versorgung zu Hause klappt gut." },
+          { de: "organisieren", fr: "organiser", ex: "Ich organisiere meine Tour am Morgen." },
+          { de: "pünktlich", fr: "ponctuel", ex: "Bitte seien Sie pünktlich beim Patienten." },
+          { de: "der Schlüssel", fr: "la clé", ex: "Ich habe den Schlüssel für die Wohnung." },
+          { de: "allein", fr: "seul", ex: "Die Patientin lebt allein." },
+          { de: "der Bericht", fr: "le compte-rendu", ex: "Nach dem Besuch schreibe ich einen Bericht." }
+        ],
+        grammaire: [
+          { titre: "Exprimer la succession et l'horaire de la tournée", titreDE: "danach, später, gegen + Uhrzeit",
+            regle: "Pour organiser la journée à domicile, on relie les visites : zuerst, danach (après ça), später (plus tard), zum Schluss. Pour une heure approximative : gegen 9 Uhr (vers 9h).",
+            points: [ "« Zuerst fahre ich zu Frau Adam. »", "« Danach besuche ich Herrn Veit. »", "« Gegen Mittag bin ich beim letzten Patienten. »" ],
+            exemples: [
+              { de: "Zuerst fahre ich zu Frau Adam.", fr: "Beginn der Tour mit *zuerst*." },
+              { de: "Danach besuche ich Herrn Veit.", fr: "nächster Besuch mit *danach*." },
+              { de: "Gegen zwölf Uhr ist die Tour zu Ende.", fr: "ungefähre Zeit mit *gegen*." }
+            ],
+            note: "À domicile, tu es souvent seul(e) : note tout de suite, sinon tu oublies des détails importants." }
+        ],
+        dialogue: { titre: "Beim Patienten zu Hause", lieu: "In der Wohnung von Frau Adam", lignes: [
+          { loc: "Le soignant arrive pour la visite", de: "Guten Morgen, Frau Adam. Der Pflegedienst ist da.", fr: "Bonjour Mme Adam. Le service de soins est là." },
+          { de: "Schön, dass Sie pünktlich sind. Kommen Sie rein.", fr: "C'est bien que vous soyez ponctuel. Entrez." },
+          { de: "Wie geht es Ihnen heute? Haben Sie gut geschlafen?", fr: "Comment allez-vous aujourd'hui ? Avez-vous bien dormi ?" },
+          { de: "Ganz gut. Mein Bein tut aber noch weh.", fr: "Plutôt bien. Mais ma jambe me fait encore mal." },
+          { de: "Ich schaue mir das an und mache den Verband neu.", fr: "Je regarde ça et je refais le pansement." },
+          { de: "Danach fahre ich zum nächsten Patienten.", fr: "Ensuite je vais chez le patient suivant." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Was macht die Pflegekraft bei Frau Adam?", options: ["Nur reden", "Das Bein anschauen und den Verband wechseln", "Einkaufen"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "der Hausbesuch", droite: "la visite à domicile" }, { gauche: "die Tour", droite: "la tournée" }, { gauche: "die Versorgung", droite: "la prise en charge" }, { gauche: "pünktlich", droite: "ponctuel" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète le connecteur (visite suivante).", texte: "Ich versorge Frau Adam, {0} fahre ich zu Herrn Veit.", accepte: [["danach", "dann"]], indice: "« après ça »." },
+          { type: "qcm", cat: "appro", consigne: "Choisis l'heure approximative.", question: "Comment dire « vers midi » ?", options: ["um Mittag genau", "gegen Mittag", "Mittag schon"], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase dans l'ordre.", mots: ["Danach", "fahre", "ich", "zum", "nächsten", "Patienten"], correct: "Danach fahre ich zum nächsten Patienten", traduction: "Ensuite je vais chez le patient suivant." },
+          { type: "production", cat: "prod", prompt: "Annonce ton arrivée et demande comment la personne va.", modele: "Guten Morgen, der Pflegedienst ist da. Wie geht es Ihnen heute?" }
+        ],
+        documentation: { task: "Rédige le compte-rendu de visite : Mme Adam, pansement de la jambe refait, douleur légère, état stable, prochaine visite demain.", modele: "Hausbesuch Frau Adam: Verband am Bein erneuert, leichte Schmerzen, Zustand stabil, nächster Besuch morgen." },
+        rp: { scene: "Zika spielt eine Patientin, die allein zu Hause lebt. Du machst den Hausbesuch.", intro: "Begrüße freundlich, frag nach dem Befinden, kündige die Versorgung an.", fin: "Sehr gut! Freundlicher Hausbesuch, klare Versorgung und ein sauberer Bericht.", tours: [
+          { de: "Oh, schon da? Ich habe Sie gar nicht erwartet.", options: [ { de: "Guten Morgen, der Pflegedienst ist pünktlich da. Darf ich reinkommen?", ok: true }, { de: "Ja, beeilen Sie sich, ich habe wenig Zeit.", ok: false }, { de: "Sie haben das doch gewusst.", ok: false } ] },
+          { de: "Mein Bein tut weh.", options: [ { de: "Ich schaue es mir an und wechsle den Verband.", ok: true }, { de: "Das wird schon wieder.", ok: false } ] },
+          { de: "Kommen Sie morgen wieder?", options: [ { de: "Ja, der nächste Besuch ist morgen früh. Ich notiere alles.", ok: true }, { de: "Vielleicht, mal sehen.", ok: false } ] }
+        ] } },
+      { id: "pb2-6", dom: "grund", titreDE: "Schwierige Gespräche führen", titre: "Conversations difficiles", desc: "Refus de soin, agressivité, désorientation.",
+        vocCoursDE: [
+          "Manchmal **lehnt** ein Patient die Pflege **ab** oder reagiert mit **Aggression**. Dein Ziel ist es, die Situation zu **deeskalieren** — ruhig bleiben und **einfühlsam** sprechen.",
+          "Zeig **Verständnis**, **respektiere** seine **Grenze** und biete eine Wahl an. Mit **Geduld** entsteht wieder Vertrauen."
+        ],
+        vocabulaire: [
+          { de: "ablehnen", fr: "refuser", ex: "Der Patient lehnt das Essen ab." },
+          { de: "die Verweigerung", fr: "le refus", ex: "Die Verweigerung der Pflege ist sein Recht." },
+          { de: "die Aggression", fr: "l'agressivité", ex: "Bei Aggression bleibe ich ruhig." },
+          { de: "deeskalieren", fr: "désamorcer / apaiser", ex: "Ich versuche, die Situation zu deeskalieren." },
+          { de: "beruhigen", fr: "calmer", ex: "Ruhige Worte beruhigen den Bewohner." },
+          { de: "die Geduld", fr: "la patience", ex: "Schwierige Gespräche brauchen Geduld." },
+          { de: "respektieren", fr: "respecter", ex: "Ich respektiere Ihre Entscheidung." },
+          { de: "die Grenze", fr: "la limite", ex: "Ich achte seine Grenze." },
+          { de: "einfühlsam", fr: "empathique", ex: "Sprechen Sie einfühlsam mit ihm." },
+          { de: "akzeptieren", fr: "accepter", ex: "Manchmal muss man ein Nein akzeptieren." }
+        ],
+        grammaire: [
+          { titre: "Désamorcer avec les messages en « je » et le Konjunktiv", titreDE: "Ich-Botschaften und höfliche Vorschläge",
+            regle: "Pour calmer un conflit, parle de toi (Ich-Botschaft) plutôt que d'accuser : « Ich sehe, dass Sie wütend sind. » Propose en douceur avec le Konjunktiv : « Wir könnten es später versuchen. »",
+            points: [ "« Ich verstehe, dass Sie das nicht möchten. »", "« Wir könnten in 10 Minuten noch einmal schauen. »", "« Ich respektiere Ihre Entscheidung. »" ],
+            exemples: [
+              { de: "Ich sehe, dass Sie sich ärgern.", fr: "Ich-Botschaft statt Vorwurf." },
+              { de: "Wir könnten es später noch einmal versuchen.", fr: "höflicher Vorschlag mit *könnten*." },
+              { de: "Ich respektiere Ihre Entscheidung.", fr: "Grenze und Respekt zeigen." }
+            ],
+            note: "Désescalade : ne pas hausser le ton, garder ses distances, offrir un choix et revenir plus tard." }
+        ],
+        dialogue: { titre: "Der Patient lehnt ab", lieu: "Im Patientenzimmer", lignes: [
+          { loc: "Un patient refuse la toilette, sur un ton agacé", de: "Nein! Ich will jetzt nicht gewaschen werden. Lassen Sie mich!", fr: "Non ! Je ne veux pas être lavé maintenant. Laissez-moi !" },
+          { de: "In Ordnung, ich dränge Sie nicht. Ich sehe, dass Sie verärgert sind.", fr: "D'accord, je ne vous force pas. Je vois que vous êtes contrarié." },
+          { de: "Ja! Immer dieser Stress am Morgen.", fr: "Oui ! Toujours ce stress le matin." },
+          { de: "Das verstehe ich. Wir könnten es in einer halben Stunde versuchen.", fr: "Je comprends. On pourrait essayer dans une demi-heure." },
+          { de: "Na gut, später ist besser.", fr: "Bon d'accord, plus tard c'est mieux." },
+          { de: "Danke. Ich komme dann ruhig wieder.", fr: "Merci. Je reviendrai tranquillement à ce moment-là." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Wie reagiert die Pflegekraft auf das Nein?", options: ["Sie wäscht ihn trotzdem.", "Sie akzeptiert und schlägt einen späteren Zeitpunkt vor.", "Sie wird laut."], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "ablehnen", droite: "refuser" }, { gauche: "deeskalieren", droite: "apaiser" }, { gauche: "die Geduld", droite: "la patience" }, { gauche: "einfühlsam", droite: "empathique" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète le message en « je » (Ich-Botschaft).", texte: "{0} sehe, dass Sie verärgert sind.", accepte: [["Ich"]], indice: "Message en « je »." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la meilleure réaction de désescalade.", question: "Un résident refuse, agacé. Que dis-tu ?", options: ["Jetzt reichts, halten Sie still!", "Ich verstehe, wir versuchen es später.", "Sie müssen das jetzt machen!"], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la proposition polie dans l'ordre.", mots: ["Wir", "könnten", "es", "später", "versuchen"], correct: "Wir könnten es später versuchen", traduction: "Nous pourrions essayer plus tard." },
+          { type: "production", cat: "prod", prompt: "Désamorce : montre que tu comprends sa colère et propose de revenir plus tard.", modele: "Ich verstehe, dass Sie verärgert sind. Wir könnten es später noch einmal versuchen." }
+        ],
+        documentation: { task: "Note l'événement : M. Roth a refusé la toilette le matin, contrarié, soin reporté d'un commun accord à plus tard, réalisé sans problème.", modele: "Herr Roth lehnte morgens die Körperpflege ab, verärgert; Pflege einvernehmlich verschoben, später problemlos durchgeführt." },
+        rp: { scene: "Zika spielt einen verärgerten Patienten, der die Pflege ablehnt. Du deeskalierst.", intro: "Bleib ruhig, zeig Verständnis, respektiere das Nein und biete eine Alternative an.", fin: "Sehr gut! Ruhig, respektvoll und lösungsorientiert — so deeskaliert man richtig.", tours: [
+          { de: "Lassen Sie mich in Ruhe! Ich will das nicht!", options: [ { de: "In Ordnung, ich dränge Sie nicht. Ich sehe, dass Sie verärgert sind.", ok: true }, { de: "Sie müssen das jetzt machen!", ok: false }, { de: "Stellen Sie sich nicht so an.", ok: false } ] },
+          { de: "Immer diese Hektik am Morgen!", options: [ { de: "Das verstehe ich. Wir könnten es in einer halben Stunde versuchen.", ok: true }, { de: "Dafür habe ich keine Zeit.", ok: false } ] },
+          { de: "Also gut, später vielleicht.", options: [ { de: "Danke. Ich respektiere das und komme später ruhig wieder.", ok: true }, { de: "Endlich sind Sie vernünftig.", ok: false } ] }
+        ] } }
     ]},
     { code: "C1", titre: "Soins complexes et responsabilité", lecons: [
       { id: "pc1-1", dom: "kh", titreDE: "Krankheitsbilder II", titre: "Tableaux cliniques II", desc: "Soins palliatifs, oncologie, BPCO." },
