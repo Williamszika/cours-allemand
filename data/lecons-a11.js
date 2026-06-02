@@ -16,6 +16,66 @@ window.MODULE_A11 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l01",
+      rp: {
+        "scene": "Erstes Treffen — Première rencontre",
+        "intro": "Tu rencontres Zika pour la première fois. Réponds-lui en allemand.",
+        "tours": [
+          {
+            "de": "Hallo! Wie heißt du?",
+            "fr": "Salut ! Comment t'appelles-tu ?",
+            "bravo": "Enchanté !",
+            "options": [
+              {
+                "de": "Ich heiße Sofia.",
+                "ok": true
+              },
+              {
+                "de": "Mir geht es gut.",
+                "hint": "Zika demande ton NOM, pas comment tu vas. Commence par « Ich heiße… »."
+              },
+              {
+                "de": "Ich komme aus Spanien.",
+                "hint": "Là tu dis ton pays. Zika veut ton nom : « Ich heiße… »."
+              }
+            ]
+          },
+          {
+            "de": "Woher kommst du?",
+            "fr": "D'où viens-tu ?",
+            "bravo": "Super !",
+            "options": [
+              {
+                "de": "Ich komme aus Italien.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin Lehrerin.",
+                "hint": "Ça, c'est ta profession. Pour l'origine : « Ich komme aus… »."
+              },
+              {
+                "de": "Ich wohne hier.",
+                "hint": "« wohnen » = habiter. Pour l'origine, utilise « kommen aus »."
+              }
+            ]
+          },
+          {
+            "de": "Und wo wohnst du jetzt?",
+            "fr": "Et où habites-tu maintenant ?",
+            "bravo": "Parfait !",
+            "options": [
+              {
+                "de": "Ich wohne in Berlin.",
+                "ok": true
+              },
+              {
+                "de": "Ich komme aus Berlin.",
+                "hint": "Ici il faut « wohnen in » (habiter à), pas « kommen aus »."
+              }
+            ]
+          }
+        ],
+        "fin": "Bravo ! Tu sais te présenter en allemand."
+      },
       vocCours: [
         "Ce premier champ lexical réunit les **formules de salutation** et les mots pour **se présenter** — la base de tout premier contact. Distingue les salutations selon le **moment** : *Guten Morgen* (le matin), *Guten Tag* (la journée), *Guten Abend* (le soir), et le passe-partout familier *Hallo*.",
         "Fais surtout attention au **registre**. *Tschüss* et *Hallo* sont **familiers** : on les emploie avec des amis, des collègues proches, des jeunes. *Auf Wiedersehen* et *Guten Tag* sont **polis** et conviennent partout (commerce, administration, inconnus). En cas de doute, choisis la forme polie : elle est toujours correcte.",
@@ -307,6 +367,62 @@ window.MODULE_A11 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l03",
+      rp: {
+        "scene": "Im Café — Au café",
+        "intro": "Tu discutes de langues et de pays avec Zika.",
+        "tours": [
+          {
+            "de": "Welche Sprachen sprichst du?",
+            "fr": "Quelles langues parles-tu ?",
+            "bravo": "Super, deux langues !",
+            "options": [
+              {
+                "de": "Ich spreche Französisch und Englisch.",
+                "ok": true
+              },
+              {
+                "de": "Ich wohne in Frankreich.",
+                "hint": "Là tu dis où tu habites. Pour les langues : « Ich spreche… »."
+              },
+              {
+                "de": "Ich heiße Paul.",
+                "hint": "Zika demande tes LANGUES. Utilise « Ich spreche… »."
+              }
+            ]
+          },
+          {
+            "de": "Sprichst du auch Deutsch?",
+            "fr": "Parles-tu aussi allemand ?",
+            "bravo": "Très bien, tu apprends justement !",
+            "options": [
+              {
+                "de": "Ja, ein bisschen.",
+                "ok": true
+              },
+              {
+                "de": "Nein, danke.",
+                "hint": "« Nein, danke » sert à refuser. Ici réponds plutôt « Ja, ein bisschen » (oui, un peu)."
+              }
+            ]
+          },
+          {
+            "de": "Woher kommst du?",
+            "fr": "D'où viens-tu ?",
+            "bravo": "La Suisse, génial !",
+            "options": [
+              {
+                "de": "Ich komme aus der Schweiz.",
+                "ok": true
+              },
+              {
+                "de": "Ich gehe nach Hause.",
+                "hint": "Pour l'origine : « Ich komme aus… »."
+              }
+            ]
+          }
+        ],
+        "fin": "Super ! Tu parles de langues et d'origines."
+      },
       vocCours: [
         "Ce champ lexical relie **pays**, **nationalités** et **langues**. Bonne nouvelle : le nom de beaucoup de langues est identique à l'adjectif de nationalité au neutre : *Deutsch*, *Französisch*, *Englisch*, *Spanisch*.",
         "Maîtrise deux questions essentielles : **Woher?** (d'où ?) appelle *aus* (« *Ich komme **aus** Italien* »), tandis que **Wo?** (où ?) appelle *in* (« *Ich wohne **in** Italien* »). C'est la base pour parler de ses origines et de son lieu de vie.",
@@ -575,6 +691,62 @@ window.MODULE_A11 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l05",
+      rp: {
+        "scene": "Im Büro — Au bureau",
+        "intro": "Zika te pose des questions sur ton travail.",
+        "tours": [
+          {
+            "de": "Was sind Sie von Beruf?",
+            "fr": "Quelle est votre profession ?",
+            "bravo": "Intéressant !",
+            "options": [
+              {
+                "de": "Ich bin Ingenieur.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin ein Ingenieur.",
+                "hint": "Pour un métier, PAS d'article : « Ich bin Ingenieur » (sans « ein »)."
+              },
+              {
+                "de": "Ich habe Hunger.",
+                "hint": "Ça veut dire « j'ai faim » ! Pour le métier : « Ich bin… »."
+              }
+            ]
+          },
+          {
+            "de": "Wo arbeiten Sie?",
+            "fr": "Où travaillez-vous ?",
+            "bravo": "Très bien !",
+            "options": [
+              {
+                "de": "Ich arbeite bei Siemens.",
+                "ok": true
+              },
+              {
+                "de": "Ich arbeite gut.",
+                "hint": "Zika demande OÙ. Utilise « Ich arbeite bei… » (chez) ou « in… »."
+              }
+            ]
+          },
+          {
+            "de": "Macht Ihnen die Arbeit Spaß?",
+            "fr": "Votre travail vous plaît-il ?",
+            "bravo": "Ça fait plaisir !",
+            "options": [
+              {
+                "de": "Ja, sehr!",
+                "ok": true
+              },
+              {
+                "de": "Ich bin müde.",
+                "hint": "Réponds à la question : « Ja, sehr! » (oui, beaucoup) ou « Nein, nicht so. »"
+              }
+            ]
+          }
+        ],
+        "fin": "Bravo ! Tu sais parler de ton travail."
+      },
       vocCours: [
         "Ce champ lexical porte sur le **travail** et les **professions**. Point important : les métiers ont une forme masculine et une forme féminine, cette dernière en ajoutant le plus souvent **-in** : *der Lehrer → die Lehrer**in***, *der Arzt → die Ärzt**in***.",
         "Pour dire son métier, l'allemand n'utilise **pas d'article** : « *Ich bin Lehrer* » (et non « ~~ein Lehrer~~ »). C'est une nette différence avec le français. La question est « *Was sind Sie von Beruf?* ».",
@@ -833,6 +1005,58 @@ window.MODULE_A11 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l07",
+      rp: {
+        "scene": "An der Rezeption — À la réception de l'hôtel",
+        "intro": "Tu arrives à l'hôtel. Zika est le réceptionniste.",
+        "tours": [
+          {
+            "de": "Guten Abend! Haben Sie eine Reservierung?",
+            "fr": "Bonsoir ! Avez-vous une réservation ?",
+            "bravo": "Un instant, s'il vous plaît…",
+            "options": [
+              {
+                "de": "Ja, auf den Namen Klein.",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich heiße gut.",
+                "hint": "« Ich heiße gut » n'a pas de sens. Réponds « Ja, auf den Namen… » (au nom de…)."
+              }
+            ]
+          },
+          {
+            "de": "Möchten Sie ein Einzelzimmer oder ein Doppelzimmer?",
+            "fr": "Voulez-vous une chambre simple ou double ?",
+            "bravo": "Très bien, une chambre simple.",
+            "options": [
+              {
+                "de": "Ein Einzelzimmer, bitte.",
+                "ok": true
+              },
+              {
+                "de": "Ich möchte einen Kaffee.",
+                "hint": "Zika parle de la CHAMBRE. Choisis « ein Einzelzimmer » ou « ein Doppelzimmer »."
+              }
+            ]
+          },
+          {
+            "de": "Hier ist Ihr Schlüssel. Gute Nacht!",
+            "fr": "Voici votre clé. Bonne nuit !",
+            "bravo": "Dormez bien !",
+            "options": [
+              {
+                "de": "Vielen Dank! Gute Nacht!",
+                "ok": true
+              },
+              {
+                "de": "Auf Wiedersehen, guten Morgen!",
+                "hint": "C'est le soir : réponds « Gute Nacht! », pas « guten Morgen »."
+              }
+            ]
+          }
+        ],
+        "fin": "Parfait ! Tu sais arriver à l'hôtel."
+      },
       vocCours: [
         "Ce champ lexical est **fonctionnel** : il te prépare à **réserver et séjourner à l'hôtel**. Le mot central est *das Zimmer* (la chambre), décliné en *das Einzelzimmer* (chambre simple) et *das Doppelzimmer* (chambre double) — de beaux **noms composés** où le dernier élément (*Zimmer*) donne le sens et le genre.",
         "Deux outils de langue dominent. D'abord *es gibt* (il y a) + accusatif, pour dire ce que propose l'hôtel : « *Es gibt **einen** Pool* ». Ensuite le verbe poli *möchten* (j'aimerais) : « *Ich **möchte** ein Zimmer reservieren* ».",
@@ -1098,6 +1322,62 @@ window.MODULE_A11 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l09",
+      rp: {
+        "scene": "Im Restaurant — Au restaurant",
+        "intro": "Tu commandes au restaurant. Zika est le serveur.",
+        "tours": [
+          {
+            "de": "Guten Tag! Was möchten Sie trinken?",
+            "fr": "Bonjour ! Que voulez-vous boire ?",
+            "bravo": "Avec plaisir !",
+            "options": [
+              {
+                "de": "Ein Wasser, bitte.",
+                "ok": true
+              },
+              {
+                "de": "Ich heiße Tom.",
+                "hint": "Zika demande ta BOISSON : « Ein Wasser / einen Kaffee, bitte »."
+              },
+              {
+                "de": "Es ist kalt.",
+                "hint": "Réponds sur la boisson : « Ein Wasser, bitte »."
+              }
+            ]
+          },
+          {
+            "de": "Und was möchten Sie essen?",
+            "fr": "Et que voulez-vous manger ?",
+            "bravo": "Bon choix !",
+            "options": [
+              {
+                "de": "Ich nehme eine Suppe.",
+                "ok": true
+              },
+              {
+                "de": "Ich trinke einen Saft.",
+                "hint": "Là c'est une boisson. Pour manger : « Ich nehme… » + un plat (eine Suppe, einen Salat)."
+              }
+            ]
+          },
+          {
+            "de": "Möchten Sie zahlen?",
+            "fr": "Voulez-vous payer ?",
+            "bravo": "Tout de suite !",
+            "options": [
+              {
+                "de": "Ja, die Rechnung, bitte.",
+                "ok": true
+              },
+              {
+                "de": "Ja, die Speisekarte, bitte.",
+                "hint": "« Speisekarte » = la carte. Pour payer, demande « die Rechnung » (l'addition)."
+              }
+            ]
+          }
+        ],
+        "fin": "Bravo ! Tu sais commander au restaurant."
+      },
       vocCours: [
         "Ce champ lexical, très utile, couvre la **nourriture**, les **boissons** et la **commande au restaurant**. Tu apprendras les repas (*das Frühstück*, *das Mittagessen* déjeuner, *das Abendessen* dîner) et des aliments à mémoriser **avec leur article**, car le genre est imprévisible : *der Kaffee*, *das Brot*, *die Suppe*.",
         "Deux mécanismes sont centraux : l'**accusatif** après *nehmen* (prendre), *möchten* et *bestellen* (commander) — « *Ich nehme **einen** Salat* » — et la **négation** *kein* pour « pas de » : « *Ich trinke **keinen** Alkohol* ».",

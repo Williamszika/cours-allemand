@@ -885,3 +885,28 @@ html.can-install .install-btn { display: inline-flex; }
 .onb-lang { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--card, #fff); border: 1px solid var(--border, #e2e8f0); border-radius: 12px; padding: 8px 14px; margin-bottom: 14px; font-size: 14px; }
 .lang-intro { text-align: center; padding-bottom: 4px; }
 .lang-intro h1 { margin: 6px 0 0; }
+
+/* ===================== Jeu de rôle (tuteur ↔ utilisateur) ===================== */
+.rp-scene { font-weight: 700; color: var(--blue, #2563eb); margin: 2px 0 6px; }
+.rp-intro { font-size: 14px; color: var(--muted, #64748b); margin: 0 0 10px; }
+.rp-conv { display: flex; flex-direction: column; gap: 10px; }
+.rp-row { display: flex; gap: 8px; align-items: flex-end; max-width: 94%; }
+.rp-zika { align-self: flex-start; }
+.rp-user { align-self: flex-end; flex-direction: row-reverse; }
+.rp-av { font-size: 22px; line-height: 1; flex: 0 0 auto; }
+.rp-bubble { background: var(--card, #fff); border: 1px solid var(--border, #e2e8f0); border-radius: 14px; padding: 9px 13px; font-size: 15px; line-height: 1.5; }
+.rp-zika .rp-bubble { border-bottom-left-radius: 4px; }
+.rp-user .rp-bubble { background: var(--blue, #2563eb); color: #fff; border-color: transparent; border-bottom-right-radius: 4px; }
+.rp-de { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.rp-fr { font-size: 13px; color: var(--muted, #64748b); margin-top: 2px; }
+.rp-bubble.rp-good { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
+.rp-bubble.rp-bad { background: #fff1f3; border-color: #fecdd3; color: #9f1239; }
+[data-tg-scheme="dark"] .rp-bubble.rp-good { background: #0f2a1d; color: #a7f3d0; }
+[data-tg-scheme="dark"] .rp-bubble.rp-bad { background: #2a1218; color: #fecdd3; }
+[data-tg-scheme="dark"] .rp-bubble { background: #16202c; }
+.rp-options { display: flex; flex-direction: column; gap: 8px; margin: 6px 0 2px; }
+.rp-opt { text-align: left; padding: 11px 14px; border: 1.5px solid var(--border, #e2e8f0); border-radius: 12px; background: var(--card, #fff); color: inherit; font-size: 15px; cursor: pointer; transition: border-color .15s, transform .08s; }
+.rp-opt:hover { border-color: var(--blue, #2563eb); }
+.rp-opt:active { transform: scale(.99); }
+[dir="rtl"] .rp-user { flex-direction: row; }
+[dir="rtl"] .rp-opt { text-align: right; }

@@ -401,6 +401,58 @@ window.MODULE_A12 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l13",
+      rp: {
+        "scene": "Am Telefon — Au téléphone",
+        "intro": "Tu appelles pour un rendez-vous. Zika répond.",
+        "tours": [
+          {
+            "de": "Praxis Dr. Weber, guten Tag!",
+            "fr": "Cabinet du Dr Weber, bonjour !",
+            "bravo": "Bien sûr !",
+            "options": [
+              {
+                "de": "Guten Tag, ich hätte gern einen Termin.",
+                "ok": true
+              },
+              {
+                "de": "Guten Tag, einen Kaffee bitte.",
+                "hint": "Tu appelles un cabinet médical : demande un rendez-vous, « Ich hätte gern einen Termin »."
+              }
+            ]
+          },
+          {
+            "de": "Wann möchten Sie kommen?",
+            "fr": "Quand voulez-vous venir ?",
+            "bravo": "Lundi, ça convient.",
+            "options": [
+              {
+                "de": "Am Montag um zehn Uhr.",
+                "ok": true
+              },
+              {
+                "de": "In Berlin.",
+                "hint": "Zika demande QUAND, pas où. Réponds « Am Montag um … Uhr »."
+              }
+            ]
+          },
+          {
+            "de": "Gut, bis Montag!",
+            "fr": "Bien, à lundi !",
+            "bravo": "Bonne journée !",
+            "options": [
+              {
+                "de": "Vielen Dank, auf Wiederhören!",
+                "ok": true
+              },
+              {
+                "de": "Auf Wiedersehen!",
+                "hint": "Au téléphone, on dit « auf Wiederhören » (pas « Wiedersehen »)."
+              }
+            ]
+          }
+        ],
+        "fin": "Parfait ! Tu sais prendre un rendez-vous."
+      },
       vocCours: [
         "Ce champ lexical te prépare à **prendre rendez-vous** par téléphone. Vocabulaire central : *der Termin* (le rendez-vous), *die Sprechstunde* (heures de consultation), *frei sein* (être libre), *passen* (convenir : « *Passt Ihnen Montag?* »).",
         "Le thème met en jeu les **prépositions de temps** (*am* + jour, *um* + heure : « *am Montag um 10 Uhr* ») et la **demande polie** avec *können* : « ***Könnte** ich einen Termin haben?* ».",
@@ -793,6 +845,58 @@ window.MODULE_A12 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l16",
+      rp: {
+        "scene": "Am Bahnhof — À la gare",
+        "intro": "Tu achètes un billet de train. Zika est au guichet.",
+        "tours": [
+          {
+            "de": "Guten Tag! Wohin möchten Sie fahren?",
+            "fr": "Bonjour ! Où voulez-vous aller ?",
+            "bravo": "Très bien.",
+            "options": [
+              {
+                "de": "Nach München, bitte.",
+                "ok": true
+              },
+              {
+                "de": "Mit dem Bus.",
+                "hint": "Zika demande la DESTINATION : « Nach… » + une ville (nach München)."
+              }
+            ]
+          },
+          {
+            "de": "Einfach oder hin und zurück?",
+            "fr": "Aller simple ou aller-retour ?",
+            "bravo": "Parfait.",
+            "options": [
+              {
+                "de": "Hin und zurück, bitte.",
+                "ok": true
+              },
+              {
+                "de": "Um zehn Uhr.",
+                "hint": "Ça, c'est une heure. Réponds « einfach » ou « hin und zurück »."
+              }
+            ]
+          },
+          {
+            "de": "Gleis 3, in zehn Minuten. Gute Reise!",
+            "fr": "Voie 3, dans dix minutes. Bon voyage !",
+            "bravo": "Bon voyage !",
+            "options": [
+              {
+                "de": "Danke! Auf Wiedersehen!",
+                "ok": true
+              },
+              {
+                "de": "Guten Appetit!",
+                "hint": "« Guten Appetit » = bon appétit. Ici dis « Danke! Auf Wiedersehen! »."
+              }
+            ]
+          }
+        ],
+        "fin": "Bravo ! Tu sais acheter un billet."
+      },
       vocCours: [
         "Ce vocabulaire couvre les **moyens de transport** : *der Bus*, *der Zug / die Bahn* (le train), *die U-Bahn* (métro), *die Straßenbahn* (tram), *das Flugzeug* (avion), *das Fahrrad* (vélo), *das Auto*.",
         "La structure clé est **mit + datif** pour dire avec quel moyen on se déplace : « *Ich fahre **mit dem** Bus / **mit der** Bahn* ». Apprends donc chaque transport **avec son article au datif**.",
@@ -1055,6 +1159,58 @@ window.MODULE_A12 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l18",
+      rp: {
+        "scene": "Beim Arzt — Chez le médecin",
+        "intro": "Tu es chez le médecin. Zika est le docteur. Décris ton problème.",
+        "tours": [
+          {
+            "de": "Guten Tag! Was fehlt Ihnen?",
+            "fr": "Bonjour ! Qu'est-ce qui ne va pas ?",
+            "bravo": "D'accord.",
+            "options": [
+              {
+                "de": "Ich habe Kopfschmerzen.",
+                "ok": true
+              },
+              {
+                "de": "Ich habe ein Auto.",
+                "hint": "Zika demande ton problème de santé : « Ich habe … schmerzen » (mal à…)."
+              }
+            ]
+          },
+          {
+            "de": "Haben Sie auch Fieber?",
+            "fr": "Avez-vous aussi de la fièvre ?",
+            "bravo": "Bien.",
+            "options": [
+              {
+                "de": "Ja, ein bisschen.",
+                "ok": true
+              },
+              {
+                "de": "Ja, ich bin Lehrer.",
+                "hint": "Réponds sur la fièvre : « Ja, ein bisschen » ou « Nein »."
+              }
+            ]
+          },
+          {
+            "de": "Sie sollen viel trinken und schlafen.",
+            "fr": "Vous devez boire beaucoup et dormir.",
+            "bravo": "Bon rétablissement !",
+            "options": [
+              {
+                "de": "Danke, Herr Doktor!",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich möchte arbeiten.",
+                "hint": "Le médecin te conseille de te reposer. Remercie : « Danke, Herr Doktor! »."
+              }
+            ]
+          }
+        ],
+        "fin": "Parfait ! Tu sais décrire un problème de santé."
+      },
       vocCours: [
         "Ce vocabulaire concerne le **corps**, la **santé** et la **visite chez le médecin**. Apprends les parties du corps avec leur article (*der Kopf* tête, *der Bauch* ventre, *der Hals* gorge, *das Bein* jambe, *der Arm*) et les maux courants (*die Erkältung* rhume, *das Fieber* fièvre).",
         "Deux structures expriment la **douleur** : *wehtun* (« *Mein Kopf **tut weh*** ») et *Schmerzen haben* (« *Ich **habe** Kopf**schmerzen*** »). Remarque le **nom composé** *Kopfschmerzen* (mal de tête), *Bauchschmerzen*, *Halsschmerzen* — très productif.",
@@ -1188,6 +1344,58 @@ window.MODULE_A12 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l19",
+      rp: {
+        "scene": "Tut mir leid! — S'excuser",
+        "intro": "Tu arrives en retard. Présente tes excuses à Zika.",
+        "tours": [
+          {
+            "de": "Du kommst aber spät! Was ist passiert?",
+            "fr": "Tu arrives bien tard ! Que s'est-il passé ?",
+            "bravo": "Pas de souci, ça arrive.",
+            "options": [
+              {
+                "de": "Es tut mir leid, der Bus hatte Verspätung.",
+                "ok": true
+              },
+              {
+                "de": "Danke, sehr gut.",
+                "hint": "Tu es en retard : excuse-toi ! « Es tut mir leid… » (je suis désolé)."
+              }
+            ]
+          },
+          {
+            "de": "Warum hast du nicht angerufen?",
+            "fr": "Pourquoi n'as-tu pas appelé ?",
+            "bravo": "C'est bon !",
+            "options": [
+              {
+                "de": "Mein Handy war leer. Entschuldigung!",
+                "ok": true
+              },
+              {
+                "de": "Ich bin glücklich.",
+                "hint": "Donne une raison et excuse-toi : « Mein Handy war leer, Entschuldigung »."
+              }
+            ]
+          },
+          {
+            "de": "Macht nichts. Setz dich!",
+            "fr": "Ce n'est rien. Assieds-toi !",
+            "bravo": "Allez, on commence !",
+            "options": [
+              {
+                "de": "Danke, sehr nett!",
+                "ok": true
+              },
+              {
+                "de": "Auf Wiedersehen!",
+                "hint": "Zika t'invite à t'asseoir, pas à partir. Réponds « Danke! »."
+              }
+            ]
+          }
+        ],
+        "fin": "Bravo ! Tu sais t'excuser poliment."
+      },
       vocCours: [
         "Ce champ lexical, social et très utile, sert à **s'excuser** et à **se justifier**. Formules clés : *Entschuldigung* / *Entschuldigen Sie* (excusez-moi), *Es tut mir leid* (je suis désolé), *Verzeihung* (pardon, soutenu), *Kein Problem* / *Macht nichts* (pas de souci).",
         "Pour **se justifier**, le thème introduit *weil* (parce que), qui envoie le verbe **à la fin** : « *Ich komme zu spät, **weil** der Bus Verspätung **hatte*** ». L'occasion de relier vocabulaire des excuses et expression de la cause.",
