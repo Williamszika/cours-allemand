@@ -17,6 +17,41 @@ window.MODULE_B12 = {
   lecons: [
     {
       id: "b1t15",
+      rp: {
+        "scene": "Sprachen lernen",
+        "intro": "Ihr sprecht über das Sprachenlernen.",
+        "fin": "Toll! Du kannst über das Lernen sprechen.",
+        "tours": [
+          {
+            "de": "Wie lange lernst du schon Deutsch?",
+            "options": [
+              {
+                "de": "Seit etwa einem Jahr.",
+                "ok": true
+              },
+              {
+                "de": "In der Schule.",
+                "hint": "Zika fragt WIE LANGE: « Seit … »."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          },
+          {
+            "de": "Was ist für dich am schwersten?",
+            "options": [
+              {
+                "de": "Die Grammatik ist am schwersten.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin Deutsch.",
+                "hint": "Nenne etwas Schwieriges: « Die Grammatik / die Aussprache »."
+              }
+            ],
+            "bravo": "Prima!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema dreht sich um das **Sprachenlernen** – ein Thema, das dich direkt betrifft! Schlüsselwörter sind *die Sprache*, *die Muttersprache* (la langue maternelle), *die Fremdsprache* (la langue étrangère), *der Wortschatz* (le vocabulaire), *die Aussprache* (la prononciation).",
         "Nützliche Verben: *üben* (s'exercer), *wiederholen* (répéter), *sich verbessern* (s'améliorer), *einen Fehler machen* (faire une faute). Beachte: *lernen* (apprendre) ↔ *lehren / unterrichten* (enseigner).",
@@ -59,6 +94,41 @@ window.MODULE_B12 = {
     },
     {
       id: "b1t16",
+      rp: {
+        "scene": "Lebenslanges Lernen",
+        "intro": "Zika fragt nach deinen Lernzielen.",
+        "fin": "Sehr gut! Du kennst deine Ziele.",
+        "tours": [
+          {
+            "de": "Warum lernst du Deutsch?",
+            "options": [
+              {
+                "de": "Um eine bessere Arbeit zu finden.",
+                "ok": true
+              },
+              {
+                "de": "Weil ich müde bin.",
+                "hint": "Nenne ein Ziel: « Um … zu … » (z. B. eine Arbeit zu finden)."
+              }
+            ],
+            "bravo": "Genau!"
+          },
+          {
+            "de": "Möchtest du dich weiterbilden?",
+            "options": [
+              {
+                "de": "Ja, ich möchte einen Kurs machen.",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich bin fertig mit Lernen.",
+                "hint": "Antworte motiviert: « Ja, ich möchte … »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es um das **lebenslange Lernen** – die Idee, dass man sein ganzes Leben lang lernt. Schlüsselwörter sind *die Weiterbildung* (la formation continue), *der Kurs*, *die Fähigkeit* (la compétence), *sich weiterbilden*, *das Ziel* (le but).",
         "Du sprichst über **Motivation** und **Gründe**: *motiviert sein*, *neugierig* (curieux), *aus beruflichen Gründen* (pour des raisons professionnelles). Mit *um … zu* nennst du das Ziel: « *Ich lerne Deutsch, **um** eine bessere Stelle zu finden* ».",
@@ -102,6 +172,41 @@ window.MODULE_B12 = {
     },
     {
       id: "b1t17",
+      rp: {
+        "scene": "Lerntipps",
+        "intro": "Zika gibt dir Lerntipps.",
+        "fin": "Prima! Gute Lerntipps.",
+        "tours": [
+          {
+            "de": "Wie lernst du neue Wörter am besten?",
+            "options": [
+              {
+                "de": "Ich wiederhole sie jeden Tag.",
+                "ok": true
+              },
+              {
+                "de": "Ich vergesse sie sofort.",
+                "hint": "Nenne eine Methode: « Ich wiederhole sie », « Ich mache mir Notizen »."
+              }
+            ],
+            "bravo": "Toll!"
+          },
+          {
+            "de": "Machst du auch Pausen beim Lernen?",
+            "options": [
+              {
+                "de": "Ja, das hilft mir, mich zu konzentrieren.",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich schlafe.",
+                "hint": "Antworte: « Ja, Pausen helfen » / « Nein, leider nicht »."
+              }
+            ],
+            "bravo": "Bravo!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema sammelt **Lerntipps** – Ratschläge, wie man besser lernt. Schlüsselwörter sind *der Tipp* (le conseil), *die Methode*, *sich konzentrieren* (se concentrer), *die Pause*, *regelmäßig* (régulièrement), *sich Notizen machen* (prendre des notes).",
         "Ratschläge gibt man oft mit dem Modalverb **sollte**: « *Du **solltest** jeden Tag ein bisschen lernen* », « *Man **sollte** Pausen machen* ». Auch der Imperativ funktioniert: « *Wiederhole regelmäßig!* ».",
@@ -144,6 +249,41 @@ window.MODULE_B12 = {
     },
     {
       id: "b1t18",
+      rp: {
+        "scene": "Schule und Noten",
+        "intro": "Ihr sprecht über die Schule.",
+        "fin": "Gut! Du kannst über die Schulzeit sprechen.",
+        "tours": [
+          {
+            "de": "Welches Fach mochtest du am liebsten?",
+            "options": [
+              {
+                "de": "Am liebsten mochte ich Mathe.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin ein Fach.",
+                "hint": "Nenne ein Fach: « Mathe, Deutsch, Sport »."
+              }
+            ],
+            "bravo": "Richtig!"
+          },
+          {
+            "de": "Warst du ein guter Schüler?",
+            "options": [
+              {
+                "de": "Ja, meine Noten waren gut.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin eine Note.",
+                "hint": "Antworte: « Ja, meine Noten waren gut » / « Nein, nicht so »."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es um **Schule**, **Zeugnisse** und **Noten**. Schlüsselwörter sind *die Schule*, *das Zeugnis* (le bulletin), *die Note* (la note), *die Prüfung* (l'examen), *bestehen* (réussir) ↔ *durchfallen* (échouer), *das Fach* (la matière).",
         "Beachte das deutsche **Notensystem**: Die Note **1** ist die beste (sehr gut), die Note **6** die schlechteste (ungenügend) – das Gegenteil von vielen anderen Ländern! Falscher Freund: *das Gymnasium* ist das **Lycée**, keine Sporthalle.",
@@ -186,6 +326,41 @@ window.MODULE_B12 = {
     },
     {
       id: "b1t19",
+      rp: {
+        "scene": "Verkehrsprobleme",
+        "intro": "Du sprichst über ein Verkehrsproblem.",
+        "fin": "Sehr gut! Du kannst über Verkehr sprechen.",
+        "tours": [
+          {
+            "de": "Warum bist du so spät dran?",
+            "options": [
+              {
+                "de": "Ich stand lange im Stau.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin ein Auto.",
+                "hint": "Nenne den Grund: « Ich stand im Stau »."
+              }
+            ],
+            "bravo": "Prima!"
+          },
+          {
+            "de": "Nimmst du nicht lieber die Bahn?",
+            "options": [
+              {
+                "de": "Doch, die Bahn ist oft schneller.",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich gehe schlafen.",
+                "hint": "Antworte zum Verkehrsmittel: « Doch, die Bahn ist schneller »."
+              }
+            ],
+            "bravo": "Genau!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt **Verkehrsprobleme**. Schlüsselwörter sind *der Verkehr* (la circulation), *der Stau* (l'embouteillage), *die Baustelle* (le chantier), *der Unfall* (l'accident), *die Verspätung*, *die Umleitung* (la déviation).",
         "Nützliche Verben: *im Stau stehen* (être dans un embouteillage), *zu spät kommen*, *vermeiden* (éviter). Beachte den Unterschied zwischen *die Straße* (la rue/route), *die Autobahn* (l'autoroute) und *die Kreuzung* (le carrefour).",
@@ -228,6 +403,41 @@ window.MODULE_B12 = {
     },
     {
       id: "b1t20",
+      rp: {
+        "scene": "Verkehrsmittel",
+        "intro": "Du kaufst ein Ticket. Zika ist am Schalter.",
+        "fin": "Perfekt! Du kannst Tickets kaufen.",
+        "tours": [
+          {
+            "de": "Guten Tag! Wie kann ich helfen?",
+            "options": [
+              {
+                "de": "Eine Fahrkarte nach Köln, bitte.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin ein Zug.",
+                "hint": "Sag dein Ziel: « Eine Fahrkarte nach … »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          },
+          {
+            "de": "Möchten Sie umsteigen oder direkt fahren?",
+            "options": [
+              {
+                "de": "Direkt, bitte.",
+                "ok": true
+              },
+              {
+                "de": "Mit dem Flugzeug.",
+                "hint": "Wähle: « direkt » oder « umsteigen »."
+              }
+            ],
+            "bravo": "Toll!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema lernst du die **Verkehrsmittel** genauer kennen. Schlüsselwörter sind *öffentliche Verkehrsmittel* (les transports en commun), *die U-Bahn*, *die Straßenbahn* (le tram), *der Fahrplan* (l'horaire), *die Haltestelle* (l'arrêt), *die Fahrkarte* (le billet).",
         "Die Struktur **mit + Dativ** sagt, womit man fährt: « *Ich fahre **mit der** Bahn* ». Beachte *einsteigen* (monter), *aussteigen* (descendre), *umsteigen* (changer) – alles trennbare Verben rund um den Verkehr.",
@@ -270,6 +480,41 @@ window.MODULE_B12 = {
     },
     {
       id: "b1t21",
+      rp: {
+        "scene": "Unterwegs",
+        "intro": "Du fragst nach dem Weg. Zika hilft.",
+        "fin": "Gut! Du findest deinen Weg.",
+        "tours": [
+          {
+            "de": "Entschuldigung, kann ich Ihnen helfen?",
+            "options": [
+              {
+                "de": "Ja, wie komme ich zum Bahnhof?",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich bin der Weg.",
+                "hint": "Frag nach dem Weg: « Wie komme ich zu …? »."
+              }
+            ],
+            "bravo": "Bravo!"
+          },
+          {
+            "de": "Gehen Sie geradeaus und dann links.",
+            "options": [
+              {
+                "de": "Vielen Dank für die Hilfe!",
+                "ok": true
+              },
+              {
+                "de": "Wie spät ist es?",
+                "hint": "Bedanke dich: « Vielen Dank! »."
+              }
+            ],
+            "bravo": "Richtig!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema heißt **unterwegs** (en déplacement) und sammelt Wörter rund ums Reisen und Sich-Orientieren. Schlüsselwörter sind *die Reise*, *die Richtung* (la direction), *sich verirren* (se perdre), *der Weg* (le chemin), *die Karte* (la carte).",
         "Nützlich sind die Frage *Wie komme ich zu …?* und die Richtungswörter *geradeaus, links, rechts, in der Nähe* (à proximité), *weit weg* (loin). Beachte das Verb *sich auskennen* (s'y connaître, connaître les lieux).",
@@ -313,6 +558,41 @@ window.MODULE_B12 = {
     },
     {
       id: "b1t22",
+      rp: {
+        "scene": "Verreisen",
+        "intro": "Ihr sprecht über eine Reise.",
+        "fin": "Schön! Du kannst über Reisen sprechen.",
+        "tours": [
+          {
+            "de": "Wohin möchtest du als Nächstes verreisen?",
+            "options": [
+              {
+                "de": "Ich möchte nach Spanien reisen.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin eine Reise.",
+                "hint": "Nenne ein Ziel: « Ich möchte nach … reisen »."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          },
+          {
+            "de": "Hast du schon alles gepackt?",
+            "options": [
+              {
+                "de": "Fast, nur der Koffer fehlt noch.",
+                "ok": true
+              },
+              {
+                "de": "Ja, ich bin ein Koffer.",
+                "hint": "Antworte: « Ja, alles » / « Fast, nur … fehlt »."
+              }
+            ],
+            "bravo": "Prima!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es darum, **wegzufahren und zu verreisen**. Schlüsselwörter sind *verreisen* (partir en voyage), *die Reisevorbereitung* (la préparation), *der Reiseführer* (le guide), *die Versicherung* (l'assurance), *packen* (faire ses bagages).",
         "Beachte die feinen Unterschiede: *die Reise* (le voyage), *die Fahrt* (le trajet), *der Ausflug* (l'excursion). Das Verb *verreisen* betont, dass man wegfährt; man benutzt es oft im **Perfekt** mit *sein*: « *Ich **bin** im Sommer **verreist*** ».",
@@ -355,6 +635,41 @@ window.MODULE_B12 = {
     },
     {
       id: "b1t23",
+      rp: {
+        "scene": "Glücksgefühle",
+        "intro": "Ihr sprecht über das Glück.",
+        "fin": "Toll! Du kannst über Gefühle sprechen.",
+        "tours": [
+          {
+            "de": "Wann warst du das letzte Mal richtig glücklich?",
+            "options": [
+              {
+                "de": "Als ich meine Familie gesehen habe.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin glücklich.",
+                "hint": "Erzähl von einem Moment: « Als ich … » (Vergangenheit)."
+              }
+            ],
+            "bravo": "Genau!"
+          },
+          {
+            "de": "Was macht dich glücklich?",
+            "options": [
+              {
+                "de": "Zeit mit Freunden macht mich glücklich.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin traurig.",
+                "hint": "Nenne etwas Positives: « … macht mich glücklich »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt **Gefühle**, besonders das **Glück**. Schlüsselwörter sind *das Glück* (le bonheur / la chance), *glücklich* (heureux), *zufrieden* (satisfait), *sich freuen* (se réjouir), *stolz* (fier), *dankbar* (reconnaissant).",
         "Beachte das wichtige Wort *das Glück*: Es bedeutet sowohl **le bonheur** als auch **la chance** (« *Viel Glück!* » = bonne chance). Das Verb *sich freuen* steht mit Präpositionen: *sich freuen **über*** (etwas Vergangenes) und *sich freuen **auf*** (etwas in der Zukunft).",
@@ -397,6 +712,41 @@ window.MODULE_B12 = {
     },
     {
       id: "b1t24",
+      rp: {
+        "scene": "Eigenschaften",
+        "intro": "Beschreibe einen Charakter.",
+        "fin": "Sehr gut! Du kannst Charakter beschreiben.",
+        "tours": [
+          {
+            "de": "Wie ist dein bester Freund?",
+            "options": [
+              {
+                "de": "Er ist ehrlich und zuverlässig.",
+                "ok": true
+              },
+              {
+                "de": "Er ist groß.",
+                "hint": "Das ist das Aussehen. Nenne den Charakter: « ehrlich, geduldig, lustig »."
+              }
+            ],
+            "bravo": "Toll!"
+          },
+          {
+            "de": "Und was magst du an ihm nicht?",
+            "options": [
+              {
+                "de": "Manchmal ist er ein bisschen ungeduldig.",
+                "ok": true
+              },
+              {
+                "de": "Er ist nett.",
+                "hint": "Nenne eine kleine Schwäche: « ein bisschen ungeduldig / chaotisch »."
+              }
+            ],
+            "bravo": "Bravo!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema lernst du **Charaktereigenschaften** (les traits de caractère). Schlüsselwörter sind *die Eigenschaft* (la qualité), *ehrlich* (honnête), *zuverlässig* (fiable), *geduldig* (patient), *großzügig* (généreux), *ehrgeizig* (ambitieux).",
         "Diese Adjektive helfen dir, Menschen genau zu **beschreiben**. Lerne sie als **Gegensatzpaare**: *geduldig / ungeduldig*, *ehrlich / unehrlich*, *fleißig / faul*. Mit der Vorsilbe **un-** bildest du oft das Gegenteil.",
@@ -439,6 +789,41 @@ window.MODULE_B12 = {
     },
     {
       id: "b1t25",
+      rp: {
+        "scene": "Stress und Emotionen",
+        "intro": "Ihr sprecht über Stress.",
+        "fin": "Gut! Du kannst über Emotionen sprechen.",
+        "tours": [
+          {
+            "de": "Worüber ärgerst du dich oft?",
+            "options": [
+              {
+                "de": "Ich ärgere mich über Unpünktlichkeit.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin Stress.",
+                "hint": "Nutze « sich ärgern über »: « Ich ärgere mich über … »."
+              }
+            ],
+            "bravo": "Richtig!"
+          },
+          {
+            "de": "Wie entspannst du dich am besten?",
+            "options": [
+              {
+                "de": "Beim Sport kann ich mich entspannen.",
+                "ok": true
+              },
+              {
+                "de": "Ich arbeite mehr.",
+                "hint": "Nenne etwas Entspannendes: « Beim Sport / beim Lesen »."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema sammelt Wörter für **Emotionen** – von Stress bis Freude. Schlüsselwörter sind *der Stress*, *der Ärger* (la contrariété), *die Freude* (la joie), *die Angst* (la peur), *sich ärgern über* (s'énerver contre), *sich entspannen* (se détendre).",
         "Viele Gefühlsverben sind **reflexiv** und stehen mit einer **Präposition**: *sich ärgern **über*** + Akkusativ, *sich freuen **über/auf***, *Angst haben **vor*** + Dativ. Lerne Verb, Reflexivpronomen und Präposition immer zusammen.",
@@ -482,6 +867,41 @@ window.MODULE_B12 = {
     },
     {
       id: "b1t26",
+      rp: {
+        "scene": "Im Restaurant",
+        "intro": "Du bestellst im Restaurant. Zika ist der Kellner.",
+        "fin": "Perfekt! Du kannst im Restaurant bestellen.",
+        "tours": [
+          {
+            "de": "Guten Abend! Haben Sie schon gewählt?",
+            "options": [
+              {
+                "de": "Ja, ich nehme die Suppe als Vorspeise.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin die Speisekarte.",
+                "hint": "Bestelle etwas: « Ich nehme … »."
+              }
+            ],
+            "bravo": "Prima!"
+          },
+          {
+            "de": "Und als Hauptgericht?",
+            "options": [
+              {
+                "de": "Den Fisch mit Gemüse, bitte.",
+                "ok": true
+              },
+              {
+                "de": "Die Rechnung, bitte.",
+                "hint": "Erst das Hauptgericht: « Ich nehme … ». Die Rechnung kommt später."
+              }
+            ],
+            "bravo": "Genau!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema vertiefst du das Vokabular rund ums **Essen** und das **Restaurant**. Schlüsselwörter sind *die Speisekarte* (la carte), *die Vorspeise* (l'entrée), *das Hauptgericht* (le plat principal), *der Nachtisch* (le dessert), *bestellen*, *die Rechnung*.",
         "Beachte die **Mahlzeiten** (*das Frühstück, das Mittagessen, das Abendessen*) und nützliche Sätze im Restaurant: « *Ich hätte gern…* », « *Zahlen, bitte!* », « *Schmeckt es Ihnen?* ». Für Essen benutzt man das Verb *schmecken* (« *Das schmeckt gut* »).",
@@ -524,6 +944,41 @@ window.MODULE_B12 = {
     },
     {
       id: "b1t27",
+      rp: {
+        "scene": "Einladungen",
+        "intro": "Zika lädt dich ein.",
+        "fin": "Schön! Du hast den B1-Wortschatz gemeistert! 🎉",
+        "tours": [
+          {
+            "de": "Ich feiere am Samstag Geburtstag. Kommst du?",
+            "options": [
+              {
+                "de": "Ja, sehr gern! Vielen Dank für die Einladung.",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich bin ein Geburtstag.",
+                "hint": "Nimm höflich an: « Ja, sehr gern! »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          },
+          {
+            "de": "Super! Bring gern jemanden mit.",
+            "options": [
+              {
+                "de": "Danke, ich bringe eine Freundin mit.",
+                "ok": true
+              },
+              {
+                "de": "Auf Wiederhören!",
+                "hint": "Antworte freundlich: « Danke, ich bringe … mit »."
+              }
+            ],
+            "bravo": "Toll!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses letzte B1-Thema dreht sich um **Einladungen** und **Glückwünsche** – das soziale Leben. Schlüsselwörter sind *die Einladung* (l'invitation), *einladen* (inviter), *die Feier / das Fest* (la fête), *gratulieren* (féliciter), *der Glückwunsch* (les vœux).",
         "Lerne die festen **Glückwunsch-Formeln**: « *Herzlichen Glückwunsch zum Geburtstag!* », « *Frohe Weihnachten!* », « *Gute Besserung!* » (bon rétablissement). Das Verb *gratulieren* steht mit **Dativ**: « *Ich gratuliere **dir*** ».",

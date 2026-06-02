@@ -16,6 +16,41 @@ window.MODULE_B11 = {
   lecons: [
     {
       id: "b1t01",
+      rp: {
+        "scene": "Freizeit",
+        "intro": "Sprich mit Zika über deine Freizeit.",
+        "fin": "Super! Du kannst über deine Freizeit sprechen.",
+        "tours": [
+          {
+            "de": "Hast du am Wochenende Zeit?",
+            "options": [
+              {
+                "de": "Ja, am Samstag habe ich Zeit.",
+                "ok": true
+              },
+              {
+                "de": "Ja, ich bin Zeit.",
+                "hint": "« Ich bin Zeit » ist falsch. Sag « Ich habe Zeit »."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          },
+          {
+            "de": "Was machst du gern in deiner Freizeit?",
+            "options": [
+              {
+                "de": "Ich treffe mich gern mit Freunden.",
+                "ok": true
+              },
+              {
+                "de": "Ich arbeite im Büro.",
+                "hint": "Das ist Arbeit. Für die Freizeit: « Ich … gern »."
+              }
+            ],
+            "bravo": "Prima!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema lernst du Wörter rund um die **Zeit** und die **Aktivitäten** im Alltag. Wichtig sind Ausdrücke wie *Zeit haben*, *keine Zeit haben*, *Zeit verbringen* (passer du temps) und *etwas unternehmen* (entreprendre). Du sprichst darüber, wie du deinen Tag und deine Woche organisierst.",
         "Achte auf den Unterschied zwischen **die Zeit** (le temps qui passe), **die Freizeit** (le temps libre) und **die Uhrzeit** (l'heure). Nützlich sind auch die Häufigkeitswörter: *täglich* (chaque jour), *wöchentlich*, *regelmäßig* (régulièrement), *gelegentlich* (à l'occasion).",
@@ -58,6 +93,41 @@ window.MODULE_B11 = {
     },
     {
       id: "b1t02",
+      rp: {
+        "scene": "Pünktlichkeit",
+        "intro": "Zika spricht mit dir über Pünktlichkeit.",
+        "fin": "Gut! Pünktlichkeit ist wichtig.",
+        "tours": [
+          {
+            "de": "Warum kommst du immer zu spät?",
+            "options": [
+              {
+                "de": "Tut mir leid, der Bus hatte Verspätung.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin sehr pünktlich.",
+                "hint": "Du bist zu spät: erkläre warum, z. B. « Der Bus hatte Verspätung »."
+              }
+            ],
+            "bravo": "Genau!"
+          },
+          {
+            "de": "Versuch bitte, das nächste Mal pünktlich zu sein.",
+            "options": [
+              {
+                "de": "Ja, ich verspreche es.",
+                "ok": true
+              },
+              {
+                "de": "Nein, danke.",
+                "hint": "Versprich, dich zu bessern: « Ja, ich verspreche es »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt die **Pünktlichkeit** – ein wichtiger Wert in der deutschen Kultur. Schlüsselwörter sind *pünktlich* (à l'heure), *zu spät* (en retard), *die Verspätung* (le retard), *sich verspäten* (être en retard), *rechtzeitig* (à temps).",
         "In Deutschland gilt: Wer einen Termin hat, kommt **pünktlich** oder sogar ein paar Minuten früher. Nützliche Sätze sind *Entschuldigung für die Verspätung* und *Ich komme gleich*. Achte auf das Gegensatzpaar *früh* (tôt) ↔ *spät* (tard).",
@@ -100,6 +170,41 @@ window.MODULE_B11 = {
     },
     {
       id: "b1t03",
+      rp: {
+        "scene": "Im Museum",
+        "intro": "Du besuchst ein Museum. Zika arbeitet dort.",
+        "fin": "Schön! Du kannst ein Museum besuchen.",
+        "tours": [
+          {
+            "de": "Guten Tag! Möchten Sie eine Führung machen?",
+            "options": [
+              {
+                "de": "Ja, gern. Wann beginnt sie?",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich bin ein Museum.",
+                "hint": "Antworte sinnvoll: « Ja, gern » oder « Nein, danke »."
+              }
+            ],
+            "bravo": "Toll!"
+          },
+          {
+            "de": "Der Eintritt kostet 8 Euro.",
+            "options": [
+              {
+                "de": "Hier, bitte. Zahle ich bar?",
+                "ok": true
+              },
+              {
+                "de": "Wie spät ist es?",
+                "hint": "Du musst zahlen: « Hier, bitte »."
+              }
+            ],
+            "bravo": "Bravo!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es um die **Freizeit** im **Museum**. Wichtige Wörter sind *das Museum*, *die Ausstellung* (l'exposition), *die Sammlung* (la collection), *der Eintritt* (l'entrée), *die Führung* (la visite guidée), *besichtigen* (visiter).",
         "Viele Wörter beschreiben, was man im Museum tut: *anschauen* (regarder), *besuchen*, *sich interessieren für* (s'intéresser à). Beachte: *der Eintritt* ist der Preis, den man zahlt, und *die Öffnungszeiten* sind die Stunden, in denen das Museum offen ist.",
@@ -143,6 +248,41 @@ window.MODULE_B11 = {
     },
     {
       id: "b1t04",
+      rp: {
+        "scene": "Bildende Kunst",
+        "intro": "Ihr sprecht über ein Gemälde.",
+        "fin": "Toll! Du kannst über Kunst sprechen.",
+        "tours": [
+          {
+            "de": "Wie findest du dieses Bild?",
+            "options": [
+              {
+                "de": "Es gefällt mir sehr. Es ist beeindruckend.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin ein Bild.",
+                "hint": "Sag deine Meinung: « Es gefällt mir » / « Es gefällt mir nicht »."
+              }
+            ],
+            "bravo": "Richtig!"
+          },
+          {
+            "de": "Magst du moderne oder klassische Kunst?",
+            "options": [
+              {
+                "de": "Ich mag moderne Kunst lieber.",
+                "ok": true
+              },
+              {
+                "de": "Ich male ein Haus.",
+                "hint": "Wähle: « moderne » oder « klassische » Kunst."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema erweitert die Freizeit um die **bildende Kunst**. Schlüsselwörter sind *die Kunst* (l'art), *das Gemälde / das Bild* (le tableau), *der Künstler / die Künstlerin*, *malen* (peindre), *zeichnen* (dessiner), *die Skulptur*.",
         "Mit Adjektiven beschreibst du Kunstwerke: *modern*, *klassisch*, *abstrakt*, *bekannt* (connu), *beeindruckend* (impressionnant). Beachte das Verb *gefallen* + Dativ, um deine Meinung zu sagen: « *Das Bild **gefällt mir*** » (ce tableau me plaît).",
@@ -185,6 +325,41 @@ window.MODULE_B11 = {
     },
     {
       id: "b1t05",
+      rp: {
+        "scene": "Berufe",
+        "intro": "Zika fragt nach deinem Beruf.",
+        "fin": "Sehr gut! Du kannst über deinen Beruf sprechen.",
+        "tours": [
+          {
+            "de": "Was sind Sie von Beruf?",
+            "options": [
+              {
+                "de": "Ich bin Krankenpfleger.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin ein Beruf.",
+                "hint": "Nenne deinen Beruf ohne Artikel: « Ich bin Krankenpfleger »."
+              }
+            ],
+            "bravo": "Prima!"
+          },
+          {
+            "de": "Gefällt Ihnen Ihre Arbeit?",
+            "options": [
+              {
+                "de": "Ja, die Arbeit macht mir Spaß.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin müde.",
+                "hint": "Antworte auf die Frage: « Ja, sie macht mir Spaß » / « Nein »."
+              }
+            ],
+            "bravo": "Genau!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema vertieft die Welt der **Berufe**. Du lernst nicht nur Berufsnamen, sondern auch Wörter für Aufgaben, Arbeitsplatz und Karriere: *die Stelle* (le poste), *der Arbeitgeber* (l'employeur), *die Erfahrung* (l'expérience), *sich bewerben* (postuler).",
         "Denk an die weibliche Form auf **-in** (*der Arzt → die Ärztin*) und daran, dass man den Beruf **ohne Artikel** nennt: « *Ich bin Ingenieur* ». Nützlich ist auch *als* + Beruf: « *Ich arbeite **als** Krankenpfleger* ».",
@@ -227,6 +402,41 @@ window.MODULE_B11 = {
     },
     {
       id: "b1t06",
+      rp: {
+        "scene": "Probleme am Arbeitsplatz",
+        "intro": "Du hast ein Problem bei der Arbeit. Sprich mit Zika.",
+        "fin": "Gut gelöst! Du kannst über Probleme sprechen.",
+        "tours": [
+          {
+            "de": "Du siehst gestresst aus. Was ist los?",
+            "options": [
+              {
+                "de": "Ich habe zu viele Überstunden.",
+                "ok": true
+              },
+              {
+                "de": "Mir geht es gut, danke.",
+                "hint": "Nenne dein Problem: « Ich habe zu viele Überstunden »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          },
+          {
+            "de": "Hast du schon mit dem Chef gesprochen?",
+            "options": [
+              {
+                "de": "Nein, noch nicht. Ich habe Angst.",
+                "ok": true
+              },
+              {
+                "de": "Ja, ich bin der Chef.",
+                "hint": "Antworte ehrlich: « Nein, noch nicht » oder « Ja »."
+              }
+            ],
+            "bravo": "Toll!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema sprichst du über **Probleme bei der Arbeit**. Wichtige Wörter sind *der Stress*, *der Konflikt* (le conflit), *die Überstunden* (les heures supplémentaires), *die Kündigung* (le licenciement), *sich beschweren* (se plaindre).",
         "Nützlich sind die Modalverben und *weil*, um Probleme zu erklären: « *Ich bin gestresst, **weil** ich zu viel Arbeit habe* ». Beachte den Unterschied zwischen *der Kollege* (le collègue) und *der Chef* (le patron, nicht der Koch!).",
@@ -269,6 +479,41 @@ window.MODULE_B11 = {
     },
     {
       id: "b1t07",
+      rp: {
+        "scene": "Einen Termin vereinbaren",
+        "intro": "Du vereinbarst einen Termin. Zika ist im Büro.",
+        "fin": "Perfekt! Du kannst Termine vereinbaren.",
+        "tours": [
+          {
+            "de": "Wann hätten Sie Zeit für ein Treffen?",
+            "options": [
+              {
+                "de": "Am Dienstagnachmittag, wenn es geht.",
+                "ok": true
+              },
+              {
+                "de": "In Berlin.",
+                "hint": "Zika fragt WANN: « Am Dienstag … »."
+              }
+            ],
+            "bravo": "Bravo!"
+          },
+          {
+            "de": "Passt Ihnen 15 Uhr?",
+            "options": [
+              {
+                "de": "Ja, das passt mir gut.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin 15 Jahre alt.",
+                "hint": "Antworte: « Ja, das passt » oder « Nein, lieber später »."
+              }
+            ],
+            "bravo": "Richtig!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema hilft dir, **berufliche Termine zu vereinbaren**. Schlüsselwörter sind *der Termin*, *vereinbaren* (convenir), *verschieben* (reporter), *absagen* (annuler), *bestätigen* (confirmer), *passen* (« *Passt Ihnen Montag?* »).",
         "Am Telefon und per E-Mail benutzt du oft die **höfliche Form** mit *Sie* und dem Konjunktiv II: « *Könnten wir einen Termin vereinbaren?* », « *Würde Ihnen Dienstag passen?* ». Diese Höflichkeit ist im Beruf sehr wichtig.",
@@ -311,6 +556,41 @@ window.MODULE_B11 = {
     },
     {
       id: "b1t08",
+      rp: {
+        "scene": "Umgangsformen im Beruf",
+        "intro": "Zika erklärt dir die guten Umgangsformen.",
+        "fin": "Sehr gut! Du kennst die Umgangsformen.",
+        "tours": [
+          {
+            "de": "Wie begrüßt man den Chef am besten?",
+            "options": [
+              {
+                "de": "Guten Tag, Herr Müller!",
+                "ok": true
+              },
+              {
+                "de": "Hey, alles klar?",
+                "hint": "Im Beruf ist man höflich: « Guten Tag, Herr/Frau … »."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          },
+          {
+            "de": "Duzt oder siezt man Kollegen am ersten Tag?",
+            "options": [
+              {
+                "de": "Man siezt sie zuerst.",
+                "ok": true
+              },
+              {
+                "de": "Man duzt alle sofort.",
+                "hint": "Am Anfang ist « Sie » höflicher."
+              }
+            ],
+            "bravo": "Prima!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es um die **guten Umgangsformen** (les bonnes manières) im Beruf. Wichtige Wörter sind *höflich* (poli), *der Respekt*, *die Begrüßung* (la salutation), *sich vorstellen* (se présenter), *die Anrede* (la formule d'appel).",
         "Sehr wichtig ist der Unterschied zwischen **du** und **Sie**. Im Beruf benutzt man fast immer *Sie* und den Nachnamen: « *Guten Tag, Herr Schmidt* ». Das *Du* bietet meist die ältere oder höhergestellte Person an.",
@@ -353,6 +633,41 @@ window.MODULE_B11 = {
     },
     {
       id: "b1t09",
+      rp: {
+        "scene": "Bücher und Lesen",
+        "intro": "Ihr sprecht über Bücher.",
+        "fin": "Toll! Du kannst über Bücher sprechen.",
+        "tours": [
+          {
+            "de": "Liest du gern? Was für Bücher magst du?",
+            "options": [
+              {
+                "de": "Ja, ich lese gern Krimis.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin ein Buch.",
+                "hint": "Nenne eine Art Buch: « Ich lese gern Krimis / Romane »."
+              }
+            ],
+            "bravo": "Genau!"
+          },
+          {
+            "de": "Welches Buch hast du zuletzt gelesen?",
+            "options": [
+              {
+                "de": "Ich habe einen spannenden Roman gelesen.",
+                "ok": true
+              },
+              {
+                "de": "Ich lese morgen.",
+                "hint": "Es geht um die Vergangenheit: « Ich habe … gelesen »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema dreht sich um das **Lesen** und um **Bücher**. Schlüsselwörter sind *das Buch*, *der Roman* (le roman), *der Autor / die Autorin*, *die Geschichte* (l'histoire), *die Seite* (la page), *spannend* (passionnant), *langweilig* (ennuyeux).",
         "Mit dem Verb *lesen* (irregulär: *du liest*, *er liest*) und Adjektiven beschreibst du deine Lektüre. Beachte den Unterschied zwischen *die Bibliothek* (la bibliothèque, où l'on emprunte) und *die Buchhandlung* (la librairie, où l'on achète).",
@@ -395,6 +710,41 @@ window.MODULE_B11 = {
     },
     {
       id: "b1t10",
+      rp: {
+        "scene": "Kindheit",
+        "intro": "Erzähl Zika von deiner Kindheit.",
+        "fin": "Schön! Du kannst über früher erzählen.",
+        "tours": [
+          {
+            "de": "Wo bist du aufgewachsen?",
+            "options": [
+              {
+                "de": "Ich bin auf dem Land aufgewachsen.",
+                "ok": true
+              },
+              {
+                "de": "Ich wohne in der Stadt.",
+                "hint": "Es geht um früher: « Ich bin … aufgewachsen »."
+              }
+            ],
+            "bravo": "Toll!"
+          },
+          {
+            "de": "Was hast du als Kind gern gemacht?",
+            "options": [
+              {
+                "de": "Ich habe viel draußen gespielt.",
+                "ok": true
+              },
+              {
+                "de": "Ich spiele Fußball.",
+                "hint": "Vergangenheit: « Ich habe … gespielt »."
+              }
+            ],
+            "bravo": "Bravo!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema erzählst du von deiner **Kindheit** und deiner **Vergangenheit**. Wichtige Wörter sind *die Kindheit*, *aufwachsen* (grandir), *sich erinnern an* (se souvenir de), *früher* (autrefois), *als Kind* (enfant).",
         "Hier brauchst du das **Präteritum** und das **Perfekt**. Besonders *war*, *hatte* und *als* (quand, dans le passé) sind nützlich: « ***Als** ich ein Kind war, **wohnte** ich auf dem Land* ». Achte auf *sich erinnern an* + Akkusativ.",
@@ -437,6 +787,41 @@ window.MODULE_B11 = {
     },
     {
       id: "b1t11",
+      rp: {
+        "scene": "Medien",
+        "intro": "Ihr sprecht über Medien.",
+        "fin": "Gut! Du kannst über Medien sprechen.",
+        "tours": [
+          {
+            "de": "Woher bekommst du deine Nachrichten?",
+            "options": [
+              {
+                "de": "Meistens aus dem Internet.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin eine Zeitung.",
+                "hint": "Nenne eine Quelle: « aus dem Internet », « aus der Zeitung »."
+              }
+            ],
+            "bravo": "Richtig!"
+          },
+          {
+            "de": "Schaust du oft fern?",
+            "options": [
+              {
+                "de": "Nein, ich höre lieber Podcasts.",
+                "ok": true
+              },
+              {
+                "de": "Ja, ich lese ein Buch.",
+                "hint": "Antworte zum Fernsehen: « Ja/Nein, ich … lieber »."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt die **Medien**. Schlüsselwörter sind *die Nachrichten* (les informations), *die Zeitung* (le journal), *das Fernsehen* (la télévision), *das Radio*, *die sozialen Medien* (les réseaux sociaux), *die Sendung* (l'émission).",
         "Viele Wörter sind **international** (*das Internet, das Video, der Podcast*), aber achte auf typisch deutsche Begriffe wie *die Sendung* (l'émission) und *der Sender* (la chaîne). Nützliche Verben: *informieren*, *berichten* (rapporter), *teilen* (partager).",
@@ -480,6 +865,41 @@ window.MODULE_B11 = {
     },
     {
       id: "b1t12",
+      rp: {
+        "scene": "Werbung",
+        "intro": "Ihr sprecht über Werbung.",
+        "fin": "Prima! Du kannst über Werbung sprechen.",
+        "tours": [
+          {
+            "de": "Was hältst du von Werbung im Internet?",
+            "options": [
+              {
+                "de": "Ich finde sie oft nervig.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin Werbung.",
+                "hint": "Sag deine Meinung: « Ich finde sie nervig / nützlich »."
+              }
+            ],
+            "bravo": "Prima!"
+          },
+          {
+            "de": "Beeinflusst Werbung deine Einkäufe?",
+            "options": [
+              {
+                "de": "Manchmal, aber nicht oft.",
+                "ok": true
+              },
+              {
+                "de": "Ja, ich gehe schlafen.",
+                "hint": "Antworte: « Ja, manchmal » oder « Nein, fast nie »."
+              }
+            ],
+            "bravo": "Genau!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es um die **Werbung** (la publicité). Schlüsselwörter sind *die Werbung*, *die Anzeige* (l'annonce), *das Plakat* (l'affiche), *werben für* (faire de la pub pour), *die Marke* (la marque), *die Zielgruppe* (le public cible).",
         "Du sprichst über die **Wirkung** (l'effet) von Werbung: *überzeugen* (convaincre), *beeinflussen* (influencer), *auffallen* (attirer l'attention). Beachte das Verb *werben für* + Akkusativ.",
@@ -522,6 +942,41 @@ window.MODULE_B11 = {
     },
     {
       id: "b1t13",
+      rp: {
+        "scene": "Produkte beschreiben",
+        "intro": "Du beschreibst ein Produkt.",
+        "fin": "Sehr gut! Du kannst Produkte beschreiben.",
+        "tours": [
+          {
+            "de": "Warum gefällt dir dieses Handy?",
+            "options": [
+              {
+                "de": "Es ist praktisch und zuverlässig.",
+                "ok": true
+              },
+              {
+                "de": "Es ist ein Handy.",
+                "hint": "Nenne Eigenschaften: « praktisch, zuverlässig, schnell »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          },
+          {
+            "de": "Ist es nicht zu teuer?",
+            "options": [
+              {
+                "de": "Nein, es ist ziemlich günstig.",
+                "ok": true
+              },
+              {
+                "de": "Ja, es ist ein Telefon.",
+                "hint": "Antworte zum Preis: « Nein, es ist günstig » / « Ja, leider »."
+              }
+            ],
+            "bravo": "Toll!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema liefert Wörter, um **Produkte** und ihre **Eigenschaften** zu beschreiben. Schlüsselwörter sind *das Produkt*, *die Qualität*, *die Eigenschaft* (la propriété), *praktisch*, *zuverlässig* (fiable), *langlebig* (durable), *günstig* (avantageux).",
         "Viele Eigenschaften sind **Adjektive**, die du steigern kannst (*gut → besser → am besten*). Beachte das Gegensatzpaar *günstig / teuer* und den Unterschied zu *billig*, das oft negativ klingt.",
@@ -564,6 +1019,41 @@ window.MODULE_B11 = {
     },
     {
       id: "b1t14",
+      rp: {
+        "scene": "Eine Reklamation",
+        "intro": "Du reklamierst ein kaputtes Produkt. Zika ist im Geschäft.",
+        "fin": "Gut gemacht! Du kannst dich beschweren.",
+        "tours": [
+          {
+            "de": "Guten Tag, was kann ich für Sie tun?",
+            "options": [
+              {
+                "de": "Dieses Gerät funktioniert nicht.",
+                "ok": true
+              },
+              {
+                "de": "Ich möchte einen Kaffee.",
+                "hint": "Erkläre dein Problem: « Das Gerät funktioniert nicht »."
+              }
+            ],
+            "bravo": "Bravo!"
+          },
+          {
+            "de": "Möchten Sie es umtauschen oder das Geld zurück?",
+            "options": [
+              {
+                "de": "Ich hätte gern mein Geld zurück.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin kaputt.",
+                "hint": "Wähle: « umtauschen » oder « Geld zurück »."
+              }
+            ],
+            "bravo": "Richtig!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema lernst du, eine **Reklamation** zu machen – also etwas zu beanstanden. Schlüsselwörter sind *die Reklamation*, *sich beschweren* (se plaindre), *kaputt* (cassé), *defekt*, *umtauschen* (échanger), *zurückgeben* (rendre), *die Garantie*.",
         "Nützliche Sätze sind höflich, aber bestimmt: « *Das Gerät funktioniert nicht* », « *Ich möchte es umtauschen* », « *Ich hätte gern mein Geld zurück* ». Der Konjunktiv II (*hätte gern*, *könnten Sie*) macht die Reklamation höflich.",

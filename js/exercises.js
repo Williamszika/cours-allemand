@@ -602,10 +602,13 @@ window.Exercises = (function () {
      que lorsque toute la scène est réussie. */
   function buildRP(ex, body, actions, feedback, onResult) {
     const ctx = (window.I18N && ex._niveau) ? window.I18N.explication(ex._niveau) : { lang: "fr", de: false };
-    function loc(node, txt) { // explications/encouragements dans la langue de l'apprenant
-      if (window.localizeInto) window.localizeInto(node, txt, ctx); else node.innerHTML = txt;
+    function loc(node, txt) {
+      if (!txt) return;
+      if (ctx && ctx.de) { node.innerHTML = window.mdLite ? window.mdLite(txt) : txt; } // immersion B1+ : déjà en allemand
+      else if (window.localizeInto) window.localizeInto(node, txt, ctx);               // A1/A2 : français → langue de l'apprenant
+      else node.innerHTML = txt;
     }
-    if (ex.scene) body.appendChild(el("p", "rp-scene", "🎬 " + ex.scene));
+    if (ex.scene) { const sc = el("p", "rp-scene"); loc(sc, "🎬 " + ex.scene); body.appendChild(sc); }
     if (ex.intro) { const ip = el("p", "rp-intro"); loc(ip, ex.intro); body.appendChild(ip); }
     const conv = el("div", "rp-conv");
     body.appendChild(conv);
@@ -639,6 +642,11 @@ window.Exercises = (function () {
       row.appendChild(bub); conv.appendChild(row);
       row.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
+    // Phrases intégrées du moteur, dans la bonne langue (allemand en immersion B1+)
+    const RETRY = (ctx && ctx.de) ? "Versuch es noch einmal! 💪" : "Réessaie, tu vas y arriver ! 💪";
+    const NOTQUITE = (ctx && ctx.de) ? "Nicht ganz." : "Pas tout à fait.";
+    const GREAT = (ctx && ctx.de) ? "Sehr gut!" : "Très bien !";
+    const FIN = (ctx && ctx.de) ? "Sehr gut, du hast die Szene gemeistert!" : "Bravo, tu as réussi toute la scène !";
     function showTurn() {
       const t = tours[i];
       if (!t) return;
@@ -653,11 +661,11 @@ window.Exercises = (function () {
             userSay(o.de);
             opts.remove();
             if (window.TG) window.TG.haptic("success");
-            zikaReact("✓ " + (t.bravo || "Sehr gut!"), true);
+            zikaReact("✓ " + (t.bravo || GREAT), true);
             i++;
             if (i >= tours.length) {
               done = true;
-              zikaReact("🎉 " + (ex.fin || "Bravo, tu as réussi toute la scène !"), true);
+              zikaReact("🎉 " + (ex.fin || FIN), true);
               if (onResult) onResult(true);
             } else {
               setTimeout(showTurn, 500);
@@ -665,7 +673,7 @@ window.Exercises = (function () {
           } else {
             userSay(o.de);
             if (window.TG) window.TG.haptic("error");
-            zikaReact("✗ " + (o.hint || "Pas tout à fait.") + " Réessaie, tu vas y arriver ! 💪", false);
+            zikaReact("✗ " + (o.hint || NOTQUITE) + " " + RETRY, false);
           }
         });
         opts.appendChild(btn);

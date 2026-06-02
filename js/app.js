@@ -152,6 +152,7 @@
     return node;
   }
   window.localizeInto = localizeInto; // pont pour exercises.js (jeu de rôle)
+  window.mdLite = mdLite; // pour le rendu direct (allemand) dans exercises.js
 
   /* Traduction de TOUTE l'interface française dans la langue choisie.
      Approche « opt-out » : on traduit chaque nœud de texte, SAUF le contenu
@@ -163,7 +164,7 @@
     ".cours-tag", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points", ".cours-table", "table",
     ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
     ".trou-input", ".trou-phrase", ".trad-source", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript", ".exo-question",
-    ".xl", ".rp-fr", ".rp-bubble", ".gp-pts", ".stat-n", ".goal-num", ".nc-code", ".lang-name", ".lang-flag", ".badge-ic", ".comp-score",
+    ".xl", ".rp-fr", ".rp-bubble", ".rp-scene", ".rp-intro", ".gp-pts", ".stat-n", ".goal-num", ".nc-code", ".lang-name", ".lang-flag", ".badge-ic", ".comp-score",
     "code", "input", "textarea", "[contenteditable]"
   ].join(",");
   const _l10nDone = (typeof WeakSet !== "undefined") ? new WeakSet() : null;
