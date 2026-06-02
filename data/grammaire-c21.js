@@ -9,7 +9,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Maîtriser les six temps", "Employer le futur II (supposition sur le passé)"],
     grammairePoints: ["Präsens, Perfekt, Präteritum, Plusquamperfekt", "Futur I / Futur II"],
     grammaire: [
-      { titre: "Le système temporel complet", intro: "Le C2 maîtrise les six temps, dont le Futur II, souvent employé pour une supposition sur le passé.",
+      { regle: "Les six temps, dont le **Futur II** (werden + participe + haben/sein), souvent une **supposition sur le passé**.", attention: "*Sie wird im Stau gestanden **haben*** = elle a dû être coincée dans un bouchon.", titre: "Le système temporel complet", intro: "Le C2 maîtrise les six temps, dont le Futur II, souvent employé pour une supposition sur le passé.",
         tableau: { entetes: ["Temps", "Formation", "Exemple"], lignes: [["Präteritum", "radical/Ablaut", "Er kam spät."], ["Plusquamperfekt", "hatte/war + Part. II", "Er war schon gegangen."], ["Futur I", "werden + Infinitif", "Er wird kommen."], ["Futur II", "werden + Part. II + haben/sein", "Er wird es vergessen haben."]] },
         note: "Futur II = supposition sur un fait passé : « Sie wird wohl im Stau gestanden haben » (elle a dû être coincée dans un bouchon)." }
     ],
@@ -26,7 +26,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Distinguer préfixes séparables et inséparables", "Gérer les préfixes à double valeur"],
     grammairePoints: ["be-, er-, ver- (inséparables)", "um-, durch-, über- (mixtes)"],
     grammaire: [
-      { titre: "Séparables, inséparables et mixtes", intro: "Les préfixes inséparables (be-, er-, ent-, ver-, zer-, miss-) restent collés ; les séparables (ab-, an-, auf-, ein-, vor-, zu-…) se détachent. Certains (um-, durch-, über-, unter-) varient avec le sens.",
+      { regle: "Préfixes **inséparables** (*be-, er-, ent-, ver-, zer-, miss-*) restent collés ; **séparables** (*ab-, an-, auf-…*) se détachent ; certains (*um-, durch-, über-*) **varient avec le sens**.", attention: "Participe : inséparable **sans** ge- (*verstanden*) ; séparable **avec** ge- inséré (*aufgestanden*).", titre: "Séparables, inséparables et mixtes", intro: "Les préfixes inséparables (be-, er-, ent-, ver-, zer-, miss-) restent collés ; les séparables (ab-, an-, auf-, ein-, vor-, zu-…) se détachent. Certains (um-, durch-, über-, unter-) varient avec le sens.",
         tableau: { entetes: ["Préfixe", "Type", "Exemple"], lignes: [["ver-, be-, er-", "inséparable", "Ich verstehe / bekomme."], ["auf-, an-, ein-", "séparable", "Ich stehe auf."], ["um- (sens concret)", "séparable", "Er fährt den Baum um. (renverse)"], ["um- (sens figuré)", "inséparable", "Er umfährt das Hindernis. (contourne)"]] },
         schemas: [{ legende: "Préfixe séparable : il part à la FIN.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "stehe", r: "verbe (2)", c: "verbe" }, { m: "jeden Tag früh", r: "complément", c: "objet" }, { m: "auf", r: "préfixe séparé (fin)", c: "fin" }] }],
         note: "Au participe, l'inséparable n'a pas de ge- (verstanden, bekommen) ; le séparable l'insère (aufgestanden)." }
@@ -44,7 +44,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Maîtriser présent, passé et modaux", "Exprimer l'irréel complexe"],
     grammairePoints: ["würde, hätte, wäre", "hätte … können (passé + modal)"],
     grammaire: [
-      { titre: "L'irréel sous toutes ses formes", intro: "Au C2, on manie le Konjunktiv II au présent, au passé et avec modaux (double infinitif).",
+      { regle: "Irréel **présent** (würde/hätte/wäre), **passé** (hätte/wäre + participe) et **passé + modal** (*hätte … können*).", attention: "Ordre final du passé + modal : *Ich hätte dir **helfen können***.", titre: "L'irréel sous toutes ses formes", intro: "Au C2, on manie le Konjunktiv II au présent, au passé et avec modaux (double infinitif).",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["irréel présent", "würde / hätte / wäre", "Ich würde gern helfen."], ["irréel passé", "hätte/wäre + Part. II", "Ich wäre fast gestürzt."], ["passé + modal", "hätte … Inf. + Modal", "Ich hätte kommen können."], ["souhait", "wenn … doch nur", "Wenn ich es doch nur gewusst hätte!"]] },
         schemas: [{ legende: "Passé + modal : hätte (2) … infinitif + modal (fin).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "hätte", r: "hätte (2)", c: "verbe" }, { m: "dir", r: "datif", c: "objet" }, { m: "helfen können", r: "inf. + modal (fin)", c: "fin" }] }],
         note: "Ordre final : infinitif + modal à l'infinitif (« helfen können », « machen müssen »)." }
@@ -62,7 +62,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Former le Konjunktiv I", "Rapporter affirmations, questions et ordres"],
     grammairePoints: ["sei, habe, könne, werde", "Ersatzformen (→ KII)"],
     grammaire: [
-      { titre: "Le discours indirect soigné", intro: "Le Konjunktiv I rapporte des propos ; on adapte questions (ob/W-) et ordres (sollen), et on substitue le KII si la forme = indicatif.",
+      { regle: "Discours indirect soigné : affirmations (sei, habe), questions (ob / W-Wort), ordres (sollen), avec **substitution KII** si nécessaire.", attention: "3ᵉ sing. → KI ; pluriel/ich → KII pour éviter la confusion avec l'indicatif.", exemples: [{"de":"Sie sagt, sie sei bereit.","fr":"Elle dit qu'elle est prête."},{"de":"Sie behaupten, sie hätten nichts gewusst.","fr":"Ils prétendent n'avoir rien su."}], titre: "Le discours indirect soigné", intro: "Le Konjunktiv I rapporte des propos ; on adapte questions (ob/W-) et ordres (sollen), et on substitue le KII si la forme = indicatif.",
         tableau: { entetes: ["Type", "Direct", "Indirect"], lignes: [["affirmation", "« Ich bin bereit. »", "Er sagt, er sei bereit."], ["passé", "« Ich war dort. »", "Er sagt, er sei dort gewesen."], ["question W", "« Wann kommst du? »", "Er fragt, wann ich komme."], ["ordre", "« Geh! »", "Er sagt, ich solle gehen."], ["substitution", "« Sie haben Zeit. »", "Sie sagen, sie hätten Zeit."]] },
         note: "Règle : 3e sing. → Konjunktiv I (er sei, habe) ; pluriel/ich → Konjunktiv II (hätten) pour éviter la confusion avec l'indicatif." }
     ],
@@ -79,7 +79,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Reconnaître les types de circonstancielles", "Choisir la bonne conjonction"],
     grammairePoints: ["temporal, kausal, konzessiv", "final, konditional, modal"],
     grammaire: [
-      { titre: "Panorama des circonstancielles", intro: "Chaque circonstance a ses conjonctions ; toutes rejettent le verbe à la fin.",
+      { regle: "Panorama des circonstancielles : temporelle, causale (*weil, zumal*), concessive (*obwohl, obgleich*), finale (*damit*), conditionnelle (*falls, sofern*), modale (*indem*).", attention: "*zumal* (d'autant plus que) et *ohne dass* (sans que) sont **soutenus** ; verbe à la fin.", titre: "Panorama des circonstancielles", intro: "Chaque circonstance a ses conjonctions ; toutes rejettent le verbe à la fin.",
         tableau: { entetes: ["Type", "Conjonctions", "Exemple"], lignes: [["temporal", "als, während, nachdem, seitdem", "Seitdem er hier ist, …"], ["kausal", "weil, da, zumal", "…, zumal es spät war."], ["konzessiv", "obwohl, obgleich, wenngleich", "obwohl es regnete"], ["final", "damit, sodass", "damit alle es verstehen"], ["konditional", "wenn, falls, sofern", "sofern es möglich ist"], ["modal", "indem, ohne dass", "indem man übt"]] },
         note: "« zumal » (d'autant plus que) et « ohne dass » (sans que) appartiennent au registre soutenu." }
     ],
@@ -96,7 +96,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Maîtriser la rection des verbes", "Employer les verbes à génitif"],
     grammairePoints: ["verbes à datif/accusatif", "verbes à génitif (bedürfen, gedenken)"],
     grammaire: [
-      { titre: "La rection (Rektion) des verbes", intro: "Chaque verbe impose un cas ou une préposition. Au C2, on connaît aussi les rares verbes à génitif.",
+      { regle: "La **rection** (Rektion) : chaque verbe impose un cas. Rares **verbes à génitif** : *bedürfen, gedenken, sich annehmen*.", attention: "*gedenken* + **génitif** (*der Opfer gedenken*) ; *helfen, danken* + **datif**.", titre: "La rection (Rektion) des verbes", intro: "Chaque verbe impose un cas ou une préposition. Au C2, on connaît aussi les rares verbes à génitif.",
         tableau: { entetes: ["Verbe", "Rection", "Exemple"], lignes: [["helfen", "+ Dat.", "Ich helfe dir."], ["bedürfen", "+ Gen.", "Es bedarf großer Mühe."], ["gedenken", "+ Gen.", "Wir gedenken der Opfer."], ["sich erinnern", "an + Akk.", "Ich erinnere mich an ihn."], ["sich annehmen", "+ Gen.", "Er nahm sich der Sache an."]] },
         note: "Verbes à génitif (rares, soutenus) : bedürfen, gedenken, sich annehmen, sich bedienen, sich rühmen." }
     ],
@@ -113,7 +113,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Employer des Funktionsverbgefüge soutenues", "Reformuler avec un verbe simple"],
     grammairePoints: ["in Anspruch nehmen, in Betracht ziehen", "zur Sprache bringen"],
     grammaire: [
-      { titre: "Les locutions du registre formel", intro: "Ces tournures nom + verbe support sont fréquentes à l'écrit académique et administratif.",
+      { regle: "Funktionsverbgefüge du registre formel : *in Anspruch **nehmen***, *in Betracht **ziehen***, *zur Sprache **bringen***.", attention: "À l'**oral**, on préfère le verbe simple (*in Betracht ziehen* → *berücksichtigen*).", exemples: [{"de":"Wir ziehen diese Option in Betracht.","fr":"Nous prenons cette option en considération."},{"de":"Sie nimmt seine Hilfe in Anspruch.","fr":"Elle a recours à son aide."}], titre: "Les locutions du registre formel", intro: "Ces tournures nom + verbe support sont fréquentes à l'écrit académique et administratif.",
         tableau: { entetes: ["Locution", "Sens", "Verbe simple"], lignes: [["in Anspruch nehmen", "avoir recours à", "nutzen"], ["in Betracht ziehen", "prendre en considération", "berücksichtigen"], ["zur Sprache bringen", "aborder (un sujet)", "ansprechen"], ["in Frage stellen", "remettre en question", "bezweifeln"], ["Rücksicht nehmen auf", "tenir compte de", "berücksichtigen"]] },
         note: "À l'oral on préfère le verbe simple ; à l'écrit soutenu, la locution donne du poids et de la précision." }
     ],
@@ -130,7 +130,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Reconnaître les suffixes nominaux", "Former des noms et des composés"],
     grammairePoints: ["-ung, -heit, -keit, -schaft", "Komposita"],
     grammaire: [
-      { titre: "Suffixes et mots composés", intro: "Les noms se forment par dérivation (suffixes) ou composition. Le suffixe détermine souvent le genre.",
+      { regle: "Noms par **dérivation** (suffixes -ung, -heit, -keit, -schaft → **féminins**) ou **composition** (le dernier élément donne le genre).", attention: "Dans un composé, le **dernier mot** donne genre et sens : *die Haus**tür*** (féminin).", titre: "Suffixes et mots composés", intro: "Les noms se forment par dérivation (suffixes) ou composition. Le suffixe détermine souvent le genre.",
         tableau: { entetes: ["Procédé", "Exemple", "Genre/règle"], lignes: [["-ung (verbe→nom)", "bilden → die Bildung", "féminin"], ["-heit / -keit", "die Freiheit, die Möglichkeit", "féminin (qualité)"], ["-schaft", "die Freundschaft", "féminin (collectif)"], ["-er (verbe→agent)", "lehren → der Lehrer", "masculin"], ["composé", "die Haus + tür = die Haustür", "genre du dernier élément"]] },
         note: "Dans un composé, le dernier élément (Grundwort) donne le genre et le sens principal : die Haustür (porte de maison)." }
     ],
@@ -147,7 +147,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Employer le participe attribut", "Construire un attribut participial étendu"],
     grammairePoints: ["Partizip I (actif)", "Partizip II (passif/accompli)"],
     grammaire: [
-      { titre: "Le participe épithète, simple et étendu", intro: "Placé devant le nom et décliné, le participe condense une relative ; il peut porter ses propres compléments (attribut étendu).",
+      { regle: "Le participe **épithète**, simple ou **étendu** : Partizip I (actif), Partizip II (passif/accompli), décliné comme un adjectif.", attention: "Attribut étendu : article + [compléments + participe] + nom (*die **im Park joggende** Frau*).", exemples: [{"de":"das spielende Kind","fr":"l'enfant qui joue"},{"de":"der gerade geschriebene Brief","fr":"la lettre qu'on vient d'écrire"}], titre: "Le participe épithète, simple et étendu", intro: "Placé devant le nom et décliné, le participe condense une relative ; il peut porter ses propres compléments (attribut étendu).",
         tableau: { entetes: ["Relative", "Participe attribut"], lignes: [["das Kind, das spielt", "das spielende Kind"], ["der Brief, der geschrieben wurde", "der geschriebene Brief"], ["das Buch, das gerade gelesen wird", "das gerade gelesene Buch"], ["die Frau, die im Park joggt", "die im Park joggende Frau"]] },
         schemas: [{ legende: "Attribut étendu : article + [compléments + participe] + nom.", mots: [{ m: "die", r: "article", c: "sujet" }, { m: "im Park", r: "complément", c: "objet" }, { m: "joggende", r: "Partizip I décliné", c: "verbe" }, { m: "Frau", r: "nom", c: "fin" }] }],
         note: "Partizip I = sens actif/simultané (joggend) ; Partizip II = sens passif/accompli (geschrieben)." }
@@ -165,7 +165,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Nominaliser adjectifs et participes", "Décliner ces noms"],
     grammairePoints: ["der Reisende, der Angestellte", "das Wesentliche, etwas Neues"],
     grammaire: [
-      { titre: "Quand l'adjectif/participe devient nom", intro: "Adjectifs et participes se nominalisent (majuscule) en gardant leur déclinaison d'adjectif.",
+      { regle: "Adjectifs/participes **nominalisés** (majuscule), gardant la déclinaison d'adjectif : *der Reisende, das Wesentliche, ein Bekannter*.", attention: "Après **etwas/nichts** → forme en **-es** : *etwas Wesentlich**es***.", exemples: [{"de":"Ich half einem Reisenden.","fr":"J'ai aidé un voyageur."},{"de":"Das ist das Wesentliche.","fr":"C'est l'essentiel."}], titre: "Quand l'adjectif/participe devient nom", intro: "Adjectifs et participes se nominalisent (majuscule) en gardant leur déclinaison d'adjectif.",
         tableau: { entetes: ["Origine", "Nom", "Sens"], lignes: [["reisend", "der/die Reisende", "le voyageur"], ["angestellt", "der/die Angestellte", "l'employé(e)"], ["wesentlich", "das Wesentliche", "l'essentiel"], ["bekannt", "ein Bekannter", "une connaissance"], ["neu (après etwas)", "etwas Neues", "qqch de nouveau"]] },
         note: "Déclinaison : der Angestellte / ein Angestellter / dem Angestellten ; das Wesentliche / etwas Wesentliches." }
     ],
@@ -182,7 +182,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Maîtriser tous les relatifs", "Employer les relatives explicatives (weiterführend)"],
     grammairePoints: ["dessen/deren, was, wo", "relative explicative (, was …)"],
     grammaire: [
-      { titre: "Relatives avancées et explicatives", intro: "Outre der/die/das, on emploie le génitif relatif (dessen/deren), was/wo, et la relative explicative qui reprend toute la phrase.",
+      { regle: "Relatifs avancés et **explicatifs** : génitif (*dessen/deren*), *was* (après *das Beste*…), **relative explicative** « *, was …* » qui reprend toute la phrase.", attention: "« , was … » commente l'**ensemble** de la principale (*Er log, **was** niemanden überraschte*).", titre: "Relatives avancées et explicatives", intro: "Outre der/die/das, on emploie le génitif relatif (dessen/deren), was/wo, et la relative explicative qui reprend toute la phrase.",
         tableau: { entetes: ["Type", "Pronom", "Exemple"], lignes: [["génitif", "dessen / deren", "der Autor, dessen Werk …"], ["+ préposition", "mit dem, für die", "die Frau, mit der ich sprach"], ["neutre/abstrait", "was", "das Beste, was …"], ["explicative (phrase)", ", was …", "Er kam zu spät, was alle ärgerte."]] },
         schemas: [{ legende: "Relative explicative : virgule + was reprend toute la phrase.", mots: [{ m: "Er log,", r: "principale", c: "objet" }, { m: "was", r: "reprend la phrase", c: "conj" }, { m: "niemanden", r: "complément", c: "sujet" }, { m: "überraschte", r: "verbe (fin)", c: "fin" }] }],
         note: "La relative explicative en « , was … » commente l'ensemble de la principale (ce qui …)." }

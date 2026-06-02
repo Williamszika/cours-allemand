@@ -9,7 +9,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Exprimer une hypothèse irréelle", "Relier condition et conséquence (wenn … würde)"],
     grammairePoints: ["wenn + Konjunktiv II", "sonst, andernfalls"],
     grammaire: [
-      { titre: "La condition irréelle", intro: "« Wenn + Konjunktiv II », conséquence avec würde / hätte / wäre. « sonst » = sinon.",
+      { regle: "Condition irréelle : **wenn + Konjunktiv II**, conséquence avec **würde / hätte / wäre**. *sonst* = sinon.", attention: "On peut inverser sans *wenn* : *Hätte ich Zeit, würde ich kommen*.", exemples: [{"de":"Wenn ich Zeit hätte, würde ich dir helfen.","fr":"Si j'avais le temps, je t'aiderais."},{"de":"Beeil dich, sonst kommen wir zu spät.","fr":"Dépêche-toi, sinon nous arriverons en retard."}], titre: "La condition irréelle", intro: "« Wenn + Konjunktiv II », conséquence avec würde / hätte / wäre. « sonst » = sinon.",
         tableau: { entetes: ["Condition", "Conséquence"], lignes: [["Wenn ich Zeit hätte,", "würde ich dir helfen."], ["Wenn ich reich wäre,", "würde ich reisen."], ["Beeil dich,", "sonst kommst du zu spät."]] },
         schemas: [{ legende: "wenn en tête → la principale commence par le verbe.", mots: [{ m: "Wenn ich Zeit hätte,", r: "condition (wenn)", c: "conj" }, { m: "würde", r: "verbe (1)", c: "verbe" }, { m: "ich dir", r: "sujet + datif", c: "sujet" }, { m: "helfen", r: "infinitif (fin)", c: "fin" }] }],
         note: "On peut inverser : « Ich würde dir helfen, wenn ich Zeit hätte. » « sonst » introduit la conséquence négative." }
@@ -27,7 +27,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Exprimer un but", "Choisir um … zu (même sujet) ou damit (sujet différent)"],
     grammairePoints: ["um … zu + Infinitiv", "damit + Nebensatz"],
     grammaire: [
-      { titre: "Exprimer le but", intro: "« um … zu + infinitif » si le sujet est le même. « damit » si le sujet change (verbe à la fin).",
+      { regle: "Exprimer le **but** : **um … zu** + infinitif (même sujet) ou **damit** + subordonnée (sujet différent, verbe à la fin).", attention: "Test : même sujet → *um … zu* ; nouveau sujet → *damit*.", titre: "Exprimer le but", intro: "« um … zu + infinitif » si le sujet est le même. « damit » si le sujet change (verbe à la fin).",
         tableau: { entetes: ["Structure", "Condition", "Exemple"], lignes: [["um … zu + Inf.", "même sujet", "Ich spare, um zu reisen."], ["damit", "sujet différent", "Ich spare, damit meine Kinder studieren können."]] },
         schemas: [{ legende: "damit : verbe conjugué à la FIN.", mots: [{ m: "Ich erkläre es,", r: "principale", c: "objet" }, { m: "damit", r: "but", c: "conj" }, { m: "du es", r: "sujet + objet", c: "sujet" }, { m: "verstehst", r: "verbe (fin)", c: "fin" }] }],
         note: "Test : si on peut garder le même sujet → um … zu ; s'il faut un nouveau sujet → damit." }
@@ -45,7 +45,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Utiliser des locutions nom + verbe", "Relier ses idées avec des connecteurs"],
     grammairePoints: ["eine Entscheidung treffen", "trotzdem, außerdem, deswegen"],
     grammaire: [
-      { titre: "Locutions figées et connecteurs", intro: "Beaucoup d'expressions associent un nom et un verbe précis. Les connecteurs relient les phrases (et placent le verbe en 2e position).",
+      { regle: "Locutions figées **nom + verbe** (*eine Entscheidung **treffen***, *eine Frage **stellen***) et connecteurs (*außerdem, trotzdem, deswegen*).", attention: "Après *außerdem/trotzdem/deswegen* en tête, le verbe reste en **2ᵉ position**.", titre: "Locutions figées et connecteurs", intro: "Beaucoup d'expressions associent un nom et un verbe précis. Les connecteurs relient les phrases (et placent le verbe en 2e position).",
         tableau: { entetes: ["Locution / connecteur", "Sens", "Exemple"], lignes: [["eine Entscheidung treffen", "prendre une décision", "Ich treffe eine Entscheidung."], ["eine Frage stellen", "poser une question", "Er stellt eine Frage."], ["außerdem", "de plus", "Es ist teuer; außerdem ist es weit."], ["trotzdem", "malgré tout", "Es regnet; trotzdem gehe ich."], ["deswegen", "c'est pourquoi", "Ich bin krank; deswegen bleibe ich."]] },
         note: "Après außerdem / trotzdem / deswegen en tête, le verbe reste en 2e position (inversion)." }
     ],
@@ -62,7 +62,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Choisir le bon temps dans un récit", "Combiner Präteritum et Plusquamperfekt"],
     grammairePoints: ["Präteritum (récit écrit)", "Plusquamperfekt (antériorité)"],
     grammaire: [
-      { titre: "Construire un récit cohérent", intro: "Dans un texte au passé, le Präteritum porte le fil du récit ; le Plusquamperfekt marque ce qui s'était passé AVANT.",
+      { regle: "Dans un récit, le **Präteritum** porte le fil ; le **Plusquamperfekt** marque ce qui s'était passé **avant**.", attention: "Concordance avec *nachdem* : subordonnée **plus-que-parfait** → principale **prétérit**.", titre: "Construire un récit cohérent", intro: "Dans un texte au passé, le Präteritum porte le fil du récit ; le Plusquamperfekt marque ce qui s'était passé AVANT.",
         tableau: { entetes: ["Plan", "Temps", "Exemple"], lignes: [["fil du récit", "Präteritum", "Sie kam nach Hause und kochte."], ["antériorité", "Plusquamperfekt", "Sie hatte schon eingekauft."], ["dialogue/oral inséré", "Perfekt", "« Ich habe das gemacht », sagte sie."]] },
         note: "Mots utiles : zuerst, dann, danach, schließlich, nachdem (+ Plusquamperfekt)." }
     ],
@@ -79,7 +79,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Exprimer la simultanéité (während, solange)", "Exprimer la non-simultanéité (bevor, nachdem, sobald)"],
     grammairePoints: ["während, solange", "bevor, nachdem, sobald"],
     grammaire: [
-      { titre: "Simultané ou successif ?", intro: "Simultanéité : während, solange. Non-simultanéité : bevor (avant), nachdem (après), sobald (dès que). Verbe à la fin.",
+      { regle: "**Simultanéité** : *während, solange*. **Succession** : *bevor* (avant), *nachdem* (après), *sobald* (dès que). Verbe à la fin.", attention: "Avec **nachdem**, pense à la concordance des temps (plus-que-parfait → prétérit).", titre: "Simultané ou successif ?", intro: "Simultanéité : während, solange. Non-simultanéité : bevor (avant), nachdem (après), sobald (dès que). Verbe à la fin.",
         tableau: { entetes: ["Conjonction", "Relation", "Exemple"], lignes: [["während", "simultané", "Während ich koche, deckst du den Tisch."], ["solange", "simultané (durée)", "Solange es regnet, bleiben wir drin."], ["bevor", "avant", "Bevor ich gehe, esse ich."], ["nachdem", "après (antériorité)", "Nachdem ich gegessen hatte, ging ich."], ["sobald", "dès que", "Sobald er kommt, fangen wir an."]] },
         schemas: [{ legende: "während : verbe à la FIN dans la subordonnée.", mots: [{ m: "Während ich", r: "subordonnée (während)", c: "conj" }, { m: "Musik", r: "complément", c: "sujet" }, { m: "höre,", r: "verbe (fin)", c: "fin" }, { m: "koche ich", r: "principale (verbe 1)", c: "verbe" }] }],
         note: "Avec « nachdem », pensez à la concordance des temps : subordonnée plus-que-parfait → principale prétérit." }
@@ -97,7 +97,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Choisir le cas après une préposition mixte", "Distinguer lieu (Dat.) et direction (Akk.)"],
     grammairePoints: ["an, auf, in, über…", "Wo? + Dat. / Wohin? + Akk."],
     grammaire: [
-      { titre: "Les prépositions mixtes (Wechselpräpositionen)", intro: "Neuf prépositions de lieu prennent le datif (position : Wo?) ou l'accusatif (direction : Wohin?).",
+      { regle: "Neuf prépositions mixtes (*an, auf, hinter, in, neben, über, unter, vor, zwischen*) : **datif** si position (**Wo?**), **accusatif** si direction (**Wohin?**).", attention: "Couples : *liegen/legen, stehen/stellen, sitzen/setzen* — position (Dat.) vs action de placer (Akk.).", titre: "Les prépositions mixtes (Wechselpräpositionen)", intro: "Neuf prépositions de lieu prennent le datif (position : Wo?) ou l'accusatif (direction : Wohin?).",
         tableau: { entetes: ["Question", "Cas", "Exemple"], lignes: [["Wo? (position)", "datif", "Das Buch liegt auf dem Tisch."], ["Wohin? (direction)", "accusatif", "Ich lege das Buch auf den Tisch."], ["Wo?", "datif", "Ich bin in der Schule."], ["Wohin?", "accusatif", "Ich gehe in die Schule."]] },
         schemas: [{ legende: "Wohin ? → accusatif (mouvement vers).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "stelle", r: "verbe (2)", c: "verbe" }, { m: "die Vase", r: "accusatif (quoi)", c: "objet" }, { m: "auf den Tisch", r: "direction (acc.)", c: "fin" }] }],
         note: "Les 9 : an, auf, hinter, in, neben, über, unter, vor, zwischen. Position = Dat., direction = Akk." }
@@ -115,7 +115,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Mémoriser les adjectifs à préposition fixe", "Appliquer le cas imposé"],
     grammairePoints: ["stolz auf, zufrieden mit", "böse auf, bereit zu"],
     grammaire: [
-      { titre: "Adjectif + préposition + cas", intro: "Comme les verbes, certains adjectifs imposent une préposition et un cas. À apprendre par paires.",
+      { regle: "Des **adjectifs** imposent une préposition fixe : *stolz **auf***, *zufrieden **mit***, *bereit **zu***, *abhängig **von***.", attention: "Interroger/reprendre comme les verbes : *Worauf bist du stolz? – Ich bin stolz **darauf***.", titre: "Adjectif + préposition + cas", intro: "Comme les verbes, certains adjectifs imposent une préposition et un cas. À apprendre par paires.",
         tableau: { entetes: ["Adjectif", "Préposition + cas", "Exemple"], lignes: [["stolz", "auf + Akk.", "stolz auf den Erfolg"], ["zufrieden", "mit + Dat.", "zufrieden mit der Note"], ["böse", "auf + Akk.", "böse auf den Kollegen"], ["bereit", "zu + Dat.", "bereit zur Abreise"], ["verliebt", "in + Akk.", "verliebt in sie"], ["abhängig", "von + Dat.", "abhängig von den Eltern"]] },
         note: "Pour interroger : « Worauf bist du stolz? » ; pour reprendre : « Ich bin stolz darauf. »" }
     ],
@@ -132,7 +132,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Relier deux éléments avec des connecteurs doubles", "Nuancer (et… et, ni… ni, soit… soit)"],
     grammairePoints: ["sowohl … als auch", "weder … noch, entweder … oder, nicht nur … sondern auch"],
     grammaire: [
-      { titre: "Les connecteurs doubles", intro: "Ils relient deux éléments de même nature pour énumérer ou opposer.",
+      { regle: "Connecteurs doubles : **sowohl … als auch**, **weder … noch**, **entweder … oder**, **nicht nur … sondern auch**.", attention: "*weder … noch* est **déjà négatif**. Après *sondern*, on corrige une **négation** précédente.", titre: "Les connecteurs doubles", intro: "Ils relient deux éléments de même nature pour énumérer ou opposer.",
         tableau: { entetes: ["Connecteur", "Sens", "Exemple"], lignes: [["sowohl … als auch", "aussi bien … que", "Sie spricht sowohl Deutsch als auch Englisch."], ["weder … noch", "ni … ni", "Ich trinke weder Kaffee noch Tee."], ["entweder … oder", "soit … soit", "Wir fahren entweder nach Rom oder nach Paris."], ["nicht nur … sondern auch", "non seulement … mais aussi", "Er ist nicht nur klug, sondern auch fleißig."]] },
         note: "« weder … noch » est déjà négatif : pas d'autre négation. Après « sondern », on corrige une négation précédente." }
     ],
@@ -149,7 +149,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Exprimer la cause (weil, da, denn)", "Exprimer la conséquence (deshalb, deswegen, daher)"],
     grammairePoints: ["weil, da, denn", "deshalb, deswegen, daher, darum"],
     grammaire: [
-      { titre: "Dire pourquoi et donc", intro: "Cause : weil/da (verbe à la fin), denn (verbe 2e). Conséquence : deshalb/deswegen/daher/darum (verbe 2e).",
+      { regle: "**Cause** : *weil/da* (verbe **fin**), *denn* (verbe **2ᵉ**). **Conséquence** : *deshalb/deswegen/daher* (verbe **2ᵉ**).", attention: "*weil* → verbe à la fin ; *deshalb* → verbe en 2ᵉ position.", titre: "Dire pourquoi et donc", intro: "Cause : weil/da (verbe à la fin), denn (verbe 2e). Conséquence : deshalb/deswegen/daher/darum (verbe 2e).",
         tableau: { entetes: ["Mot", "Rôle / position du verbe", "Exemple"], lignes: [["weil", "cause — verbe FIN", "Ich bleibe, weil ich krank bin."], ["da", "cause (connue) — verbe FIN", "Da es regnet, bleibe ich."], ["denn", "cause — verbe 2e", "Ich bleibe, denn ich bin krank."], ["deshalb", "conséquence — verbe 2e", "Ich bin krank, deshalb bleibe ich."], ["daher / darum", "conséquence — verbe 2e", "Es regnet, daher gehe ich nicht."]] },
         schemas: [{ legende: "weil : cause, verbe à la FIN.", mots: [{ m: "Ich bleibe zu Hause,", r: "principale", c: "objet" }, { m: "weil", r: "cause", c: "conj" }, { m: "ich krank", r: "sujet + complément", c: "sujet" }, { m: "bin", r: "verbe (fin)", c: "fin" }] }],
         note: "weil/da → subordination (verbe fin). denn/deshalb/deswegen/daher/darum → coordination (verbe 2e position)." }

@@ -11,7 +11,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Maîtriser le passif à tous les temps", "Employer le passif avec modal"],
     grammairePoints: ["werden + participe (tous temps)", "sein-Passiv, modal + werden"],
     grammaire: [
-      { titre: "Le passif sous toutes ses formes", intro: "Le Vorgangspassiv (werden + participe) existe à tous les temps ; avec un modal, l'infinitif passif (… werden) va à la fin.",
+      { regle: "Passif à **tous les temps** (*wird / wurde / ist … worden / wird … werden*) ; avec modal : participe + **werden** (fin).", attention: "Perfekt passif : *werden → **worden*** ; agent : *von + datif*, cause : *durch + accusatif*.", titre: "Le passif sous toutes ses formes", intro: "Le Vorgangspassiv (werden + participe) existe à tous les temps ; avec un modal, l'infinitif passif (… werden) va à la fin.",
         tableau: { entetes: ["Temps", "Forme", "Exemple"], lignes: [["présent", "wird + participe", "Das Haus wird gebaut."], ["prétérit", "wurde + participe", "Das Haus wurde gebaut."], ["parfait", "ist + participe + worden", "Das Haus ist gebaut worden."], ["futur", "wird + participe + werden", "Das Haus wird gebaut werden."], ["+ modal", "muss … participe + werden", "Es muss gebaut werden."]] },
         schemas: [{ legende: "Passif + modal : participe + werden (à la fin).", mots: [{ m: "Der Vertrag", r: "sujet", c: "sujet" }, { m: "muss", r: "modal (2)", c: "verbe" }, { m: "heute", r: "complément", c: "objet" }, { m: "unterschrieben werden", r: "participe + werden (fin)", c: "fin" }] }],
         note: "Au Perfekt passif, le participe de werden devient « worden » (sans ge-). Agent : von + datif ; cause : durch + accusatif." }
@@ -29,7 +29,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Remplacer le passif élégamment", "Employer man, sich lassen, sein+zu+Inf., -bar"],
     grammairePoints: ["man, sich lassen", "sein + zu + Inf., adjectifs en -bar"],
     grammaire: [
-      { titre: "Les alternatives au passif", intro: "Pour alléger le style, on remplace le passif par des tournures actives ou modales.",
+      { regle: "Alléger le passif : *man*, *sich lassen* (= können werden), *sein + zu + Inf.* (= müssen/können werden), adjectifs en **-bar**.", attention: "*Das Buch liest **sich** gut* : tournure pronominale à valeur **passive**.", titre: "Les alternatives au passif", intro: "Pour alléger le style, on remplace le passif par des tournures actives ou modales.",
         tableau: { entetes: ["Forme", "Exemple", "Équivaut à"], lignes: [["man", "Man löst das Problem.", "Das Problem wird gelöst."], ["sich lassen", "Das lässt sich lösen.", "kann gelöst werden"], ["sein + zu + Inf.", "Das ist zu lösen.", "muss/kann gelöst werden"], ["adjectif -bar", "lösbar, machbar", "kann gelöst/gemacht werden"], ["sich + Inf.", "Das Buch liest sich gut.", "kann gut gelesen werden"]] },
         schemas: [{ legende: "sein + zu + infinitif = nécessité/possibilité passive.", mots: [{ m: "Das Problem", r: "sujet", c: "sujet" }, { m: "ist", r: "sein (2)", c: "verbe" }, { m: "leicht", r: "complément", c: "objet" }, { m: "zu lösen", r: "zu + infinitif (fin)", c: "fin" }] }],
         note: "« Das Buch liest sich gut » : tournure pronominale à valeur passive (peut se lire facilement)." }
@@ -47,7 +47,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Maîtriser le sens subjectif des modaux", "Combiner modal, temps et passif"],
     grammairePoints: ["müsste, dürfte, soll, will (subjectif)", "hätte … müssen"],
     grammaire: [
-      { titre: "Modaux : objectif, subjectif, composé", intro: "Au C2, les modaux nuancent la supposition et se combinent au passé et au passif.",
+      { regle: "Sens subjectif (supposition : *dürfte/müsste* ; rumeur : *sollen* ; prétention : *wollen*) + combinaisons passé/passif.", attention: "*Er **will** es nicht gewusst haben* = il **prétend** ne pas l'avoir su.", titre: "Modaux : objectif, subjectif, composé", intro: "Au C2, les modaux nuancent la supposition et se combinent au passé et au passif.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["supposition", "dürfte / müsste", "Er dürfte recht haben."], ["rumeur", "sollen", "Sie soll sehr begabt sein."], ["prétention", "wollen", "Er will es nicht gewusst haben."], ["passé + modal", "hätte … müssen", "Ich hätte fragen müssen."], ["passif + modal", "muss … werden", "Es muss geprüft werden."]] },
         note: "« Er will es nicht gewusst haben » = il prétend ne pas l'avoir su (wollen subjectif au passé)." }
     ],
@@ -64,7 +64,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Décliner sans faute", "Maîtriser comparatif et superlatif (y compris irréguliers)"],
     grammairePoints: ["faible/mixte/forte", "-er / am -sten, irréguliers"],
     grammaire: [
-      { titre: "Déclinaison et degrés", intro: "L'adjectif épithète se décline selon le déterminant ; les degrés se forment en -er / am -sten, avec des irréguliers.",
+      { regle: "Déclinaison (faible/mixte/forte) + degrés : comparatif **-er**, superlatif **am … -sten / der … -ste**, avec irréguliers.", attention: "Irréguliers : *gut → besser → am besten* ; *viel → mehr → am meisten* ; *hoch → höher*.", titre: "Déclinaison et degrés", intro: "L'adjectif épithète se décline selon le déterminant ; les degrés se forment en -er / am -sten, avec des irréguliers.",
         tableau: { entetes: ["Aspect", "Règle", "Exemple"], lignes: [["après der", "faible (-e/-en)", "der gute Wein"], ["après ein", "mixte", "ein guter Wein"], ["sans article", "forte", "guter Wein"], ["comparatif", "-er (+ Umlaut)", "alt → älter"], ["superlatif", "am -sten / der -ste", "am ältesten / der älteste"]] },
         note: "Irréguliers : gut → besser → am besten ; viel → mehr → am meisten ; hoch → höher → am höchsten ; gern → lieber → am liebsten." }
     ],
@@ -81,7 +81,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Employer adjectifs à datif/génitif", "Maîtriser adjectifs à préposition"],
     grammairePoints: ["+ datif (treu, ähnlich)", "+ génitif, + préposition"],
     grammaire: [
-      { titre: "La rection des adjectifs", intro: "Certains adjectifs régissent un datif, un génitif ou une préposition fixe.",
+      { regle: "La **rection des adjectifs** : datif (*treu, ähnlich*), **génitif** (*(sich) bewusst, sicher*), préposition (*stolz auf, fähig zu*).", attention: "Adjectifs à génitif (soutenus) : *Ich bin mir des Problems **bewusst***.", titre: "La rection des adjectifs", intro: "Certains adjectifs régissent un datif, un génitif ou une préposition fixe.",
         tableau: { entetes: ["Adjectif", "Complément", "Exemple"], lignes: [["treu / ähnlich", "+ Dat.", "Er bleibt sich treu."], ["bewusst / sicher", "+ Gen.", "Ich bin mir der Lage bewusst."], ["stolz", "auf + Akk.", "stolz auf den Erfolg"], ["fähig", "zu + Dat.", "zu allem fähig"], ["reich", "an + Dat.", "reich an Erfahrung"]] },
         note: "Adjectifs à génitif (soutenus) : (sich) bewusst, sicher, würdig, verdächtig, schuldig." }
     ],
@@ -98,7 +98,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Reconnaître les suffixes adjectivaux", "Former des adjectifs à partir de noms/verbes"],
     grammairePoints: ["-bar, -los, -haft, -ig", "-lich, -sam, -voll"],
     grammaire: [
-      { titre: "Les suffixes adjectivaux", intro: "On forme des adjectifs par dérivation ; chaque suffixe apporte une nuance.",
+      { regle: "Suffixes adjectivaux : **-bar** (possibilité), **-los** (sans), **-haft, -ig, -lich**, **-voll/-reich** (abondance).", attention: "Opposition utile : *-voll* (plein de) ↔ *-los* (sans) : *sinnvoll / sinnlos*.", titre: "Les suffixes adjectivaux", intro: "On forme des adjectifs par dérivation ; chaque suffixe apporte une nuance.",
         tableau: { entetes: ["Suffixe", "Sens", "Exemple"], lignes: [["-bar", "possibilité (passive)", "lösbar, essbar"], ["-los", "absence (sans)", "arbeitslos, hilflos"], ["-haft", "qui a la qualité de", "vorbildhaft, fehlerhaft"], ["-ig", "qualité", "sonnig, mutig"], ["-lich", "relation/atténuation", "freundlich, rötlich"], ["-voll / -reich", "abondance", "wertvoll, erfolgreich"]] },
         note: "Opposition utile : -voll (plein de) vs -los (sans) : sinnvoll / sinnlos, hoffnungsvoll / hoffnungslos." }
     ],
@@ -115,7 +115,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Transformer le verbal en nominal", "Reconnaître le style écrit soutenu"],
     grammairePoints: ["Nominalstil ↔ Verbalstil", "prépositions + nominalisation"],
     grammaire: [
-      { titre: "Du verbe au nom (registre écrit)", intro: "Le style nominal condense une subordonnée en groupe nominal ; il est typique de l'écrit administratif et scientifique.",
+      { regle: "Le **style nominal** condense une subordonnée en groupe nominal (préposition + nom, souvent génitif) — typique de l'écrit soutenu.", attention: "Excessif, il **alourdit** ; au C2, on l'emploie **à bon escient**.", exemples: [{"de":"Wegen steigender Preise sank die Nachfrage.","fr":"En raison de la hausse des prix, la demande a baissé."},{"de":"Nach Prüfung der Unterlagen entschied sie.","fr":"Après examen des documents, elle a décidé."}], titre: "Du verbe au nom (registre écrit)", intro: "Le style nominal condense une subordonnée en groupe nominal ; il est typique de l'écrit administratif et scientifique.",
         tableau: { entetes: ["Verbal (subordonnée)", "Nominal (groupe)"], lignes: [["weil die Preise steigen", "wegen steigender Preise"], ["nachdem man geprüft hat", "nach der Prüfung"], ["obwohl es Widerstand gab", "trotz des Widerstands"], ["wenn man ankommt", "bei der Ankunft"], ["um zu informieren", "zur Information"]] },
         schemas: [{ legende: "Subordonnée → préposition + groupe nominal (souvent génitif).", mots: [{ m: "wegen", r: "préposition", c: "conj" }, { m: "steigender", r: "adjectif décliné", c: "objet" }, { m: "Preise", r: "nom (génitif)", c: "sujet" }, { m: "(stieg die Inflation)", r: "principale", c: "verbe" }] }],
         note: "Le style nominal alourdit s'il est excessif ; au C2 on l'emploie à bon escient pour la densité et l'objectivité." }
@@ -133,7 +133,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Employer les prépositions soutenues à génitif", "Choisir la nuance exacte"],
     grammairePoints: ["mittels, anhand, infolge", "angesichts, seitens, zwecks"],
     grammaire: [
-      { titre: "Les prépositions à génitif du registre écrit", intro: "La langue administrative et scientifique emploie des prépositions à génitif précises.",
+      { regle: "Prépositions à génitif de l'écrit : *mittels* (au moyen de), *anhand* (à l'aide de), *infolge* (à la suite de), *angesichts, seitens, zwecks*.", attention: "Surtout à l'**écrit** ; à l'oral on dit plutôt *mit, wegen, von … aus*.", titre: "Les prépositions à génitif du registre écrit", intro: "La langue administrative et scientifique emploie des prépositions à génitif précises.",
         tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["mittels", "au moyen de", "mittels eines Codes"], ["anhand", "à l'aide de", "anhand der Daten"], ["infolge", "à la suite de", "infolge des Unfalls"], ["angesichts", "compte tenu de", "angesichts der Lage"], ["seitens", "de la part de", "seitens der Behörde"], ["zwecks", "aux fins de", "zwecks Überprüfung"]] },
         note: "Ces prépositions appartiennent surtout à l'écrit ; à l'oral, on les remplace souvent par « mit, wegen, von … aus »." }
     ],

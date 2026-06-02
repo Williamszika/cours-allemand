@@ -4812,7 +4812,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Former le prétérit (récit écrit)", "Connaître le prétérit des modaux"],
     grammairePoints: ["Präteritum", "konnte, musste…"],
     grammaire: [
-      { titre: "Le prétérit (temps du récit écrit)", intro: "Réguliers : radical + -te. Irréguliers : radical modifié.",
+      { regle: "Le **prétérit** est le temps du **récit écrit**. Réguliers : radical + **-te** (*machen → machte*). Irréguliers : changement de voyelle (*gehen → ging*).", attention: "À l'oral on préfère le **Perfekt** ; mais **sein, haben** et les **modaux** se disent au prétérit même à l'oral (*war, hatte, musste*).", exemples: [{"de":"Gestern machte er seine Hausaufgaben.","fr":"Hier, il a fait ses devoirs."},{"de":"Sie ging früh nach Hause.","fr":"Elle est rentrée tôt à la maison."}], titre: "Le prétérit (temps du récit écrit)", intro: "Réguliers : radical + -te. Irréguliers : radical modifié.",
         tableau: { entetes: ["Infinitif", "Type", "er/sie/es"], lignes: [["machen", "régulier", "machte"], ["arbeiten", "régulier", "arbeitete"], ["gehen", "irrégulier", "ging"], ["kommen", "irrégulier", "kam"], ["müssen", "modal", "musste"], ["können", "modal", "konnte"]] },
         note: "À l'oral on préfère le Perfekt ; le Präteritum domine à l'écrit (récits, presse) et pour sein/haben/modaux." }
     ],
@@ -4829,7 +4829,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Former le Perfekt", "Choisir haben ou sein", "Participes irréguliers"],
     grammairePoints: ["haben/sein + participe", "Partizip II"],
     grammaire: [
-      { titre: "Auxiliaire + participe (à la fin)", intro: "Mouvement / changement d'état → sein. Sinon → haben.",
+      { regle: "**Perfekt** = **haben/sein** (2ᵉ position) + **participe II** à la fin. Mouvement/changement d'état → **sein** ; sinon → **haben**.", attention: "Verbes en **-ieren** : **pas** de *ge-* (*studieren → studiert*). Séparables : *ge-* au milieu (*eingekauft*).", exemples: [{"de":"Ich habe einen Film gesehen.","fr":"J'ai vu un film."},{"de":"Wir sind nach Hause gefahren.","fr":"Nous sommes rentrés à la maison."}], titre: "Auxiliaire + participe (à la fin)", intro: "Mouvement / changement d'état → sein. Sinon → haben.",
         tableau: { entetes: ["Infinitif", "Auxiliaire", "Participe II"], lignes: [["machen", "haben", "gemacht"], ["sehen", "haben", "gesehen"], ["gehen", "sein", "gegangen"], ["fahren", "sein", "gefahren"], ["bleiben", "sein", "geblieben"], ["aufstehen", "sein", "aufgestanden"]] },
         note: "Verbes en -ieren : pas de ge- (studieren → studiert). Séparables : ge- au milieu (eingekauft)." }
     ],
@@ -4846,7 +4846,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Décliner l'article selon le cas", "Reconnaître nominatif / accusatif / datif"],
     grammairePoints: ["Déclinaison de l'article", "Nom./Acc./Dat."],
     grammaire: [
-      { titre: "L'article défini selon le cas", intro: "L'article change selon la fonction du nom dans la phrase.",
+      { regle: "L'**article change selon le cas** : nominatif (sujet), accusatif (COD), datif (COI). Le plus mobile est le masculin : *der → den → dem*.", attention: "Au **datif pluriel**, le nom prend un **-n** (*den Kindern*).", exemples: [{"de":"Der Mann gibt dem Kind einen Apfel.","fr":"L'homme donne une pomme à l'enfant."},{"de":"Ich sehe die Frau.","fr":"Je vois la femme."}], titre: "L'article défini selon le cas", intro: "L'article change selon la fonction du nom dans la phrase.",
         tableau: { entetes: ["Cas", "masculin", "féminin", "neutre", "pluriel"], lignes: [["Nominatif (sujet)", "der", "die", "das", "die"], ["Accusatif (COD)", "den", "die", "das", "die"], ["Datif (COI)", "dem", "der", "dem", "den +n"]] },
         note: "Indéfini : ein/eine → einen (m. acc.) → einem/einer (datif). Au pluriel datif, le nom prend souvent un -n." }
     ],
@@ -4863,7 +4863,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Placer nicht correctement", "Utiliser kein, nichts, niemand, nie"],
     grammairePoints: ["nicht / kein", "nichts, niemand, nie"],
     grammaire: [
-      { titre: "Les mots de négation", intro: "kein nie un nom ; nicht le reste ; et des mots spécifiques.",
+      { regle: "**kein** nie un **nom** (sans article / indéfini) ; **nicht** nie le reste. Mots spécifiques : **nichts** (rien), **niemand** (personne), **nie** (jamais).", attention: "**niemand** et **nichts** sont déjà négatifs : pas de double négation (*Ich sehe **nichts***).", titre: "Les mots de négation", intro: "kein nie un nom ; nicht le reste ; et des mots spécifiques.",
         tableau: { entetes: ["Mot", "Sens", "Exemple"], lignes: [["kein", "aucun/pas de", "Ich habe kein Auto."], ["nicht", "ne… pas", "Ich komme nicht."], ["nichts", "rien", "Ich sehe nichts."], ["niemand", "personne", "Niemand ist da."], ["nie", "jamais", "Ich rauche nie."]] },
         note: "« nicht » se place en général à la fin, mais AVANT un adjectif/lieu : « Das ist nicht gut »." }
     ],
@@ -4880,7 +4880,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Distinguer principale et subordonnée", "Placer le verbe (2e position vs fin)"],
     grammairePoints: ["weil, dass, wenn, obwohl", "Ordre des mots"],
     grammaire: [
-      { titre: "Subordonnées : verbe à la FIN", intro: "weil, dass, wenn, obwohl introduisent une subordonnée → verbe conjugué à la fin.",
+      { regle: "Les conjonctions de **subordination** (*weil, dass, wenn, obwohl*) rejettent le **verbe à la FIN**. Les conjonctions de **coordination** (*und, aber, denn, oder*) gardent le verbe en **2ᵉ** position.", attention: "Si la **subordonnée est en tête**, la principale **commence par le verbe** : *Weil ich müde bin, **bleibe** ich zu Hause*.", titre: "Subordonnées : verbe à la FIN", intro: "weil, dass, wenn, obwohl introduisent une subordonnée → verbe conjugué à la fin.",
         tableau: { entetes: ["Conjonction", "Sens", "Exemple"], lignes: [["weil", "parce que", "…, weil ich müde bin."], ["dass", "que", "Ich denke, dass es gut ist."], ["wenn", "si / quand", "…, wenn ich Zeit habe."], ["obwohl", "bien que", "…, obwohl es regnet."]] },
         schemas: [
           { legende: "Principale : verbe en 2e position.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "bleibe", r: "verbe (2)", c: "verbe" }, { m: "zu Hause", r: "complément", c: "objet" }] },
@@ -4901,7 +4901,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Reconnaître les verbes à datif", "Construire « donner qqch à qqn »"],
     grammairePoints: ["helfen, danken (datif)", "geben jdm etwas"],
     grammaire: [
-      { titre: "Datif seul, ou datif + accusatif", intro: "Certains verbes demandent le datif ; d'autres datif (personne) + accusatif (chose).",
+      { regle: "Certains verbes prennent **datif (à qui)** + **accusatif (quoi)** : *geben, schenken, zeigen, empfehlen*. Ordre habituel (deux noms) : **datif avant accusatif**.", attention: "Verbes **toujours + datif seul** : *helfen, danken, gefallen, gehören* (*Ich helfe **dir***).", titre: "Datif seul, ou datif + accusatif", intro: "Certains verbes demandent le datif ; d'autres datif (personne) + accusatif (chose).",
         tableau: { entetes: ["Verbe", "Construction", "Exemple"], lignes: [["helfen", "+ datif", "Ich helfe dir."], ["danken", "+ datif", "Ich danke Ihnen."], ["gefallen", "+ datif", "Das gefällt mir."], ["geben", "datif + accusatif", "Ich gebe dem Kind einen Apfel."], ["schenken", "datif + accusatif", "Er schenkt ihr Blumen."]] },
         schemas: [
           { legende: "Donner : à QUI (datif) + QUOI (accusatif).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "gebe", r: "verbe (2)", c: "verbe" }, { m: "dem Kind", r: "datif (à qui)", c: "objet" }, { m: "einen Apfel", r: "accusatif (quoi)", c: "fin" }] }
@@ -4921,7 +4921,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Exprimer l'irréel et le souhait", "Faire une demande polie"],
     grammairePoints: ["würde + Inf.", "wäre, hätte, könnte"],
     grammaire: [
-      { titre: "Formes du Konjunktiv II", intro: "würde + infinitif pour la plupart ; sein/haben/modaux ont une forme propre.",
+      { regle: "Pour la **politesse**, le **souhait** et l'**irréel** : **würde** + infinitif, ou les formes propres **hätte, wäre, könnte**.", attention: "Le « si » irréel se construit avec **wenn + Konjunktiv II** : *Wenn ich Zeit **hätte**, **würde** ich kommen*.", titre: "Formes du Konjunktiv II", intro: "würde + infinitif pour la plupart ; sein/haben/modaux ont une forme propre.",
         tableau: { entetes: ["Verbe", "Konjunktiv II", "Exemple"], lignes: [["sein", "wäre", "Wenn ich reich wäre…"], ["haben", "hätte", "Ich hätte gern Kaffee."], ["können", "könnte", "Könnten Sie helfen?"], ["werden", "würde", "Ich würde gern reisen."]] },
         note: "Demande polie : « Könnten Sie… ? », « Ich hätte gern… », « Würden Sie… ? »." }
     ],
@@ -4938,7 +4938,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Situer dans le temps", "Choisir la bonne préposition / le bon cas"],
     grammairePoints: ["am, im, um, seit, vor", "jeden Tag (accusatif)"],
     grammaire: [
-      { titre: "Dire quand", intro: "Chaque repère temporel a sa structure.",
+      { regle: "Situer dans le temps : **am** (jour), **um** (heure), **im** (mois/saison), **seit** (depuis), **von … bis** (de … à).", attention: "« depuis » se dit **seit + datif** avec un verbe au **présent** : *Ich lerne **seit** zwei Jahren Deutsch*.", titre: "Dire quand", intro: "Chaque repère temporel a sa structure.",
         tableau: { entetes: ["Expression", "Sens", "Exemple"], lignes: [["am + jour", "le…", "am Montag"], ["im + mois/saison", "en…", "im Sommer"], ["um + heure", "à…", "um 8 Uhr"], ["seit + datif", "depuis", "seit zwei Jahren"], ["vor + datif", "il y a", "vor einer Woche"], ["jeden Tag (acc.)", "chaque jour", "jeden Tag, jede Woche"]] },
         note: "Durée habituelle à l'accusatif : jeden Tag, jeden Morgen, letzten Montag." }
     ],
@@ -4955,7 +4955,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Comprendre à quoi sert chaque cas", "Poser la bonne question (wer/wen/wem)"],
     grammairePoints: ["Nominatif/Accusatif/Datif", "wer? wen? wem?"],
     grammaire: [
-      { titre: "Les 3 cas essentiels", intro: "Chaque cas a une fonction et une question.",
+      { regle: "Quatre cas : **Nominatif** (sujet), **Accusatif** (COD), **Datif** (COI / après certaines prép.), **Genitiv** (appartenance). La **fonction** du nom décide du cas.", attention: "Le cas se voit surtout sur l'**article** et l'**adjectif**, rarement sur le nom.", titre: "Les 3 cas essentiels", intro: "Chaque cas a une fonction et une question.",
         tableau: { entetes: ["Cas", "Fonction", "Question", "Exemple"], lignes: [["Nominatif", "sujet", "wer? (qui ?)", "Der Mann schläft."], ["Accusatif", "COD", "wen/was?", "Ich sehe den Mann."], ["Datif", "COI (à qui)", "wem?", "Ich helfe dem Mann."]] },
         note: "Astuce : le cas dépend du verbe et des prépositions. mit/zu/bei… → datif ; durch/für/ohne… → accusatif." }
     ],
@@ -4981,7 +4981,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Distinguer Wo / Wohin / Woher", "Indiquer une direction"],
     grammairePoints: ["Wo? Wohin? Woher?", "hier, dort, links…"],
     grammaire: [
-      { titre: "Où ? / Où aller ? / D'où ?", intro: "Trois questions, trois logiques.",
+      { regle: "**Wo?** (position) → datif (*in der Stadt*). **Wohin?** (direction) → *nach* (villes/pays), *zu* (personnes/lieux), *in* + accusatif (*in die Stadt*).", attention: "*nach Hause* = rentrer (mouvement) ; *zu Hause* = être à la maison (position). Pays avec article → *in die Schweiz*.", exemples: [{"de":"Ich gehe in die Stadt.","fr":"Je vais en ville."},{"de":"Er ist zu Hause.","fr":"Il est à la maison."}], titre: "Où ? / Où aller ? / D'où ?", intro: "Trois questions, trois logiques.",
         tableau: { entetes: ["Question", "Sens", "Réponse"], lignes: [["Wo?", "où (position)", "in der Stadt (datif)"], ["Wohin?", "où (direction)", "in die Stadt (acc.), nach Berlin"], ["Woher?", "d'où", "aus Spanien, von der Arbeit"]] },
         schemas: [
           { legende: "Wohin? (direction) → accusatif.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "gehe", r: "verbe (2)", c: "verbe" }, { m: "in die Stadt", r: "direction (acc.)", c: "fin" }] },
@@ -5002,7 +5002,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Exprimer la possession", "Reconnaître le génitif et « von + datif »"],
     grammairePoints: ["Genitiv (des/der)", "von + datif"],
     grammaire: [
-      { titre: "Dire « de qui » / « de quoi »", intro: "À l'écrit : génitif. À l'oral : souvent « von + datif ».",
+      { regle: "Le **génitif** exprime l'**appartenance** : masc./neutre **des** + nom **-(e)s** ; fém./pluriel **der**.", attention: "À l'oral, on remplace souvent le génitif par **von + datif** : *das Auto **von** meinem Vater*.", titre: "Dire « de qui » / « de quoi »", intro: "À l'écrit : génitif. À l'oral : souvent « von + datif ».",
         tableau: { entetes: ["Forme", "Exemple", "Sens"], lignes: [["Genitiv (m/n)", "das Auto des Mannes", "la voiture de l'homme"], ["Genitiv (f/pl)", "die Tasche der Frau", "le sac de la femme"], ["von + datif (oral)", "das Auto von meinem Bruder", "la voiture de mon frère"]] },
         note: "Au génitif, les noms masculins/neutres prennent souvent un -s (des Mannes, des Kindes)." }
     ],
@@ -5019,7 +5019,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Accorder l'adjectif devant un nom", "Cas simples (nominatif/accusatif)"],
     grammairePoints: ["Terminaisons -e / -en", "après der / ein"],
     grammaire: [
-      { titre: "L'adjectif devant le nom", intro: "Après l'article défini : surtout -e (sing.) et -en. Après « ein » : prend la marque du genre.",
+      { regle: "Devant un nom, l'**adjectif se décline**. Après *der/die/das* → **-e / -en** ; après *ein* → l'adjectif **porte la marque du genre** (*ein **guter** Wein*).", attention: "Sans article, l'adjectif prend la **terminaison forte** du cas (*gut**er** Wein*, *kalt**es** Wasser*).", exemples: [{"de":"Der gute Wein ist teuer.","fr":"Le bon vin est cher."},{"de":"Ich trinke einen guten Kaffee.","fr":"Je bois un bon café."}], titre: "L'adjectif devant le nom", intro: "Après l'article défini : surtout -e (sing.) et -en. Après « ein » : prend la marque du genre.",
         tableau: { entetes: ["Cas / genre", "après der/die/das", "après ein/eine"], lignes: [["m. nominatif", "der gute Mann", "ein guter Mann"], ["m. accusatif", "den guten Mann", "einen guten Mann"], ["f. nom./acc.", "die gute Frau", "eine gute Frau"], ["n. nom./acc.", "das gute Kind", "ein gutes Kind"]] },
         note: "Rappel : après « sein » l'adjectif est INVARIABLE (Der Mann ist gut). Devant le nom, il s'accorde." }
     ],
@@ -5036,7 +5036,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Distinguer séparables et inséparables", "Placer la particule"],
     grammairePoints: ["trennbar / untrennbar", "Préfixes"],
     grammaire: [
-      { titre: "Séparable ou inséparable ?", intro: "La particule séparable part à la fin ; l'inséparable reste collée.",
+      { regle: "**Séparables** (*auf-, an-, ein-, mit-, vor-, zu-*) : le préfixe **part à la fin**. **Inséparables** (*be-, er-, ent-, ver-, zer-, miss-*) : restent collés.", attention: "Au participe, l'inséparable n'a **pas** de *ge-* (*verstanden, bekommen*) ; le séparable l'insère (*aufgestanden*).", titre: "Séparable ou inséparable ?", intro: "La particule séparable part à la fin ; l'inséparable reste collée.",
         tableau: { entetes: ["Type", "Préfixes", "Exemple"], lignes: [["séparable", "auf-, ein-, an-, mit-, zu-, aus-", "Ich stehe um 7 auf."], ["inséparable", "be-, ge-, er-, ver-, ent-, emp-, zer-", "Ich verstehe das."]] },
         note: "Au Perfekt : séparable → aufgestanden (ge- au milieu) ; inséparable → verstanden (PAS de ge-)." }
     ],
@@ -5053,7 +5053,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Choisir le bon temps du passé", "À l'oral vs à l'écrit"],
     grammairePoints: ["Perfekt (oral)", "Präteritum (écrit, sein/haben/modaux)"],
     grammaire: [
-      { titre: "Quel passé utiliser ?", intro: "Même sens, contextes différents.",
+      { regle: "**Perfekt** = oral, lettres, conversation. **Präteritum** = récit écrit, presse, contes. Même passé, **registre** différent.", attention: "*sein, haben* et les **modaux** vont au **Präteritum** même à l'oral (*Ich **war** müde*).", titre: "Quel passé utiliser ?", intro: "Même sens, contextes différents.",
         tableau: { entetes: ["Contexte", "Temps", "Exemple"], lignes: [["conversation", "Perfekt", "Ich habe gegessen."], ["récit écrit / presse", "Präteritum", "Er ging nach Hause."], ["sein / haben / modaux (oral)", "Präteritum", "Ich war / hatte / musste"]] },
         note: "Règle pratique : à l'oral, Perfekt partout — sauf war, hatte, et les modaux (konnte, musste…)." }
     ],
@@ -5070,7 +5070,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Connaître les verbes à préposition fixe", "Choisir le bon cas"],
     grammairePoints: ["warten auf, denken an…", "Préposition fixe"],
     grammaire: [
-      { titre: "Verbes à préposition fixe", intro: "La préposition fait partie du verbe et impose son cas.",
+      { regle: "Beaucoup de verbes imposent une **préposition fixe** (et son cas) : *warten **auf** + Akk.*, *denken **an** + Akk.*, *sich freuen **über/auf***.", attention: "*sich freuen **auf*** = se réjouir d'avance (futur) ; *sich freuen **über*** = être content de (présent/passé).", titre: "Verbes à préposition fixe", intro: "La préposition fait partie du verbe et impose son cas.",
         tableau: { entetes: ["Verbe + prép.", "Cas", "Exemple"], lignes: [["warten auf", "accusatif", "Ich warte auf den Bus."], ["denken an", "accusatif", "Ich denke an dich."], ["sich interessieren für", "accusatif", "Ich interessiere mich für Musik."], ["sprechen mit", "datif", "Ich spreche mit dem Lehrer."], ["helfen bei", "datif", "Er hilft mir bei der Arbeit."]] },
         note: "À apprendre par cœur (verbe + préposition + cas). Question : « auf wen/was wartest du? »." }
     ],
@@ -5087,7 +5087,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Former le pluriel", "Comprendre les noms composés"],
     grammairePoints: ["Pluriels", "Komposita", "suffixes"],
     grammaire: [
-      { titre: "Pluriels et noms composés", intro: "Plusieurs marques de pluriel ; les noms composés se collent.",
+      { regle: "Tout **nom** prend une **majuscule** et a un **genre** (der/die/das) et un **pluriel** à apprendre. Le genre n'est pas toujours logique.", attention: "Apprends toujours le nom avec son **article et son pluriel** : *das Buch, die Büch**er***.", exemples: [{"de":"Das Kind liest ein Buch.","fr":"L'enfant lit un livre."},{"de":"Die Bücher sind interessant.","fr":"Les livres sont intéressants."}], titre: "Pluriels et noms composés", intro: "Plusieurs marques de pluriel ; les noms composés se collent.",
         tableau: { entetes: ["Règle", "Singulier → Pluriel"], lignes: [["-e (souvent + Umlaut)", "der Tisch → die Tische"], ["-er (+ Umlaut)", "das Kind → die Kinder"], ["-(e)n", "die Frau → die Frauen"], ["-s (mots étrangers)", "das Auto → die Autos"], ["composé (Kompositum)", "die Haus + die Tür → die Haustür"]] },
         note: "Le genre d'un nom composé = celui du DERNIER mot (die Haustür → die Tür). Les noms s'écrivent avec une majuscule. Suffixes féminins : -ung, -heit, -keit, -tion." }
     ],
@@ -5104,7 +5104,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Maîtriser les prépositions mixtes", "Choisir accusatif (Wohin) ou datif (Wo)"],
     grammairePoints: ["Wechselpräpositionen", "temporelles"],
     grammaire: [
-      { titre: "Prépositions mixtes (lieu)", intro: "an, auf, in, über, unter, vor, hinter, neben, zwischen : datif (Wo?) ou accusatif (Wohin?).",
+      { regle: "Chaque préposition impose un **cas** : *mit, zu, bei* (+ datif), *für, ohne* (+ accusatif), *in, an, auf* (datif **ou** accusatif).", attention: "Les **prépositions mixtes** : **datif** si position (Wo?), **accusatif** si mouvement (Wohin?).", titre: "Prépositions mixtes (lieu)", intro: "an, auf, in, über, unter, vor, hinter, neben, zwischen : datif (Wo?) ou accusatif (Wohin?).",
         tableau: { entetes: ["Question", "Cas", "Exemple"], lignes: [["Wo? (position)", "datif", "Das Bild hängt an der Wand."], ["Wohin? (direction)", "accusatif", "Ich hänge das Bild an die Wand."], ["temps : am/im/um", "—", "am Montag, im Mai, um 8"], ["temps : seit/vor", "datif", "seit zwei Jahren, vor einer Woche"]] },
         schemas: [
           { legende: "Wohin? → accusatif.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "lege", r: "verbe (2)", c: "verbe" }, { m: "das Buch", r: "COD", c: "objet" }, { m: "auf den Tisch", r: "direction (acc.)", c: "fin" }] },
@@ -6183,7 +6183,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Distinguer Perfekt, Präteritum et Plusquamperfekt", "Choisir le bon temps selon l'oral/l'écrit et la chronologie"],
     grammairePoints: ["Perfekt (oral)", "Präteritum (récit écrit)", "Plusquamperfekt (antériorité)"],
     grammaire: [
-      { titre: "Trois temps pour le passé", intro: "Perfekt = passé parlé. Präteritum = passé du récit écrit. Plusquamperfekt = action antérieure à une autre action passée.",
+      { regle: "Trois temps : **Perfekt** (oral), **Präteritum** (récit écrit), **Plusquamperfekt** (*hatte/war* + participe = action **antérieure** à une autre action passée).", attention: "Avec **nachdem** : subordonnée au **plus-que-parfait**, principale au prétérit/Perfekt.", titre: "Trois temps pour le passé", intro: "Perfekt = passé parlé. Präteritum = passé du récit écrit. Plusquamperfekt = action antérieure à une autre action passée.",
         tableau: { entetes: ["Temps", "Formation", "Exemple"], lignes: [["Perfekt", "haben/sein + participe II", "Ich habe gegessen."], ["Präteritum", "radical + -te / Ablaut", "Ich aß. / Ich ging."], ["Plusquamperfekt", "hatte/war + participe II", "Ich hatte gegessen."], ["sein/haben/modaux", "Präteritum à l'oral aussi", "Ich war / hatte / musste"]] },
         schemas: [{ legende: "Plusquamperfekt + nachdem : l'antériorité.", mots: [{ m: "Nachdem ich gegessen hatte,", r: "antérieur (Plusqpf.)", c: "conj" }, { m: "ging", r: "verbe (1)", c: "verbe" }, { m: "ich", r: "sujet", c: "sujet" }, { m: "los", r: "complément", c: "fin" }] }],
         note: "À l'oral on emploie le Perfekt ; le Präteritum domine à l'écrit. sein, haben et les modaux se mettent au Präteritum même à l'oral." }
@@ -6201,7 +6201,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Mémoriser les verbes à préposition fixe", "Appliquer le cas imposé par la préposition"],
     grammairePoints: ["warten auf, denken an", "sich freuen über/auf"],
     grammaire: [
-      { titre: "Verbe + préposition + cas fixe", intro: "Beaucoup de verbes se construisent avec une préposition imposée, qui fixe le cas. À apprendre par cœur.",
+      { regle: "Verbes à **préposition fixe**, à mémoriser par paires (*warten auf, denken an, sich interessieren für*) : la préposition fixe le **cas**.", attention: "Chose → reprise par *da(r)-* (*darauf*) et question par *wo(r)-* (*Worauf?*) ; personne → *préposition + wen/wem*.", titre: "Verbe + préposition + cas fixe", intro: "Beaucoup de verbes se construisent avec une préposition imposée, qui fixe le cas. À apprendre par cœur.",
         tableau: { entetes: ["Verbe", "Préposition + cas", "Exemple"], lignes: [["warten", "auf + Akk.", "Ich warte auf den Bus."], ["denken", "an + Akk.", "Ich denke an dich."], ["sich freuen", "auf + Akk. (futur)", "Ich freue mich auf den Urlaub."], ["sich freuen", "über + Akk. (présent)", "Ich freue mich über das Geschenk."], ["sprechen", "mit + Dat. / über + Akk.", "Ich spreche mit ihm über die Arbeit."], ["sich interessieren", "für + Akk.", "Ich interessiere mich für Musik."]] },
         note: "« sich freuen auf » = se réjouir d'avance (futur) ; « sich freuen über » = être content de (présent/passé)." }
     ],
@@ -6218,7 +6218,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Poser une question avec wo(r)- + préposition", "Reprendre avec da(r)- + préposition"],
     grammairePoints: ["Wofür? Worauf? Woran?", "dafür, darauf, daran"],
     grammaire: [
-      { titre: "Wo(r)- pour les choses, da(r)- pour répondre", intro: "Pour interroger sur une CHOSE avec un verbe à préposition, on fusionne wo(+r) + préposition. Pour reprendre, on emploie da(+r) + préposition.",
+      { regle: "Interroger sur une **chose** : **wo(r)-** + préposition (*Worauf? Woran?*). Reprendre : **da(r)-** + préposition (*darauf, daran*).", attention: "On ajoute **-r-** devant une voyelle : *wo**r**auf*, *da**r**auf*. Pour une **personne** : *Auf **wen**?*", exemples: [{"de":"Worauf wartest du? – Ich warte darauf.","fr":"Qu'attends-tu ? – Je l'attends."},{"de":"An wen denkst du?","fr":"À qui penses-tu ?"}], titre: "Wo(r)- pour les choses, da(r)- pour répondre", intro: "Pour interroger sur une CHOSE avec un verbe à préposition, on fusionne wo(+r) + préposition. Pour reprendre, on emploie da(+r) + préposition.",
         tableau: { entetes: ["Verbe + prép.", "Question (chose)", "Reprise"], lignes: [["warten auf", "Worauf wartest du?", "Ich warte darauf."], ["denken an", "Woran denkst du?", "Ich denke daran."], ["sich freuen über", "Worüber freust du dich?", "Ich freue mich darüber."], ["sprechen über", "Worüber sprecht ihr?", "Wir sprechen darüber."]] },
         note: "On ajoute « -r- » devant une voyelle : wo + (r) + auf = worauf ; da + (r) + auf = darauf. Pour une PERSONNE, on garde « préposition + qui » : Auf wen wartest du?" }
     ],
@@ -6235,7 +6235,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Nuancer avec les modaux", "Remplacer müssen (négatif) par brauchen … zu"],
     grammairePoints: ["müssen, dürfen, sollen…", "nicht brauchen + zu + Infinitiv"],
     grammaire: [
-      { titre: "Les modaux et « (nicht) brauchen … zu »", intro: "Les modaux placent l'infinitif à la fin. « nicht/nur brauchen … zu + infinitif » remplace souvent « nicht/nur müssen ».",
+      { regle: "« **(nicht/nur) brauchen … zu** + infinitif » remplace souvent *müssen* : *Du **brauchst nicht zu** kommen* (= tu n'as pas besoin de venir).", attention: "« brauchen … zu » s'emploie surtout au **négatif** (nicht) ou **restrictif** (nur) ; sinon on garde **müssen**.", titre: "Les modaux et « (nicht) brauchen … zu »", intro: "Les modaux placent l'infinitif à la fin. « nicht/nur brauchen … zu + infinitif » remplace souvent « nicht/nur müssen ».",
         tableau: { entetes: ["Verbe", "Sens", "Exemple"], lignes: [["müssen", "devoir (obligation)", "Ich muss arbeiten."], ["dürfen", "avoir le droit", "Du darfst gehen."], ["sollen", "devoir (consigne)", "Du sollst pünktlich sein."], ["nicht brauchen + zu", "ne pas avoir besoin de", "Du brauchst nicht zu kommen."], ["nur brauchen + zu", "n'avoir qu'à", "Du brauchst nur zu fragen."]] },
         schemas: [{ legende: "brauchen (2) … zu + infinitif (fin).", mots: [{ m: "Du", r: "sujet", c: "sujet" }, { m: "brauchst", r: "brauchen (2)", c: "verbe" }, { m: "nicht", r: "négation", c: "objet" }, { m: "zu kommen", r: "zu + infinitif (fin)", c: "fin" }] }],
         note: "« brauchen … zu » s'emploie surtout au négatif (nicht) ou restrictif (nur). À l'affirmatif simple, on garde müssen." }
@@ -6253,7 +6253,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Formuler demandes polies et souhaits", "Exprimer l'irréel au présent et au passé"],
     grammairePoints: ["würde, könnte, hätte, wäre", "hätte/wäre + participe (passé)"],
     grammaire: [
-      { titre: "Présent et passé du Konjunktiv II", intro: "Présent : würde + infinitif, ou hätte/wäre/könnte… Passé (irréel/regret) : hätte/wäre + participe II.",
+      { regle: "Irréel / politesse / souhait : **würde** + infinitif, ou **hätte, wäre, könnte, sollte**. Passé : **hätte/wäre + participe**.", attention: "Conseil : *An deiner Stelle **würde** ich…* / *Du **solltest**…*", titre: "Présent et passé du Konjunktiv II", intro: "Présent : würde + infinitif, ou hätte/wäre/könnte… Passé (irréel/regret) : hätte/wäre + participe II.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["Politesse", "könnte / würde", "Könnten Sie mir helfen?"], ["Souhait", "hätte / wäre gern", "Ich hätte gern einen Kaffee."], ["Conseil", "sollte / würde", "Du solltest mehr schlafen."], ["Irréel présent", "würde + infinitif", "Ich würde gern kommen."], ["Irréel passé", "hätte/wäre + participe", "Ich hätte das nicht gesagt."]] },
         schemas: [{ legende: "Irréel passé : hätte (2) … participe (fin).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "hätte", r: "hätte (2)", c: "verbe" }, { m: "das anders", r: "complément", c: "objet" }, { m: "gemacht", r: "participe (fin)", c: "fin" }] }],
         note: "Regret : « Ich hätte mehr lernen sollen » (j'aurais dû travailler plus). « An deiner Stelle hätte ich… » = à ta place, j'aurais…" }
@@ -6271,7 +6271,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Reconnaître les verbes à datif", "Construire « donner qqch à qqn »"],
     grammairePoints: ["geben, schenken, zeigen", "datif (personne) + accusatif (chose)"],
     grammaire: [
-      { titre: "Datif (à qui) + accusatif (quoi)", intro: "Certains verbes prennent un datif (personne) ET un accusatif (chose). Ordre habituel : datif avant accusatif quand ce sont des noms.",
+      { regle: "Verbes à **datif (personne) + accusatif (chose)** : *geben, schenken, zeigen, empfehlen*. Datif avant accusatif (deux noms).", attention: "Si la **chose est un pronom**, elle passe **avant** : *Ich gebe **es** dem Kind*.", titre: "Datif (à qui) + accusatif (quoi)", intro: "Certains verbes prennent un datif (personne) ET un accusatif (chose). Ordre habituel : datif avant accusatif quand ce sont des noms.",
         tableau: { entetes: ["Verbe", "Construction", "Exemple"], lignes: [["geben", "jdm etwas", "Ich gebe dem Kind einen Apfel."], ["schenken", "jdm etwas", "Er schenkt ihr Blumen."], ["zeigen", "jdm etwas", "Ich zeige dir das Foto."], ["empfehlen", "jdm etwas", "Ich empfehle Ihnen das Buch."], ["erklären", "jdm etwas", "Er erklärt mir die Regel."]] },
         schemas: [{ legende: "Donner : à QUI (datif) + QUOI (accusatif).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "gebe", r: "verbe (2)", c: "verbe" }, { m: "dem Kind", r: "datif (à qui)", c: "objet" }, { m: "einen Apfel", r: "accusatif (quoi)", c: "fin" }] }],
         note: "Si la chose est un pronom, il passe avant : « Ich gebe es dem Kind. » (accusatif pronom avant datif nom)." }
@@ -6289,7 +6289,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Reconnaître les noms de la N-Deklination", "Ajouter -n / -en hors nominatif"],
     grammairePoints: ["der Junge → den Jungen", "Herr, Kollege, Student, Mensch"],
     grammaire: [
-      { titre: "Ces masculins prennent -(e)n partout sauf au nominatif singulier", intro: "Un groupe de noms masculins (souvent des personnes) ajoute -n ou -en à l'accusatif, au datif et au génitif.",
+      { regle: "Un groupe de **masculins** (souvent des personnes : *Junge, Kollege, Student, Mensch, Herr*) prend **-(e)n** partout **sauf au nominatif singulier**.", attention: "Indices : noms en **-e**, professions/nationalités (*Polizist*) ; *Herr* fait *Herr**n***.", exemples: [{"de":"Ich frage den Polizisten.","fr":"Je demande au policier."},{"de":"Ich helfe dem Kollegen.","fr":"J'aide le collègue."}], titre: "Ces masculins prennent -(e)n partout sauf au nominatif singulier", intro: "Un groupe de noms masculins (souvent des personnes) ajoute -n ou -en à l'accusatif, au datif et au génitif.",
         tableau: { entetes: ["Nominatif", "Accusatif/Datif", "Sens"], lignes: [["der Junge", "den/dem Jungen", "le garçon"], ["der Kollege", "den/dem Kollegen", "le collègue"], ["der Student", "den/dem Studenten", "l'étudiant"], ["der Mensch", "den/dem Menschen", "l'être humain"], ["der Herr", "den/dem Herrn", "monsieur"], ["der Name", "den/dem Namen", "le nom"]] },
         note: "Indices : beaucoup finissent en -e (Junge, Kollege), ou sont des nationalités/professions (Student, Polizist), ou viennent du grec (Tourist, Journalist)." }
     ],
@@ -6306,7 +6306,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Situer une action dans le temps", "Choisir la préposition et le cas corrects"],
     grammairePoints: ["vor, seit, bis, ab", "über, innerhalb (+ Gen.)"],
     grammaire: [
-      { titre: "Les prépositions temporelles fréquentes", intro: "Chaque préposition temporelle impose un cas. La plupart régissent le datif.",
+      { regle: "Prépositions temporelles : **vor** (il y a), **seit** (depuis), **bis** (jusqu'à), **ab** (à partir de), **innerhalb** (en l'espace de, + génitif).", attention: "*seit* + datif + **présent** = « depuis » ; à ne pas confondre avec *vor* (il y a) : *vor zwei Jahren* ≠ *seit zwei Jahren*.", titre: "Les prépositions temporelles fréquentes", intro: "Chaque préposition temporelle impose un cas. La plupart régissent le datif.",
         tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["vor + Dat.", "il y a / avant", "vor zwei Jahren"], ["seit + Dat.", "depuis", "seit Montag"], ["bis", "jusqu'à", "bis morgen"], ["ab + Dat.", "à partir de", "ab nächster Woche"], ["über + Akk.", "pendant (durée)", "über das Wochenende"], ["innerhalb + Gen.", "en l'espace de", "innerhalb einer Stunde"]] },
         note: "« seit » + datif et un verbe au présent traduisent le français « depuis » : « Ich lerne seit zwei Jahren Deutsch »." }
     ],
@@ -6323,7 +6323,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Enrichir un récit avec des adverbes temporels", "Ordonner les étapes (d'abord, ensuite, enfin)"],
     grammairePoints: ["damals, früher, neulich", "zuerst, dann, schließlich"],
     grammaire: [
-      { titre: "Situer et enchaîner dans le temps", intro: "Les adverbes de temps précisent QUAND et dans quel ORDRE. Ils peuvent occuper la 1re position (le verbe reste 2e).",
+      { regle: "Adverbes pour situer/enchaîner : **damals, früher, neulich** (passé) ; **zuerst, dann, schließlich** (ordre).", attention: "Placé **en 1ʳᵉ position**, l'adverbe entraîne l'**inversion** : *Dann **gehe** ich…* (verbe en 2ᵉ).", titre: "Situer et enchaîner dans le temps", intro: "Les adverbes de temps précisent QUAND et dans quel ORDRE. Ils peuvent occuper la 1re position (le verbe reste 2e).",
         tableau: { entetes: ["Adverbe", "Sens", "Exemple"], lignes: [["damals", "à l'époque", "Damals war ich jung."], ["früher", "autrefois", "Früher rauchte er."], ["neulich", "récemment / l'autre jour", "Neulich traf ich ihn."], ["zuerst", "d'abord", "Zuerst frühstücke ich."], ["dann / danach", "ensuite", "Dann gehe ich zur Arbeit."], ["schließlich", "finalement", "Schließlich kam er doch."]] },
         schemas: [{ legende: "Adverbe en tête → verbe toujours en 2e position.", mots: [{ m: "Damals", r: "adverbe (1)", c: "objet" }, { m: "wohnte", r: "verbe (2)", c: "verbe" }, { m: "ich", r: "sujet", c: "sujet" }, { m: "in Köln", r: "complément", c: "fin" }] }],
         note: "Quand l'adverbe ouvre la phrase, on a l'inversion : sujet APRÈS le verbe (« Dann gehe ich… »)." }
@@ -6341,7 +6341,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Conjuguer un verbe réfléchi", "Placer le pronom réfléchi (accusatif/datif)"],
     grammairePoints: ["sich freuen, sich interessieren", "mich/mir, dich/dir…"],
     grammaire: [
-      { titre: "Le pronom réfléchi s'accorde avec le sujet", intro: "Les verbes réfléchis ont un pronom (mich, dich, sich…). En général à l'accusatif ; au datif quand il y a déjà un COD.",
+      { regle: "Verbes réfléchis : pronom accordé au sujet (**mich, dich, sich, uns, euch**). En général **accusatif** ; **datif** s'il y a déjà un COD.", attention: "Datif : *Ich wasche **mir** die Hände* (le COD *die Hände* force le réfléchi au datif).", titre: "Le pronom réfléchi s'accorde avec le sujet", intro: "Les verbes réfléchis ont un pronom (mich, dich, sich…). En général à l'accusatif ; au datif quand il y a déjà un COD.",
         tableau: { entetes: ["Sujet", "Réfléchi (Akk.)", "Exemple"], lignes: [["ich", "mich", "Ich freue mich."], ["du", "dich", "Du erinnerst dich."], ["er/sie/es", "sich", "Er interessiert sich."], ["wir", "uns", "Wir treffen uns."], ["ihr", "euch", "Ihr entspannt euch."], ["sie/Sie", "sich", "Sie waschen sich."]] },
         schemas: [{ legende: "Le réfléchi suit le verbe conjugué.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "interessiere", r: "verbe (2)", c: "verbe" }, { m: "mich", r: "réfléchi (acc.)", c: "objet" }, { m: "für Sport", r: "prép. + complément", c: "fin" }] }],
         note: "Datif : « Ich wasche mir die Hände » (le COD die Hände force le réfléchi au datif : mir)." }
@@ -6359,7 +6359,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Former le passif au présent", "Mettre l'accent sur l'action plutôt que l'agent"],
     grammairePoints: ["werden + participe II", "von + datif (agent)"],
     grammaire: [
-      { titre: "werden + participe II (à la fin)", intro: "Le passif met en valeur l'ACTION. On conjugue « werden » en 2e position et on place le participe II à la fin. L'agent éventuel : « von + datif ».",
+      { regle: "**Passif** = **werden** (2ᵉ position) + **participe II** (fin). L'agent éventuel : **von + datif**.", attention: "Le **COD** de la phrase active devient le **sujet** au passif. Au Perfekt passif, *werden → **worden***.", titre: "werden + participe II (à la fin)", intro: "Le passif met en valeur l'ACTION. On conjugue « werden » en 2e position et on place le participe II à la fin. L'agent éventuel : « von + datif ».",
         tableau: { entetes: ["Voix", "Exemple"], lignes: [["Actif", "Der Techniker repariert das Auto."], ["Passif", "Das Auto wird repariert."], ["Passif + agent", "Das Auto wird von dem Techniker repariert."], ["Pluriel", "Die Nachrichten werden gesendet."]] },
         schemas: [{ legende: "Passif présent : werden (2) + participe (fin).", mots: [{ m: "Das Auto", r: "sujet", c: "sujet" }, { m: "wird", r: "werden (2)", c: "verbe" }, { m: "gerade", r: "complément", c: "objet" }, { m: "repariert", r: "participe (fin)", c: "fin" }] }],
         note: "Le COD de la phrase active (das Auto) devient le SUJET au passif. L'agent (souvent omis) : von + datif." }
@@ -6377,7 +6377,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Former le comparatif et le superlatif", "Employer l'adjectif comparatif devant le nom"],
     grammairePoints: ["-er / am -sten", "der/die/das + -ste"],
     grammaire: [
-      { titre: "Les trois degrés", intro: "Comparatif : adjectif + -er (+ als). Superlatif : am + adjectif + -sten, ou article + adjectif + -ste devant un nom.",
+      { regle: "Comparatif : adjectif **+ -er** (+ **als** = que). Superlatif : **am … -sten**, ou **der/die/das … -ste** devant un nom.", attention: "Beaucoup prennent un **Umlaut** (*alt → älter*) ; irréguliers : *gut → besser → am besten*. « que » = **als**.", exemples: [{"de":"Berlin ist größer als Bonn.","fr":"Berlin est plus grand que Bonn."},{"de":"Das ist der schnellste Zug.","fr":"C'est le train le plus rapide."}], titre: "Les trois degrés", intro: "Comparatif : adjectif + -er (+ als). Superlatif : am + adjectif + -sten, ou article + adjectif + -ste devant un nom.",
         tableau: { entetes: ["Positif", "Comparatif", "Superlatif"], lignes: [["schnell", "schneller", "am schnellsten"], ["alt", "älter", "am ältesten"], ["gut", "besser", "am besten"], ["gern", "lieber", "am liebsten"], ["hoch", "höher", "am höchsten"]] },
         note: "Devant un nom, le superlatif se décline : « der schnellste Zug », « die beste Idee ». Comparatif d'égalité : so … wie." }
     ],
@@ -6394,7 +6394,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Exprimer l'appartenance avec le génitif", "Employer les prépositions à génitif"],
     grammairePoints: ["des Mannes, der Frau", "wegen, trotz, während (+ Gen.)"],
     grammaire: [
-      { titre: "Le cas de l'appartenance", intro: "Le génitif indique à qui appartient quelque chose. Masc./neutre : des + nom + -(e)s. Fém./pluriel : der.",
+      { regle: "Le **génitif** marque l'appartenance : masc./neutre **des …(e)s**, fém./pluriel **der**. Prépositions : *wegen, trotz, während, statt*.", attention: "À l'oral on dit souvent **von + datif** (*das Auto **von** dem Mann*).", titre: "Le cas de l'appartenance", intro: "Le génitif indique à qui appartient quelque chose. Masc./neutre : des + nom + -(e)s. Fém./pluriel : der.",
         tableau: { entetes: ["Genre", "Article", "Exemple"], lignes: [["masculin", "des …(e)s", "das Auto des Mannes"], ["neutre", "des …(e)s", "die Farbe des Hauses"], ["féminin", "der", "das Buch der Frau"], ["pluriel", "der", "die Zimmer der Kinder"], ["prépositions", "+ génitif", "wegen des Wetters, trotz der Kälte"]] },
         note: "À l'oral, on remplace souvent le génitif par « von + datif » : « das Auto von dem Mann ». Prépositions à génitif : wegen (à cause de), trotz (malgré), während (pendant)." }
     ],
@@ -6411,7 +6411,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Relier deux phrases avec un pronom relatif", "Choisir le pronom (nominatif/accusatif/datif, avec préposition)"],
     grammairePoints: ["der/die/das relatifs", "préposition + pronom relatif"],
     grammaire: [
-      { titre: "Le pronom relatif = article + verbe à la fin", intro: "Le pronom relatif reprend le nom (genre/nombre) mais prend le CAS de sa fonction dans la relative. Le verbe va à la fin. Avec préposition, celle-ci précède le pronom.",
+      { regle: "Le **pronom relatif** reprend le nom en **genre/nombre**, mais prend le **cas** de sa fonction. Le **verbe va à la fin**.", attention: "Avec préposition, celle-ci **précède** le pronom : *der Kollege, **mit dem** ich arbeite*.", exemples: [{"de":"Das ist die Frau, die hier arbeitet.","fr":"C'est la femme qui travaille ici."},{"de":"Der Film, den ich sah, war gut.","fr":"Le film que j'ai vu était bon."}], titre: "Le pronom relatif = article + verbe à la fin", intro: "Le pronom relatif reprend le nom (genre/nombre) mais prend le CAS de sa fonction dans la relative. Le verbe va à la fin. Avec préposition, celle-ci précède le pronom.",
         tableau: { entetes: ["Cas", "masculin", "féminin", "neutre", "pluriel"], lignes: [["Nominatif", "der", "die", "das", "die"], ["Accusatif", "den", "die", "das", "die"], ["Datif", "dem", "der", "dem", "denen"]] },
         schemas: [{ legende: "Relative : virgule, pronom relatif, … verbe à la FIN.", mots: [{ m: "Das ist der Mann,", r: "principale", c: "objet" }, { m: "der", r: "relatif (nom.)", c: "conj" }, { m: "Deutsch", r: "complément", c: "sujet" }, { m: "spricht", r: "verbe (fin)", c: "fin" }] }],
         note: "Avec préposition : « der Kollege, mit dem ich arbeite » (mit + datif). La préposition reste collée au pronom." }
@@ -6439,7 +6439,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Exprimer une hypothèse irréelle", "Relier condition et conséquence (wenn … würde)"],
     grammairePoints: ["wenn + Konjunktiv II", "sonst, andernfalls"],
     grammaire: [
-      { titre: "La condition irréelle", intro: "« Wenn + Konjunktiv II », conséquence avec würde / hätte / wäre. « sonst » = sinon.",
+      { regle: "Condition irréelle : **wenn + Konjunktiv II**, conséquence avec **würde / hätte / wäre**. *sonst* = sinon.", attention: "On peut inverser sans *wenn* : *Hätte ich Zeit, würde ich kommen*.", exemples: [{"de":"Wenn ich Zeit hätte, würde ich dir helfen.","fr":"Si j'avais le temps, je t'aiderais."},{"de":"Beeil dich, sonst kommen wir zu spät.","fr":"Dépêche-toi, sinon nous arriverons en retard."}], titre: "La condition irréelle", intro: "« Wenn + Konjunktiv II », conséquence avec würde / hätte / wäre. « sonst » = sinon.",
         tableau: { entetes: ["Condition", "Conséquence"], lignes: [["Wenn ich Zeit hätte,", "würde ich dir helfen."], ["Wenn ich reich wäre,", "würde ich reisen."], ["Beeil dich,", "sonst kommst du zu spät."]] },
         schemas: [{ legende: "wenn en tête → la principale commence par le verbe.", mots: [{ m: "Wenn ich Zeit hätte,", r: "condition (wenn)", c: "conj" }, { m: "würde", r: "verbe (1)", c: "verbe" }, { m: "ich dir", r: "sujet + datif", c: "sujet" }, { m: "helfen", r: "infinitif (fin)", c: "fin" }] }],
         note: "On peut inverser : « Ich würde dir helfen, wenn ich Zeit hätte. » « sonst » introduit la conséquence négative." }
@@ -6457,7 +6457,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Exprimer un but", "Choisir um … zu (même sujet) ou damit (sujet différent)"],
     grammairePoints: ["um … zu + Infinitiv", "damit + Nebensatz"],
     grammaire: [
-      { titre: "Exprimer le but", intro: "« um … zu + infinitif » si le sujet est le même. « damit » si le sujet change (verbe à la fin).",
+      { regle: "Exprimer le **but** : **um … zu** + infinitif (même sujet) ou **damit** + subordonnée (sujet différent, verbe à la fin).", attention: "Test : même sujet → *um … zu* ; nouveau sujet → *damit*.", titre: "Exprimer le but", intro: "« um … zu + infinitif » si le sujet est le même. « damit » si le sujet change (verbe à la fin).",
         tableau: { entetes: ["Structure", "Condition", "Exemple"], lignes: [["um … zu + Inf.", "même sujet", "Ich spare, um zu reisen."], ["damit", "sujet différent", "Ich spare, damit meine Kinder studieren können."]] },
         schemas: [{ legende: "damit : verbe conjugué à la FIN.", mots: [{ m: "Ich erkläre es,", r: "principale", c: "objet" }, { m: "damit", r: "but", c: "conj" }, { m: "du es", r: "sujet + objet", c: "sujet" }, { m: "verstehst", r: "verbe (fin)", c: "fin" }] }],
         note: "Test : si on peut garder le même sujet → um … zu ; s'il faut un nouveau sujet → damit." }
@@ -6475,7 +6475,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Utiliser des locutions nom + verbe", "Relier ses idées avec des connecteurs"],
     grammairePoints: ["eine Entscheidung treffen", "trotzdem, außerdem, deswegen"],
     grammaire: [
-      { titre: "Locutions figées et connecteurs", intro: "Beaucoup d'expressions associent un nom et un verbe précis. Les connecteurs relient les phrases (et placent le verbe en 2e position).",
+      { regle: "Locutions figées **nom + verbe** (*eine Entscheidung **treffen***, *eine Frage **stellen***) et connecteurs (*außerdem, trotzdem, deswegen*).", attention: "Après *außerdem/trotzdem/deswegen* en tête, le verbe reste en **2ᵉ position**.", titre: "Locutions figées et connecteurs", intro: "Beaucoup d'expressions associent un nom et un verbe précis. Les connecteurs relient les phrases (et placent le verbe en 2e position).",
         tableau: { entetes: ["Locution / connecteur", "Sens", "Exemple"], lignes: [["eine Entscheidung treffen", "prendre une décision", "Ich treffe eine Entscheidung."], ["eine Frage stellen", "poser une question", "Er stellt eine Frage."], ["außerdem", "de plus", "Es ist teuer; außerdem ist es weit."], ["trotzdem", "malgré tout", "Es regnet; trotzdem gehe ich."], ["deswegen", "c'est pourquoi", "Ich bin krank; deswegen bleibe ich."]] },
         note: "Après außerdem / trotzdem / deswegen en tête, le verbe reste en 2e position (inversion)." }
     ],
@@ -6492,7 +6492,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Choisir le bon temps dans un récit", "Combiner Präteritum et Plusquamperfekt"],
     grammairePoints: ["Präteritum (récit écrit)", "Plusquamperfekt (antériorité)"],
     grammaire: [
-      { titre: "Construire un récit cohérent", intro: "Dans un texte au passé, le Präteritum porte le fil du récit ; le Plusquamperfekt marque ce qui s'était passé AVANT.",
+      { regle: "Dans un récit, le **Präteritum** porte le fil ; le **Plusquamperfekt** marque ce qui s'était passé **avant**.", attention: "Concordance avec *nachdem* : subordonnée **plus-que-parfait** → principale **prétérit**.", titre: "Construire un récit cohérent", intro: "Dans un texte au passé, le Präteritum porte le fil du récit ; le Plusquamperfekt marque ce qui s'était passé AVANT.",
         tableau: { entetes: ["Plan", "Temps", "Exemple"], lignes: [["fil du récit", "Präteritum", "Sie kam nach Hause und kochte."], ["antériorité", "Plusquamperfekt", "Sie hatte schon eingekauft."], ["dialogue/oral inséré", "Perfekt", "« Ich habe das gemacht », sagte sie."]] },
         note: "Mots utiles : zuerst, dann, danach, schließlich, nachdem (+ Plusquamperfekt)." }
     ],
@@ -6509,7 +6509,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Exprimer la simultanéité (während, solange)", "Exprimer la non-simultanéité (bevor, nachdem, sobald)"],
     grammairePoints: ["während, solange", "bevor, nachdem, sobald"],
     grammaire: [
-      { titre: "Simultané ou successif ?", intro: "Simultanéité : während, solange. Non-simultanéité : bevor (avant), nachdem (après), sobald (dès que). Verbe à la fin.",
+      { regle: "**Simultanéité** : *während, solange*. **Succession** : *bevor* (avant), *nachdem* (après), *sobald* (dès que). Verbe à la fin.", attention: "Avec **nachdem**, pense à la concordance des temps (plus-que-parfait → prétérit).", titre: "Simultané ou successif ?", intro: "Simultanéité : während, solange. Non-simultanéité : bevor (avant), nachdem (après), sobald (dès que). Verbe à la fin.",
         tableau: { entetes: ["Conjonction", "Relation", "Exemple"], lignes: [["während", "simultané", "Während ich koche, deckst du den Tisch."], ["solange", "simultané (durée)", "Solange es regnet, bleiben wir drin."], ["bevor", "avant", "Bevor ich gehe, esse ich."], ["nachdem", "après (antériorité)", "Nachdem ich gegessen hatte, ging ich."], ["sobald", "dès que", "Sobald er kommt, fangen wir an."]] },
         schemas: [{ legende: "während : verbe à la FIN dans la subordonnée.", mots: [{ m: "Während ich", r: "subordonnée (während)", c: "conj" }, { m: "Musik", r: "complément", c: "sujet" }, { m: "höre,", r: "verbe (fin)", c: "fin" }, { m: "koche ich", r: "principale (verbe 1)", c: "verbe" }] }],
         note: "Avec « nachdem », pensez à la concordance des temps : subordonnée plus-que-parfait → principale prétérit." }
@@ -6527,7 +6527,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Choisir le cas après une préposition mixte", "Distinguer lieu (Dat.) et direction (Akk.)"],
     grammairePoints: ["an, auf, in, über…", "Wo? + Dat. / Wohin? + Akk."],
     grammaire: [
-      { titre: "Les prépositions mixtes (Wechselpräpositionen)", intro: "Neuf prépositions de lieu prennent le datif (position : Wo?) ou l'accusatif (direction : Wohin?).",
+      { regle: "Neuf prépositions mixtes (*an, auf, hinter, in, neben, über, unter, vor, zwischen*) : **datif** si position (**Wo?**), **accusatif** si direction (**Wohin?**).", attention: "Couples : *liegen/legen, stehen/stellen, sitzen/setzen* — position (Dat.) vs action de placer (Akk.).", titre: "Les prépositions mixtes (Wechselpräpositionen)", intro: "Neuf prépositions de lieu prennent le datif (position : Wo?) ou l'accusatif (direction : Wohin?).",
         tableau: { entetes: ["Question", "Cas", "Exemple"], lignes: [["Wo? (position)", "datif", "Das Buch liegt auf dem Tisch."], ["Wohin? (direction)", "accusatif", "Ich lege das Buch auf den Tisch."], ["Wo?", "datif", "Ich bin in der Schule."], ["Wohin?", "accusatif", "Ich gehe in die Schule."]] },
         schemas: [{ legende: "Wohin ? → accusatif (mouvement vers).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "stelle", r: "verbe (2)", c: "verbe" }, { m: "die Vase", r: "accusatif (quoi)", c: "objet" }, { m: "auf den Tisch", r: "direction (acc.)", c: "fin" }] }],
         note: "Les 9 : an, auf, hinter, in, neben, über, unter, vor, zwischen. Position = Dat., direction = Akk." }
@@ -6545,7 +6545,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Mémoriser les adjectifs à préposition fixe", "Appliquer le cas imposé"],
     grammairePoints: ["stolz auf, zufrieden mit", "böse auf, bereit zu"],
     grammaire: [
-      { titre: "Adjectif + préposition + cas", intro: "Comme les verbes, certains adjectifs imposent une préposition et un cas. À apprendre par paires.",
+      { regle: "Des **adjectifs** imposent une préposition fixe : *stolz **auf***, *zufrieden **mit***, *bereit **zu***, *abhängig **von***.", attention: "Interroger/reprendre comme les verbes : *Worauf bist du stolz? – Ich bin stolz **darauf***.", titre: "Adjectif + préposition + cas", intro: "Comme les verbes, certains adjectifs imposent une préposition et un cas. À apprendre par paires.",
         tableau: { entetes: ["Adjectif", "Préposition + cas", "Exemple"], lignes: [["stolz", "auf + Akk.", "stolz auf den Erfolg"], ["zufrieden", "mit + Dat.", "zufrieden mit der Note"], ["böse", "auf + Akk.", "böse auf den Kollegen"], ["bereit", "zu + Dat.", "bereit zur Abreise"], ["verliebt", "in + Akk.", "verliebt in sie"], ["abhängig", "von + Dat.", "abhängig von den Eltern"]] },
         note: "Pour interroger : « Worauf bist du stolz? » ; pour reprendre : « Ich bin stolz darauf. »" }
     ],
@@ -6562,7 +6562,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Relier deux éléments avec des connecteurs doubles", "Nuancer (et… et, ni… ni, soit… soit)"],
     grammairePoints: ["sowohl … als auch", "weder … noch, entweder … oder, nicht nur … sondern auch"],
     grammaire: [
-      { titre: "Les connecteurs doubles", intro: "Ils relient deux éléments de même nature pour énumérer ou opposer.",
+      { regle: "Connecteurs doubles : **sowohl … als auch**, **weder … noch**, **entweder … oder**, **nicht nur … sondern auch**.", attention: "*weder … noch* est **déjà négatif**. Après *sondern*, on corrige une **négation** précédente.", titre: "Les connecteurs doubles", intro: "Ils relient deux éléments de même nature pour énumérer ou opposer.",
         tableau: { entetes: ["Connecteur", "Sens", "Exemple"], lignes: [["sowohl … als auch", "aussi bien … que", "Sie spricht sowohl Deutsch als auch Englisch."], ["weder … noch", "ni … ni", "Ich trinke weder Kaffee noch Tee."], ["entweder … oder", "soit … soit", "Wir fahren entweder nach Rom oder nach Paris."], ["nicht nur … sondern auch", "non seulement … mais aussi", "Er ist nicht nur klug, sondern auch fleißig."]] },
         note: "« weder … noch » est déjà négatif : pas d'autre négation. Après « sondern », on corrige une négation précédente." }
     ],
@@ -6579,7 +6579,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     objectifs: ["Exprimer la cause (weil, da, denn)", "Exprimer la conséquence (deshalb, deswegen, daher)"],
     grammairePoints: ["weil, da, denn", "deshalb, deswegen, daher, darum"],
     grammaire: [
-      { titre: "Dire pourquoi et donc", intro: "Cause : weil/da (verbe à la fin), denn (verbe 2e). Conséquence : deshalb/deswegen/daher/darum (verbe 2e).",
+      { regle: "**Cause** : *weil/da* (verbe **fin**), *denn* (verbe **2ᵉ**). **Conséquence** : *deshalb/deswegen/daher* (verbe **2ᵉ**).", attention: "*weil* → verbe à la fin ; *deshalb* → verbe en 2ᵉ position.", titre: "Dire pourquoi et donc", intro: "Cause : weil/da (verbe à la fin), denn (verbe 2e). Conséquence : deshalb/deswegen/daher/darum (verbe 2e).",
         tableau: { entetes: ["Mot", "Rôle / position du verbe", "Exemple"], lignes: [["weil", "cause — verbe FIN", "Ich bleibe, weil ich krank bin."], ["da", "cause (connue) — verbe FIN", "Da es regnet, bleibe ich."], ["denn", "cause — verbe 2e", "Ich bleibe, denn ich bin krank."], ["deshalb", "conséquence — verbe 2e", "Ich bin krank, deshalb bleibe ich."], ["daher / darum", "conséquence — verbe 2e", "Es regnet, daher gehe ich nicht."]] },
         schemas: [{ legende: "weil : cause, verbe à la FIN.", mots: [{ m: "Ich bleibe zu Hause,", r: "principale", c: "objet" }, { m: "weil", r: "cause", c: "conj" }, { m: "ich krank", r: "sujet + complément", c: "sujet" }, { m: "bin", r: "verbe (fin)", c: "fin" }] }],
         note: "weil/da → subordination (verbe fin). denn/deshalb/deswegen/daher/darum → coordination (verbe 2e position)." }
@@ -7134,7 +7134,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Distinguer sens objectif et subjectif des modaux", "Exprimer la supposition (müssen/können/dürfte)"],
     grammairePoints: ["sens objectif vs subjectif", "Vermutung : müsste, könnte, dürfte"],
     grammaire: [
-      { titre: "Sens objectif et sens subjectif", intro: "Au B2, les modaux servent aussi à exprimer une SUPPOSITION (sens subjectif), pas seulement l'obligation ou la capacité.",
+      { regle: "Au B2, les modaux expriment aussi la **supposition** : *müssen* (quasi sûr), *dürfte* (probable), *können* (possible).", attention: "*sollen* subjectif = **rumeur** (*Er **soll** reich sein*) ; *wollen* subjectif = **prétention** (*Er **will** nichts gewusst haben*).", exemples: [{"de":"Er muss krank sein.","fr":"Il doit être malade (j'en suis sûr)."},{"de":"Sie dürfte schon da sein.","fr":"Elle est probablement déjà là."}], titre: "Sens objectif et sens subjectif", intro: "Au B2, les modaux servent aussi à exprimer une SUPPOSITION (sens subjectif), pas seulement l'obligation ou la capacité.",
         tableau: { entetes: ["Modal", "Sens objectif", "Sens subjectif (supposition)"], lignes: [["müssen", "devoir (obligation)", "Er muss krank sein. (j'en suis sûr)"], ["können", "pouvoir (capacité)", "Das kann stimmen. (c'est possible)"], ["dürfen", "avoir le droit", "Er dürfte zu Hause sein. (probablement)"], ["sollen", "devoir (consigne)", "Er soll reich sein. (on dit que)"], ["wollen", "vouloir", "Er will alles gesehen haben. (il prétend)"]] },
         note: "Degrés de certitude : müssen (quasi sûr) > dürfte (probable) > könnte/kann (possible). « sollen » subjectif = rumeur ; « wollen » subjectif = prétention." }
     ],
@@ -7151,7 +7151,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Choisir le temps selon le registre", "Marquer l'antériorité dans un texte"],
     grammairePoints: ["Perfekt / Präteritum", "Plusquamperfekt + nachdem"],
     grammaire: [
-      { titre: "Trois temps, trois usages", intro: "Perfekt = oral et lettres ; Präteritum = récit écrit et presse ; Plusquamperfekt = antériorité.",
+      { regle: "Perfekt (oral/e-mail), Präteritum (récit écrit/presse), Plusquamperfekt (antériorité). On les **combine** dans un texte.", attention: "*sein, haben* et les modaux → **Präteritum** même à l'oral.", titre: "Trois temps, trois usages", intro: "Perfekt = oral et lettres ; Präteritum = récit écrit et presse ; Plusquamperfekt = antériorité.",
         tableau: { entetes: ["Temps", "Registre / rôle", "Exemple"], lignes: [["Perfekt", "oral, e-mail", "Ich habe das schon erledigt."], ["Präteritum", "récit écrit, presse", "Die Firma meldete Verluste."], ["Plusquamperfekt", "antériorité", "Nachdem er gekündigt hatte, zog er um."], ["sein/haben/Modale", "Präteritum même à l'oral", "Ich war müde / hatte keine Zeit."]] },
         schemas: [{ legende: "Antériorité avec nachdem (Plusquamperfekt → Präteritum).", mots: [{ m: "Nachdem er studiert hatte,", r: "antérieur", c: "conj" }, { m: "fand", r: "verbe (1)", c: "verbe" }, { m: "er", r: "sujet", c: "sujet" }, { m: "eine Stelle", r: "complément", c: "fin" }] }],
         note: "Dans un texte au Präteritum, le Plusquamperfekt situe ce qui s'était passé avant." }
@@ -7169,7 +7169,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Maîtriser les trois déclinaisons de l'adjectif", "Décliner sans article"],
     grammairePoints: ["après der / ein / ø", "terminaisons -e / -en / forte"],
     grammaire: [
-      { titre: "Trois systèmes selon le déterminant", intro: "L'adjectif épithète prend une terminaison selon ce qui le précède : article défini, indéfini, ou rien.",
+      { regle: "Trois systèmes selon le déterminant : après **der** (faible -e/-en), après **ein** (mixte), **sans article** (forte).", attention: "Sans article, l'adjectif **porte** la marque du cas : *gut**er** Wein*, *kalt**em** Wasser* (datif).", exemples: [{"de":"der gute Wein / ein guter Wein / guter Wein","fr":"le bon vin / un bon vin / du bon vin"},{"de":"Ich trinke einen guten Wein.","fr":"Je bois un bon vin."}], titre: "Trois systèmes selon le déterminant", intro: "L'adjectif épithète prend une terminaison selon ce qui le précède : article défini, indéfini, ou rien.",
         tableau: { entetes: ["Contexte", "Nom. masc.", "Acc. masc.", "Dat. fém."], lignes: [["après der/die/das", "der gute Wein", "den guten Wein", "der guten Idee"], ["après ein/kein/mein", "ein guter Wein", "einen guten Wein", "einer guten Idee"], ["sans article", "guter Wein", "guten Wein", "guter Idee"]] },
         note: "Sans article, l'adjectif « porte » la marque du cas (déclinaison forte). Après un article défini, c'est -e ou -en (déclinaison faible)." }
     ],
@@ -7186,7 +7186,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Choisir datif ou accusatif", "Distinguer position et direction"],
     grammairePoints: ["Wo? + Dat. / Wohin? + Akk.", "an, auf, in, über…"],
     grammaire: [
-      { titre: "Position (Dat.) ou direction (Akk.)", intro: "Neuf prépositions prennent le datif (Wo?) ou l'accusatif (Wohin?).",
+      { regle: "Prépositions à deux cas : **datif** pour la position (**Wo?**), **accusatif** pour la direction (**Wohin?**).", attention: "Couples : *liegen/legen, stehen/stellen* — Wo? (Dat.) vs Wohin? (Akk.).", titre: "Position (Dat.) ou direction (Akk.)", intro: "Neuf prépositions prennent le datif (Wo?) ou l'accusatif (Wohin?).",
         tableau: { entetes: ["Question", "Cas", "Exemple"], lignes: [["Wo? (position)", "datif", "Das Buch liegt auf dem Tisch."], ["Wohin? (direction)", "accusatif", "Ich lege das Buch auf den Tisch."], ["Wo?", "datif", "Ich bin in der Stadt."], ["Wohin?", "accusatif", "Ich fahre in die Stadt."]] },
         schemas: [{ legende: "Wohin ? → accusatif (mouvement vers).", mots: [{ m: "Er", r: "sujet", c: "sujet" }, { m: "hängt", r: "verbe (2)", c: "verbe" }, { m: "das Bild", r: "accusatif", c: "objet" }, { m: "an die Wand", r: "direction (acc.)", c: "fin" }] }],
         note: "Couples utiles : liegen/legen, stehen/stellen, sitzen/setzen, hängen — position (Dat.) vs action de placer (Akk.)." }
@@ -7204,7 +7204,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Former le passif à tous les temps", "Employer le passif avec modal et le passif d'état"],
     grammairePoints: ["werden + participe II", "Passiv mit Modalverb, Zustandspassiv"],
     grammaire: [
-      { titre: "Passif de processus, passif d'état, passif modal", intro: "Vorgangspassiv : werden + participe (l'action). Zustandspassiv : sein + participe (le résultat). Avec modal : … werden (à la fin).",
+      { regle: "Vorgangspassiv (**werden** + participe = l'action) ; Zustandspassiv (**sein** + participe = le résultat) ; avec modal : *muss … gemacht **werden***.", attention: "Au **Perfekt passif**, *werden → **worden*** (*ist gebaut **worden***), sans ge-.", titre: "Passif de processus, passif d'état, passif modal", intro: "Vorgangspassiv : werden + participe (l'action). Zustandspassiv : sein + participe (le résultat). Avec modal : … werden (à la fin).",
         tableau: { entetes: ["Type", "Forme", "Exemple"], lignes: [["Présent", "wird + participe", "Das Haus wird gebaut."], ["Prétérit", "wurde + participe", "Das Haus wurde gebaut."], ["Parfait", "ist + participe + worden", "Das Haus ist gebaut worden."], ["avec modal", "muss + participe + werden", "Das muss repariert werden."], ["passif d'état", "ist + participe", "Das Haus ist gebaut. (résultat)"]] },
         schemas: [{ legende: "Passif avec modal : … participe + werden (fin).", mots: [{ m: "Der Vertrag", r: "sujet", c: "sujet" }, { m: "muss", r: "modal (2)", c: "verbe" }, { m: "heute", r: "complément", c: "objet" }, { m: "unterschrieben werden", r: "participe + werden (fin)", c: "fin" }] }],
         note: "Au Perfekt passif, le participe de werden devient « worden » (sans ge-). Agent : von + datif." }
@@ -7222,7 +7222,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Mémoriser les verbes à préposition fixe", "Reprendre avec da(r)- et interroger avec wo(r)-"],
     grammairePoints: ["sich bewerben um, bestehen aus", "darauf, worauf"],
     grammaire: [
-      { titre: "Préposition fixe + cas + reprise", intro: "Beaucoup de verbes B2 imposent une préposition. On reprend une chose par da(r)- et on interroge par wo(r)-.",
+      { regle: "Verbes à préposition fixe : *sich bewerben **um***, *bestehen **aus***, *teilnehmen **an***, *hinweisen **auf***.", attention: "Reprise d'une **chose** par *da(r)-* (*darauf*), d'une **personne** par *préposition + wen/wem*.", titre: "Préposition fixe + cas + reprise", intro: "Beaucoup de verbes B2 imposent une préposition. On reprend une chose par da(r)- et on interroge par wo(r)-.",
         tableau: { entetes: ["Verbe", "Préposition + cas", "Exemple"], lignes: [["sich bewerben", "um + Akk.", "Ich bewerbe mich um die Stelle."], ["bestehen", "aus + Dat.", "Das Team besteht aus fünf Personen."], ["teilnehmen", "an + Dat.", "Sie nimmt an dem Kurs teil."], ["sich handeln", "um + Akk.", "Es handelt sich um einen Irrtum."], ["hinweisen", "auf + Akk.", "Ich weise darauf hin, dass …"]] },
         note: "Chose : « Worum bewirbst du dich? – Ich bewerbe mich darum. » Personne : « Um wen …? »" }
     ],
@@ -7239,7 +7239,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Identifier les noms en -n", "Ajouter -(e)n hors du nominatif"],
     grammairePoints: ["der Kollege → den Kollegen", "Herr, Student, Kunde, Mensch"],
     grammaire: [
-      { titre: "Ces masculins prennent -(e)n partout sauf au nominatif singulier", intro: "Un groupe de masculins (souvent des êtres animés) ajoute -n/-en à l'accusatif, au datif et au génitif.",
+      { regle: "Masculins (souvent animés) prenant **-(e)n** hors du nominatif singulier : *Kollege, Kunde, Student, Nachbar, Mensch, Herr*.", attention: "Indices : noms en **-e**, en *-ist/-ent*, ou d'origine grecque (*Journalist, Tourist*).", exemples: [{"de":"Ich berate den Kunden.","fr":"Je conseille le client."},{"de":"Ich spreche mit dem Nachbarn.","fr":"Je parle avec le voisin."}], titre: "Ces masculins prennent -(e)n partout sauf au nominatif singulier", intro: "Un groupe de masculins (souvent des êtres animés) ajoute -n/-en à l'accusatif, au datif et au génitif.",
         tableau: { entetes: ["Nominatif", "Acc./Dat.", "Sens"], lignes: [["der Kollege", "den/dem Kollegen", "le collègue"], ["der Kunde", "den/dem Kunden", "le client"], ["der Student", "den/dem Studenten", "l'étudiant"], ["der Nachbar", "den/dem Nachbarn", "le voisin"], ["der Mensch", "den/dem Menschen", "l'humain"], ["der Herr", "den/dem Herrn", "monsieur"]] },
         note: "Indices : noms en -e (Kollege), nationalités/professions (Student, Praktikant), origine grecque (Tourist, Journalist)." }
     ],
@@ -7256,7 +7256,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Exprimer la cause (weil, da, denn)", "Exprimer la conséquence (so … dass, deshalb)"],
     grammairePoints: ["weil, denn, deshalb", "so … dass, solch … dass"],
     grammaire: [
-      { titre: "Dire pourquoi et avec quelle conséquence", intro: "Cause : weil/da (verbe fin), denn (verbe 2e). Conséquence : deshalb (verbe 2e), so + adjectif + dass (verbe fin).",
+      { regle: "Cause : *weil/da* (verbe fin), *denn* (2ᵉ). Conséquence : *deshalb* (2ᵉ), **so + adjectif + dass** (verbe fin).", attention: "*so … dass* insiste sur le **degré** : *Es war **so** kalt, **dass** wir blieben*.", titre: "Dire pourquoi et avec quelle conséquence", intro: "Cause : weil/da (verbe fin), denn (verbe 2e). Conséquence : deshalb (verbe 2e), so + adjectif + dass (verbe fin).",
         tableau: { entetes: ["Mot", "Rôle / position du verbe", "Exemple"], lignes: [["weil", "cause — verbe FIN", "Er kam nicht, weil er krank war."], ["denn", "cause — verbe 2e", "Er kam nicht, denn er war krank."], ["deshalb", "conséquence — verbe 2e", "Er war krank, deshalb kam er nicht."], ["so … dass", "conséquence — verbe FIN", "Es war so kalt, dass wir blieben."], ["solch … dass", "conséquence — verbe FIN", "Es war solch ein Lärm, dass …"]] },
         schemas: [{ legende: "so … dass : conséquence, verbe à la FIN.", mots: [{ m: "Es war so kalt,", r: "intensité", c: "objet" }, { m: "dass", r: "conséquence", c: "conj" }, { m: "wir zu Hause", r: "sujet + complément", c: "sujet" }, { m: "blieben", r: "verbe (fin)", c: "fin" }] }],
         note: "« so + adjectif + dass » insiste sur le degré : « so müde, dass … ». weil/da/so…dass → verbe à la fin ; denn/deshalb → verbe 2e." }
@@ -7286,7 +7286,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Former le Konjunktiv II présent et passé", "Exprimer politesse, souhait et irréel"],
     grammairePoints: ["würde, hätte, wäre, könnte", "hätte/wäre + participe (passé)"],
     grammaire: [
-      { titre: "Présent et passé", intro: "Présent : würde + infinitif, ou les formes propres (hätte, wäre, könnte…). Passé : hätte/wäre + participe II.",
+      { regle: "Présent : **würde** + infinitif / *hätte, wäre, könnte*. Passé : **hätte/wäre + participe**. Comparaison irréelle : **als ob** + KII (fin).", attention: "Avec modal au passé : *Ich **hätte** kommen **können*** (double infinitif à la fin).", titre: "Présent et passé", intro: "Présent : würde + infinitif, ou les formes propres (hätte, wäre, könnte…). Passé : hätte/wäre + participe II.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["politesse", "könnte / würde", "Könnten Sie mir helfen?"], ["souhait", "hätte/wäre gern", "Ich hätte gern mehr Zeit."], ["irréel présent", "würde + infinitif", "Ich würde sofort kündigen."], ["irréel passé", "hätte/wäre + participe", "Ich hätte das nie gesagt."], ["conseil", "An deiner Stelle würde ich …", "An deiner Stelle würde ich warten."]] },
         schemas: [{ legende: "Irréel passé : hätte (2) … participe (fin).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "hätte", r: "hätte (2)", c: "verbe" }, { m: "das anders", r: "complément", c: "objet" }, { m: "gemacht", r: "participe (fin)", c: "fin" }] }],
         note: "Avec un modal au passé : « Ich hätte kommen können » (j'aurais pu venir) — double infinitif à la fin." }
@@ -7304,7 +7304,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Accorder le verbe avec le sujet", "Gérer les sujets collectifs et coordonnés"],
     grammairePoints: ["singulier / pluriel", "sowohl…als auch, eine Reihe von"],
     grammaire: [
-      { titre: "Le verbe s'accorde avec le vrai sujet", intro: "On repère le noyau du sujet pour choisir le singulier ou le pluriel.",
+      { regle: "Le verbe s'accorde avec le **noyau** du sujet : *A und B* → pluriel ; *eine Reihe von …* → singulier (noyau *Reihe*).", attention: "*es gibt* est **toujours** au singulier (*es gibt viele Möglichkeiten*).", titre: "Le verbe s'accorde avec le vrai sujet", intro: "On repère le noyau du sujet pour choisir le singulier ou le pluriel.",
         tableau: { entetes: ["Sujet", "Accord", "Exemple"], lignes: [["nom singulier", "singulier", "Die Gruppe arbeitet gut."], ["eine Reihe von + pluriel", "singulier (noyau Reihe)", "Eine Reihe von Studenten fehlt."], ["A und B", "pluriel", "Anna und Tom kommen."], ["sowohl … als auch", "pluriel", "Sowohl er als auch sie sind da."], ["weder … noch", "souvent pluriel", "Weder er noch sie waren da."]] },
         note: "« es gibt » est toujours suivi… du verbe au singulier (es gibt viele Möglichkeiten). Le noyau « eine Reihe / eine Gruppe » impose le singulier." }
     ],
@@ -7321,7 +7321,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Ordonner les compléments (TeKaMoLo)", "Placer correctement « nicht »"],
     grammairePoints: ["Te-Ka-Mo-Lo", "parenthèse verbale, position de nicht"],
     grammaire: [
-      { titre: "Le champ central : TeKaMoLo", intro: "Dans le Mittelfeld, l'ordre habituel des compléments est : Temporel – Kausal – Modal – Lokal. Le verbe conjugué reste en 2e position, le reste du verbe à la fin (parenthèse verbale).",
+      { regle: "Champ central : **TeKaMoLo** (Temporel – Kausal – Modal – Lokal). Verbe conjugué en **2ᵉ**, reste du verbe **à la fin**.", attention: "*nicht* se place **avant** l'élément nié (adjectif, lieu) mais **à la fin** s'il nie le verbe seul.", titre: "Le champ central : TeKaMoLo", intro: "Dans le Mittelfeld, l'ordre habituel des compléments est : Temporel – Kausal – Modal – Lokal. Le verbe conjugué reste en 2e position, le reste du verbe à la fin (parenthèse verbale).",
         tableau: { entetes: ["Ordre", "Question", "Exemple"], lignes: [["Te (temps)", "wann?", "Ich fahre morgen"], ["Ka (cause)", "warum?", "… wegen der Arbeit"], ["Mo (manière)", "wie?", "… mit dem Zug"], ["Lo (lieu)", "wohin?", "… nach Berlin."]] },
         schemas: [{ legende: "Parenthèse verbale : verbe (2) … reste du verbe (fin).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "habe", r: "auxiliaire (2)", c: "verbe" }, { m: "gestern in Berlin", r: "Te … Lo", c: "objet" }, { m: "gearbeitet", r: "participe (fin)", c: "fin" }] }],
         note: "« nicht » se place en fin de Mittelfeld, mais AVANT l'élément nié (adjectif, lieu, partie du verbe) : « Ich fahre nicht nach Berlin »." }
@@ -7339,7 +7339,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Relier des actions dans le temps", "Choisir conjonction, préposition ou adverbe"],
     grammairePoints: ["als, während, nachdem, seitdem", "vor/seit/bis, danach"],
     grammaire: [
-      { titre: "Conjonctions, prépositions et adverbes temporels", intro: "Trois moyens d'exprimer le temps : la subordonnée (verbe fin), la préposition (+ groupe nominal), l'adverbe.",
+      { regle: "Trois moyens : **conjonction** (verbe fin : *während, nachdem, seitdem*), **préposition** (*vor, seit, nach*), **adverbe** (*danach, inzwischen*).", attention: "Même idée, trois formes : *nachdem ich gegessen hatte* = *nach dem Essen* = *danach*.", titre: "Conjonctions, prépositions et adverbes temporels", intro: "Trois moyens d'exprimer le temps : la subordonnée (verbe fin), la préposition (+ groupe nominal), l'adverbe.",
         tableau: { entetes: ["Type", "Mot", "Exemple"], lignes: [["conjonction", "während / als / nachdem", "Während ich aß, las ich."], ["conjonction", "seitdem / sobald / bis", "Seitdem er hier ist, geht es besser."], ["préposition", "vor / seit / nach (+ Dat.)", "Nach dem Essen ging ich."], ["adverbe", "danach / vorher / inzwischen", "Inzwischen war es spät."]] },
         note: "Même idée, trois formes : « nachdem ich gegessen hatte » (conj.) = « nach dem Essen » (prép.) = « danach » (adv.)." }
     ],
@@ -7356,7 +7356,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Exprimer souhait irréel et comparaison irréelle", "Employer « als ob »"],
     grammairePoints: ["wenn … doch nur", "als ob / als wenn + Konjunktiv II"],
     grammaire: [
-      { titre: "Souhaits et comparaisons irréels", intro: "Le Konjunktiv II sert au souhait irréel (wenn … doch nur) et à la comparaison irréelle (als ob).",
+      { regle: "Emplois : **souhait irréel** (*Wenn … doch nur*), **comparaison irréelle** (*als ob* + KII fin), **politesse**, **conseil**.", attention: "Après **als ob**, le verbe va à la **fin** ; après **als** seul, il vient **juste après** (*als wüsste er*).", titre: "Souhaits et comparaisons irréels", intro: "Le Konjunktiv II sert au souhait irréel (wenn … doch nur) et à la comparaison irréelle (als ob).",
         tableau: { entetes: ["Emploi", "Structure", "Exemple"], lignes: [["souhait irréel", "Wenn … doch nur + KII", "Wenn ich doch nur mehr Zeit hätte!"], ["comparaison", "als ob + KII (fin)", "Er tut, als ob er alles wüsste."], ["comparaison", "als + KII (verbe 2e)", "Er tut, als wüsste er alles."], ["politesse/conseil", "würde / sollte", "Du solltest dich ausruhen."]] },
         schemas: [{ legende: "als ob : verbe au Konjunktiv II à la FIN.", mots: [{ m: "Er tut so,", r: "principale", c: "objet" }, { m: "als ob", r: "comparaison irréelle", c: "conj" }, { m: "er alles", r: "sujet + complément", c: "sujet" }, { m: "wüsste", r: "Konjunktiv II (fin)", c: "fin" }] }],
         note: "Après « als ob », le verbe va à la fin ; après « als » seul, le verbe vient juste après (« als wüsste er »)." }
@@ -7374,7 +7374,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Former le Konjunktiv I", "Rapporter des propos (presse)"],
     grammairePoints: ["sei, habe, könne, werde", "rapport neutre"],
     grammaire: [
-      { titre: "Citer sans s'engager", intro: "Le Konjunktiv I (3e personne) sert au discours indirect, surtout dans la presse et les comptes rendus.",
+      { regle: "**Discours indirect** (presse) : **Konjunktiv I** (*sei, habe, könne, werde*) pour citer **sans s'engager**.", attention: "Si le KI = indicatif (souvent au **pluriel**), on passe au **Konjunktiv II** (*sie **hätten***).", exemples: [{"de":"Er sagt, er sei müde.","fr":"Il dit qu'il est fatigué."},{"de":"Sie sagen, sie hätten keine Zeit.","fr":"Ils disent qu'ils n'ont pas le temps."}], titre: "Citer sans s'engager", intro: "Le Konjunktiv I (3e personne) sert au discours indirect, surtout dans la presse et les comptes rendus.",
         tableau: { entetes: ["Direct", "Indirect (Konjunktiv I)"], lignes: [["« Ich bin müde. »", "Er sagt, er sei müde."], ["« Ich habe Zeit. »", "Sie sagt, sie habe Zeit."], ["« Ich kann kommen. »", "Er sagt, er könne kommen."], ["« Ich werde anrufen. »", "Sie sagt, sie werde anrufen."], ["« Ich machte das. »", "Er sagt, er habe das gemacht. (passé → Perfekt KI)"]] },
         note: "Le passé du discours indirect se rend par le Perfekt au Konjunktiv I : « er habe … gemacht », « sie sei … gegangen »." }
     ],
@@ -7391,7 +7391,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Savoir quand remplacer le Konjunktiv I", "Utiliser le Konjunktiv II / würde à la place"],
     grammairePoints: ["KI = indicatif → KII", "würde + infinitif"],
     grammaire: [
-      { titre: "Quand le Konjunktiv I se confond avec l'indicatif", intro: "Si la forme du Konjunktiv I est identique à l'indicatif (souvent au pluriel et à « ich »), on la remplace par le Konjunktiv II, ou par « würde + infinitif ».",
+      { regle: "Quand le **Konjunktiv I** se confond avec l'indicatif, on le **remplace** par le Konjunktiv II ou par **würde + infinitif**.", attention: "Règle pratique : **3ᵉ sing.** → KI (*er sei, habe*) ; **pluriel / ich** → KII ou *würde*.", exemples: [{"de":"Sie sagen, sie kämen später.","fr":"Ils disent qu'ils viendront plus tard."},{"de":"Er meint, die Leute würden mehr lesen.","fr":"Il pense que les gens liraient davantage."}], titre: "Quand le Konjunktiv I se confond avec l'indicatif", intro: "Si la forme du Konjunktiv I est identique à l'indicatif (souvent au pluriel et à « ich »), on la remplace par le Konjunktiv II, ou par « würde + infinitif ».",
         tableau: { entetes: ["Direct", "KI ambigu", "Forme de substitution"], lignes: [["« Sie haben Zeit. »", "sie haben (= indicatif)", "Sie hätten Zeit. (KII)"], ["« Wir kommen. »", "wir kommen (= indicatif)", "Sie kämen / würden kommen."], ["« Ich bin müde. »", "ich sei (rare à la 1re)", "Ich sei / wäre müde."], ["« Sie lernen viel. »", "sie lernen (= indicatif)", "Sie würden viel lernen."]] },
         note: "Règle pratique : 3e personne du singulier → Konjunktiv I (er sei, er habe) ; pluriel et « ich » → Konjunktiv II ou würde." }
     ],
@@ -7408,7 +7408,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Employer des locutions figées nom + verbe", "Reformuler avec un verbe simple"],
     grammairePoints: ["in Frage stellen, zur Verfügung stehen", "Bezug nehmen auf"],
     grammaire: [
-      { titre: "Les Funktionsverbgefüge (style soutenu)", intro: "Ces locutions associent un nom et un verbe « support ». Elles donnent un style formel et ont souvent un équivalent verbal simple.",
+      { regle: "Locutions **nom + verbe support** (style formel) : *in Frage **stellen***, *zur Verfügung **stehen***, *Bezug **nehmen** auf*.", attention: "À l'**oral**, on préfère le verbe simple (*in Frage stellen* → *bezweifeln*).", exemples: [{"de":"Wir treffen eine Entscheidung.","fr":"Nous prenons une décision."},{"de":"Das Material steht zur Verfügung.","fr":"Le matériel est à disposition."}], titre: "Les Funktionsverbgefüge (style soutenu)", intro: "Ces locutions associent un nom et un verbe « support ». Elles donnent un style formel et ont souvent un équivalent verbal simple.",
         tableau: { entetes: ["Locution", "Sens", "Équivalent simple"], lignes: [["eine Entscheidung treffen", "prendre une décision", "(sich) entscheiden"], ["in Frage stellen", "remettre en question", "bezweifeln"], ["zur Verfügung stehen", "être à disposition", "verfügbar sein"], ["Bezug nehmen auf", "se référer à", "sich beziehen auf"], ["in Kraft treten", "entrer en vigueur", "gelten"]] },
         note: "À l'écrit formel, ces tournures sont fréquentes ; à l'oral, on préfère souvent le verbe simple." }
     ],
@@ -7425,7 +7425,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Employer les prépositions à génitif", "Exprimer cause, opposition, lieu, moyen"],
     grammairePoints: ["wegen, trotz, während", "aufgrund, innerhalb, statt"],
     grammaire: [
-      { titre: "Les prépositions qui régissent le génitif", intro: "Au registre soutenu, plusieurs prépositions imposent le génitif (causales, concessives, temporelles, locales).",
+      { regle: "Prépositions à **génitif** (soutenu) : *wegen* (à cause de), *trotz* (malgré), *während* (pendant), *aufgrund, innerhalb, statt*.", attention: "À l'oral, *wegen/trotz* tolèrent le datif, mais le **génitif** reste la norme écrite.", titre: "Les prépositions qui régissent le génitif", intro: "Au registre soutenu, plusieurs prépositions imposent le génitif (causales, concessives, temporelles, locales).",
         tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["wegen", "à cause de", "wegen des Wetters"], ["trotz", "malgré", "trotz der Probleme"], ["während", "pendant", "während der Sitzung"], ["aufgrund", "en raison de", "aufgrund der Krise"], ["innerhalb / außerhalb", "à l'intérieur / en dehors de", "innerhalb einer Woche"], ["statt / anstatt", "au lieu de", "statt eines Briefes"]] },
         note: "À l'oral, « wegen » et « trotz » sont souvent suivis du datif, mais le génitif reste correct et soutenu." }
     ],
@@ -8017,7 +8017,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Choisir le temps selon le registre et la chronologie", "Combiner les temps dans un texte"],
     grammairePoints: ["Perfekt / Präteritum", "Plusquamperfekt (antériorité)"],
     grammaire: [
-      { titre: "Trois temps, trois fonctions", intro: "Perfekt (oral, lettres), Präteritum (récit écrit, presse), Plusquamperfekt (action antérieure). On les combine dans un texte cohérent.",
+      { regle: "Perfekt (oral/lettres), Präteritum (récit écrit), Plusquamperfekt (antériorité). On les **combine** dans un texte cohérent.", attention: "Le **Präteritum** domine le récit littéraire ; le **Perfekt** l'oral et la correspondance.", titre: "Trois temps, trois fonctions", intro: "Perfekt (oral, lettres), Präteritum (récit écrit, presse), Plusquamperfekt (action antérieure). On les combine dans un texte cohérent.",
         tableau: { entetes: ["Temps", "Registre / rôle", "Exemple"], lignes: [["Perfekt", "oral, e-mail", "Ich habe es erledigt."], ["Präteritum", "récit écrit", "Er verließ das Haus."], ["Plusquamperfekt", "antériorité", "Nachdem er gegangen war, …"], ["sein/haben/Modale", "Präteritum à l'oral aussi", "Ich war / hatte / musste"]] },
         schemas: [{ legende: "Antériorité : Plusquamperfekt → Präteritum.", mots: [{ m: "Nachdem er gegangen war,", r: "antérieur", c: "conj" }, { m: "schloss", r: "verbe (1)", c: "verbe" }, { m: "sie", r: "sujet", c: "sujet" }, { m: "die Tür", r: "complément", c: "fin" }] }],
         note: "Le Präteritum domine le récit littéraire ; le Perfekt domine l'oral et la correspondance." }
@@ -8035,7 +8035,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Choisir la bonne préposition et le bon cas", "Distinguer lieu et temps"],
     grammairePoints: ["an, in, auf, nach, zu", "vor, seit, bis, innerhalb"],
     grammaire: [
-      { titre: "Lieu et temps : préposition + cas", intro: "Le choix dépend du sens (position/direction, point/durée) et chaque préposition impose un cas.",
+      { regle: "Le choix dépend du **sens** (position/direction, point/durée) et chaque préposition impose un **cas**.", attention: "*nach* + ville/pays **sans** article ; *in* + pays **avec** article (*in die Schweiz*).", titre: "Lieu et temps : préposition + cas", intro: "Le choix dépend du sens (position/direction, point/durée) et chaque préposition impose un cas.",
         tableau: { entetes: ["Type", "Préposition", "Exemple"], lignes: [["lieu (où)", "an/in + Dat.", "an der Wand, in der Stadt"], ["lieu (vers)", "nach/zu/in + …", "nach Berlin, zur Arbeit"], ["temps (point)", "an/um/in + Dat.", "am Montag, um acht, im Mai"], ["temps (durée)", "seit/während/innerhalb", "seit Jahren, innerhalb einer Woche"]] },
         note: "« nach » + ville/pays sans article (nach Berlin) ; « in » + pays avec article (in die Schweiz)." }
     ],
@@ -8052,7 +8052,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Relier les idées par subordination", "Placer le verbe à la fin"],
     grammairePoints: ["obwohl, indem, sodass", "während, sofern, falls"],
     grammaire: [
-      { titre: "La subordination rejette le verbe à la fin", intro: "Les conjonctions de subordination introduisent une proposition où le verbe conjugué va à la fin.",
+      { regle: "Conjonctions de subordination (*obwohl, indem, sodass, sofern, falls*) → **verbe à la fin**.", attention: "*indem* = **moyen** (en faisant…) ; à ne pas confondre avec *so … dass*.", titre: "La subordination rejette le verbe à la fin", intro: "Les conjonctions de subordination introduisent une proposition où le verbe conjugué va à la fin.",
         tableau: { entetes: ["Conjonction", "Sens", "Exemple"], lignes: [["obwohl", "bien que", "Obwohl es regnet, gehe ich."], ["indem", "en (moyen)", "Man lernt, indem man übt."], ["sodass", "de sorte que", "Es war kalt, sodass wir blieben."], ["sofern", "dans la mesure où", "Sofern es klappt, komme ich."], ["falls", "au cas où", "Falls du Zeit hast, ruf an."]] },
         schemas: [{ legende: "Subordonnée en tête → principale commence par le verbe.", mots: [{ m: "Obwohl es regnet,", r: "subordonnée", c: "conj" }, { m: "gehe", r: "verbe (1)", c: "verbe" }, { m: "ich", r: "sujet", c: "sujet" }, { m: "spazieren", r: "complément", c: "fin" }] }],
         note: "« indem » exprime le moyen (en faisant…) ; « sodass » la conséquence ; à ne pas confondre avec « so … dass »." }
@@ -8070,7 +8070,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Mémoriser les adjectifs à préposition fixe", "Appliquer le cas imposé"],
     grammairePoints: ["stolz auf, fähig zu", "verantwortlich für, überzeugt von"],
     grammaire: [
-      { titre: "Adjectif + préposition + cas", intro: "De nombreux adjectifs C1 régissent une préposition fixe (et un cas). À mémoriser par paires.",
+      { regle: "Adjectifs à préposition fixe : *stolz **auf***, *fähig **zu***, *verantwortlich **für***, *überzeugt **von***, *abhängig **von***.", attention: "Interroger/reprendre comme les verbes : *Worauf bist du stolz? – darauf*.", titre: "Adjectif + préposition + cas", intro: "De nombreux adjectifs C1 régissent une préposition fixe (et un cas). À mémoriser par paires.",
         tableau: { entetes: ["Adjectif", "Préposition + cas", "Exemple"], lignes: [["stolz", "auf + Akk.", "stolz auf den Erfolg"], ["fähig", "zu + Dat.", "zu allem fähig"], ["verantwortlich", "für + Akk.", "verantwortlich für das Projekt"], ["überzeugt", "von + Dat.", "überzeugt von der Idee"], ["abhängig", "von + Dat.", "abhängig von der Hilfe"], ["gespannt", "auf + Akk.", "gespannt auf das Ergebnis"]] },
         note: "Pour interroger : « Worauf bist du stolz? » ; pour reprendre : « Ich bin stolz darauf. »" }
     ],
@@ -8087,7 +8087,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Relier deux éléments avec des connecteurs corrélés", "Employer je … desto"],
     grammairePoints: ["sowohl…als auch, weder…noch", "je…desto, zwar…aber"],
     grammaire: [
-      { titre: "Les connecteurs corrélés", intro: "Ils relient deux éléments et nuancent (addition, exclusion, gradation, concession).",
+      { regle: "Connecteurs corrélés : *sowohl … als auch*, *weder … noch*, *entweder … oder*, *nicht nur … sondern auch*, **je … desto**.", attention: "Après **je** le verbe va à la **fin** ; après **desto** il vient en **2ᵉ** position.", titre: "Les connecteurs corrélés", intro: "Ils relient deux éléments et nuancent (addition, exclusion, gradation, concession).",
         tableau: { entetes: ["Connecteur", "Sens", "Exemple"], lignes: [["sowohl … als auch", "aussi bien … que", "sowohl klug als auch fleißig"], ["weder … noch", "ni … ni", "weder Zeit noch Geld"], ["nicht nur … sondern auch", "non seulement … mais aussi", "nicht nur er, sondern auch sie"], ["entweder … oder", "soit … soit", "entweder jetzt oder nie"], ["je … desto", "plus … plus", "je mehr, desto besser"]] },
         schemas: [{ legende: "je + comparatif (verbe fin), desto + comparatif (verbe 2e).", mots: [{ m: "Je länger man wartet,", r: "je … (verbe fin)", c: "conj" }, { m: "desto schwieriger", r: "desto + comparatif", c: "objet" }, { m: "wird", r: "verbe (2)", c: "verbe" }, { m: "es", r: "sujet", c: "fin" }] }],
         note: "« weder … noch » est déjà négatif (pas d'autre négation). Après « je », verbe à la fin ; après « desto », verbe en 2e." }
@@ -8105,7 +8105,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Relier deux principales par un adverbe connecteur", "Gérer l'inversion (verbe en 2e)"],
     grammairePoints: ["deshalb, trotzdem, dennoch", "folglich, allerdings, jedoch"],
     grammaire: [
-      { titre: "Les adverbes connecteurs (Position 1 → inversion)", intro: "Contrairement aux conjonctions de subordination, ces adverbes laissent le verbe en 2e position ; placés en tête, ils provoquent l'inversion.",
+      { regle: "Adverbes connecteurs (*deshalb, trotzdem, dennoch, folglich, allerdings*) : le verbe reste en **2ᵉ position**.", attention: "Différence clé : *weil* → verbe à la **fin** ; *deshalb* → verbe en **2ᵉ** position.", titre: "Les adverbes connecteurs (Position 1 → inversion)", intro: "Contrairement aux conjonctions de subordination, ces adverbes laissent le verbe en 2e position ; placés en tête, ils provoquent l'inversion.",
         tableau: { entetes: ["Adverbe", "Sens", "Exemple"], lignes: [["deshalb", "c'est pourquoi", "Es regnet, deshalb bleibe ich."], ["trotzdem", "malgré tout", "Es regnet, trotzdem gehe ich."], ["dennoch", "néanmoins", "Schwierig, dennoch schaffte er es."], ["folglich", "par conséquent", "Er log, folglich glaubt man ihm nicht."], ["allerdings", "toutefois", "Gut, allerdings teuer."]] },
         schemas: [{ legende: "Adverbe connecteur en tête → verbe en 2e position.", mots: [{ m: "Es war spät,", r: "principale 1", c: "objet" }, { m: "trotzdem", r: "connecteur (1)", c: "conj" }, { m: "arbeiteten", r: "verbe (2)", c: "verbe" }, { m: "wir weiter", r: "sujet + complément", c: "fin" }] }],
         note: "Différence clé : « weil » → verbe à la fin ; « deshalb » → verbe en 2e position." }
@@ -8123,7 +8123,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Distinguer sens objectif et subjectif", "Employer le modal au passé et au passif"],
     grammairePoints: ["müsste, dürfte (supposition)", "hätte … müssen, … werden müssen"],
     grammaire: [
-      { titre: "Modaux : nuances avancées", intro: "Au C1, les modaux expriment la supposition (sens subjectif) et se combinent au passé et au passif.",
+      { regle: "Sens **subjectif** (supposition : *dürfte, müsste*), combinaisons au **passé** (*hätte … müssen*) et au **passif** (*muss … werden*).", attention: "Ordre final : *Ich hätte gehen **müssen*** (infinitif + modal à l'infinitif).", titre: "Modaux : nuances avancées", intro: "Au C1, les modaux expriment la supposition (sens subjectif) et se combinent au passé et au passif.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["supposition", "dürfte / müsste", "Er dürfte schon da sein."], ["rumeur", "sollen", "Er soll sehr reich sein."], ["prétention", "wollen", "Sie will nichts gewusst haben."], ["passé + modal", "hätte … müssen", "Ich hätte gehen müssen."], ["passif + modal", "muss … werden", "Das muss erledigt werden."]] },
         note: "Degrés : müssen (quasi sûr) > dürfte (probable) > könnte (possible)." }
     ],
@@ -8140,7 +8140,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Maîtriser présent et passé du Konjunktiv II", "Exprimer politesse, souhait et irréel"],
     grammairePoints: ["würde, hätte, wäre, könnte", "hätte/wäre + participe (passé)"],
     grammaire: [
-      { titre: "Présent et passé de l'irréel", intro: "Présent : würde + infinitif ou formes propres ; passé : hätte/wäre + participe II.",
+      { regle: "Présent (würde/hätte/wäre/könnte) et passé (**hätte/wäre + participe**) ; comparaison **als ob** + KII (fin).", attention: "Après *als ob* → verbe à la **fin** ; souhait : *Wenn ich doch nur … hätte!*", titre: "Présent et passé de l'irréel", intro: "Présent : würde + infinitif ou formes propres ; passé : hätte/wäre + participe II.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["politesse", "könnte / würde", "Könnten Sie mir helfen?"], ["souhait irréel", "wenn … doch nur", "Wenn ich doch nur Zeit hätte!"], ["irréel présent", "würde + infinitif", "Ich würde sofort kündigen."], ["irréel passé", "hätte/wäre + participe", "Ich wäre gern gekommen."], ["comparaison", "als ob + KII (fin)", "Er tut, als ob er alles wüsste."]] },
         schemas: [{ legende: "Irréel passé : wäre (2) … participe (fin).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "wäre", r: "wäre (2)", c: "verbe" }, { m: "gern früher", r: "complément", c: "objet" }, { m: "gekommen", r: "participe (fin)", c: "fin" }] }],
         note: "Après « als ob », le verbe (Konjunktiv II) va à la fin ; après « als » seul, juste après (« als wüsste er »)." }
@@ -8158,7 +8158,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Employer les prépositions à génitif soutenues", "Exprimer cause, opposition, point de vue"],
     grammairePoints: ["wegen, trotz, während", "angesichts, hinsichtlich, zugunsten"],
     grammaire: [
-      { titre: "Le registre soutenu impose le génitif", intro: "Outre wegen/trotz/während, le C1 emploie des prépositions à génitif plus rares et formelles.",
+      { regle: "Outre *wegen/trotz/während*, le C1 emploie *angesichts* (compte tenu de), *hinsichtlich* (concernant), *zugunsten*, *mangels* (+ génitif).", attention: "Registre **écrit** : à l'oral, on les remplace souvent par *wegen/von … aus*.", titre: "Le registre soutenu impose le génitif", intro: "Outre wegen/trotz/während, le C1 emploie des prépositions à génitif plus rares et formelles.",
         tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["wegen", "à cause de", "wegen des Wetters"], ["trotz", "malgré", "trotz aller Probleme"], ["angesichts", "compte tenu de", "angesichts der Lage"], ["hinsichtlich", "concernant", "hinsichtlich der Kosten"], ["zugunsten", "en faveur de", "zugunsten der Kinder"], ["mangels", "faute de", "mangels Beweisen"]] },
         note: "À l'oral, wegen/trotz tolèrent le datif ; le génitif reste la norme écrite soignée." }
     ],
@@ -8187,7 +8187,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Graduer la probabilité", "Employer modaux subjectifs et adverbes"],
     grammairePoints: ["dürfte, müsste, könnte", "wohl, vermutlich, offenbar"],
     grammaire: [
-      { titre: "Les degrés de la supposition", intro: "On exprime une hypothèse par un modal au sens subjectif, par « werden + wohl » ou par un adverbe.",
+      { regle: "Graduer la **probabilité** : *müsste/dürfte* (probable), *wird wohl*, *vermutlich*, *könnte/womöglich* (possible).", attention: "Hypothèse au **passé** : *Er **dürfte** es vergessen **haben*** (dürfte + infinitif passé).", titre: "Les degrés de la supposition", intro: "On exprime une hypothèse par un modal au sens subjectif, par « werden + wohl » ou par un adverbe.",
         tableau: { entetes: ["Degré", "Moyen", "Exemple"], lignes: [["quasi sûr", "müsste / dürfte", "Er müsste schon da sein."], ["probable", "wird wohl", "Sie wird wohl kommen."], ["vraisemblable", "vermutlich / wahrscheinlich", "Vermutlich klappt es."], ["apparent", "offenbar / anscheinend", "Offenbar hat er es vergessen."], ["possible", "könnte / womöglich", "Womöglich regnet es."]] },
         note: "Hypothèse au passé : « Er dürfte es vergessen haben » (dürfte + infinitif passé)." }
     ],
@@ -8204,7 +8204,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Maîtriser tous les pronoms relatifs", "Employer dessen/deren, was, wo"],
     grammairePoints: ["der/die/das + cas", "dessen/deren, was, wo"],
     grammaire: [
-      { titre: "Relatifs avancés : génitif, neutre, lieu", intro: "Outre der/die/das, le C1 emploie le génitif relatif (dessen/deren), « was » (après tout/rien/le neutre) et « wo ».",
+      { regle: "Relatifs avancés : **génitif** *dessen/deren*, **was** (après *alles/nichts/das Beste* ou une phrase), **wo** (lieu).", attention: "*was* peut reprendre **toute la principale** : *Er kam zu spät, **was** alle ärgerte*.", titre: "Relatifs avancés : génitif, neutre, lieu", intro: "Outre der/die/das, le C1 emploie le génitif relatif (dessen/deren), « was » (après tout/rien/le neutre) et « wo ».",
         tableau: { entetes: ["Type", "Pronom", "Exemple"], lignes: [["sujet", "der/die/das", "der Mann, der kommt"], ["génitif", "dessen / deren", "der Autor, dessen Buch ich las"], ["+ préposition", "mit dem, für die", "die Kollegin, mit der ich arbeite"], ["neutre/abstrait", "was", "alles, was ich weiß"], ["lieu", "wo", "die Stadt, wo ich wohne"]] },
         schemas: [{ legende: "Génitif relatif : dessen + nom … verbe à la FIN.", mots: [{ m: "der Autor,", r: "principale", c: "objet" }, { m: "dessen Buch", r: "génitif relatif", c: "conj" }, { m: "ich gerade", r: "sujet + complément", c: "sujet" }, { m: "lese", r: "verbe (fin)", c: "fin" }] }],
         note: "« was » reprend etwas, nichts, alles, das, ou une phrase entière : « Er kam zu spät, was mich ärgerte »." }
@@ -8222,7 +8222,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Construire un participe attribut", "Transformer une relative en participe"],
     grammairePoints: ["Partizip I (actif)", "Partizip II (passif/accompli)"],
     grammaire: [
-      { titre: "Le participe comme adjectif épithète", intro: "Placé devant le nom et décliné, le participe condense une relative. Partizip I = sens actif/simultané ; Partizip II = sens passif/accompli.",
+      { regle: "Le **participe** placé devant le nom (et décliné) condense une relative : **Partizip I** (actif), **Partizip II** (passif/accompli).", attention: "Construction **étendue** : article + [compléments + participe] + nom (*das **von allen gelesene** Buch*).", exemples: [{"de":"das lachende Kind","fr":"l'enfant qui rit"},{"de":"der gerade gelesene Roman","fr":"le roman qu'on vient de lire"}], titre: "Le participe comme adjectif épithète", intro: "Placé devant le nom et décliné, le participe condense une relative. Partizip I = sens actif/simultané ; Partizip II = sens passif/accompli.",
         tableau: { entetes: ["Relative", "Attribut participial"], lignes: [["das Kind, das lacht", "das lachende Kind"], ["der Roman, der gelesen wird", "der gelesene Roman"], ["die Frau, die schläft", "die schlafende Frau"], ["das Buch, das von allen gelesen wird", "das von allen gelesene Buch"]] },
         schemas: [{ legende: "Attribut étendu : article + [compléments + participe] + nom.", mots: [{ m: "das", r: "article", c: "sujet" }, { m: "von allen", r: "complément", c: "objet" }, { m: "gelesene", r: "participe décliné", c: "verbe" }, { m: "Buch", r: "nom", c: "fin" }] }],
         note: "Partizip I = infinitif + d (lachen → lachend) ; il se décline comme un adjectif. Construction fréquente à l'écrit soutenu." }
@@ -8240,7 +8240,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Décliner après der/ein/ø", "Gérer les cas particuliers (etwas/viel)"],
     grammairePoints: ["faible / mixte / forte", "etwas Gutes, viele nette"],
     grammaire: [
-      { titre: "Les trois déclinaisons, sans faille", intro: "La terminaison dépend du déterminant (défini, indéfini, aucun) et du cas.",
+      { regle: "Déclinaison selon le déterminant (der / ein / sans article) et le cas. Après **etwas/nichts/viel** → adjectif nominalisé en **-es**.", attention: "Après *viele, einige, mehrere* : déclinaison **forte** au pluriel (*viele nett**e** Leute*).", exemples: [{"de":"Erzähl mir etwas Schönes!","fr":"Raconte-moi quelque chose de beau !"},{"de":"Ich kenne viele nette Leute.","fr":"Je connais beaucoup de gens sympathiques."}], titre: "Les trois déclinaisons, sans faille", intro: "La terminaison dépend du déterminant (défini, indéfini, aucun) et du cas.",
         tableau: { entetes: ["Contexte", "Nom. m.", "Acc. m.", "Dat. f."], lignes: [["der …", "der gute Wein", "den guten Wein", "der guten Idee"], ["ein …", "ein guter Wein", "einen guten Wein", "einer guten Idee"], ["sans article", "guter Wein", "guten Wein", "guter Idee"], ["etwas/nichts + adj.", "etwas Gutes", "etwas Gutes", "—"]] },
         note: "Après etwas, nichts, viel, wenig : adjectif nominalisé en -es (etwas Schönes). Après viele, einige, mehrere : déclinaison forte au pluriel (viele nette Leute)." }
     ],
@@ -8257,7 +8257,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Employer des locutions connectrices", "Structurer un texte argumentatif"],
     grammairePoints: ["im Gegensatz dazu, aus diesem Grund", "in diesem Zusammenhang, im Vergleich dazu"],
     grammaire: [
-      { titre: "Les locutions connectrices du texte", intro: "Ces groupes figés relient les idées et structurent un texte soutenu. Placés en tête → inversion (verbe en 2e).",
+      { regle: "Locutions connectrices : *aus diesem Grund* (pour cette raison), *im Gegensatz dazu* (en revanche), *darüber hinaus* (en outre).", attention: "Comme les Verbindungsadverbien : en tête, le verbe reste en **2ᵉ** position.", exemples: [{"de":"Es ist teuer. Darüber hinaus ist es weit.","fr":"C'est cher. En outre, c'est loin."},{"de":"Im Gegensatz dazu ist die Bahn günstig.","fr":"En revanche, le train est avantageux."}], titre: "Les locutions connectrices du texte", intro: "Ces groupes figés relient les idées et structurent un texte soutenu. Placés en tête → inversion (verbe en 2e).",
         tableau: { entetes: ["Locution", "Sens", "Fonction"], lignes: [["aus diesem Grund", "pour cette raison", "cause/conséquence"], ["im Gegensatz dazu", "en revanche", "opposition"], ["im Vergleich dazu", "en comparaison", "comparaison"], ["in diesem Zusammenhang", "à ce propos", "transition"], ["darüber hinaus", "en outre", "addition"]] },
         note: "Comme les Verbindungsadverbien, ces locutions laissent le verbe en 2e position : « Aus diesem Grund haben wir … »." }
     ],
@@ -8274,7 +8274,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Nominaliser un adjectif/participe", "Décliner ces noms correctement"],
     grammairePoints: ["der/die Angestellte, der Reisende", "das Beste, etwas Neues"],
     grammaire: [
-      { titre: "Quand l'adjectif/participe devient nom", intro: "Un adjectif ou participe peut se nominaliser (majuscule) ; il garde sa déclinaison d'adjectif.",
+      { regle: "Un adjectif/participe peut devenir **nom** (majuscule) en gardant sa **déclinaison d'adjectif** : *der **Reisende**, der **Angestellte**, das **Beste***.", attention: "Déclinaison vivante : *der Angestellte / ein Angestellt**er** / dem Angestellt**en***.", exemples: [{"de":"Der Angestellte ist krank.","fr":"L'employé est malade."},{"de":"Wir haben etwas Neues erlebt.","fr":"Nous avons vécu quelque chose de nouveau."}], titre: "Quand l'adjectif/participe devient nom", intro: "Un adjectif ou participe peut se nominaliser (majuscule) ; il garde sa déclinaison d'adjectif.",
         tableau: { entetes: ["Origine", "Nom", "Sens"], lignes: [["angestellt", "der/die Angestellte", "l'employé(e)"], ["reisen → reisend", "der/die Reisende", "le voyageur"], ["bekannt", "ein Bekannter", "une connaissance"], ["gut", "das Beste / das Gute", "le meilleur / le bien"], ["neu (après etwas)", "etwas Neues", "quelque chose de nouveau"]] },
         note: "Ces noms se déclinent comme des adjectifs : der Angestellte / ein Angestellter / dem Angestellten." }
     ],
@@ -8291,7 +8291,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Former le Konjunktiv I", "Rapporter affirmations, questions et ordres"],
     grammairePoints: ["sei, habe, könne, werde", "questions et ordres indirects"],
     grammaire: [
-      { titre: "Le discours indirect complet", intro: "Le Konjunktiv I rapporte des propos. On adapte aussi les questions (ob / W-Wort) et les ordres (sollen).",
+      { regle: "**Discours indirect** complet : affirmations (*sei, habe*), **questions** (*ob* / mot interrogatif), **ordres** (*sollen*).", attention: "Si le KI = indicatif (pluriel), on passe au **Konjunktiv II** (*sie hätten*).", exemples: [{"de":"Er sagt, er sei bereit.","fr":"Il dit qu'il est prêt."},{"de":"Er fragt, ob ich komme.","fr":"Il demande si je viens."}], titre: "Le discours indirect complet", intro: "Le Konjunktiv I rapporte des propos. On adapte aussi les questions (ob / W-Wort) et les ordres (sollen).",
         tableau: { entetes: ["Type", "Direct", "Indirect"], lignes: [["affirmation", "« Ich bin müde. »", "Er sagt, er sei müde."], ["passé", "« Ich war dort. »", "Er sagt, er sei dort gewesen."], ["question oui/non", "« Kommst du? »", "Er fragt, ob ich komme."], ["question W", "« Wann kommst du? »", "Er fragt, wann ich komme."], ["ordre", "« Komm! »", "Er sagt, ich solle kommen."]] },
         note: "Si le Konjunktiv I se confond avec l'indicatif (pluriel), on passe au Konjunktiv II : « sie haben » → « sie hätten »." }
     ],
@@ -8308,7 +8308,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Former l'impératif (du/ihr/Sie/wir)", "Connaître les alternatives à l'impératif"],
     grammairePoints: ["Geh! Geht! Gehen Sie!", "Infinitif, sollen, passif"],
     grammaire: [
-      { titre: "Donner un ordre ou une consigne", intro: "L'impératif a quatre formes ; à l'écrit, on lui préfère parfois l'infinitif (consignes) ou « sollen ».",
+      { regle: "Quatre formes : **du** (radical), **ihr** (+ -t), **Sie** (verbe + Sie), **wir** (verbe + wir). À l'écrit : **infinitif** (consignes).", attention: "*sein* est irrégulier : *Sei / Seid / Seien Sie* ruhig! Alternative polie : *Würden Sie bitte …?*", titre: "Donner un ordre ou une consigne", intro: "L'impératif a quatre formes ; à l'écrit, on lui préfère parfois l'infinitif (consignes) ou « sollen ».",
         tableau: { entetes: ["Personne", "Forme", "Exemple"], lignes: [["du", "radical (parfois -e)", "Komm! / Arbeite!"], ["ihr", "radical + -t", "Kommt!"], ["Sie", "verbe + Sie", "Kommen Sie!"], ["wir", "verbe + wir", "Gehen wir!"], ["consigne écrite", "infinitif", "Bitte nicht rauchen!"]] },
         note: "sein est irrégulier : Sei ruhig! / Seid ruhig! / Seien Sie ruhig! Alternative polie : « Würden Sie bitte …? »." }
     ],
@@ -8325,7 +8325,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Passer du style verbal au style nominal", "Employer les prépositions adéquates"],
     grammairePoints: ["weil → wegen, nachdem → nach", "das Lernen, die Prüfung"],
     grammaire: [
-      { titre: "Du verbe au nom (style soutenu)", intro: "À l'écrit formel, on condense une subordonnée en groupe nominal introduit par une préposition.",
+      { regle: "Du **style verbal** au **style nominal** : on condense une subordonnée en groupe nominal (*weil es regnet* → *wegen des Regens*).", attention: "Correspondances : *weil → wegen*, *obwohl → trotz*, *nachdem → nach*, *wenn → bei*, *indem → durch*.", exemples: [{"de":"Wegen des Regens blieben wir zu Hause.","fr":"À cause de la pluie, nous sommes restés à la maison."},{"de":"Nach der Prüfung war sie erleichtert.","fr":"Après l'examen, elle était soulagée."}], titre: "Du verbe au nom (style soutenu)", intro: "À l'écrit formel, on condense une subordonnée en groupe nominal introduit par une préposition.",
         tableau: { entetes: ["Style verbal (subordonnée)", "Style nominal (groupe)"], lignes: [["weil es regnet", "wegen des Regens"], ["nachdem er ankam", "nach seiner Ankunft"], ["obwohl es schwierig ist", "trotz der Schwierigkeit"], ["indem man übt", "durch Üben"], ["wenn man ankommt", "bei der Ankunft"]] },
         schemas: [{ legende: "Subordonnée → préposition + nom (souvent + génitif).", mots: [{ m: "wegen", r: "préposition", c: "conj" }, { m: "des starken", r: "génitif", c: "objet" }, { m: "Regens", r: "nom", c: "sujet" }, { m: "(blieben wir)", r: "principale", c: "verbe" }] }],
         note: "Correspondances : weil→wegen, trotzdem/obwohl→trotz, nachdem→nach, bevor→vor, wenn→bei, indem→durch." }
@@ -8343,7 +8343,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     objectifs: ["Maîtriser passif de processus et d'état", "Employer les formes de substitution du passif"],
     grammairePoints: ["werden/sein + participe", "man, sich lassen, sein + zu + Inf., -bar"],
     grammaire: [
-      { titre: "Passif et alternatives", intro: "Outre le passif (werden/sein + participe), le C1 emploie des formes de substitution plus légères.",
+      { regle: "Passif (werden/sein + participe) et **substituts** : *man*, *sich lassen* (= können werden), *sein + zu + Inf.*, adjectifs en **-bar**.", attention: "*Das lässt sich lösen* = *kann gelöst werden* ; *Das ist zu lösen* = *muss/kann gelöst werden*.", titre: "Passif et alternatives", intro: "Outre le passif (werden/sein + participe), le C1 emploie des formes de substitution plus légères.",
         tableau: { entetes: ["Forme", "Exemple", "Équivaut à"], lignes: [["Vorgangspassiv", "Es wird gemacht.", "(action)"], ["Zustandspassiv", "Es ist gemacht.", "(résultat)"], ["man", "Man macht es.", "Es wird gemacht."], ["sich lassen", "Das lässt sich machen.", "kann gemacht werden"], ["sein + zu + Inf.", "Das ist zu machen.", "muss/kann gemacht werden"], ["adjectif en -bar", "machbar, lösbar", "kann gemacht/gelöst werden"]] },
         schemas: [{ legende: "Passiversatz : sein + zu + infinitif = nécessité/possibilité passive.", mots: [{ m: "Das Problem", r: "sujet", c: "sujet" }, { m: "ist", r: "sein (2)", c: "verbe" }, { m: "leicht", r: "complément", c: "objet" }, { m: "zu lösen", r: "zu + infinitif (fin)", c: "fin" }] }],
         note: "« lösbar » = « kann gelöst werden » ; « Das lässt sich lösen » = même idée, registre courant." }
@@ -8933,7 +8933,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Maîtriser les six temps", "Employer le futur II (supposition sur le passé)"],
     grammairePoints: ["Präsens, Perfekt, Präteritum, Plusquamperfekt", "Futur I / Futur II"],
     grammaire: [
-      { titre: "Le système temporel complet", intro: "Le C2 maîtrise les six temps, dont le Futur II, souvent employé pour une supposition sur le passé.",
+      { regle: "Les six temps, dont le **Futur II** (werden + participe + haben/sein), souvent une **supposition sur le passé**.", attention: "*Sie wird im Stau gestanden **haben*** = elle a dû être coincée dans un bouchon.", titre: "Le système temporel complet", intro: "Le C2 maîtrise les six temps, dont le Futur II, souvent employé pour une supposition sur le passé.",
         tableau: { entetes: ["Temps", "Formation", "Exemple"], lignes: [["Präteritum", "radical/Ablaut", "Er kam spät."], ["Plusquamperfekt", "hatte/war + Part. II", "Er war schon gegangen."], ["Futur I", "werden + Infinitif", "Er wird kommen."], ["Futur II", "werden + Part. II + haben/sein", "Er wird es vergessen haben."]] },
         note: "Futur II = supposition sur un fait passé : « Sie wird wohl im Stau gestanden haben » (elle a dû être coincée dans un bouchon)." }
     ],
@@ -8950,7 +8950,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Distinguer préfixes séparables et inséparables", "Gérer les préfixes à double valeur"],
     grammairePoints: ["be-, er-, ver- (inséparables)", "um-, durch-, über- (mixtes)"],
     grammaire: [
-      { titre: "Séparables, inséparables et mixtes", intro: "Les préfixes inséparables (be-, er-, ent-, ver-, zer-, miss-) restent collés ; les séparables (ab-, an-, auf-, ein-, vor-, zu-…) se détachent. Certains (um-, durch-, über-, unter-) varient avec le sens.",
+      { regle: "Préfixes **inséparables** (*be-, er-, ent-, ver-, zer-, miss-*) restent collés ; **séparables** (*ab-, an-, auf-…*) se détachent ; certains (*um-, durch-, über-*) **varient avec le sens**.", attention: "Participe : inséparable **sans** ge- (*verstanden*) ; séparable **avec** ge- inséré (*aufgestanden*).", titre: "Séparables, inséparables et mixtes", intro: "Les préfixes inséparables (be-, er-, ent-, ver-, zer-, miss-) restent collés ; les séparables (ab-, an-, auf-, ein-, vor-, zu-…) se détachent. Certains (um-, durch-, über-, unter-) varient avec le sens.",
         tableau: { entetes: ["Préfixe", "Type", "Exemple"], lignes: [["ver-, be-, er-", "inséparable", "Ich verstehe / bekomme."], ["auf-, an-, ein-", "séparable", "Ich stehe auf."], ["um- (sens concret)", "séparable", "Er fährt den Baum um. (renverse)"], ["um- (sens figuré)", "inséparable", "Er umfährt das Hindernis. (contourne)"]] },
         schemas: [{ legende: "Préfixe séparable : il part à la FIN.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "stehe", r: "verbe (2)", c: "verbe" }, { m: "jeden Tag früh", r: "complément", c: "objet" }, { m: "auf", r: "préfixe séparé (fin)", c: "fin" }] }],
         note: "Au participe, l'inséparable n'a pas de ge- (verstanden, bekommen) ; le séparable l'insère (aufgestanden)." }
@@ -8968,7 +8968,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Maîtriser présent, passé et modaux", "Exprimer l'irréel complexe"],
     grammairePoints: ["würde, hätte, wäre", "hätte … können (passé + modal)"],
     grammaire: [
-      { titre: "L'irréel sous toutes ses formes", intro: "Au C2, on manie le Konjunktiv II au présent, au passé et avec modaux (double infinitif).",
+      { regle: "Irréel **présent** (würde/hätte/wäre), **passé** (hätte/wäre + participe) et **passé + modal** (*hätte … können*).", attention: "Ordre final du passé + modal : *Ich hätte dir **helfen können***.", titre: "L'irréel sous toutes ses formes", intro: "Au C2, on manie le Konjunktiv II au présent, au passé et avec modaux (double infinitif).",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["irréel présent", "würde / hätte / wäre", "Ich würde gern helfen."], ["irréel passé", "hätte/wäre + Part. II", "Ich wäre fast gestürzt."], ["passé + modal", "hätte … Inf. + Modal", "Ich hätte kommen können."], ["souhait", "wenn … doch nur", "Wenn ich es doch nur gewusst hätte!"]] },
         schemas: [{ legende: "Passé + modal : hätte (2) … infinitif + modal (fin).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "hätte", r: "hätte (2)", c: "verbe" }, { m: "dir", r: "datif", c: "objet" }, { m: "helfen können", r: "inf. + modal (fin)", c: "fin" }] }],
         note: "Ordre final : infinitif + modal à l'infinitif (« helfen können », « machen müssen »)." }
@@ -8986,7 +8986,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Former le Konjunktiv I", "Rapporter affirmations, questions et ordres"],
     grammairePoints: ["sei, habe, könne, werde", "Ersatzformen (→ KII)"],
     grammaire: [
-      { titre: "Le discours indirect soigné", intro: "Le Konjunktiv I rapporte des propos ; on adapte questions (ob/W-) et ordres (sollen), et on substitue le KII si la forme = indicatif.",
+      { regle: "Discours indirect soigné : affirmations (sei, habe), questions (ob / W-Wort), ordres (sollen), avec **substitution KII** si nécessaire.", attention: "3ᵉ sing. → KI ; pluriel/ich → KII pour éviter la confusion avec l'indicatif.", exemples: [{"de":"Sie sagt, sie sei bereit.","fr":"Elle dit qu'elle est prête."},{"de":"Sie behaupten, sie hätten nichts gewusst.","fr":"Ils prétendent n'avoir rien su."}], titre: "Le discours indirect soigné", intro: "Le Konjunktiv I rapporte des propos ; on adapte questions (ob/W-) et ordres (sollen), et on substitue le KII si la forme = indicatif.",
         tableau: { entetes: ["Type", "Direct", "Indirect"], lignes: [["affirmation", "« Ich bin bereit. »", "Er sagt, er sei bereit."], ["passé", "« Ich war dort. »", "Er sagt, er sei dort gewesen."], ["question W", "« Wann kommst du? »", "Er fragt, wann ich komme."], ["ordre", "« Geh! »", "Er sagt, ich solle gehen."], ["substitution", "« Sie haben Zeit. »", "Sie sagen, sie hätten Zeit."]] },
         note: "Règle : 3e sing. → Konjunktiv I (er sei, habe) ; pluriel/ich → Konjunktiv II (hätten) pour éviter la confusion avec l'indicatif." }
     ],
@@ -9003,7 +9003,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Reconnaître les types de circonstancielles", "Choisir la bonne conjonction"],
     grammairePoints: ["temporal, kausal, konzessiv", "final, konditional, modal"],
     grammaire: [
-      { titre: "Panorama des circonstancielles", intro: "Chaque circonstance a ses conjonctions ; toutes rejettent le verbe à la fin.",
+      { regle: "Panorama des circonstancielles : temporelle, causale (*weil, zumal*), concessive (*obwohl, obgleich*), finale (*damit*), conditionnelle (*falls, sofern*), modale (*indem*).", attention: "*zumal* (d'autant plus que) et *ohne dass* (sans que) sont **soutenus** ; verbe à la fin.", titre: "Panorama des circonstancielles", intro: "Chaque circonstance a ses conjonctions ; toutes rejettent le verbe à la fin.",
         tableau: { entetes: ["Type", "Conjonctions", "Exemple"], lignes: [["temporal", "als, während, nachdem, seitdem", "Seitdem er hier ist, …"], ["kausal", "weil, da, zumal", "…, zumal es spät war."], ["konzessiv", "obwohl, obgleich, wenngleich", "obwohl es regnete"], ["final", "damit, sodass", "damit alle es verstehen"], ["konditional", "wenn, falls, sofern", "sofern es möglich ist"], ["modal", "indem, ohne dass", "indem man übt"]] },
         note: "« zumal » (d'autant plus que) et « ohne dass » (sans que) appartiennent au registre soutenu." }
     ],
@@ -9020,7 +9020,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Maîtriser la rection des verbes", "Employer les verbes à génitif"],
     grammairePoints: ["verbes à datif/accusatif", "verbes à génitif (bedürfen, gedenken)"],
     grammaire: [
-      { titre: "La rection (Rektion) des verbes", intro: "Chaque verbe impose un cas ou une préposition. Au C2, on connaît aussi les rares verbes à génitif.",
+      { regle: "La **rection** (Rektion) : chaque verbe impose un cas. Rares **verbes à génitif** : *bedürfen, gedenken, sich annehmen*.", attention: "*gedenken* + **génitif** (*der Opfer gedenken*) ; *helfen, danken* + **datif**.", titre: "La rection (Rektion) des verbes", intro: "Chaque verbe impose un cas ou une préposition. Au C2, on connaît aussi les rares verbes à génitif.",
         tableau: { entetes: ["Verbe", "Rection", "Exemple"], lignes: [["helfen", "+ Dat.", "Ich helfe dir."], ["bedürfen", "+ Gen.", "Es bedarf großer Mühe."], ["gedenken", "+ Gen.", "Wir gedenken der Opfer."], ["sich erinnern", "an + Akk.", "Ich erinnere mich an ihn."], ["sich annehmen", "+ Gen.", "Er nahm sich der Sache an."]] },
         note: "Verbes à génitif (rares, soutenus) : bedürfen, gedenken, sich annehmen, sich bedienen, sich rühmen." }
     ],
@@ -9037,7 +9037,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Employer des Funktionsverbgefüge soutenues", "Reformuler avec un verbe simple"],
     grammairePoints: ["in Anspruch nehmen, in Betracht ziehen", "zur Sprache bringen"],
     grammaire: [
-      { titre: "Les locutions du registre formel", intro: "Ces tournures nom + verbe support sont fréquentes à l'écrit académique et administratif.",
+      { regle: "Funktionsverbgefüge du registre formel : *in Anspruch **nehmen***, *in Betracht **ziehen***, *zur Sprache **bringen***.", attention: "À l'**oral**, on préfère le verbe simple (*in Betracht ziehen* → *berücksichtigen*).", exemples: [{"de":"Wir ziehen diese Option in Betracht.","fr":"Nous prenons cette option en considération."},{"de":"Sie nimmt seine Hilfe in Anspruch.","fr":"Elle a recours à son aide."}], titre: "Les locutions du registre formel", intro: "Ces tournures nom + verbe support sont fréquentes à l'écrit académique et administratif.",
         tableau: { entetes: ["Locution", "Sens", "Verbe simple"], lignes: [["in Anspruch nehmen", "avoir recours à", "nutzen"], ["in Betracht ziehen", "prendre en considération", "berücksichtigen"], ["zur Sprache bringen", "aborder (un sujet)", "ansprechen"], ["in Frage stellen", "remettre en question", "bezweifeln"], ["Rücksicht nehmen auf", "tenir compte de", "berücksichtigen"]] },
         note: "À l'oral on préfère le verbe simple ; à l'écrit soutenu, la locution donne du poids et de la précision." }
     ],
@@ -9054,7 +9054,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Reconnaître les suffixes nominaux", "Former des noms et des composés"],
     grammairePoints: ["-ung, -heit, -keit, -schaft", "Komposita"],
     grammaire: [
-      { titre: "Suffixes et mots composés", intro: "Les noms se forment par dérivation (suffixes) ou composition. Le suffixe détermine souvent le genre.",
+      { regle: "Noms par **dérivation** (suffixes -ung, -heit, -keit, -schaft → **féminins**) ou **composition** (le dernier élément donne le genre).", attention: "Dans un composé, le **dernier mot** donne genre et sens : *die Haus**tür*** (féminin).", titre: "Suffixes et mots composés", intro: "Les noms se forment par dérivation (suffixes) ou composition. Le suffixe détermine souvent le genre.",
         tableau: { entetes: ["Procédé", "Exemple", "Genre/règle"], lignes: [["-ung (verbe→nom)", "bilden → die Bildung", "féminin"], ["-heit / -keit", "die Freiheit, die Möglichkeit", "féminin (qualité)"], ["-schaft", "die Freundschaft", "féminin (collectif)"], ["-er (verbe→agent)", "lehren → der Lehrer", "masculin"], ["composé", "die Haus + tür = die Haustür", "genre du dernier élément"]] },
         note: "Dans un composé, le dernier élément (Grundwort) donne le genre et le sens principal : die Haustür (porte de maison)." }
     ],
@@ -9071,7 +9071,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Employer le participe attribut", "Construire un attribut participial étendu"],
     grammairePoints: ["Partizip I (actif)", "Partizip II (passif/accompli)"],
     grammaire: [
-      { titre: "Le participe épithète, simple et étendu", intro: "Placé devant le nom et décliné, le participe condense une relative ; il peut porter ses propres compléments (attribut étendu).",
+      { regle: "Le participe **épithète**, simple ou **étendu** : Partizip I (actif), Partizip II (passif/accompli), décliné comme un adjectif.", attention: "Attribut étendu : article + [compléments + participe] + nom (*die **im Park joggende** Frau*).", exemples: [{"de":"das spielende Kind","fr":"l'enfant qui joue"},{"de":"der gerade geschriebene Brief","fr":"la lettre qu'on vient d'écrire"}], titre: "Le participe épithète, simple et étendu", intro: "Placé devant le nom et décliné, le participe condense une relative ; il peut porter ses propres compléments (attribut étendu).",
         tableau: { entetes: ["Relative", "Participe attribut"], lignes: [["das Kind, das spielt", "das spielende Kind"], ["der Brief, der geschrieben wurde", "der geschriebene Brief"], ["das Buch, das gerade gelesen wird", "das gerade gelesene Buch"], ["die Frau, die im Park joggt", "die im Park joggende Frau"]] },
         schemas: [{ legende: "Attribut étendu : article + [compléments + participe] + nom.", mots: [{ m: "die", r: "article", c: "sujet" }, { m: "im Park", r: "complément", c: "objet" }, { m: "joggende", r: "Partizip I décliné", c: "verbe" }, { m: "Frau", r: "nom", c: "fin" }] }],
         note: "Partizip I = sens actif/simultané (joggend) ; Partizip II = sens passif/accompli (geschrieben)." }
@@ -9089,7 +9089,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Nominaliser adjectifs et participes", "Décliner ces noms"],
     grammairePoints: ["der Reisende, der Angestellte", "das Wesentliche, etwas Neues"],
     grammaire: [
-      { titre: "Quand l'adjectif/participe devient nom", intro: "Adjectifs et participes se nominalisent (majuscule) en gardant leur déclinaison d'adjectif.",
+      { regle: "Adjectifs/participes **nominalisés** (majuscule), gardant la déclinaison d'adjectif : *der Reisende, das Wesentliche, ein Bekannter*.", attention: "Après **etwas/nichts** → forme en **-es** : *etwas Wesentlich**es***.", exemples: [{"de":"Ich half einem Reisenden.","fr":"J'ai aidé un voyageur."},{"de":"Das ist das Wesentliche.","fr":"C'est l'essentiel."}], titre: "Quand l'adjectif/participe devient nom", intro: "Adjectifs et participes se nominalisent (majuscule) en gardant leur déclinaison d'adjectif.",
         tableau: { entetes: ["Origine", "Nom", "Sens"], lignes: [["reisend", "der/die Reisende", "le voyageur"], ["angestellt", "der/die Angestellte", "l'employé(e)"], ["wesentlich", "das Wesentliche", "l'essentiel"], ["bekannt", "ein Bekannter", "une connaissance"], ["neu (après etwas)", "etwas Neues", "qqch de nouveau"]] },
         note: "Déclinaison : der Angestellte / ein Angestellter / dem Angestellten ; das Wesentliche / etwas Wesentliches." }
     ],
@@ -9106,7 +9106,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Maîtriser tous les relatifs", "Employer les relatives explicatives (weiterführend)"],
     grammairePoints: ["dessen/deren, was, wo", "relative explicative (, was …)"],
     grammaire: [
-      { titre: "Relatives avancées et explicatives", intro: "Outre der/die/das, on emploie le génitif relatif (dessen/deren), was/wo, et la relative explicative qui reprend toute la phrase.",
+      { regle: "Relatifs avancés et **explicatifs** : génitif (*dessen/deren*), *was* (après *das Beste*…), **relative explicative** « *, was …* » qui reprend toute la phrase.", attention: "« , was … » commente l'**ensemble** de la principale (*Er log, **was** niemanden überraschte*).", titre: "Relatives avancées et explicatives", intro: "Outre der/die/das, on emploie le génitif relatif (dessen/deren), was/wo, et la relative explicative qui reprend toute la phrase.",
         tableau: { entetes: ["Type", "Pronom", "Exemple"], lignes: [["génitif", "dessen / deren", "der Autor, dessen Werk …"], ["+ préposition", "mit dem, für die", "die Frau, mit der ich sprach"], ["neutre/abstrait", "was", "das Beste, was …"], ["explicative (phrase)", ", was …", "Er kam zu spät, was alle ärgerte."]] },
         schemas: [{ legende: "Relative explicative : virgule + was reprend toute la phrase.", mots: [{ m: "Er log,", r: "principale", c: "objet" }, { m: "was", r: "reprend la phrase", c: "conj" }, { m: "niemanden", r: "complément", c: "sujet" }, { m: "überraschte", r: "verbe (fin)", c: "fin" }] }],
         note: "La relative explicative en « , was … » commente l'ensemble de la principale (ce qui …)." }
@@ -9136,7 +9136,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Maîtriser le passif à tous les temps", "Employer le passif avec modal"],
     grammairePoints: ["werden + participe (tous temps)", "sein-Passiv, modal + werden"],
     grammaire: [
-      { titre: "Le passif sous toutes ses formes", intro: "Le Vorgangspassiv (werden + participe) existe à tous les temps ; avec un modal, l'infinitif passif (… werden) va à la fin.",
+      { regle: "Passif à **tous les temps** (*wird / wurde / ist … worden / wird … werden*) ; avec modal : participe + **werden** (fin).", attention: "Perfekt passif : *werden → **worden*** ; agent : *von + datif*, cause : *durch + accusatif*.", titre: "Le passif sous toutes ses formes", intro: "Le Vorgangspassiv (werden + participe) existe à tous les temps ; avec un modal, l'infinitif passif (… werden) va à la fin.",
         tableau: { entetes: ["Temps", "Forme", "Exemple"], lignes: [["présent", "wird + participe", "Das Haus wird gebaut."], ["prétérit", "wurde + participe", "Das Haus wurde gebaut."], ["parfait", "ist + participe + worden", "Das Haus ist gebaut worden."], ["futur", "wird + participe + werden", "Das Haus wird gebaut werden."], ["+ modal", "muss … participe + werden", "Es muss gebaut werden."]] },
         schemas: [{ legende: "Passif + modal : participe + werden (à la fin).", mots: [{ m: "Der Vertrag", r: "sujet", c: "sujet" }, { m: "muss", r: "modal (2)", c: "verbe" }, { m: "heute", r: "complément", c: "objet" }, { m: "unterschrieben werden", r: "participe + werden (fin)", c: "fin" }] }],
         note: "Au Perfekt passif, le participe de werden devient « worden » (sans ge-). Agent : von + datif ; cause : durch + accusatif." }
@@ -9154,7 +9154,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Remplacer le passif élégamment", "Employer man, sich lassen, sein+zu+Inf., -bar"],
     grammairePoints: ["man, sich lassen", "sein + zu + Inf., adjectifs en -bar"],
     grammaire: [
-      { titre: "Les alternatives au passif", intro: "Pour alléger le style, on remplace le passif par des tournures actives ou modales.",
+      { regle: "Alléger le passif : *man*, *sich lassen* (= können werden), *sein + zu + Inf.* (= müssen/können werden), adjectifs en **-bar**.", attention: "*Das Buch liest **sich** gut* : tournure pronominale à valeur **passive**.", titre: "Les alternatives au passif", intro: "Pour alléger le style, on remplace le passif par des tournures actives ou modales.",
         tableau: { entetes: ["Forme", "Exemple", "Équivaut à"], lignes: [["man", "Man löst das Problem.", "Das Problem wird gelöst."], ["sich lassen", "Das lässt sich lösen.", "kann gelöst werden"], ["sein + zu + Inf.", "Das ist zu lösen.", "muss/kann gelöst werden"], ["adjectif -bar", "lösbar, machbar", "kann gelöst/gemacht werden"], ["sich + Inf.", "Das Buch liest sich gut.", "kann gut gelesen werden"]] },
         schemas: [{ legende: "sein + zu + infinitif = nécessité/possibilité passive.", mots: [{ m: "Das Problem", r: "sujet", c: "sujet" }, { m: "ist", r: "sein (2)", c: "verbe" }, { m: "leicht", r: "complément", c: "objet" }, { m: "zu lösen", r: "zu + infinitif (fin)", c: "fin" }] }],
         note: "« Das Buch liest sich gut » : tournure pronominale à valeur passive (peut se lire facilement)." }
@@ -9172,7 +9172,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Maîtriser le sens subjectif des modaux", "Combiner modal, temps et passif"],
     grammairePoints: ["müsste, dürfte, soll, will (subjectif)", "hätte … müssen"],
     grammaire: [
-      { titre: "Modaux : objectif, subjectif, composé", intro: "Au C2, les modaux nuancent la supposition et se combinent au passé et au passif.",
+      { regle: "Sens subjectif (supposition : *dürfte/müsste* ; rumeur : *sollen* ; prétention : *wollen*) + combinaisons passé/passif.", attention: "*Er **will** es nicht gewusst haben* = il **prétend** ne pas l'avoir su.", titre: "Modaux : objectif, subjectif, composé", intro: "Au C2, les modaux nuancent la supposition et se combinent au passé et au passif.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["supposition", "dürfte / müsste", "Er dürfte recht haben."], ["rumeur", "sollen", "Sie soll sehr begabt sein."], ["prétention", "wollen", "Er will es nicht gewusst haben."], ["passé + modal", "hätte … müssen", "Ich hätte fragen müssen."], ["passif + modal", "muss … werden", "Es muss geprüft werden."]] },
         note: "« Er will es nicht gewusst haben » = il prétend ne pas l'avoir su (wollen subjectif au passé)." }
     ],
@@ -9189,7 +9189,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Décliner sans faute", "Maîtriser comparatif et superlatif (y compris irréguliers)"],
     grammairePoints: ["faible/mixte/forte", "-er / am -sten, irréguliers"],
     grammaire: [
-      { titre: "Déclinaison et degrés", intro: "L'adjectif épithète se décline selon le déterminant ; les degrés se forment en -er / am -sten, avec des irréguliers.",
+      { regle: "Déclinaison (faible/mixte/forte) + degrés : comparatif **-er**, superlatif **am … -sten / der … -ste**, avec irréguliers.", attention: "Irréguliers : *gut → besser → am besten* ; *viel → mehr → am meisten* ; *hoch → höher*.", titre: "Déclinaison et degrés", intro: "L'adjectif épithète se décline selon le déterminant ; les degrés se forment en -er / am -sten, avec des irréguliers.",
         tableau: { entetes: ["Aspect", "Règle", "Exemple"], lignes: [["après der", "faible (-e/-en)", "der gute Wein"], ["après ein", "mixte", "ein guter Wein"], ["sans article", "forte", "guter Wein"], ["comparatif", "-er (+ Umlaut)", "alt → älter"], ["superlatif", "am -sten / der -ste", "am ältesten / der älteste"]] },
         note: "Irréguliers : gut → besser → am besten ; viel → mehr → am meisten ; hoch → höher → am höchsten ; gern → lieber → am liebsten." }
     ],
@@ -9206,7 +9206,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Employer adjectifs à datif/génitif", "Maîtriser adjectifs à préposition"],
     grammairePoints: ["+ datif (treu, ähnlich)", "+ génitif, + préposition"],
     grammaire: [
-      { titre: "La rection des adjectifs", intro: "Certains adjectifs régissent un datif, un génitif ou une préposition fixe.",
+      { regle: "La **rection des adjectifs** : datif (*treu, ähnlich*), **génitif** (*(sich) bewusst, sicher*), préposition (*stolz auf, fähig zu*).", attention: "Adjectifs à génitif (soutenus) : *Ich bin mir des Problems **bewusst***.", titre: "La rection des adjectifs", intro: "Certains adjectifs régissent un datif, un génitif ou une préposition fixe.",
         tableau: { entetes: ["Adjectif", "Complément", "Exemple"], lignes: [["treu / ähnlich", "+ Dat.", "Er bleibt sich treu."], ["bewusst / sicher", "+ Gen.", "Ich bin mir der Lage bewusst."], ["stolz", "auf + Akk.", "stolz auf den Erfolg"], ["fähig", "zu + Dat.", "zu allem fähig"], ["reich", "an + Dat.", "reich an Erfahrung"]] },
         note: "Adjectifs à génitif (soutenus) : (sich) bewusst, sicher, würdig, verdächtig, schuldig." }
     ],
@@ -9223,7 +9223,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Reconnaître les suffixes adjectivaux", "Former des adjectifs à partir de noms/verbes"],
     grammairePoints: ["-bar, -los, -haft, -ig", "-lich, -sam, -voll"],
     grammaire: [
-      { titre: "Les suffixes adjectivaux", intro: "On forme des adjectifs par dérivation ; chaque suffixe apporte une nuance.",
+      { regle: "Suffixes adjectivaux : **-bar** (possibilité), **-los** (sans), **-haft, -ig, -lich**, **-voll/-reich** (abondance).", attention: "Opposition utile : *-voll* (plein de) ↔ *-los* (sans) : *sinnvoll / sinnlos*.", titre: "Les suffixes adjectivaux", intro: "On forme des adjectifs par dérivation ; chaque suffixe apporte une nuance.",
         tableau: { entetes: ["Suffixe", "Sens", "Exemple"], lignes: [["-bar", "possibilité (passive)", "lösbar, essbar"], ["-los", "absence (sans)", "arbeitslos, hilflos"], ["-haft", "qui a la qualité de", "vorbildhaft, fehlerhaft"], ["-ig", "qualité", "sonnig, mutig"], ["-lich", "relation/atténuation", "freundlich, rötlich"], ["-voll / -reich", "abondance", "wertvoll, erfolgreich"]] },
         note: "Opposition utile : -voll (plein de) vs -los (sans) : sinnvoll / sinnlos, hoffnungsvoll / hoffnungslos." }
     ],
@@ -9240,7 +9240,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Transformer le verbal en nominal", "Reconnaître le style écrit soutenu"],
     grammairePoints: ["Nominalstil ↔ Verbalstil", "prépositions + nominalisation"],
     grammaire: [
-      { titre: "Du verbe au nom (registre écrit)", intro: "Le style nominal condense une subordonnée en groupe nominal ; il est typique de l'écrit administratif et scientifique.",
+      { regle: "Le **style nominal** condense une subordonnée en groupe nominal (préposition + nom, souvent génitif) — typique de l'écrit soutenu.", attention: "Excessif, il **alourdit** ; au C2, on l'emploie **à bon escient**.", exemples: [{"de":"Wegen steigender Preise sank die Nachfrage.","fr":"En raison de la hausse des prix, la demande a baissé."},{"de":"Nach Prüfung der Unterlagen entschied sie.","fr":"Après examen des documents, elle a décidé."}], titre: "Du verbe au nom (registre écrit)", intro: "Le style nominal condense une subordonnée en groupe nominal ; il est typique de l'écrit administratif et scientifique.",
         tableau: { entetes: ["Verbal (subordonnée)", "Nominal (groupe)"], lignes: [["weil die Preise steigen", "wegen steigender Preise"], ["nachdem man geprüft hat", "nach der Prüfung"], ["obwohl es Widerstand gab", "trotz des Widerstands"], ["wenn man ankommt", "bei der Ankunft"], ["um zu informieren", "zur Information"]] },
         schemas: [{ legende: "Subordonnée → préposition + groupe nominal (souvent génitif).", mots: [{ m: "wegen", r: "préposition", c: "conj" }, { m: "steigender", r: "adjectif décliné", c: "objet" }, { m: "Preise", r: "nom (génitif)", c: "sujet" }, { m: "(stieg die Inflation)", r: "principale", c: "verbe" }] }],
         note: "Le style nominal alourdit s'il est excessif ; au C2 on l'emploie à bon escient pour la densité et l'objectivité." }
@@ -9258,7 +9258,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     objectifs: ["Employer les prépositions soutenues à génitif", "Choisir la nuance exacte"],
     grammairePoints: ["mittels, anhand, infolge", "angesichts, seitens, zwecks"],
     grammaire: [
-      { titre: "Les prépositions à génitif du registre écrit", intro: "La langue administrative et scientifique emploie des prépositions à génitif précises.",
+      { regle: "Prépositions à génitif de l'écrit : *mittels* (au moyen de), *anhand* (à l'aide de), *infolge* (à la suite de), *angesichts, seitens, zwecks*.", attention: "Surtout à l'**écrit** ; à l'oral on dit plutôt *mit, wegen, von … aus*.", titre: "Les prépositions à génitif du registre écrit", intro: "La langue administrative et scientifique emploie des prépositions à génitif précises.",
         tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["mittels", "au moyen de", "mittels eines Codes"], ["anhand", "à l'aide de", "anhand der Daten"], ["infolge", "à la suite de", "infolge des Unfalls"], ["angesichts", "compte tenu de", "angesichts der Lage"], ["seitens", "de la part de", "seitens der Behörde"], ["zwecks", "aux fins de", "zwecks Überprüfung"]] },
         note: "Ces prépositions appartiennent surtout à l'écrit ; à l'oral, on les remplace souvent par « mit, wegen, von … aus »." }
     ],

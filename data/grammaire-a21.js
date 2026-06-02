@@ -8,7 +8,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Former le prétérit (récit écrit)", "Connaître le prétérit des modaux"],
     grammairePoints: ["Präteritum", "konnte, musste…"],
     grammaire: [
-      { titre: "Le prétérit (temps du récit écrit)", intro: "Réguliers : radical + -te. Irréguliers : radical modifié.",
+      { regle: "Le **prétérit** est le temps du **récit écrit**. Réguliers : radical + **-te** (*machen → machte*). Irréguliers : changement de voyelle (*gehen → ging*).", attention: "À l'oral on préfère le **Perfekt** ; mais **sein, haben** et les **modaux** se disent au prétérit même à l'oral (*war, hatte, musste*).", exemples: [{"de":"Gestern machte er seine Hausaufgaben.","fr":"Hier, il a fait ses devoirs."},{"de":"Sie ging früh nach Hause.","fr":"Elle est rentrée tôt à la maison."}], titre: "Le prétérit (temps du récit écrit)", intro: "Réguliers : radical + -te. Irréguliers : radical modifié.",
         tableau: { entetes: ["Infinitif", "Type", "er/sie/es"], lignes: [["machen", "régulier", "machte"], ["arbeiten", "régulier", "arbeitete"], ["gehen", "irrégulier", "ging"], ["kommen", "irrégulier", "kam"], ["müssen", "modal", "musste"], ["können", "modal", "konnte"]] },
         note: "À l'oral on préfère le Perfekt ; le Präteritum domine à l'écrit (récits, presse) et pour sein/haben/modaux." }
     ],
@@ -25,7 +25,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Former le Perfekt", "Choisir haben ou sein", "Participes irréguliers"],
     grammairePoints: ["haben/sein + participe", "Partizip II"],
     grammaire: [
-      { titre: "Auxiliaire + participe (à la fin)", intro: "Mouvement / changement d'état → sein. Sinon → haben.",
+      { regle: "**Perfekt** = **haben/sein** (2ᵉ position) + **participe II** à la fin. Mouvement/changement d'état → **sein** ; sinon → **haben**.", attention: "Verbes en **-ieren** : **pas** de *ge-* (*studieren → studiert*). Séparables : *ge-* au milieu (*eingekauft*).", exemples: [{"de":"Ich habe einen Film gesehen.","fr":"J'ai vu un film."},{"de":"Wir sind nach Hause gefahren.","fr":"Nous sommes rentrés à la maison."}], titre: "Auxiliaire + participe (à la fin)", intro: "Mouvement / changement d'état → sein. Sinon → haben.",
         tableau: { entetes: ["Infinitif", "Auxiliaire", "Participe II"], lignes: [["machen", "haben", "gemacht"], ["sehen", "haben", "gesehen"], ["gehen", "sein", "gegangen"], ["fahren", "sein", "gefahren"], ["bleiben", "sein", "geblieben"], ["aufstehen", "sein", "aufgestanden"]] },
         note: "Verbes en -ieren : pas de ge- (studieren → studiert). Séparables : ge- au milieu (eingekauft)." }
     ],
@@ -42,7 +42,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Décliner l'article selon le cas", "Reconnaître nominatif / accusatif / datif"],
     grammairePoints: ["Déclinaison de l'article", "Nom./Acc./Dat."],
     grammaire: [
-      { titre: "L'article défini selon le cas", intro: "L'article change selon la fonction du nom dans la phrase.",
+      { regle: "L'**article change selon le cas** : nominatif (sujet), accusatif (COD), datif (COI). Le plus mobile est le masculin : *der → den → dem*.", attention: "Au **datif pluriel**, le nom prend un **-n** (*den Kindern*).", exemples: [{"de":"Der Mann gibt dem Kind einen Apfel.","fr":"L'homme donne une pomme à l'enfant."},{"de":"Ich sehe die Frau.","fr":"Je vois la femme."}], titre: "L'article défini selon le cas", intro: "L'article change selon la fonction du nom dans la phrase.",
         tableau: { entetes: ["Cas", "masculin", "féminin", "neutre", "pluriel"], lignes: [["Nominatif (sujet)", "der", "die", "das", "die"], ["Accusatif (COD)", "den", "die", "das", "die"], ["Datif (COI)", "dem", "der", "dem", "den +n"]] },
         note: "Indéfini : ein/eine → einen (m. acc.) → einem/einer (datif). Au pluriel datif, le nom prend souvent un -n." }
     ],
@@ -59,7 +59,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Placer nicht correctement", "Utiliser kein, nichts, niemand, nie"],
     grammairePoints: ["nicht / kein", "nichts, niemand, nie"],
     grammaire: [
-      { titre: "Les mots de négation", intro: "kein nie un nom ; nicht le reste ; et des mots spécifiques.",
+      { regle: "**kein** nie un **nom** (sans article / indéfini) ; **nicht** nie le reste. Mots spécifiques : **nichts** (rien), **niemand** (personne), **nie** (jamais).", attention: "**niemand** et **nichts** sont déjà négatifs : pas de double négation (*Ich sehe **nichts***).", titre: "Les mots de négation", intro: "kein nie un nom ; nicht le reste ; et des mots spécifiques.",
         tableau: { entetes: ["Mot", "Sens", "Exemple"], lignes: [["kein", "aucun/pas de", "Ich habe kein Auto."], ["nicht", "ne… pas", "Ich komme nicht."], ["nichts", "rien", "Ich sehe nichts."], ["niemand", "personne", "Niemand ist da."], ["nie", "jamais", "Ich rauche nie."]] },
         note: "« nicht » se place en général à la fin, mais AVANT un adjectif/lieu : « Das ist nicht gut »." }
     ],
@@ -76,7 +76,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Distinguer principale et subordonnée", "Placer le verbe (2e position vs fin)"],
     grammairePoints: ["weil, dass, wenn, obwohl", "Ordre des mots"],
     grammaire: [
-      { titre: "Subordonnées : verbe à la FIN", intro: "weil, dass, wenn, obwohl introduisent une subordonnée → verbe conjugué à la fin.",
+      { regle: "Les conjonctions de **subordination** (*weil, dass, wenn, obwohl*) rejettent le **verbe à la FIN**. Les conjonctions de **coordination** (*und, aber, denn, oder*) gardent le verbe en **2ᵉ** position.", attention: "Si la **subordonnée est en tête**, la principale **commence par le verbe** : *Weil ich müde bin, **bleibe** ich zu Hause*.", titre: "Subordonnées : verbe à la FIN", intro: "weil, dass, wenn, obwohl introduisent une subordonnée → verbe conjugué à la fin.",
         tableau: { entetes: ["Conjonction", "Sens", "Exemple"], lignes: [["weil", "parce que", "…, weil ich müde bin."], ["dass", "que", "Ich denke, dass es gut ist."], ["wenn", "si / quand", "…, wenn ich Zeit habe."], ["obwohl", "bien que", "…, obwohl es regnet."]] },
         schemas: [
           { legende: "Principale : verbe en 2e position.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "bleibe", r: "verbe (2)", c: "verbe" }, { m: "zu Hause", r: "complément", c: "objet" }] },
@@ -97,7 +97,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Reconnaître les verbes à datif", "Construire « donner qqch à qqn »"],
     grammairePoints: ["helfen, danken (datif)", "geben jdm etwas"],
     grammaire: [
-      { titre: "Datif seul, ou datif + accusatif", intro: "Certains verbes demandent le datif ; d'autres datif (personne) + accusatif (chose).",
+      { regle: "Certains verbes prennent **datif (à qui)** + **accusatif (quoi)** : *geben, schenken, zeigen, empfehlen*. Ordre habituel (deux noms) : **datif avant accusatif**.", attention: "Verbes **toujours + datif seul** : *helfen, danken, gefallen, gehören* (*Ich helfe **dir***).", titre: "Datif seul, ou datif + accusatif", intro: "Certains verbes demandent le datif ; d'autres datif (personne) + accusatif (chose).",
         tableau: { entetes: ["Verbe", "Construction", "Exemple"], lignes: [["helfen", "+ datif", "Ich helfe dir."], ["danken", "+ datif", "Ich danke Ihnen."], ["gefallen", "+ datif", "Das gefällt mir."], ["geben", "datif + accusatif", "Ich gebe dem Kind einen Apfel."], ["schenken", "datif + accusatif", "Er schenkt ihr Blumen."]] },
         schemas: [
           { legende: "Donner : à QUI (datif) + QUOI (accusatif).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "gebe", r: "verbe (2)", c: "verbe" }, { m: "dem Kind", r: "datif (à qui)", c: "objet" }, { m: "einen Apfel", r: "accusatif (quoi)", c: "fin" }] }
@@ -117,7 +117,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Exprimer l'irréel et le souhait", "Faire une demande polie"],
     grammairePoints: ["würde + Inf.", "wäre, hätte, könnte"],
     grammaire: [
-      { titre: "Formes du Konjunktiv II", intro: "würde + infinitif pour la plupart ; sein/haben/modaux ont une forme propre.",
+      { regle: "Pour la **politesse**, le **souhait** et l'**irréel** : **würde** + infinitif, ou les formes propres **hätte, wäre, könnte**.", attention: "Le « si » irréel se construit avec **wenn + Konjunktiv II** : *Wenn ich Zeit **hätte**, **würde** ich kommen*.", titre: "Formes du Konjunktiv II", intro: "würde + infinitif pour la plupart ; sein/haben/modaux ont une forme propre.",
         tableau: { entetes: ["Verbe", "Konjunktiv II", "Exemple"], lignes: [["sein", "wäre", "Wenn ich reich wäre…"], ["haben", "hätte", "Ich hätte gern Kaffee."], ["können", "könnte", "Könnten Sie helfen?"], ["werden", "würde", "Ich würde gern reisen."]] },
         note: "Demande polie : « Könnten Sie… ? », « Ich hätte gern… », « Würden Sie… ? »." }
     ],
@@ -134,7 +134,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Situer dans le temps", "Choisir la bonne préposition / le bon cas"],
     grammairePoints: ["am, im, um, seit, vor", "jeden Tag (accusatif)"],
     grammaire: [
-      { titre: "Dire quand", intro: "Chaque repère temporel a sa structure.",
+      { regle: "Situer dans le temps : **am** (jour), **um** (heure), **im** (mois/saison), **seit** (depuis), **von … bis** (de … à).", attention: "« depuis » se dit **seit + datif** avec un verbe au **présent** : *Ich lerne **seit** zwei Jahren Deutsch*.", titre: "Dire quand", intro: "Chaque repère temporel a sa structure.",
         tableau: { entetes: ["Expression", "Sens", "Exemple"], lignes: [["am + jour", "le…", "am Montag"], ["im + mois/saison", "en…", "im Sommer"], ["um + heure", "à…", "um 8 Uhr"], ["seit + datif", "depuis", "seit zwei Jahren"], ["vor + datif", "il y a", "vor einer Woche"], ["jeden Tag (acc.)", "chaque jour", "jeden Tag, jede Woche"]] },
         note: "Durée habituelle à l'accusatif : jeden Tag, jeden Morgen, letzten Montag." }
     ],
@@ -151,7 +151,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Comprendre à quoi sert chaque cas", "Poser la bonne question (wer/wen/wem)"],
     grammairePoints: ["Nominatif/Accusatif/Datif", "wer? wen? wem?"],
     grammaire: [
-      { titre: "Les 3 cas essentiels", intro: "Chaque cas a une fonction et une question.",
+      { regle: "Quatre cas : **Nominatif** (sujet), **Accusatif** (COD), **Datif** (COI / après certaines prép.), **Genitiv** (appartenance). La **fonction** du nom décide du cas.", attention: "Le cas se voit surtout sur l'**article** et l'**adjectif**, rarement sur le nom.", titre: "Les 3 cas essentiels", intro: "Chaque cas a une fonction et une question.",
         tableau: { entetes: ["Cas", "Fonction", "Question", "Exemple"], lignes: [["Nominatif", "sujet", "wer? (qui ?)", "Der Mann schläft."], ["Accusatif", "COD", "wen/was?", "Ich sehe den Mann."], ["Datif", "COI (à qui)", "wem?", "Ich helfe dem Mann."]] },
         note: "Astuce : le cas dépend du verbe et des prépositions. mit/zu/bei… → datif ; durch/für/ohne… → accusatif." }
     ],

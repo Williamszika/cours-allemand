@@ -9,7 +9,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Distinguer sens objectif et subjectif des modaux", "Exprimer la supposition (müssen/können/dürfte)"],
     grammairePoints: ["sens objectif vs subjectif", "Vermutung : müsste, könnte, dürfte"],
     grammaire: [
-      { titre: "Sens objectif et sens subjectif", intro: "Au B2, les modaux servent aussi à exprimer une SUPPOSITION (sens subjectif), pas seulement l'obligation ou la capacité.",
+      { regle: "Au B2, les modaux expriment aussi la **supposition** : *müssen* (quasi sûr), *dürfte* (probable), *können* (possible).", attention: "*sollen* subjectif = **rumeur** (*Er **soll** reich sein*) ; *wollen* subjectif = **prétention** (*Er **will** nichts gewusst haben*).", exemples: [{"de":"Er muss krank sein.","fr":"Il doit être malade (j'en suis sûr)."},{"de":"Sie dürfte schon da sein.","fr":"Elle est probablement déjà là."}], titre: "Sens objectif et sens subjectif", intro: "Au B2, les modaux servent aussi à exprimer une SUPPOSITION (sens subjectif), pas seulement l'obligation ou la capacité.",
         tableau: { entetes: ["Modal", "Sens objectif", "Sens subjectif (supposition)"], lignes: [["müssen", "devoir (obligation)", "Er muss krank sein. (j'en suis sûr)"], ["können", "pouvoir (capacité)", "Das kann stimmen. (c'est possible)"], ["dürfen", "avoir le droit", "Er dürfte zu Hause sein. (probablement)"], ["sollen", "devoir (consigne)", "Er soll reich sein. (on dit que)"], ["wollen", "vouloir", "Er will alles gesehen haben. (il prétend)"]] },
         note: "Degrés de certitude : müssen (quasi sûr) > dürfte (probable) > könnte/kann (possible). « sollen » subjectif = rumeur ; « wollen » subjectif = prétention." }
     ],
@@ -26,7 +26,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Choisir le temps selon le registre", "Marquer l'antériorité dans un texte"],
     grammairePoints: ["Perfekt / Präteritum", "Plusquamperfekt + nachdem"],
     grammaire: [
-      { titre: "Trois temps, trois usages", intro: "Perfekt = oral et lettres ; Präteritum = récit écrit et presse ; Plusquamperfekt = antériorité.",
+      { regle: "Perfekt (oral/e-mail), Präteritum (récit écrit/presse), Plusquamperfekt (antériorité). On les **combine** dans un texte.", attention: "*sein, haben* et les modaux → **Präteritum** même à l'oral.", titre: "Trois temps, trois usages", intro: "Perfekt = oral et lettres ; Präteritum = récit écrit et presse ; Plusquamperfekt = antériorité.",
         tableau: { entetes: ["Temps", "Registre / rôle", "Exemple"], lignes: [["Perfekt", "oral, e-mail", "Ich habe das schon erledigt."], ["Präteritum", "récit écrit, presse", "Die Firma meldete Verluste."], ["Plusquamperfekt", "antériorité", "Nachdem er gekündigt hatte, zog er um."], ["sein/haben/Modale", "Präteritum même à l'oral", "Ich war müde / hatte keine Zeit."]] },
         schemas: [{ legende: "Antériorité avec nachdem (Plusquamperfekt → Präteritum).", mots: [{ m: "Nachdem er studiert hatte,", r: "antérieur", c: "conj" }, { m: "fand", r: "verbe (1)", c: "verbe" }, { m: "er", r: "sujet", c: "sujet" }, { m: "eine Stelle", r: "complément", c: "fin" }] }],
         note: "Dans un texte au Präteritum, le Plusquamperfekt situe ce qui s'était passé avant." }
@@ -44,7 +44,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Maîtriser les trois déclinaisons de l'adjectif", "Décliner sans article"],
     grammairePoints: ["après der / ein / ø", "terminaisons -e / -en / forte"],
     grammaire: [
-      { titre: "Trois systèmes selon le déterminant", intro: "L'adjectif épithète prend une terminaison selon ce qui le précède : article défini, indéfini, ou rien.",
+      { regle: "Trois systèmes selon le déterminant : après **der** (faible -e/-en), après **ein** (mixte), **sans article** (forte).", attention: "Sans article, l'adjectif **porte** la marque du cas : *gut**er** Wein*, *kalt**em** Wasser* (datif).", exemples: [{"de":"der gute Wein / ein guter Wein / guter Wein","fr":"le bon vin / un bon vin / du bon vin"},{"de":"Ich trinke einen guten Wein.","fr":"Je bois un bon vin."}], titre: "Trois systèmes selon le déterminant", intro: "L'adjectif épithète prend une terminaison selon ce qui le précède : article défini, indéfini, ou rien.",
         tableau: { entetes: ["Contexte", "Nom. masc.", "Acc. masc.", "Dat. fém."], lignes: [["après der/die/das", "der gute Wein", "den guten Wein", "der guten Idee"], ["après ein/kein/mein", "ein guter Wein", "einen guten Wein", "einer guten Idee"], ["sans article", "guter Wein", "guten Wein", "guter Idee"]] },
         note: "Sans article, l'adjectif « porte » la marque du cas (déclinaison forte). Après un article défini, c'est -e ou -en (déclinaison faible)." }
     ],
@@ -61,7 +61,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Choisir datif ou accusatif", "Distinguer position et direction"],
     grammairePoints: ["Wo? + Dat. / Wohin? + Akk.", "an, auf, in, über…"],
     grammaire: [
-      { titre: "Position (Dat.) ou direction (Akk.)", intro: "Neuf prépositions prennent le datif (Wo?) ou l'accusatif (Wohin?).",
+      { regle: "Prépositions à deux cas : **datif** pour la position (**Wo?**), **accusatif** pour la direction (**Wohin?**).", attention: "Couples : *liegen/legen, stehen/stellen* — Wo? (Dat.) vs Wohin? (Akk.).", titre: "Position (Dat.) ou direction (Akk.)", intro: "Neuf prépositions prennent le datif (Wo?) ou l'accusatif (Wohin?).",
         tableau: { entetes: ["Question", "Cas", "Exemple"], lignes: [["Wo? (position)", "datif", "Das Buch liegt auf dem Tisch."], ["Wohin? (direction)", "accusatif", "Ich lege das Buch auf den Tisch."], ["Wo?", "datif", "Ich bin in der Stadt."], ["Wohin?", "accusatif", "Ich fahre in die Stadt."]] },
         schemas: [{ legende: "Wohin ? → accusatif (mouvement vers).", mots: [{ m: "Er", r: "sujet", c: "sujet" }, { m: "hängt", r: "verbe (2)", c: "verbe" }, { m: "das Bild", r: "accusatif", c: "objet" }, { m: "an die Wand", r: "direction (acc.)", c: "fin" }] }],
         note: "Couples utiles : liegen/legen, stehen/stellen, sitzen/setzen, hängen — position (Dat.) vs action de placer (Akk.)." }
@@ -79,7 +79,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Former le passif à tous les temps", "Employer le passif avec modal et le passif d'état"],
     grammairePoints: ["werden + participe II", "Passiv mit Modalverb, Zustandspassiv"],
     grammaire: [
-      { titre: "Passif de processus, passif d'état, passif modal", intro: "Vorgangspassiv : werden + participe (l'action). Zustandspassiv : sein + participe (le résultat). Avec modal : … werden (à la fin).",
+      { regle: "Vorgangspassiv (**werden** + participe = l'action) ; Zustandspassiv (**sein** + participe = le résultat) ; avec modal : *muss … gemacht **werden***.", attention: "Au **Perfekt passif**, *werden → **worden*** (*ist gebaut **worden***), sans ge-.", titre: "Passif de processus, passif d'état, passif modal", intro: "Vorgangspassiv : werden + participe (l'action). Zustandspassiv : sein + participe (le résultat). Avec modal : … werden (à la fin).",
         tableau: { entetes: ["Type", "Forme", "Exemple"], lignes: [["Présent", "wird + participe", "Das Haus wird gebaut."], ["Prétérit", "wurde + participe", "Das Haus wurde gebaut."], ["Parfait", "ist + participe + worden", "Das Haus ist gebaut worden."], ["avec modal", "muss + participe + werden", "Das muss repariert werden."], ["passif d'état", "ist + participe", "Das Haus ist gebaut. (résultat)"]] },
         schemas: [{ legende: "Passif avec modal : … participe + werden (fin).", mots: [{ m: "Der Vertrag", r: "sujet", c: "sujet" }, { m: "muss", r: "modal (2)", c: "verbe" }, { m: "heute", r: "complément", c: "objet" }, { m: "unterschrieben werden", r: "participe + werden (fin)", c: "fin" }] }],
         note: "Au Perfekt passif, le participe de werden devient « worden » (sans ge-). Agent : von + datif." }
@@ -97,7 +97,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Mémoriser les verbes à préposition fixe", "Reprendre avec da(r)- et interroger avec wo(r)-"],
     grammairePoints: ["sich bewerben um, bestehen aus", "darauf, worauf"],
     grammaire: [
-      { titre: "Préposition fixe + cas + reprise", intro: "Beaucoup de verbes B2 imposent une préposition. On reprend une chose par da(r)- et on interroge par wo(r)-.",
+      { regle: "Verbes à préposition fixe : *sich bewerben **um***, *bestehen **aus***, *teilnehmen **an***, *hinweisen **auf***.", attention: "Reprise d'une **chose** par *da(r)-* (*darauf*), d'une **personne** par *préposition + wen/wem*.", titre: "Préposition fixe + cas + reprise", intro: "Beaucoup de verbes B2 imposent une préposition. On reprend une chose par da(r)- et on interroge par wo(r)-.",
         tableau: { entetes: ["Verbe", "Préposition + cas", "Exemple"], lignes: [["sich bewerben", "um + Akk.", "Ich bewerbe mich um die Stelle."], ["bestehen", "aus + Dat.", "Das Team besteht aus fünf Personen."], ["teilnehmen", "an + Dat.", "Sie nimmt an dem Kurs teil."], ["sich handeln", "um + Akk.", "Es handelt sich um einen Irrtum."], ["hinweisen", "auf + Akk.", "Ich weise darauf hin, dass …"]] },
         note: "Chose : « Worum bewirbst du dich? – Ich bewerbe mich darum. » Personne : « Um wen …? »" }
     ],
@@ -114,7 +114,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Identifier les noms en -n", "Ajouter -(e)n hors du nominatif"],
     grammairePoints: ["der Kollege → den Kollegen", "Herr, Student, Kunde, Mensch"],
     grammaire: [
-      { titre: "Ces masculins prennent -(e)n partout sauf au nominatif singulier", intro: "Un groupe de masculins (souvent des êtres animés) ajoute -n/-en à l'accusatif, au datif et au génitif.",
+      { regle: "Masculins (souvent animés) prenant **-(e)n** hors du nominatif singulier : *Kollege, Kunde, Student, Nachbar, Mensch, Herr*.", attention: "Indices : noms en **-e**, en *-ist/-ent*, ou d'origine grecque (*Journalist, Tourist*).", exemples: [{"de":"Ich berate den Kunden.","fr":"Je conseille le client."},{"de":"Ich spreche mit dem Nachbarn.","fr":"Je parle avec le voisin."}], titre: "Ces masculins prennent -(e)n partout sauf au nominatif singulier", intro: "Un groupe de masculins (souvent des êtres animés) ajoute -n/-en à l'accusatif, au datif et au génitif.",
         tableau: { entetes: ["Nominatif", "Acc./Dat.", "Sens"], lignes: [["der Kollege", "den/dem Kollegen", "le collègue"], ["der Kunde", "den/dem Kunden", "le client"], ["der Student", "den/dem Studenten", "l'étudiant"], ["der Nachbar", "den/dem Nachbarn", "le voisin"], ["der Mensch", "den/dem Menschen", "l'humain"], ["der Herr", "den/dem Herrn", "monsieur"]] },
         note: "Indices : noms en -e (Kollege), nationalités/professions (Student, Praktikant), origine grecque (Tourist, Journalist)." }
     ],
@@ -131,7 +131,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     objectifs: ["Exprimer la cause (weil, da, denn)", "Exprimer la conséquence (so … dass, deshalb)"],
     grammairePoints: ["weil, denn, deshalb", "so … dass, solch … dass"],
     grammaire: [
-      { titre: "Dire pourquoi et avec quelle conséquence", intro: "Cause : weil/da (verbe fin), denn (verbe 2e). Conséquence : deshalb (verbe 2e), so + adjectif + dass (verbe fin).",
+      { regle: "Cause : *weil/da* (verbe fin), *denn* (2ᵉ). Conséquence : *deshalb* (2ᵉ), **so + adjectif + dass** (verbe fin).", attention: "*so … dass* insiste sur le **degré** : *Es war **so** kalt, **dass** wir blieben*.", titre: "Dire pourquoi et avec quelle conséquence", intro: "Cause : weil/da (verbe fin), denn (verbe 2e). Conséquence : deshalb (verbe 2e), so + adjectif + dass (verbe fin).",
         tableau: { entetes: ["Mot", "Rôle / position du verbe", "Exemple"], lignes: [["weil", "cause — verbe FIN", "Er kam nicht, weil er krank war."], ["denn", "cause — verbe 2e", "Er kam nicht, denn er war krank."], ["deshalb", "conséquence — verbe 2e", "Er war krank, deshalb kam er nicht."], ["so … dass", "conséquence — verbe FIN", "Es war so kalt, dass wir blieben."], ["solch … dass", "conséquence — verbe FIN", "Es war solch ein Lärm, dass …"]] },
         schemas: [{ legende: "so … dass : conséquence, verbe à la FIN.", mots: [{ m: "Es war so kalt,", r: "intensité", c: "objet" }, { m: "dass", r: "conséquence", c: "conj" }, { m: "wir zu Hause", r: "sujet + complément", c: "sujet" }, { m: "blieben", r: "verbe (fin)", c: "fin" }] }],
         note: "« so + adjectif + dass » insiste sur le degré : « so müde, dass … ». weil/da/so…dass → verbe à la fin ; denn/deshalb → verbe 2e." }
