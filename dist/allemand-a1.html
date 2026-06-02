@@ -12744,7 +12744,7 @@ window.I18N = (function () {
      téléchargement du modèle, Chrome/Android). Sinon, renvoie null et
      l'appelant propose un lien « Traduire avec Google ». Résultats mis en cache. */
   var cache = {};
-  try { cache = JSON.parse(localStorage.getItem("i18n-tcache") || "{}") || {}; } catch (e) {}
+  try { cache = JSON.parse(localStorage.getItem("i18n-tcache2") || "{}") || {}; } catch (e) {}
   // File d'attente : on limite les requêtes simultanées pour éviter les 429
   // (limites de débit des services de traduction gratuits).
   var Q = [], active = 0, MAXC = 5;
@@ -12784,7 +12784,7 @@ window.I18N = (function () {
     // Traduction réseau sans clé (MyMemory → Google gtx), en file d'attente
     // (max 2 simultanées) pour éviter les 429. Résultats mis en cache.
     var work = enqueue(function () { return netTranslate(text, tgt, src); }).then(function (out) {
-      if (out) { cache[ck] = out; try { localStorage.setItem("i18n-tcache", JSON.stringify(cache)); } catch (e) {} }
+      if (out) { cache[ck] = out; try { localStorage.setItem("i18n-tcache2", JSON.stringify(cache)); } catch (e) {} }
       return out || null;
     }).catch(function () { return null; });
     var timeout = new Promise(function (r) { setTimeout(function () { r(null); }, 25000); });
@@ -12795,15 +12795,19 @@ window.I18N = (function () {
   }
   function netTranslate(text, tgt, src) {
     if (typeof fetch !== "function") return Promise.resolve(null);
-    // MyMemory : gratuit, sans clé, compatible navigateur (CORS).
+    // Google gtx d'abord (meilleure qualité), repli MyMemory.
+    return gtxTranslate(text, tgt, src).then(function (g) {
+      return g ? g : mmTranslate(text, tgt, src);
+    }).catch(function () { return mmTranslate(text, tgt, src); });
+  }
+  function mmTranslate(text, tgt, src) {
     var mm = "https://api.mymemory.translated.net/get?q=" + encodeURIComponent(text) + "&langpair=" + encodeURIComponent(src + "|" + tgt);
     return fetch(mm).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
       var t = j && j.responseData && j.responseData.translatedText;
-      // Rejette aussi les réponses aberrantes (un même caractère répété, ex. « Оооооо »).
       var junk = t && /(.)\1{7,}/.test(t);
       if (t && (j.responseStatus == 200 || j.responseStatus === "200") && !/MYMEMORY WARNING|INVALID/i.test(t) && !junk) return decodeEntities(t);
-      return gtxTranslate(text, tgt, src);
-    }).catch(function () { return gtxTranslate(text, tgt, src); });
+      return null;
+    }).catch(function () { return null; });
   }
   function gtxTranslate(text, tgt, src) {
     var url = "https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=" + src + "&tl=" + tgt + "&q=" + encodeURIComponent(text);
