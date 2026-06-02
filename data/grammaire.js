@@ -180,17 +180,33 @@ window.GRAMMAIRE = {
     objectifs: ["Employer les verbes de modalité", "Reconnaître les verbes séparables", "Former le passé composé"],
     grammairePoints: ["müssen/können/wollen", "trennbare Verben", "Perfekt"],
     grammaire: [
-      { titre: "Verbes de modalité", intro: "Le 2e verbe va à l'infinitif, à la FIN.",
+      { titre: "Verbes de modalité",
+        regle: "Un verbe de modalité (**müssen** devoir, **können** pouvoir, **wollen** vouloir…) se conjugue en **2ᵉ position**, et le **2ᵉ verbe part à l'infinitif, tout à la fin** de la phrase. C'est la « parenthèse verbale » (*Satzklammer*).",
+        intro: "Particularité : à **ich** et **er/sie/es**, le modal **n'a pas de terminaison** (*ich **muss***, *er **kann***). Et la voyelle change souvent au pluriel : *wir **müssen***.",
         tableau: { entetes: ["Pronom", "müssen", "können", "wollen"], lignes: [["ich", "muss", "kann", "will"], ["du", "musst", "kannst", "willst"], ["er/sie/es", "muss", "kann", "will"], ["wir/sie/Sie", "müssen", "können", "wollen"], ["ihr", "müsst", "könnt", "wollt"]] },
-        note: "ich et er/sie/es n'ont pas de terminaison." },
-      { titre: "Séparables & Perfekt", intro: "Séparable : le préfixe part à la fin (Ich stehe um 7 auf). Perfekt : haben/sein + participe (à la fin).",
+        exemples: [
+          { de: "Ich muss heute arbeiten.", fr: "Je dois travailler aujourd'hui." },
+          { de: "Kannst du mir helfen?", fr: "Peux-tu m'aider ?" },
+          { de: "Wir wollen ins Kino gehen.", fr: "Nous voulons aller au cinéma." }
+        ],
+        note: "ich et er/sie/es n'ont pas de terminaison.",
+        attention: "L'infinitif va **à la fin**, pas juste après le modal : on dit *Ich muss heute **arbeiten*** (et non « ~~Ich muss arbeiten heute~~ »)." },
+      { titre: "Séparables & Perfekt",
+        regle: "**Verbe séparable** (*auf**stehen***, *ein**kaufen***) : au présent, le **préfixe se détache et part à la fin**. **Perfekt** (passé composé) : **haben** ou **sein** en 2ᵉ position + **participe** (*ge…t* / *ge…en*) à la fin.",
+        intro: "Choix de l'auxiliaire au Perfekt : **sein** pour les verbes de **mouvement** ou de **changement d'état** (*gehen*, *fahren*, *aufstehen*) ; **haben** pour tous les autres.",
         tableau: { entetes: ["Infinitif", "Présent / Perfekt"], lignes: [["aufstehen", "ich stehe … auf"], ["machen", "ich habe … gemacht"], ["fahren", "ich bin … gefahren"]] },
         schemas: [
           { legende: "Verbe de modalité — la « parenthèse verbale » (Satzklammer).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "muss", r: "modal (2)", c: "verbe" }, { m: "heute", r: "…", c: "objet" }, { m: "arbeiten", r: "infinitif (fin)", c: "fin" }] },
           { legende: "Verbe séparable — le préfixe part à la fin.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "stehe", r: "verbe (2)", c: "verbe" }, { m: "um 7 Uhr", r: "…", c: "objet" }, { m: "auf", r: "préfixe (fin)", c: "fin" }] },
           { legende: "Passé composé (Perfekt) — participe à la fin.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "habe", r: "auxiliaire (2)", c: "verbe" }, { m: "Pizza", r: "…", c: "objet" }, { m: "gegessen", r: "participe (fin)", c: "fin" }] }
         ],
-        note: "Mouvement (fahren, gehen, fliegen) → auxiliaire SEIN. Sinon HABEN." }
+        exemples: [
+          { de: "Ich stehe um sieben Uhr auf.", fr: "Je me lève à sept heures." },
+          { de: "Ich habe Pizza gegessen.", fr: "J'ai mangé une pizza." },
+          { de: "Sie ist nach Berlin gefahren.", fr: "Elle est allée (en véhicule) à Berlin." }
+        ],
+        note: "Mouvement (fahren, gehen, fliegen) → auxiliaire SEIN. Sinon HABEN.",
+        attention: "Au Perfekt, le préfixe séparable se **recolle** dans le participe : *einkaufen* → *ich habe **eingekauft***. Les verbes en **-ieren** n'ont **pas** de *ge-* : *studieren* → *studiert*." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Où va l'infinitif après un modal ?", options: ["À la fin", "En 2e position", "Au début"], correct: 0, explication: "Modal conjugué en 2e, infinitif à la fin." },
@@ -206,9 +222,17 @@ window.GRAMMAIRE = {
     objectifs: ["Choisir la bonne préposition de temps"],
     grammairePoints: ["am, um, im, von…bis"],
     grammaire: [
-      { titre: "am / um / im / von…bis", intro: "Chaque type d'indication a sa préposition.",
+      { titre: "am / um / im / von…bis",
+        regle: "Chaque type d'indication temporelle a **sa** préposition : **am** pour les **jours/moments de la journée**, **um** pour l'**heure précise**, **im** pour les **mois/saisons**, **von … bis** pour une **durée**.",
+        intro: "Moyen mnémotechnique : **am** M**o**ntag, **um** acht **U**hr, **im** S**o**mmer. (*am* = an dem, *im* = in dem.)",
         tableau: { entetes: ["Préposition", "Usage", "Exemple"], lignes: [["am", "jours, dates, moments", "am Montag, am Abend"], ["um", "heure précise", "um 9 Uhr"], ["im", "mois, saisons", "im Mai, im Winter"], ["von … bis", "de … à", "von 9 bis 17 Uhr"], ["ab", "à partir de", "ab Montag"]] },
-        note: "Exception : « in der Nacht »." }
+        exemples: [
+          { de: "Am Montag habe ich frei.", fr: "Lundi, je suis libre." },
+          { de: "Der Kurs beginnt um 9 Uhr.", fr: "Le cours commence à 9 h." },
+          { de: "Im Sommer fahren wir ans Meer.", fr: "En été, nous allons à la mer." }
+        ],
+        note: "Exception : « in der Nacht ».",
+        attention: "Pas de préposition avec *heute*, *morgen*, *gestern* : on dit ***Heute** arbeite ich* (et non « ~~am heute~~ »)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Heure précise → quelle préposition ?", options: ["um", "am", "im", "in"], correct: 0, explication: "um 9 Uhr." },
@@ -227,8 +251,15 @@ window.GRAMMAIRE = {
       { titre: "Coordination (verbe en 2e position)", intro: "und (et), oder (ou), aber (mais), denn (car) ne changent pas l'ordre.",
         tableau: { entetes: ["Conjonction", "Exemple"], lignes: [["und", "Es ist warm und sonnig."], ["aber", "Es ist kalt, aber schön."], ["denn", "Ich bleibe, denn es regnet."]] },
         note: "Ces 4 conjonctions gardent l'ordre normal sujet-verbe." },
-      { titre: "Subordination : weil (verbe à la FIN)", intro: "« weil » (parce que) envoie le verbe conjugué à la toute fin.",
+      { titre: "Subordination : weil (verbe à la FIN)",
+        regle: "**weil** (parce que) introduit une **subordonnée** : il **rejette le verbe conjugué tout à la fin**. C'est LA grande différence avec *denn* (qui, lui, garde le verbe en 2ᵉ position).",
+        intro: "Compare : *Ich bleibe, **denn** ich **bin** krank.* (verbe 2ᵉ) vs *Ich bleibe, **weil** ich krank **bin**.* (verbe fin). Même sens, ordre différent.",
         tableau: { entetes: ["Phrase", "Sens"], lignes: [["Ich bleibe, weil es regnet.", "… parce qu'il pleut."], ["…, weil ich krank bin.", "… parce que je suis malade."]] },
+        exemples: [
+          { de: "Ich lerne Deutsch, weil ich in Berlin wohne.", fr: "J'apprends l'allemand parce que j'habite à Berlin." },
+          { de: "Sie kommt nicht, weil sie krank ist.", fr: "Elle ne vient pas parce qu'elle est malade." }
+        ],
+        attention: "N'oublie pas la **virgule** avant *weil*, et place bien le verbe **à la fin** : *…, weil ich müde **bin*** (et non « ~~weil ich bin müde~~ »).",
         schemas: [
           { legende: "Coordination (und / aber / denn) : le verbe reste en 2e position.", mots: [{ m: "Es ist kalt,", r: "phrase 1", c: "objet" }, { m: "aber", r: "connecteur", c: "conj" }, { m: "die Sonne", r: "sujet", c: "sujet" }, { m: "scheint", r: "verbe (2)", c: "verbe" }] },
           { legende: "Subordination (weil) : le verbe est rejeté à la FIN.", mots: [{ m: "Ich bleibe,", r: "principale", c: "objet" }, { m: "weil", r: "connecteur", c: "conj" }, { m: "es", r: "sujet", c: "sujet" }, { m: "regnet", r: "verbe (fin)", c: "fin" }] }
@@ -249,9 +280,17 @@ window.GRAMMAIRE = {
     objectifs: ["Former le datif", "Employer les prépositions + datif (mit, zu, bei…)"],
     grammairePoints: ["dem/der/dem", "mit, zu, bei, von…"],
     grammaire: [
-      { titre: "Articles au datif", intro: "Après certaines prépositions et pour le COI.",
+      { titre: "Articles au datif",
+        regle: "Le **datif** s'emploie pour le **complément d'objet indirect** (« à qui ? ») et **après certaines prépositions**. Articles : *der/das* → **dem**, *die* → **der**, pluriel → **den** (+ **-n** au nom).",
+        intro: "Sept prépositions sont **toujours** suivies du datif — à mémoriser ensemble : **mit, zu, bei, von, aus, nach, seit**.",
         tableau: { entetes: ["Genre", "Nominatif", "Datif"], lignes: [["masculin", "der / ein", "dem / einem"], ["féminin", "die / eine", "der / einer"], ["neutre", "das / ein", "dem / einem"], ["pluriel", "die", "den (+ -n)"]] },
-        note: "Prépositions toujours + datif : mit, zu, bei, von, aus, nach, seit." }
+        exemples: [
+          { de: "Ich fahre mit dem Bus.", fr: "Je vais en bus." },
+          { de: "Sie wohnt bei der Mutter.", fr: "Elle habite chez sa mère." },
+          { de: "Wir kommen aus der Schweiz.", fr: "Nous venons de Suisse." }
+        ],
+        note: "Prépositions toujours + datif : mit, zu, bei, von, aus, nach, seit.",
+        attention: "Au **pluriel datif**, le nom prend un **-n** s'il ne l'a pas déjà : *die Kinder* → *mit **den Kindern***. Contractions fréquentes : *zu dem* = **zum**, *zu der* = **zur**, *bei dem* = **beim**." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez (mit + datif).", question: "Ich fahre mit ___ Bus.", options: ["dem", "der", "den", "das"], correct: 0, explication: "der Bus (m.) au datif → dem." },
@@ -267,9 +306,17 @@ window.GRAMMAIRE = {
     objectifs: ["Dire où (Wo?) et où aller (Wohin?)", "Choisir nach / zu / in"],
     grammairePoints: ["nach, zu, in", "Wo? / Wohin?"],
     grammaire: [
-      { titre: "Où aller ? (Wohin?)", intro: "La préposition dépend de la destination.",
+      { titre: "Où aller ? (Wohin?)",
+        regle: "Pour exprimer une **destination** (question **Wohin?**), la préposition dépend du lieu : **nach** pour villes/pays sans article, **zu** pour les personnes et lieux précis, **in** (+ accusatif) pour entrer dans un endroit.",
+        intro: "Ne confonds pas avec **Wo?** (où l'on est, + datif). Ici on **se déplace vers** : *Ich gehe **zum** Arzt*, *Ich fahre **nach** Berlin*, *Ich gehe **in die** Stadt*.",
         tableau: { entetes: ["Préposition", "Usage", "Exemple"], lignes: [["nach", "villes, pays sans article", "nach Berlin"], ["zu", "personnes, lieux précis", "zum Arzt"], ["in", "+ accusatif (entrer)", "in die Stadt"], ["nach Hause", "rentrer", "Ich gehe nach Hause."]] },
-        note: "« zu Hause » = être à la maison (lieu) ; « nach Hause » = vers la maison (mouvement)." }
+        exemples: [
+          { de: "Ich fahre nach Italien.", fr: "Je vais en Italie." },
+          { de: "Gehst du zum Arzt?", fr: "Tu vas chez le médecin ?" },
+          { de: "Wir gehen in die Stadt.", fr: "Nous allons en ville." }
+        ],
+        note: "« zu Hause » = être à la maison (lieu) ; « nach Hause » = vers la maison (mouvement).",
+        attention: "Pays avec article → **in** + accusatif, pas *nach* : *in **die** Schweiz*, *in **die** Türkei* (et non « ~~nach die Schweiz~~ »)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez (ville).", question: "Ich fliege ___ Spanien.", options: ["nach", "zu", "in", "mit"], correct: 0, explication: "pays sans article → nach." },
@@ -285,12 +332,25 @@ window.GRAMMAIRE = {
     objectifs: ["Utiliser l'adjectif attribut", "Former un comparatif simple"],
     grammairePoints: ["sein + adjectif", "comparatif"],
     grammaire: [
-      { titre: "Adjectif attribut (invariable)", intro: "Après sein/werden/bleiben, l'adjectif ne change PAS.",
+      { titre: "Adjectif attribut (invariable)",
+        regle: "Quand l'adjectif vient **après** le verbe **sein**, **werden** ou **bleiben**, il est **invariable** : il ne prend **aucune** terminaison.",
+        intro: "*Das Auto ist **neu*** — pas de terminaison. (Attention : devant un **nom**, l'adjectif se décline, mais c'est une étape suivante.)",
         tableau: { entetes: ["Phrase", "Sens"], lignes: [["Das Auto ist neu.", "La voiture est neuve."], ["Die Wohnung ist groß.", "L'appart est grand."], ["Die Kinder sind müde.", "Les enfants sont fatigués."]] },
+        exemples: [
+          { de: "Der Kaffee ist heiß.", fr: "Le café est chaud." },
+          { de: "Die Stadt ist schön.", fr: "La ville est belle." }
+        ],
         note: "Invariable ici : neu, groß, müde ne prennent pas de terminaison." },
-      { titre: "Le comparatif", intro: "adjectif + -er (+ als = que). Quelques irréguliers.",
+      { titre: "Le comparatif",
+        regle: "Comparatif de supériorité = adjectif **+ -er**, suivi de **als** (= que). Beaucoup d'adjectifs courts prennent en plus un **Umlaut** (a→ä, o→ö, u→ü).",
+        intro: "*klein* → *klein**er***, *groß* → *gr**ö**ßer*. Quelques irréguliers à retenir : *gut* → **besser**, *gern* → **lieber**.",
         tableau: { entetes: ["Adjectif", "Comparatif"], lignes: [["klein", "kleiner"], ["groß", "größer"], ["gut", "besser"], ["gern", "lieber"]] },
-        note: "Ex. : Berlin ist größer als Bonn." }
+        exemples: [
+          { de: "Berlin ist größer als Bonn.", fr: "Berlin est plus grand que Bonn." },
+          { de: "Heute ist es kälter als gestern.", fr: "Aujourd'hui il fait plus froid qu'hier." }
+        ],
+        note: "Ex. : Berlin ist größer als Bonn.",
+        attention: "Le mot pour « que » dans une comparaison est **als**, pas *wie*. *wie* sert seulement à l'**égalité** : *so groß **wie*** (aussi grand que)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Après « ist », l'adjectif…", options: ["ne change pas", "prend -en", "prend -e"], correct: 0, explication: "Adjectif attribut = invariable." },
