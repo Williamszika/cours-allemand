@@ -15,7 +15,12 @@ window.MODULE_A21 = {
   couleur: "#0e7490",
   lecons: [
     {
-      id: "a2t01", numero: 1, titre: "Se présenter (en détail)", titreDE: "Sich vorstellen",
+      id: "a2t01",
+      vocCours: [
+        "Au niveau A2, la **présentation** s'enrichit : tu ne dis plus seulement ton nom, mais tu parles de ta **famille**, de ton **état civil**, de ton **caractère** et de ton **parcours**. Vocabulaire clé : *verheiratet* (marié), *ledig* (célibataire), *geschieden* (divorcé), *die Familie*, *die Geschwister* (frères et sœurs).",
+        "Soigne la distinction de **registre** : *du* (tutoiement, amis/famille) vs *Sie* (vouvoiement, contexte formel). Face à un inconnu adulte ou au travail, emploie *Sie* et les formules complètes : « *Darf ich mich vorstellen?* » (puis-je me présenter ?).",
+        "Astuce : prépare une vraie **auto-présentation de 5-6 phrases** (nom, origine, profession, famille, loisirs) et apprends-la par cœur. C'est l'exercice le plus rentable du niveau A2 : tu réutiliseras ce bloc dans d'innombrables situations."
+      ], numero: 1, titre: "Se présenter (en détail)", titreDE: "Sich vorstellen",
       theme: "Se présenter", duree: 45,
       objectifs: ["Se présenter de façon développée", "Parler de sa famille", "Utiliser les adjectifs possessifs"],
       grammairePoints: ["Adjectifs possessifs", "W-Fragen (révision)"],
@@ -55,7 +60,12 @@ window.MODULE_A21 = {
       ]
     },
     {
-      id: "a2t02", numero: 2, titre: "Professions et activités", titreDE: "Berufe und Tätigkeiten",
+      id: "a2t02",
+      vocCours: [
+        "Ce champ lexical approfondit le monde du **travail** : noms de métiers, lieux et **activités** professionnelles. Rappelle-toi la formation du féminin en **-in** (*der Ingenieur → die Ingenieurin*) et l'absence d'article pour dire son métier (« *Ich bin Lehrer* » / « *Ich arbeite als Lehrer* »).",
+        "Apprends les **verbes d'activité** propres à chaque métier (*unterrichten* enseigner, *reparieren* réparer, *verkaufen* vendre, *pflegen* soigner) et les compléments avec *als* (en tant que) et *bei* (employeur : « *Ich arbeite **bei** Siemens* »).",
+        "Astuce : construis des phrases reliant **métier + lieu + activité** (« *Ein Koch arbeitet in einem Restaurant und kocht* »). Regrouper le vocabulaire par scénario professionnel le rend logique et facile à réactiver."
+      ], numero: 2, titre: "Professions et activités", titreDE: "Berufe und Tätigkeiten",
       theme: "Professions et activités", duree: 50,
       objectifs: ["Décrire son métier et ses tâches", "Dire ce qu'on fait au travail"],
       grammairePoints: ["als + profession", "Verbes d'activité"],
@@ -95,7 +105,12 @@ window.MODULE_A21 = {
       ]
     },
     {
-      id: "a2t03", numero: 3, titre: "Raconter le passé", titreDE: "Über die Vergangenheit erzählen",
+      id: "a2t03",
+      vocCours: [
+        "Ce thème fournit le vocabulaire pour **raconter des événements passés** : marqueurs temporels et verbes d'action courants. Mots clés : *gestern* (hier), *letzte Woche* (la semaine dernière), *vor zwei Tagen* (il y a deux jours), *früher* (autrefois), *damals* (à l'époque).",
+        "Le vocabulaire se combine avec le **Perfekt** : apprends les **participes passés** des verbes fréquents en même temps que les mots (*gemacht, gegangen, gesehen, gewesen*). Note les verbes de déplacement avec *sein* (« *Ich **bin** gefahren* »).",
+        "Astuce : raconte un **souvenir réel** (ton week-end, tes dernières vacances) avec ces marqueurs et 5-6 verbes au passé. Le récit personnel ancre à la fois le vocabulaire et le temps du passé."
+      ], numero: 3, titre: "Raconter le passé", titreDE: "Über die Vergangenheit erzählen",
       theme: "Raconter le passé", duree: 55,
       objectifs: ["Raconter au passé composé", "Utiliser war / hatte (prétérit de sein/haben)"],
       grammairePoints: ["Perfekt (révision)", "Präteritum: war, hatte"],
@@ -135,7 +150,12 @@ window.MODULE_A21 = {
       ]
     },
     {
-      id: "a2t04", numero: 4, titre: "École, formation, CV", titreDE: "Schule, Ausbildung, Lebenslauf",
+      id: "a2t04",
+      vocCours: [
+        "Ce champ lexical couvre l'**école**, la **formation** et le **CV** — essentiel pour candidater. Vocabulaire clé : *die Schule*, *die Ausbildung* (formation professionnelle), *das Studium* (études supérieures), *der Lebenslauf* (le CV), *das Praktikum* (le stage), *der Abschluss* (le diplôme).",
+        "Attention au **faux-ami** *das Gymnasium* = le **lycée** (filière générale), et *die Note* = la **note** scolaire (ni musique, ni mémo). Distingue *lernen* (apprendre/étudier) et *studieren* (faire des études supérieures).",
+        "Astuce : rédige les grandes lignes de **ton propre parcours** en allemand (école, diplômes, expériences). Comme pour un vrai CV, organise par rubriques — c'est ainsi que ce vocabulaire s'emploie réellement."
+      ], numero: 4, titre: "École, formation, CV", titreDE: "Schule, Ausbildung, Lebenslauf",
       theme: "École, formation, curriculum vitae", duree: 50,
       objectifs: ["Parler de son parcours scolaire", "Lire/écrire un CV simple", "Dire des dates et durées"],
       grammairePoints: ["von … bis", "Dates et années"],
@@ -175,7 +195,12 @@ window.MODULE_A21 = {
       ]
     },
     {
-      id: "a2t05", numero: 5, titre: "Activités quotidiennes & loisirs", titreDE: "Alltag und Freizeit",
+      id: "a2t05",
+      vocCours: [
+        "Ce vocabulaire élargit la **vie quotidienne** et les **loisirs** vus en A1, avec plus de verbes et d'**expressions de fréquence** : *immer* (toujours), *oft* (souvent), *manchmal* (parfois), *selten* (rarement), *nie* (jamais), *einmal pro Woche* (une fois par semaine).",
+        "Beaucoup de verbes de loisir sont **séparables ou réfléchis** : *sich treffen* (se retrouver), *fernsehen* (regarder la télé), *spazieren gehen* (se promener), *sich entspannen* (se détendre). Apprends-les avec leur construction.",
+        "Astuce : décris ta **semaine type** en disant à quelle fréquence tu fais chaque activité. Combiner adverbes de fréquence et verbes d'activité produit des phrases naturelles et très réutilisables."
+      ], numero: 5, titre: "Activités quotidiennes & loisirs", titreDE: "Alltag und Freizeit",
       theme: "Activités quotidiennes, loisirs", duree: 50,
       objectifs: ["Décrire sa journée en détail", "Utiliser les verbes pronominaux (sich)"],
       grammairePoints: ["Verbes réfléchis (sich)", "Adverbes de fréquence"],
@@ -215,7 +240,12 @@ window.MODULE_A21 = {
       ]
     },
     {
-      id: "a2t06", numero: 6, titre: "Acheter et dépenser", titreDE: "Einkaufen und Geld ausgeben",
+      id: "a2t06",
+      vocCours: [
+        "Ce champ lexical très pratique concerne les **achats** au quotidien : magasins, prix, paiement. Vocabulaire clé : *einkaufen* (faire les courses), *das Geschäft / der Laden* (le magasin), *der Preis*, *kosten* (coûter), *bezahlen* (payer), *die Kasse* (la caisse).",
+        "Apprends les **formules d'achat** toutes faites : « *Was kostet das?* », « *Ich hätte gern…* » (je voudrais…), « *Kann ich mit Karte bezahlen?* ». Le verbe poli *möchten* et le conditionnel *hätte gern* sont essentiels.",
+        "Astuce : associe chaque mot à un **lieu d'achat** (*die Bäckerei* boulangerie, *der Supermarkt*, *die Apotheke*) et joue une scène d'achat. Ce vocabulaire concret se mémorise vite en situation."
+      ], numero: 6, titre: "Acheter et dépenser", titreDE: "Einkaufen und Geld ausgeben",
       theme: "Acheter et dépenser de l'argent", duree: 50,
       objectifs: ["Faire des achats", "Comparer les prix (comparatif/superlatif)"],
       grammairePoints: ["Comparatif et superlatif", "kosten, ausgeben"],
@@ -255,7 +285,12 @@ window.MODULE_A21 = {
       ]
     },
     {
-      id: "a2t07", numero: 7, titre: "Les mots autour de l'argent", titreDE: "Rund ums Geld",
+      id: "a2t07",
+      vocCours: [
+        "Ce thème approfondit le vocabulaire de l'**argent** et des **finances personnelles**. Mots clés : *das Geld*, *das Konto* (le compte), *die Bank*, *sparen* (économiser), *ausgeben* (dépenser), *verdienen* (gagner sa vie), *die Rechnung* (la facture), *bar* (en espèces).",
+        "Attention aux nuances : *kosten* (coûter) ≠ *bezahlen* (payer) ≠ *ausgeben* (dépenser). Distingue aussi *teuer* (cher) de *billig / günstig* (bon marché) — *günstig* (avantageux) est plus positif que *billig*, qui peut suggérer « bas de gamme ».",
+        "Astuce : parle de **ton propre budget** (ce que tu gagnes, économises, dépenses) avec ces verbes. Relier le vocabulaire financier à des montants concrets le rend immédiatement utile et mémorable."
+      ], numero: 7, titre: "Les mots autour de l'argent", titreDE: "Rund ums Geld",
       theme: "Les mots autour de l'argent", duree: 45,
       objectifs: ["Utiliser le vocabulaire de la banque", "Payer en espèces ou par carte"],
       grammairePoints: ["Verbes avec datif (zahlen, gehören)"],
@@ -295,7 +330,12 @@ window.MODULE_A21 = {
       ]
     },
     {
-      id: "a2t08", numero: 8, titre: "Et si… ? Le rêve de richesse", titreDE: "Wenn ich reich wäre…",
+      id: "a2t08",
+      vocCours: [
+        "Ce thème ludique fait rêver : « **et si j'étais riche ?** ». Il introduit le vocabulaire des **souhaits** et de l'**hypothèse**, en lien avec le **Konjunktiv II**. Expressions clés : *Wenn ich reich wäre…*, *Ich würde… kaufen / reisen* (j'achèterais / voyagerais).",
+        "Apprends les formes irréelles fréquentes : *wäre* (serais), *hätte* (aurais), *würde + infinitif* (ferais), *könnte* (pourrais). Le vocabulaire des envies (*die Villa, die Weltreise, der Luxus, das Vermögen* fortune) donne de la matière au rêve.",
+        "Astuce : écris **trois phrases sur ce que tu ferais** si tu gagnais au loto (« *Ich würde…* »). Cet exercice motivant fixe à la fois le vocabulaire du désir et la structure du conditionnel."
+      ], numero: 8, titre: "Et si… ? Le rêve de richesse", titreDE: "Wenn ich reich wäre…",
       theme: "Le rêve de la richesse : Et si… ?", duree: 55,
       objectifs: ["Exprimer un souhait / une hypothèse", "Utiliser le Konjunktiv II (würde, wäre, hätte)"],
       grammairePoints: ["Subjonctif II (conditionnel)", "wenn-Sätze"],
@@ -335,7 +375,12 @@ window.MODULE_A21 = {
       ]
     },
     {
-      id: "a2t09", numero: 9, titre: "Au bureau, au téléphone, les rendez-vous", titreDE: "Im Büro, am Telefon, Termine",
+      id: "a2t09",
+      vocCours: [
+        "Ce champ lexical professionnel couvre le **bureau**, le **téléphone** et la **prise de rendez-vous**. Vocabulaire clé : *der Termin*, *die Besprechung* (réunion), *die Unterlagen* (les documents), *erreichen* (joindre qqn), *zurückrufen* (rappeler).",
+        "Soigne les **formules téléphoniques** professionnelles, au registre poli (*Sie*) : « *Könnten Sie mir sagen…?* », « *Ich verbinde Sie* » (je vous mets en relation), « *Kann ich eine Nachricht hinterlassen?* » (puis-je laisser un message ?).",
+        "Astuce : ces échanges sont très **ritualisés** ; mémorise une dizaine de phrases-clés (saluer, demander, proposer un créneau, prendre congé) et tu géreras la plupart des appels et rendez-vous professionnels."
+      ], numero: 9, titre: "Au bureau, au téléphone, les rendez-vous", titreDE: "Im Büro, am Telefon, Termine",
       theme: "Au bureau, au téléphone, prendre des rendez-vous", duree: 55,
       objectifs: ["Téléphoner professionnellement", "Prendre/décaler un rendez-vous", "Utiliser « dass » et « weil »"],
       grammairePoints: ["Subordonnées (dass, weil)", "Formules de politesse"],

@@ -14,7 +14,12 @@ window.MODULE_A22 = {
   couleur: "#15803d",
   lecons: [
     {
-      id: "a2t10", numero: 1, titre: "Les vacances", titreDE: "Der Urlaub",
+      id: "a2t10",
+      vocCours: [
+        "Ce vocabulaire concerne les **vacances** et les loisirs en voyage. Mots clés : *der Urlaub* (les congés), *die Ferien* (les vacances scolaires), *sich erholen* (se reposer), *der Strand* (la plage), *die Sehenswürdigkeit* (le site touristique), *die Unterkunft* (l'hébergement).",
+        "Distingue *der Urlaub* (congés d'un travailleur) de *die Ferien* (vacances scolaires, toujours au pluriel). On dit *in den Urlaub fahren*. Le **Perfekt** domine quand on raconte ses vacances (« *Wir **sind** ans Meer **gefahren*** »).",
+        "Astuce : raconte **tes dernières vacances** (où, avec qui, activités) au passé. Le vocabulaire des vacances, relié à un vrai souvenir, devient vivant et facile à mobiliser."
+      ], numero: 1, titre: "Les vacances", titreDE: "Der Urlaub",
       theme: "Vacances", duree: 50,
       objectifs: ["Parler de ses vacances", "Raconter un séjour au passé"],
       grammairePoints: ["Perfekt (révision)", "Indicateurs de lieu"],
@@ -54,7 +59,12 @@ window.MODULE_A22 = {
       ]
     },
     {
-      id: "a2t11", numero: 2, titre: "Pays et nationalités", titreDE: "Länder und Nationalitäten",
+      id: "a2t11",
+      vocCours: [
+        "Ce thème approfondit **pays**, **nationalités** et **langues**. Tu enrichis la liste des pays (avec ou sans article : *die Schweiz, die Türkei, der Iran, die Niederlande* au pluriel) et les adjectifs de nationalité (*deutsch, türkisch, polnisch…*).",
+        "Maîtrise le trio **woher / wo / wohin** : *aus* (origine : *aus der Türkei*), *in* + datif (lieu : *in der Schweiz*), *nach / in* + accusatif (destination). Les noms d'habitants se forment souvent en *-er* (*der Italiener*), féminin en *-erin*.",
+        "Astuce : crée une **carte mentale** reliant chaque pays à sa langue, sa nationalité et un fait connu. Relier ton **propre pays d'origine** à ce vocabulaire le rend particulièrement parlant."
+      ], numero: 2, titre: "Pays et nationalités", titreDE: "Länder und Nationalitäten",
       theme: "Pays et nationalités", duree: 45,
       objectifs: ["Nommer pays et nationalités", "Dire d'où l'on vient et où l'on va"],
       grammairePoints: ["Nationalités", "nach / in + pays"],
@@ -94,7 +104,12 @@ window.MODULE_A22 = {
       ]
     },
     {
-      id: "a2t12", numero: 3, titre: "Planifier un voyage", titreDE: "Eine Reise planen",
+      id: "a2t12",
+      vocCours: [
+        "Ce champ lexical sert à **organiser un voyage** : réservations, itinéraire, bagages. Mots clés : *buchen* (réserver), *der Flug* (le vol), *die Fahrkarte* (le billet), *umsteigen* (changer de train), *der Aufenthalt* (le séjour), *die Verspätung* (le retard).",
+        "Beaucoup de verbes sont **séparables** : *abfahren* (partir), *ankommen* (arriver), *umsteigen* (changer), *mitnehmen* (emporter). Apprends-les avec leur particule. Les horaires utilisent *um* (heure) et *von… bis* (de… à).",
+        "Astuce : planifie un **voyage imaginaire** étape par étape (réserver, partir, changer, arriver) en allemand. Suivre un scénario chronologique relie naturellement vocabulaire et verbes de déplacement."
+      ], numero: 3, titre: "Planifier un voyage", titreDE: "Eine Reise planen",
       theme: "Planifier un voyage", duree: 50,
       objectifs: ["Organiser un voyage", "Acheter des billets, réserver"],
       grammairePoints: ["Futur avec « werden »", "Verbes + prépositions"],
@@ -134,7 +149,12 @@ window.MODULE_A22 = {
       ]
     },
     {
-      id: "a2t13", numero: 4, titre: "Animaux (et animaux dangereux)", titreDE: "Tiere und gefährliche Tiere",
+      id: "a2t13",
+      vocCours: [
+        "Ce vocabulaire couvre les **animaux**, domestiques, de la ferme et **sauvages**. Mots clés : *das Tier*, *der Hund* (chien), *die Katze* (chat), *das Pferd* (cheval), *der Vogel* (oiseau), et côté sauvage *der Löwe* (lion), *die Schlange* (serpent), *der Bär* (ours).",
+        "Apprends chaque animal **avec son article et son pluriel**, souvent irrégulier (*der Vogel → die Vögel*, *das Pferd → die Pferde*). Pour décrire, associe des adjectifs : *gefährlich* (dangereux), *wild* (sauvage), *zahm* (apprivoisé), *süß* (mignon).",
+        "Astuce : classe les animaux par **catégorie** (compagnie, ferme, sauvages) — plus facile à mémoriser qu'une liste pêle-mêle. Pense aux animaux qui te sont familiers pour ancrer le vocabulaire."
+      ], numero: 4, titre: "Animaux (et animaux dangereux)", titreDE: "Tiere und gefährliche Tiere",
       theme: "Animaux et animaux dangereux", duree: 45,
       objectifs: ["Nommer des animaux", "Décrire un animal (taille, danger)"],
       grammairePoints: ["Adjectifs (révision)", "können (capacité)"],
@@ -174,7 +194,12 @@ window.MODULE_A22 = {
       ]
     },
     {
-      id: "a2t14", numero: 5, titre: "Décrire les personnes", titreDE: "Personen beschreiben",
+      id: "a2t14",
+      vocCours: [
+        "Ce champ lexical permet de **décrire** quelqu'un physiquement et moralement. Vocabulaire clé : l'apparence (*groß* grand, *schlank* mince, *die Haare* les cheveux, *die Augen* les yeux) et le caractère (*nett* gentil, *freundlich* aimable, *ehrgeizig* ambitieux, *schüchtern* timide).",
+        "L'**adjectif attribut** après *sein* est invariable (« *Er ist groß und freundlich* »), mais devant le nom il se décline (« *ein **netter** Mann* »). Apprends des **paires d'opposés** (*groß / klein*, *jung / alt*, *fleißig / faul*) : on les retient deux fois mieux ensemble.",
+        "Astuce : décris **une personne que tu connais** (apparence + caractère). Associer chaque adjectif à un visage réel rend le vocabulaire concret et durable."
+      ], numero: 5, titre: "Décrire les personnes", titreDE: "Personen beschreiben",
       theme: "Personnes", duree: 50,
       objectifs: ["Décrire l'apparence et le caractère", "Utiliser les adjectifs"],
       grammairePoints: ["Adjectifs", "Description physique/caractère"],
@@ -214,7 +239,12 @@ window.MODULE_A22 = {
       ]
     },
     {
-      id: "a2t15", numero: 6, titre: "Habiter : jardin, ville…", titreDE: "Wohnen: Garten, Stadt",
+      id: "a2t15",
+      vocCours: [
+        "Ce vocabulaire approfondit le **logement** et le **cadre de vie** : types d'habitat, environnement. Mots clés : *die Wohnung* (appartement), *das Reihenhaus* (maison mitoyenne), *der Garten* (jardin), *der Stadtteil* (quartier), *die Miete* (le loyer), *mieten* (louer).",
+        "Distingue *die Stadt* (la ville), *das Dorf* (le village) et *die Gegend* (le coin, la région). Le vocabulaire se combine avec les **prépositions de lieu** + datif (« *Ich wohne **im** Zentrum / **am** Stadtrand* », au centre / en périphérie).",
+        "Astuce : décris **ton propre logement et ton quartier** (type, pièces, environnement, avantages). Ce vocabulaire, relié à ton cadre de vie réel, s'emploie dans d'innombrables conversations."
+      ], numero: 6, titre: "Habiter : jardin, ville…", titreDE: "Wohnen: Garten, Stadt",
       theme: "Vivre: jardin, ville etc.", duree: 50,
       objectifs: ["Décrire son lieu de vie", "Comparer ville et campagne"],
       grammairePoints: ["Prépositions de lieu", "Comparatif"],
@@ -254,7 +284,12 @@ window.MODULE_A22 = {
       ]
     },
     {
-      id: "a2t16", numero: 7, titre: "Alimentation saine", titreDE: "Gesunde Ernährung",
+      id: "a2t16",
+      vocCours: [
+        "Ce champ lexical relie **alimentation** et **santé**. Mots clés : *gesund* (sain) / *ungesund*, *das Obst* (les fruits), *das Gemüse* (les légumes), *die Ernährung* (l'alimentation), *vegetarisch*, *die Vitamine*, *fettarm* (pauvre en graisses).",
+        "Note les **noms collectifs** : *das Obst* et *das Gemüse* sont **singuliers** en allemand (pas de pluriel comme en français !). Apprends aussi *essen* (manger, irrégulier : *er isst*) et *sich ernähren* (se nourrir).",
+        "Astuce : décris **ce que tu manges sainement** (ou voudrais manger). Classer les aliments en « sain / moins sain » crée des associations utiles et faciles à mémoriser."
+      ], numero: 7, titre: "Alimentation saine", titreDE: "Gesunde Ernährung",
       theme: "Alimentation saine", duree: 50,
       objectifs: ["Parler d'alimentation et de santé", "Donner des conseils"],
       grammairePoints: ["sollen (conseil)", "Substantifs (pluriels)"],
@@ -294,7 +329,12 @@ window.MODULE_A22 = {
       ]
     },
     {
-      id: "a2t17", numero: 8, titre: "Les actualités", titreDE: "Nachrichten",
+      id: "a2t17",
+      vocCours: [
+        "Ce thème ouvre sur les **médias** et l'**actualité** — un grand pas vers l'allemand authentique. Mots clés : *die Nachrichten* (les informations), *die Zeitung* (le journal), *der Bericht* (le reportage), *die Politik*, *die Wirtschaft* (l'économie), *das Ereignis* (l'événement).",
+        "Le vocabulaire devient plus **abstrait** : repère les **noms en -ung** (*die Regierung* gouvernement, *die Meinung* opinion, *die Entwicklung* évolution), tous féminins. Beaucoup de mots sont **internationaux** (*die Demokratie, die Krise, das Interview*).",
+        "Astuce : lis ou écoute de **vraies brèves** en allemand simple (« Nachrichten in einfacher Sprache ») et relève les mots de ce champ. Le vocabulaire de l'actualité s'acquiert surtout par une exposition régulière."
+      ], numero: 8, titre: "Les actualités", titreDE: "Nachrichten",
       theme: "Actualités nationales et internationales", duree: 50,
       objectifs: ["Comprendre une info simple", "Donner son opinion"],
       grammairePoints: ["Subordonnée « dass »", "Opinion : ich finde, dass…"],
@@ -334,7 +374,12 @@ window.MODULE_A22 = {
       ]
     },
     {
-      id: "a2t18", numero: 9, titre: "L'environnement", titreDE: "Die Umwelt",
+      id: "a2t18",
+      vocCours: [
+        "Ce champ lexical actuel concerne l'**environnement** et l'**écologie**. Mots clés : *die Umwelt*, *der Umweltschutz* (la protection de l'environnement), *der Müll* (les déchets), *trennen* (trier), *recyceln*, *die Energie*, *der Klimawandel* (le changement climatique).",
+        "Beaucoup de termes sont des **noms composés** transparents : *Umwelt + Schutz = Umweltschutz*, *Klima + Wandel = Klimawandel*, *Müll + Trennung = Mülltrennung*. Savoir les **décomposer** aide à comprendre et à former soi-même des mots longs.",
+        "Astuce : relie ce vocabulaire à des **gestes concrets** (trier, économiser l'énergie, prendre le vélo) et donne ton avis (« *Ich finde Umweltschutz wichtig* »). Le vocabulaire engagé se retient mieux quand on l'utilise pour s'exprimer."
+      ], numero: 9, titre: "L'environnement", titreDE: "Die Umwelt",
       theme: "Thème: Environnement", duree: 50,
       objectifs: ["Parler d'écologie", "Dire ce qu'on fait pour la planète"],
       grammairePoints: ["Verbes + prépositions", "Conseils (sollte)"],
@@ -374,7 +419,12 @@ window.MODULE_A22 = {
       ]
     },
     {
-      id: "a2t19", numero: 10, titre: "La technologie", titreDE: "Technologie",
+      id: "a2t19",
+      vocCours: [
+        "Ce dernier thème A2 porte sur la **technologie** et le **numérique** au quotidien. Vocabulaire clé : *das Handy* (le portable), *das Smartphone*, *die App*, *das Internet*, *die Nachricht* (le message), *herunterladen* (télécharger), *online sein*.",
+        "Faux-ami important : *das Handy* désigne le **téléphone portable** en allemand (et non « pratique » comme en anglais). Beaucoup d'autres termes sont **internationaux** (*der Computer, die E-Mail, das WLAN, das Update*), ce qui facilite l'apprentissage.",
+        "Astuce : décris **comment tu utilises la technologie** chaque jour (téléphone, applis, internet) avec ces verbes. Comme le numérique fait partie de ta vie, l'employer sur tes propres usages fixe le vocabulaire sans effort."
+      ], numero: 10, titre: "La technologie", titreDE: "Technologie",
       theme: "Thème: Technologie", duree: 50,
       objectifs: ["Parler du numérique au quotidien", "Exprimer avantages et inconvénients"],
       grammairePoints: ["Subordonnée « wenn »", "Verbes + prépositions"],
