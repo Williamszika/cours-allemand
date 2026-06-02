@@ -978,7 +978,29 @@ a.menu-card:active { transform: translateY(-1px); }
 .pflege-niv-titre { font-size: 1.15rem; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 2px solid #99f6e4; }
 .pflege-grid { display: grid; gap: 12px; }
 .pflege-card { display: flex; gap: 14px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); position: relative; }
-.pflege-ic { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-size: 1.5rem; background: #ccfbf1; }
+.pflege-ic { flex: 0 0 auto; width: 56px; height: 56px; border-radius: 12px; display: grid; place-items: center; font-size: 1.4rem; background: #ccfbf1 center/cover no-repeat; position: relative; overflow: hidden; }
+.pflege-ic > span { position: absolute; right: 2px; bottom: 2px; font-size: .95rem; line-height: 1; background: rgba(255,255,255,.92); border-radius: 7px; padding: 1px 3px; }
+[data-tg-scheme="dark"] .pflege-ic > span { background: rgba(23,33,43,.92); }
+.pflege-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 2px; }
+.pflege-exam { display: flex; align-items: center; gap: 14px; margin-top: 12px; padding: 16px; border-radius: var(--radius); border: 1.5px dashed #0d9488; background: #f0fdfa; text-decoration: none; color: var(--ink); }
+a.pflege-exam:hover { background: #ccfbf1; }
+.pflege-exam.locked { opacity: .6; }
+.pflege-exam.done { border-style: solid; background: var(--green-light); border-color: var(--green); }
+.pflege-exam-ic { font-size: 1.8rem; flex: 0 0 auto; }
+.pflege-exam-body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pflege-exam-body strong { font-size: 1.02rem; }
+.pflege-exam-body span { color: var(--muted); font-size: .88rem; margin-top: 2px; }
+[data-tg-scheme="dark"] .pflege-exam { background: #0f2a28; }
+[data-tg-scheme="dark"] a.pflege-exam:hover { background: #134e4a; }
+.glossar-search { width: 100%; padding: 12px 14px; margin: 14px 0; border: 1.5px solid var(--line); border-radius: 12px; font-size: 1rem; background: var(--card); color: var(--ink); }
+.glossar-search:focus { outline: none; border-color: #0d9488; }
+.glossar-list { display: grid; gap: 10px; }
+.glossar-row { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; box-shadow: var(--shadow); }
+.glossar-row .voc-de { grid-column: 1; }
+.glossar-row .voc-fr { grid-column: 1; color: var(--muted); }
+.glossar-row .voc-ex { grid-column: 1 / -1; font-size: .88rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 6px; margin-top: 2px; }
+.glossar-niv { grid-column: 2; grid-row: 1 / 3; align-self: start; font-size: .72rem; font-weight: 700; color: #0f766e; background: #ccfbf1; border-radius: 999px; padding: 3px 9px; }
+[data-tg-scheme="dark"] .glossar-niv { background: #134e4a; color: #5eead4; }
 .pflege-body { flex: 1; min-width: 0; }
 .pflege-de { font-weight: 700; font-size: 1.02rem; }
 .pflege-fr { color: var(--muted); font-size: .92rem; margin-top: 1px; }
@@ -20644,7 +20666,11 @@ window.Exercises = (function () {
     });
     frag.appendChild(leg);
 
-    frag.appendChild(el("p", "exo-group-sub", "📋 Voici le programme, de A2 à C2. Les leçons interactives arrivent progressivement."));
+    const actions = el("div", "pflege-actions");
+    const gloss = el("a", "btn btn-ghost", "📖 Glossaire médical"); gloss.href = "#/pflege/glossar";
+    actions.appendChild(gloss);
+    frag.appendChild(actions);
+    frag.appendChild(el("p", "exo-group-sub", "📋 Programme de A2 à C2. Termine les leçons d'un niveau, puis passe l'examen pour débloquer le suivant."));
 
     P.niveaux.forEach((niv) => {
       const sec = el("section", "pflege-niveau");
@@ -20660,7 +20686,7 @@ window.Exercises = (function () {
           ? '<span class="menu-go">' + (done ? "✓" : "→") + "</span>"
           : '<span class="menu-badge">Bientôt</span>';
         card.innerHTML =
-          '<div class="pflege-ic">' + dom.ic + "</div>" +
+          '<div class="pflege-ic"' + (has ? ' style="background-image:url(\'' + lessonPhoto(l.id, 120, 120) + '\')"' : "") + "><span>" + dom.ic + "</span></div>" +
           '<div class="pflege-body">' +
           '<div class="pflege-de">' + l.titreDE + "</div>" +
           '<div class="pflege-fr">' + l.titre + "</div>" +
@@ -20670,11 +20696,128 @@ window.Exercises = (function () {
         grid.appendChild(card);
       });
       sec.appendChild(grid);
+      // Carte d'examen du niveau (comme le cours général).
+      if (pfLeconsOf(niv.code).length) {
+        const done = niveauTerminePflege(niv.code);
+        const passed = pfExamPasse(niv.code);
+        const exCard = el(done ? "a" : "div", "pflege-exam" + (passed ? " done" : "") + (done ? "" : " locked"));
+        if (done) exCard.href = "#/pflege/examen/" + niv.code;
+        exCard.innerHTML = '<span class="pflege-exam-ic">🎓</span><div class="pflege-exam-body"><strong>Examen ' + niv.code + " — Pflege</strong><span>" +
+          (passed ? "Réussi ✓ — niveau validé" : (done ? "Prêt : teste tes connaissances du niveau " + niv.code : "Termine les leçons du niveau pour débloquer l'examen")) +
+          '</span></div><span class="menu-go">' + (passed ? "✓" : (done ? "→" : "🔒")) + "</span>";
+        sec.appendChild(exCard);
+      }
       frag.appendChild(sec);
     });
 
     app.innerHTML = ""; app.appendChild(frag);
     if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/menu"; }); try { window.TG.hideMainButton && window.TG.hideMainButton(); } catch (e) {} }
+    try { localizeUI(app); } catch (e) {}
+    window.scrollTo(0, 0);
+  }
+
+  /* --- Examen de niveau Pflege : pioche dans les exercices notés des leçons
+     du niveau, comme le cours général. Score stocké sous « pf-<niveau> ». --- */
+  function renderPflegeTest(niv) {
+    const lecons = pfLeconsOf(niv);
+    if (!window.PFLEGE || !pflegeDebloque() || !lecons.length || !niveauTerminePflege(niv)) { location.hash = "#/pflege"; return; }
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/pflege">← Programme Pflege</a><span class="lesson-top-mod">🎓 Examen ' + niv + "</span>";
+    frag.appendChild(top);
+
+    const pool = [];
+    lecons.forEach((l) => (l.exercices || []).forEach((ex) => { if (window.Exercises.GRADABLE.indexOf(ex.type) >= 0) pool.push(ex); }));
+    const N = Math.min(15, pool.length);
+    const chosen = window.Exercises.shuffle(pool).slice(0, N);
+    const seuil = 70;
+
+    const head = el("header", "test-head"); head.style.setProperty("--mod-color", "#0d9488");
+    head.innerHTML = '<div class="lesson-num">Examen Pflege ' + niv + '</div><h1>Évaluation notée</h1>' +
+      "<p>" + N + " questions · seuil de réussite : <strong>" + seuil + "%</strong>. Réponds à tout, puis « Terminer ».</p>";
+    frag.appendChild(head);
+
+    const list = el("div", "test-list"); const nodes = [];
+    chosen.forEach((ex, i) => { const node = window.Exercises.render(ex, i, null, { testMode: true, label: "Question " + (i + 1) }); nodes.push(node); list.appendChild(node); });
+    frag.appendChild(list);
+
+    const result = el("div", "test-result hidden");
+    const submit = el("button", "btn btn-primary big", "Terminer l'examen"); submit.type = "button";
+    const sr = el("div", "test-submit"); sr.appendChild(submit); frag.appendChild(sr); frag.appendChild(result);
+
+    const ni = PF_NIVEAUX.indexOf(niv); const nextNiv = PF_NIVEAUX[ni + 1];
+    submit.addEventListener("click", () => {
+      let correct = 0, wrong = 0, blank = 0;
+      nodes.forEach((n) => { const r = n._grade(true); if (r.ok === true) correct++; else if (r.ok === false) wrong++; else blank++; });
+      const score = Math.round((correct / N) * 100); const reussi = score >= seuil;
+      window.Progress.setTestScore("pf-" + niv, score, reussi);
+      const nextLecon = nextNiv ? (pfLeconsOf(nextNiv)[0] || {}) : null;
+      const next = reussi && nextLecon && nextLecon.id ? "#/pflege/lecon/" + nextLecon.id : "#/pflege";
+      result.className = "test-result " + (reussi ? "pass" : "fail");
+      result.innerHTML =
+        '<div class="score-ring ' + (reussi ? "pass" : "fail") + '"><span>' + score + "%</span></div>" +
+        "<h2>" + (reussi ? "🎓 Examen " + niv + " Pflege réussi !" : "📚 Encore un effort") + "</h2>" +
+        '<p class="score-detail">✓ ' + correct + " correct(s) · ✗ " + wrong + " erreur(s)" + (blank ? " · ⊘ " + blank + " sans réponse" : "") + "</p>" +
+        "<p>" + (reussi ? (nextNiv ? "Le niveau <strong>" + nextNiv + "</strong> du parcours est débloqué !" : "🏆 Bravo ! Tu as terminé tout le parcours soignant, de A2 à C2 !") : "Il faut " + seuil + "%. Revois les leçons du niveau, puis recommence.") + "</p>" +
+        '<div class="rev-actions">' +
+        (reussi && next !== "#/pflege" ? '<a class="btn btn-primary" href="' + next + '">Niveau ' + nextNiv + " →</a>" : '<a class="btn btn-primary" href="#/pflege">← Programme Pflege</a>') +
+        '<button class="btn btn-ghost" id="pf-again">Recommencer</button></div>';
+      result.classList.remove("hidden"); submit.disabled = true; submit.textContent = "Examen terminé";
+      const again = document.getElementById("pf-again"); if (again) again.addEventListener("click", () => renderPflegeTest(niv));
+      if (window.TG) window.TG.haptic(reussi ? "success" : "warning");
+      try { localizeUI(app); } catch (e) {}
+      result.scrollIntoView({ behavior: "smooth" });
+    });
+
+    app.innerHTML = ""; app.appendChild(frag);
+    if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/pflege"; }); window.TG.setMainButton("Terminer l'examen", () => submit.click()); }
+    try { localizeUI(app); } catch (e) {}
+    window.scrollTo(0, 0);
+  }
+
+  /* --- Glossaire médical : tout le vocabulaire Pflege, avec audio + recherche. --- */
+  function renderPflegeGlossar() {
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/pflege">← Programme Pflege</a><span class="lesson-top-mod">📖 Glossaire médical</span>';
+    frag.appendChild(top);
+    if (!window.PFLEGE) { app.innerHTML = ""; app.appendChild(frag); return; }
+
+    const seen = {}; const terms = [];
+    pflatList().forEach((f) => (f.lecon.vocabulaire || []).forEach((v) => { if (!seen[v.de]) { seen[v.de] = 1; terms.push({ de: v.de, fr: v.fr, ex: v.ex, niv: f.niv }); } }));
+    const sortKey = (s) => String(s).replace(/^(der|die|das)\s+/, "").toLowerCase();
+    terms.sort((a, b) => sortKey(a.de).localeCompare(sortKey(b.de), "de"));
+
+    const head = el("header", "hero pflege-hero");
+    head.innerHTML = '<p class="hero-eyebrow">Wortschatz Pflege</p><h1>📖 Glossaire médical</h1><p class="hero-desc">' + terms.length + " termes du soin, de A2 à C2. Écoute la prononciation (🔊) et révise.</p>";
+    frag.appendChild(head);
+
+    const search = el("input", "glossar-search"); search.type = "search"; search.placeholder = "🔍 Chercher un mot…"; search.setAttribute("autocomplete", "off");
+    frag.appendChild(search);
+    const listWrap = el("div", "glossar-list"); frag.appendChild(listWrap);
+
+    function build(filter) {
+      listWrap.innerHTML = "";
+      const q = (filter || "").trim().toLowerCase(); let n = 0;
+      terms.forEach((t) => {
+        if (q && t.de.toLowerCase().indexOf(q) < 0 && String(t.fr || "").toLowerCase().indexOf(q) < 0) return;
+        n++;
+        const row = el("div", "glossar-row");
+        const deWrap = el("div", "voc-de"); const span = el("span", ""); span.innerHTML = vocDeHtml(t.de);
+        deWrap.appendChild(span); deWrap.appendChild(speakButton(t.de)); row.appendChild(deWrap);
+        row.appendChild(el("div", "voc-fr", t.fr));
+        if (t.ex) { const ex = el("div", "voc-ex"); ex.innerHTML = "« " + escapeHtml(t.ex) + " »"; row.appendChild(ex); }
+        row.appendChild(el("span", "glossar-niv", t.niv));
+        listWrap.appendChild(row);
+      });
+      if (!n) listWrap.appendChild(el("p", "exo-group-sub", "Aucun terme trouvé."));
+      try { localizeUI(listWrap); } catch (e) {}
+    }
+    build("");
+    search.addEventListener("input", () => build(search.value));
+
+    app.innerHTML = ""; app.appendChild(frag);
+    if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/pflege"; }); try { window.TG.hideMainButton && window.TG.hideMainButton(); } catch (e) {} }
     try { localizeUI(app); } catch (e) {}
     window.scrollTo(0, 0);
   }
@@ -20691,11 +20834,19 @@ window.Exercises = (function () {
   }
   function pIndexOf(id) { return pflatList().findIndex((f) => f.lecon.id === id); }
   function pflegeHasContent(l) { return !!(l && (l.vocabulaire || (l.grammaire && l.grammaire.length) || l.dialogue || (l.exercices && l.exercices.length))); }
+  /* Examens de niveau du parcours Pflege (comme le cours général). */
+  var PF_NIVEAUX = ["A2", "B1", "B2", "C1", "C2"];
+  function pfLeconsOf(niv) { return pflatList().filter((f) => f.niv === niv && pflegeHasContent(f.lecon)).map((f) => f.lecon); }
+  function niveauTerminePflege(niv) { const ls = pfLeconsOf(niv); return ls.length > 0 && ls.every((l) => window.Progress.estTermine(l.id)); }
+  function pfExamPasse(niv) { const t = window.Progress.getTestScore("pf-" + niv); return !!(t && t.reussi); }
   function isUnlockedPflege(idx) {
     if (!pflegeDebloque()) return false;
     if (idx <= 0) return true;
-    const prev = pflatList()[idx - 1];
-    // On ne se laisse bloquer que par une leçon précédente qui a, elle aussi, du contenu.
+    const pflat = pflatList();
+    const cur = pflat[idx], prev = pflat[idx - 1];
+    // Première leçon d'un nouveau niveau → exige l'examen Pflege du niveau précédent.
+    if (cur.niv !== prev.niv && pfLeconsOf(prev.niv).length) return pfExamPasse(prev.niv);
+    // Sinon : séquentiel (la leçon précédente — si elle a du contenu — doit être terminée).
     if (!pflegeHasContent(prev.lecon)) return true;
     return window.Progress.estTermine(prev.lecon.id);
   }
@@ -20735,10 +20886,15 @@ window.Exercises = (function () {
 
     /* Garde séquentielle dans le parcours Pflege. */
     if (!isUnlockedPflege(idx)) {
-      const prev = pflat[idx - 1].lecon;
+      const prev = pflat[idx - 1];
       const lock = el("section", "lesson-section locked-notice");
-      lock.innerHTML = '<div class="comp-emoji">🔒</div><h2>Leçon verrouillée</h2><p>Termine d\'abord la leçon précédente : <strong class="pflege-de">' + prev.titreDE + "</strong>.</p>";
-      const go = el("a", "btn btn-primary", "→ " + prev.titre); go.href = "#/pflege/lecon/" + prev.id; lock.appendChild(go);
+      if (prev.niv !== f.niv && pfLeconsOf(prev.niv).length && !pfExamPasse(prev.niv)) {
+        lock.innerHTML = '<div class="comp-emoji">🔒</div><h2>Examen requis</h2><p>Pour accéder au niveau <strong>' + f.niv + "</strong>, réussis d'abord l'<strong>examen " + prev.niv + " Pflege</strong>.</p>";
+        const go = el("a", "btn btn-primary", "🎓 Passer l'examen " + prev.niv); go.href = niveauTerminePflege(prev.niv) ? "#/pflege/examen/" + prev.niv : "#/pflege"; lock.appendChild(go);
+      } else {
+        lock.innerHTML = '<div class="comp-emoji">🔒</div><h2>Leçon verrouillée</h2><p>Termine d\'abord la leçon précédente : <strong class="pflege-de">' + prev.lecon.titreDE + "</strong>.</p>";
+        const go = el("a", "btn btn-primary", "→ " + prev.lecon.titre); go.href = "#/pflege/lecon/" + prev.lecon.id; lock.appendChild(go);
+      }
       frag.appendChild(lock); app.innerHTML = ""; app.appendChild(frag);
       if (window.TG) window.TG.showBackButton(() => { location.hash = "#/pflege"; });
       try { localizeUI(app); } catch (e) {} window.scrollTo(0, 0); return;
@@ -20766,6 +20922,14 @@ window.Exercises = (function () {
       if (vArr && vArr.length) {
         const vart = el("article", "cours-article voc-article");
         vArr.forEach((para) => { const pe = el("p", "cours-art-p"); if (vNatifDE) pe.innerHTML = mdLite(para); else localizeInto(pe, para, gEx); vart.appendChild(pe); });
+        // Immersion (B1+) : le cours est en allemand → bouton pour l'écouter.
+        if (vNatifDE && window.Speech && window.Speech.isSupported()) {
+          const listen = el("button", "btn btn-ghost small", "🔊 Écouter le cours");
+          listen.type = "button";
+          const plain = vArr.map((para) => String(para).replace(/[*_`]/g, "")).join(" ");
+          listen.addEventListener("click", () => window.Speech.speak(plain));
+          vart.appendChild(listen);
+        }
         voc.appendChild(vart);
       }
       const grid = el("div", "voc-grid");
@@ -20975,6 +21139,8 @@ window.Exercises = (function () {
     }
     if (hash.match(/^#\/menu/)) renderMenu();
     else if ((m = hash.match(/^#\/pflege\/lecon\/(.+)$/))) renderPflegeLecon(m[1]);
+    else if ((m = hash.match(/^#\/pflege\/examen\/(A2|B1|B2|C1|C2)/))) renderPflegeTest(m[1]);
+    else if (hash.match(/^#\/pflege\/glossar/)) renderPflegeGlossar();
     else if (hash.match(/^#\/pflege/)) renderPflege();
     else if (hash.match(/^#\/start/)) renderOnboarding();
     else if (hash.match(/^#\/placement/)) renderPlacement();

@@ -965,7 +965,29 @@ a.menu-card:active { transform: translateY(-1px); }
 .pflege-niv-titre { font-size: 1.15rem; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 2px solid #99f6e4; }
 .pflege-grid { display: grid; gap: 12px; }
 .pflege-card { display: flex; gap: 14px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); position: relative; }
-.pflege-ic { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-size: 1.5rem; background: #ccfbf1; }
+.pflege-ic { flex: 0 0 auto; width: 56px; height: 56px; border-radius: 12px; display: grid; place-items: center; font-size: 1.4rem; background: #ccfbf1 center/cover no-repeat; position: relative; overflow: hidden; }
+.pflege-ic > span { position: absolute; right: 2px; bottom: 2px; font-size: .95rem; line-height: 1; background: rgba(255,255,255,.92); border-radius: 7px; padding: 1px 3px; }
+[data-tg-scheme="dark"] .pflege-ic > span { background: rgba(23,33,43,.92); }
+.pflege-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 2px; }
+.pflege-exam { display: flex; align-items: center; gap: 14px; margin-top: 12px; padding: 16px; border-radius: var(--radius); border: 1.5px dashed #0d9488; background: #f0fdfa; text-decoration: none; color: var(--ink); }
+a.pflege-exam:hover { background: #ccfbf1; }
+.pflege-exam.locked { opacity: .6; }
+.pflege-exam.done { border-style: solid; background: var(--green-light); border-color: var(--green); }
+.pflege-exam-ic { font-size: 1.8rem; flex: 0 0 auto; }
+.pflege-exam-body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pflege-exam-body strong { font-size: 1.02rem; }
+.pflege-exam-body span { color: var(--muted); font-size: .88rem; margin-top: 2px; }
+[data-tg-scheme="dark"] .pflege-exam { background: #0f2a28; }
+[data-tg-scheme="dark"] a.pflege-exam:hover { background: #134e4a; }
+.glossar-search { width: 100%; padding: 12px 14px; margin: 14px 0; border: 1.5px solid var(--line); border-radius: 12px; font-size: 1rem; background: var(--card); color: var(--ink); }
+.glossar-search:focus { outline: none; border-color: #0d9488; }
+.glossar-list { display: grid; gap: 10px; }
+.glossar-row { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; box-shadow: var(--shadow); }
+.glossar-row .voc-de { grid-column: 1; }
+.glossar-row .voc-fr { grid-column: 1; color: var(--muted); }
+.glossar-row .voc-ex { grid-column: 1 / -1; font-size: .88rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 6px; margin-top: 2px; }
+.glossar-niv { grid-column: 2; grid-row: 1 / 3; align-self: start; font-size: .72rem; font-weight: 700; color: #0f766e; background: #ccfbf1; border-radius: 999px; padding: 3px 9px; }
+[data-tg-scheme="dark"] .glossar-niv { background: #134e4a; color: #5eead4; }
 .pflege-body { flex: 1; min-width: 0; }
 .pflege-de { font-weight: 700; font-size: 1.02rem; }
 .pflege-fr { color: var(--muted); font-size: .92rem; margin-top: 1px; }
