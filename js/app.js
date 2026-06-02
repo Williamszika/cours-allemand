@@ -750,6 +750,7 @@
     const done = new Set();
     const success = new Set();
     let completionShown = false;
+    let unlockNext = function () {}; // activé quand la leçon est validée (défini plus bas)
     function refresh() {
       const sc = done.size ? Math.round((success.size / done.size) * 100) : 0;
       label.textContent = done.size + "/" + total + " faits · " + sc + "% justes (requis " + seuil + "%)";
@@ -757,7 +758,7 @@
       if (done.size === total && total > 0) {
         const score = Math.round((success.size / total) * 100);
         const passed = score >= seuil;
-        if (passed) window.Progress.marquerTermine(l.id, score);
+        if (passed) { window.Progress.marquerTermine(l.id, score); unlockNext(); }
         if (!completionShown) { completionShown = true; showCompletion(exo, score, idx, passed); }
       }
     }
@@ -815,9 +816,19 @@
     const suite = etapeApresLecon(idx);
     const suiteExamen = /examen/.test(suite);
     const suiteLabel = suiteExamen ? "🎓 Examen du niveau " + flat[idx].lecon.niveau + " →" : flat[idx + 1].lecon.titre + " →";
-    const next = el("a", "btn btn-primary", suiteLabel);
-    next.href = suite;
+    // Verrou : on ne passe à la suite qu'une fois la leçon validée
+    // (tous les exercices faits + score requis). Pas de saut de leçon.
+    const dejaValide = window.Progress.estTermine(l.id);
+    const next = el("a", "btn btn-primary" + (dejaValide ? "" : " is-locked"), dejaValide ? suiteLabel : "🔒 Termine tous les exercices");
+    if (dejaValide) next.href = suite;
+    else next.addEventListener("click", (e) => { e.preventDefault(); document.getElementById("exo") && document.getElementById("exo").scrollIntoView({ behavior: "smooth" }); toast("Termine tous les exercices de la leçon (≥ " + seuil + " % de réussite) pour débloquer la suite. 💪"); });
     nav.appendChild(next);
+    unlockNext = function () {
+      next.classList.remove("is-locked");
+      next.textContent = suiteLabel;
+      next.href = suite;
+      if (window.TG) window.TG.setMainButton(suiteExamen ? "🎓 Examen " + flat[idx].lecon.niveau : "Suivant →", () => { location.hash = suite; });
+    };
     frag.appendChild(nav);
 
     app.innerHTML = "";
@@ -827,7 +838,8 @@
     if (window.TG) {
       window.TG.showBackButton(() => { location.hash = "#/"; });
       window.TG.closingConfirmation(false);
-      window.TG.setMainButton(suiteExamen ? "🎓 Examen " + flat[idx].lecon.niveau : "Suivant →", () => { location.hash = suite; });
+      if (dejaValide) window.TG.setMainButton(suiteExamen ? "🎓 Examen " + flat[idx].lecon.niveau : "Suivant →", () => { location.hash = suite; });
+      else window.TG.setMainButton("🔒 Fais tous les exercices", () => { toast("Termine tous les exercices (≥ " + seuil + " %) pour continuer. 💪"); });
     }
     window.scrollTo(0, 0);
   }
@@ -1562,20 +1574,32 @@
 
   function renderLanguagePage() {
     const I = window.I18N;
+    const premier = besoinOnboarding(); // tout premier lancement (aucune progression)
+    const dest = premier ? "#/start" : "#/";
     const frag = document.createDocumentFragment();
     const top = el("div", "lesson-top");
-    top.innerHTML = '<a class="btn-link" href="#/">← Accueil</a><span class="lesson-top-mod">🌐 ' + (I ? I.t("language") : "Langue") + "</span>";
+    top.innerHTML = (premier ? '<span class="btn-link" style="visibility:hidden">·</span>' : '<a class="btn-link" href="#/">← Accueil</a>') +
+      '<span class="lesson-top-mod">🌐 ' + (I ? I.t("language") : "Langue") + "</span>";
     frag.appendChild(top);
+    if (premier) {
+      const intro = el("section", "section onboarding lang-intro");
+      intro.innerHTML = '<div class="coach-avatar">🧑‍🏫</div><p class="coach-nom">Coach Zika</p><h1>Hallo! 👋</h1>';
+      frag.appendChild(intro);
+    }
     if (I) frag.appendChild(buildLanguagePicker({ onPick: () => renderLanguagePage() }));
     const nav = el("div", "lesson-nav");
     nav.appendChild(el("span", ""));
     const cont = el("a", "btn btn-primary", (I ? I.t("continue") : "Continuer") + " →");
-    cont.href = "#/";
+    cont.href = dest;
     nav.appendChild(cont);
     frag.appendChild(nav);
     app.innerHTML = "";
     app.appendChild(frag);
-    if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/"; }); window.TG.hideMainButton(); }
+    if (window.TG) {
+      if (premier) { try { window.TG.hideBackButton && window.TG.hideBackButton(); } catch (e) {} }
+      else window.TG.showBackButton(() => { location.hash = "#/"; });
+      window.TG.setMainButton((I ? I.t("continue") : "Continuer") + " →", () => { location.hash = dest; });
+    }
     window.scrollTo(0, 0);
   }
 
@@ -1586,8 +1610,13 @@
     const labels = NIVEAU_LABELS;
     const frag = document.createDocumentFragment();
 
-    /* D'abord : quelle langue parles-tu ? (cours A1/A2 dans cette langue) */
-    if (window.I18N) frag.appendChild(buildLanguagePicker({ onPick: () => renderOnboarding() }));
+    /* La langue a déjà été choisie sur le 1ᵉʳ écran ; petit lien pour la changer. */
+    if (window.I18N) {
+      const li = window.I18N.info();
+      const langBar = el("div", "onb-lang");
+      langBar.innerHTML = '<span>🌐 ' + li.f + " " + li.n + '</span><a class="btn-link" href="#/langue">' + window.I18N.t("change_lang") + "</a>";
+      frag.appendChild(langBar);
+    }
 
     const salutDE = "Hallo! Ich bin Zika, dein Deutsch-Coach. Lass uns gemeinsam dein Niveau finden!";
     const hero = el("section", "section onboarding");
@@ -1926,6 +1955,10 @@
   function route() {
     const hash = location.hash || "#/";
     let m;
+    // Étape 0 — tout premier écran : le choix de la langue (avant l'accueil du coach).
+    if (window.I18N && !window.I18N.isChosen() && besoinOnboarding() && !hash.match(/^#\/langue/)) {
+      return renderLanguagePage();
+    }
     if (hash.match(/^#\/start/)) renderOnboarding();
     else if (hash.match(/^#\/placement/)) renderPlacement();
     else if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);

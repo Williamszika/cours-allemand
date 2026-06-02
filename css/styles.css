@@ -877,3 +877,11 @@ html.can-install .install-btn { display: inline-flex; }
 [dir="rtl"] .lang-opt, [dir="rtl"] .cours-art-p, [dir="rtl"] .cours-tag-body, [dir="rtl"] .onboarding-intro { text-align: right; }
 [dir="rtl"] .cours-regle, [dir="rtl"] .cours-astuce, [dir="rtl"] .cours-attention, [dir="rtl"] .cours-exemples, [dir="rtl"] .zika-conseil { border-left: none; border-right: 5px solid var(--blue); }
 [dir="rtl"] .xl-tag { margin-left: 0; margin-right: 8px; }
+
+/* Verrou de progression : bouton « suivant » tant que la leçon n'est pas validée */
+.btn.is-locked { background: var(--muted, #94a3b8) !important; box-shadow: none !important; cursor: not-allowed; opacity: .8; }
+[data-tg-scheme="dark"] .btn.is-locked { background: #475569 !important; }
+/* Barre « langue choisie » dans l'accueil du coach */
+.onb-lang { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--card, #fff); border: 1px solid var(--border, #e2e8f0); border-radius: 12px; padding: 8px 14px; margin-bottom: 14px; font-size: 14px; }
+.lang-intro { text-align: center; padding-bottom: 4px; }
+.lang-intro h1 { margin: 6px 0 0; }
