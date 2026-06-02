@@ -158,15 +158,27 @@
      Approche « opt-out » : on traduit chaque nœud de texte, SAUF le contenu
      allemand à apprendre (vocabulaire, exemples, dialogues, réponses
      d'exercices) et ce qui est déjà localisé. */
+  // HARD : contenu purement allemand (la langue à apprendre) ou saisies —
+  // JAMAIS traduit par localizeUI.
   const NOLOC = [
     ".voc-de", ".voc-nom", ".art", ".voc-ex", ".cours-ex-de", ".cours-ex-gl-de", ".hl-de", ".conv-de", ".conv-loc",
-    ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag", ".immersion-banner", ".genre-legende",
-    ".cours-tag", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points", ".cours-table", "table",
+    ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag",
+    ".cours-tag", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points",
     ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
-    ".trou-input", ".trou-phrase", ".trad-source", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript", ".exo-question",
+    ".trou-input", ".trou-phrase", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript",
     ".xl", ".rp-fr", ".rp-bubble", ".rp-scene", ".rp-intro", ".gp-pts", ".stat-n", ".goal-num", ".nc-code", ".lang-name", ".lang-flag", ".badge-ic", ".comp-score",
     "code", "input", "textarea", "[contenteditable]"
   ].join(",");
+  // SOFT : conteneurs MIXTES (allemand + français) — tableaux, légendes, énoncés
+  // d'exercices, phrase à traduire, bannière d'immersion. On y traduit
+  // uniquement le texte clairement FRANÇAIS et on garde l'allemand intact.
+  const SOFTLOC = [
+    ".cours-table", "table", ".genre-legende", ".exo-question", ".trad-source", ".immersion-banner"
+  ].join(",");
+  // L'allemand n'utilise jamais é/è/ê/ç/à… ; ces accents + des mots-outils
+  // français propres signalent du français à traduire (sans déclencher sur
+  // des mots allemands comme « du », « des », « die »).
+  const FR_RE = /[éèêëàâîïôûùçœÉÈÊËÀÂÎÔÛÙÇŒ]|\b(je|tu|il|elle|on|nous|vous|ils|elles|est|sont|suis|avez|avec|pour|dans|sur|sous|votre|vos|mon|mes|ton|tes|ses|leur|leurs|ne|pas|que|qui|quoi|aux|mais|ou|cette|ces|cet|ce|la|le|les|une|phrase|phrases|salutation|collegue|appropriee|nom|prenom|pays|ville|pronom|traduction|masculin|feminin|neutre|vrai|faux|familier|pluriel|singulier|poli|verbe|mot|mots|reponse|correcte|correct|choisissez|completez|associez|ecoutez|exemple|exemples|reponses|matin|soir)\b/i;
   const _l10nDone = (typeof WeakSet !== "undefined") ? new WeakSet() : null;
   function localizeUI(root) {
     if (!root || !window.I18N) return;
@@ -182,6 +194,9 @@
       if (_l10nDone && _l10nDone.has(n)) continue;
       const p = n.parentElement;
       if (!p || (p.closest && p.closest(NOLOC))) continue;
+      // Conteneurs mixtes (tableaux, énoncés…) : on ne traduit que le français
+      // clair ; le reste (allemand) est conservé tel quel.
+      if (p.closest && p.closest(SOFTLOC) && !FR_RE.test(raw)) continue;
       if (_l10nDone) _l10nDone.add(n);
       const t = raw.trim();
       (groups[t] = groups[t] || []).push(n);
