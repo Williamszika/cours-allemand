@@ -16,10 +16,19 @@ window.GRAMMAIRE = {
       { titre: "Les pronoms personnels", intro: "Ils déterminent la terminaison du verbe.",
         tableau: { entetes: ["Pronom", "Sens"], lignes: [["ich", "je"], ["du", "tu"], ["er/sie/es", "il/elle"], ["wir", "nous"], ["ihr", "vous"], ["sie/Sie", "ils/vous (poli)"]] },
         note: "« Sie » (majuscule) = vouvoiement poli." },
-      { titre: "Le présent", intro: "Radical (infinitif sans -en) + terminaison.",
+      { titre: "Le présent",
+        regle: "On prend le **radical** (l'infinitif sans la terminaison **-en**) et on ajoute la terminaison du pronom : **-e, -st, -t, -en, -t, -en**. Et règle d'or de l'allemand : **le verbe conjugué est toujours en 2ᵉ position** dans une phrase déclarative.",
+        intro: "Avec **machen** (faire) : le radical est **mach-**. On obtient *ich mach**e***, *du mach**st***, *er mach**t***… Le verbe **sein** (être), lui, est totalement irrégulier — à connaître par cœur.",
         tableau: { entetes: ["Pronom", "mach-en", "sein"], lignes: [["ich", "mache", "bin"], ["du", "machst", "bist"], ["er/sie/es", "macht", "ist"], ["wir", "machen", "sind"], ["ihr", "macht", "seid"], ["sie/Sie", "machen", "sind"]] },
         schemas: [{ legende: "Phrase de base : le verbe conjugué est toujours en 2e position.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "mache", r: "verbe (2)", c: "verbe" }, { m: "eine Pause", r: "complément", c: "objet" }] }],
-        note: "« sein » est irrégulier : à apprendre par cœur." }
+        exemples: [
+          { de: "Ich wohne in Berlin.", fr: "J'habite à Berlin." },
+          { de: "Du machst eine Pause.", fr: "Tu fais une pause." },
+          { de: "Er ist mein Freund.", fr: "Il est mon ami." },
+          { de: "Wir sind müde.", fr: "Nous sommes fatigués." }
+        ],
+        note: "« sein » est irrégulier : à apprendre par cœur.",
+        attention: "Si le radical finit par **-t** ou **-d** (*arbeiten*, *finden*), on intercale un **-e-** pour pouvoir prononcer : *du arbeit**e**st*, *er find**e**t*." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Quelle terminaison avec « du » ?", options: ["-st", "-t", "-en", "-e"], correct: 0, explication: "du → radical + -st." },
@@ -35,9 +44,17 @@ window.GRAMMAIRE = {
     objectifs: ["Distinguer verbes réguliers et irréguliers", "Gérer les verbes à changement de voyelle"],
     grammairePoints: ["Verbes irréguliers", "e→i, e→ie, a→ä"],
     grammaire: [
-      { titre: "Verbes à changement de voyelle (2e/3e pers. sing.)", intro: "La voyelle du radical change au singulier.",
+      { titre: "Verbes à changement de voyelle (2e/3e pers. sing.)",
+        regle: "Certains verbes forts **changent la voyelle de leur radical** — mais **seulement** à la **2ᵉ personne (du)** et à la **3ᵉ du singulier (er/sie/es)**. Les autres personnes restent régulières.",
+        intro: "Trois changements fréquents : **e → i** (*sprechen* → er **spricht**), **e → ie** (*lesen* → er **liest**) et **a → ä** (*fahren* → er **fährt**).",
         tableau: { entetes: ["Type", "Infinitif", "er/sie/es"], lignes: [["e → i", "sprechen", "spricht"], ["e → ie", "lesen / sehen", "liest / sieht"], ["a → ä", "fahren", "fährt"], ["régulier", "machen", "macht"]] },
-        note: "Seules les 2e (du) et 3e (er/sie/es) personnes du singulier changent." }
+        exemples: [
+          { de: "Du sprichst sehr gut Deutsch.", fr: "Tu parles très bien allemand." },
+          { de: "Sie liest ein Buch.", fr: "Elle lit un livre." },
+          { de: "Er fährt nach Hamburg.", fr: "Il va (roule) à Hambourg." }
+        ],
+        note: "Seules les 2e (du) et 3e (er/sie/es) personnes du singulier changent.",
+        attention: "Au pluriel et avec *ich*/*wir*/*sie*, on garde la voyelle de l'infinitif : *wir **sprechen***, *ich **fahre*** (et non « ~~spreche~~ », « ~~fähre~~ »)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Er ___ Deutsch. (sprechen)", options: ["spricht", "sprecht", "sprichst", "sprechen"], correct: 0, explication: "sprechen : e→i → er spricht." },
@@ -53,9 +70,17 @@ window.GRAMMAIRE = {
     objectifs: ["Reconnaître le genre des noms", "Utiliser l'article défini et indéfini"],
     grammairePoints: ["der/die/das", "ein/eine"],
     grammaire: [
-      { titre: "Articles défini et indéfini (nominatif)", intro: "Tout nom allemand a un genre. L'article l'indique.",
+      { titre: "Articles défini et indéfini (nominatif)",
+        regle: "**Tout nom allemand a un genre** : masculin (**der**), féminin (**die**) ou neutre (**das**). L'article **défini** (*der/die/das* = le/la) désigne une chose connue ; l'article **indéfini** (*ein/eine* = un/une) une chose nouvelle.",
+        intro: "Le genre n'est **pas** toujours logique (*das Mädchen*, « la jeune fille », est neutre !). Apprends donc **toujours le nom avec son article** : pas « *Tisch* » mais « **der** Tisch ».",
         tableau: { entetes: ["Genre", "Défini", "Indéfini", "Exemple"], lignes: [["masculin", "der", "ein", "der/ein Mann"], ["féminin", "die", "eine", "die/eine Frau"], ["neutre", "das", "ein", "das/ein Kind"], ["pluriel", "die", "— (keine)", "die Kinder"]] },
-        note: "Les noms s'écrivent toujours avec une MAJUSCULE." }
+        exemples: [
+          { de: "Der Mann ist nett.", fr: "L'homme est gentil." },
+          { de: "Das ist eine Frau.", fr: "C'est une femme." },
+          { de: "Ich sehe ein Kind.", fr: "Je vois un enfant." }
+        ],
+        note: "Les noms s'écrivent toujours avec une MAJUSCULE.",
+        attention: "Au pluriel, l'article défini est **die** pour tous les genres — et il n'existe **pas** de pluriel de *ein* (on dit *Kinder* tout court, ou *keine Kinder* à la négation)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez l'article défini.", question: "___ Frau ist nett.", options: ["Die", "Der", "Das", "Den"], correct: 0, explication: "Frau est féminin → die." },
@@ -71,10 +96,18 @@ window.GRAMMAIRE = {
     objectifs: ["Choisir entre nicht et kein", "Décliner kein"],
     grammairePoints: ["nicht", "kein"],
     grammaire: [
-      { titre: "nicht ou kein ?", intro: "« kein » nie un nom (indéfini ou sans article). « nicht » nie le reste.",
+      { titre: "nicht ou kein ?",
+        regle: "**kein** nie un **nom** sans article ou avec un article indéfini (*ein*). **nicht** nie tout le reste : un **verbe**, un **adjectif**, un nom **défini** (avec *der/die/das*) ou un complément précis.",
+        intro: "Le réflexe : « *Ich habe **ein** Auto* » → négation avec **kein** : « *Ich habe **kein** Auto* ». Mais « *Ich mag **den** Film* » → négation avec **nicht** : « *Ich mag den Film **nicht*** ».",
         tableau: { entetes: ["Cas", "Négation", "Exemple"], lignes: [["nom indéfini", "kein", "Ich habe keinen Hund."], ["nom défini", "nicht", "Ich mag den Film nicht."], ["verbe", "nicht", "Ich arbeite nicht."], ["adjectif", "nicht", "Das ist nicht gut."]] },
         schemas: [{ legende: "« nicht » se place généralement à la fin de la phrase.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "arbeite", r: "verbe (2)", c: "verbe" }, { m: "heute", r: "temps", c: "objet" }, { m: "nicht", r: "négation", c: "fin" }] }],
-        note: "kein se décline comme « ein » : keinen (m. acc.), keine (f./pl.), kein (n.)." }
+        exemples: [
+          { de: "Ich habe keine Zeit.", fr: "Je n'ai pas le temps." },
+          { de: "Das ist nicht gut.", fr: "Ce n'est pas bien." },
+          { de: "Er kommt heute nicht.", fr: "Il ne vient pas aujourd'hui." }
+        ],
+        note: "kein se décline comme « ein » : keinen (m. acc.), keine (f./pl.), kein (n.).",
+        attention: "**nicht** se place **avant** un adjectif ou un complément de lieu (« *Das ist **nicht** schön* », « *Ich fahre **nicht** nach Berlin* »), mais **à la fin** quand il nie le verbe seul (« *Ich arbeite **nicht*** »)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "nicht ou kein ?", question: "Ich habe ___ Zeit.", options: ["keine", "nicht", "kein", "nichts"], correct: 0, explication: "die Zeit (f.) sans article → keine." },
@@ -90,9 +123,17 @@ window.GRAMMAIRE = {
     objectifs: ["Situer un objet (Wo?)", "Employer les prépositions de lieu + datif"],
     grammairePoints: ["in, auf, neben…", "Wo? + datif"],
     grammaire: [
-      { titre: "Où ? (Wo?) → datif", intro: "Pour situer, ces prépositions sont suivies du datif.",
+      { titre: "Où ? (Wo?) → datif",
+        regle: "Pour dire **où se trouve** quelque chose (question **Wo?**), ces prépositions de lieu sont suivies du **datif**. Au datif : *der* → **dem**, *das* → **dem**, *die* → **der**.",
+        intro: "Pense à la **position immobile** : *Das Buch ist **auf dem** Tisch* (sur la table). On contracte souvent : *in dem* = **im**, *an dem* = **am**.",
         tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["in", "dans", "im Zimmer"], ["auf", "sur", "auf dem Tisch"], ["unter", "sous", "unter dem Bett"], ["neben", "à côté de", "neben der Tür"], ["vor / hinter", "devant / derrière", "vor dem Haus"], ["zwischen", "entre", "zwischen A und B"]] },
-        note: "Datif : der→dem, das→dem, die→der. « in dem » = im, « an dem » = am." }
+        exemples: [
+          { de: "Die Lampe ist über dem Tisch.", fr: "La lampe est au-dessus de la table." },
+          { de: "Die Katze schläft unter dem Bett.", fr: "Le chat dort sous le lit." },
+          { de: "Ich wohne in der Stadt.", fr: "J'habite en ville." }
+        ],
+        note: "Datif : der→dem, das→dem, die→der. « in dem » = im, « an dem » = am.",
+        attention: "Ces prépositions (*in, auf, an, unter…*) peuvent aussi prendre l'**accusatif** quand il y a un **déplacement** (question **Wohin?**). Ici, on parle de **position** (Wo?) → **datif**." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Das Buch ist ___ dem Tisch.", options: ["auf", "in", "neben", "an"], correct: 0, explication: "sur la table → auf." },
@@ -108,10 +149,18 @@ window.GRAMMAIRE = {
     objectifs: ["Former l'accusatif (COD)", "Utiliser les pronoms à l'accusatif"],
     grammairePoints: ["den/einen", "mich/dich/ihn…"],
     grammaire: [
-      { titre: "Articles à l'accusatif", intro: "Le COD est à l'accusatif. Seul le MASCULIN change.",
+      { titre: "Articles à l'accusatif",
+        regle: "Le **complément d'objet direct** (le COD, celui qui « subit » l'action) se met à l'**accusatif**. Bonne nouvelle : **seul le masculin change** — *der* → **den**, *ein* → **einen**. Féminin, neutre et pluriel ne bougent pas.",
+        intro: "Compare : *Der Mann* (sujet) → *Ich sehe **den** Mann* (COD). *Ein Hund* → *Ich habe **einen** Hund*.",
         tableau: { entetes: ["Genre", "Nominatif", "Accusatif"], lignes: [["masculin", "der / ein", "den / einen"], ["féminin", "die / eine", "die / eine"], ["neutre", "das / ein", "das / ein"], ["pluriel", "die", "die"]] },
         schemas: [{ legende: "Le complément d'objet direct (COD) est à l'accusatif — seul le masculin change (der → den).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "sehe", r: "verbe (2)", c: "verbe" }, { m: "den Mann", r: "COD (accusatif)", c: "objet" }] }],
-        note: "Ex. : Ich sehe den Mann / einen Hund." },
+        exemples: [
+          { de: "Ich nehme einen Kaffee.", fr: "Je prends un café." },
+          { de: "Sie kauft eine Tasche.", fr: "Elle achète un sac." },
+          { de: "Wir sehen das Haus.", fr: "Nous voyons la maison." }
+        ],
+        note: "Ex. : Ich sehe den Mann / einen Hund.",
+        attention: "Beaucoup de débutants oublient le **-n** du masculin : on dit *Ich habe **einen** Hund* (et non « ~~ein Hund~~ »)." },
       { titre: "Pronoms personnels à l'accusatif", intro: "",
         tableau: { entetes: ["Nominatif", "Accusatif"], lignes: [["ich", "mich"], ["du", "dich"], ["er/sie/es", "ihn / sie / es"], ["wir", "uns"], ["ihr", "euch"], ["sie/Sie", "sie / Sie"]] },
         note: "Ex. : Ich liebe dich. / Ich sehe ihn." }

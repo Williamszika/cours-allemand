@@ -663,6 +663,62 @@ a.stats-lecon:hover { border-color: var(--blue); transform: translateX(2px); }
 .niveau-actuel-link:hover { text-decoration: underline; }
 .coach-nom { margin: 0 0 2px; font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--blue); }
 
+/* ===== Cours pédagogiques : grammaire & vocabulaire enrichis ===== */
+.cours .exo-group-sub { margin-top: 2px; }
+.cours-block { margin: 0 0 26px; padding-bottom: 4px; }
+.cours-block + .cours-block { border-top: 1px dashed var(--line); padding-top: 22px; }
+.cours-titre { font-size: 19px; margin: 0 0 10px; }
+.cours-text { font-size: 15.5px; line-height: 1.7; margin: 10px 0; }
+.cours-text strong, .cours-regle strong, .cours-astuce strong, .cours-attention strong, .cours-points strong { color: var(--blue); }
+.hl-de { background: #fff7cc; border-radius: 5px; padding: 0 4px; font-weight: 600; color: #7c5e00; }
+[data-tg-scheme="dark"] .hl-de { background: #4d3f00; color: #ffe88a; }
+.cours-points { margin: 10px 0; padding-left: 20px; }
+.cours-points li { margin: 6px 0; line-height: 1.6; }
+
+/* Encadrés colorés */
+.cours-regle, .cours-astuce, .cours-attention, .cours-exemples, .zika-conseil {
+  border-radius: var(--radius-sm); padding: 14px 16px; margin: 14px 0; font-size: 14.5px; line-height: 1.65;
+  border-left: 5px solid var(--blue); background: var(--blue-light, #eef2ff);
+}
+.cours-tag { display: inline-block; font-weight: 800; font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
+.cours-regle { border-left-color: var(--blue); background: #eef4ff; }
+.cours-regle .cours-tag { color: var(--blue); }
+.cours-astuce { border-left-color: var(--green, #059669); background: #ecfdf5; }
+.cours-astuce .cours-tag { color: var(--green, #059669); }
+.cours-attention { border-left-color: #e11d48; background: #fff1f3; }
+.cours-attention .cours-tag { color: #e11d48; }
+.cours-exemples { border-left-color: #7c3aed; background: #f6f2ff; }
+.cours-exemples .cours-tag { color: #7c3aed; }
+[data-tg-scheme="dark"] .cours-regle { background: #11203f; }
+[data-tg-scheme="dark"] .cours-astuce { background: #0f2a1d; }
+[data-tg-scheme="dark"] .cours-attention { background: #2a1218; }
+[data-tg-scheme="dark"] .cours-exemples, [data-tg-scheme="dark"] .zika-conseil { background: #1c1633; }
+
+/* Exemples : phrase allemande en gras + traduction */
+.cours-ex-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 6px 0; border-top: 1px solid rgba(124,58,237,.15); }
+.cours-ex-row:first-of-type { border-top: none; }
+.cours-ex-de { font-weight: 700; color: var(--text); display: inline-flex; align-items: center; gap: 6px; }
+.cours-ex-fr { color: var(--muted); font-size: 13.5px; font-style: italic; }
+
+/* Conseil de Zika */
+.zika-conseil { border-left-color: #ea580c; background: #fff7ed; }
+.zika-conseil .cours-tag { color: #ea580c; }
+
+/* Genres colorés (vocabulaire) */
+.genre-legende { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; font-size: 13px; color: var(--muted); margin: 0 0 14px; }
+.art { font-weight: 800; }
+.art-der { color: #2563eb; }
+.art-die { color: #db2777; }
+.art-das { color: #059669; }
+.voc-nom { font-weight: 700; }
+.voc-card.genre-der { border-left: 4px solid #2563eb; }
+.voc-card.genre-die { border-left: 4px solid #db2777; }
+.voc-card.genre-das { border-left: 4px solid #059669; }
+.voc-ex { font-size: 13px; color: var(--muted); margin-top: 6px; font-style: italic; }
+
+/* Barre de progression du niveau courant */
+.niveau-prog { margin-top: 10px; }
+
 </style>
     <link
       rel="icon"
@@ -3597,10 +3653,19 @@ window.GRAMMAIRE = {
       { titre: "Les pronoms personnels", intro: "Ils déterminent la terminaison du verbe.",
         tableau: { entetes: ["Pronom", "Sens"], lignes: [["ich", "je"], ["du", "tu"], ["er/sie/es", "il/elle"], ["wir", "nous"], ["ihr", "vous"], ["sie/Sie", "ils/vous (poli)"]] },
         note: "« Sie » (majuscule) = vouvoiement poli." },
-      { titre: "Le présent", intro: "Radical (infinitif sans -en) + terminaison.",
+      { titre: "Le présent",
+        regle: "On prend le **radical** (l'infinitif sans la terminaison **-en**) et on ajoute la terminaison du pronom : **-e, -st, -t, -en, -t, -en**. Et règle d'or de l'allemand : **le verbe conjugué est toujours en 2ᵉ position** dans une phrase déclarative.",
+        intro: "Avec **machen** (faire) : le radical est **mach-**. On obtient *ich mach**e***, *du mach**st***, *er mach**t***… Le verbe **sein** (être), lui, est totalement irrégulier — à connaître par cœur.",
         tableau: { entetes: ["Pronom", "mach-en", "sein"], lignes: [["ich", "mache", "bin"], ["du", "machst", "bist"], ["er/sie/es", "macht", "ist"], ["wir", "machen", "sind"], ["ihr", "macht", "seid"], ["sie/Sie", "machen", "sind"]] },
         schemas: [{ legende: "Phrase de base : le verbe conjugué est toujours en 2e position.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "mache", r: "verbe (2)", c: "verbe" }, { m: "eine Pause", r: "complément", c: "objet" }] }],
-        note: "« sein » est irrégulier : à apprendre par cœur." }
+        exemples: [
+          { de: "Ich wohne in Berlin.", fr: "J'habite à Berlin." },
+          { de: "Du machst eine Pause.", fr: "Tu fais une pause." },
+          { de: "Er ist mein Freund.", fr: "Il est mon ami." },
+          { de: "Wir sind müde.", fr: "Nous sommes fatigués." }
+        ],
+        note: "« sein » est irrégulier : à apprendre par cœur.",
+        attention: "Si le radical finit par **-t** ou **-d** (*arbeiten*, *finden*), on intercale un **-e-** pour pouvoir prononcer : *du arbeit**e**st*, *er find**e**t*." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Quelle terminaison avec « du » ?", options: ["-st", "-t", "-en", "-e"], correct: 0, explication: "du → radical + -st." },
@@ -3616,9 +3681,17 @@ window.GRAMMAIRE = {
     objectifs: ["Distinguer verbes réguliers et irréguliers", "Gérer les verbes à changement de voyelle"],
     grammairePoints: ["Verbes irréguliers", "e→i, e→ie, a→ä"],
     grammaire: [
-      { titre: "Verbes à changement de voyelle (2e/3e pers. sing.)", intro: "La voyelle du radical change au singulier.",
+      { titre: "Verbes à changement de voyelle (2e/3e pers. sing.)",
+        regle: "Certains verbes forts **changent la voyelle de leur radical** — mais **seulement** à la **2ᵉ personne (du)** et à la **3ᵉ du singulier (er/sie/es)**. Les autres personnes restent régulières.",
+        intro: "Trois changements fréquents : **e → i** (*sprechen* → er **spricht**), **e → ie** (*lesen* → er **liest**) et **a → ä** (*fahren* → er **fährt**).",
         tableau: { entetes: ["Type", "Infinitif", "er/sie/es"], lignes: [["e → i", "sprechen", "spricht"], ["e → ie", "lesen / sehen", "liest / sieht"], ["a → ä", "fahren", "fährt"], ["régulier", "machen", "macht"]] },
-        note: "Seules les 2e (du) et 3e (er/sie/es) personnes du singulier changent." }
+        exemples: [
+          { de: "Du sprichst sehr gut Deutsch.", fr: "Tu parles très bien allemand." },
+          { de: "Sie liest ein Buch.", fr: "Elle lit un livre." },
+          { de: "Er fährt nach Hamburg.", fr: "Il va (roule) à Hambourg." }
+        ],
+        note: "Seules les 2e (du) et 3e (er/sie/es) personnes du singulier changent.",
+        attention: "Au pluriel et avec *ich*/*wir*/*sie*, on garde la voyelle de l'infinitif : *wir **sprechen***, *ich **fahre*** (et non « ~~spreche~~ », « ~~fähre~~ »)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Er ___ Deutsch. (sprechen)", options: ["spricht", "sprecht", "sprichst", "sprechen"], correct: 0, explication: "sprechen : e→i → er spricht." },
@@ -3634,9 +3707,17 @@ window.GRAMMAIRE = {
     objectifs: ["Reconnaître le genre des noms", "Utiliser l'article défini et indéfini"],
     grammairePoints: ["der/die/das", "ein/eine"],
     grammaire: [
-      { titre: "Articles défini et indéfini (nominatif)", intro: "Tout nom allemand a un genre. L'article l'indique.",
+      { titre: "Articles défini et indéfini (nominatif)",
+        regle: "**Tout nom allemand a un genre** : masculin (**der**), féminin (**die**) ou neutre (**das**). L'article **défini** (*der/die/das* = le/la) désigne une chose connue ; l'article **indéfini** (*ein/eine* = un/une) une chose nouvelle.",
+        intro: "Le genre n'est **pas** toujours logique (*das Mädchen*, « la jeune fille », est neutre !). Apprends donc **toujours le nom avec son article** : pas « *Tisch* » mais « **der** Tisch ».",
         tableau: { entetes: ["Genre", "Défini", "Indéfini", "Exemple"], lignes: [["masculin", "der", "ein", "der/ein Mann"], ["féminin", "die", "eine", "die/eine Frau"], ["neutre", "das", "ein", "das/ein Kind"], ["pluriel", "die", "— (keine)", "die Kinder"]] },
-        note: "Les noms s'écrivent toujours avec une MAJUSCULE." }
+        exemples: [
+          { de: "Der Mann ist nett.", fr: "L'homme est gentil." },
+          { de: "Das ist eine Frau.", fr: "C'est une femme." },
+          { de: "Ich sehe ein Kind.", fr: "Je vois un enfant." }
+        ],
+        note: "Les noms s'écrivent toujours avec une MAJUSCULE.",
+        attention: "Au pluriel, l'article défini est **die** pour tous les genres — et il n'existe **pas** de pluriel de *ein* (on dit *Kinder* tout court, ou *keine Kinder* à la négation)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez l'article défini.", question: "___ Frau ist nett.", options: ["Die", "Der", "Das", "Den"], correct: 0, explication: "Frau est féminin → die." },
@@ -3652,10 +3733,18 @@ window.GRAMMAIRE = {
     objectifs: ["Choisir entre nicht et kein", "Décliner kein"],
     grammairePoints: ["nicht", "kein"],
     grammaire: [
-      { titre: "nicht ou kein ?", intro: "« kein » nie un nom (indéfini ou sans article). « nicht » nie le reste.",
+      { titre: "nicht ou kein ?",
+        regle: "**kein** nie un **nom** sans article ou avec un article indéfini (*ein*). **nicht** nie tout le reste : un **verbe**, un **adjectif**, un nom **défini** (avec *der/die/das*) ou un complément précis.",
+        intro: "Le réflexe : « *Ich habe **ein** Auto* » → négation avec **kein** : « *Ich habe **kein** Auto* ». Mais « *Ich mag **den** Film* » → négation avec **nicht** : « *Ich mag den Film **nicht*** ».",
         tableau: { entetes: ["Cas", "Négation", "Exemple"], lignes: [["nom indéfini", "kein", "Ich habe keinen Hund."], ["nom défini", "nicht", "Ich mag den Film nicht."], ["verbe", "nicht", "Ich arbeite nicht."], ["adjectif", "nicht", "Das ist nicht gut."]] },
         schemas: [{ legende: "« nicht » se place généralement à la fin de la phrase.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "arbeite", r: "verbe (2)", c: "verbe" }, { m: "heute", r: "temps", c: "objet" }, { m: "nicht", r: "négation", c: "fin" }] }],
-        note: "kein se décline comme « ein » : keinen (m. acc.), keine (f./pl.), kein (n.)." }
+        exemples: [
+          { de: "Ich habe keine Zeit.", fr: "Je n'ai pas le temps." },
+          { de: "Das ist nicht gut.", fr: "Ce n'est pas bien." },
+          { de: "Er kommt heute nicht.", fr: "Il ne vient pas aujourd'hui." }
+        ],
+        note: "kein se décline comme « ein » : keinen (m. acc.), keine (f./pl.), kein (n.).",
+        attention: "**nicht** se place **avant** un adjectif ou un complément de lieu (« *Das ist **nicht** schön* », « *Ich fahre **nicht** nach Berlin* »), mais **à la fin** quand il nie le verbe seul (« *Ich arbeite **nicht*** »)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "nicht ou kein ?", question: "Ich habe ___ Zeit.", options: ["keine", "nicht", "kein", "nichts"], correct: 0, explication: "die Zeit (f.) sans article → keine." },
@@ -3671,9 +3760,17 @@ window.GRAMMAIRE = {
     objectifs: ["Situer un objet (Wo?)", "Employer les prépositions de lieu + datif"],
     grammairePoints: ["in, auf, neben…", "Wo? + datif"],
     grammaire: [
-      { titre: "Où ? (Wo?) → datif", intro: "Pour situer, ces prépositions sont suivies du datif.",
+      { titre: "Où ? (Wo?) → datif",
+        regle: "Pour dire **où se trouve** quelque chose (question **Wo?**), ces prépositions de lieu sont suivies du **datif**. Au datif : *der* → **dem**, *das* → **dem**, *die* → **der**.",
+        intro: "Pense à la **position immobile** : *Das Buch ist **auf dem** Tisch* (sur la table). On contracte souvent : *in dem* = **im**, *an dem* = **am**.",
         tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["in", "dans", "im Zimmer"], ["auf", "sur", "auf dem Tisch"], ["unter", "sous", "unter dem Bett"], ["neben", "à côté de", "neben der Tür"], ["vor / hinter", "devant / derrière", "vor dem Haus"], ["zwischen", "entre", "zwischen A und B"]] },
-        note: "Datif : der→dem, das→dem, die→der. « in dem » = im, « an dem » = am." }
+        exemples: [
+          { de: "Die Lampe ist über dem Tisch.", fr: "La lampe est au-dessus de la table." },
+          { de: "Die Katze schläft unter dem Bett.", fr: "Le chat dort sous le lit." },
+          { de: "Ich wohne in der Stadt.", fr: "J'habite en ville." }
+        ],
+        note: "Datif : der→dem, das→dem, die→der. « in dem » = im, « an dem » = am.",
+        attention: "Ces prépositions (*in, auf, an, unter…*) peuvent aussi prendre l'**accusatif** quand il y a un **déplacement** (question **Wohin?**). Ici, on parle de **position** (Wo?) → **datif**." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Das Buch ist ___ dem Tisch.", options: ["auf", "in", "neben", "an"], correct: 0, explication: "sur la table → auf." },
@@ -3689,10 +3786,18 @@ window.GRAMMAIRE = {
     objectifs: ["Former l'accusatif (COD)", "Utiliser les pronoms à l'accusatif"],
     grammairePoints: ["den/einen", "mich/dich/ihn…"],
     grammaire: [
-      { titre: "Articles à l'accusatif", intro: "Le COD est à l'accusatif. Seul le MASCULIN change.",
+      { titre: "Articles à l'accusatif",
+        regle: "Le **complément d'objet direct** (le COD, celui qui « subit » l'action) se met à l'**accusatif**. Bonne nouvelle : **seul le masculin change** — *der* → **den**, *ein* → **einen**. Féminin, neutre et pluriel ne bougent pas.",
+        intro: "Compare : *Der Mann* (sujet) → *Ich sehe **den** Mann* (COD). *Ein Hund* → *Ich habe **einen** Hund*.",
         tableau: { entetes: ["Genre", "Nominatif", "Accusatif"], lignes: [["masculin", "der / ein", "den / einen"], ["féminin", "die / eine", "die / eine"], ["neutre", "das / ein", "das / ein"], ["pluriel", "die", "die"]] },
         schemas: [{ legende: "Le complément d'objet direct (COD) est à l'accusatif — seul le masculin change (der → den).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "sehe", r: "verbe (2)", c: "verbe" }, { m: "den Mann", r: "COD (accusatif)", c: "objet" }] }],
-        note: "Ex. : Ich sehe den Mann / einen Hund." },
+        exemples: [
+          { de: "Ich nehme einen Kaffee.", fr: "Je prends un café." },
+          { de: "Sie kauft eine Tasche.", fr: "Elle achète un sac." },
+          { de: "Wir sehen das Haus.", fr: "Nous voyons la maison." }
+        ],
+        note: "Ex. : Ich sehe den Mann / einen Hund.",
+        attention: "Beaucoup de débutants oublient le **-n** du masculin : on dit *Ich habe **einen** Hund* (et non « ~~ein Hund~~ »)." },
       { titre: "Pronoms personnels à l'accusatif", intro: "",
         tableau: { entetes: ["Nominatif", "Accusatif"], lignes: [["ich", "mich"], ["du", "dich"], ["er/sie/es", "ihn / sie / es"], ["wir", "uns"], ["ihr", "euch"], ["sie/Sie", "sie / Sie"]] },
         note: "Ex. : Ich liebe dich. / Ich sehe ihn." }
@@ -9811,6 +9916,16 @@ window.Progress = (function () {
     save(data);
   }
 
+  function getFaiblesses() {
+    return load().faiblesses || [];
+  }
+
+  function setFaiblesses(arr) {
+    const data = load();
+    data.faiblesses = Array.isArray(arr) ? arr : [];
+    save(data);
+  }
+
   function reset() {
     save(defaults());
   }
@@ -9818,7 +9933,7 @@ window.Progress = (function () {
   return {
     load, save, touchStreak, getLecon, setExercice, marquerTermine,
     estTermine, resumeGlobal, setTestScore, getTestScore,
-    getNiveau, setNiveau, reset
+    getNiveau, setNiveau, getFaiblesses, setFaiblesses, reset
   };
 })();
 
@@ -10934,6 +11049,57 @@ window.Exercises = (function () {
     return b;
   }
 
+  /* ---- Rendu pédagogique : mise en forme (gras, surlignage, genres) ---- */
+  function escapeHtml(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function mdLite(s) {
+    let t = escapeHtml(s);
+    t = t.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    t = t.replace(/«\s*([^»]+?)\s*»/g, '<span class="hl-de">«&nbsp;$1&nbsp;»</span>');
+    return t;
+  }
+  function vocDeHtml(de) {
+    const m = String(de).match(/^(der|die|das)\s+(.+)$/);
+    if (m) return '<span class="art art-' + m[1] + '">' + m[1] + '</span> <strong class="voc-nom">' + escapeHtml(m[2]) + "</strong>";
+    return '<strong class="voc-nom">' + escapeHtml(de) + "</strong>";
+  }
+  function buildExemples(arr) {
+    const box = el("div", "cours-exemples");
+    box.appendChild(el("div", "cours-tag", "✅ Exemples"));
+    arr.forEach((e) => {
+      const row = el("div", "cours-ex-row");
+      const de = el("div", "cours-ex-de");
+      de.appendChild(el("span", "", e.de));
+      de.appendChild(speakButton(e.de));
+      row.appendChild(de);
+      if (e.fr) row.appendChild(el("div", "cours-ex-fr", e.fr));
+      box.appendChild(row);
+    });
+    return box;
+  }
+  function deriveExemples(tableau) {
+    if (!tableau || !tableau.entetes) return null;
+    let idx = -1;
+    tableau.entetes.forEach((h, i) => { if (idx < 0 && /exemple|beispiel|satz/i.test(h)) idx = i; });
+    if (idx < 0) return null;
+    const out = [];
+    tableau.lignes.forEach((row) => { const de = row[idx]; if (de && /\s/.test(de)) out.push({ de: de, fr: "" }); });
+    return out.length ? out.slice(0, 6) : null;
+  }
+  function renderGrammarBlock(g) {
+    const block = el("div", "gram-block cours-block");
+    block.appendChild(el("h3", "cours-titre", g.titre + (g.titreDE ? " · " + g.titreDE : "")));
+    if (g.regle) { const r = el("div", "cours-regle"); r.innerHTML = '<span class="cours-tag">📘 La règle</span><div>' + mdLite(g.regle) + "</div>"; block.appendChild(r); }
+    if (g.intro) { const p = el("p", "cours-text"); p.innerHTML = mdLite(g.intro); block.appendChild(p); }
+    if (g.points && g.points.length) { const ul = el("ul", "cours-points"); g.points.forEach((pt) => { const li = el("li", ""); li.innerHTML = mdLite(pt); ul.appendChild(li); }); block.appendChild(ul); }
+    if (g.tableau) block.appendChild(buildTable(g.tableau));
+    if (g.schemas) block.appendChild(buildSchemas(g.schemas));
+    const exs = g.exemples || deriveExemples(g.tableau);
+    if (exs && exs.length) block.appendChild(buildExemples(exs));
+    if (g.note) { const n = el("div", "cours-astuce"); n.innerHTML = '<span class="cours-tag">💡 Bon à savoir</span><div>' + mdLite(g.note) + "</div>"; block.appendChild(n); }
+    if (g.attention) { const a = el("div", "cours-attention"); a.innerHTML = '<span class="cours-tag">⚠️ Attention</span><div>' + mdLite(g.attention) + "</div>"; block.appendChild(a); }
+    return block;
+  }
+
   /* ====================================================================
      APERÇU DU PROGRAMME (page d'accueil)
      ==================================================================== */
@@ -10980,6 +11146,26 @@ window.Exercises = (function () {
       '<div class="bar"><div class="bar-fill" style="width:' + res.pourcent + '%"></div></div>';
     hero.appendChild(prog);
 
+    /* Progression DANS le niveau en cours */
+    const etapeN = prochaineEtape();
+    let curNiv = niveauActuel;
+    const mNiv = etapeN.match(/^#\/lecon\/([a-z0-9]+)/);
+    if (mNiv) { const fi = flat[leconIndex(mNiv[1])]; if (fi) curNiv = fi.lecon.niveau; }
+    if (!curNiv) { const undone = flat.find((f) => !window.Progress.estTermine(f.lecon.id)); curNiv = undone ? undone.lecon.niveau : "C2"; }
+    if (curNiv) {
+      const lecNiv = flat.filter((f) => f.lecon.niveau === curNiv);
+      const faitsNiv = lecNiv.filter((f) => window.Progress.estTermine(f.lecon.id)).length;
+      const pctNiv = lecNiv.length ? Math.round((faitsNiv / lecNiv.length) * 100) : 0;
+      const mColor = (COURS.modules.find((m) => (m.niveau || "A1") === curNiv) || {}).couleur || "#2563eb";
+      const progN = el("div", "global-prog niveau-prog");
+      progN.style.setProperty("--np", mColor);
+      progN.innerHTML =
+        '<div class="global-prog-head"><span>📈 Niveau ' + curNiv + " (" + (NIVEAU_LABELS[curNiv] || "") + ")</span><span>" +
+        faitsNiv + "/" + lecNiv.length + " leçons</span></div>" +
+        '<div class="bar"><div class="bar-fill" style="width:' + pctNiv + "%;background:" + mColor + '"></div></div>';
+      hero.appendChild(progN);
+    }
+
     const cta = el("div", "hero-cta");
     const etape = prochaineEtape();
     const btn = el("a", "btn btn-primary big");
@@ -11019,6 +11205,18 @@ window.Exercises = (function () {
     cta.appendChild(audioInfo);
     hero.appendChild(cta);
     frag.appendChild(hero);
+
+    /* --- Conseil de Zika (points faibles repérés au test) --- */
+    const faibles = window.Progress.getFaiblesses();
+    if (faibles && faibles.length) {
+      const tip = el("section", "section");
+      const tc = el("div", "zika-conseil");
+      tc.innerHTML = '<span class="cours-tag">💡 Le conseil de Zika</span>' +
+        "<div>D'après ton test, travaille en priorité : <strong>" + faibles.map(escapeHtml).join("</strong>, <strong>") + "</strong>.</div>" +
+        '<a class="btn btn-ghost small" href="#/revision" style="margin-top:10px">🔁 Réviser maintenant</a>';
+      tip.appendChild(tc);
+      frag.appendChild(tip);
+    }
 
     /* --- Méthode --- */
     const meth = el("section", "section");
@@ -11285,47 +11483,47 @@ window.Exercises = (function () {
 
     /* --- Vocabulaire (absent pour les leçons de grammaire) --- */
     if (hasVoc) {
-    const voc = el("section", "lesson-section");
+    const voc = el("section", "lesson-section cours");
     voc.id = "voc";
     const vocHead = el("div", "ls-head");
-    vocHead.appendChild(el("h2", "", "🗂️ Vocabulaire"));
+    vocHead.appendChild(el("h2", "", "🗂️ Cours de vocabulaire"));
     const playAll = el("button", "btn btn-ghost small", "🔊 Tout écouter");
     playAll.type = "button";
     playAll.addEventListener("click", () => playSequence(l.vocabulaire.map((v) => v.de)));
     vocHead.appendChild(playAll);
     voc.appendChild(vocHead);
-    voc.appendChild(el("p", "exo-group-sub", "🔊 Cliquez sur l'icône d'un mot (ou « Tout écouter »), écoutez la prononciation allemande, puis répétez à voix haute."));
+    voc.appendChild(el("p", "exo-group-sub", "🔊 Écoute chaque mot et répète-le à voix haute. Apprends toujours le mot avec son article : il donne le genre. Les couleurs t'aident à mémoriser."));
+    const leg = el("div", "genre-legende");
+    leg.innerHTML = '<span class="art art-der">der</span> masculin&nbsp;&nbsp;·&nbsp;&nbsp;<span class="art art-die">die</span> féminin&nbsp;&nbsp;·&nbsp;&nbsp;<span class="art art-das">das</span> neutre';
+    voc.appendChild(leg);
 
     const vocGrid = el("div", "voc-grid");
     l.vocabulaire.forEach((v) => {
       const c = el("div", "voc-card");
+      const gm = String(v.de).match(/^(der|die|das)\s/);
+      if (gm) c.classList.add("genre-" + gm[1]);
       const top2 = el("div", "voc-top");
       const deWrap = el("div", "voc-de");
-      deWrap.appendChild(el("span", "", v.de));
+      const span = el("span", "");
+      span.innerHTML = vocDeHtml(v.de);
+      deWrap.appendChild(span);
       deWrap.appendChild(speakButton(v.de));
       top2.appendChild(deWrap);
       c.appendChild(top2);
       c.appendChild(el("div", "voc-fr", v.fr));
-      if (v.ex) c.appendChild(el("div", "voc-ex", "« " + v.ex + " »"));
+      if (v.ex) { const ex = el("div", "voc-ex"); ex.innerHTML = "« " + escapeHtml(v.ex) + " »"; c.appendChild(ex); }
       vocGrid.appendChild(c);
     });
     voc.appendChild(vocGrid);
     frag.appendChild(voc);
     }
 
-    /* --- Grammaire --- */
-    const gram = el("section", "lesson-section");
+    /* --- Grammaire (cours pédagogique) --- */
+    const gram = el("section", "lesson-section cours");
     gram.id = "gram";
-    gram.appendChild(el("h2", "", "📐 Grammaire"));
-    l.grammaire.forEach((g) => {
-      const block = el("div", "gram-block");
-      block.appendChild(el("h3", "", g.titre));
-      if (g.intro) block.appendChild(el("p", "gram-intro", g.intro));
-      if (g.tableau) block.appendChild(buildTable(g.tableau));
-      if (g.schemas) block.appendChild(buildSchemas(g.schemas));
-      if (g.note) block.appendChild(el("p", "gram-note", g.note));
-      gram.appendChild(block);
-    });
+    gram.appendChild(el("h2", "", "📐 Cours de grammaire"));
+    gram.appendChild(el("p", "exo-group-sub", "Lis l'explication et observe les exemples colorés avant de passer aux exercices."));
+    l.grammaire.forEach((g) => gram.appendChild(renderGrammarBlock(g)));
     frag.appendChild(gram);
 
     /* --- Dialogue (absent pour les leçons de grammaire) --- */
@@ -11916,6 +12114,7 @@ window.Exercises = (function () {
     const labels = NIVEAU_LABELS;
     const frag = document.createDocumentFragment();
 
+    const salutDE = "Hallo! Ich bin Zika, dein Deutsch-Coach. Lass uns gemeinsam dein Niveau finden!";
     const hero = el("section", "section onboarding");
     hero.innerHTML =
       '<div class="coach-avatar">🧑‍🏫</div>' +
@@ -11923,6 +12122,12 @@ window.Exercises = (function () {
       "<h1>Hallo, ich bin Zika — dein Deutsch-Coach!</h1>" +
       '<p class="onboarding-intro">Pour te proposer les bonnes leçons, dis-moi où tu en es en allemand. ' +
       "Choisis ton niveau — ou laisse Zika l'évaluer avec un petit test (grammaire, écoute, écrit et oral, comme à l'examen).</p>";
+    if (window.Speech && window.Speech.isSupported()) {
+      const ecouteZika = el("button", "btn btn-ghost small", "🔊 Écouter Zika");
+      ecouteZika.type = "button";
+      ecouteZika.addEventListener("click", () => window.Speech.speak(salutDE));
+      hero.appendChild(ecouteZika);
+    }
     frag.appendChild(hero);
 
     const testSec = el("section", "section");
@@ -11951,6 +12156,8 @@ window.Exercises = (function () {
     app.innerHTML = "";
     app.appendChild(frag);
     if (window.TG) window.TG.setMainButton("🎯 Évaluer mon niveau", () => { location.hash = "#/placement"; });
+    // Zika salue à voix haute (si autorisé par le navigateur)
+    if (window.Speech && window.Speech.isSupported()) { try { setTimeout(() => window.Speech.speak(salutDE), 400); } catch (e) {} }
     window.scrollTo(0, 0);
   }
 
@@ -11987,13 +12194,20 @@ window.Exercises = (function () {
     row.appendChild(submit);
     frag.appendChild(row);
 
+    const faibles = (state.faibles || []).slice();
+    function noteFaible(type) {
+      const skill = type === "ecoute" ? "Compréhension orale (écoute)" : type === "oral" ? "Expression orale" : "Grammaire & expression écrite";
+      if (faibles.indexOf(skill) < 0) faibles.push(skill);
+    }
     submit.addEventListener("click", () => {
       let correct = 0, total = 0;
-      nodes.forEach((node) => {
-        if (typeof node._grade !== "function") return; // production / oral : non noté (auto-évalué)
+      block.items.forEach((ex, idx) => {
+        const node = nodes[idx];
+        if (!node || typeof node._grade !== "function") return; // production : non noté
         const res = node._grade(true);
         total++;
         if (res.ok === true) correct++;
+        else noteFaible(ex.type);
       });
       const passe = total ? correct / total >= 0.6 : true;
       submit.disabled = true;
@@ -12005,12 +12219,12 @@ window.Exercises = (function () {
         frag.appendChild(next);
         app.innerHTML = ""; app.appendChild(frag);
         const nb = document.getElementById("pl-next");
-        nb.addEventListener("click", () => renderPlacement({ i: state.i + 1 }));
-        if (window.TG) window.TG.setMainButton("Continuer →", () => renderPlacement({ i: state.i + 1 }));
+        nb.addEventListener("click", () => renderPlacement({ i: state.i + 1, faibles: faibles }));
+        if (window.TG) window.TG.setMainButton("Continuer →", () => renderPlacement({ i: state.i + 1, faibles: faibles }));
         next.scrollIntoView({ behavior: "smooth" });
       } else {
         const code = passe ? blocks[blocks.length - 1].code : block.code;
-        placementResultat(code);
+        placementResultat(code, faibles);
       }
     });
 
@@ -12019,18 +12233,27 @@ window.Exercises = (function () {
     window.scrollTo(0, 0);
   }
 
-  function placementResultat(code) {
+  function placementResultat(code, faibles) {
     placerAuNiveau(code);
+    window.Progress.setFaiblesses(faibles || []);
     const labels = NIVEAU_LABELS;
     const frag = document.createDocumentFragment();
     const sec = el("section", "section");
     const card = el("div", "examen-final unlocked reussi");
-    card.innerHTML = '<div class="examen-ic">🎓</div><h2>Ton niveau : ' + code + " — " + (labels[code] || "") + "</h2>" +
+    let html = '<div class="examen-ic">🎓</div><h2>Ton niveau : ' + code + " — " + (labels[code] || "") + "</h2>" +
       "<p>D'après tes réponses (grammaire, écoute, écrit et oral), Zika te place au <strong>niveau " + code + "</strong>. " +
       "Tu commences ici ; les niveaux précédents restent débloqués si tu veux les revoir.</p>";
+    if (faibles && faibles.length) {
+      html += '<div class="zika-conseil"><span class="cours-tag">💡 Le conseil de Zika</span><div>À travailler en priorité : <strong>' +
+        faibles.map(escapeHtml).join("</strong>, <strong>") + "</strong>.</div></div>";
+    }
+    card.innerHTML = html;
     const go = el("a", "btn btn-primary big", "🚀 Commencer au niveau " + code);
     go.href = prochaineEtape();
     card.appendChild(go);
+    const rev = el("a", "btn btn-ghost", "🔁 Réviser mes points faibles");
+    rev.href = "#/revision";
+    card.appendChild(rev);
     const retest = el("a", "btn btn-ghost", "↺ Refaire le test");
     retest.href = "#/placement";
     card.appendChild(retest);

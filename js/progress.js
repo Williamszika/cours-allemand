@@ -109,6 +109,16 @@ window.Progress = (function () {
     save(data);
   }
 
+  function getFaiblesses() {
+    return load().faiblesses || [];
+  }
+
+  function setFaiblesses(arr) {
+    const data = load();
+    data.faiblesses = Array.isArray(arr) ? arr : [];
+    save(data);
+  }
+
   function reset() {
     save(defaults());
   }
@@ -116,6 +126,6 @@ window.Progress = (function () {
   return {
     load, save, touchStreak, getLecon, setExercice, marquerTermine,
     estTermine, resumeGlobal, setTestScore, getTestScore,
-    getNiveau, setNiveau, reset
+    getNiveau, setNiveau, getFaiblesses, setFaiblesses, reset
   };
 })();

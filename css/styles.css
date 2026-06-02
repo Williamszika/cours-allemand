@@ -649,3 +649,59 @@ a.stats-lecon:hover { border-color: var(--blue); transform: translateX(2px); }
 .niveau-actuel-link { margin-left: 4px; font-size: 12.5px; font-weight: 600; color: var(--blue); text-decoration: none; white-space: nowrap; }
 .niveau-actuel-link:hover { text-decoration: underline; }
 .coach-nom { margin: 0 0 2px; font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--blue); }
+
+/* ===== Cours pédagogiques : grammaire & vocabulaire enrichis ===== */
+.cours .exo-group-sub { margin-top: 2px; }
+.cours-block { margin: 0 0 26px; padding-bottom: 4px; }
+.cours-block + .cours-block { border-top: 1px dashed var(--line); padding-top: 22px; }
+.cours-titre { font-size: 19px; margin: 0 0 10px; }
+.cours-text { font-size: 15.5px; line-height: 1.7; margin: 10px 0; }
+.cours-text strong, .cours-regle strong, .cours-astuce strong, .cours-attention strong, .cours-points strong { color: var(--blue); }
+.hl-de { background: #fff7cc; border-radius: 5px; padding: 0 4px; font-weight: 600; color: #7c5e00; }
+[data-tg-scheme="dark"] .hl-de { background: #4d3f00; color: #ffe88a; }
+.cours-points { margin: 10px 0; padding-left: 20px; }
+.cours-points li { margin: 6px 0; line-height: 1.6; }
+
+/* Encadrés colorés */
+.cours-regle, .cours-astuce, .cours-attention, .cours-exemples, .zika-conseil {
+  border-radius: var(--radius-sm); padding: 14px 16px; margin: 14px 0; font-size: 14.5px; line-height: 1.65;
+  border-left: 5px solid var(--blue); background: var(--blue-light, #eef2ff);
+}
+.cours-tag { display: inline-block; font-weight: 800; font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
+.cours-regle { border-left-color: var(--blue); background: #eef4ff; }
+.cours-regle .cours-tag { color: var(--blue); }
+.cours-astuce { border-left-color: var(--green, #059669); background: #ecfdf5; }
+.cours-astuce .cours-tag { color: var(--green, #059669); }
+.cours-attention { border-left-color: #e11d48; background: #fff1f3; }
+.cours-attention .cours-tag { color: #e11d48; }
+.cours-exemples { border-left-color: #7c3aed; background: #f6f2ff; }
+.cours-exemples .cours-tag { color: #7c3aed; }
+[data-tg-scheme="dark"] .cours-regle { background: #11203f; }
+[data-tg-scheme="dark"] .cours-astuce { background: #0f2a1d; }
+[data-tg-scheme="dark"] .cours-attention { background: #2a1218; }
+[data-tg-scheme="dark"] .cours-exemples, [data-tg-scheme="dark"] .zika-conseil { background: #1c1633; }
+
+/* Exemples : phrase allemande en gras + traduction */
+.cours-ex-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 6px 0; border-top: 1px solid rgba(124,58,237,.15); }
+.cours-ex-row:first-of-type { border-top: none; }
+.cours-ex-de { font-weight: 700; color: var(--text); display: inline-flex; align-items: center; gap: 6px; }
+.cours-ex-fr { color: var(--muted); font-size: 13.5px; font-style: italic; }
+
+/* Conseil de Zika */
+.zika-conseil { border-left-color: #ea580c; background: #fff7ed; }
+.zika-conseil .cours-tag { color: #ea580c; }
+
+/* Genres colorés (vocabulaire) */
+.genre-legende { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; font-size: 13px; color: var(--muted); margin: 0 0 14px; }
+.art { font-weight: 800; }
+.art-der { color: #2563eb; }
+.art-die { color: #db2777; }
+.art-das { color: #059669; }
+.voc-nom { font-weight: 700; }
+.voc-card.genre-der { border-left: 4px solid #2563eb; }
+.voc-card.genre-die { border-left: 4px solid #db2777; }
+.voc-card.genre-das { border-left: 4px solid #059669; }
+.voc-ex { font-size: 13px; color: var(--muted); margin-top: 6px; font-style: italic; }
+
+/* Barre de progression du niveau courant */
+.niveau-prog { margin-top: 10px; }

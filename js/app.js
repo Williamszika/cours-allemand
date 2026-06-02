@@ -114,6 +114,57 @@
     return b;
   }
 
+  /* ---- Rendu pédagogique : mise en forme (gras, surlignage, genres) ---- */
+  function escapeHtml(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function mdLite(s) {
+    let t = escapeHtml(s);
+    t = t.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    t = t.replace(/«\s*([^»]+?)\s*»/g, '<span class="hl-de">«&nbsp;$1&nbsp;»</span>');
+    return t;
+  }
+  function vocDeHtml(de) {
+    const m = String(de).match(/^(der|die|das)\s+(.+)$/);
+    if (m) return '<span class="art art-' + m[1] + '">' + m[1] + '</span> <strong class="voc-nom">' + escapeHtml(m[2]) + "</strong>";
+    return '<strong class="voc-nom">' + escapeHtml(de) + "</strong>";
+  }
+  function buildExemples(arr) {
+    const box = el("div", "cours-exemples");
+    box.appendChild(el("div", "cours-tag", "✅ Exemples"));
+    arr.forEach((e) => {
+      const row = el("div", "cours-ex-row");
+      const de = el("div", "cours-ex-de");
+      de.appendChild(el("span", "", e.de));
+      de.appendChild(speakButton(e.de));
+      row.appendChild(de);
+      if (e.fr) row.appendChild(el("div", "cours-ex-fr", e.fr));
+      box.appendChild(row);
+    });
+    return box;
+  }
+  function deriveExemples(tableau) {
+    if (!tableau || !tableau.entetes) return null;
+    let idx = -1;
+    tableau.entetes.forEach((h, i) => { if (idx < 0 && /exemple|beispiel|satz/i.test(h)) idx = i; });
+    if (idx < 0) return null;
+    const out = [];
+    tableau.lignes.forEach((row) => { const de = row[idx]; if (de && /\s/.test(de)) out.push({ de: de, fr: "" }); });
+    return out.length ? out.slice(0, 6) : null;
+  }
+  function renderGrammarBlock(g) {
+    const block = el("div", "gram-block cours-block");
+    block.appendChild(el("h3", "cours-titre", g.titre + (g.titreDE ? " · " + g.titreDE : "")));
+    if (g.regle) { const r = el("div", "cours-regle"); r.innerHTML = '<span class="cours-tag">📘 La règle</span><div>' + mdLite(g.regle) + "</div>"; block.appendChild(r); }
+    if (g.intro) { const p = el("p", "cours-text"); p.innerHTML = mdLite(g.intro); block.appendChild(p); }
+    if (g.points && g.points.length) { const ul = el("ul", "cours-points"); g.points.forEach((pt) => { const li = el("li", ""); li.innerHTML = mdLite(pt); ul.appendChild(li); }); block.appendChild(ul); }
+    if (g.tableau) block.appendChild(buildTable(g.tableau));
+    if (g.schemas) block.appendChild(buildSchemas(g.schemas));
+    const exs = g.exemples || deriveExemples(g.tableau);
+    if (exs && exs.length) block.appendChild(buildExemples(exs));
+    if (g.note) { const n = el("div", "cours-astuce"); n.innerHTML = '<span class="cours-tag">💡 Bon à savoir</span><div>' + mdLite(g.note) + "</div>"; block.appendChild(n); }
+    if (g.attention) { const a = el("div", "cours-attention"); a.innerHTML = '<span class="cours-tag">⚠️ Attention</span><div>' + mdLite(g.attention) + "</div>"; block.appendChild(a); }
+    return block;
+  }
+
   /* ====================================================================
      APERÇU DU PROGRAMME (page d'accueil)
      ==================================================================== */
@@ -160,6 +211,26 @@
       '<div class="bar"><div class="bar-fill" style="width:' + res.pourcent + '%"></div></div>';
     hero.appendChild(prog);
 
+    /* Progression DANS le niveau en cours */
+    const etapeN = prochaineEtape();
+    let curNiv = niveauActuel;
+    const mNiv = etapeN.match(/^#\/lecon\/([a-z0-9]+)/);
+    if (mNiv) { const fi = flat[leconIndex(mNiv[1])]; if (fi) curNiv = fi.lecon.niveau; }
+    if (!curNiv) { const undone = flat.find((f) => !window.Progress.estTermine(f.lecon.id)); curNiv = undone ? undone.lecon.niveau : "C2"; }
+    if (curNiv) {
+      const lecNiv = flat.filter((f) => f.lecon.niveau === curNiv);
+      const faitsNiv = lecNiv.filter((f) => window.Progress.estTermine(f.lecon.id)).length;
+      const pctNiv = lecNiv.length ? Math.round((faitsNiv / lecNiv.length) * 100) : 0;
+      const mColor = (COURS.modules.find((m) => (m.niveau || "A1") === curNiv) || {}).couleur || "#2563eb";
+      const progN = el("div", "global-prog niveau-prog");
+      progN.style.setProperty("--np", mColor);
+      progN.innerHTML =
+        '<div class="global-prog-head"><span>📈 Niveau ' + curNiv + " (" + (NIVEAU_LABELS[curNiv] || "") + ")</span><span>" +
+        faitsNiv + "/" + lecNiv.length + " leçons</span></div>" +
+        '<div class="bar"><div class="bar-fill" style="width:' + pctNiv + "%;background:" + mColor + '"></div></div>';
+      hero.appendChild(progN);
+    }
+
     const cta = el("div", "hero-cta");
     const etape = prochaineEtape();
     const btn = el("a", "btn btn-primary big");
@@ -199,6 +270,18 @@
     cta.appendChild(audioInfo);
     hero.appendChild(cta);
     frag.appendChild(hero);
+
+    /* --- Conseil de Zika (points faibles repérés au test) --- */
+    const faibles = window.Progress.getFaiblesses();
+    if (faibles && faibles.length) {
+      const tip = el("section", "section");
+      const tc = el("div", "zika-conseil");
+      tc.innerHTML = '<span class="cours-tag">💡 Le conseil de Zika</span>' +
+        "<div>D'après ton test, travaille en priorité : <strong>" + faibles.map(escapeHtml).join("</strong>, <strong>") + "</strong>.</div>" +
+        '<a class="btn btn-ghost small" href="#/revision" style="margin-top:10px">🔁 Réviser maintenant</a>';
+      tip.appendChild(tc);
+      frag.appendChild(tip);
+    }
 
     /* --- Méthode --- */
     const meth = el("section", "section");
@@ -465,47 +548,47 @@
 
     /* --- Vocabulaire (absent pour les leçons de grammaire) --- */
     if (hasVoc) {
-    const voc = el("section", "lesson-section");
+    const voc = el("section", "lesson-section cours");
     voc.id = "voc";
     const vocHead = el("div", "ls-head");
-    vocHead.appendChild(el("h2", "", "🗂️ Vocabulaire"));
+    vocHead.appendChild(el("h2", "", "🗂️ Cours de vocabulaire"));
     const playAll = el("button", "btn btn-ghost small", "🔊 Tout écouter");
     playAll.type = "button";
     playAll.addEventListener("click", () => playSequence(l.vocabulaire.map((v) => v.de)));
     vocHead.appendChild(playAll);
     voc.appendChild(vocHead);
-    voc.appendChild(el("p", "exo-group-sub", "🔊 Cliquez sur l'icône d'un mot (ou « Tout écouter »), écoutez la prononciation allemande, puis répétez à voix haute."));
+    voc.appendChild(el("p", "exo-group-sub", "🔊 Écoute chaque mot et répète-le à voix haute. Apprends toujours le mot avec son article : il donne le genre. Les couleurs t'aident à mémoriser."));
+    const leg = el("div", "genre-legende");
+    leg.innerHTML = '<span class="art art-der">der</span> masculin&nbsp;&nbsp;·&nbsp;&nbsp;<span class="art art-die">die</span> féminin&nbsp;&nbsp;·&nbsp;&nbsp;<span class="art art-das">das</span> neutre';
+    voc.appendChild(leg);
 
     const vocGrid = el("div", "voc-grid");
     l.vocabulaire.forEach((v) => {
       const c = el("div", "voc-card");
+      const gm = String(v.de).match(/^(der|die|das)\s/);
+      if (gm) c.classList.add("genre-" + gm[1]);
       const top2 = el("div", "voc-top");
       const deWrap = el("div", "voc-de");
-      deWrap.appendChild(el("span", "", v.de));
+      const span = el("span", "");
+      span.innerHTML = vocDeHtml(v.de);
+      deWrap.appendChild(span);
       deWrap.appendChild(speakButton(v.de));
       top2.appendChild(deWrap);
       c.appendChild(top2);
       c.appendChild(el("div", "voc-fr", v.fr));
-      if (v.ex) c.appendChild(el("div", "voc-ex", "« " + v.ex + " »"));
+      if (v.ex) { const ex = el("div", "voc-ex"); ex.innerHTML = "« " + escapeHtml(v.ex) + " »"; c.appendChild(ex); }
       vocGrid.appendChild(c);
     });
     voc.appendChild(vocGrid);
     frag.appendChild(voc);
     }
 
-    /* --- Grammaire --- */
-    const gram = el("section", "lesson-section");
+    /* --- Grammaire (cours pédagogique) --- */
+    const gram = el("section", "lesson-section cours");
     gram.id = "gram";
-    gram.appendChild(el("h2", "", "📐 Grammaire"));
-    l.grammaire.forEach((g) => {
-      const block = el("div", "gram-block");
-      block.appendChild(el("h3", "", g.titre));
-      if (g.intro) block.appendChild(el("p", "gram-intro", g.intro));
-      if (g.tableau) block.appendChild(buildTable(g.tableau));
-      if (g.schemas) block.appendChild(buildSchemas(g.schemas));
-      if (g.note) block.appendChild(el("p", "gram-note", g.note));
-      gram.appendChild(block);
-    });
+    gram.appendChild(el("h2", "", "📐 Cours de grammaire"));
+    gram.appendChild(el("p", "exo-group-sub", "Lis l'explication et observe les exemples colorés avant de passer aux exercices."));
+    l.grammaire.forEach((g) => gram.appendChild(renderGrammarBlock(g)));
     frag.appendChild(gram);
 
     /* --- Dialogue (absent pour les leçons de grammaire) --- */
@@ -1096,6 +1179,7 @@
     const labels = NIVEAU_LABELS;
     const frag = document.createDocumentFragment();
 
+    const salutDE = "Hallo! Ich bin Zika, dein Deutsch-Coach. Lass uns gemeinsam dein Niveau finden!";
     const hero = el("section", "section onboarding");
     hero.innerHTML =
       '<div class="coach-avatar">🧑‍🏫</div>' +
@@ -1103,6 +1187,12 @@
       "<h1>Hallo, ich bin Zika — dein Deutsch-Coach!</h1>" +
       '<p class="onboarding-intro">Pour te proposer les bonnes leçons, dis-moi où tu en es en allemand. ' +
       "Choisis ton niveau — ou laisse Zika l'évaluer avec un petit test (grammaire, écoute, écrit et oral, comme à l'examen).</p>";
+    if (window.Speech && window.Speech.isSupported()) {
+      const ecouteZika = el("button", "btn btn-ghost small", "🔊 Écouter Zika");
+      ecouteZika.type = "button";
+      ecouteZika.addEventListener("click", () => window.Speech.speak(salutDE));
+      hero.appendChild(ecouteZika);
+    }
     frag.appendChild(hero);
 
     const testSec = el("section", "section");
@@ -1131,6 +1221,8 @@
     app.innerHTML = "";
     app.appendChild(frag);
     if (window.TG) window.TG.setMainButton("🎯 Évaluer mon niveau", () => { location.hash = "#/placement"; });
+    // Zika salue à voix haute (si autorisé par le navigateur)
+    if (window.Speech && window.Speech.isSupported()) { try { setTimeout(() => window.Speech.speak(salutDE), 400); } catch (e) {} }
     window.scrollTo(0, 0);
   }
 
@@ -1167,13 +1259,20 @@
     row.appendChild(submit);
     frag.appendChild(row);
 
+    const faibles = (state.faibles || []).slice();
+    function noteFaible(type) {
+      const skill = type === "ecoute" ? "Compréhension orale (écoute)" : type === "oral" ? "Expression orale" : "Grammaire & expression écrite";
+      if (faibles.indexOf(skill) < 0) faibles.push(skill);
+    }
     submit.addEventListener("click", () => {
       let correct = 0, total = 0;
-      nodes.forEach((node) => {
-        if (typeof node._grade !== "function") return; // production / oral : non noté (auto-évalué)
+      block.items.forEach((ex, idx) => {
+        const node = nodes[idx];
+        if (!node || typeof node._grade !== "function") return; // production : non noté
         const res = node._grade(true);
         total++;
         if (res.ok === true) correct++;
+        else noteFaible(ex.type);
       });
       const passe = total ? correct / total >= 0.6 : true;
       submit.disabled = true;
@@ -1185,12 +1284,12 @@
         frag.appendChild(next);
         app.innerHTML = ""; app.appendChild(frag);
         const nb = document.getElementById("pl-next");
-        nb.addEventListener("click", () => renderPlacement({ i: state.i + 1 }));
-        if (window.TG) window.TG.setMainButton("Continuer →", () => renderPlacement({ i: state.i + 1 }));
+        nb.addEventListener("click", () => renderPlacement({ i: state.i + 1, faibles: faibles }));
+        if (window.TG) window.TG.setMainButton("Continuer →", () => renderPlacement({ i: state.i + 1, faibles: faibles }));
         next.scrollIntoView({ behavior: "smooth" });
       } else {
         const code = passe ? blocks[blocks.length - 1].code : block.code;
-        placementResultat(code);
+        placementResultat(code, faibles);
       }
     });
 
@@ -1199,18 +1298,27 @@
     window.scrollTo(0, 0);
   }
 
-  function placementResultat(code) {
+  function placementResultat(code, faibles) {
     placerAuNiveau(code);
+    window.Progress.setFaiblesses(faibles || []);
     const labels = NIVEAU_LABELS;
     const frag = document.createDocumentFragment();
     const sec = el("section", "section");
     const card = el("div", "examen-final unlocked reussi");
-    card.innerHTML = '<div class="examen-ic">🎓</div><h2>Ton niveau : ' + code + " — " + (labels[code] || "") + "</h2>" +
+    let html = '<div class="examen-ic">🎓</div><h2>Ton niveau : ' + code + " — " + (labels[code] || "") + "</h2>" +
       "<p>D'après tes réponses (grammaire, écoute, écrit et oral), Zika te place au <strong>niveau " + code + "</strong>. " +
       "Tu commences ici ; les niveaux précédents restent débloqués si tu veux les revoir.</p>";
+    if (faibles && faibles.length) {
+      html += '<div class="zika-conseil"><span class="cours-tag">💡 Le conseil de Zika</span><div>À travailler en priorité : <strong>' +
+        faibles.map(escapeHtml).join("</strong>, <strong>") + "</strong>.</div></div>";
+    }
+    card.innerHTML = html;
     const go = el("a", "btn btn-primary big", "🚀 Commencer au niveau " + code);
     go.href = prochaineEtape();
     card.appendChild(go);
+    const rev = el("a", "btn btn-ghost", "🔁 Réviser mes points faibles");
+    rev.href = "#/revision";
+    card.appendChild(rev);
     const retest = el("a", "btn btn-ghost", "↺ Refaire le test");
     retest.href = "#/placement";
     card.appendChild(retest);
