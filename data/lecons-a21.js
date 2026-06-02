@@ -16,6 +16,58 @@ window.MODULE_A21 = {
   lecons: [
     {
       id: "a2t01",
+      rp: {
+        "scene": "Se présenter en détail",
+        "intro": "Présente-toi en détail à Zika.",
+        "fin": "Bravo ! Tu sais te présenter en détail.",
+        "tours": [
+          {
+            "de": "Erzähl mir von dir! Bist du verheiratet?",
+            "fr": "Parle-moi de toi ! Es-tu marié(e) ?",
+            "options": [
+              {
+                "de": "Nein, ich bin ledig.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin müde.",
+                "hint": "Zika demande ton état civil : « Ich bin ledig / verheiratet »."
+              }
+            ],
+            "bravo": "Bravo !"
+          },
+          {
+            "de": "Hast du Geschwister?",
+            "fr": "As-tu des frères et sœurs ?",
+            "options": [
+              {
+                "de": "Ja, eine Schwester.",
+                "ok": true
+              },
+              {
+                "de": "Ja, ich habe Hunger.",
+                "hint": "« Geschwister » = frères et sœurs : « Ja, eine Schwester / einen Bruder »."
+              }
+            ],
+            "bravo": "Très bien !"
+          },
+          {
+            "de": "Was machst du in deiner Freizeit?",
+            "fr": "Que fais-tu pendant ton temps libre ?",
+            "options": [
+              {
+                "de": "Ich lese gern.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin Lehrer.",
+                "hint": "Ça, c'est ton métier. Pour les loisirs : « Ich … gern »."
+              }
+            ],
+            "bravo": "Parfait !"
+          }
+        ]
+      },
       vocCours: [
         "Au niveau A2, la **présentation** s'enrichit : tu ne dis plus seulement ton nom, mais tu parles de ta **famille**, de ton **état civil**, de ton **caractère** et de ton **parcours**. Vocabulaire clé : *verheiratet* (marié), *ledig* (célibataire), *geschieden* (divorcé), *die Familie*, *die Geschwister* (frères et sœurs).",
         "Soigne la distinction de **registre** : *du* (tutoiement, amis/famille) vs *Sie* (vouvoiement, contexte formel). Face à un inconnu adulte ou au travail, emploie *Sie* et les formules complètes : « *Darf ich mich vorstellen?* » (puis-je me présenter ?).",
@@ -61,6 +113,43 @@ window.MODULE_A21 = {
     },
     {
       id: "a2t02",
+      rp: {
+        "scene": "Les métiers",
+        "intro": "Tu parles de ton travail avec Zika.",
+        "fin": "Très bien ! Tu sais parler de ta carrière.",
+        "tours": [
+          {
+            "de": "Was machen Sie beruflich?",
+            "fr": "Que faites-vous comme métier ?",
+            "options": [
+              {
+                "de": "Ich arbeite als Krankenpfleger.",
+                "ok": true
+              },
+              {
+                "de": "Ich arbeite gern.",
+                "hint": "Donne ton métier : « Ich arbeite als … »."
+              }
+            ],
+            "bravo": "Génial !"
+          },
+          {
+            "de": "Seit wann machen Sie das?",
+            "fr": "Depuis quand faites-vous cela ?",
+            "options": [
+              {
+                "de": "Seit drei Jahren.",
+                "ok": true
+              },
+              {
+                "de": "In Berlin.",
+                "hint": "Zika demande DEPUIS QUAND : « Seit … Jahren »."
+              }
+            ],
+            "bravo": "Excellent !"
+          }
+        ]
+      },
       vocCours: [
         "Ce champ lexical approfondit le monde du **travail** : noms de métiers, lieux et **activités** professionnelles. Rappelle-toi la formation du féminin en **-in** (*der Ingenieur → die Ingenieurin*) et l'absence d'article pour dire son métier (« *Ich bin Lehrer* » / « *Ich arbeite als Lehrer* »).",
         "Apprends les **verbes d'activité** propres à chaque métier (*unterrichten* enseigner, *reparieren* réparer, *verkaufen* vendre, *pflegen* soigner) et les compléments avec *als* (en tant que) et *bei* (employeur : « *Ich arbeite **bei** Siemens* »).",
@@ -106,6 +195,43 @@ window.MODULE_A21 = {
     },
     {
       id: "a2t03",
+      rp: {
+        "scene": "Le week-end",
+        "intro": "Raconte ton week-end à Zika (au passé).",
+        "fin": "Bravo ! Tu sais raconter au passé.",
+        "tours": [
+          {
+            "de": "Was hast du am Wochenende gemacht?",
+            "fr": "Qu'as-tu fait le week-end ?",
+            "options": [
+              {
+                "de": "Ich habe Freunde getroffen.",
+                "ok": true
+              },
+              {
+                "de": "Ich treffe Freunde.",
+                "hint": "C'est au PASSÉ : Perfekt « Ich habe … getroffen »."
+              }
+            ],
+            "bravo": "Bien joué !"
+          },
+          {
+            "de": "Und am Sonntag?",
+            "fr": "Et dimanche ?",
+            "options": [
+              {
+                "de": "Ich bin ins Kino gegangen.",
+                "ok": true
+              },
+              {
+                "de": "Ich habe ins Kino gegangen.",
+                "hint": "Avec « gehen » (déplacement) on utilise « sein » : « Ich BIN … gegangen »."
+              }
+            ],
+            "bravo": "Super !"
+          }
+        ]
+      },
       vocCours: [
         "Ce thème fournit le vocabulaire pour **raconter des événements passés** : marqueurs temporels et verbes d'action courants. Mots clés : *gestern* (hier), *letzte Woche* (la semaine dernière), *vor zwei Tagen* (il y a deux jours), *früher* (autrefois), *damals* (à l'époque).",
         "Le vocabulaire se combine avec le **Perfekt** : apprends les **participes passés** des verbes fréquents en même temps que les mots (*gemacht, gegangen, gesehen, gewesen*). Note les verbes de déplacement avec *sein* (« *Ich **bin** gefahren* »).",
@@ -151,6 +277,43 @@ window.MODULE_A21 = {
     },
     {
       id: "a2t04",
+      rp: {
+        "scene": "Le CV",
+        "intro": "Tu parles de ta formation avec Zika.",
+        "fin": "Parfait ! Tu sais parler de ton parcours.",
+        "tours": [
+          {
+            "de": "Welchen Abschluss haben Sie?",
+            "fr": "Quel diplôme avez-vous ?",
+            "options": [
+              {
+                "de": "Ich habe Abitur.",
+                "ok": true
+              },
+              {
+                "de": "Ich habe Hunger.",
+                "hint": "Donne ton diplôme : « Ich habe Abitur / einen Bachelor »."
+              }
+            ],
+            "bravo": "Bravo !"
+          },
+          {
+            "de": "Haben Sie schon ein Praktikum gemacht?",
+            "fr": "Avez-vous déjà fait un stage ?",
+            "options": [
+              {
+                "de": "Ja, bei einer Firma.",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich bin müde.",
+                "hint": "Réponds sur le STAGE : « Ja, bei einer Firma » ou « Nein, noch nicht »."
+              }
+            ],
+            "bravo": "Très bien !"
+          }
+        ]
+      },
       vocCours: [
         "Ce champ lexical couvre l'**école**, la **formation** et le **CV** — essentiel pour candidater. Vocabulaire clé : *die Schule*, *die Ausbildung* (formation professionnelle), *das Studium* (études supérieures), *der Lebenslauf* (le CV), *das Praktikum* (le stage), *der Abschluss* (le diplôme).",
         "Attention au **faux-ami** *das Gymnasium* = le **lycée** (filière générale), et *die Note* = la **note** scolaire (ni musique, ni mémo). Distingue *lernen* (apprendre/étudier) et *studieren* (faire des études supérieures).",
@@ -196,6 +359,43 @@ window.MODULE_A21 = {
     },
     {
       id: "a2t05",
+      rp: {
+        "scene": "Le quotidien",
+        "intro": "Parle de tes habitudes à Zika.",
+        "fin": "Bravo ! Tu sais parler de tes habitudes.",
+        "tours": [
+          {
+            "de": "Wie oft machst du Sport?",
+            "fr": "À quelle fréquence fais-tu du sport ?",
+            "options": [
+              {
+                "de": "Dreimal pro Woche.",
+                "ok": true
+              },
+              {
+                "de": "In der Stadt.",
+                "hint": "Zika demande la FRÉQUENCE : « dreimal pro Woche », « oft », « selten »."
+              }
+            ],
+            "bravo": "Parfait !"
+          },
+          {
+            "de": "Was machst du am liebsten?",
+            "fr": "Qu'aimes-tu faire le plus ?",
+            "options": [
+              {
+                "de": "Am liebsten koche ich.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin Koch.",
+                "hint": "« am liebsten » = préférer : « Am liebsten … ich » + activité."
+              }
+            ],
+            "bravo": "Génial !"
+          }
+        ]
+      },
       vocCours: [
         "Ce vocabulaire élargit la **vie quotidienne** et les **loisirs** vus en A1, avec plus de verbes et d'**expressions de fréquence** : *immer* (toujours), *oft* (souvent), *manchmal* (parfois), *selten* (rarement), *nie* (jamais), *einmal pro Woche* (une fois par semaine).",
         "Beaucoup de verbes de loisir sont **séparables ou réfléchis** : *sich treffen* (se retrouver), *fernsehen* (regarder la télé), *spazieren gehen* (se promener), *sich entspannen* (se détendre). Apprends-les avec leur construction.",
@@ -241,6 +441,58 @@ window.MODULE_A21 = {
     },
     {
       id: "a2t06",
+      rp: {
+        "scene": "Au magasin",
+        "intro": "Tu fais des achats. Zika est le vendeur.",
+        "fin": "Parfait ! Tu sais faire des achats.",
+        "tours": [
+          {
+            "de": "Guten Tag! Kann ich Ihnen helfen?",
+            "fr": "Bonjour ! Puis-je vous aider ?",
+            "options": [
+              {
+                "de": "Ja, ich suche eine Jacke.",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich bin eine Jacke.",
+                "hint": "« Je suis une veste » 😅. Dis « Ich suche eine Jacke »."
+              }
+            ],
+            "bravo": "Excellent !"
+          },
+          {
+            "de": "Welche Größe brauchen Sie?",
+            "fr": "Quelle taille vous faut-il ?",
+            "options": [
+              {
+                "de": "Größe M, bitte.",
+                "ok": true
+              },
+              {
+                "de": "Um zehn Uhr.",
+                "hint": "Zika demande la TAILLE : « Größe M / 38 »."
+              }
+            ],
+            "bravo": "Bien joué !"
+          },
+          {
+            "de": "Das macht 40 Euro.",
+            "fr": "Cela fait 40 euros.",
+            "options": [
+              {
+                "de": "Kann ich mit Karte zahlen?",
+                "ok": true
+              },
+              {
+                "de": "Wie spät ist es?",
+                "hint": "Il faut payer : « Kann ich mit Karte zahlen? »."
+              }
+            ],
+            "bravo": "Super !"
+          }
+        ]
+      },
       vocCours: [
         "Ce champ lexical très pratique concerne les **achats** au quotidien : magasins, prix, paiement. Vocabulaire clé : *einkaufen* (faire les courses), *das Geschäft / der Laden* (le magasin), *der Preis*, *kosten* (coûter), *bezahlen* (payer), *die Kasse* (la caisse).",
         "Apprends les **formules d'achat** toutes faites : « *Was kostet das?* », « *Ich hätte gern…* » (je voudrais…), « *Kann ich mit Karte bezahlen?* ». Le verbe poli *möchten* et le conditionnel *hätte gern* sont essentiels.",
@@ -286,6 +538,43 @@ window.MODULE_A21 = {
     },
     {
       id: "a2t07",
+      rp: {
+        "scene": "À la banque",
+        "intro": "Tu parles d'argent avec Zika.",
+        "fin": "Bien ! Tu sais parler d'argent.",
+        "tours": [
+          {
+            "de": "Möchten Sie Geld sparen oder ausgeben?",
+            "fr": "Voulez-vous économiser ou dépenser de l'argent ?",
+            "options": [
+              {
+                "de": "Ich möchte sparen.",
+                "ok": true
+              },
+              {
+                "de": "Ich möchte schlafen.",
+                "hint": "Réponds sur l'argent : « sparen » (économiser) ou « ausgeben » (dépenser)."
+              }
+            ],
+            "bravo": "Bravo !"
+          },
+          {
+            "de": "Haben Sie noch Fragen?",
+            "fr": "Avez-vous d'autres questions ?",
+            "options": [
+              {
+                "de": "Ja, ist das Konto kostenlos?",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich bin glücklich.",
+                "hint": "Pose une question utile : « Ist das Konto kostenlos? »."
+              }
+            ],
+            "bravo": "Très bien !"
+          }
+        ]
+      },
       vocCours: [
         "Ce thème approfondit le vocabulaire de l'**argent** et des **finances personnelles**. Mots clés : *das Geld*, *das Konto* (le compte), *die Bank*, *sparen* (économiser), *ausgeben* (dépenser), *verdienen* (gagner sa vie), *die Rechnung* (la facture), *bar* (en espèces).",
         "Attention aux nuances : *kosten* (coûter) ≠ *bezahlen* (payer) ≠ *ausgeben* (dépenser). Distingue aussi *teuer* (cher) de *billig / günstig* (bon marché) — *günstig* (avantageux) est plus positif que *billig*, qui peut suggérer « bas de gamme ».",
@@ -331,6 +620,43 @@ window.MODULE_A21 = {
     },
     {
       id: "a2t08",
+      rp: {
+        "scene": "Si j'étais riche…",
+        "intro": "Imagine que tu gagnes au loto ! Réponds au conditionnel.",
+        "fin": "Bravo ! Tu maîtrises le conditionnel du rêve.",
+        "tours": [
+          {
+            "de": "Was würdest du machen, wenn du reich wärst?",
+            "fr": "Que ferais-tu si tu étais riche ?",
+            "options": [
+              {
+                "de": "Ich würde eine Weltreise machen.",
+                "ok": true
+              },
+              {
+                "de": "Ich mache eine Weltreise.",
+                "hint": "C'est hypothétique : conditionnel « Ich würde … machen »."
+              }
+            ],
+            "bravo": "Parfait !"
+          },
+          {
+            "de": "Und wo würdest du wohnen?",
+            "fr": "Et où habiterais-tu ?",
+            "options": [
+              {
+                "de": "Ich würde am Meer wohnen.",
+                "ok": true
+              },
+              {
+                "de": "Ich wohne in einer Wohnung.",
+                "hint": "Toujours au conditionnel : « Ich würde … wohnen »."
+              }
+            ],
+            "bravo": "Génial !"
+          }
+        ]
+      },
       vocCours: [
         "Ce thème ludique fait rêver : « **et si j'étais riche ?** ». Il introduit le vocabulaire des **souhaits** et de l'**hypothèse**, en lien avec le **Konjunktiv II**. Expressions clés : *Wenn ich reich wäre…*, *Ich würde… kaufen / reisen* (j'achèterais / voyagerais).",
         "Apprends les formes irréelles fréquentes : *wäre* (serais), *hätte* (aurais), *würde + infinitif* (ferais), *könnte* (pourrais). Le vocabulaire des envies (*die Villa, die Weltreise, der Luxus, das Vermögen* fortune) donne de la matière au rêve.",
@@ -376,6 +702,43 @@ window.MODULE_A21 = {
     },
     {
       id: "a2t09",
+      rp: {
+        "scene": "Au bureau (téléphone)",
+        "intro": "Tu passes un appel professionnel. Zika répond.",
+        "fin": "Parfait ! Tu gères un appel professionnel.",
+        "tours": [
+          {
+            "de": "Firma Meyer, guten Tag! Was kann ich für Sie tun?",
+            "fr": "Société Meyer, bonjour ! Que puis-je pour vous ?",
+            "options": [
+              {
+                "de": "Ich möchte Herrn Klein sprechen.",
+                "ok": true
+              },
+              {
+                "de": "Ich möchte einen Kaffee.",
+                "hint": "Tu appelles une entreprise : « Ich möchte Herrn/Frau … sprechen »."
+              }
+            ],
+            "bravo": "Excellent !"
+          },
+          {
+            "de": "Herr Klein ist nicht da. Möchten Sie eine Nachricht hinterlassen?",
+            "fr": "M. Klein est absent. Voulez-vous laisser un message ?",
+            "options": [
+              {
+                "de": "Ja, er soll mich zurückrufen.",
+                "ok": true
+              },
+              {
+                "de": "Nein, guten Morgen!",
+                "hint": "Réponds : « Ja, er soll mich zurückrufen » (qu'il me rappelle)."
+              }
+            ],
+            "bravo": "Bien joué !"
+          }
+        ]
+      },
       vocCours: [
         "Ce champ lexical professionnel couvre le **bureau**, le **téléphone** et la **prise de rendez-vous**. Vocabulaire clé : *der Termin*, *die Besprechung* (réunion), *die Unterlagen* (les documents), *erreichen* (joindre qqn), *zurückrufen* (rappeler).",
         "Soigne les **formules téléphoniques** professionnelles, au registre poli (*Sie*) : « *Könnten Sie mir sagen…?* », « *Ich verbinde Sie* » (je vous mets en relation), « *Kann ich eine Nachricht hinterlassen?* » (puis-je laisser un message ?).",

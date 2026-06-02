@@ -15,6 +15,43 @@ window.MODULE_A22 = {
   lecons: [
     {
       id: "a2t10",
+      rp: {
+        "scene": "Les vacances",
+        "intro": "Tu racontes tes vacances à Zika (au passé).",
+        "fin": "Bravo ! Tu sais raconter tes vacances.",
+        "tours": [
+          {
+            "de": "Wohin bist du in den Urlaub gefahren?",
+            "fr": "Où es-tu parti en vacances ?",
+            "options": [
+              {
+                "de": "Ich bin nach Italien gefahren.",
+                "ok": true
+              },
+              {
+                "de": "Ich fahre nach Italien.",
+                "hint": "C'est au passé : « Ich BIN … gefahren »."
+              }
+            ],
+            "bravo": "Super !"
+          },
+          {
+            "de": "Wie war das Wetter?",
+            "fr": "Comment était le temps ?",
+            "options": [
+              {
+                "de": "Es war sonnig und warm.",
+                "ok": true
+              },
+              {
+                "de": "Es ist sonnig.",
+                "hint": "Au passé : « Es WAR sonnig »."
+              }
+            ],
+            "bravo": "Bravo !"
+          }
+        ]
+      },
       vocCours: [
         "Ce vocabulaire concerne les **vacances** et les loisirs en voyage. Mots clés : *der Urlaub* (les congés), *die Ferien* (les vacances scolaires), *sich erholen* (se reposer), *der Strand* (la plage), *die Sehenswürdigkeit* (le site touristique), *die Unterkunft* (l'hébergement).",
         "Distingue *der Urlaub* (congés d'un travailleur) de *die Ferien* (vacances scolaires, toujours au pluriel). On dit *in den Urlaub fahren*. Le **Perfekt** domine quand on raconte ses vacances (« *Wir **sind** ans Meer **gefahren*** »).",
@@ -60,6 +97,43 @@ window.MODULE_A22 = {
     },
     {
       id: "a2t11",
+      rp: {
+        "scene": "Les pays",
+        "intro": "Vous parlez d'origines avec Zika.",
+        "fin": "Bravo ! Pays, langues et nationalités, c'est acquis.",
+        "tours": [
+          {
+            "de": "Aus welchem Land kommst du?",
+            "fr": "De quel pays viens-tu ?",
+            "options": [
+              {
+                "de": "Ich komme aus der Türkei.",
+                "ok": true
+              },
+              {
+                "de": "Ich komme aus Türkei.",
+                "hint": "Avec « die Türkei » : « aus DER Türkei » (article !)."
+              }
+            ],
+            "bravo": "Très bien !"
+          },
+          {
+            "de": "Welche Sprache spricht man dort?",
+            "fr": "Quelle langue parle-t-on là-bas ?",
+            "options": [
+              {
+                "de": "Man spricht Türkisch.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin Türke.",
+                "hint": "Zika demande la LANGUE : « Man spricht … »."
+              }
+            ],
+            "bravo": "Parfait !"
+          }
+        ]
+      },
       vocCours: [
         "Ce thème approfondit **pays**, **nationalités** et **langues**. Tu enrichis la liste des pays (avec ou sans article : *die Schweiz, die Türkei, der Iran, die Niederlande* au pluriel) et les adjectifs de nationalité (*deutsch, türkisch, polnisch…*).",
         "Maîtrise le trio **woher / wo / wohin** : *aus* (origine : *aus der Türkei*), *in* + datif (lieu : *in der Schweiz*), *nach / in* + accusatif (destination). Les noms d'habitants se forment souvent en *-er* (*der Italiener*), féminin en *-erin*.",
@@ -105,6 +179,43 @@ window.MODULE_A22 = {
     },
     {
       id: "a2t12",
+      rp: {
+        "scene": "Planifier un voyage",
+        "intro": "Tu réserves un voyage. Zika t'aide.",
+        "fin": "Parfait ! Tu sais planifier un voyage.",
+        "tours": [
+          {
+            "de": "Wann möchten Sie abfahren?",
+            "fr": "Quand voulez-vous partir ?",
+            "options": [
+              {
+                "de": "Am Freitagmorgen.",
+                "ok": true
+              },
+              {
+                "de": "Nach Hamburg.",
+                "hint": "Zika demande QUAND : « Am Freitag … »."
+              }
+            ],
+            "bravo": "Génial !"
+          },
+          {
+            "de": "Möchten Sie umsteigen oder direkt fahren?",
+            "fr": "Voulez-vous une correspondance ou un trajet direct ?",
+            "options": [
+              {
+                "de": "Direkt, bitte.",
+                "ok": true
+              },
+              {
+                "de": "Mit dem Auto.",
+                "hint": "Réponds « direkt » ou « umsteigen » (changer de train)."
+              }
+            ],
+            "bravo": "Excellent !"
+          }
+        ]
+      },
       vocCours: [
         "Ce champ lexical sert à **organiser un voyage** : réservations, itinéraire, bagages. Mots clés : *buchen* (réserver), *der Flug* (le vol), *die Fahrkarte* (le billet), *umsteigen* (changer de train), *der Aufenthalt* (le séjour), *die Verspätung* (le retard).",
         "Beaucoup de verbes sont **séparables** : *abfahren* (partir), *ankommen* (arriver), *umsteigen* (changer), *mitnehmen* (emporter). Apprends-les avec leur particule. Les horaires utilisent *um* (heure) et *von… bis* (de… à).",
@@ -150,6 +261,43 @@ window.MODULE_A22 = {
     },
     {
       id: "a2t13",
+      rp: {
+        "scene": "Au zoo",
+        "intro": "Tu parles d'animaux avec Zika.",
+        "fin": "Bravo ! Le vocabulaire des animaux est acquis.",
+        "tours": [
+          {
+            "de": "Welches Tier magst du am liebsten?",
+            "fr": "Quel animal préfères-tu ?",
+            "options": [
+              {
+                "de": "Ich mag Hunde am liebsten.",
+                "ok": true
+              },
+              {
+                "de": "Ich mag Pizza.",
+                "hint": "Zika demande un ANIMAL : « Ich mag … » (Hunde, Katzen)."
+              }
+            ],
+            "bravo": "Bien joué !"
+          },
+          {
+            "de": "Hast du ein Haustier?",
+            "fr": "As-tu un animal de compagnie ?",
+            "options": [
+              {
+                "de": "Ja, eine Katze.",
+                "ok": true
+              },
+              {
+                "de": "Ja, ein Auto.",
+                "hint": "« Haustier » = animal de compagnie : « eine Katze, einen Hund »."
+              }
+            ],
+            "bravo": "Super !"
+          }
+        ]
+      },
       vocCours: [
         "Ce vocabulaire couvre les **animaux**, domestiques, de la ferme et **sauvages**. Mots clés : *das Tier*, *der Hund* (chien), *die Katze* (chat), *das Pferd* (cheval), *der Vogel* (oiseau), et côté sauvage *der Löwe* (lion), *die Schlange* (serpent), *der Bär* (ours).",
         "Apprends chaque animal **avec son article et son pluriel**, souvent irrégulier (*der Vogel → die Vögel*, *das Pferd → die Pferde*). Pour décrire, associe des adjectifs : *gefährlich* (dangereux), *wild* (sauvage), *zahm* (apprivoisé), *süß* (mignon).",
@@ -195,6 +343,43 @@ window.MODULE_A22 = {
     },
     {
       id: "a2t14",
+      rp: {
+        "scene": "Décrire une personne",
+        "intro": "Décris quelqu'un à Zika.",
+        "fin": "Bravo ! Tu sais décrire une personne.",
+        "tours": [
+          {
+            "de": "Wie sieht dein bester Freund aus?",
+            "fr": "À quoi ressemble ton meilleur ami ?",
+            "options": [
+              {
+                "de": "Er ist groß und schlank.",
+                "ok": true
+              },
+              {
+                "de": "Er ist nett und ehrlich.",
+                "hint": "« aussehen » = l'apparence : « Er ist groß / schlank ». (Le caractère, c'est après.)"
+              }
+            ],
+            "bravo": "Bravo !"
+          },
+          {
+            "de": "Und wie ist sein Charakter?",
+            "fr": "Et comment est son caractère ?",
+            "options": [
+              {
+                "de": "Er ist freundlich und lustig.",
+                "ok": true
+              },
+              {
+                "de": "Er ist groß.",
+                "hint": "Là c'est le CARACTÈRE : « freundlich, lustig, ehrgeizig »."
+              }
+            ],
+            "bravo": "Très bien !"
+          }
+        ]
+      },
       vocCours: [
         "Ce champ lexical permet de **décrire** quelqu'un physiquement et moralement. Vocabulaire clé : l'apparence (*groß* grand, *schlank* mince, *die Haare* les cheveux, *die Augen* les yeux) et le caractère (*nett* gentil, *freundlich* aimable, *ehrgeizig* ambitieux, *schüchtern* timide).",
         "L'**adjectif attribut** après *sein* est invariable (« *Er ist groß und freundlich* »), mais devant le nom il se décline (« *ein **netter** Mann* »). Apprends des **paires d'opposés** (*groß / klein*, *jung / alt*, *fleißig / faul*) : on les retient deux fois mieux ensemble.",
@@ -240,6 +425,43 @@ window.MODULE_A22 = {
     },
     {
       id: "a2t15",
+      rp: {
+        "scene": "Le logement",
+        "intro": "Tu décris ton logement à Zika.",
+        "fin": "Parfait ! Tu sais décrire ton logement.",
+        "tours": [
+          {
+            "de": "Wohnst du in einem Haus oder in einer Wohnung?",
+            "fr": "Habites-tu une maison ou un appartement ?",
+            "options": [
+              {
+                "de": "In einer Wohnung.",
+                "ok": true
+              },
+              {
+                "de": "Ich wohne gern.",
+                "hint": "Réponds « in einem Haus » ou « in einer Wohnung »."
+              }
+            ],
+            "bravo": "Parfait !"
+          },
+          {
+            "de": "Hat die Wohnung einen Balkon?",
+            "fr": "L'appartement a-t-il un balcon ?",
+            "options": [
+              {
+                "de": "Ja, einen kleinen Balkon.",
+                "ok": true
+              },
+              {
+                "de": "Ja, ich bin glücklich.",
+                "hint": "Réponds sur le balcon : « Ja, einen Balkon » ou « Nein »."
+              }
+            ],
+            "bravo": "Génial !"
+          }
+        ]
+      },
       vocCours: [
         "Ce vocabulaire approfondit le **logement** et le **cadre de vie** : types d'habitat, environnement. Mots clés : *die Wohnung* (appartement), *das Reihenhaus* (maison mitoyenne), *der Garten* (jardin), *der Stadtteil* (quartier), *die Miete* (le loyer), *mieten* (louer).",
         "Distingue *die Stadt* (la ville), *das Dorf* (le village) et *die Gegend* (le coin, la région). Le vocabulaire se combine avec les **prépositions de lieu** + datif (« *Ich wohne **im** Zentrum / **am** Stadtrand* », au centre / en périphérie).",
@@ -285,6 +507,43 @@ window.MODULE_A22 = {
     },
     {
       id: "a2t16",
+      rp: {
+        "scene": "Manger sainement",
+        "intro": "Tu parles d'alimentation avec Zika.",
+        "fin": "Bravo ! Tu sais parler d'alimentation.",
+        "tours": [
+          {
+            "de": "Isst du viel Obst und Gemüse?",
+            "fr": "Manges-tu beaucoup de fruits et légumes ?",
+            "options": [
+              {
+                "de": "Ja, jeden Tag.",
+                "ok": true
+              },
+              {
+                "de": "Ja, ich trinke Kaffee.",
+                "hint": "Zika parle de FRUITS/LÉGUMES : « Ja, jeden Tag » ou « Nein, leider nicht »."
+              }
+            ],
+            "bravo": "Excellent !"
+          },
+          {
+            "de": "Was isst du nicht so gern?",
+            "fr": "Qu'est-ce que tu n'aimes pas trop manger ?",
+            "options": [
+              {
+                "de": "Ich mag kein Fleisch.",
+                "ok": true
+              },
+              {
+                "de": "Ich esse gern.",
+                "hint": "Dis ce que tu n'aimes PAS : « Ich mag kein/keine … »."
+              }
+            ],
+            "bravo": "Bien joué !"
+          }
+        ]
+      },
       vocCours: [
         "Ce champ lexical relie **alimentation** et **santé**. Mots clés : *gesund* (sain) / *ungesund*, *das Obst* (les fruits), *das Gemüse* (les légumes), *die Ernährung* (l'alimentation), *vegetarisch*, *die Vitamine*, *fettarm* (pauvre en graisses).",
         "Note les **noms collectifs** : *das Obst* et *das Gemüse* sont **singuliers** en allemand (pas de pluriel comme en français !). Apprends aussi *essen* (manger, irrégulier : *er isst*) et *sich ernähren* (se nourrir).",
@@ -330,6 +589,43 @@ window.MODULE_A22 = {
     },
     {
       id: "a2t17",
+      rp: {
+        "scene": "Les actualités",
+        "intro": "Tu discutes de l'actualité avec Zika.",
+        "fin": "Bravo ! Tu sais parler de l'actualité.",
+        "tours": [
+          {
+            "de": "Liest du oft Nachrichten?",
+            "fr": "Lis-tu souvent les actualités ?",
+            "options": [
+              {
+                "de": "Ja, jeden Morgen.",
+                "ok": true
+              },
+              {
+                "de": "Ja, ich lese ein Buch.",
+                "hint": "Zika parle des NACHRICHTEN (infos) : « Ja, jeden Morgen » ou « Nein, selten »."
+              }
+            ],
+            "bravo": "Super !"
+          },
+          {
+            "de": "Welches Thema interessiert dich?",
+            "fr": "Quel sujet t'intéresse ?",
+            "options": [
+              {
+                "de": "Politik interessiert mich.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin müde.",
+                "hint": "Nomme un sujet : « Politik / Sport / Wirtschaft interessiert mich »."
+              }
+            ],
+            "bravo": "Bravo !"
+          }
+        ]
+      },
       vocCours: [
         "Ce thème ouvre sur les **médias** et l'**actualité** — un grand pas vers l'allemand authentique. Mots clés : *die Nachrichten* (les informations), *die Zeitung* (le journal), *der Bericht* (le reportage), *die Politik*, *die Wirtschaft* (l'économie), *das Ereignis* (l'événement).",
         "Le vocabulaire devient plus **abstrait** : repère les **noms en -ung** (*die Regierung* gouvernement, *die Meinung* opinion, *die Entwicklung* évolution), tous féminins. Beaucoup de mots sont **internationaux** (*die Demokratie, die Krise, das Interview*).",
@@ -375,6 +671,43 @@ window.MODULE_A22 = {
     },
     {
       id: "a2t18",
+      rp: {
+        "scene": "L'environnement",
+        "intro": "Tu parles d'écologie avec Zika.",
+        "fin": "Bravo ! Tu sais parler d'écologie.",
+        "tours": [
+          {
+            "de": "Was machst du für die Umwelt?",
+            "fr": "Que fais-tu pour l'environnement ?",
+            "options": [
+              {
+                "de": "Ich trenne den Müll.",
+                "ok": true
+              },
+              {
+                "de": "Ich fahre gern Auto.",
+                "hint": "Une action ÉCOLO : « Ich trenne den Müll » (je trie), « Ich fahre Rad »."
+              }
+            ],
+            "bravo": "Très bien !"
+          },
+          {
+            "de": "Fährst du oft mit dem Auto?",
+            "fr": "Conduis-tu souvent ?",
+            "options": [
+              {
+                "de": "Nein, meistens mit dem Rad.",
+                "ok": true
+              },
+              {
+                "de": "Ja, das ist gut für die Umwelt.",
+                "hint": "La voiture pollue : plutôt « Nein, meistens mit dem Rad »."
+              }
+            ],
+            "bravo": "Parfait !"
+          }
+        ]
+      },
       vocCours: [
         "Ce champ lexical actuel concerne l'**environnement** et l'**écologie**. Mots clés : *die Umwelt*, *der Umweltschutz* (la protection de l'environnement), *der Müll* (les déchets), *trennen* (trier), *recyceln*, *die Energie*, *der Klimawandel* (le changement climatique).",
         "Beaucoup de termes sont des **noms composés** transparents : *Umwelt + Schutz = Umweltschutz*, *Klima + Wandel = Klimawandel*, *Müll + Trennung = Mülltrennung*. Savoir les **décomposer** aide à comprendre et à former soi-même des mots longs.",
@@ -420,6 +753,43 @@ window.MODULE_A22 = {
     },
     {
       id: "a2t19",
+      rp: {
+        "scene": "La technologie",
+        "intro": "Tu parles de technologie avec Zika.",
+        "fin": "Bravo ! Tu as terminé le niveau A2 ! 🎉",
+        "tours": [
+          {
+            "de": "Wie oft benutzt du dein Handy?",
+            "fr": "À quelle fréquence utilises-tu ton portable ?",
+            "options": [
+              {
+                "de": "Sehr oft, fast immer.",
+                "ok": true
+              },
+              {
+                "de": "In der Stadt.",
+                "hint": "Zika demande la FRÉQUENCE : « oft », « selten », « fast immer »."
+              }
+            ],
+            "bravo": "Génial !"
+          },
+          {
+            "de": "Wofür benutzt du das Internet?",
+            "fr": "Pour quoi utilises-tu Internet ?",
+            "options": [
+              {
+                "de": "Zum Lernen und für Nachrichten.",
+                "ok": true
+              },
+              {
+                "de": "Ich habe ein Handy.",
+                "hint": "Dis POUR QUOI : « zum Lernen, für Nachrichten, zum Spielen »."
+              }
+            ],
+            "bravo": "Excellent !"
+          }
+        ]
+      },
       vocCours: [
         "Ce dernier thème A2 porte sur la **technologie** et le **numérique** au quotidien. Vocabulaire clé : *das Handy* (le portable), *das Smartphone*, *die App*, *das Internet*, *die Nachricht* (le message), *herunterladen* (télécharger), *online sein*.",
         "Faux-ami important : *das Handy* désigne le **téléphone portable** en allemand (et non « pratique » comme en anglais). Beaucoup d'autres termes sont **internationaux** (*der Computer, die E-Mail, das WLAN, das Update*), ce qui facilite l'apprentissage.",

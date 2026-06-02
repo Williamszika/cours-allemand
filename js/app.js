@@ -153,33 +153,42 @@
   }
   window.localizeInto = localizeInto; // pont pour exercises.js (jeu de rôle)
 
-  /* Traduction de l'interface (chrome) dans la langue choisie.
-     Liste blanche : uniquement du texte FRANÇAIS d'interface — jamais le
-     contenu allemand (vocabulaire, exemples, dialogues, réponses) ni les
-     libellés déjà localisés (.cours-tag, titre d'article…). */
-  const UI_TR_SEL = [
-    ".onboarding-intro", ".examen-final h2", ".examen-final p", ".examen-final .btn",
-    ".onboarding > .btn", ".section-title", ".niveau-btn span",
-    ".hero-eyebrow", ".hero-slogan", ".hero-desc", ".hero-cta .btn", ".hero-secondary .btn", ".hero-audio-info",
-    ".method-card h3", ".method-card p", ".stat-l",
-    "#exo > h2", ".exo-group-title", ".exo-group-sub", ".exo-consigne", ".exo-type",
-    ".completion h3", ".completion p", ".completion .btn",
-    ".setting-label", ".objectifs h3", ".ls-head h2", ".lecon-titles h3",
-    ".lesson-nav .btn", ".onb-lang span", ".lang-cur-lab", ".goal-text", ".gp-lab", ".time-chart-cap",
-    ".niveau-actuel", ".dlg-lieu", ".rp-scene", ".rp-intro",
-    ".onboarding h1", ".coach-nom", ".zika-conseil .cours-tag", ".zika-conseil .btn",
-    ".examen-final h3", ".comp-emoji + h3", ".locked-notice h2", ".locked-notice p"
+  /* Traduction de TOUTE l'interface française dans la langue choisie.
+     Approche « opt-out » : on traduit chaque nœud de texte, SAUF le contenu
+     allemand à apprendre (vocabulaire, exemples, dialogues, réponses
+     d'exercices) et ce qui est déjà localisé. */
+  const NOLOC = [
+    ".voc-de", ".voc-nom", ".art", ".voc-ex", ".cours-ex-de", ".hl-de", ".conv-de", ".conv-loc",
+    ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag", ".immersion-banner", ".genre-legende",
+    ".cours-tag", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points", ".cours-table", "table",
+    ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
+    ".trou-input", ".trou-phrase", ".trad-source", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript", ".ecoute-player", ".exo-question", ".exo-indice",
+    ".xl", ".rp-fr", ".rp-bubble", ".gp-pts", ".stat-n", ".goal-num", ".nc-code", ".lang-name", ".lang-flag", ".badge-ic", ".comp-score",
+    "code", "input", "textarea", "[contenteditable]"
   ].join(",");
+  const _l10nDone = (typeof WeakSet !== "undefined") ? new WeakSet() : null;
   function localizeUI(root) {
     if (!root || !window.I18N) return;
     const lang = window.I18N.lang();
     if (lang === "fr") return;
-    const nodes = Array.prototype.slice.call(root.querySelectorAll(UI_TR_SEL))
-      .filter((e) => !e.dataset.l10n && !e.children.length && /[A-Za-zÀ-ÿ]/.test(e.textContent || ""));
-    nodes.forEach((e) => {
-      e.dataset.l10n = "1";
-      const fr = e.textContent;
-      window.I18N.translate(fr, lang, "fr").then((out) => { if (out && out !== fr) e.textContent = out; });
+    let walker;
+    try { walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null); } catch (e) { return; }
+    const groups = {};
+    let n;
+    while ((n = walker.nextNode())) {
+      const raw = n.nodeValue;
+      if (!raw || !/[A-Za-zÀ-ÿ]/.test(raw)) continue;
+      if (_l10nDone && _l10nDone.has(n)) continue;
+      const p = n.parentElement;
+      if (!p || (p.closest && p.closest(NOLOC))) continue;
+      if (_l10nDone) _l10nDone.add(n);
+      const t = raw.trim();
+      (groups[t] = groups[t] || []).push(n);
+    }
+    Object.keys(groups).forEach((t) => {
+      window.I18N.translate(t, lang, "fr").then((out) => {
+        if (out && out !== t) groups[t].forEach((node) => { node.nodeValue = node.nodeValue.replace(t, function () { return out; }); });
+      });
     });
   }
   window.localizeUI = localizeUI;
