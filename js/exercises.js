@@ -56,7 +56,8 @@ window.Exercises = (function () {
         ordre: "Remise en ordre",
         traduction: "Traduction",
         production: "Production écrite",
-        oral: "Production orale"
+        oral: "Production orale",
+        rp: "Jeu de rôle avec Zika"
       }[t] || t
     );
   }
@@ -141,6 +142,8 @@ window.Exercises = (function () {
     } else if (ex.type === "oral") {
       // l'oral est noté (reconnaissance vocale ou auto-évaluation) → card._grade
       card._grade = buildOral(ex, body, actions, feedback, onResult);
+    } else if (ex.type === "rp") {
+      buildRP(ex, body, actions, feedback, onResult);
     } else {
       body.appendChild(el("p", "", "Type d'exercice inconnu : " + ex.type));
     }
@@ -590,6 +593,86 @@ window.Exercises = (function () {
     return function () {
       return { ok: lastOk, detail: lastOk === null ? "🎤 Parlez (ou auto-évaluez-vous) pour être noté." : "" };
     };
+  }
+
+  /* ---------- Jeu de rôle (dialogue tuteur ↔ utilisateur) ----------
+     Zika joue une scène, pose une réplique (audio), l'utilisateur choisit
+     sa réponse. Bonne réponse → Zika félicite et continue. Erreur → Zika
+     explique gentiment et encourage à réessayer. La leçon n'est validée
+     que lorsque toute la scène est réussie. */
+  function buildRP(ex, body, actions, feedback, onResult) {
+    const ctx = (window.I18N && ex._niveau) ? window.I18N.explication(ex._niveau) : { lang: "fr", de: false };
+    function loc(node, txt) { // explications/encouragements dans la langue de l'apprenant
+      if (window.localizeInto) window.localizeInto(node, txt, ctx); else node.innerHTML = txt;
+    }
+    if (ex.scene) body.appendChild(el("p", "rp-scene", "🎬 " + ex.scene));
+    if (ex.intro) { const ip = el("p", "rp-intro"); loc(ip, ex.intro); body.appendChild(ip); }
+    const conv = el("div", "rp-conv");
+    body.appendChild(conv);
+    const tours = ex.tours || [];
+    let i = 0, done = false;
+
+    function zikaSay(de, fr, autoplay) {
+      const row = el("div", "rp-row rp-zika");
+      row.appendChild(el("div", "rp-av", "🧑‍🏫"));
+      const bub = el("div", "rp-bubble");
+      const line = el("div", "rp-de");
+      line.appendChild(el("span", "", de));
+      const sp = el("button", "btn-audio small", "🔊"); sp.type = "button";
+      sp.addEventListener("click", () => window.Speech && window.Speech.speak(de));
+      line.appendChild(sp); bub.appendChild(line);
+      if (fr) { const f = el("div", "rp-fr"); loc(f, fr); bub.appendChild(f); }
+      row.appendChild(bub); conv.appendChild(row);
+      if (autoplay) { try { window.Speech && window.Speech.speak(de); } catch (e) {} }
+      row.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+    function userSay(de) {
+      const row = el("div", "rp-row rp-user");
+      const bub = el("div", "rp-bubble"); bub.textContent = de;
+      row.appendChild(bub); conv.appendChild(row);
+    }
+    function zikaReact(txt, good) {
+      const row = el("div", "rp-row rp-zika");
+      row.appendChild(el("div", "rp-av", good ? "👏" : "💡"));
+      const bub = el("div", "rp-bubble " + (good ? "rp-good" : "rp-bad"));
+      loc(bub, txt);
+      row.appendChild(bub); conv.appendChild(row);
+      row.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+    function showTurn() {
+      const t = tours[i];
+      if (!t) return;
+      zikaSay(t.de, t.fr, true);
+      const opts = el("div", "rp-options");
+      shuffle(t.options || []).forEach((o) => {
+        const btn = el("button", "rp-opt", o.de);
+        btn.type = "button";
+        btn.addEventListener("click", () => {
+          if (done) return;
+          if (o.ok) {
+            userSay(o.de);
+            opts.remove();
+            if (window.TG) window.TG.haptic("success");
+            zikaReact("✓ " + (t.bravo || "Sehr gut!"), true);
+            i++;
+            if (i >= tours.length) {
+              done = true;
+              zikaReact("🎉 " + (ex.fin || "Bravo, tu as réussi toute la scène !"), true);
+              if (onResult) onResult(true);
+            } else {
+              setTimeout(showTurn, 500);
+            }
+          } else {
+            userSay(o.de);
+            if (window.TG) window.TG.haptic("error");
+            zikaReact("✗ " + (o.hint || "Pas tout à fait.") + " Réessaie, tu vas y arriver ! 💪", false);
+          }
+        });
+        opts.appendChild(btn);
+      });
+      conv.appendChild(opts);
+    }
+    showTurn();
   }
 
   return { render, normalize, eq, matchesAny, contains, shuffle, GRADABLE };

@@ -151,6 +151,36 @@
     });
     return node;
   }
+  window.localizeInto = localizeInto; // pont pour exercises.js (jeu de rôle)
+
+  /* Traduction de l'interface (chrome) dans la langue choisie.
+     Liste blanche : uniquement du texte FRANÇAIS d'interface — jamais le
+     contenu allemand (vocabulaire, exemples, dialogues, réponses) ni les
+     libellés déjà localisés (.cours-tag, titre d'article…). */
+  const UI_TR_SEL = [
+    ".onboarding-intro", ".examen-final h2", ".examen-final p", ".examen-final .btn",
+    ".onboarding > .btn", ".section-title", ".niveau-btn span",
+    ".hero-eyebrow", ".hero-slogan", ".hero-desc", ".hero-cta .btn", ".hero-secondary .btn", ".hero-audio-info",
+    ".method-card h3", ".method-card p", ".stat-l",
+    "#exo > h2", ".exo-group-title", ".exo-group-sub", ".exo-consigne", ".exo-type",
+    ".completion h3", ".completion p", ".completion .btn",
+    ".setting-label", ".objectifs h3", ".ls-head h2", ".lecon-titles h3",
+    ".lesson-nav .btn", ".onb-lang span", ".lang-cur-lab", ".goal-text", ".gp-lab", ".time-chart-cap",
+    ".niveau-actuel", ".dlg-lieu", ".rp-scene"
+  ].join(",");
+  function localizeUI(root) {
+    if (!root || !window.I18N) return;
+    const lang = window.I18N.lang();
+    if (lang === "fr") return;
+    const nodes = Array.prototype.slice.call(root.querySelectorAll(UI_TR_SEL))
+      .filter((e) => !e.dataset.l10n && !e.children.length && /[A-Za-zÀ-ÿ]/.test(e.textContent || ""));
+    nodes.forEach((e) => {
+      e.dataset.l10n = "1";
+      const fr = e.textContent;
+      window.I18N.translate(fr, lang, "fr").then((out) => { if (out && out !== fr) e.textContent = out; });
+    });
+  }
+  window.localizeUI = localizeUI;
   function exLabel(ex, key, vars) { return ex && ex.de ? window.I18N.tIn("de", key, vars) : window.I18N.t(key, vars); }
   function vocDeHtml(de) {
     const m = String(de).match(/^(der|die|das)\s+(.+)$/);
@@ -754,7 +784,10 @@
     exProg.appendChild(bar);
     exo.appendChild(exProg);
 
-    const total = l.exercices.length;
+    // Exercices de la leçon + (si présent) le jeu de rôle avec Zika, exigé lui aussi.
+    const allEx = l.exercices.slice();
+    if (l.rp && l.rp.tours && l.rp.tours.length) allEx.push({ type: "rp", scene: l.rp.scene, intro: l.rp.intro, tours: l.rp.tours, fin: l.rp.fin, _niveau: l.niveau, _rp: true });
+    const total = allEx.length;
     const done = new Set();
     const success = new Set();
     let completionShown = false;
@@ -774,7 +807,8 @@
     const groupDefs = {
       comp: ["📖 Exercices de compréhension", "Vérifiez que vous avez bien compris le dialogue et le sens."],
       appro: ["🎯 Exercices approfondis", "Grammaire et application, pour ancrer la leçon."],
-      prod: ["✍️ Production écrite & orale", "À votre tour de produire en allemand."]
+      prod: ["✍️ Production écrite & orale", "À votre tour de produire en allemand."],
+      rp: ["🎭 Jeu de rôle avec Zika", "Joue la scène : réponds à Zika. S'il te corrige, réessaie — tu vas y arriver !"]
     };
     const groups = {};
     function groupOf(cat) {
@@ -786,7 +820,7 @@
       }
       return groups[cat];
     }
-    l.exercices.forEach((ex, i) => {
+    allEx.forEach((ex, i) => {
       const node = window.Exercises.render(ex, i, (ok) => {
         done.add(i);
         if (ok) success.add(i);
@@ -794,9 +828,9 @@
         window.Progress.setExercice(l.id, i, ok);
         refresh();
       });
-      groupOf(exoCat(ex)).appendChild(node);
+      groupOf(ex._rp ? "rp" : exoCat(ex)).appendChild(node);
     });
-    ["comp", "appro", "prod"].forEach((cat) => { if (groups[cat]) exo.appendChild(groups[cat]); });
+    ["comp", "appro", "prod", "rp"].forEach((cat) => { if (groups[cat]) exo.appendChild(groups[cat]); });
     refresh();
     frag.appendChild(exo);
 
@@ -871,6 +905,7 @@
       retry.addEventListener("click", () => renderLecon(flat[idx].lecon.id));
       c.appendChild(retry);
       container.appendChild(c);
+      try { localizeUI(app); } catch (e) {}
       if (window.TG) { window.TG.haptic("warning"); window.TG.setMainButton("🔁 Recommencer", () => renderLecon(flat[idx].lecon.id)); }
       c.scrollIntoView({ behavior: "smooth" });
       return;
@@ -894,6 +929,7 @@
     actions.appendChild(stay);
     c.appendChild(actions);
     container.appendChild(c);
+    try { localizeUI(app); } catch (e) {}
     if (window.TG) window.TG.haptic("success");
 
     let n = 4, timer;
@@ -1608,6 +1644,7 @@
       else window.TG.showBackButton(() => { location.hash = "#/"; });
       window.TG.setMainButton((I ? I.t("continue") : "Continuer") + " →", () => { location.hash = dest; });
     }
+    try { localizeUI(app); } catch (e) {}
     window.scrollTo(0, 0);
   }
 
@@ -1670,6 +1707,7 @@
     if (window.TG) window.TG.setMainButton("🎯 Évaluer mon niveau", () => { location.hash = "#/placement"; });
     // Zika salue à voix haute (si autorisé par le navigateur)
     if (window.Speech && window.Speech.isSupported()) { try { setTimeout(() => window.Speech.speak(salutDE, { rate: 1, pitch: 0.95 }), 400); } catch (e) {} }
+    try { localizeUI(app); } catch (e) {}
     window.scrollTo(0, 0);
   }
 
@@ -1977,6 +2015,7 @@
     else if (hash.match(/^#\/stats/)) renderDashboard();
     else if (besoinOnboarding()) renderOnboarding();
     else renderHome();
+    try { localizeUI(app); } catch (e) {} // traduit l'interface dans la langue choisie
   }
 
   /* --- PWA : installation + service worker (mode hors-ligne) --- */
