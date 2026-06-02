@@ -15,7 +15,12 @@ window.MODULE_B22 = {
   couleur: "#db2777",
   lecons: [
     {
-      id: "b2t08", numero: 8, titre: "E-mails et appels professionnels", titreDE: "E-Mails und Telefonate",
+      id: "b2t08",
+      vocCoursDE: [
+        "Dieses Thema behandelt **berufliche E-Mails** und **Telefonate**. Schlüsselwörter sind *die E-Mail*, *der Betreff* (l'objet), *der Anhang* (la pièce jointe), *zurückrufen* (rappeler), *eine Nachricht hinterlassen* (laisser un message), *weiterleiten* (transférer).",
+        "Wichtig ist der Unterschied zwischen **formell** und **informell**. Formell: « *Sehr geehrte Frau Müller … Mit freundlichen Grüßen* ». Informell: « *Hallo Anna … Liebe Grüße* ». Am Telefon meldet man sich mit dem Namen: « *Schmidt, guten Tag* ».",
+        "Tipp: Schreibe eine kurze formelle und eine informelle E-Mail zum selben Thema. Der bewusste Wechsel des Registers ist eine wichtige B2-Fähigkeit, die du am besten durch Schreiben übst."
+      ], numero: 8, titre: "E-mails et appels professionnels", titreDE: "E-Mails und Telefonate",
       theme: "Travail quotidien : e-mails et appels", duree: 60,
       objectifs: ["Rédiger un e-mail professionnel", "Mener un appel téléphonique formel"],
       grammairePoints: ["Registre formel", "Discours rapporté"],
@@ -52,7 +57,12 @@ window.MODULE_B22 = {
       ]
     },
     {
-      id: "b2t09", numero: 9, titre: "Activités et loisirs", titreDE: "Aktivitäten und Freizeit",
+      id: "b2t09",
+      vocCoursDE: [
+        "In diesem Thema vertiefst du **Aktivitäten** und **Freizeit** auf höherem Niveau. Schlüsselwörter sind *die Freizeitgestaltung* (l'organisation du temps libre), *das Ehrenamt* (le bénévolat), *der Verein* (l'association/le club), *sich engagieren* (s'engager), *die Abwechslung* (la variété).",
+        "In Deutschland spielt der **Verein** eine große Rolle: Sportverein, Musikverein, Gesangverein. Viele Menschen engagieren sich **ehrenamtlich** (bénévolement). Nützliche Verben: *teilnehmen an* (+ Dativ), *beitreten* (+ Dativ), *organisieren*.",
+        "Tipp: Beschreibe deine Freizeit und überlege, in welchem Verein du in Deutschland mitmachen würdest. So verbindest du Vokabular, Kultur und deine eigenen Interessen."
+      ], numero: 9, titre: "Activités et loisirs", titreDE: "Aktivitäten und Freizeit",
       theme: "Activités et loisirs", duree: 55,
       objectifs: ["Parler de ses loisirs en détail", "Exprimer préférence et fréquence"],
       grammairePoints: ["Comparatif/superlatif", "Adverbes de fréquence"],
@@ -89,7 +99,12 @@ window.MODULE_B22 = {
       ]
     },
     {
-      id: "b2t10", numero: 10, titre: "L'université", titreDE: "Universität und Studium",
+      id: "b2t10",
+      vocCoursDE: [
+        "Dieses Thema behandelt die **Universität** und das **Studium**. Schlüsselwörter sind *die Universität*, *das Studienfach* (la matière), *die Vorlesung* (le cours magistral), *das Seminar*, *die Prüfung*, *der Bachelor / der Master*, *die Bibliothek*.",
+        "Beachte typische Wörter des Studiums: *sich einschreiben* (s'inscrire), *das Semester*, *die Hausarbeit* (le mémoire), *die Note*. Wichtig ist auch *das Abitur* (le bac), die Voraussetzung fürs Studium an der Universität.",
+        "Tipp: Beschreibe ein Studienfach, das dich interessiert, und warum. Auch wenn du nicht studierst, ist dieses Vokabular nützlich, um über Bildung und Ziele auf B2-Niveau zu sprechen."
+      ], numero: 10, titre: "L'université", titreDE: "Universität und Studium",
       theme: "Université", duree: 60,
       objectifs: ["Décrire la vie universitaire", "Comprendre l'organisation des études"],
       grammairePoints: ["Nominalisation", "Subordonnées avec dass"],
@@ -127,7 +142,12 @@ window.MODULE_B22 = {
       ]
     },
     {
-      id: "b2t11", numero: 11, titre: "Histoire et politique", titreDE: "Geschichte und Politik",
+      id: "b2t11",
+      vocCoursDE: [
+        "In diesem Thema geht es um **Geschichte** und **Politik** – anspruchsvolle, aber wichtige Felder. Schlüsselwörter sind *die Regierung* (le gouvernement), *die Wahl* (l'élection), *die Demokratie*, *das Gesetz* (la loi), *die Partei* (le parti), *der Bürger* (le citoyen).",
+        "Viele politische Begriffe sind **Nomen auf -ung** (*die Regierung, die Verfassung* la constitution) oder international (*die Demokratie, die Republik*). Nützlich sind auch *wählen* (élire / voter) und *abstimmen über* (voter sur).",
+        "Tipp: Lies einfache Nachrichten auf Deutsch und sammle politisches Vokabular. Dieses Feld ist abstrakt, aber unverzichtbar, um Zeitungen zu verstehen und über aktuelle Themen mitzureden."
+      ], numero: 11, titre: "Histoire et politique", titreDE: "Geschichte und Politik",
       theme: "Histoire et politique", duree: 60,
       objectifs: ["Parler d'événements historiques", "Comprendre le système politique allemand"],
       grammairePoints: ["Prétérit (récit historique)", "Passif"],
@@ -164,7 +184,12 @@ window.MODULE_B22 = {
       ]
     },
     {
-      id: "b2t12", numero: 12, titre: "Actualités du monde", titreDE: "Nachrichten aus aller Welt",
+      id: "b2t12",
+      vocCoursDE: [
+        "Dieses Thema dreht sich um **internationale Nachrichten**. Schlüsselwörter sind *die Nachricht* (l'information), *das Ereignis* (l'événement), *die Katastrophe*, *die Krise*, *berichten über* (rapporter), *die Quelle* (la source), *zuverlässig* (fiable).",
+        "Auf B2-Niveau geht es auch um **kritisches Lesen**: Was ist eine Tatsache (*die Tatsache*), was eine Meinung (*die Meinung*)? Nützliche Verben sind *behaupten* (affirmer), *bezweifeln* (douter), *bestätigen* (confirmer).",
+        "Tipp: Vergleiche, wie zwei verschiedene Quellen dasselbe Ereignis darstellen. Diese kritische Medienkompetenz auf Deutsch zu üben, ist genau das richtige Niveau für B2."
+      ], numero: 12, titre: "Actualités du monde", titreDE: "Nachrichten aus aller Welt",
       theme: "Actualités internationales", duree: 60,
       objectifs: ["Comprendre une information journalistique", "Résumer et commenter une nouvelle"],
       grammairePoints: ["Discours indirect (Konjunktiv I)", "Nominalisation"],
@@ -201,7 +226,12 @@ window.MODULE_B22 = {
       ]
     },
     {
-      id: "b2t13", numero: 13, titre: "Histoires criminelles", titreDE: "Kriminalgeschichten",
+      id: "b2t13",
+      vocCoursDE: [
+        "In diesem unterhaltsamen Thema geht es um **Kriminalgeschichten** und Krimis. Schlüsselwörter sind *das Verbrechen* (le crime), *der Täter* (l'auteur du crime), *das Opfer* (la victime), *der Zeuge* (le témoin), *die Ermittlung* (l'enquête), *der Verdacht* (le soupçon).",
+        "Krimis sind ideal, um die **Vergangenheitsformen** zu üben, denn man erzählt, was passiert ist. Nützliche Verben: *stehlen* (voler), *einbrechen* (cambrioler), *verdächtigen* (soupçonner), *aufklären* (élucider), *verhaften* (arrêter).",
+        "Tipp: Erzähle eine kurze Krimigeschichte im Präteritum (« *Eines Abends…* »). Geschichten zu erzählen verbindet spannendes Vokabular mit den Erzähltempora – eine perfekte, motivierende B2-Übung."
+      ], numero: 13, titre: "Histoires criminelles", titreDE: "Kriminalgeschichten",
       theme: "Histoires criminelles", duree: 60,
       objectifs: ["Raconter un fait divers", "Formuler des hypothèses sur un coupable"],
       grammairePoints: ["Prétérit (récit)", "Supposition (Modalverben subjectifs)"],

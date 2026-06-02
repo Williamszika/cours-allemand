@@ -16,7 +16,12 @@ window.MODULE_C21 = {
   couleur: "#047857",
   lecons: [
     {
-      id: "c2t01", numero: 1, titre: "Communication et médias", titreDE: "Kommunikation und Medien",
+      id: "c2t01",
+      vocCoursDE: [
+        "Auf C2-Niveau betrachtest du **Kommunikation** und **Medien** in ihrer ganzen Komplexität. Schlüsselwörter sind *die Massenmedien*, *die Meinungsbildung* (la formation de l'opinion), *die Glaubwürdigkeit* (la crédibilité), *die Reizüberflutung* (la surcharge d'informations), *die Filterblase* (la bulle de filtres).",
+        "Es geht um **abstrakte und kritische** Begriffe: *die Manipulation*, *die Objektivität*, *die Quellenkritik* (l'analyse critique des sources), *die Reichweite* (la portée). Beachte feine Unterschiede wie *die Information* vs. *die Desinformation* und *die Nachricht* vs. *die Meldung*.",
+        "Tipp: Erörtere, wie soziale Medien unsere Meinungsbildung beeinflussen, und beziehe differenziert Stellung. Eine ausgewogene, mit Beispielen belegte Erörterung ist die anspruchsvollste Textsorte – und das Kernstück des C2-Niveaus."
+      ], numero: 1, titre: "Communication et médias", titreDE: "Kommunikation und Medien",
       theme: "Communication et médias", duree: 65,
       objectifs: ["Analyser le rôle des médias avec nuance", "Argumenter de façon structurée"],
       grammairePoints: ["Style nominal", "Connecteurs argumentatifs"],
@@ -53,7 +58,12 @@ window.MODULE_C21 = {
       ]
     },
     {
-      id: "c2t02", numero: 2, titre: "Histoire et souvenirs", titreDE: "Geschichte und Erinnerungen",
+      id: "c2t02",
+      vocCoursDE: [
+        "Dieses Thema verbindet **Geschichte** mit persönlicher und kollektiver **Erinnerung**. Schlüsselwörter sind *die Erinnerung* (le souvenir), *das Gedächtnis* (la mémoire), *die Vergangenheitsbewältigung* (le travail de mémoire), *das Gedenken* (la commémoration), *die Zeitzeugen* (les témoins de l'époque).",
+        "Auf C2 unterscheidest du feinste Nuancen: *sich erinnern* (se souvenir), *gedenken* (+ Genitiv, commémorer solennellement), *verdrängen* (refouler), *aufarbeiten* (assumer, élucider le passé). Das Wort *die Vergangenheitsbewältigung* ist ein zentraler deutscher Begriff.",
+        "Tipp: Reflektiere über die Frage, wie eine Gesellschaft mit ihrer schwierigen Vergangenheit umgehen sollte. Solche ethisch und historisch komplexen Überlegungen differenziert zu formulieren, ist die Essenz des C2-Niveaus."
+      ], numero: 2, titre: "Histoire et souvenirs", titreDE: "Geschichte und Erinnerungen",
       theme: "Histoire et souvenirs", duree: 65,
       objectifs: ["Évoquer la mémoire collective", "Nuancer un récit du passé"],
       grammairePoints: ["Temps du passé", "Konjunktiv (recul)"],
@@ -90,7 +100,12 @@ window.MODULE_C21 = {
       ]
     },
     {
-      id: "c2t03", numero: 3, titre: "Sentiments et personnalité", titreDE: "Gefühle, Lügen, Stärken und Schwächen",
+      id: "c2t03",
+      vocCoursDE: [
+        "Dieses Thema erkundet die menschliche **Persönlichkeit** in ihrer Tiefe: Gefühle, Lügen, Stärken und Schwächen. Schlüsselwörter sind *die Eigenschaft*, *die Stärke / die Schwäche*, *die Aufrichtigkeit* (la sincérité), *die Notlüge* (le mensonge pieux), *die Selbsterkenntnis* (la connaissance de soi).",
+        "Auf C2 verfügst du über ein reiches, **nuanciertes** Wortfeld für Charakterzüge: *einfühlsam* (empathique), *nachtragend* (rancunier), *gewissenhaft* (consciencieux), *impulsiv*, *zurückhaltend* (réservé). Viele lassen sich mit Suffixen und Vorsilben ableiten.",
+        "Tipp: Charakterisiere eine vielschichtige Person (real oder fiktiv) mit ihren Widersprüchen. Eine differenzierte Charakterisierung, die auch Zwischentöne erfasst, zeigt die sprachliche Meisterschaft des C2-Niveaus."
+      ], numero: 3, titre: "Sentiments et personnalité", titreDE: "Gefühle, Lügen, Stärken und Schwächen",
       theme: "Sentiments, mensonges, forces et faiblesses", duree: 65,
       objectifs: ["Décrire des traits de caractère avec finesse", "Exprimer l'ambivalence"],
       grammairePoints: ["Adjectifs nuancés", "Konjunktiv II (hypothèse)"],
@@ -127,7 +142,12 @@ window.MODULE_C21 = {
       ]
     },
     {
-      id: "c2t04", numero: 4, titre: "Les années scolaires", titreDE: "Schuljahre",
+      id: "c2t04",
+      vocCoursDE: [
+        "Dieses Thema blickt reflektiert auf die **Schuljahre** zurück. Schlüsselwörter sind *die Schulzeit*, *prägen* (marquer, façonner), *die Erziehung* (l'éducation), *der Bildungsweg* (le parcours scolaire), *die Chancengleichheit* (l'égalité des chances), *der Leistungsdruck* (la pression de la performance).",
+        "Auf C2 geht es nicht nur um Erinnerungen, sondern um eine **kritische Bewertung** des Bildungssystems: *fördern* (encourager) vs. *überfordern* (surmener), *die Bildungsgerechtigkeit*, *das Potenzial entfalten* (développer le potentiel).",
+        "Tipp: Erörtere, was eine gute Schule ausmacht und woran heutige Bildungssysteme scheitern. Bildungsbiografie und gesellschaftliche Analyse zu verbinden, ist eine typische, anspruchsvolle C2-Aufgabe."
+      ], numero: 4, titre: "Les années scolaires", titreDE: "Schuljahre",
       theme: "Les années scolaires", duree: 60,
       objectifs: ["Porter un regard critique sur l'école", "Comparer des systèmes éducatifs"],
       grammairePoints: ["Comparaison", "Subordonnées"],
@@ -164,7 +184,12 @@ window.MODULE_C21 = {
       ]
     },
     {
-      id: "c2t05", numero: 5, titre: "Carrières et métiers", titreDE: "Karrierewege und Berufe",
+      id: "c2t05",
+      vocCoursDE: [
+        "In diesem Thema geht es um **Karrierewege** und die moderne Arbeitswelt. Schlüsselwörter sind *die Laufbahn* (la carrière), *der Werdegang* (le parcours professionnel), *die Selbstständigkeit* (le statut d'indépendant), *die Work-Life-Balance*, *der Quereinsteiger* (la personne en reconversion), *die Beförderung* (la promotion).",
+        "Auf C2 beherrschst du das **formelle Vokabular** von Bewerbung und Beruf: *sich bewerben um*, *die Qualifikation*, *die berufliche Neuorientierung*, *aufsteigen* (gravir les échelons). Viele Begriffe sind abstrakte Komposita oder Anglizismen.",
+        "Tipp: Beschreibe einen idealen Karriereweg und diskutiere, welche Rolle Sicherheit gegenüber Selbstverwirklichung spielt. Solche abwägenden Diskussionen über Werte und Lebensentscheidungen sind C2-typisch."
+      ], numero: 5, titre: "Carrières et métiers", titreDE: "Karrierewege und Berufe",
       theme: "Possibilités de carrière et professions", duree: 65,
       objectifs: ["Discuter de trajectoires professionnelles", "Argumenter un choix de carrière"],
       grammairePoints: ["Verbes à compléments", "Style nominal"],

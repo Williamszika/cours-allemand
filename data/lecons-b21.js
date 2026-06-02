@@ -17,7 +17,12 @@ window.MODULE_B21 = {
   couleur: "#db2777",
   lecons: [
     {
-      id: "b2t01", numero: 1, titre: "École et formation", titreDE: "Schule und Ausbildung",
+      id: "b2t01",
+      vocCoursDE: [
+        "In diesem Thema geht es um **Schule** und **Ausbildung** auf einem höheren Niveau. Wichtige Wörter sind *die Ausbildung* (la formation professionnelle), *das Studium* (les études), *die Fortbildung* (le perfectionnement), *der Abschluss* (le diplôme), *die Kenntnisse* (les connaissances).",
+        "Das deutsche Bildungssystem hat einige Besonderheiten. Nach der Grundschule gehen Schüler aufs *Gymnasium*, auf die *Realschule* oder die *Hauptschule*. Eine typisch deutsche Stärke ist die **duale Ausbildung**, bei der man gleichzeitig im Betrieb arbeitet und zur Berufsschule geht.",
+        "Tipp: Beschreibe deinen eigenen Bildungsweg und vergleiche ihn mit dem deutschen System. Wenn du Unterschiede zwischen den Ländern formulierst, übst du Vokabular und zugleich das Vergleichen – eine wichtige B2-Fähigkeit."
+      ], numero: 1, titre: "École et formation", titreDE: "Schule und Ausbildung",
       theme: "École et formation", duree: 60,
       objectifs: ["Parler de son parcours et de la formation", "Exprimer une opinion nuancée sur le système éducatif"],
       grammairePoints: ["Nominalisation", "Verbes modaux (sens)"],
@@ -54,7 +59,12 @@ window.MODULE_B21 = {
       ]
     },
     {
-      id: "b2t02", numero: 2, titre: "Relations interpersonnelles", titreDE: "Zwischenmenschliche Beziehungen",
+      id: "b2t02",
+      vocCoursDE: [
+        "Dieses Thema behandelt **zwischenmenschliche Beziehungen** – Freundschaft, Liebe, Familie und Konflikte. Schlüsselwörter sind *die Beziehung* (la relation), *die Freundschaft*, *das Vertrauen* (la confiance), *sich verstehen mit* (bien s'entendre avec), *streiten* (se disputer).",
+        "Viele Ausdrücke sind **feste Wendungen**: *eine Beziehung führen*, *sich auf jemanden verlassen* (compter sur quelqu'un), *jemandem vertrauen* (+ Dativ). Achte auf die reflexiven Verben mit Präposition: *sich verlieben **in*** (+ Akkusativ), *sich trennen **von*** (+ Dativ).",
+        "Tipp: Beschreibe eine wichtige Beziehung in deinem Leben und wie sie sich entwickelt hat. Über Beziehungen zu sprechen verlangt genaues Vokabular und Gefühlsausdruck – ideal, um auf B2-Niveau differenzierter zu werden."
+      ], numero: 2, titre: "Relations interpersonnelles", titreDE: "Zwischenmenschliche Beziehungen",
       theme: "Relations interpersonnelles", duree: 60,
       objectifs: ["Décrire des relations et des sentiments", "Gérer un désaccord avec tact"],
       grammairePoints: ["Verbes pronominaux réciproques", "Adjectifs + prépositions"],
@@ -91,7 +101,12 @@ window.MODULE_B21 = {
       ]
     },
     {
-      id: "b2t03", numero: 3, titre: "Vivre et louer", titreDE: "Wohnen und Mieten",
+      id: "b2t03",
+      vocCoursDE: [
+        "In diesem Thema geht es ums **Wohnen** und **Mieten** – ein praktisch sehr wichtiges Feld. Schlüsselwörter sind *eine Wohnung mieten* (louer un appartement), *der Mietvertrag* (le bail), *die Miete* (le loyer), *die Nebenkosten* (les charges), *der Vermieter* (le bailleur), *der Mieter* (le locataire).",
+        "Beachte die Unterscheidung *mieten* (louer en tant que locataire) und *vermieten* (louer en tant que propriétaire) – ein häufiger Fehler! Wichtig sind auch *die Kaution* (la caution) und *die Wohnungsbesichtigung* (la visite du logement).",
+        "Tipp: Stell dir vor, du suchst eine Wohnung in Deutschland, und beschreibe, was du brauchst. Dieses Vokabular ist für ein Leben im deutschsprachigen Raum besonders nützlich – lerne es gründlich."
+      ], numero: 3, titre: "Vivre et louer", titreDE: "Wohnen und Mieten",
       theme: "Logement et location", duree: 60,
       objectifs: ["Comprendre une annonce et un contrat de location", "Décrire un logement et négocier"],
       grammairePoints: ["Wechselpräpositionen", "Adjectifs déclinés"],
@@ -129,7 +144,12 @@ window.MODULE_B21 = {
       ]
     },
     {
-      id: "b2t04", numero: 4, titre: "Voyages et réclamations", titreDE: "Reisen und Beschwerden",
+      id: "b2t04",
+      vocCoursDE: [
+        "Dieses Thema verbindet **Reisen** mit dem Schreiben von **Beschwerden** (réclamations). Schlüsselwörter sind *eine Reise buchen*, *die Reklamation*, *sich beschweren über* (se plaindre de), *die Entschädigung* (le dédommagement), *erstatten* (rembourser), *mangelhaft* (défectueux).",
+        "Eine schriftliche Beschwerde ist **formell**. Man benutzt höfliche, aber bestimmte Formulierungen: « *Leider muss ich feststellen, dass…* », « *Ich erwarte eine Entschädigung* », « *Mit freundlichen Grüßen* ». Der Konjunktiv II macht den Ton höflich.",
+        "Tipp: Schreibe eine kurze Musterbeschwerde (zum Beispiel über ein schlechtes Hotel). Das Verfassen formeller Texte ist eine zentrale B2-Kompetenz, und feste Wendungen helfen dir dabei sehr."
+      ], numero: 4, titre: "Voyages et réclamations", titreDE: "Reisen und Beschwerden",
       theme: "Voyages et lettres de réclamation", duree: 60,
       objectifs: ["Décrire un problème en vacances", "Rédiger une lettre de réclamation formelle"],
       grammairePoints: ["Lettre formelle", "Konjunktiv II (politesse/exigence)"],
@@ -166,7 +186,12 @@ window.MODULE_B21 = {
       ]
     },
     {
-      id: "b2t05", numero: 5, titre: "Différences culturelles au travail", titreDE: "Kulturelle Unterschiede im Beruf",
+      id: "b2t05",
+      vocCoursDE: [
+        "In diesem Thema geht es um **kulturelle Unterschiede** in der Arbeitswelt. Schlüsselwörter sind *die Kultur*, *der Unterschied* (la différence), *die Hierarchie*, *die Pünktlichkeit*, *die Direktheit* (la franchise), *das Missverständnis* (le malentendu).",
+        "Im Beruf gelten in Deutschland oft **Direktheit**, **Pünktlichkeit** und eine klare Trennung von Beruf und Privatleben als wichtig. Nützliche Verben sind *sich anpassen an* (+ Akkusativ), *respektieren*, *vergleichen* (comparer).",
+        "Tipp: Vergleiche die Arbeitskultur deines Landes mit dem, was du über Deutschland weißt. Über kulturelle Unterschiede zu sprechen schult dein Vokabular und deine Fähigkeit, höflich zu vergleichen und zu nuancieren."
+      ], numero: 5, titre: "Différences culturelles au travail", titreDE: "Kulturelle Unterschiede im Beruf",
       theme: "Différences culturelles professionnelles", duree: 60,
       objectifs: ["Comparer des cultures de travail", "Exprimer une généralisation prudente"],
       grammairePoints: ["man / es heißt, dass", "Comparatifs"],
@@ -203,7 +228,12 @@ window.MODULE_B21 = {
       ]
     },
     {
-      id: "b2t06", numero: 6, titre: "L'Europe et les Allemands", titreDE: "Europa und die Deutschen",
+      id: "b2t06",
+      vocCoursDE: [
+        "Dieses Thema behandelt **Europa** und das Bild der **Deutschen**. Schlüsselwörter sind *die Europäische Union (EU)*, *das Klischee* (le cliché), *das Vorurteil* (le préjugé), *die Grenze* (la frontière), *die Mehrheit* (la majorité), *die Vielfalt* (la diversité).",
+        "Es geht oft um **Stereotype**: Sind die Deutschen wirklich immer pünktlich und ordentlich? Nützliche Strukturen sind das Relativieren (« *Viele Deutsche, aber nicht alle…* ») und das Widersprechen (« *Das ist ein Klischee, in Wirklichkeit…* »).",
+        "Tipp: Überlege, welche Klischees es über dein eigenes Land gibt und ob sie stimmen. Dieses kritische Nachdenken auf Deutsch ist anspruchsvoll und genau das, was das B2-Niveau verlangt."
+      ], numero: 6, titre: "L'Europe et les Allemands", titreDE: "Europa und die Deutschen",
       theme: "L'Europe et les Allemands", duree: 60,
       objectifs: ["Discuter de l'Europe et de l'identité", "Argumenter pour et contre"],
       grammairePoints: ["Connecteurs d'argumentation", "Passif"],
@@ -240,7 +270,12 @@ window.MODULE_B21 = {
       ]
     },
     {
-      id: "b2t07", numero: 7, titre: "Le small talk", titreDE: "Small Talk",
+      id: "b2t07",
+      vocCoursDE: [
+        "In diesem Thema lernst du den **Small Talk** – die leichte, höfliche Konversation. Schlüsselwörter sind *das Gespräch* (la conversation), *das Wetter*, *plaudern* (bavarder), *die Höflichkeit*, *unverbindlich* (sans engagement), *das Thema wechseln* (changer de sujet).",
+        "Beim Small Talk gibt es **sichere** und **heikle** Themen. Sicher sind Wetter, Urlaub und Hobbys; heikel sind Geld, Politik, Religion und persönliche Probleme. Nützliche Floskeln: « *Schönes Wetter heute, oder?* », « *Wie war Ihr Wochenende?* ».",
+        "Tipp: Lerne ein paar **Einstiegssätze** und Übergänge auswendig. Small Talk ist eine soziale Fähigkeit; mit ein paar festen Wendungen wirkst du gleich viel sicherer und sympathischer."
+      ], numero: 7, titre: "Le small talk", titreDE: "Small Talk",
       theme: "Petites conversations", duree: 55,
       objectifs: ["Engager et entretenir une conversation légère", "Éviter les sujets sensibles"],
       grammairePoints: ["Questions ouvertes", "Formules de relance"],

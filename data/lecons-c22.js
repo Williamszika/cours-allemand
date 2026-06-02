@@ -16,7 +16,12 @@ window.MODULE_C22 = {
   couleur: "#047857",
   lecons: [
     {
-      id: "c2t06", numero: 6, titre: "Le progrès technique", titreDE: "Technischer Fortschritt",
+      id: "c2t06",
+      vocCoursDE: [
+        "Dieses Thema behandelt den **technischen Fortschritt** und seine Ambivalenz. Schlüsselwörter sind *die Digitalisierung*, *die künstliche Intelligenz* (l'IA), *die Automatisierung*, *die Errungenschaft* (la conquête, l'acquis), *die Kehrseite* (le revers de la médaille).",
+        "Auf C2 argumentierst du **differenziert** über Chancen und Risiken: *revolutionieren*, *Arbeitsplätze ersetzen*, *ethische Bedenken* (des réserves éthiques), *der Datenschutz* (la protection des données). Du erkennst die Doppeldeutigkeit jeder Technologie.",
+        "Tipp: Verfasse eine ausgewogene Erörterung zu einer aktuellen Technologie, die Pro und Kontra abwägt und zu einem begründeten Fazit kommt. Diese Textsorte ist der Höhepunkt der schriftlichen C2-Kompetenz."
+      ], numero: 6, titre: "Le progrès technique", titreDE: "Technischer Fortschritt",
       theme: "Le progrès technique", duree: 65,
       objectifs: ["Évaluer les enjeux éthiques de la technique", "Argumenter de façon dialectique"],
       grammairePoints: ["Style nominal", "Passif et substituts"],
@@ -53,7 +58,12 @@ window.MODULE_C22 = {
       ]
     },
     {
-      id: "c2t07", numero: 7, titre: "Environnement et pollution", titreDE: "Umwelt und Umweltverschmutzung",
+      id: "c2t07",
+      vocCoursDE: [
+        "Dieses Thema vertieft **Umwelt** und **Umweltverschmutzung**. Schlüsselwörter sind *die Umweltverschmutzung* (la pollution), *der Treibhauseffekt* (l'effet de serre), *die Ressourcen* (les ressources), *die Nachhaltigkeit*, *der ökologische Fußabdruck* (l'empreinte écologique), *die Wende* (le tournant).",
+        "Auf C2 verknüpfst du **wissenschaftliche** und **politische** Dimensionen: *die Verantwortung der Industrie*, *internationale Abkommen* (les accords internationaux), *der Verzicht* (le renoncement), *die Eigenverantwortung* (la responsabilité individuelle).",
+        "Tipp: Diskutiere den Konflikt zwischen wirtschaftlichem Wachstum und Umweltschutz. Komplexe Zielkonflikte zu analysieren und Lösungen abzuwägen, verlangt die volle Bandbreite des C2-Wortschatzes."
+      ], numero: 7, titre: "Environnement et pollution", titreDE: "Umwelt und Umweltverschmutzung",
       theme: "Environnement et pollution", duree: 65,
       objectifs: ["Analyser des problèmes écologiques", "Formuler des solutions au passif"],
       grammairePoints: ["Passif", "Connecteurs de conséquence"],
@@ -90,7 +100,12 @@ window.MODULE_C22 = {
       ]
     },
     {
-      id: "c2t08", numero: 8, titre: "La médecine", titreDE: "Medizin",
+      id: "c2t08",
+      vocCoursDE: [
+        "In diesem Thema geht es um die **Medizin** und das Gesundheitswesen. Schlüsselwörter sind *die Behandlung* (le traitement), *die Diagnose*, *die Vorsorge* (la prévention), *das Gesundheitswesen* (le système de santé), *die Forschung*, *die Ethik* (l'éthique).",
+        "Auf C2 verbindest du **Fachvokabular** mit **ethischen Debatten**: *die Organspende* (le don d'organes), *die Sterbehilfe* (l'euthanasie), *der medizinische Fortschritt*, *die Lebensqualität*. Viele Begriffe sind lateinisch-international oder präzise Komposita.",
+        "Tipp: Erörtere eine medizinethische Frage und beziehe begründet Stellung, ohne die Gegenseite zu ignorieren. Diese Fähigkeit, sensible Themen ausgewogen zu behandeln, ist ein Markenzeichen des C2-Niveaus."
+      ], numero: 8, titre: "La médecine", titreDE: "Medizin",
       theme: "Médecine", duree: 65,
       objectifs: ["Débattre d'éthique médicale", "Comprendre un texte spécialisé"],
       grammairePoints: ["Verbes modaux (devoir/pouvoir)", "Style nominal"],
@@ -127,7 +142,12 @@ window.MODULE_C22 = {
       ]
     },
     {
-      id: "c2t09", numero: 9, titre: "Compétences particulières", titreDE: "Besondere Fähigkeiten",
+      id: "c2t09",
+      vocCoursDE: [
+        "Dieses Thema behandelt **besondere Fähigkeiten** und Begabungen. Schlüsselwörter sind *die Begabung* (le don), *das Talent*, *die Fähigkeit* (la capacité), *die Hochbegabung* (la surdouance), *die Fertigkeit* (l'aptitude), *angeboren* (inné) vs. *erlernt* (acquis).",
+        "Auf C2 unterscheidest du fein zwischen Anlage und Übung: *das Potenzial*, *die Veranlagung* (la prédisposition), *Übung macht den Meister*. Nützliche Wendungen: *eine Fähigkeit entwickeln*, *sein Talent entfalten* (épanouir son talent).",
+        "Tipp: Diskutiere, ob außergewöhnliche Leistungen eher auf Talent oder auf harter Arbeit beruhen. Eine solche Grundsatzdebatte mit präzisen Begriffen zu führen, entspricht genau dem C2-Anspruch."
+      ], numero: 9, titre: "Compétences particulières", titreDE: "Besondere Fähigkeiten",
       theme: "Compétences particulières", duree: 60,
       objectifs: ["Décrire talents et expertises", "Valoriser un profil"],
       grammairePoints: ["Adjectifs et compléments", "Comparaison"],
@@ -164,7 +184,12 @@ window.MODULE_C22 = {
       ]
     },
     {
-      id: "c2t10", numero: 10, titre: "Les sentiments", titreDE: "Gefühle",
+      id: "c2t10",
+      vocCoursDE: [
+        "Dieses Thema erschließt das gesamte Spektrum der **Gefühle** mit größter Differenzierung. Schlüsselwörter sind *die Emotion*, *die Empfindung* (le ressenti), *die Stimmung* (l'humeur), *die Gemütslage* (l'état d'âme), *zwiespältig* (ambivalent), *überwältigend* (bouleversant).",
+        "Auf C2 verfügst du über zahlreiche **nuancierte** Gefühlswörter jenseits von « froh » und « traurig »: *die Wehmut* (la mélancolie douce), *die Zuversicht* (la confiance/l'espoir), *die Verzweiflung* (le désespoir), *die Ehrfurcht* (le respect mêlé de crainte), *die Gelassenheit* (la sérénité).",
+        "Tipp: Beschreibe einen Moment widersprüchlicher Gefühle so genau wie möglich. Innere Zustände präzise und beinahe literarisch zu erfassen, ist eine der subtilsten Fähigkeiten auf C2-Niveau."
+      ], numero: 10, titre: "Les sentiments", titreDE: "Gefühle",
       theme: "Sentiments", duree: 60,
       objectifs: ["Exprimer des émotions complexes", "Nuancer l'intensité"],
       grammairePoints: ["Adjectifs de sentiment", "Comparaison / intensité"],
@@ -201,7 +226,12 @@ window.MODULE_C22 = {
       ]
     },
     {
-      id: "c2t11", numero: 11, titre: "Le mode de vie", titreDE: "Lebensgestaltung",
+      id: "c2t11",
+      vocCoursDE: [
+        "Dieses Thema dreht sich um die bewusste **Lebensgestaltung**. Schlüsselwörter sind *der Lebensstil* (le mode de vie), *die Selbstverwirklichung* (l'épanouissement personnel), *die Prioritäten* (les priorités), *die Entschleunigung* (le ralentissement), *der Sinn* (le sens).",
+        "Auf C2 reflektierst du über **Werte** und **Lebensentwürfe**: *ein erfülltes Leben* (une vie épanouie), *Verzicht üben*, *im Einklang mit* (en harmonie avec), *die Balance finden*. Viele Begriffe sind abstrakt und gesellschaftlich aktuell (*der Minimalismus, die Achtsamkeit* la pleine conscience).",
+        "Tipp: Erörtere, was für dich ein gelungenes Leben ausmacht, und setze dich mit anderen Lebensmodellen auseinander. Solche reflektierten, wertorientierten Texte sind das Herzstück des C2-Ausdrucks."
+      ], numero: 11, titre: "Le mode de vie", titreDE: "Lebensgestaltung",
       theme: "Vivre", duree: 60,
       objectifs: ["Réfléchir aux choix de vie", "Exprimer des valeurs"],
       grammairePoints: ["Konjunktiv II (souhait)", "Nominalisation"],
@@ -238,7 +268,12 @@ window.MODULE_C22 = {
       ]
     },
     {
-      id: "c2t12", numero: 12, titre: "Art et créativité", titreDE: "Kunst und Kreativität",
+      id: "c2t12",
+      vocCoursDE: [
+        "Dieses Thema behandelt **Kunst** und **Kreativität**. Schlüsselwörter sind *das Kunstwerk* (l'œuvre d'art), *die Schöpfung* (la création), *die Inspiration*, *der Ausdruck* (l'expression), *die Interpretation*, *die Ästhetik* (l'esthétique), *zeitgenössisch* (contemporain).",
+        "Auf C2 **interpretierst** und **bewertest** du Kunst mit anspruchsvollem Vokabular: *etwas verkörpern* (incarner), *eine Botschaft vermitteln* (transmettre un message), *provozieren*, *vieldeutig* (polysémique). Du erkennst, dass Kunst unterschiedlich gedeutet werden kann.",
+        "Tipp: Analysiere ein Kunstwerk und begründe eine eigene Deutung, ohne sie als einzige Wahrheit darzustellen. Interpretation und ästhetisches Urteil auf Deutsch zu formulieren, ist eine glänzende C2-Übung."
+      ], numero: 12, titre: "Art et créativité", titreDE: "Kunst und Kreativität",
       theme: "Art et créativité", duree: 60,
       objectifs: ["Interpréter une œuvre", "Exprimer un jugement esthétique"],
       grammairePoints: ["Participes attributs", "Adjectifs nominalisés"],
@@ -275,7 +310,12 @@ window.MODULE_C22 = {
       ]
     },
     {
-      id: "c2t13", numero: 13, titre: "Livres et littérature", titreDE: "Bücher und Literatur",
+      id: "c2t13",
+      vocCoursDE: [
+        "Dieses Thema widmet sich **Büchern** und der **Literatur**. Schlüsselwörter sind *die Literatur*, *der Roman*, *die Gattung* (le genre littéraire), *die Handlung* (l'intrigue), *die Figur* (le personnage), *der Erzähler* (le narrateur), *die Metapher*, *der Stil*.",
+        "Auf C2 sprichst du wie über **Literaturwissenschaft**: *eine Figur charakterisieren*, *die Erzählperspektive* (le point de vue narratif), *zwischen den Zeilen lesen*, *ein Werk in seinen Kontext einordnen*. Du unterscheidest *die Lyrik* (la poésie), *die Epik* und *die Dramatik*.",
+        "Tipp: Stelle ein Buch vor, das dich geprägt hat, und analysiere, **wie** und **warum** es wirkt. Eine literarische Besprechung mit Fachvokabular zu verfassen, ist eine der höchsten Stufen des Ausdrucks auf C2."
+      ], numero: 13, titre: "Livres et littérature", titreDE: "Bücher und Literatur",
       theme: "Livres et littérature", duree: 60,
       objectifs: ["Parler de littérature", "Résumer et commenter une œuvre"],
       grammairePoints: ["Temps du récit", "Propositions relatives"],
@@ -312,7 +352,12 @@ window.MODULE_C22 = {
       ]
     },
     {
-      id: "c2t14", numero: 14, titre: "La politique", titreDE: "Politik",
+      id: "c2t14",
+      vocCoursDE: [
+        "Dieses letzte Thema behandelt die **Politik** auf höchstem Niveau. Schlüsselwörter sind *die Politik*, *die Demokratie*, *die Gewaltenteilung* (la séparation des pouvoirs), *der Kompromiss* (le compromis), *die Opposition*, *die Bürgerbeteiligung* (la participation citoyenne), *die Wahlbeteiligung* (le taux de participation).",
+        "Auf C2 verfügst du über das **abstrakte, präzise** Vokabular der politischen Debatte: *eine Position vertreten* (défendre une position), *Argumente entkräften* (réfuter des arguments), *einen Konsens erzielen* (parvenir à un consensus), *die öffentliche Meinung*.",
+        "Tipp: Vertritt in einer Diskussion einen Standpunkt, gehe auf Gegenargumente ein und suche nach einem Kompromiss. Eine differenzierte politische Debatte zu führen, krönt die kommunikative Kompetenz auf C2-Niveau."
+      ], numero: 14, titre: "La politique", titreDE: "Politik",
       theme: "Politique", duree: 65,
       objectifs: ["Débattre d'enjeux politiques", "Argumenter avec rigueur"],
       grammairePoints: ["Connecteurs argumentatifs", "Style nominal / passif"],

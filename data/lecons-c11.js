@@ -15,7 +15,12 @@ window.MODULE_C11 = {
   couleur: "#ea580c",
   lecons: [
     {
-      id: "c1t01", numero: 1, titre: "Météo et small talk", titreDE: "Wetter und Small Talk",
+      id: "c1t01",
+      vocCoursDE: [
+        "Auf C1-Niveau wird selbst der **Small Talk** über das **Wetter** zu einer Kunst der Nuancierung. Schlüsselwörter sind *die Stimmung* (l'ambiance/l'humeur), *die Gesprächseröffnung* (l'amorce de conversation), *unverfänglich* (anodin), *die Floskel* (la formule toute faite), *plaudern* (bavarder).",
+        "Das Wetter dient als **neutraler Einstieg** in fast jedes Gespräch. Über die reine Beschreibung hinaus lernst du, Stimmungen und feine Bewertungen auszudrücken: *drückend* (lourd, étouffant), *wechselhaft* (changeant), *strahlend* (radieux), *trüb* (maussade).",
+        "Tipp: Achte darauf, wie geübte Sprecher vom Wetter zu einem eigentlichen Thema überleiten. Diese **Gesprächssteuerung** – Einstieg, Übergang, Vertiefung – ist auf C1-Niveau wichtiger als die einzelnen Vokabeln."
+      ], numero: 1, titre: "Météo et small talk", titreDE: "Wetter und Small Talk",
       theme: "Météo et petites conversations", duree: 60,
       objectifs: ["Manier les expressions idiomatiques liées au temps", "Entretenir une conversation nuancée"],
       grammairePoints: ["Expressions idiomatiques", "Connecteurs de relance"],
@@ -52,7 +57,12 @@ window.MODULE_C11 = {
       ]
     },
     {
-      id: "c1t02", numero: 2, titre: "Les langues", titreDE: "Sprachen",
+      id: "c1t02",
+      vocCoursDE: [
+        "Dieses Thema betrachtet **Sprachen** und das Sprachenlernen aus einer reflektierten Perspektive. Schlüsselwörter sind *die Mehrsprachigkeit* (le plurilinguisme), *der Dialekt*, *die Muttersprache*, *der Spracherwerb* (l'acquisition du langage), *fließend* (couramment), *die Sprachbarriere*.",
+        "Auf C1 geht es um abstrakte Aspekte: den **Wert** von Sprachen, ihren Einfluss auf das Denken, den Umgang mit Fehlern. Nützliche Wendungen sind *eine Sprache beherrschen* (maîtriser), *sich verständigen* (se faire comprendre), *sich ausdrücken* (s'exprimer).",
+        "Tipp: Reflektiere auf Deutsch über deine eigene Sprachbiografie: Welche Sprachen sprichst du, wie hast du sie gelernt, was bedeuten sie dir? Solche reflektierten, persönlichen Texte sind typisch für das C1-Niveau."
+      ], numero: 2, titre: "Les langues", titreDE: "Sprachen",
       theme: "Langues", duree: 60,
       objectifs: ["Réfléchir au plurilinguisme", "Argumenter sur l'apprentissage des langues"],
       grammairePoints: ["Nominalisation", "Connecteurs d'argumentation"],
@@ -89,7 +99,12 @@ window.MODULE_C11 = {
       ]
     },
     {
-      id: "c1t03", numero: 3, titre: "La chance", titreDE: "Glück",
+      id: "c1t03",
+      vocCoursDE: [
+        "In diesem Thema geht es um das **Glück** im weiteren Sinne. Das deutsche Wort *das Glück* umfasst zwei Bedeutungen: **la chance** (« *Glück haben* ») und **le bonheur** (« *das Glück finden* »). Diese Doppeldeutigkeit ist zentral.",
+        "Auf C1 unterscheidest du feine Nuancen: *die Zufriedenheit* (la satisfaction durable), *die Freude* (la joie momentanée), *das Wohlbefinden* (le bien-être), *die Gelassenheit* (la sérénité). Nützliche Wendungen: *zum Glück* (heureusement), *Glück im Unglück* (un mal pour un bien).",
+        "Tipp: Diskutiere die Frage « *Was bedeutet Glück für dich?* » und begründe deine Meinung. Über solche abstrakten, fast philosophischen Themen differenziert zu sprechen, ist genau die Kompetenz, die auf C1 erwartet wird."
+      ], numero: 3, titre: "La chance", titreDE: "Glück",
       theme: "Chance", duree: 55,
       objectifs: ["Distinguer chance et bonheur", "Employer des expressions idiomatiques"],
       grammairePoints: ["Glück / Zufall", "Konjunktiv II (irréel)"],
@@ -126,7 +141,12 @@ window.MODULE_C11 = {
       ]
     },
     {
-      id: "c1t04", numero: 4, titre: "Le stress", titreDE: "Stress",
+      id: "c1t04",
+      vocCoursDE: [
+        "Dieses Thema behandelt den **Stress** und den Umgang damit. Schlüsselwörter sind *der Stress*, *die Belastung* (la charge), *die Überforderung* (le surmenage), *der Druck* (la pression), *die Entspannung* (la détente), *der Ausgleich* (l'équilibre).",
+        "Auf C1 sprichst du über **Ursachen** und **Bewältigung**: *unter Druck stehen*, *mit Stress umgehen* (gérer le stress), *abschalten* (déconnecter), *einen Ausgleich finden*. Beachte die Nuance zwischen *gestresst* (stressé) und *angespannt* (tendu).",
+        "Tipp: Beschreibe deine eigenen Stressquellen und Strategien dagegen. Ursachen, Folgen und Lösungen zu strukturieren ist eine klassische C1-Aufgabe, die genaues Vokabular und logische Konnektoren verlangt."
+      ], numero: 4, titre: "Le stress", titreDE: "Stress",
       theme: "Stress", duree: 60,
       objectifs: ["Décrire causes et effets du stress", "Proposer des stratégies"],
       grammairePoints: ["Causes/conséquences", "Verbes pronominaux"],
@@ -163,7 +183,12 @@ window.MODULE_C11 = {
       ]
     },
     {
-      id: "c1t05", numero: 5, titre: "Le rire", titreDE: "Lachen und Humor",
+      id: "c1t05",
+      vocCoursDE: [
+        "In diesem Thema geht es um das **Lachen** und den **Humor**. Schlüsselwörter sind *der Humor*, *der Witz* (la blague), *die Ironie*, *der Spott* (la moquerie), *zum Lachen bringen* (faire rire), *sich amüsieren*, *der Sinn für Humor*.",
+        "Humor ist stark **kulturgeprägt**: Was in einem Land lustig ist, kann anderswo unverständlich sein. Nützliche Unterscheidungen: *der Witz* (blague racontée), *die Pointe* (la chute), *die Ironie* (dire le contraire de ce qu'on pense), *der Sarkasmus*.",
+        "Tipp: Überlege, worüber in deiner Kultur gelacht wird, und vergleiche es mit dem deutschen Humor. Über etwas so Subtiles wie Humor zu sprechen, schult deine Ausdrucksfähigkeit auf höchstem Niveau."
+      ], numero: 5, titre: "Le rire", titreDE: "Lachen und Humor",
       theme: "Rire", duree: 55,
       objectifs: ["Parler du rôle de l'humour", "Comprendre l'humour et l'ironie"],
       grammairePoints: ["Ironie / nuance", "Comparaisons"],
@@ -200,7 +225,12 @@ window.MODULE_C11 = {
       ]
     },
     {
-      id: "c1t06", numero: 6, titre: "Le succès : sport et métier", titreDE: "Erfolg: Sport und Beruf",
+      id: "c1t06",
+      vocCoursDE: [
+        "Dieses Thema behandelt den **Erfolg** in Sport und Beruf. Schlüsselwörter sind *der Erfolg*, *erfolgreich*, *die Leistung* (la performance), *der Ehrgeiz* (l'ambition), *ein Ziel erreichen* (atteindre un but), *sich durchsetzen* (s'imposer).",
+        "Auf C1 unterscheidest du **Voraussetzungen** und **Wege** zum Erfolg: *die Begabung* (le talent), *die Disziplin*, *die Ausdauer* (la persévérance), *der Durchbruch* (la percée). Nützliche Wendungen: *Erfolg haben*, *aus eigener Kraft* (par ses propres moyens).",
+        "Tipp: Diskutiere, was Erfolg für dich bedeutet und wie man ihn erreicht. Solche wertenden, argumentativen Texte mit präzisem Vokabular sind charakteristisch für das C1-Niveau."
+      ], numero: 6, titre: "Le succès : sport et métier", titreDE: "Erfolg: Sport und Beruf",
       theme: "Succès : sport et profession", duree: 60,
       objectifs: ["Analyser les facteurs de réussite", "Nuancer la notion de succès"],
       grammairePoints: ["Nominalisation", "Connecteurs en deux parties"],
@@ -238,7 +268,12 @@ window.MODULE_C11 = {
       ]
     },
     {
-      id: "c1t07", numero: 7, titre: "Les échecs", titreDE: "Scheitern und Misserfolg",
+      id: "c1t07",
+      vocCoursDE: [
+        "Im Gegensatz zum Erfolg behandelt dieses Thema das **Scheitern** und den **Misserfolg**. Schlüsselwörter sind *das Scheitern*, *der Misserfolg* (l'échec), *die Niederlage* (la défaite), *aufgeben* (abandonner), *die Enttäuschung* (la déception), *aus Fehlern lernen*.",
+        "Auf C1 geht es um die **positive Seite** des Scheiterns: *die Fehlerkultur* (la culture de l'erreur), *einen Rückschlag verkraften* (encaisser un revers), *es erneut versuchen*. Nützlich ist die Wendung *scheitern an* (+ Dativ): « *Er ist an der Prüfung gescheitert* ».",
+        "Tipp: Erzähle von einem Misserfolg und was du daraus gelernt hast. Über ein heikles, persönliches Thema reflektiert und konstruktiv zu sprechen, zeigt echte sprachliche und kommunikative Reife."
+      ], numero: 7, titre: "Les échecs", titreDE: "Scheitern und Misserfolg",
       theme: "Échecs", duree: 60,
       objectifs: ["Parler de l'échec et du rebond", "Exprimer l'irréel du passé (regret)"],
       grammairePoints: ["Konjunktiv II passé", "hätte … sollen"],

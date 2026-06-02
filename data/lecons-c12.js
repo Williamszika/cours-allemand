@@ -16,7 +16,12 @@ window.MODULE_C12 = {
   couleur: "#ea580c",
   lecons: [
     {
-      id: "c1t08", numero: 8, titre: "Le progrès", titreDE: "Der Fortschritt",
+      id: "c1t08",
+      vocCoursDE: [
+        "Dieses Thema behandelt den **Fortschritt** – technisch, wissenschaftlich und gesellschaftlich. Schlüsselwörter sind *der Fortschritt*, *die Entwicklung*, *die Erfindung* (l'invention), *die Forschung* (la recherche), *die Innovation*, *der Wandel* (le changement).",
+        "Auf C1 betrachtest du den Fortschritt **kritisch**: *die Chance* vs. *das Risiko*, *der Nutzen* (l'utilité) vs. *die Gefahr*, *die Folgen* (les conséquences). Nützliche Verben: *ermöglichen* (rendre possible), *gefährden* (mettre en danger), *bewerten* (évaluer).",
+        "Tipp: Wäge Vor- und Nachteile einer technischen Entwicklung ab (zum Beispiel der künstlichen Intelligenz). Das **Abwägen** von Argumenten ist eine der wichtigsten C1-Fähigkeiten."
+      ], numero: 8, titre: "Le progrès", titreDE: "Der Fortschritt",
       theme: "Le progrès", duree: 60,
       objectifs: ["Débattre des bienfaits et risques du progrès", "Exprimer des hypothèses nuancées"],
       grammairePoints: ["Hypothèses (dürfte, vermutlich)", "Nominalisation"],
@@ -53,7 +58,12 @@ window.MODULE_C12 = {
       ]
     },
     {
-      id: "c1t09", numero: 9, titre: "Environnement et climat", titreDE: "Umwelt und Klima",
+      id: "c1t09",
+      vocCoursDE: [
+        "In diesem Thema geht es um **Umwelt** und **Klima** auf anspruchsvollem Niveau. Schlüsselwörter sind *der Klimawandel* (le changement climatique), *die Nachhaltigkeit* (la durabilité), *die erneuerbaren Energien* (les énergies renouvelables), *der CO2-Ausstoß* (les émissions de CO2), *schützen* (protéger).",
+        "Viele Begriffe sind komplexe **Komposita** (*Klimaschutz, Umweltverschmutzung, Energiewende* la transition énergétique), die du in ihre Teile zerlegen kannst. Nützliche Wendungen: *Maßnahmen ergreifen* (prendre des mesures), *den Verbrauch senken* (réduire la consommation).",
+        "Tipp: Formuliere konkrete Vorschläge zum Umweltschutz und begründe sie. Über ein gesellschaftlich wichtiges Thema strukturiert zu argumentieren, ist genau das, was auf C1 verlangt wird."
+      ], numero: 9, titre: "Environnement et climat", titreDE: "Umwelt und Klima",
       theme: "Environnement et climat", duree: 60,
       objectifs: ["Argumenter sur le climat", "Proposer des solutions au passif"],
       grammairePoints: ["Passif et alternatives", "Connecteurs de conséquence"],
@@ -91,7 +101,12 @@ window.MODULE_C12 = {
       ]
     },
     {
-      id: "c1t10", numero: 10, titre: "La division de l'Allemagne", titreDE: "Die deutsche Teilung",
+      id: "c1t10",
+      vocCoursDE: [
+        "Dieses Thema behandelt ein zentrales Kapitel der deutschen Geschichte: die **Teilung Deutschlands**. Schlüsselwörter sind *die Teilung* (la division), *der Zweite Weltkrieg*, *die Besatzung* (l'occupation), *die BRD* (RFA) und *die DDR* (RDA), *der Kalte Krieg* (la guerre froide).",
+        "Du lernst, historische Ereignisse **chronologisch** darzustellen – ideal, um das Präteritum und Zeitangaben zu üben. Nützliche Wendungen: *nach dem Krieg*, *in den 1950er Jahren*, *zur Zeit der Teilung*.",
+        "Tipp: Dieses kulturelle Wissen hilft dir, Deutschland und seine Menschen besser zu verstehen. Versuche, den historischen Verlauf in eigenen Worten zusammenzufassen – eine anspruchsvolle, aber lohnende C1-Übung."
+      ], numero: 10, titre: "La division de l'Allemagne", titreDE: "Die deutsche Teilung",
       theme: "Histoire de la division", duree: 60,
       objectifs: ["Comprendre la division de l'Allemagne", "Raconter au prétérit et au passif"],
       grammairePoints: ["Prétérit (récit)", "Passif historique"],
@@ -128,7 +143,12 @@ window.MODULE_C12 = {
       ]
     },
     {
-      id: "c1t11", numero: 11, titre: "Le Mur", titreDE: "Die Berliner Mauer",
+      id: "c1t11",
+      vocCoursDE: [
+        "Dieses Thema widmet sich der **Berliner Mauer** – einem Symbol der deutschen Teilung. Schlüsselwörter sind *die Mauer* (le Mur), *der Bau* (la construction), *die Flucht* (la fuite), *die Grenze* (la frontière), *der Fall der Mauer* (la chute du Mur), *die Wiedervereinigung* (la réunification).",
+        "Die Mauer wurde 1961 gebaut und fiel 1989. Du lernst, über ein **emotional aufgeladenes** historisches Ereignis zu sprechen: *die Trennung* (la séparation), *die Sehnsucht* (le désir ardent), *die Freiheit* (la liberté), *die Freude über den Fall*.",
+        "Tipp: Der 9. November 1989 ist ein Schlüsseldatum. Über solche historischen Wendepunkte zu sprechen und Gefühle wie Hoffnung und Freiheit auszudrücken, gehört zur kulturellen und sprachlichen Bildung auf C1-Niveau."
+      ], numero: 11, titre: "Le Mur", titreDE: "Die Berliner Mauer",
       theme: "Le Mur", duree: 60,
       objectifs: ["Raconter la construction et la chute du Mur", "Décrire des conséquences humaines"],
       grammairePoints: ["Plusquamperfekt", "Propositions relatives"],
@@ -166,7 +186,12 @@ window.MODULE_C12 = {
       ]
     },
     {
-      id: "c1t12", numero: 12, titre: "Vivre en RDA", titreDE: "Leben in der DDR",
+      id: "c1t12",
+      vocCoursDE: [
+        "In diesem Thema geht es um das **Leben in der DDR** (RDA). Schlüsselwörter sind *der Alltag* (le quotidien), *die Mangelwirtschaft* (l'économie de pénurie), *die Stasi* (la police secrète), *die Überwachung* (la surveillance), *die Planwirtschaft* (l'économie planifiée), *die Ostalgie*.",
+        "Du lernst, **Lebensbedingungen** zu beschreiben und zu bewerten: *eingeschränkt* (limité), *die Versorgung* (l'approvisionnement), *die Meinungsfreiheit* (la liberté d'opinion). Das Wort *die Ostalgie* (mélange de « Ost » et « Nostalgie ») beschreibt die nostalgische Erinnerung an den Osten.",
+        "Tipp: Vergleiche das Leben in der DDR mit dem Leben heute. Vergangene Lebensumstände differenziert darzustellen und zu bewerten ist eine anspruchsvolle Aufgabe, die genau dem C1-Niveau entspricht."
+      ], numero: 12, titre: "Vivre en RDA", titreDE: "Leben in der DDR",
       theme: "Vivre en RDA", duree: 60,
       objectifs: ["Décrire le quotidien en RDA", "Nuancer mémoire et jugement"],
       grammairePoints: ["Discours indirect (Konjunktiv I)", "Prétérit"],
@@ -203,7 +228,12 @@ window.MODULE_C12 = {
       ]
     },
     {
-      id: "c1t13", numero: 13, titre: "Histoire et politique", titreDE: "Geschichte und Politik",
+      id: "c1t13",
+      vocCoursDE: [
+        "Dieses Thema vertieft **Geschichte** und **Politik**. Schlüsselwörter sind *die Verfassung* (la constitution), *die Demokratie*, *das Parlament*, *die Wiedervereinigung*, *die Verantwortung* (la responsabilité), *die Erinnerungskultur* (la culture du souvenir).",
+        "Auf C1 verbindest du historisches und politisches Vokabular zu komplexen Aussagen. Nützlich sind abstrakte Nomen (*die Entwicklung, die Auseinandersetzung* le débat, *die Bewältigung* le fait de surmonter) und formelle Konnektoren (*infolgedessen, angesichts dessen*).",
+        "Tipp: Fasse eine historische Entwicklung zusammen und bewerte ihre Bedeutung für heute. Geschichte und Gegenwart zu verknüpfen, verlangt genau die abstrakte Ausdrucksfähigkeit, die auf C1 trainiert wird."
+      ], numero: 13, titre: "Histoire et politique", titreDE: "Geschichte und Politik",
       theme: "Histoire et politique", duree: 60,
       objectifs: ["Discuter d'enjeux politiques", "Exprimer une opinion argumentée"],
       grammairePoints: ["Nominalisation", "Connecteurs d'argumentation"],
@@ -240,7 +270,12 @@ window.MODULE_C12 = {
       ]
     },
     {
-      id: "c1t14", numero: 14, titre: "Musique et photographie", titreDE: "Musik und Fotografie",
+      id: "c1t14",
+      vocCoursDE: [
+        "Dieses Thema behandelt **Musik** und **Fotografie** als Formen des künstlerischen Ausdrucks. Schlüsselwörter sind *die Musik*, *der Klang* (le son), *die Stimmung* (l'ambiance), *die Fotografie*, *das Motiv* (le sujet), *die Aufnahme* (la prise/l'enregistrement), *der Ausdruck* (l'expression).",
+        "Auf C1 beschreibst du nicht nur, sondern **interpretierst** und **bewertest**: *wirken auf* (faire effet sur), *etwas ausdrücken*, *eine Atmosphäre schaffen* (créer une atmosphère), *berühren* (émouvoir). Viele Begriffe sind international (*das Genre, das Album, das Porträt*).",
+        "Tipp: Beschreibe ein Musikstück oder ein Foto, das dich bewegt, und erkläre **warum**. Über Kunst zu sprechen und Wirkungen zu analysieren, ist eine subtile, hochwertige Sprechübung für das C1-Niveau."
+      ], numero: 14, titre: "Musique et photographie", titreDE: "Musik und Fotografie",
       theme: "Musique et photographie", duree: 55,
       objectifs: ["Parler d'art et d'esthétique", "Décrire une œuvre et son effet"],
       grammairePoints: ["Adjectifs nominalisés", "Participe attribut"],
