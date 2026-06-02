@@ -256,3 +256,13 @@ Object.assign(window.ILLUSTRATIONS, {
   c2g18: { kw: "transform,arrows,grammar", intro: "Le style nominal : du verbal au nominal (registre écrit)." },
   c2g19: { kw: "document,grammar,notebook", intro: "Les prépositions à génitif de la langue écrite (mittels, anhand…)." }
 });
+
+/* Parcours « Deutsch für die Pflege » — photos de situation (soins) */
+Object.assign(window.ILLUSTRATIONS, {
+  "pa2-1": { kw: "nurse,patient" },
+  "pa2-2": { kw: "nurse,care,elderly" },
+  "pa2-3": { kw: "nursing-home,elderly" },
+  "pa2-4": { kw: "nurse,welcome,patient" },
+  "pa2-5": { kw: "blood-pressure,nurse" },
+  "pa2-6": { kw: "wheelchair,nurse,care" }
+});

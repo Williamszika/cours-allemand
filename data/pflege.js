@@ -77,7 +77,13 @@ window.PFLEGE = {
           { de: "Heben Sie bitte langsam den Arm.", fr: "Levez le bras lentement, s'il vous plaît." },
           { de: "Ich helfe Ihnen beim Aufstehen.", fr: "Je vous aide à vous lever." },
           { de: "Der Rücken tut weh.", fr: "Le dos fait mal." }
-        ] },
+        ],
+        documentation: { task: "Note ton observation dans le rapport de soins : M. Bauer a des douleurs dans le bas du dos depuis ce matin.", modele: "Herr Bauer klagt seit heute Morgen über Schmerzen im unteren Rücken." },
+        rp: { scene: "Zika joue M. Bauer, un patient alité. Toi, tu es l'aide-soignant(e).", intro: "Salue-le, demande où il a mal, puis propose ton aide.", fin: "Super! Du hast freundlich reagiert und alles dokumentiert.", tours: [
+          { de: "Guten Morgen. Mir geht es heute nicht so gut.", fr: "Bonjour. Je ne vais pas très bien aujourd'hui.", options: [ { de: "Wo haben Sie Schmerzen?", ok: true }, { de: "Tschüss, bis morgen!", ok: false }, { de: "Stehen Sie schnell auf!", ok: false } ] },
+          { de: "Mein Rücken tut weh, hier unten.", fr: "J'ai mal au dos, ici en bas.", options: [ { de: "Ich helfe Ihnen. Drehen Sie sich bitte langsam.", ok: true }, { de: "Das ist nicht so schlimm.", ok: false } ] },
+          { de: "Danke. Können Sie das aufschreiben?", fr: "Merci. Pouvez-vous le noter ?", options: [ { de: "Ja, ich dokumentiere die Schmerzen.", ok: true }, { de: "Nein, das ist nicht wichtig.", ok: false } ] }
+        ] } },
       { id: "pa2-2", dom: "grund", titreDE: "Körperpflege und Hygiene", titre: "Toilette et hygiène", desc: "Laver, habiller, soins d'hygiène au quotidien.",
         vocCours: [
           "La toilette est un soin quotidien. Mots-clés : waschen (laver), sich waschen (se laver), die Seife (le savon), das Handtuch (la serviette), die Zähne putzen (se brosser les dents).",
@@ -132,7 +138,13 @@ window.PFLEGE = {
           { de: "Hier sind Seife und Handtuch.", fr: "Voici le savon et la serviette." },
           { de: "Bitte putzen Sie die Zähne.", fr: "Brossez-vous les dents, s'il vous plaît." },
           { de: "Ich wechsle jetzt die Windel.", fr: "Je change la protection maintenant." }
-        ] },
+        ],
+        documentation: { task: "Note dans le rapport : Mme Lang a été lavée, peau intacte, aucune rougeur.", modele: "Frau Lang gewaschen, Haut intakt, keine Rötung." },
+        rp: { scene: "Zika joue Frau Lang pendant la toilette. Toi, tu es l'aide-soignant(e).", intro: "Propose-lui la toilette, rassure-la, puis contrôle l'état de la peau.", fin: "Sehr gut! Du hast geholfen und die Haut kontrolliert.", tours: [
+          { de: "Ich möchte mich waschen, aber ich brauche Hilfe.", fr: "Je voudrais me laver, mais j'ai besoin d'aide.", options: [ { de: "Kein Problem, ich helfe Ihnen gern.", ok: true }, { de: "Machen Sie das bitte allein.", ok: false }, { de: "Ich habe keine Zeit.", ok: false } ] },
+          { de: "Können Sie mir den Rücken waschen?", fr: "Pouvez-vous me laver le dos ?", options: [ { de: "Natürlich, ich wasche Ihnen den Rücken.", ok: true }, { de: "Nein, das geht nicht.", ok: false } ] },
+          { de: "Ist meine Haut in Ordnung?", fr: "Ma peau va bien ?", options: [ { de: "Ja, Ihre Haut ist intakt, keine Rötung.", ok: true }, { de: "Das weiß ich nicht.", ok: false } ] }
+        ] } },
       { id: "pa2-3", dom: "heim", titreDE: "Im Pflegeheim: der Tagesablauf", titre: "En maison de retraite : la journée", desc: "Lever, repas, coucher : accompagner les résidents.",
         vocCours: [
           "En maison de retraite (das Pflegeheim), la journée du résident (der Bewohner / die Bewohnerin) est rythmée : aufstehen (se lever), das Frühstück (le petit-déjeuner), das Mittagessen (le déjeuner), das Abendessen (le dîner), ins Bett gehen (aller au lit).",
@@ -187,7 +199,13 @@ window.PFLEGE = {
           { de: "Bitte nehmen Sie die Medikamente ein.", fr: "Prenez vos médicaments, s'il vous plaît." },
           { de: "Am Nachmittag machen wir einen Spaziergang.", fr: "L'après-midi, nous faisons une promenade." },
           { de: "Möchten Sie jetzt ins Bett gehen?", fr: "Voulez-vous aller au lit maintenant ?" }
-        ] },
+        ],
+        documentation: { task: "Transmets à l'écrit : Mme Klein s'est levée à 7h, a pris son petit-déjeuner et ses médicaments.", modele: "Frau Klein um 7 Uhr aufgestanden, gefrühstückt, Medikamente eingenommen." },
+        rp: { scene: "Zika joue ta collègue infirmière. Vous faites la transmission du matin (Übergabe).", intro: "Dis-lui comment s'est passée la matinée de Mme Klein.", fin: "Perfekt! Eine klare Übergabe unter Kollegen.", tours: [
+          { de: "Wie war der Morgen bei Frau Klein?", fr: "Comment s'est passée la matinée avec Mme Klein ?", options: [ { de: "Sie ist um sieben Uhr aufgestanden.", ok: true }, { de: "Das weiß ich nicht.", ok: false }, { de: "Frag jemand anderen.", ok: false } ] },
+          { de: "Hat sie ihre Medikamente genommen?", fr: "A-t-elle pris ses médicaments ?", options: [ { de: "Ja, nach dem Frühstück.", ok: true }, { de: "Vielleicht.", ok: false } ] },
+          { de: "Gibt es etwas Besonderes?", fr: "Y a-t-il quelque chose de particulier ?", options: [ { de: "Nein, alles ist in Ordnung.", ok: true }, { de: "Keine Ahnung.", ok: false } ] }
+        ] } },
       { id: "pa2-4", dom: "grund", titreDE: "Begrüßung und einfache Kommunikation", titre: "Accueil et communication simple", desc: "Saluer, se présenter, phrases utiles avec le patient.",
         vocCours: [
           "Le premier contact compte. On salue (begrüßen), on se présente (sich vorstellen) et on demande comment va la personne : « Wie geht es Ihnen? ». Des mots simples mettent le patient en confiance.",
@@ -242,7 +260,13 @@ window.PFLEGE = {
           { de: "Haben Sie Durst oder Hunger?", fr: "Avez-vous soif ou faim ?" },
           { de: "Brauchen Sie etwas?", fr: "Avez-vous besoin de quelque chose ?" },
           { de: "Ich spreche langsam. Verstehen Sie mich?", fr: "Je parle lentement. Me comprenez-vous ?" }
-        ] },
+        ],
+        documentation: { task: "Note l'accueil : nouvelle résidente, Mme Weber, fatiguée et a soif.", modele: "Neue Bewohnerin Frau Weber aufgenommen, müde, hat Durst." },
+        rp: { scene: "Zika joue Frau Weber, une nouvelle résidente. Toi, tu l'accueilles.", intro: "Présente-toi, demande comment elle va, puis réponds à ses besoins.", fin: "Klasse! Eine warme und freundliche Aufnahme.", tours: [
+          { de: "Guten Tag. Ich bin neu hier.", fr: "Bonjour. Je suis nouvelle ici.", options: [ { de: "Herzlich willkommen! Ich bin Ihre Pflegekraft.", ok: true }, { de: "Und was wollen Sie?", ok: false }, { de: "Setzen Sie sich woanders hin.", ok: false } ] },
+          { de: "Ich bin ein bisschen müde.", fr: "Je suis un peu fatiguée.", options: [ { de: "Möchten Sie sich ausruhen?", ok: true }, { de: "Das ist doch normal.", ok: false } ] },
+          { de: "Und ich habe Durst.", fr: "Et j'ai soif.", options: [ { de: "Ich bringe Ihnen ein Glas Wasser.", ok: true }, { de: "Trinken Sie später.", ok: false } ] }
+        ] } },
       { id: "pa2-5", dom: "grund", titreDE: "Vitalzeichen messen", titre: "Mesurer les signes vitaux", desc: "Température, pouls, tension : mots et consignes.",
         vocCours: [
           "Chaque jour, on mesure les signes vitaux (die Vitalzeichen) : die Temperatur (la température), der Puls (le pouls), der Blutdruck (la tension). Le verbe clé est messen (mesurer).",
@@ -297,7 +321,13 @@ window.PFLEGE = {
           { de: "Sie haben kein Fieber.", fr: "Vous n'avez pas de fièvre." },
           { de: "Der Blutdruck ist ein bisschen hoch.", fr: "La tension est un peu élevée." },
           { de: "Ich notiere den Wert.", fr: "Je note la valeur." }
-        ] },
+        ],
+        documentation: { task: "Documente les valeurs : tension 150/95 (élevée), pas de fièvre, patient sans plainte.", modele: "RR 150/95 mmHg (erhöht), kein Fieber, Patient beschwerdefrei." },
+        rp: { scene: "Zika joue le médecin. Il te demande les signes vitaux de M. Klein.", intro: "Réponds avec les valeurs que tu as mesurées, puis confirme la documentation.", fin: "Ausgezeichnet! Klare Kommunikation mit dem Arzt und saubere Dokumentation.", tours: [
+          { de: "Guten Tag. Wie ist der Blutdruck von Herrn Klein?", fr: "Bonjour. Quelle est la tension de M. Klein ?", options: [ { de: "Der Blutdruck ist 150 zu 95, etwas erhöht.", ok: true }, { de: "Das habe ich vergessen.", ok: false }, { de: "Fragen Sie ihn selbst.", ok: false } ] },
+          { de: "Hat er Fieber?", fr: "A-t-il de la fièvre ?", options: [ { de: "Nein, kein Fieber.", ok: true }, { de: "Vielleicht ein bisschen.", ok: false } ] },
+          { de: "Gut. Bitte dokumentieren Sie die Werte.", fr: "Bien. Documentez les valeurs, s'il vous plaît.", options: [ { de: "Ja, ich trage die Werte sofort ein.", ok: true }, { de: "Später vielleicht.", ok: false } ] }
+        ] } },
       { id: "pa2-6", dom: "grund", titreDE: "Hilfsmittel und Mobilität", titre: "Aides et mobilité", desc: "Fauteuil roulant, déambulateur, aider à se déplacer.",
         vocCours: [
           "Aider à se déplacer fait partie du soin. Les aides (die Hilfsmittel) : der Rollstuhl (le fauteuil roulant), der Rollator (le déambulateur), die Gehhilfe (l'aide à la marche).",
@@ -352,7 +382,13 @@ window.PFLEGE = {
           { de: "Können Sie mir helfen?", fr: "Pouvez-vous m'aider ?" },
           { de: "Wir machen das langsam und vorsichtig.", fr: "Nous faisons ça lentement et prudemment." },
           { de: "Stehen Sie bitte langsam auf.", fr: "Levez-vous lentement, s'il vous plaît." }
-        ] }
+        ],
+        documentation: { task: "Note : Mme Hofer transférée du lit au fauteuil roulant, sans chute, installée en sécurité.", modele: "Frau Hofer vom Bett in den Rollstuhl transferiert, kein Sturz, sicher gelagert." },
+        rp: { scene: "Zika joue Frau Hofer. Tu l'aides à passer du lit au fauteuil roulant.", intro: "Rassure-la, propose ton aide, puis vérifie qu'elle est bien installée.", fin: "Bravo! Sicherer Transfer und beruhigende Worte.", tours: [
+          { de: "Ich möchte aufstehen, aber ich habe Angst zu fallen.", fr: "Je veux me lever, mais j'ai peur de tomber.", options: [ { de: "Keine Sorge, halten Sie sich gut an mir fest.", ok: true }, { de: "Stehen Sie einfach schnell auf.", ok: false }, { de: "Bleiben Sie lieber liegen.", ok: false } ] },
+          { de: "Können Sie mir helfen?", fr: "Pouvez-vous m'aider ?", options: [ { de: "Natürlich, wir machen das langsam und vorsichtig.", ok: true }, { de: "Nein, ich habe keine Zeit.", ok: false } ] },
+          { de: "Geschafft! Sitze ich sicher?", fr: "Ça y est ! Suis-je bien assise ?", options: [ { de: "Ja, Sie sitzen sicher im Rollstuhl.", ok: true }, { de: "Ich glaube schon.", ok: false } ] }
+        ] } }
     ]},
     { code: "B1", titre: "Communiquer dans le soin", lecons: [
       { id: "pb1-1", dom: "kh", titreDE: "Aufnahme eines Patienten", titre: "Admission d'un patient", desc: "Données personnelles et anamnèse simple." },

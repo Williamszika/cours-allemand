@@ -2227,7 +2227,8 @@
     const dom = P.domaines[l.dom] || { ic: "🩺", nom: "" };
 
     const hero = el("header", "hero pflege-hero");
-    hero.innerHTML = '<p class="hero-eyebrow">' + dom.ic + " " + dom.nom + "</p><h1><span class=\"pflege-de\">" + l.titreDE + "</span></h1><p class=\"hero-desc\">" + l.titre + "</p>";
+    hero.innerHTML = '<div class="lesson-hero"><img loading="lazy" src="' + lessonPhoto(l.id, 900, 320) + '" alt="" onerror="this.style.display=\'none\'"></div>' +
+      '<p class="hero-eyebrow">' + dom.ic + " " + dom.nom + "</p><h1><span class=\"pflege-de\">" + l.titreDE + "</span></h1><p class=\"hero-desc\">" + l.titre + "</p>";
     frag.appendChild(hero);
 
     /* --- Vocabulaire professionnel --- */
@@ -2304,6 +2305,9 @@
       const exProg = el("div", "exo-progress"); const bar = el("div", "bar"); const fill = el("div", "bar-fill");
       bar.appendChild(fill); const label = el("span", "exo-progress-label", ""); exProg.appendChild(label); exProg.appendChild(bar); exo.appendChild(exProg);
       const allEx = l.exercices.slice();
+      // Documentation des soins (production guidée) + jeu de rôle (patient/collègue/médecin).
+      if (l.documentation) allEx.push({ type: "production", cat: "prod", consigne: "📝 Documentation des soins", prompt: l.documentation.task, modele: l.documentation.modele });
+      if (l.rp && l.rp.tours && l.rp.tours.length) allEx.push({ type: "rp", scene: l.rp.scene, intro: l.rp.intro, tours: l.rp.tours, fin: l.rp.fin, _niveau: niveau, _rp: true });
       const total = allEx.length; const done = new Set(); const success = new Set(); let shown = false;
       function refresh() {
         const sc = done.size ? Math.round((success.size / done.size) * 100) : 0;
@@ -2316,14 +2320,14 @@
           if (passed) unlockNext();
         }
       }
-      const groupDefs = { comp: ["📖 Compréhension", "Vérifie que tu as compris le vocabulaire et le dialogue."], appro: ["🎯 Application", "Ancre le vocabulaire et les tournures du soin."], prod: ["✍️ Production", "À toi de produire en allemand."] };
+      const groupDefs = { comp: ["📖 Compréhension", "Vérifie que tu as compris le vocabulaire et le dialogue."], appro: ["🎯 Application", "Ancre le vocabulaire et les tournures du soin."], prod: ["✍️ Production & documentation", "Produis en allemand et apprends à documenter le soin."], rp: ["🎭 Jeu de rôle", "Joue la scène avec le patient, un collègue ou le médecin : choisis la bonne réplique."] };
       const groups = {};
       function groupOf(cat) { if (!groups[cat]) { const g = el("div", "exo-group exo-group-" + cat); g.appendChild(el("h3", "exo-group-title", groupDefs[cat][0])); g.appendChild(el("p", "exo-group-sub", groupDefs[cat][1])); groups[cat] = g; } return groups[cat]; }
       allEx.forEach((ex, i) => {
         const node = window.Exercises.render(ex, i, (ok) => { done.add(i); if (ok) success.add(i); else success.delete(i); window.Progress.setExercice(l.id, i, ok); refresh(); });
-        groupOf(exoCat(ex)).appendChild(node);
+        groupOf(ex._rp ? "rp" : exoCat(ex)).appendChild(node);
       });
-      ["comp", "appro", "prod"].forEach((cat) => { if (groups[cat]) exo.appendChild(groups[cat]); });
+      ["comp", "appro", "prod", "rp"].forEach((cat) => { if (groups[cat]) exo.appendChild(groups[cat]); });
       refresh(); frag.appendChild(exo);
       var unlockNext = function () { if (nextBtn) { nextBtn.classList.remove("is-locked"); nextBtn.textContent = nextLabel; nextBtn.href = nextHref; } };
     }
