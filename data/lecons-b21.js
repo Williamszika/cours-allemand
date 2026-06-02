@@ -32,7 +32,7 @@ window.MODULE_B21 = {
         { de: "lebenslang", fr: "tout au long de la vie", ex: "Lebenslanges Lernen ist wichtig." }
       ],
       grammaire: [
-        { titre: "Nominaliser pour un style soutenu", intro: "À l'écrit formel (B2), on transforme souvent un verbe en nom : « ausbilden → die Ausbildung ». Cela condense l'information.",
+        { attention: "Le verbe devient nom (*ausbilden → die Ausbildung*), souvent suivi d'un **génitif** (*der Lehrlinge*).", titre: "Nominaliser pour un style soutenu", intro: "À l'écrit formel (B2), on transforme souvent un verbe en nom : « ausbilden → die Ausbildung ». Cela condense l'information.",
           tableau: { entetes: ["Verbe", "Nom", "Exemple"], lignes: [["ausbilden", "die Ausbildung", "die Ausbildung der Lehrlinge"], ["bewerben", "die Bewerbung", "die Bewerbung um die Stelle"], ["entscheiden", "die Entscheidung", "die Entscheidung über das Studium"], ["fördern", "die Förderung", "die Förderung von Talenten"]] },
           note: "La nominalisation s'accompagne souvent d'un complément au génitif (der Lehrlinge) ou avec « von »." }
       ],
@@ -69,7 +69,7 @@ window.MODULE_B21 = {
         { de: "der Kompromiss", fr: "le compromis", ex: "Wir haben einen Kompromiss gefunden." }
       ],
       grammaire: [
-        { titre: "Réciprocité et adjectifs à préposition", intro: "« sich » exprime la réciprocité (l'un l'autre) ; beaucoup d'adjectifs imposent une préposition + cas.",
+        { attention: "*sich* = réciprocité (l'un l'autre) ; on peut renforcer avec **einander** (*Sie helfen einander*).", titre: "Réciprocité et adjectifs à préposition", intro: "« sich » exprime la réciprocité (l'un l'autre) ; beaucoup d'adjectifs imposent une préposition + cas.",
           tableau: { entetes: ["Structure", "Sens", "Exemple"], lignes: [["sich verstehen", "s'entendre", "Sie verstehen sich gut."], ["sich verlassen auf + Akk.", "compter sur", "Ich verlasse mich auf dich."], ["böse auf + Akk.", "fâché contre", "Er ist böse auf mich."], ["nett zu + Dat.", "gentil avec", "Sie ist nett zu allen."]] },
           note: "Pour la réciprocité, on peut renforcer avec « einander » : « Sie helfen einander »." }
       ],
@@ -106,7 +106,7 @@ window.MODULE_B21 = {
         { de: "die Besichtigung", fr: "la visite (du logement)", ex: "Die Besichtigung ist am Samstag." }
       ],
       grammaire: [
-        { titre: "Situer et déménager : Wechselpräpositionen", intro: "Les prépositions mixtes prennent le datif (position, Wo?) ou l'accusatif (direction, Wohin?).",
+        { attention: "**Wo?** → datif / **Wohin?** → accusatif : *Ich stelle die Vase **auf den** Tisch* (direction).", titre: "Situer et déménager : Wechselpräpositionen", intro: "Les prépositions mixtes prennent le datif (position, Wo?) ou l'accusatif (direction, Wohin?).",
           tableau: { entetes: ["Question", "Cas", "Exemple"], lignes: [["Wo? (position)", "datif", "Der Schrank steht in der Ecke."], ["Wohin? (direction)", "accusatif", "Ich stelle den Schrank in die Ecke."], ["Wo?", "datif", "Die Lampe hängt über dem Tisch."], ["Wohin?", "accusatif", "Ich hänge die Lampe über den Tisch."]] },
           schemas: [{ legende: "Wohin ? → accusatif (mouvement vers).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "stelle", r: "verbe (2)", c: "verbe" }, { m: "das Sofa", r: "accusatif", c: "objet" }, { m: "an die Wand", r: "direction (acc.)", c: "fin" }] }],
           note: "an, auf, hinter, in, neben, über, unter, vor, zwischen : position = Dat., direction = Akk." }
@@ -144,7 +144,7 @@ window.MODULE_B21 = {
         { de: "umgehend", fr: "immédiatement / sans délai", ex: "Bitte antworten Sie umgehend." }
       ],
       grammaire: [
-        { titre: "La lettre de réclamation (registre formel)", intro: "On structure : objet, exposé des faits, exigence (Konjunktiv II), délai, formule de politesse.",
+        { attention: "Exigence polie au **Konjunktiv II** (*Ich **würde** Sie bitten…*) ; clôture : *Mit freundlichen Grüßen*.", titre: "La lettre de réclamation (registre formel)", intro: "On structure : objet, exposé des faits, exigence (Konjunktiv II), délai, formule de politesse.",
           tableau: { entetes: ["Fonction", "Formule"], lignes: [["Objet", "Betreff: Beschwerde über …"], ["Exposé", "Leider musste ich feststellen, dass …"], ["Exigence", "Ich würde Sie bitten, … / Ich erwarte, dass …"], ["Délai", "… bis spätestens zum 30. Juni."], ["Clôture", "Mit freundlichen Grüßen"]] },
           note: "Le Konjunktiv II (« ich würde Sie bitten ») rend l'exigence ferme mais polie." }
       ],
@@ -181,7 +181,7 @@ window.MODULE_B21 = {
         { de: "die Erwartung", fr: "l'attente", ex: "Die Erwartungen sind hoch." }
       ],
       grammaire: [
-        { titre: "Généraliser sans affirmer : « gelten als », « man », « es heißt »", intro: "Pour décrire une tendance culturelle sans la présenter comme une vérité absolue.",
+        { attention: "*gelten **als*** = passer pour : une généralisation **prudente**, pas une vérité absolue.", titre: "Généraliser sans affirmer : « gelten als », « man », « es heißt »", intro: "Pour décrire une tendance culturelle sans la présenter comme une vérité absolue.",
           tableau: { entetes: ["Tournure", "Sens", "Exemple"], lignes: [["gelten als", "passer pour", "Deutsche gelten als pünktlich."], ["man", "on (général)", "In Japan grüßt man mit einer Verbeugung."], ["es heißt, dass", "on dit que", "Es heißt, dass Hierarchien flacher werden."], ["tendenziell", "plutôt / en tendance", "Der Ton ist tendenziell formell."]] },
           note: "Ces tournures permettent une généralisation prudente, attendue à l'écrit B2." }
       ],
@@ -218,7 +218,7 @@ window.MODULE_B21 = {
         { de: "souverän", fr: "souverain", ex: "Die Staaten bleiben souverän." }
       ],
       grammaire: [
-        { titre: "Argumenter : connecteurs et passif impersonnel", intro: "On organise un argumentaire avec des connecteurs ; le passif rend le propos impersonnel et objectif.",
+        { attention: "*einerseits … andererseits* structure l'argumentation ; le passif rend le propos impersonnel.", titre: "Argumenter : connecteurs et passif impersonnel", intro: "On organise un argumentaire avec des connecteurs ; le passif rend le propos impersonnel et objectif.",
           tableau: { entetes: ["Fonction", "Connecteur / forme", "Exemple"], lignes: [["thèse", "einerseits", "Einerseits stärkt die EU den Handel,"], ["contre", "andererseits", "andererseits verlieren Staaten an Macht."], ["concession", "zwar … aber", "Zwar ist es teuer, aber sinnvoll."], ["passif", "wird … + participe", "Vieles wird gemeinsam entschieden."]] },
           note: "« einerseits … andererseits » structure une argumentation équilibrée." }
       ],
@@ -255,7 +255,7 @@ window.MODULE_B21 = {
         { de: "auflockern", fr: "détendre (l'atmosphère)", ex: "Ein Witz lockert das Gespräch auf." }
       ],
       grammaire: [
-        { titre: "Lancer et relancer la conversation", intro: "On préfère des questions ouvertes (W-Fragen) et des relances brèves pour montrer son intérêt.",
+        { attention: "Évite les sujets **heikel** (salaire, religion, politique) ; préfère les questions ouvertes.", titre: "Lancer et relancer la conversation", intro: "On préfère des questions ouvertes (W-Fragen) et des relances brèves pour montrer son intérêt.",
           tableau: { entetes: ["Acte", "Formule"], lignes: [["Ouvrir", "Schönes Wetter heute, nicht wahr?"], ["Question ouverte", "Was machen Sie beruflich?"], ["Relancer", "Ach wirklich? Erzählen Sie mehr!"], ["Clore poliment", "Es war nett, mit Ihnen zu plaudern."]] },
           note: "Sujets sûrs : météo, voyages, loisirs. Sujets à éviter : salaire, religion, politique, âge." }
       ],

@@ -31,7 +31,7 @@ window.MODULE_B12 = {
         { de: "üben", fr: "s'entraîner", ex: "Ich übe jeden Tag." }
       ],
       grammaire: [
-        { titre: "Exprimer une condition (wenn + Konjunktiv II)", intro: "Pour dire « si… (alors) je… », on emploie souvent würde / hätte / wäre.",
+        { attention: "*Wenn ich … **hätte**, **würde** ich…* ; on peut inverser sans *wenn* (*Hätte ich…*).", titre: "Exprimer une condition (wenn + Konjunktiv II)", intro: "Pour dire « si… (alors) je… », on emploie souvent würde / hätte / wäre.",
           tableau: { entetes: ["Condition", "Conséquence"], lignes: [["Wenn ich mehr Zeit hätte,", "würde ich Spanisch lernen."], ["Wenn ich du wäre,", "würde ich laut üben."], ["Wenn ich im Ausland lebte,", "würde ich schneller lernen."]] },
           note: "Souvent : « Wenn …, würde ich … ». L'ordre peut s'inverser : « Ich würde …, wenn … »." }
       ],
@@ -68,7 +68,7 @@ window.MODULE_B12 = {
         { de: "das Ziel", fr: "le but", ex: "Mein Ziel ist eine bessere Stelle." }
       ],
       grammaire: [
-        { titre: "Exprimer un but : um … zu / damit", intro: "« um … zu + infinitif » quand le sujet est le même ; « damit » quand le sujet change.",
+        { attention: "**Même sujet** → *um … zu* ; **sujet différent** → *damit* (verbe à la fin).", titre: "Exprimer un but : um … zu / damit", intro: "« um … zu + infinitif » quand le sujet est le même ; « damit » quand le sujet change.",
           tableau: { entetes: ["Structure", "Condition", "Exemple"], lignes: [["um … zu + Inf.", "même sujet", "Ich lerne, um eine bessere Stelle zu finden."], ["damit + sujet", "sujet différent", "Ich erkläre es, damit du es verstehst."]] },
           schemas: [{ legende: "um … zu : infinitif rejeté à la fin.", mots: [{ m: "Ich lerne Deutsch,", r: "principale", c: "objet" }, { m: "um", r: "but", c: "conj" }, { m: "in Deutschland", r: "complément", c: "sujet" }, { m: "zu arbeiten", r: "zu + infinitif (fin)", c: "fin" }] }],
           note: "Astuce : si on peut dire « pour que » avec un autre sujet → damit ; sinon « pour » + infinitif → um … zu." }
@@ -106,7 +106,7 @@ window.MODULE_B12 = {
         { de: "die Geduld", fr: "la patience", ex: "Man braucht Geduld." }
       ],
       grammaire: [
-        { titre: "Donner un conseil (sollte / du könntest)", intro: "« Du solltest … » = tu devrais. « Du könntest … » = tu pourrais. Verbe à la fin de la principale ? Non : modal en 2e position, infinitif à la fin.",
+        { attention: "*Du **könntest**…* est plus doux que *Du **solltest**…* ; les deux au Konjunktiv II.", titre: "Donner un conseil (sollte / du könntest)", intro: "« Du solltest … » = tu devrais. « Du könntest … » = tu pourrais. Verbe à la fin de la principale ? Non : modal en 2e position, infinitif à la fin.",
           tableau: { entetes: ["Conseil", "Exemple"], lignes: [["Du solltest …", "Du solltest mehr Pausen machen."], ["Du könntest …", "Du könntest Karteikarten benutzen."], ["An deiner Stelle würde ich …", "An deiner Stelle würde ich laut lesen."]] },
           note: "Pour structurer : zuerst (d'abord), dann (ensuite), schließlich (enfin)." }
       ],
@@ -143,7 +143,7 @@ window.MODULE_B12 = {
         { de: "die Grundschule", fr: "l'école primaire", ex: "Die Grundschule dauert vier Jahre." }
       ],
       grammaire: [
-        { titre: "Raconter sa scolarité (passé)", intro: "À l'oral, on emploie le Perfekt ; pour sein/haben/modaux, le Präteritum (war, hatte, musste).",
+        { attention: "À l'oral, **Perfekt** ; mais *war, hatte, musste* se disent au **prétérit**.", titre: "Raconter sa scolarité (passé)", intro: "À l'oral, on emploie le Perfekt ; pour sein/haben/modaux, le Präteritum (war, hatte, musste).",
           tableau: { entetes: ["Verbe", "Perfekt", "Präteritum"], lignes: [["machen", "habe gemacht", "machte"], ["gehen", "bin gegangen", "ging"], ["sein", "—", "war"], ["müssen", "—", "musste"]] },
           note: "En Allemagne, la note 1 est la meilleure et la note 6 la plus mauvaise." }
       ],
@@ -180,7 +180,7 @@ window.MODULE_B12 = {
         { de: "überfüllt", fr: "bondé", ex: "Der Bus war überfüllt." }
       ],
       grammaire: [
-        { titre: "Simultanéité (während) et succession (als)", intro: "« während » : deux actions en même temps. « als » : un événement unique passé. Les deux rejettent le verbe à la fin.",
+        { attention: "*während* = en même temps ; *als* = un événement unique passé. Verbe **à la fin**.", titre: "Simultanéité (während) et succession (als)", intro: "« während » : deux actions en même temps. « als » : un événement unique passé. Les deux rejettent le verbe à la fin.",
           tableau: { entetes: ["Conjonction", "Sens", "Exemple"], lignes: [["während", "pendant que", "Während ich fuhr, hörte ich Radio."], ["als", "quand (1 fois)", "Als ich ankam, war alles gesperrt."], ["bevor", "avant que", "Bevor ich losfuhr, prüfte ich die App."]] },
           note: "« während » exprime aussi le contraste : « Während ich Bus fahre, fährt er mit dem Rad »." }
       ],
@@ -217,7 +217,7 @@ window.MODULE_B12 = {
         { de: "die Strecke", fr: "le trajet", ex: "Die Strecke dauert 20 Minuten." }
       ],
       grammaire: [
-        { titre: "Se déplacer : mit + datif", intro: "Pour le moyen de transport, on emploie « mit + datif ». Exception : « zu Fuß » (à pied).",
+        { attention: "Moyen de transport → *mit + datif* (*mit **dem** Fahrrad*) ; exception : *zu Fuß*.", titre: "Se déplacer : mit + datif", intro: "Pour le moyen de transport, on emploie « mit + datif ». Exception : « zu Fuß » (à pied).",
           tableau: { entetes: ["Moyen", "Expression", "Exemple"], lignes: [["Bus", "mit dem Bus", "Ich fahre mit dem Bus."], ["U-Bahn", "mit der U-Bahn", "Sie fährt mit der U-Bahn."], ["Auto", "mit dem Auto", "Wir fahren mit dem Auto."], ["à pied", "zu Fuß", "Ich gehe zu Fuß."]] },
           note: "Comparer : « Das Fahrrad ist umweltfreundlicher als das Auto »." }
       ],
@@ -254,7 +254,7 @@ window.MODULE_B12 = {
         { de: "die Auskunft", fr: "le renseignement / l'information", ex: "Ich frage an der Auskunft." }
       ],
       grammaire: [
-        { titre: "Question indirecte (poliesse)", intro: "Pour demander poliment, on intègre la question dans une phrase : ob (oui/non) ou le mot interrogatif, verbe à la fin.",
+        { attention: "Question indirecte : verbe **à la fin** (*…, **wann** der Zug **abfährt***).", titre: "Question indirecte (poliesse)", intro: "Pour demander poliment, on intègre la question dans une phrase : ob (oui/non) ou le mot interrogatif, verbe à la fin.",
           tableau: { entetes: ["Question directe", "Question indirecte"], lignes: [["Fährt der Zug pünktlich?", "Wissen Sie, ob der Zug pünktlich fährt?"], ["Wann fährt der Bus?", "Können Sie mir sagen, wann der Bus fährt?"], ["Wo ist Gleis 3?", "Wissen Sie, wo Gleis 3 ist?"]] },
           schemas: [{ legende: "Question indirecte : verbe rejeté à la FIN.", mots: [{ m: "Können Sie mir sagen,", r: "principale", c: "objet" }, { m: "wann", r: "mot interrogatif", c: "conj" }, { m: "der Bus", r: "sujet", c: "sujet" }, { m: "abfährt?", r: "verbe (fin)", c: "fin" }] }],
           note: "Très utile pour être poli : « Könnten Sie mir sagen, … ? »." }
@@ -292,7 +292,7 @@ window.MODULE_B12 = {
         { de: "die Grenze", fr: "la frontière", ex: "Wir fahren über die Grenze." }
       ],
       grammaire: [
-        { titre: "Souhaits et conditions de voyage (Konjunktiv II)", intro: "« Ich würde gern… », « Wenn ich Zeit/Geld hätte, würde ich… ».",
+        { attention: "Demande polie : *Ich **würde** gern…*, *Ich **hätte** gern… mit Balkon*.", titre: "Souhaits et conditions de voyage (Konjunktiv II)", intro: "« Ich würde gern… », « Wenn ich Zeit/Geld hätte, würde ich… ».",
           tableau: { entetes: ["Souhait / condition", "Exemple"], lignes: [["würde gern", "Ich würde gern nach Japan reisen."], ["hätte gern", "Ich hätte gern ein Zimmer mit Balkon."], ["wenn … würde", "Wenn ich reich wäre, würde ich die Welt bereisen."]] },
           note: "Réserver poliment : « Ich hätte gern… », « Könnte ich bitte…? »." }
       ],
@@ -329,7 +329,7 @@ window.MODULE_B12 = {
         { de: "die Freude", fr: "la joie", ex: "Das macht mir Freude." }
       ],
       grammaire: [
-        { titre: "Adjectifs avec préposition", intro: "Certains adjectifs se construisent avec une préposition fixe (et un cas).",
+        { attention: "Préposition **fixe** : *stolz **auf***, *zufrieden **mit*** — à mémoriser comme les verbes.", titre: "Adjectifs avec préposition", intro: "Certains adjectifs se construisent avec une préposition fixe (et un cas).",
           tableau: { entetes: ["Adjectif", "Préposition + cas", "Exemple"], lignes: [["stolz", "auf + Akk.", "Ich bin stolz auf meine Arbeit."], ["zufrieden", "mit + Dat.", "Ich bin zufrieden mit dem Ergebnis."], ["dankbar", "für + Akk.", "Ich bin dankbar für deine Hilfe."], ["glücklich", "über + Akk.", "Ich bin glücklich über die Nachricht."]] },
           note: "À mémoriser comme les verbes à préposition : stolz auf, zufrieden mit, dankbar für." }
       ],
@@ -366,7 +366,7 @@ window.MODULE_B12 = {
         { de: "die Eigenschaft", fr: "la qualité / le trait", ex: "Welche Eigenschaft schätzt du?" }
       ],
       grammaire: [
-        { titre: "L'adjectif épithète se décline", intro: "Devant un nom, l'adjectif prend une terminaison selon l'article et le cas.",
+        { attention: "Sans article, l'adjectif prend la **terminaison forte** du cas (*gut**er** Mensch*).", titre: "L'adjectif épithète se décline", intro: "Devant un nom, l'adjectif prend une terminaison selon l'article et le cas.",
           tableau: { entetes: ["Article", "Nominatif m.", "Exemple"], lignes: [["der", "der nette Mann", "Le gentil homme"], ["ein", "ein netter Mann", "Un gentil homme"], ["(sans)", "netter Mann", "(un) gentil homme"], ["die (f.)", "die nette Frau", "La gentille femme"]] },
           note: "Après der/die/das : terminaison -e ou -en. Après ein : l'adjectif « porte » la marque du genre (ein netter, eine nette, ein nettes)." }
       ],
@@ -403,7 +403,7 @@ window.MODULE_B12 = {
         { de: "atmen", fr: "respirer", ex: "Atme tief durch." }
       ],
       grammaire: [
-        { titre: "Cause (weil) et conséquence (deshalb)", intro: "« weil » introduit la cause (verbe à la fin). « deshalb » introduit la conséquence (verbe en 2e position).",
+        { attention: "*weil* (cause, verbe à la fin) vs *deshalb* (conséquence, verbe en 2ᵉ).", titre: "Cause (weil) et conséquence (deshalb)", intro: "« weil » introduit la cause (verbe à la fin). « deshalb » introduit la conséquence (verbe en 2e position).",
           tableau: { entetes: ["Mot", "Rôle", "Exemple"], lignes: [["weil", "cause (verbe fin)", "Ich bin müde, weil ich Stress habe."], ["deshalb", "conséquence (verbe 2e)", "Ich habe Stress, deshalb bin ich müde."], ["denn", "cause (verbe 2e)", "Ich bin müde, denn ich habe Stress."]] },
           schemas: [{ legende: "deshalb en tête → verbe en 2e position.", mots: [{ m: "Ich habe Stress,", r: "cause", c: "objet" }, { m: "deshalb", r: "conséquence (1)", c: "conj" }, { m: "entspanne", r: "verbe (2)", c: "verbe" }, { m: "ich mich", r: "sujet+réfléchi", c: "fin" }] }],
           note: "weil + verbe à la FIN ; deshalb/denn + verbe en 2e position." }
@@ -441,7 +441,7 @@ window.MODULE_B12 = {
         { de: "die Rechnung", fr: "l'addition", ex: "Die Rechnung, bitte!" }
       ],
       grammaire: [
-        { titre: "Recettes : impératif et passif", intro: "Une recette emploie l'impératif (Schneide…) ou le passif (Die Zwiebeln werden geschnitten).",
+        { attention: "Recette : *Schneide…!* (impératif) ou *Die Zwiebeln **werden** geschnitten* (passif).", titre: "Recettes : impératif et passif", intro: "Une recette emploie l'impératif (Schneide…) ou le passif (Die Zwiebeln werden geschnitten).",
           tableau: { entetes: ["Forme", "Exemple"], lignes: [["Impératif (du)", "Schneide die Zwiebeln!"], ["Impératif (Sie)", "Schneiden Sie die Zwiebeln!"], ["Passif", "Die Zwiebeln werden geschnitten."], ["puis (dann)", "Dann wird alles gekocht."]] },
           note: "Au restaurant : « Ich hätte gern… », « Ich nehme… », « Die Rechnung, bitte »." }
       ],
@@ -478,7 +478,7 @@ window.MODULE_B12 = {
         { de: "das Geschenk", fr: "le cadeau", ex: "Ich habe ein Geschenk für dich." }
       ],
       grammaire: [
-        { titre: "Inviter et répondre poliment", intro: "Konjunktiv II pour la politesse ; formules toutes faites pour les vœux.",
+        { attention: "Invitation polie : *Hättest du Lust, … **zu** + infinitif?*", titre: "Inviter et répondre poliment", intro: "Konjunktiv II pour la politesse ; formules toutes faites pour les vœux.",
           tableau: { entetes: ["Acte", "Formule"], lignes: [["Inviter", "Hättest du Lust, …? / Würdest du gern …?"], ["Accepter", "Ja, gern! / Das wäre schön."], ["Refuser", "Leider kann ich nicht, ich habe schon etwas vor."], ["Féliciter", "Herzlichen Glückwunsch! Alles Gute!"]] },
           note: "Vœux fréquents : « Frohe Weihnachten », « Gutes neues Jahr », « Alles Gute zum Geburtstag »." }
       ],

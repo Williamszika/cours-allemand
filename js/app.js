@@ -279,6 +279,10 @@
     const niveauBtn = el("a", "btn btn-ghost", "🎯 Tester / changer mon niveau");
     niveauBtn.href = "#/start";
     secondRow.appendChild(niveauBtn);
+    const installBtn = el("button", "btn btn-ghost install-btn", "📲 Installer l'app");
+    installBtn.type = "button";
+    installBtn.addEventListener("click", promptInstall);
+    secondRow.appendChild(installBtn);
     cta.appendChild(secondRow);
 
     const audioInfo = el("p", "hero-audio-info", window.Speech && window.Speech.isSupported()
@@ -614,9 +618,9 @@
     dlg.id = "dlg";
     const dHead = el("div", "ls-head");
     dHead.appendChild(el("h2", "", "💬 Dialogue — " + l.dialogue.titre));
-    const playDlg = el("button", "btn btn-ghost small", "🔊 Jouer le dialogue");
+    const playDlg = el("button", "btn btn-ghost small", "🎭 Jouer le dialogue (multi-voix)");
     playDlg.type = "button";
-    playDlg.addEventListener("click", () => playSequence(l.dialogue.lignes.map((x) => x.de)));
+    playDlg.addEventListener("click", () => playDialogue(l.dialogue.lignes));
     dHead.appendChild(playDlg);
     dlg.appendChild(dHead);
     if (l.dialogue.lieu) dlg.appendChild(el("p", "dlg-lieu", "📍 " + l.dialogue.lieu));
@@ -806,11 +810,46 @@
       i++;
       const u = new SpeechSynthesisUtterance(txt);
       u.lang = "de-DE";
+      const v = window.Speech.voice && window.Speech.voice();
+      if (v) u.voice = v;
       u.rate = 0.9;
       u.onend = () => setTimeout(next, 250);
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(u);
     }
+    next();
+  }
+
+  /* Lecture d'un dialogue avec une VOIX DIFFÉRENTE par interlocuteur. */
+  function playDialogue(lignes) {
+    if (!window.Speech || !window.Speech.isSupported()) { return; }
+    const voices = (window.Speech.voices && window.Speech.voices()) || [];
+    // Attribue à chaque locuteur une voix (ou, à défaut, un timbre/pitch distinct)
+    const speakers = [];
+    lignes.forEach((l) => { const k = l.loc || "?"; if (speakers.indexOf(k) < 0) speakers.push(k); });
+    const profil = {};
+    speakers.forEach((k, idx) => {
+      const v = voices.length ? voices[idx % voices.length] : null;
+      // si peu de voix distinctes, on différencie par le pitch
+      const pitch = voices.length > 1 ? 1 : (idx % 2 === 0 ? 0.85 : 1.25);
+      profil[k] = { voice: v, pitch: pitch };
+    });
+    let i = 0;
+    function next() {
+      if (i >= lignes.length) return;
+      const ligne = lignes[i]; i++;
+      const txt = String(ligne.de || "").replace(/\([^)]*\)/g, "").trim();
+      if (!txt) { return next(); }
+      const p = profil[ligne.loc || "?"] || {};
+      const u = new SpeechSynthesisUtterance(txt);
+      u.lang = "de-DE";
+      if (p.voice) u.voice = p.voice;
+      u.rate = 0.92;
+      u.pitch = p.pitch || 1;
+      u.onend = () => setTimeout(next, 320);
+      window.speechSynthesis.speak(u);
+    }
+    window.speechSynthesis.cancel();
     next();
   }
 
@@ -894,7 +933,7 @@
     const head = el("header", "lesson-head");
     head.innerHTML =
       '<div class="lesson-num">Tableau de bord</div><h1>Ma progression</h1>' +
-      '<p class="lesson-theme">Suivi de votre apprentissage de l\'allemand A1.</p>';
+      '<p class="lesson-theme">Suivi détaillé de ton allemand, de A1 à C2.</p>';
     frag.appendChild(head);
 
     // Vue d'ensemble
@@ -915,6 +954,23 @@
     sec1.appendChild(cards);
     frag.appendChild(sec1);
 
+    // Progression par niveau (A1 → C2)
+    const secN = el("section", "lesson-section");
+    secN.appendChild(el("h2", "", "📊 Progression par niveau"));
+    ORDRE_NIVEAUX.forEach((code) => {
+      const lec = flat.filter((f) => f.lecon.niveau === code);
+      if (!lec.length) return;
+      const done = lec.filter((f) => window.Progress.estTermine(f.lecon.id)).length;
+      const pct = Math.round((done / lec.length) * 100);
+      const color = (COURS.modules.find((m) => (m.niveau || "A1") === code) || {}).couleur || "#2563eb";
+      const row = el("div", "stat-bar");
+      row.innerHTML =
+        '<div class="stat-bar-head"><span>' + code + " — " + (NIVEAU_LABELS[code] || "") + "</span><span>" + done + "/" + lec.length + " leçons</span></div>" +
+        '<div class="bar"><div class="bar-fill" style="width:' + pct + "%;background:" + color + '"></div></div>';
+      secN.appendChild(row);
+    });
+    frag.appendChild(secN);
+
     // Réussite par compétence
     const sec2 = el("section", "lesson-section");
     sec2.appendChild(el("h2", "", "🎯 Réussite par compétence"));
@@ -931,11 +987,42 @@
     sec2.appendChild(el("p", "exo-group-sub", "Calculé à partir de vos réponses aux exercices. Refaites une leçon pour améliorer un score."));
     frag.appendChild(sec2);
 
+    // Examens du parcours
+    const secE = el("section", "lesson-section");
+    secE.appendChild(el("h2", "", "🎓 Examens"));
+    const exGrid = el("div", "exam-stats");
+    COURS.examens.forEach((e) => {
+      const t = window.Progress.getTestScore(e.id);
+      const cell = el("div", "exam-stat " + (t && t.reussi ? "ok" : t ? "part" : "todo"));
+      cell.innerHTML =
+        '<span class="es-niv">' + e.niveau + '</span><span class="es-score">' + (t ? t.meilleur + "%" : "—") + "</span>" +
+        '<span class="es-etat">' + (t ? (t.reussi ? "✅ réussi" : "à retenter") : "à passer") + "</span>";
+      exGrid.appendChild(cell);
+    });
+    secE.appendChild(exGrid);
+    frag.appendChild(secE);
+
+    // Points faibles repérés au test de placement
+    const faibles = window.Progress.getFaiblesses();
+    if (faibles && faibles.length) {
+      const secF = el("section", "section");
+      const tc = el("div", "zika-conseil");
+      tc.innerHTML = '<span class="cours-tag">💡 À travailler (d\'après ton test)</span><div>' + faibles.map(escapeHtml).join(", ") +
+        '</div><a class="btn btn-ghost small" href="#/revision" style="margin-top:10px">🔁 Réviser</a>';
+      secF.appendChild(tc);
+      frag.appendChild(secF);
+    }
+
     // Détail des leçons
     const sec3 = el("section", "lesson-section");
     sec3.appendChild(el("h2", "", "📚 Détail des leçons"));
     const list = el("div", "stats-lecons");
+    let curNivDetail = null;
     flat.forEach((f, idx) => {
+      if (f.lecon.niveau !== curNivDetail) {
+        curNivDetail = f.lecon.niveau;
+        list.appendChild(el("div", "stats-niv-sep", "Niveau " + curNivDetail));
+      }
       const lp = window.Progress.getLecon(f.lecon.id);
       const done = window.Progress.estTermine(f.lecon.id);
       const unlocked = isUnlocked(idx);
@@ -1277,8 +1364,15 @@
 
     const list = el("div", "test-list");
     const nodes = [];
+    // Test de placement « à l'aveugle » : on retire tout indice / aide /
+    // modèle / mot-clé (rien qui oriente vers la réponse).
+    function sansAide(ex) {
+      const c = Object.assign({}, ex);
+      delete c.indice; delete c.aide; delete c.traduction; delete c.explication; delete c.modele; delete c.attendus;
+      return c;
+    }
     block.items.forEach((ex, i) => {
-      const node = window.Exercises.render(ex, i, null, { testMode: true, label: "Question " + (i + 1) });
+      const node = window.Exercises.render(sansAide(ex), i, null, { testMode: true, label: "Question " + (i + 1) });
       nodes.push(node);
       list.appendChild(node);
     });
@@ -1300,7 +1394,7 @@
       block.items.forEach((ex, idx) => {
         const node = nodes[idx];
         if (!node || typeof node._grade !== "function") return; // production : non noté
-        const res = node._grade(true);
+        const res = node._grade(false); // on note SANS révéler la correction (aucune aide)
         total++;
         if (res.ok === true) correct++;
         else noteFaible(ex.type);
@@ -1378,11 +1472,25 @@
     else renderHome();
   }
 
+  /* --- PWA : installation + service worker (mode hors-ligne) --- */
+  let deferredPrompt = null;
+  window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredPrompt = e; document.documentElement.classList.add("can-install"); });
+  window.addEventListener("appinstalled", () => { deferredPrompt = null; document.documentElement.classList.remove("can-install"); });
+  function promptInstall() {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.finally(() => { deferredPrompt = null; document.documentElement.classList.remove("can-install"); });
+  }
+
   function boot() {
     if (window.TG) window.TG.init();
     route(); // rendu immédiat avec les données locales
     // Fusion avec la progression cloud (Telegram) puis re-rendu si besoin
     if (window.Sync) window.Sync.load(function (changed) { if (changed) route(); });
+    // Service worker : hors-ligne + installable (hors Telegram, qui gère son propre cache)
+    if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
+      navigator.serviceWorker.register("sw.js").catch(function () {});
+    }
   }
 
   window.addEventListener("hashchange", route);

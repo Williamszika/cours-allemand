@@ -72,6 +72,21 @@ window.Speech = (function () {
     return !!germanVoice;
   }
 
+  // Voix allemande actuellement choisie (masculine/naturelle si dispo)
+  function voice() {
+    if (!voicesLoaded) pickGermanVoice();
+    return germanVoice;
+  }
+
+  // Liste des voix allemandes, triées (meilleures d'abord) — pour le multi-voix
+  function voices() {
+    if (!("speechSynthesis" in window)) return [];
+    const all = window.speechSynthesis.getVoices() || [];
+    const de = all.filter((v) => v.lang && v.lang.toLowerCase().indexOf("de") === 0);
+    de.sort((a, b) => scoreVoice(b) - scoreVoice(a));
+    return de;
+  }
+
   /* ---------- Reconnaissance vocale (pour la production orale) ---------- */
   function recognitionSupported() {
     return !!(window.SpeechRecognition || window.webkitSpeechRecognition);
@@ -106,5 +121,5 @@ window.Speech = (function () {
     }
   }
 
-  return { speak, isSupported, hasGermanVoice, recognitionSupported, recognize };
+  return { speak, isSupported, hasGermanVoice, voice, voices, recognitionSupported, recognize };
 })();

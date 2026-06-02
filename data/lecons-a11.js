@@ -46,7 +46,7 @@ window.MODULE_A11 = {
         { de: "bitte", fr: "s'il vous plaît / je vous en prie", ex: "Bitte schön." }
       ],
       grammaire: [
-        {
+        { attention: "Ne confonds pas **sie** (elle/ils, minuscule) et **Sie** (vous de politesse, **toujours** majuscule).",
           titre: "Les pronoms personnels (Personalpronomen)",
           intro:
             "Le pronom personnel indique qui fait l'action. Il détermine la terminaison du verbe.",
@@ -189,7 +189,7 @@ window.MODULE_A11 = {
         { de: "das Eszett (ß)", fr: "le « s dur »", ex: "ß = scharfes S" }
       ],
       grammaire: [
-        {
+        { attention: "**eins** devient **ein** devant un nom (*ein Buch*) ; et *sechs/sieben* → **sechzehn/siebzehn** (on perd le -s/-en).",
           titre: "Les nombres de 0 à 20 (Die Zahlen)",
           intro: "Les nombres de base à mémoriser. Attention : on dit l'unité AVANT la dizaine à partir de 21.",
           tableau: {
@@ -323,7 +323,7 @@ window.MODULE_A11 = {
         { de: "man", fr: "on", ex: "In Italien spricht man Italienisch." }
       ],
       grammaire: [
-        {
+        { attention: "Le changement de voyelle ne touche **que** *du* et *er/sie/es* (*du **sprichst***) ; *wir/ihr/sie* gardent *sprechen*.",
           titre: "Le verbe « sprechen » (parler) — verbe à changement de voyelle",
           intro:
             "Certains verbes changent leur voyelle aux 2e et 3e personnes du singulier : e → i.",
@@ -454,7 +454,7 @@ window.MODULE_A11 = {
         { de: "die Familie", fr: "la famille", ex: "Meine Familie ist groß." }
       ],
       grammaire: [
-        {
+        { attention: "**gern** se place **après** le verbe : *Ich spiele **gern** Fußball* (et non avant comme en français).",
           titre: "Exprimer le goût : verbe + « gern »",
           intro:
             "Pour dire qu'on aime FAIRE quelque chose, on place « gern » après le verbe. Pas besoin d'un verbe « aimer » !",
@@ -578,7 +578,7 @@ window.MODULE_A11 = {
         { de: "der Chef / die Chefin", fr: "le/la chef", ex: "Die Chefin ist streng." }
       ],
       grammaire: [
-        {
+        { attention: "À l'accusatif, *ein* (masc.) devient **einen** : *Ich habe **einen** Hund* ; *eine* et *ein* (neutre) ne changent pas.",
           titre: "L'article indéfini : ein / eine (un / une)",
           intro: "Pour dire la profession, on utilise souvent SANS article : « Ich bin Lehrer. »",
           tableau: {
@@ -699,7 +699,7 @@ window.MODULE_A11 = {
         { de: "halb", fr: "demie", ex: "Es ist halb drei (14h30)." }
       ],
       grammaire: [
-        {
+        { attention: "Le préfixe se détache et part **à la fin** : *Ich **stehe** um sieben **auf*** (et non « ich aufstehe »).",
           titre: "Les verbes à particule séparable (trennbare Verben)",
           intro:
             "Beaucoup de verbes ont un préfixe (auf-, ein-, an-, fern-) qui se SÉPARE et part à la fin de la phrase.",
@@ -825,7 +825,7 @@ window.MODULE_A11 = {
         { de: "es gibt", fr: "il y a", ex: "Es gibt einen Lift." }
       ],
       grammaire: [
-        {
+        { attention: "**es gibt** est suivi de l'**accusatif** : *Es gibt **einen** Park* (masculin → einen).",
           titre: "« es gibt » + accusatif (il y a)",
           intro:
             "« es gibt » est toujours suivi de l'accusatif. À l'accusatif, seul le masculin change : der → den, ein → einen.",
@@ -952,7 +952,7 @@ window.MODULE_A11 = {
         { de: "zwischen", fr: "entre", ex: "Die Bank ist zwischen Post und Café." }
       ],
       grammaire: [
-        {
+        { attention: "Ici on situe (Wo?) → **datif** : *im Zimmer*, *auf **dem** Tisch*. (*in dem* = **im**, *an dem* = **am**.)",
           titre: "Les prépositions de lieu (lokale Präpositionen)",
           intro: "Pour situer (Wo? = où ?), on emploie ces prépositions, souvent + datif.",
           tableau: {
@@ -1078,7 +1078,7 @@ window.MODULE_A11 = {
         { de: "die Speisekarte", fr: "le menu / la carte", ex: "Die Speisekarte, bitte." }
       ],
       grammaire: [
-        {
+        { attention: "**kein** pour un nom sans article (*kein Geld*) ; **nicht** pour le reste, souvent placé **à la fin**.",
           titre: "La négation : « nicht » vs « kein »",
           intro:
             "« kein » nie un NOM (avec article indéfini ou sans article). « nicht » nie un verbe, un adjectif ou un nom défini.",

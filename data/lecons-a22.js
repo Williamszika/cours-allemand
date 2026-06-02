@@ -31,7 +31,7 @@ window.MODULE_A22 = {
         { de: "die Postkarte", fr: "la carte postale", ex: "Ich schreibe eine Postkarte." }
       ],
       grammaire: [
-        { titre: "Aller / être à un endroit", intro: "« in die Berge » (où l'on va, accusatif) vs « in den Bergen » (où l'on est, datif).",
+        { attention: "*Wo?* (être) → datif ; *Wohin?* (aller) → accusatif ou *nach/zu*. *zu Hause* ≠ *nach Hause*.", titre: "Aller / être à un endroit", intro: "« in die Berge » (où l'on va, accusatif) vs « in den Bergen » (où l'on est, datif).",
           tableau: { entetes: ["Question", "Exemple", "Cas"], lignes: [["Wohin? (où ?)", "Ich fahre ans Meer.", "accusatif"], ["Wo? (où ?)", "Ich bin am Meer.", "datif"], ["Wohin?", "in die Berge", "accusatif"], ["Wo?", "in den Bergen", "datif"]] },
           note: "an + das = ans ; an + dem = am." }
       ],
@@ -71,7 +71,7 @@ window.MODULE_A22 = {
         { de: "die Reise", fr: "le voyage", ex: "Eine Reise nach Japan." }
       ],
       grammaire: [
-        { titre: "Pays : « nach » et « in »", intro: "La plupart des pays sont neutres et sans article.",
+        { attention: "Pays **sans** article → *nach* (*nach Italien*) ; pays **avec** article → *in* + accusatif (*in die Schweiz*).", titre: "Pays : « nach » et « in »", intro: "La plupart des pays sont neutres et sans article.",
           tableau: { entetes: ["Cas", "Préposition", "Exemple"], lignes: [["aller (sans article)", "nach", "Ich fahre nach Italien."], ["venir", "aus", "Ich komme aus Spanien."], ["pays avec article", "in die / in der", "in die Schweiz / in der Türkei"], ["être dans", "in", "Ich lebe in Deutschland."]] },
           note: "Exceptions avec article : die Schweiz, die Türkei, die USA (pluriel) → in die USA / in den USA." }
       ],
@@ -111,7 +111,7 @@ window.MODULE_A22 = {
         { de: "der Reiseführer", fr: "le guide (livre)", ex: "Ich lese den Reiseführer." }
       ],
       grammaire: [
-        { titre: "Le futur avec « werden »", intro: "werden (conjugué) + infinitif à la fin. Pour un projet/une prévision.",
+        { attention: "*werden* en 2ᵉ position + **infinitif à la fin** : *Ich **werde** dich **anrufen***.", titre: "Le futur avec « werden »", intro: "werden (conjugué) + infinitif à la fin. Pour un projet/une prévision.",
           tableau: { entetes: ["Pronom", "werden", "Exemple"], lignes: [["ich", "werde", "Ich werde reisen."], ["du", "wirst", "Du wirst sehen."], ["er/sie/es", "wird", "Er wird kommen."], ["wir", "werden", "Wir werden fliegen."], ["ihr", "werdet", "Ihr werdet warten."], ["sie/Sie", "werden", "Sie werden buchen."]] },
           note: "Souvent l'allemand utilise le présent + indicateur de temps : « Morgen fahre ich nach Rom »." }
       ],
@@ -151,7 +151,7 @@ window.MODULE_A22 = {
         { de: "wild", fr: "sauvage", ex: "Wilde Tiere im Wald." }
       ],
       grammaire: [
-        { titre: "Décrire un animal", intro: "Adjectif attribut (invariable) après « sein » + verbes de capacité.",
+        { attention: "L'adjectif placé **après *sein*** est **invariable** (*Der Hund ist **groß***).", titre: "Décrire un animal", intro: "Adjectif attribut (invariable) après « sein » + verbes de capacité.",
           tableau: { entetes: ["Phrase", "Sens"], lignes: [["Der Hai ist gefährlich.", "Le requin est dangereux."], ["Die Schlange ist giftig.", "Le serpent est venimeux."], ["Der Vogel kann fliegen.", "L'oiseau sait voler."], ["Der Löwe kann schnell laufen.", "Le lion court vite."]] },
           note: "« können » exprime la capacité (peut/sait faire). L'adjectif après « ist » ne change pas." }
       ],
@@ -191,7 +191,7 @@ window.MODULE_A22 = {
         { de: "die Brille", fr: "les lunettes", ex: "Sie trägt eine Brille." }
       ],
       grammaire: [
-        { titre: "L'adjectif épithète (introduction)", intro: "Devant un nom, l'adjectif prend une terminaison. Cas simple après l'article indéfini.",
+        { attention: "**Devant** un nom, l'adjectif **se décline** (*ein **kleiner** Hund*), contrairement à *Der Hund ist klein*.", titre: "L'adjectif épithète (introduction)", intro: "Devant un nom, l'adjectif prend une terminaison. Cas simple après l'article indéfini.",
           tableau: { entetes: ["Genre", "Exemple (nominatif)", "Terminaison"], lignes: [["masculin", "ein großer Mann", "-er"], ["féminin", "eine nette Frau", "-e"], ["neutre", "ein kleines Kind", "-es"], ["pluriel", "blonde Haare", "-e"]] },
           note: "Après « sein » l'adjectif reste invariable (Er ist groß), mais DEVANT un nom il s'accorde (ein großer Mann)." }
       ],
@@ -231,7 +231,7 @@ window.MODULE_A22 = {
         { de: "umziehen", fr: "déménager", ex: "Wir ziehen bald um." }
       ],
       grammaire: [
-        { titre: "Ville ou campagne : comparer", intro: "Comparatif + als ; superlatif am …-sten.",
+        { attention: "*so … wie* = égalité (aussi… que) ; *-er … als* = supériorité (plus… que). Ne les mélange pas.", titre: "Ville ou campagne : comparer", intro: "Comparatif + als ; superlatif am …-sten.",
           tableau: { entetes: ["Phrase", "Sens"], lignes: [["Die Stadt ist lauter als das Dorf.", "La ville est plus bruyante que le village."], ["Auf dem Land ist es ruhiger.", "À la campagne c'est plus calme."], ["Die Miete ist in der Stadt am höchsten.", "Le loyer est le plus élevé en ville."]] },
           note: "« auf dem Land » (à la campagne) est une expression figée au datif." }
       ],
@@ -271,7 +271,7 @@ window.MODULE_A22 = {
         { de: "abnehmen", fr: "maigrir", ex: "Ich möchte abnehmen." }
       ],
       grammaire: [
-        { titre: "Donner un conseil avec « sollen » et « man »", intro: "« man soll » = on devrait. Conseils généraux.",
+        { attention: "*man* se conjugue comme *er/sie/es* (3ᵉ sing.) : *man **soll***, *man **kann***.", titre: "Donner un conseil avec « sollen » et « man »", intro: "« man soll » = on devrait. Conseils généraux.",
           tableau: { entetes: ["Phrase", "Sens"], lignes: [["Man soll viel Wasser trinken.", "On devrait boire beaucoup d'eau."], ["Du sollst mehr Gemüse essen.", "Tu devrais manger plus de légumes."], ["Man soll Zucker vermeiden.", "On devrait éviter le sucre."]] },
           note: "« man » = on (sujet impersonnel, verbe à la 3e personne du singulier)." }
       ],
@@ -311,7 +311,7 @@ window.MODULE_A22 = {
         { de: "die Welt", fr: "le monde", ex: "Nachrichten aus der Welt." }
       ],
       grammaire: [
-        { titre: "Donner son opinion avec « dass »", intro: "ich finde / glaube / denke, dass + verbe à la fin.",
+        { attention: "Après *Ich finde/denke, dass…*, le verbe va **à la fin** de la subordonnée.", titre: "Donner son opinion avec « dass »", intro: "ich finde / glaube / denke, dass + verbe à la fin.",
           tableau: { entetes: ["Phrase", "Sens"], lignes: [["Ich finde, dass das wichtig ist.", "Je trouve que c'est important."], ["Ich glaube, dass er recht hat.", "Je crois qu'il a raison."], ["Meiner Meinung nach ist das gut.", "À mon avis, c'est bien."]] },
           note: "« Meiner Meinung nach » est suivi du verbe (2e position) : « Meiner Meinung nach IST das gut »." }
       ],
@@ -351,7 +351,7 @@ window.MODULE_A22 = {
         { de: "die Natur", fr: "la nature", ex: "Die Natur ist schön." }
       ],
       grammaire: [
-        { titre: "Verbes + prépositions fixes", intro: "Certains verbes vont toujours avec une préposition donnée.",
+        { attention: "La préposition est **fixe** et impose le **cas** : *warten **auf** + Akk.*, *denken **an** + Akk.*", titre: "Verbes + prépositions fixes", intro: "Certains verbes vont toujours avec une préposition donnée.",
           tableau: { entetes: ["Verbe + prép.", "Sens", "Exemple"], lignes: [["achten auf (+ acc.)", "faire attention à", "Ich achte auf die Umwelt."], ["sich kümmern um", "s'occuper de", "Wir kümmern uns um die Natur."], ["denken an (+ acc.)", "penser à", "Denk an die Zukunft!"], ["sprechen über", "parler de", "Wir sprechen über den Klimawandel."]] },
           note: "La préposition est fixe et impose son cas (souvent l'accusatif ici)." }
       ],
@@ -391,7 +391,7 @@ window.MODULE_A22 = {
         { de: "der Bildschirm", fr: "l'écran", ex: "Der Bildschirm ist groß." }
       ],
       grammaire: [
-        { titre: "La subordonnée avec « wenn » (si/quand)", intro: "wenn introduit une condition/un moment → verbe à la fin.",
+        { attention: "*wenn* rejette le verbe **à la fin** ; en tête, la principale commence par le verbe (*Wenn…, **kommt** er*).", titre: "La subordonnée avec « wenn » (si/quand)", intro: "wenn introduit une condition/un moment → verbe à la fin.",
           tableau: { entetes: ["Phrase", "Sens"], lignes: [["Wenn ich Zeit habe, lese ich.", "Quand j'ai le temps, je lis."], ["Ich helfe dir, wenn du willst.", "Je t'aide si tu veux."], ["Wenn das Handy kaputt ist, …", "Si le portable est cassé, …"]] },
           note: "Si « wenn… » est en tête, la principale commence par le verbe : « Wenn ich Zeit habe, LESE ich »." }
       ],

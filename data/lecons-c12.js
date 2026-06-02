@@ -31,7 +31,7 @@ window.MODULE_C12 = {
         { de: "bahnbrechend", fr: "révolutionnaire (pionnier)", ex: "Eine bahnbrechende Entdeckung." }
       ],
       grammaire: [
-        { titre: "Nuancer une hypothèse sur l'avenir", intro: "On exprime la probabilité avec des modaux (dürfte) et des adverbes (vermutlich, womöglich).",
+        { attention: "En tête, l'adverbe (*vermutlich, womöglich*) entraîne l'**inversion** (verbe en 2ᵉ).", titre: "Nuancer une hypothèse sur l'avenir", intro: "On exprime la probabilité avec des modaux (dürfte) et des adverbes (vermutlich, womöglich).",
           tableau: { entetes: ["Degré", "Moyen", "Exemple"], lignes: [["probable", "dürfte / wird wohl", "Die KI dürfte vieles verändern."], ["vraisemblable", "vermutlich", "Vermutlich verlieren manche ihren Job."], ["possible", "könnte / womöglich", "Womöglich entstehen neue Berufe."], ["certain", "zweifellos", "Zweifellos bringt das Risiken."]] },
           note: "Ces marqueurs (vermutlich, womöglich, zweifellos) se placent souvent en 1re position → inversion (verbe en 2e)." }
       ],
@@ -68,7 +68,7 @@ window.MODULE_C12 = {
         { de: "eindämmen", fr: "endiguer / limiter", ex: "Den Ausstoß muss man eindämmen." }
       ],
       grammaire: [
-        { titre: "Passif et formes de substitution", intro: "Pour un propos objectif, on emploie le passif (werden + participe) ou ses alternatives (man, sich lassen, sein + zu + Inf.).",
+        { attention: "*Das **lässt sich** lösen* = peut être résolu ; *ist **zu** lösen* = doit/peut être résolu.", titre: "Passif et formes de substitution", intro: "Pour un propos objectif, on emploie le passif (werden + participe) ou ses alternatives (man, sich lassen, sein + zu + Inf.).",
           tableau: { entetes: ["Forme", "Exemple", "Sens"], lignes: [["passif", "Energie wird gespart.", "neutre/objectif"], ["man", "Man muss Energie sparen.", "général"], ["sich lassen", "Das lässt sich vermeiden.", "= kann vermieden werden"], ["sein + zu + Inf.", "Der Ausstoß ist zu senken.", "= muss gesenkt werden"]] },
           schemas: [{ legende: "sein + zu + infinitif = nécessité passive.", mots: [{ m: "Der CO2-Ausstoß", r: "sujet", c: "sujet" }, { m: "ist", r: "sein (2)", c: "verbe" }, { m: "dringend", r: "complément", c: "objet" }, { m: "zu senken", r: "zu + infinitif (fin)", c: "fin" }] }],
           note: "« Das lässt sich machen » et « Das ist zu machen » remplacent élégamment « Das kann/muss gemacht werden »." }
@@ -106,7 +106,7 @@ window.MODULE_C12 = {
         { de: "der Wiederaufbau", fr: "la reconstruction", ex: "Der Wiederaufbau dauerte Jahre." }
       ],
       grammaire: [
-        { titre: "Récit historique : prétérit et passif", intro: "L'Histoire se raconte au Präteritum ; le passif met l'événement au premier plan (l'agent est secondaire).",
+        { attention: "Dates au **Präteritum** ; le passif (*wurde geteilt*) met l'événement au premier plan.", titre: "Récit historique : prétérit et passif", intro: "L'Histoire se raconte au Präteritum ; le passif met l'événement au premier plan (l'agent est secondaire).",
           tableau: { entetes: ["Forme", "Exemple"], lignes: [["Präteritum", "Deutschland verlor den Krieg."], ["Passif (prétérit)", "Das Land wurde geteilt."], ["Plusquamperfekt", "Nachdem der Krieg geendet hatte, …"], ["Passif + agent", "Die Zonen wurden von den Alliierten verwaltet."]] },
           note: "« 1949 » : neunzehnhundertneunundvierzig ; on écrit aussi « im Jahr 1949 »." }
       ],
@@ -143,7 +143,7 @@ window.MODULE_C12 = {
         { de: "der Wachturm", fr: "le mirador", ex: "Wachtürme bewachten die Grenze." }
       ],
       grammaire: [
-        { titre: "Antériorité et précisions : Plusquamperfekt + relatives", intro: "Le Plusquamperfekt situe ce qui précède ; les relatives précisent personnes et lieux (verbe à la fin).",
+        { attention: "Antériorité avec *nachdem* (plus-que-parfait → prétérit) ; relatives : préposition **avant** le pronom.", titre: "Antériorité et précisions : Plusquamperfekt + relatives", intro: "Le Plusquamperfekt situe ce qui précède ; les relatives précisent personnes et lieux (verbe à la fin).",
           tableau: { entetes: ["Outil", "Exemple"], lignes: [["Plusquamperfekt", "Nachdem die Mauer gefallen war, feierten alle."], ["relative (nom.)", "die Menschen, die flohen"], ["relative + prép.", "die Grenze, an der viele starben"], ["relative (wo)", "die Stadt, wo die Mauer stand"]] },
           schemas: [{ legende: "Relative : pronom relatif … verbe à la FIN.", mots: [{ m: "die Mauer,", r: "principale", c: "objet" }, { m: "die", r: "relatif (nom.)", c: "conj" }, { m: "Berlin jahrzehntelang", r: "complément", c: "sujet" }, { m: "teilte", r: "verbe (fin)", c: "fin" }] }],
           note: "« an der » (à laquelle) : préposition + pronom relatif au datif." }
@@ -181,7 +181,7 @@ window.MODULE_C12 = {
         { de: "verklären", fr: "idéaliser / enjoliver", ex: "Manche verklären die Vergangenheit." }
       ],
       grammaire: [
-        { titre: "Rapporter des témoignages : Konjunktiv I", intro: "Pour citer un témoin sans s'engager, on emploie le discours indirect au Konjunktiv I.",
+        { attention: "**Konjunktiv I** pour rapporter sans s'engager ; au pluriel, on passe au **Konjunktiv II**.", titre: "Rapporter des témoignages : Konjunktiv I", intro: "Pour citer un témoin sans s'engager, on emploie le discours indirect au Konjunktiv I.",
           tableau: { entetes: ["Direct", "Indirect (Konjunktiv I)"], lignes: [["« Es war nicht alles schlecht. »", "Er sagt, es sei nicht alles schlecht gewesen."], ["« Wir hatten Zusammenhalt. »", "Sie sagt, sie hätten Zusammenhalt gehabt."], ["« Ich kann mich erinnern. »", "Er sagt, er könne sich erinnern."]] },
           note: "Si le Konjunktiv I = indicatif (pluriel), on emploie le Konjunktiv II (« sie hätten »)." }
       ],
@@ -218,7 +218,7 @@ window.MODULE_C12 = {
         { de: "die Errungenschaft", fr: "l'acquis", ex: "Die Pressefreiheit ist eine Errungenschaft." }
       ],
       grammaire: [
-        { titre: "Argumenter avec recul", intro: "On structure l'argumentation avec des connecteurs soutenus et on nominalise pour condenser.",
+        { attention: "*gleichwohl* (néanmoins) et *infolgedessen* (par conséquent) relèvent du registre **écrit soutenu**.", titre: "Argumenter avec recul", intro: "On structure l'argumentation avec des connecteurs soutenus et on nominalise pour condenser.",
           tableau: { entetes: ["Fonction", "Connecteur / forme", "Exemple"], lignes: [["thèse", "es lässt sich sagen, dass", "Es lässt sich sagen, dass …"], ["concession", "zwar … gleichwohl", "Zwar schwierig, gleichwohl nötig."], ["cause nominale", "aufgrund + Gén.", "aufgrund der Krise"], ["conséquence", "infolgedessen", "Infolgedessen sank das Vertrauen."]] },
           note: "« gleichwohl » et « infolgedessen » relèvent du registre écrit soigné." }
       ],
@@ -255,7 +255,7 @@ window.MODULE_C12 = {
         { de: "zeitlos", fr: "intemporel", ex: "Ein zeitloses Meisterwerk." }
       ],
       grammaire: [
-        { titre: "Décrire l'art : participe attribut et adjectif nominalisé", intro: "Le participe peut qualifier un nom (das berührende Bild) ; l'adjectif peut devenir nom (das Schöne, etwas Besonderes).",
+        { attention: "Après *etwas/nichts*, l'adjectif nominalisé prend **-es** : *etwas Besonder**es***.", titre: "Décrire l'art : participe attribut et adjectif nominalisé", intro: "Le participe peut qualifier un nom (das berührende Bild) ; l'adjectif peut devenir nom (das Schöne, etwas Besonderes).",
           tableau: { entetes: ["Forme", "Exemple", "Sens"], lignes: [["participe présent", "die berührende Musik", "qui touche"], ["participe passé", "das aufgenommene Foto", "qui a été pris"], ["adjectif nominalisé", "das Schöne", "le beau"], ["après etwas/nichts", "etwas Besonderes", "quelque chose de spécial"]] },
           note: "Après etwas/nichts/viel, l'adjectif nominalisé prend une majuscule et -es : etwas Neues, nichts Gutes." }
       ],

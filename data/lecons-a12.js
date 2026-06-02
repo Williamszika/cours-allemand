@@ -44,7 +44,7 @@ window.MODULE_A12 = {
         { de: "dann", fr: "ensuite", ex: "Dann frühstücke ich." }
       ],
       grammaire: [
-        {
+        { attention: "Après *zuerst/dann/danach* en tête, le verbe vient en **2ᵉ position** : *Dann **gehe** ich…*",
           titre: "Organiser un récit : zuerst, dann, danach, schließlich",
           intro: "Ces adverbes structurent la chronologie. Placés en tête, ils inversent sujet et verbe.",
           tableau: {
@@ -160,7 +160,7 @@ window.MODULE_A12 = {
         { de: "anstrengend", fr: "fatigant", ex: "Der Tag war anstrengend." }
       ],
       grammaire: [
-        {
+        { attention: "Le 2ᵉ verbe va à l'**infinitif, à la fin** ; à *ich* et *er/sie/es*, le modal **n'a pas** de terminaison (*ich **muss***).",
           titre: "Les verbes de modalité (Modalverben)",
           intro:
             "müssen, können, wollen expriment l'obligation, la capacité, la volonté. Le 2e verbe va à l'INFINITIF, à la FIN.",
@@ -288,7 +288,7 @@ window.MODULE_A12 = {
         { de: "herunterladen", fr: "télécharger", ex: "Lade die Datei herunter!" }
       ],
       grammaire: [
-        {
+        { attention: "À l'impératif **du**, on enlève le -st et le pronom : *du gehst* → ***Geh!*** ; pour *Sie* : *Gehen Sie!*",
           titre: "L'impératif (Imperativ)",
           intro: "Pour donner un ordre/conseil. Trois formes : du (tutoiement), ihr (vous pluriel), Sie (vouvoiement).",
           tableau: {
@@ -411,7 +411,7 @@ window.MODULE_A12 = {
         { de: "es geht", fr: "ça va / c'est possible", ex: "Ja, das geht!" }
       ],
       grammaire: [
-        {
+        { attention: "*am* (jour), *um* (heure), *im* (mois) : ne les confonds pas — *am Montag, um acht, im Mai*.",
           titre: "Les prépositions de temps (temporale Präpositionen)",
           intro: "Chaque type d'indication temporelle a sa préposition. À mémoriser absolument.",
           tableau: {
@@ -535,7 +535,7 @@ window.MODULE_A12 = {
         { de: "der Grad", fr: "le degré", ex: "Es sind 20 Grad." }
       ],
       grammaire: [
-        {
+        { attention: "*und, oder, aber, denn* **ne changent pas** l'ordre : le verbe reste en **2ᵉ** position.",
           titre: "Les conjonctions de coordination (und, oder, aber, denn)",
           intro:
             "Elles relient deux phrases SANS changer l'ordre des mots (le verbe reste en 2e position dans chaque partie).",
@@ -659,7 +659,7 @@ window.MODULE_A12 = {
         { de: "schön", fr: "beau / agréable", ex: "Der Urlaub war schön." }
       ],
       grammaire: [
-        {
+        { attention: "Mouvement/changement d'état → **sein** (*ich **bin** gegangen*) ; sinon → **haben**. Le participe va **à la fin**.",
           titre: "Le passé composé (Perfekt) — le passé de l'oral",
           intro:
             "Le Perfekt = auxiliaire (haben ou sein) en 2e position + participe passé à la FIN. C'est le passé le plus courant à l'oral.",
@@ -785,7 +785,7 @@ window.MODULE_A12 = {
         { de: "die Verspätung", fr: "le retard", ex: "Der Zug hat Verspätung." }
       ],
       grammaire: [
-        {
+        { attention: "*mit* est **toujours** suivi du datif : *mit **dem** Bus*, *mit **der** Bahn*.",
           titre: "« mit » + datif : dire avec quel moyen",
           intro:
             "Pour exprimer le moyen de transport, on utilise « mit » + datif. Au datif : der→dem, die→der, das→dem.",
@@ -910,7 +910,7 @@ window.MODULE_A12 = {
         { de: "gemütlich", fr: "confortable / cosy", ex: "Die Wohnung ist gemütlich." }
       ],
       grammaire: [
-        {
+        { attention: "Même préposition, deux cas : **Wo?** (position) → datif ; **Wohin?** (direction) → accusatif.",
           titre: "Les prépositions mixtes (Wechselpräpositionen) — situer (Wo? → datif)",
           intro:
             "Ces prépositions prennent le DATIF quand on situe (Wo? = position, pas de mouvement).",
@@ -1035,7 +1035,7 @@ window.MODULE_A12 = {
         { de: "sich ausruhen", fr: "se reposer", ex: "Ruh dich aus!" }
       ],
       grammaire: [
-        {
+        { attention: "*sollen* exprime un **conseil/une consigne** (*Du **sollst** mehr schlafen*), pas l'obligation absolue (= müssen).",
           titre: "Le verbe modal « sollen » (conseil, recommandation)",
           intro:
             "« sollen » exprime un conseil ou une consigne (souvent d'un tiers : le médecin dit que...). Modal + infinitif à la fin.",
@@ -1162,7 +1162,7 @@ window.MODULE_A12 = {
         { de: "leider", fr: "malheureusement", ex: "Leider bin ich zu spät." }
       ],
       grammaire: [
-        {
+        { attention: "*weil* rejette le verbe **à la fin** : *…, weil ich müde **bin*** (≠ *denn ich **bin** müde*).",
           titre: "La conjonction « weil » (parce que) — verbe à la FIN",
           intro:
             "« weil » introduit une cause. Attention : c'est une subordonnée, donc le verbe conjugué va à la TOUTE FIN.",

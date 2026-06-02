@@ -1,0 +1,74 @@
+/* =====================================================================
+   sw.js — Service Worker (mode hors-ligne / PWA installable)
+   Précache l'« app shell » + toutes les données du cours, puis sert en
+   cache-first (instantané et hors-ligne) avec mise à jour en arrière-plan.
+   Les photos LoremFlickr sont mises en cache au fil de la navigation.
+   ===================================================================== */
+var VERSION = "v1.0.0";
+var CACHE = "deutsch-a1c2-" + VERSION;
+
+var SHELL = [
+  "./", "./index.html", "./css/styles.css", "./manifest.webmanifest",
+  "./icon-192.png", "./icon-512.png",
+  "./data/lecons-a11.js", "./data/lecons-a12.js", "./data/production.js", "./data/comprehension.js", "./data/grammaire.js",
+  "./data/lecons-a21.js", "./data/lecons-a22.js", "./data/grammaire-a21.js", "./data/grammaire-a22.js",
+  "./data/lecons-b11.js", "./data/lecons-b12.js", "./data/grammaire-b11.js", "./data/grammaire-b12.js",
+  "./data/lecons-b21.js", "./data/lecons-b22.js", "./data/grammaire-b21.js", "./data/grammaire-b22.js",
+  "./data/lecons-c11.js", "./data/lecons-c12.js", "./data/grammaire-c11.js", "./data/grammaire-c12.js",
+  "./data/lecons-c21.js", "./data/lecons-c22.js", "./data/grammaire-c21.js", "./data/grammaire-c22.js",
+  "./data/cours.js", "./data/illustrations.js", "./data/placement.js",
+  "./js/speech.js", "./js/progress.js", "./js/revision.js", "./js/telegram.js", "./js/sync.js", "./js/exercises.js", "./js/app.js"
+];
+
+self.addEventListener("install", function (e) {
+  e.waitUntil(
+    caches.open(CACHE).then(function (c) {
+      // addAll échoue si un seul fichier manque → on précache un par un, tolérant.
+      return Promise.all(SHELL.map(function (u) { return c.add(u).catch(function () {}); }));
+    }).then(function () { return self.skipWaiting(); })
+  );
+});
+
+self.addEventListener("activate", function (e) {
+  e.waitUntil(
+    caches.keys().then(function (keys) {
+      return Promise.all(keys.filter(function (k) { return k !== CACHE; }).map(function (k) { return caches.delete(k); }));
+    }).then(function () { return self.clients.claim(); })
+  );
+});
+
+self.addEventListener("fetch", function (e) {
+  var req = e.request;
+  if (req.method !== "GET") return;
+  var url;
+  try { url = new URL(req.url); } catch (err) { return; }
+
+  // Photos LoremFlickr : stale-while-revalidate (dispo hors-ligne après 1ʳᵉ vue)
+  if (url.hostname.indexOf("loremflickr") >= 0) {
+    e.respondWith(
+      caches.open(CACHE).then(function (c) {
+        return c.match(req).then(function (hit) {
+          var net = fetch(req).then(function (r) { if (r && r.status === 200) c.put(req, r.clone()); return r; }).catch(function () { return hit; });
+          return hit || net;
+        });
+      })
+    );
+    return;
+  }
+
+  // Ressources tierces (SDK Telegram, polices…) : on laisse le navigateur gérer.
+  if (url.origin !== self.location.origin) return;
+
+  // Même origine : cache-first + mise à jour en arrière-plan ; repli index.html.
+  e.respondWith(
+    caches.match(req).then(function (hit) {
+      var net = fetch(req).then(function (r) {
+        if (r && r.status === 200) { var cp = r.clone(); caches.open(CACHE).then(function (c) { c.put(req, cp); }); }
+        return r;
+      }).catch(function () {
+        return hit || (req.mode === "navigate" ? caches.match("./index.html") : undefined);
+      });
+      return hit || net;
+    })
+  );
+});

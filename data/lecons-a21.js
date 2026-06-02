@@ -32,7 +32,7 @@ window.MODULE_A21 = {
         { de: "seit", fr: "depuis", ex: "Ich wohne seit 2020 hier." }
       ],
       grammaire: [
-        { titre: "Les adjectifs possessifs", intro: "Ils s'accordent au genre du nom qui suit (comme ein/eine).",
+        { attention: "Le possessif s'accorde avec le **possesseur** ET se décline selon le **cas** : *Ich sehe **meinen** Bruder* (acc. masc.).", titre: "Les adjectifs possessifs", intro: "Ils s'accordent au genre du nom qui suit (comme ein/eine).",
           tableau: { entetes: ["Possesseur", "masc./neutre", "féminin/pluriel"], lignes: [["mon (ich)", "mein", "meine"], ["ton (du)", "dein", "deine"], ["son (er)", "sein", "seine"], ["son (sie)", "ihr", "ihre"], ["notre (wir)", "unser", "unsere"], ["votre (Sie)", "Ihr", "Ihre"]] },
           note: "Le possessif s'accorde au nom POSSÉDÉ, pas au possesseur. À l'accusatif masculin : meinen, deinen…" }
       ],
@@ -72,7 +72,7 @@ window.MODULE_A21 = {
         { de: "selbstständig", fr: "indépendant", ex: "Ich bin selbstständig." }
       ],
       grammaire: [
-        { titre: "Dire son métier : « als » et sans article", intro: "Pour la profession, pas d'article. « als » = en tant que.",
+        { attention: "Pour le métier, **pas d'article** : *Ich arbeite **als** Lehrer* (et non « als ein Lehrer »).", titre: "Dire son métier : « als » et sans article", intro: "Pour la profession, pas d'article. « als » = en tant que.",
           tableau: { entetes: ["Structure", "Exemple", "Sens"], lignes: [["sein + métier", "Ich bin Lehrer.", "Je suis professeur."], ["arbeiten als", "Ich arbeite als Lehrer.", "Je travaille comme professeur."], ["bei + entreprise", "Ich arbeite bei BMW.", "Je travaille chez BMW."]] },
           note: "Féminin : on ajoute souvent -in (Lehrer → Lehrerin, Verkäufer → Verkäuferin)." }
       ],
@@ -112,7 +112,7 @@ window.MODULE_A21 = {
         { de: "vor zwei Tagen", fr: "il y a deux jours", ex: "Vor zwei Tagen kam er an." }
       ],
       grammaire: [
-        { titre: "Le prétérit de « sein » et « haben »", intro: "À l'oral, on utilise le Perfekt, SAUF pour sein/haben où l'on dit war/hatte.",
+        { attention: "*sein* → **war**, *haben* → **hatte** : ces deux-là se disent au prétérit **même à l'oral**.", titre: "Le prétérit de « sein » et « haben »", intro: "À l'oral, on utilise le Perfekt, SAUF pour sein/haben où l'on dit war/hatte.",
           tableau: { entetes: ["Pronom", "sein → war", "haben → hatte"], lignes: [["ich", "war", "hatte"], ["du", "warst", "hattest"], ["er/sie/es", "war", "hatte"], ["wir", "waren", "hatten"], ["ihr", "wart", "hattet"], ["sie/Sie", "waren", "hatten"]] },
           note: "Ex. : Gestern WAR ich im Kino. / Ich HATTE keine Zeit. (et non « habe gehabt »)." }
       ],
@@ -152,7 +152,7 @@ window.MODULE_A21 = {
         { de: "abschließen", fr: "terminer (un cursus)", ex: "Ich habe das Studium abgeschlossen." }
       ],
       grammaire: [
-        { titre: "Dire une période : « von … bis »", intro: "Pour une durée datée. On lit les années sans « in ».",
+        { attention: "*von* + datif ; on contracte souvent : *vom Montag **bis** Freitag*.", titre: "Dire une période : « von … bis »", intro: "Pour une durée datée. On lit les années sans « in ».",
           tableau: { entetes: ["Allemand", "Sens"], lignes: [["von 2015 bis 2018", "de 2015 à 2018"], ["zwei Jahre lang", "pendant deux ans"], ["seit 2020", "depuis 2020"], ["1998 (neunzehnhundertachtundneunzig)", "en 1998"]] },
           note: "Les années jusqu'à 1999 se lisent en « centaines » : 1998 = neunzehnhundert-achtundneunzig." }
       ],
@@ -192,7 +192,7 @@ window.MODULE_A21 = {
         { de: "das Hobby", fr: "le loisir", ex: "Mein Hobby ist Klettern." }
       ],
       grammaire: [
-        { titre: "Les verbes réfléchis (Reflexivverben)", intro: "Avec un pronom réfléchi à l'accusatif (mich, dich, sich…).",
+        { attention: "Le pronom réfléchi s'accorde au sujet : *ich → **mich**, du → **dich*** (*Ich freue **mich***).", titre: "Les verbes réfléchis (Reflexivverben)", intro: "Avec un pronom réfléchi à l'accusatif (mich, dich, sich…).",
           tableau: { entetes: ["Pronom", "Réfléchi", "Exemple"], lignes: [["ich", "mich", "ich wasche mich"], ["du", "dich", "du wäschst dich"], ["er/sie/es", "sich", "er wäscht sich"], ["wir", "uns", "wir treffen uns"], ["ihr", "euch", "ihr trefft euch"], ["sie/Sie", "sich", "sie treffen sich"]] },
           note: "Le pronom réfléchi se place après le verbe conjugué : « Ich entspanne mich am Abend »." }
       ],
@@ -232,7 +232,7 @@ window.MODULE_A21 = {
         { de: "umtauschen", fr: "échanger", ex: "Kann ich das umtauschen?" }
       ],
       grammaire: [
-        { titre: "Comparatif et superlatif", intro: "Comparatif : adjectif + -er (+ als). Superlatif : am + adjectif + -sten.",
+        { attention: "« que » dans une comparaison = **als** (*größer **als***), pas *wie* (réservé à l'égalité *so … wie*).", titre: "Comparatif et superlatif", intro: "Comparatif : adjectif + -er (+ als). Superlatif : am + adjectif + -sten.",
           tableau: { entetes: ["Adjectif", "Comparatif", "Superlatif"], lignes: [["billig", "billiger", "am billigsten"], ["teuer", "teurer", "am teuersten"], ["gut", "besser", "am besten"], ["groß", "größer", "am größten"]] },
           note: "« als » = que (Das ist billiger ALS das.). Beaucoup d'adjectifs courts prennent un Umlaut (groß → größer)." }
       ],
@@ -272,7 +272,7 @@ window.MODULE_A21 = {
         { de: "der Betrag", fr: "le montant", ex: "Der Betrag ist 50 Euro." }
       ],
       grammaire: [
-        { titre: "Le datif du destinataire (à qui ?)", intro: "Certains verbes ont un complément au datif (la personne à qui).",
+        { attention: "Le destinataire (à qui ?) est au **datif** : *Ich gebe **dem** Kind…* (*der* → *dem*).", titre: "Le datif du destinataire (à qui ?)", intro: "Certains verbes ont un complément au datif (la personne à qui).",
           tableau: { entetes: ["Verbe", "Exemple", "Sens"], lignes: [["leihen", "Ich leihe dir Geld.", "Je te prête de l'argent."], ["geben", "Er gibt mir die Karte.", "Il me donne la carte."], ["gehören", "Das Geld gehört mir.", "L'argent m'appartient."], ["helfen", "Ich helfe Ihnen.", "Je vous aide."]] },
           note: "Pronoms datif : mir, dir, ihm/ihr, uns, euch, ihnen/Ihnen." }
       ],
@@ -312,7 +312,7 @@ window.MODULE_A21 = {
         { de: "das Glück", fr: "le bonheur / la chance", ex: "Geld ist nicht alles." }
       ],
       grammaire: [
-        { titre: "Le Konjunktiv II (conditionnel)", intro: "Pour l'irréel/le souhait. Souvent : würde + infinitif. Mais wäre (sein), hätte (haben), könnte (können) ont une forme propre.",
+        { attention: "Formes irrégulières à connaître : *Ich **hätte** gern…*, ***Könnten** Sie…?*", titre: "Le Konjunktiv II (conditionnel)", intro: "Pour l'irréel/le souhait. Souvent : würde + infinitif. Mais wäre (sein), hätte (haben), könnte (können) ont une forme propre.",
           tableau: { entetes: ["Verbe", "Konjunktiv II", "Exemple"], lignes: [["sein", "wäre", "Wenn ich reich wäre…"], ["haben", "hätte", "Ich hätte gern ein Haus."], ["können", "könnte", "Ich könnte reisen."], ["autres verbes", "würde + Inf.", "Ich würde die Welt bereisen."]] },
           note: "Structure : « Wenn ich … wäre/hätte, würde ich … » → Si j'étais/avais…, je …rais." }
       ],
@@ -352,7 +352,7 @@ window.MODULE_A21 = {
         { de: "der Anrufbeantworter", fr: "le répondeur", ex: "Sprechen Sie auf den Anrufbeantworter." }
       ],
       grammaire: [
-        { titre: "La subordonnée avec « dass » (que)", intro: "Comme « weil », « dass » envoie le verbe conjugué à la FIN.",
+        { attention: "*dass* rejette le verbe conjugué **à la fin** : *Ich denke, dass es gut **ist***.", titre: "La subordonnée avec « dass » (que)", intro: "Comme « weil », « dass » envoie le verbe conjugué à la FIN.",
           tableau: { entetes: ["Phrase", "Sens"], lignes: [["Ich denke, dass es gut ist.", "Je pense que c'est bien."], ["Ich glaube, dass er kommt.", "Je crois qu'il vient."], ["Sie sagt, dass sie keine Zeit hat.", "Elle dit qu'elle n'a pas le temps."]] },
           note: "Après dass / weil / wenn → le verbe va à la fin (subordonnée)." }
       ],

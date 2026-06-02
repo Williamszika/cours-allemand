@@ -1,0 +1,19 @@
+{
+  "name": "Allemand intensif — A1 à C2",
+  "short_name": "Deutsch A1-C2",
+  "description": "Cours d'allemand complet de A1 à C2 : cours pédagogiques, vocabulaire, grammaire, dialogues audio, exercices et examens. Avec le coach Zika.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8fafc",
+  "theme_color": "#1e3a8a",
+  "categories": ["education"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -30,7 +30,7 @@ window.MODULE_B22 = {
         { de: "verbinden", fr: "mettre en relation (téléphone)", ex: "Ich verbinde Sie mit der Buchhaltung." }
       ],
       grammaire: [
-        { titre: "Le registre formel à l'écrit et au téléphone", intro: "On emploie « Sie », des formules figées et des tournures polies (Konjunktiv II).",
+        { attention: "*Sehr geehrte/r…* (formel) ; demande polie : *Könnten Sie…?*", titre: "Le registre formel à l'écrit et au téléphone", intro: "On emploie « Sie », des formules figées et des tournures polies (Konjunktiv II).",
           tableau: { entetes: ["Acte", "Formule"], lignes: [["Ouvrir (mail)", "Sehr geehrte Frau Klein, …"], ["Demander", "Ich würde mich freuen, wenn …"], ["Au téléphone", "Könnten Sie mir bitte sagen, …?"], ["Clore (mail)", "Mit freundlichen Grüßen"]] },
           note: "Le discours rapporté est fréquent : « Sie sagte, sie sei beschäftigt » (Konjunktiv I — voir B2.2)." }
       ],
@@ -67,7 +67,7 @@ window.MODULE_B22 = {
         { de: "ausprobieren", fr: "essayer (tester)", ex: "Ich möchte etwas Neues ausprobieren." }
       ],
       grammaire: [
-        { titre: "Préférence, fréquence, intensité", intro: "On nuance avec le superlatif (am liebsten), les adverbes de fréquence et les degrés.",
+        { attention: "Échelle de fréquence : *immer > meistens > oft > manchmal > selten > nie*. Préférence : *am liebsten*.", titre: "Préférence, fréquence, intensité", intro: "On nuance avec le superlatif (am liebsten), les adverbes de fréquence et les degrés.",
           tableau: { entetes: ["Nuance", "Mot", "Exemple"], lignes: [["préférence", "am liebsten", "Am liebsten lese ich."], ["fréquence", "meistens / selten", "Ich gehe meistens joggen."], ["comparaison", "lieber … als", "Ich wandere lieber als ich jogge."], ["intensité", "ziemlich / besonders", "Das macht besonders viel Spaß."]] },
           note: "Échelle de fréquence : immer > meistens > oft > manchmal > selten > nie." }
       ],
@@ -104,7 +104,7 @@ window.MODULE_B22 = {
         { de: "der Dozent", fr: "l'enseignant (universitaire)", ex: "Der Dozent ist sehr engagiert." }
       ],
       grammaire: [
-        { titre: "Rapporter un contenu avec « dass »", intro: "Après les verbes d'opinion ou de déclaration, « dass » introduit une subordonnée (verbe à la fin).",
+        { attention: "*dass* → verbe **à la fin** ; souvent remplaçable par une nominalisation (*Ich hoffe **auf** ein Stipendium*).", titre: "Rapporter un contenu avec « dass »", intro: "Après les verbes d'opinion ou de déclaration, « dass » introduit une subordonnée (verbe à la fin).",
           tableau: { entetes: ["Verbe introducteur", "Exemple"], lignes: [["sagen, dass", "Der Dozent sagt, dass die Prüfung schwer ist."], ["denken, dass", "Ich denke, dass das Seminar nützlich ist."], ["wichtig sein, dass", "Es ist wichtig, dass man sich einschreibt."], ["hoffen, dass", "Ich hoffe, dass ich das Stipendium bekomme."]] },
           schemas: [{ legende: "dass : verbe conjugué à la FIN.", mots: [{ m: "Ich denke,", r: "principale", c: "objet" }, { m: "dass", r: "subordination", c: "conj" }, { m: "das Seminar nützlich", r: "sujet + complément", c: "sujet" }, { m: "ist", r: "verbe (fin)", c: "fin" }] }],
           note: "On peut souvent remplacer « dass + phrase » par un groupe nominalisé : « Ich hoffe auf ein Stipendium »." }
@@ -142,7 +142,7 @@ window.MODULE_B22 = {
         { de: "die Teilung", fr: "la division", ex: "Die Teilung dauerte vierzig Jahre." }
       ],
       grammaire: [
-        { titre: "Raconter l'Histoire : prétérit et passif", intro: "Le récit historique se fait au Präteritum ; le passif met l'événement au premier plan.",
+        { attention: "Récit au **Präteritum** ; le passif met l'événement en avant (*wurde … verabschiedet*).", titre: "Raconter l'Histoire : prétérit et passif", intro: "Le récit historique se fait au Präteritum ; le passif met l'événement au premier plan.",
           tableau: { entetes: ["Forme", "Exemple"], lignes: [["Präteritum", "Die Mauer fiel 1989."], ["Passif (prétérit)", "Das Gesetz wurde 1949 verabschiedet."], ["Plusquamperfekt", "Nachdem die Mauer gefallen war, …"], ["Passif + agent", "Der Kanzler wurde vom Bundestag gewählt."]] },
           note: "Dates : « 1990 » se dit « neunzehnhundertneunzig » ; on dit aussi « im Jahr 1990 »." }
       ],
@@ -179,7 +179,7 @@ window.MODULE_B22 = {
         { de: "ereignen", fr: "se produire", ex: "Der Unfall ereignete sich gestern." }
       ],
       grammaire: [
-        { titre: "Rapporter une nouvelle : discours indirect (Konjunktiv I)", intro: "La presse emploie le Konjunktiv I pour citer sans s'engager : « Der Minister sagte, er sei zuversichtlich. »",
+        { attention: "**Konjunktiv I** (*sei, habe*) pour citer ; si la forme = indicatif (pluriel) → **Konjunktiv II**.", titre: "Rapporter une nouvelle : discours indirect (Konjunktiv I)", intro: "La presse emploie le Konjunktiv I pour citer sans s'engager : « Der Minister sagte, er sei zuversichtlich. »",
           tableau: { entetes: ["Direct", "Indirect (Konjunktiv I)"], lignes: [["« Ich bin müde. »", "Er sagt, er sei müde."], ["« Wir haben es geprüft. »", "Sie sagen, sie hätten es geprüft."], ["« Die Lage ist ernst. »", "Es heißt, die Lage sei ernst."], ["« Ich kann nicht kommen. »", "Er sagt, er könne nicht kommen."]] },
           note: "Si le Konjunktiv I ressemble à l'indicatif (par ex. « sie haben »), on emploie le Konjunktiv II (« sie hätten ») — voir B2.2." }
       ],
@@ -216,7 +216,7 @@ window.MODULE_B22 = {
         { de: "das Alibi", fr: "l'alibi", ex: "Er hat ein wasserdichtes Alibi." }
       ],
       grammaire: [
-        { titre: "Raconter et supposer", intro: "Le récit policier se fait au Präteritum ; pour les hypothèses, on emploie les modaux au sens subjectif (könnte, müsste, dürfte).",
+        { attention: "Supposition au passé : *Es **könnte** der Nachbar **gewesen sein***.", titre: "Raconter et supposer", intro: "Le récit policier se fait au Präteritum ; pour les hypothèses, on emploie les modaux au sens subjectif (könnte, müsste, dürfte).",
           tableau: { entetes: ["Fonction", "Forme", "Exemple"], lignes: [["récit", "Präteritum", "Der Täter floh in die Nacht."], ["hypothèse possible", "könnte", "Es könnte der Nachbar gewesen sein."], ["hypothèse probable", "dürfte/müsste", "Der Zeuge dürfte sich irren."], ["passif", "wurde + participe", "Der Verdächtige wurde verhaftet."]] },
           note: "« könnte … gewesen sein » = supposition au passé. Le Plusquamperfekt situe ce qui précède le crime." }
       ],
