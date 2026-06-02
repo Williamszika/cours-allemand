@@ -215,3 +215,44 @@ Object.assign(window.ILLUSTRATIONS, {
   c1g18: { kw: "transform,arrows,grammar", intro: "La nominalisation : du style verbal au style nominal." },
   c1g19: { kw: "factory,process,gears", intro: "Le passif et ses formes de substitution (man, sich lassen, sein + zu + Inf.)." }
 });
+
+// === Niveau C2 — thèmes (C2.1 + C2.2) : photos réelles + intros explicatives ===
+Object.assign(window.ILLUSTRATIONS, {
+  c2t01: { kw: "media,communication,news", intro: "Communication et médias : analyser leur rôle avec nuance et argumenter en style soutenu." },
+  c2t02: { kw: "memory,history,archive", intro: "Histoire et souvenirs : évoquer la mémoire collective et nuancer un récit du passé." },
+  c2t03: { kw: "emotion,psychology,mask", intro: "Sentiments, mensonges, forces et faiblesses : décrire le caractère avec finesse et exprimer l'ambivalence." },
+  c2t04: { kw: "school,classroom,education", intro: "Les années scolaires : porter un regard critique sur l'école et comparer des systèmes." },
+  c2t05: { kw: "career,office,professional", intro: "Carrières et métiers : discuter de trajectoires et argumenter un choix professionnel." },
+  c2t06: { kw: "technology,innovation,digital", intro: "Le progrès technique : peser les enjeux éthiques et argumenter de façon dialectique." },
+  c2t07: { kw: "pollution,environment,industry", intro: "Environnement et pollution : analyser les problèmes et formuler des solutions au passif." },
+  c2t08: { kw: "medicine,hospital,health", intro: "La médecine : débattre d'éthique médicale et comprendre un texte spécialisé." },
+  c2t09: { kw: "skill,talent,chess", intro: "Compétences particulières : décrire talents et expertises et valoriser un profil." },
+  c2t10: { kw: "emotion,feeling,portrait", intro: "Les sentiments : exprimer des émotions complexes et en nuancer l'intensité." },
+  c2t11: { kw: "lifestyle,balance,wellbeing", intro: "Le mode de vie : réfléchir aux choix de vie et exprimer ses valeurs." },
+  c2t12: { kw: "art,creativity,painting", intro: "Art et créativité : interpréter une œuvre et formuler un jugement esthétique." },
+  c2t13: { kw: "books,literature,reading", intro: "Livres et littérature : parler d'œuvres, résumer et commenter." },
+  c2t14: { kw: "politics,parliament,debate", intro: "La politique : débattre d'enjeux et argumenter avec rigueur." }
+});
+
+// === Niveau C2 — fiches de grammaire : photos d'étude variées + intro courte ===
+Object.assign(window.ILLUSTRATIONS, {
+  c2g01: { kw: "timeline,clock,history", intro: "Les six temps, dont le Futur II (supposition sur le passé)." },
+  c2g02: { kw: "puzzle,prefix,grammar", intro: "Les verbes à préfixes : séparables, inséparables et mixtes." },
+  c2g03: { kw: "thinking,dream,idea", intro: "Le subjonctif II : irréel présent, passé et avec modaux." },
+  c2g04: { kw: "speech,quote,microphone", intro: "Le subjonctif I : discours indirect complet." },
+  c2g05: { kw: "chain,grammar,connection", intro: "Les subordonnées circonstancielles (toutes les nuances)." },
+  c2g06: { kw: "grammar,study,notebook", intro: "La rection des verbes, y compris les verbes à génitif." },
+  c2g07: { kw: "puzzle,phrase,book", intro: "Les locutions verbo-nominales soutenues (in Betracht ziehen…)." },
+  c2g08: { kw: "letters,words,blocks", intro: "La formation des noms : suffixes et composés." },
+  c2g09: { kw: "puzzle,grammar,structure", intro: "Les participes attributs, simples et étendus." },
+  c2g10: { kw: "transform,words,letters", intro: "Adjectifs et participes nominalisés (der Reisende, das Wesentliche)." },
+  c2g11: { kw: "chain,link,connection", intro: "Les relatives avancées et explicatives (dessen, was, , was …)." },
+  c2g12: { kw: "factory,process,gears", intro: "Le passif à tous les temps et avec modal." },
+  c2g13: { kw: "exchange,arrows,swap", intro: "Les substituts du passif (man, sich lassen, sein + zu + Inf., -bar)." },
+  c2g14: { kw: "signpost,rules,choice", intro: "Les modaux : sens subjectif, passé et passif." },
+  c2g15: { kw: "scales,compare,grammar", intro: "Déclinaison et comparaison des adjectifs (y compris irréguliers)." },
+  c2g16: { kw: "grammar,study,words", intro: "Les adjectifs à complément (datif, génitif, préposition)." },
+  c2g17: { kw: "letters,blocks,words", intro: "La formation des adjectifs : suffixes (-bar, -los, -voll…)." },
+  c2g18: { kw: "transform,arrows,grammar", intro: "Le style nominal : du verbal au nominal (registre écrit)." },
+  c2g19: { kw: "document,grammar,notebook", intro: "Les prépositions à génitif de la langue écrite (mittels, anhand…)." }
+});

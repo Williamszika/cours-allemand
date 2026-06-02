@@ -31,8 +31,10 @@
     if (l.niveau === "B1") return prevOk && examPasse("final");
     // Les leçons B2 ne s'ouvrent qu'après avoir RÉUSSI l'examen B1
     if (l.niveau === "B2") return prevOk && examPasse("b1");
-    // Les leçons C1 ne s'ouvrent qu'après avoir RÉUSSI l'examen B2
-    if (l.niveau === "C1") return prevOk && examPasse("b2");
+    // Les leçons C1 ne s'ouvrent qu'après l'examen combiné B1 + B2
+    if (l.niveau === "C1") return prevOk && examPasse("finalb");
+    // Les leçons C2 ne s'ouvrent qu'après avoir RÉUSSI l'examen C1
+    if (l.niveau === "C2") return prevOk && examPasse("c1");
     return prevOk;
   }
   function allLessonsDone() {
@@ -49,8 +51,12 @@
     if (!examPasse("b1")) return "#/examen/b1";
     for (const f of flat) if (f.lecon.niveau === "B2" && !window.Progress.estTermine(f.lecon.id)) return "#/lecon/" + f.lecon.id;
     if (!examPasse("b2")) return "#/examen/b2";
+    if (!examPasse("finalb")) return "#/examen/finalb";
     for (const f of flat) if (f.lecon.niveau === "C1" && !window.Progress.estTermine(f.lecon.id)) return "#/lecon/" + f.lecon.id;
     if (!examPasse("c1")) return "#/examen/c1";
+    for (const f of flat) if (f.lecon.niveau === "C2" && !window.Progress.estTermine(f.lecon.id)) return "#/lecon/" + f.lecon.id;
+    if (!examPasse("c2")) return "#/examen/c2";
+    if (!examPasse("finalc")) return "#/examen/finalc";
     return "#/";
   }
   /* Étape après une leçon : leçon suivante du même niveau, sinon examen du niveau */
@@ -58,7 +64,7 @@
     const l = flat[idx].lecon;
     const next = flat[idx + 1];
     if (next && next.lecon.niveau === l.niveau) return "#/lecon/" + next.lecon.id;
-    return "#/examen/" + (l.niveau === "A1" ? "a1" : l.niveau === "A2" ? "a2" : l.niveau === "B1" ? "b1" : l.niveau === "B2" ? "b2" : "c1");
+    return "#/examen/" + (l.niveau === "A1" ? "a1" : l.niveau === "A2" ? "a2" : l.niveau === "B1" ? "b1" : l.niveau === "B2" ? "b2" : l.niveau === "C1" ? "c1" : "c2");
   }
   /* Catégorie d'un exercice : comp (compréhension), appro (approfondi), prod (production) */
   function exoCat(ex) {
@@ -135,13 +141,16 @@
     const btn = el("a", "btn btn-primary big");
     btn.href = etape;
     btn.textContent =
-      etape === "#/" ? "🎉 Parcours A1 → C1 terminé !"
+      etape === "#/" ? "🎉 Parcours A1 → C2 terminé !"
       : /examen\/a1/.test(etape) ? "🎓 Passer l'examen A1"
       : /examen\/a2/.test(etape) ? "🎓 Passer l'examen A2"
+      : /examen\/finalb/.test(etape) ? "🎓 Passer l'examen B1 + B2"
+      : /examen\/finalc/.test(etape) ? "🏆 Passer l'examen C1 + C2"
       : /examen\/final/.test(etape) ? "🎓 Passer l'examen final A1+A2"
       : /examen\/b1/.test(etape) ? "🎓 Passer l'examen B1"
       : /examen\/b2/.test(etape) ? "🎓 Passer l'examen B2"
       : /examen\/c1/.test(etape) ? "🎓 Passer l'examen C1"
+      : /examen\/c2/.test(etape) ? "🎓 Passer l'examen C2"
       : res.faites > 0 ? "▶ Continuer le parcours" : "▶ Commencer la leçon 1";
     cta.appendChild(btn);
 
@@ -263,20 +272,38 @@
 
     /* --- Niveau B2 (débloqué après l'examen B1) --- */
     renderNiveau({ code: "B2", exam: "b2", prevExam: "b1", prevLabel: "l'examen B1",
-      examSous: "30 questions de tout le B2 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour accéder au niveau C1 !" });
+      examSous: "30 questions de tout le B2 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour débloquer l'examen B1 + B2." });
 
-    /* --- Niveau C1 (débloqué après l'examen B2) --- */
-    renderNiveau({ code: "C1", exam: "c1", prevExam: "b2", prevLabel: "l'examen B2",
-      examSous: "30 questions de tout le C1 · seuil " + COURS.seuilReussite + "%. Le sommet du parcours !" });
+    /* --- Examen combiné B1 + B2 (verrou vers le C1) --- */
+    const finalbSec = el("section", "section");
+    finalbSec.appendChild(carteExamen("finalb", "🎓 Examen B1 + B2", examPasse("b2"),
+      "30 questions tirées de tout le B1 et le B2 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour accéder au C1 !",
+      "Réussissez l'examen du niveau B2 pour débloquer l'examen B1 + B2."));
+    frag.appendChild(finalbSec);
 
-    /* --- Niveau suivant (C2) --- */
-    const c2Ok = examPasse("c1");
+    /* --- Niveau C1 (débloqué après l'examen B1 + B2) --- */
+    renderNiveau({ code: "C1", exam: "c1", prevExam: "finalb", prevLabel: "l'examen B1 + B2",
+      examSous: "30 questions de tout le C1 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour accéder au niveau C2 !" });
+
+    /* --- Niveau C2 (débloqué après l'examen C1) --- */
+    renderNiveau({ code: "C2", exam: "c2", prevExam: "c1", prevLabel: "l'examen C1",
+      examSous: "30 questions de tout le C2 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour l'examen final C1 + C2 !" });
+
+    /* --- Examen combiné C1 + C2 (consécration finale) --- */
+    const finalcSec = el("section", "section");
+    finalcSec.appendChild(carteExamen("finalc", "🏆 Examen C1 + C2", examPasse("c2"),
+      "30 questions tirées de tout le C1 et le C2 · seuil " + COURS.seuilReussite + "%. L'épreuve ultime !",
+      "Réussissez l'examen du niveau C2 pour débloquer l'examen C1 + C2."));
+    frag.appendChild(finalcSec);
+
+    /* --- Parcours achevé (A1 → C2) --- */
+    const doneAll = examPasse("finalc");
     const c2Sec = el("section", "section");
-    const c2 = el("div", "examen-final " + (c2Ok ? "unlocked" : "locked"));
-    c2.innerHTML = '<div class="examen-ic">' + (c2Ok ? "🏆" : "🔒") + "</div><h2>Niveau C2 — la maîtrise</h2>" +
-      (c2Ok
-        ? "<p>🎉 Félicitations, vous avez validé <strong>A1 → C1</strong> ! Le niveau <strong>C2</strong> arrive bientôt.</p>"
-        : "<p>Réussissez l'examen du niveau C1 pour accéder au niveau suivant (C2).</p>");
+    const c2 = el("div", "examen-final " + (doneAll ? "unlocked reussi" : "locked"));
+    c2.innerHTML = '<div class="examen-ic">' + (doneAll ? "🏆" : "🔒") + "</div><h2>Cadre européen — maîtrise complète</h2>" +
+      (doneAll
+        ? "<p>🎉 Félicitations ! Vous avez parcouru <strong>tout le Cadre européen, de A1 à C2</strong>. Respekt!</p>"
+        : "<p>Réussissez l'examen C1 + C2 pour achever l'intégralité du parcours (A1 → C2).</p>");
     c2Sec.appendChild(c2);
     frag.appendChild(c2Sec);
 
@@ -918,22 +945,31 @@
      TEST DE FIN DE MODULE (noté)
      ==================================================================== */
   function renderTest(key) {
-    // key ∈ "a1" | "a2" | "final" | "b1" | "b2" | "c1" — gardes d'accès au parcours
-    const niveau = key === "a1" ? "A1" : key === "a2" ? "A2" : key === "b1" ? "B1" : key === "b2" ? "B2" : key === "c1" ? "C1" : null;
-    if (key === "a1" && !niveauTermine("A1")) { location.hash = "#/"; return; }
-    if (key === "a2" && !(examPasse("a1") && niveauTermine("A2"))) { location.hash = "#/"; return; }
-    if (key === "final" && !examPasse("a2")) { location.hash = "#/"; return; }
-    if (key === "b1" && !(examPasse("final") && niveauTermine("B1"))) { location.hash = "#/"; return; }
-    if (key === "b2" && !(examPasse("b1") && niveauTermine("B2"))) { location.hash = "#/"; return; }
-    if (key === "c1" && !(examPasse("b2") && niveauTermine("C1"))) { location.hash = "#/"; return; }
+    // key ∈ a1 | a2 | final | b1 | b2 | finalb | c1 | c2 | finalc — examens du parcours
+    const POOLS = { a1: ["A1"], a2: ["A2"], final: ["A1", "A2"], b1: ["B1"], b2: ["B2"], finalb: ["B1", "B2"], c1: ["C1"], c2: ["C2"], finalc: ["C1", "C2"] };
+    const GUARD = {
+      a1: () => niveauTermine("A1"),
+      a2: () => examPasse("a1") && niveauTermine("A2"),
+      final: () => examPasse("a2"),
+      b1: () => examPasse("final") && niveauTermine("B1"),
+      b2: () => examPasse("b1") && niveauTermine("B2"),
+      finalb: () => examPasse("b2"),
+      c1: () => examPasse("finalb") && niveauTermine("C1"),
+      c2: () => examPasse("c1") && niveauTermine("C2"),
+      finalc: () => examPasse("c2")
+    };
+    const TITRE = { a1: "Examen du niveau A1", a2: "Examen du niveau A2", final: "Examen final A1 + A2", b1: "Examen du niveau B1", b2: "Examen du niveau B2", finalb: "Examen B1 + B2", c1: "Examen du niveau C1", c2: "Examen du niveau C2", finalc: "Examen C1 + C2" };
+    const COULEUR = { a1: "#1d4ed8", a2: "#0e7490", final: "#7c3aed", b1: "#9333ea", b2: "#db2777", finalb: "#7c3aed", c1: "#ea580c", c2: "#047857", finalc: "#047857" };
+    if (!POOLS[key] || !GUARD[key]()) { location.hash = "#/"; return; }
 
-    const lecons = key === "final" ? flat.map((f) => f.lecon) : flat.filter((f) => f.lecon.niveau === niveau).map((f) => f.lecon);
-    const titre = key === "a1" ? "Examen du niveau A1" : key === "a2" ? "Examen du niveau A2" : key === "b1" ? "Examen du niveau B1" : key === "b2" ? "Examen du niveau B2" : key === "c1" ? "Examen du niveau C1" : "Examen final A1 + A2";
-    const couleur = key === "a1" ? "#1d4ed8" : key === "a2" ? "#0e7490" : key === "b1" ? "#9333ea" : key === "b2" ? "#db2777" : key === "c1" ? "#ea580c" : "#7c3aed";
+    const niveaux = POOLS[key];
+    const lecons = flat.filter((f) => niveaux.indexOf(f.lecon.niveau) >= 0).map((f) => f.lecon);
+    const titre = TITRE[key];
+    const couleur = COULEUR[key];
 
     const pool = [];
     lecons.forEach((l) => l.exercices.forEach((ex) => { if (window.Exercises.GRADABLE.indexOf(ex.type) >= 0) pool.push(ex); }));
-    const N = Math.min(key === "final" || key === "b2" || key === "c1" ? 30 : key === "b1" ? 25 : 20, pool.length);
+    const N = Math.min(key === "a1" || key === "a2" ? 20 : key === "b1" ? 25 : 30, pool.length);
     const chosen = window.Exercises.shuffle(pool).slice(0, N);
 
     const frag = document.createDocumentFragment();
@@ -971,8 +1007,11 @@
       if (key === "a2") return "🎉 Examen A2 réussi ! L'<strong>examen final A1 + A2</strong> est débloqué.";
       if (key === "final") return "🚀 Bravo ! Vous validez <strong>A1 + A2</strong> — le <strong>niveau B1</strong> est débloqué !";
       if (key === "b1") return "🚀 Magnifique ! Vous validez le <strong>niveau B1</strong> — le <strong>niveau B2</strong> est débloqué !";
-      if (key === "b2") return "🏆 Exceptionnel ! Vous validez le <strong>niveau B2</strong> — le <strong>niveau C1</strong> est débloqué !";
-      return "🏆 Chapeau ! Vous validez le <strong>niveau C1</strong> — le niveau <strong>C2</strong> arrive bientôt !";
+      if (key === "b2") return "🎓 Bravo ! L'<strong>examen B1 + B2</strong> est débloqué !";
+      if (key === "finalb") return "🚀 Excellent ! Vous validez <strong>B1 + B2</strong> — le <strong>niveau C1</strong> est débloqué !";
+      if (key === "c1") return "🏆 Exceptionnel ! Vous validez le <strong>niveau C1</strong> — le <strong>niveau C2</strong> est débloqué !";
+      if (key === "c2") return "🎓 Superbe ! L'<strong>examen final C1 + C2</strong> est débloqué !";
+      return "🏆 Chapeau ! Vous avez achevé <strong>tout le Cadre européen, de A1 à C2</strong>. Respekt!";
     }
 
     submit.addEventListener("click", () => {
@@ -981,7 +1020,12 @@
       const score = Math.round((correct / N) * 100);
       const reussi = score >= COURS.seuilReussite;
       window.Progress.setTestScore(key, score, reussi);
-      const suite = (key === "a1" || key === "final" || key === "b1" || key === "b2") ? prochaineEtape() : key === "a2" ? "#/examen/final" : "#/";
+      const suite =
+        (key === "a1" || key === "final" || key === "b1" || key === "finalb" || key === "c1") ? prochaineEtape()
+        : key === "a2" ? "#/examen/final"
+        : key === "b2" ? "#/examen/finalb"
+        : key === "c2" ? "#/examen/finalc"
+        : "#/";
 
       result.className = "test-result " + (reussi ? "pass" : "fail");
       result.innerHTML =
@@ -1025,7 +1069,7 @@
     const hash = location.hash || "#/";
     let m;
     if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);
-    else if ((m = hash.match(/^#\/examen\/(a1|a2|final|b1|b2|c1)/))) renderTest(m[1]);
+    else if ((m = hash.match(/^#\/examen\/(a1|a2|finalb|finalc|final|b1|b2|c1|c2)/))) renderTest(m[1]);
     else if (hash.match(/^#\/examen/)) renderTest("a1");
     else if (hash.match(/^#\/revision/)) renderRevision();
     else if (hash.match(/^#\/stats/)) renderDashboard();

@@ -8,10 +8,10 @@ window.COURS = {
   langue: "Deutsch",
   niveau: "A1",
   cadre: "CECRL / GER (Gemeinsamer Europäischer Referenzrahmen)",
-  titre: "Allemand intensif — A1 → C1",
-  slogan: "Von Null bis C1 — De zéro au niveau C1",
+  titre: "Allemand intensif — A1 → C2",
+  slogan: "Von Null bis C2 — De zéro à la maîtrise (C2)",
   description:
-    "Un parcours complet et progressif de A1 à C1 (Cadre Européen). " +
+    "Un parcours complet et progressif de A1 à C2 (Cadre Européen). " +
     "Chaque leçon combine vocabulaire vivant, grammaire claire, dialogue authentique, " +
     "prononciation audio et exercices interactifs auto-corrigés. " +
     "Les niveaux se débloquent l'un après l'autre grâce aux examens.",
@@ -69,16 +69,19 @@ window.COURS.examens = [
   { id: "final", niveau: "A1+A2", titre: "Examen final A1 + A2" },
   { id: "b1", niveau: "B1", titre: "Examen du niveau B1" },
   { id: "b2", niveau: "B2", titre: "Examen du niveau B2" },
-  { id: "c1", niveau: "C1", titre: "Examen du niveau C1" }
+  { id: "finalb", niveau: "B1+B2", titre: "Examen B1 + B2" },
+  { id: "c1", niveau: "C1", titre: "Examen du niveau C1" },
+  { id: "c2", niveau: "C2", titre: "Examen du niveau C2" },
+  { id: "finalc", niveau: "C1+C2", titre: "Examen C1 + C2" }
 ];
 
 /* Intercale la grammaire et assemble les niveaux A1 et A2 (parcours unique) */
 (function () {
   const byId = {};
-  [window.MODULE_A11, window.MODULE_A12, window.MODULE_A21, window.MODULE_A22, window.MODULE_B11, window.MODULE_B12, window.MODULE_B21, window.MODULE_B22, window.MODULE_C11, window.MODULE_C12].forEach(
+  [window.MODULE_A11, window.MODULE_A12, window.MODULE_A21, window.MODULE_A22, window.MODULE_B11, window.MODULE_B12, window.MODULE_B21, window.MODULE_B22, window.MODULE_C11, window.MODULE_C12, window.MODULE_C21, window.MODULE_C22].forEach(
     (m) => m && m.lecons.forEach((l) => (byId[l.id] = l))
   );
-  Object.assign(byId, window.GRAMMAIRE || {}, window.GRAMMAIRE_A2 || {}, window.GRAMMAIRE_B1 || {}, window.GRAMMAIRE_B2 || {}, window.GRAMMAIRE_C1 || {});
+  Object.assign(byId, window.GRAMMAIRE || {}, window.GRAMMAIRE_A2 || {}, window.GRAMMAIRE_B1 || {}, window.GRAMMAIRE_B2 || {}, window.GRAMMAIRE_C1 || {}, window.GRAMMAIRE_C2 || {});
   const L = (id) => byId[id];
   const ordreA11 = ["l01", "g01", "l02", "l03", "g02", "l04", "l05", "g03", "l06", "l07", "g06", "l08", "g05", "l09", "g04"];
   const ordreA12 = ["l10", "l11", "g07", "l12", "l13", "g08", "l14", "g09", "l15", "l16", "g10", "g11", "l17", "l18", "g12", "l19"];
@@ -90,6 +93,8 @@ window.COURS.examens = [
   const ordreB22 = ["b2t08", "b2g09", "b2g11", "b2t09", "b2g12", "b2t10", "b2g16", "b2g10", "b2t11", "b2g17", "b2t12", "b2g14", "b2g15", "b2t13", "b2g13"];
   const ordreC11 = ["c1t01", "c1g06", "c1t02", "c1g09", "c1g02", "c1t03", "c1g08", "c1t04", "c1g03", "c1t05", "c1g05", "c1t06", "c1g04", "c1g01", "c1t07", "c1g07"];
   const ordreC12 = ["c1t08", "c1g10", "c1t09", "c1g19", "c1t10", "c1g18", "c1g13", "c1t11", "c1g11", "c1g12", "c1t12", "c1g16", "c1t13", "c1g14", "c1g17", "c1t14", "c1g15"];
+  const ordreC21 = ["c2t01", "c2g01", "c2g08", "c2t02", "c2g02", "c2g04", "c2t03", "c2g03", "c2g10", "c2t04", "c2g05", "c2g11", "c2g09", "c2t05", "c2g06", "c2g07"];
+  const ordreC22 = ["c2t06", "c2g12", "c2t07", "c2g13", "c2t08", "c2g14", "c2t09", "c2g16", "c2t10", "c2g15", "c2t11", "c2g18", "c2t12", "c2g17", "c2t13", "c2g19", "c2t14"];
   window.MODULE_A11.lecons = ordreA11.map(L).filter(Boolean);
   window.MODULE_A12.lecons = ordreA12.map(L).filter(Boolean);
   if (window.MODULE_A21) window.MODULE_A21.lecons = ordreA21.map(L).filter(Boolean);
@@ -100,6 +105,8 @@ window.COURS.examens = [
   if (window.MODULE_B22) window.MODULE_B22.lecons = ordreB22.map(L).filter(Boolean);
   if (window.MODULE_C11) window.MODULE_C11.lecons = ordreC11.map(L).filter(Boolean);
   if (window.MODULE_C12) window.MODULE_C12.lecons = ordreC12.map(L).filter(Boolean);
+  if (window.MODULE_C21) window.MODULE_C21.lecons = ordreC21.map(L).filter(Boolean);
+  if (window.MODULE_C22) window.MODULE_C22.lecons = ordreC22.map(L).filter(Boolean);
   window.MODULE_A11.niveau = "A1";
   window.MODULE_A12.niveau = "A1";
   if (window.MODULE_A21) window.COURS.modules.push(window.MODULE_A21);
@@ -110,6 +117,8 @@ window.COURS.examens = [
   if (window.MODULE_B22) window.COURS.modules.push(window.MODULE_B22);
   if (window.MODULE_C11) window.COURS.modules.push(window.MODULE_C11);
   if (window.MODULE_C12) window.COURS.modules.push(window.MODULE_C12);
+  if (window.MODULE_C21) window.COURS.modules.push(window.MODULE_C21);
+  if (window.MODULE_C22) window.COURS.modules.push(window.MODULE_C22);
   // Tag de niveau + numérotation qui repart à 1 pour chaque niveau
   const cpt = {};
   window.COURS.modules.forEach((m) =>
