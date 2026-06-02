@@ -320,6 +320,19 @@ window.I18N = (function () {
      l'appelant propose un lien « Traduire avec Google ». Résultats mis en cache. */
   var cache = {};
   try { cache = JSON.parse(localStorage.getItem("i18n-tcache") || "{}") || {}; } catch (e) {}
+  // File d'attente : on limite les requêtes simultanées pour éviter les 429
+  // (limites de débit des services de traduction gratuits).
+  var Q = [], active = 0, MAXC = 2;
+  function enqueue(fn) {
+    return new Promise(function (res) { Q.push({ fn: fn, res: res }); pump(); });
+  }
+  function pump() {
+    while (active < MAXC && Q.length) {
+      var job = Q.shift(); active++;
+      Promise.resolve().then(job.fn).then(function (v) { active--; job.res(v); pump(); },
+        function () { active--; job.res(null); pump(); });
+    }
+  }
   var translators = {};
   function canAutoTranslate() {
     return typeof self !== "undefined" && (("Translator" in self) || (self.translation && self.translation.createTranslator));
@@ -343,14 +356,13 @@ window.I18N = (function () {
     if (!text || tgt === src) return Promise.resolve(text);
     var ck = tgt + "|" + src + "|" + text;
     if (cache[ck]) return Promise.resolve(cache[ck]);
-    // Traduction réseau sans clé (MyMemory → Google gtx). Fiable et compatible
-    // navigateur ; l'API Translator embarquée est trop souvent indisponible
-    // (modèle absent → blocage), on ne s'appuie donc pas dessus.
-    var work = netTranslate(text, tgt, src).then(function (out) {
+    // Traduction réseau sans clé (MyMemory → Google gtx), en file d'attente
+    // (max 2 simultanées) pour éviter les 429. Résultats mis en cache.
+    var work = enqueue(function () { return netTranslate(text, tgt, src); }).then(function (out) {
       if (out) { cache[ck] = out; try { localStorage.setItem("i18n-tcache", JSON.stringify(cache)); } catch (e) {} }
       return out || null;
     }).catch(function () { return null; });
-    var timeout = new Promise(function (r) { setTimeout(function () { r(null); }, 9000); });
+    var timeout = new Promise(function (r) { setTimeout(function () { r(null); }, 25000); });
     return Promise.race([work, timeout]);
   }
   function decodeEntities(s) {
