@@ -15,7 +15,12 @@ window.MODULE_B11 = {
   couleur: "#9333ea",
   lecons: [
     {
-      id: "b1t01", numero: 1, titre: "Temps et activités", titreDE: "Zeit und Aktivitäten",
+      id: "b1t01",
+      vocCoursDE: [
+        "In diesem Thema lernst du Wörter rund um die **Zeit** und die **Aktivitäten** im Alltag. Wichtig sind Ausdrücke wie *Zeit haben*, *keine Zeit haben*, *Zeit verbringen* (passer du temps) und *etwas unternehmen* (entreprendre). Du sprichst darüber, wie du deinen Tag und deine Woche organisierst.",
+        "Achte auf den Unterschied zwischen **die Zeit** (le temps qui passe), **die Freizeit** (le temps libre) und **die Uhrzeit** (l'heure). Nützlich sind auch die Häufigkeitswörter: *täglich* (chaque jour), *wöchentlich*, *regelmäßig* (régulièrement), *gelegentlich* (à l'occasion).",
+        "Tipp: Beschreibe deine eigene Woche mit diesen Wörtern und sage, **wann** und **wie oft** du etwas machst. Wenn du das Vokabular mit deinem eigenen Leben verbindest, bleibt es viel besser im Kopf."
+      ], numero: 1, titre: "Temps et activités", titreDE: "Zeit und Aktivitäten",
       theme: "Temps et activités", duree: 55,
       objectifs: ["Organiser et raconter ses activités", "Situer deux actions passées dans le temps"],
       grammairePoints: ["Plus-que-parfait (Plusquamperfekt)", "nachdem / bevor"],
@@ -52,7 +57,12 @@ window.MODULE_B11 = {
       ]
     },
     {
-      id: "b1t02", numero: 2, titre: "La ponctualité", titreDE: "Pünktlichkeit",
+      id: "b1t02",
+      vocCoursDE: [
+        "Dieses Thema behandelt die **Pünktlichkeit** – ein wichtiger Wert in der deutschen Kultur. Schlüsselwörter sind *pünktlich* (à l'heure), *zu spät* (en retard), *die Verspätung* (le retard), *sich verspäten* (être en retard), *rechtzeitig* (à temps).",
+        "In Deutschland gilt: Wer einen Termin hat, kommt **pünktlich** oder sogar ein paar Minuten früher. Nützliche Sätze sind *Entschuldigung für die Verspätung* und *Ich komme gleich*. Achte auf das Gegensatzpaar *früh* (tôt) ↔ *spät* (tard).",
+        "Tipp: Lerne die Wörter zusammen mit einer kleinen Situation (zum Beispiel: zu einem Termin kommen). So verbindest du Vokabular und Kultur und merkst dir beides leichter."
+      ], numero: 2, titre: "La ponctualité", titreDE: "Pünktlichkeit",
       theme: "Ponctualité", duree: 50,
       objectifs: ["Parler de ponctualité et de retard", "Exprimer une habitude / une attente sociale"],
       grammairePoints: ["Indicateurs de temps", "pünktlich, rechtzeitig"],
@@ -89,7 +99,12 @@ window.MODULE_B11 = {
       ]
     },
     {
-      id: "b1t03", numero: 3, titre: "Temps libre : les musées", titreDE: "Freizeit: Museen",
+      id: "b1t03",
+      vocCoursDE: [
+        "In diesem Thema geht es um die **Freizeit** im **Museum**. Wichtige Wörter sind *das Museum*, *die Ausstellung* (l'exposition), *die Sammlung* (la collection), *der Eintritt* (l'entrée), *die Führung* (la visite guidée), *besichtigen* (visiter).",
+        "Viele Wörter beschreiben, was man im Museum tut: *anschauen* (regarder), *besuchen*, *sich interessieren für* (s'intéresser à). Beachte: *der Eintritt* ist der Preis, den man zahlt, und *die Öffnungszeiten* sind die Stunden, in denen das Museum offen ist.",
+        "Tipp: Stell dir einen echten Museumsbesuch vor und beschreibe ihn mit diesen Wörtern. Wenn du sagst, was dich interessiert, übst du das Vokabular und deine Meinung zugleich."
+      ], numero: 3, titre: "Temps libre : les musées", titreDE: "Freizeit: Museen",
       theme: "Le temps libre: Musées", duree: 50,
       objectifs: ["Parler d'une visite culturelle", "Donner une appréciation"],
       grammairePoints: ["Propositions relatives", "Adjectifs"],
@@ -127,7 +142,12 @@ window.MODULE_B11 = {
       ]
     },
     {
-      id: "b1t04", numero: 4, titre: "Temps libre : les beaux-arts", titreDE: "Freizeit: Bildende Kunst",
+      id: "b1t04",
+      vocCoursDE: [
+        "Dieses Thema erweitert die Freizeit um die **bildende Kunst**. Schlüsselwörter sind *die Kunst* (l'art), *das Gemälde / das Bild* (le tableau), *der Künstler / die Künstlerin*, *malen* (peindre), *zeichnen* (dessiner), *die Skulptur*.",
+        "Mit Adjektiven beschreibst du Kunstwerke: *modern*, *klassisch*, *abstrakt*, *bekannt* (connu), *beeindruckend* (impressionnant). Beachte das Verb *gefallen* + Dativ, um deine Meinung zu sagen: « *Das Bild **gefällt mir*** » (ce tableau me plaît).",
+        "Tipp: Such dir ein Kunstwerk, das du magst, und beschreibe es kurz auf Deutsch. Über Kunst zu sprechen heißt, Vokabular, Adjektive und Meinung gleichzeitig zu üben."
+      ], numero: 4, titre: "Temps libre : les beaux-arts", titreDE: "Freizeit: Bildende Kunst",
       theme: "Le temps libre: Beaux-arts", duree: 50,
       objectifs: ["Décrire une œuvre d'art", "Exprimer goûts et opinions"],
       grammairePoints: ["Adjectifs (comparatif/superlatif)", "gefallen + datif"],
@@ -164,7 +184,12 @@ window.MODULE_B11 = {
       ]
     },
     {
-      id: "b1t05", numero: 5, titre: "Professions", titreDE: "Berufe",
+      id: "b1t05",
+      vocCoursDE: [
+        "Dieses Thema vertieft die Welt der **Berufe**. Du lernst nicht nur Berufsnamen, sondern auch Wörter für Aufgaben, Arbeitsplatz und Karriere: *die Stelle* (le poste), *der Arbeitgeber* (l'employeur), *die Erfahrung* (l'expérience), *sich bewerben* (postuler).",
+        "Denk an die weibliche Form auf **-in** (*der Arzt → die Ärztin*) und daran, dass man den Beruf **ohne Artikel** nennt: « *Ich bin Ingenieur* ». Nützlich ist auch *als* + Beruf: « *Ich arbeite **als** Krankenpfleger* ».",
+        "Tipp: Beschreibe deinen eigenen Beruf (oder deinen Traumberuf): Was machst du? Wo arbeitest du? Welche Erfahrung hast du? So wird das Vokabular konkret und persönlich."
+      ], numero: 5, titre: "Professions", titreDE: "Berufe",
       theme: "Professions", duree: 50,
       objectifs: ["Décrire un métier en détail", "Parler de compétences"],
       grammairePoints: ["Verbes + prépositions", "als / wie"],
@@ -201,7 +226,12 @@ window.MODULE_B11 = {
       ]
     },
     {
-      id: "b1t06", numero: 6, titre: "Problèmes au travail", titreDE: "Probleme am Arbeitsplatz",
+      id: "b1t06",
+      vocCoursDE: [
+        "In diesem Thema sprichst du über **Probleme bei der Arbeit**. Wichtige Wörter sind *der Stress*, *der Konflikt* (le conflit), *die Überstunden* (les heures supplémentaires), *die Kündigung* (le licenciement), *sich beschweren* (se plaindre).",
+        "Nützlich sind die Modalverben und *weil*, um Probleme zu erklären: « *Ich bin gestresst, **weil** ich zu viel Arbeit habe* ». Beachte den Unterschied zwischen *der Kollege* (le collègue) und *der Chef* (le patron, nicht der Koch!).",
+        "Tipp: Beschreibe ein typisches Problem am Arbeitsplatz und schlage eine Lösung vor. Wenn du Probleme und Lösungen verbindest, übst du Vokabular und Argumentation zusammen."
+      ], numero: 6, titre: "Problèmes au travail", titreDE: "Probleme am Arbeitsplatz",
       theme: "Problèmes au travail", duree: 55,
       objectifs: ["Exprimer un problème et une solution", "Nuancer avec le Konjunktiv II"],
       grammairePoints: ["Konjunktiv II (conseil/reproche)", "sollte / könnte"],
@@ -238,7 +268,12 @@ window.MODULE_B11 = {
       ]
     },
     {
-      id: "b1t07", numero: 7, titre: "Prendre des rendez-vous (pro)", titreDE: "Termine vereinbaren",
+      id: "b1t07",
+      vocCoursDE: [
+        "Dieses Thema hilft dir, **berufliche Termine zu vereinbaren**. Schlüsselwörter sind *der Termin*, *vereinbaren* (convenir), *verschieben* (reporter), *absagen* (annuler), *bestätigen* (confirmer), *passen* (« *Passt Ihnen Montag?* »).",
+        "Am Telefon und per E-Mail benutzt du oft die **höfliche Form** mit *Sie* und dem Konjunktiv II: « *Könnten wir einen Termin vereinbaren?* », « *Würde Ihnen Dienstag passen?* ». Diese Höflichkeit ist im Beruf sehr wichtig.",
+        "Tipp: Übe einen kompletten Dialog: einen Termin vorschlagen, ihn verschieben und am Ende bestätigen. Solche festen Abläufe lernst du am besten als ganze Mini-Gespräche."
+      ], numero: 7, titre: "Prendre des rendez-vous (pro)", titreDE: "Termine vereinbaren",
       theme: "Prendre des rendez-vous", duree: 50,
       objectifs: ["Fixer/décaler un rendez-vous professionnel", "Proposer poliment"],
       grammairePoints: ["Konjunktiv II (politesse)", "würde / könnte"],
@@ -275,7 +310,12 @@ window.MODULE_B11 = {
       ]
     },
     {
-      id: "b1t08", numero: 8, titre: "Les bonnes manières au travail", titreDE: "Umgangsformen im Beruf",
+      id: "b1t08",
+      vocCoursDE: [
+        "In diesem Thema geht es um die **guten Umgangsformen** (les bonnes manières) im Beruf. Wichtige Wörter sind *höflich* (poli), *der Respekt*, *die Begrüßung* (la salutation), *sich vorstellen* (se présenter), *die Anrede* (la formule d'appel).",
+        "Sehr wichtig ist der Unterschied zwischen **du** und **Sie**. Im Beruf benutzt man fast immer *Sie* und den Nachnamen: « *Guten Tag, Herr Schmidt* ». Das *Du* bietet meist die ältere oder höhergestellte Person an.",
+        "Tipp: Achte in deutschen Filmen oder Videos darauf, wie sich Menschen im Beruf begrüßen und anreden. Diese kulturellen Feinheiten lernst du am besten durch Beobachtung und Nachahmung."
+      ], numero: 8, titre: "Les bonnes manières au travail", titreDE: "Umgangsformen im Beruf",
       theme: "Les bonnes manières dans le monde du travail", duree: 50,
       objectifs: ["Connaître les codes professionnels", "Exprimer ce qui se fait / ne se fait pas"],
       grammairePoints: ["man / es ist üblich", "sollen (norme)"],
@@ -312,7 +352,12 @@ window.MODULE_B11 = {
       ]
     },
     {
-      id: "b1t09", numero: 9, titre: "La lecture", titreDE: "Lesen und Bücher",
+      id: "b1t09",
+      vocCoursDE: [
+        "Dieses Thema dreht sich um das **Lesen** und um **Bücher**. Schlüsselwörter sind *das Buch*, *der Roman* (le roman), *der Autor / die Autorin*, *die Geschichte* (l'histoire), *die Seite* (la page), *spannend* (passionnant), *langweilig* (ennuyeux).",
+        "Mit dem Verb *lesen* (irregulär: *du liest*, *er liest*) und Adjektiven beschreibst du deine Lektüre. Beachte den Unterschied zwischen *die Bibliothek* (la bibliothèque, où l'on emprunte) und *die Buchhandlung* (la librairie, où l'on achète).",
+        "Tipp: Sprich über ein Buch, das du gelesen hast: Worum geht es? Wie hat es dir gefallen? Über eigene Lektüre zu sprechen, ist eine ausgezeichnete Übung für Vokabular und Vergangenheit."
+      ], numero: 9, titre: "La lecture", titreDE: "Lesen und Bücher",
       theme: "La lecture", duree: 50,
       objectifs: ["Parler de ses lectures", "Résumer / recommander un livre"],
       grammairePoints: ["Propositions relatives", "Genre littéraire"],
@@ -349,7 +394,12 @@ window.MODULE_B11 = {
       ]
     },
     {
-      id: "b1t10", numero: 10, titre: "Passé et enfance", titreDE: "Vergangenheit und Kindheit",
+      id: "b1t10",
+      vocCoursDE: [
+        "In diesem Thema erzählst du von deiner **Kindheit** und deiner **Vergangenheit**. Wichtige Wörter sind *die Kindheit*, *aufwachsen* (grandir), *sich erinnern an* (se souvenir de), *früher* (autrefois), *als Kind* (enfant).",
+        "Hier brauchst du das **Präteritum** und das **Perfekt**. Besonders *war*, *hatte* und *als* (quand, dans le passé) sind nützlich: « ***Als** ich ein Kind war, **wohnte** ich auf dem Land* ». Achte auf *sich erinnern an* + Akkusativ.",
+        "Tipp: Erzähle eine kurze Erinnerung aus deiner Kindheit. Persönliche Geschichten sind die beste Methode, um die Vergangenheitsformen und das passende Vokabular fest zu verankern."
+      ], numero: 10, titre: "Passé et enfance", titreDE: "Vergangenheit und Kindheit",
       theme: "Passé et enfance", duree: 55,
       objectifs: ["Raconter des souvenirs d'enfance", "Utiliser le prétérit pour le récit"],
       grammairePoints: ["Prétérit (récit)", "als / wenn (passé)"],
@@ -386,7 +436,12 @@ window.MODULE_B11 = {
       ]
     },
     {
-      id: "b1t11", numero: 11, titre: "Les médias", titreDE: "Medien",
+      id: "b1t11",
+      vocCoursDE: [
+        "Dieses Thema behandelt die **Medien**. Schlüsselwörter sind *die Nachrichten* (les informations), *die Zeitung* (le journal), *das Fernsehen* (la télévision), *das Radio*, *die sozialen Medien* (les réseaux sociaux), *die Sendung* (l'émission).",
+        "Viele Wörter sind **international** (*das Internet, das Video, der Podcast*), aber achte auf typisch deutsche Begriffe wie *die Sendung* (l'émission) und *der Sender* (la chaîne). Nützliche Verben: *informieren*, *berichten* (rapporter), *teilen* (partager).",
+        "Tipp: Sag, welche Medien du nutzt und warum. Wenn du über deine eigenen Gewohnheiten sprichst, wird das abstrakte Medien-Vokabular sofort konkret und nützlich."
+      ], numero: 11, titre: "Les médias", titreDE: "Medien",
       theme: "Médias", duree: 50,
       objectifs: ["Parler des médias et de leur usage", "Comprendre le passif"],
       grammairePoints: ["Le passif (Passiv)", "werden + participe"],
@@ -424,7 +479,12 @@ window.MODULE_B11 = {
       ]
     },
     {
-      id: "b1t12", numero: 12, titre: "Publicité : impact et histoire", titreDE: "Werbung: Wirkung und Geschichte",
+      id: "b1t12",
+      vocCoursDE: [
+        "In diesem Thema geht es um die **Werbung** (la publicité). Schlüsselwörter sind *die Werbung*, *die Anzeige* (l'annonce), *das Plakat* (l'affiche), *werben für* (faire de la pub pour), *die Marke* (la marque), *die Zielgruppe* (le public cible).",
+        "Du sprichst über die **Wirkung** (l'effet) von Werbung: *überzeugen* (convaincre), *beeinflussen* (influencer), *auffallen* (attirer l'attention). Beachte das Verb *werben für* + Akkusativ.",
+        "Tipp: Beschreibe eine Werbung, die du kennst: Für welches Produkt? Wie wirkt sie? So verbindest du das Vokabular mit echten Beispielen und übst deine Meinung."
+      ], numero: 12, titre: "Publicité : impact et histoire", titreDE: "Werbung: Wirkung und Geschichte",
       theme: "Publicité: Impact et histoire", duree: 50,
       objectifs: ["Parler de l'impact de la publicité", "Exprimer cause et conséquence"],
       grammairePoints: ["deshalb / weil", "Cause et conséquence"],
@@ -461,7 +521,12 @@ window.MODULE_B11 = {
       ]
     },
     {
-      id: "b1t13", numero: 13, titre: "Publicité : produits et propriétés", titreDE: "Produkte und Eigenschaften",
+      id: "b1t13",
+      vocCoursDE: [
+        "Dieses Thema liefert Wörter, um **Produkte** und ihre **Eigenschaften** zu beschreiben. Schlüsselwörter sind *das Produkt*, *die Qualität*, *die Eigenschaft* (la propriété), *praktisch*, *zuverlässig* (fiable), *langlebig* (durable), *günstig* (avantageux).",
+        "Viele Eigenschaften sind **Adjektive**, die du steigern kannst (*gut → besser → am besten*). Beachte das Gegensatzpaar *günstig / teuer* und den Unterschied zu *billig*, das oft negativ klingt.",
+        "Tipp: Beschreibe ein Produkt, das du gekauft hast, mit drei Eigenschaften. Wenn du Adjektive an echte Gegenstände bindest, lernst du sie schneller und genauer."
+      ], numero: 13, titre: "Publicité : produits et propriétés", titreDE: "Produkte und Eigenschaften",
       theme: "Publicité: Les produits et leurs propriétés", duree: 50,
       objectifs: ["Décrire les qualités d'un produit", "Décliner l'adjectif épithète"],
       grammairePoints: ["Déclinaison de l'adjectif", "Comparatif (Werbesprache)"],
@@ -498,7 +563,12 @@ window.MODULE_B11 = {
       ]
     },
     {
-      id: "b1t14", numero: 14, titre: "Les réclamations", titreDE: "Reklamationen",
+      id: "b1t14",
+      vocCoursDE: [
+        "In diesem Thema lernst du, eine **Reklamation** zu machen – also etwas zu beanstanden. Schlüsselwörter sind *die Reklamation*, *sich beschweren* (se plaindre), *kaputt* (cassé), *defekt*, *umtauschen* (échanger), *zurückgeben* (rendre), *die Garantie*.",
+        "Nützliche Sätze sind höflich, aber bestimmt: « *Das Gerät funktioniert nicht* », « *Ich möchte es umtauschen* », « *Ich hätte gern mein Geld zurück* ». Der Konjunktiv II (*hätte gern*, *könnten Sie*) macht die Reklamation höflich.",
+        "Tipp: Übe einen Reklamations-Dialog im Geschäft. Diese Situation ist sehr praktisch im Alltag, und feste Sätze helfen dir, ruhig und korrekt zu reagieren."
+      ], numero: 14, titre: "Les réclamations", titreDE: "Reklamationen",
       theme: "Les réclamations", duree: 55,
       objectifs: ["Faire une réclamation", "Demander un remboursement / échange poliment"],
       grammairePoints: ["Konjunktiv II (politesse)", "weil / deshalb"],

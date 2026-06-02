@@ -16,7 +16,12 @@ window.MODULE_B12 = {
   couleur: "#9333ea",
   lecons: [
     {
-      id: "b1t15", numero: 15, titre: "L'apprentissage des langues", titreDE: "Sprachen lernen",
+      id: "b1t15",
+      vocCoursDE: [
+        "Dieses Thema dreht sich um das **Sprachenlernen** – ein Thema, das dich direkt betrifft! Schlüsselwörter sind *die Sprache*, *die Muttersprache* (la langue maternelle), *die Fremdsprache* (la langue étrangère), *der Wortschatz* (le vocabulaire), *die Aussprache* (la prononciation).",
+        "Nützliche Verben: *üben* (s'exercer), *wiederholen* (répéter), *sich verbessern* (s'améliorer), *einen Fehler machen* (faire une faute). Beachte: *lernen* (apprendre) ↔ *lehren / unterrichten* (enseigner).",
+        "Tipp: Beschreibe, **wie** du Deutsch lernst und welche Methoden dir helfen. Über das Lernen selbst auf Deutsch zu sprechen, ist eine besonders motivierende und nützliche Übung."
+      ], numero: 15, titre: "L'apprentissage des langues", titreDE: "Sprachen lernen",
       theme: "Apprentissage des langues", duree: 55,
       objectifs: ["Parler de sa façon d'apprendre", "Exprimer une condition (si…)"],
       grammairePoints: ["Konjunktiv II (wenn)", "Indicateurs de conditionnel"],
@@ -53,7 +58,12 @@ window.MODULE_B12 = {
       ]
     },
     {
-      id: "b1t16", numero: 16, titre: "L'apprentissage permanent", titreDE: "Lebenslanges Lernen",
+      id: "b1t16",
+      vocCoursDE: [
+        "In diesem Thema geht es um das **lebenslange Lernen** – die Idee, dass man sein ganzes Leben lang lernt. Schlüsselwörter sind *die Weiterbildung* (la formation continue), *der Kurs*, *die Fähigkeit* (la compétence), *sich weiterbilden*, *das Ziel* (le but).",
+        "Du sprichst über **Motivation** und **Gründe**: *motiviert sein*, *neugierig* (curieux), *aus beruflichen Gründen* (pour des raisons professionnelles). Mit *um … zu* nennst du das Ziel: « *Ich lerne Deutsch, **um** eine bessere Stelle zu finden* ».",
+        "Tipp: Formuliere deine eigenen Lernziele für die nächsten Monate. Wenn du das Vokabular mit deinen persönlichen Zielen verbindest, gibt es dir zugleich Wörter und Motivation."
+      ], numero: 16, titre: "L'apprentissage permanent", titreDE: "Lebenslanges Lernen",
       theme: "Apprentissage permanent", duree: 50,
       objectifs: ["Parler de formation continue", "Justifier un but (pour…)"],
       grammairePoints: ["Propositions finales (um … zu)", "damit"],
@@ -91,7 +101,12 @@ window.MODULE_B12 = {
       ]
     },
     {
-      id: "b1t17", numero: 17, titre: "Conseils pour apprendre", titreDE: "Lerntipps",
+      id: "b1t17",
+      vocCoursDE: [
+        "Dieses Thema sammelt **Lerntipps** – Ratschläge, wie man besser lernt. Schlüsselwörter sind *der Tipp* (le conseil), *die Methode*, *sich konzentrieren* (se concentrer), *die Pause*, *regelmäßig* (régulièrement), *sich Notizen machen* (prendre des notes).",
+        "Ratschläge gibt man oft mit dem Modalverb **sollte**: « *Du **solltest** jeden Tag ein bisschen lernen* », « *Man **sollte** Pausen machen* ». Auch der Imperativ funktioniert: « *Wiederhole regelmäßig!* ».",
+        "Tipp: Schreib deine drei besten Lerntipps auf Deutsch auf. Indem du Ratschläge formulierst, übst du das Vokabular **und** die Strukturen für Empfehlungen (*sollte*, Imperativ)."
+      ], numero: 17, titre: "Conseils pour apprendre", titreDE: "Lerntipps",
       theme: "Conseils d'apprentissage", duree: 50,
       objectifs: ["Donner et recevoir des conseils", "Structurer un récit (d'abord, ensuite)"],
       grammairePoints: ["Konjunktiv II (sollte)", "Adverbes d'ordre"],
@@ -128,7 +143,12 @@ window.MODULE_B12 = {
       ]
     },
     {
-      id: "b1t18", numero: 18, titre: "École, diplômes et notes", titreDE: "Schule, Zeugnisse und Noten",
+      id: "b1t18",
+      vocCoursDE: [
+        "In diesem Thema geht es um **Schule**, **Zeugnisse** und **Noten**. Schlüsselwörter sind *die Schule*, *das Zeugnis* (le bulletin), *die Note* (la note), *die Prüfung* (l'examen), *bestehen* (réussir) ↔ *durchfallen* (échouer), *das Fach* (la matière).",
+        "Beachte das deutsche **Notensystem**: Die Note **1** ist die beste (sehr gut), die Note **6** die schlechteste (ungenügend) – das Gegenteil von vielen anderen Ländern! Falscher Freund: *das Gymnasium* ist das **Lycée**, keine Sporthalle.",
+        "Tipp: Erzähle von deiner eigenen Schulzeit: Welche Fächer mochtest du? Wie waren deine Noten? Persönliche Bezüge machen das Vokabular lebendig und leicht zu merken."
+      ], numero: 18, titre: "École, diplômes et notes", titreDE: "Schule, Zeugnisse und Noten",
       theme: "École et diplômes", duree: 50,
       objectifs: ["Parler de son parcours scolaire", "Raconter au passé"],
       grammairePoints: ["Temps du passé", "Système scolaire allemand"],
@@ -165,7 +185,12 @@ window.MODULE_B12 = {
       ]
     },
     {
-      id: "b1t19", numero: 19, titre: "Problèmes de circulation", titreDE: "Verkehrsprobleme",
+      id: "b1t19",
+      vocCoursDE: [
+        "Dieses Thema behandelt **Verkehrsprobleme**. Schlüsselwörter sind *der Verkehr* (la circulation), *der Stau* (l'embouteillage), *die Baustelle* (le chantier), *der Unfall* (l'accident), *die Verspätung*, *die Umleitung* (la déviation).",
+        "Nützliche Verben: *im Stau stehen* (être dans un embouteillage), *zu spät kommen*, *vermeiden* (éviter). Beachte den Unterschied zwischen *die Straße* (la rue/route), *die Autobahn* (l'autoroute) und *die Kreuzung* (le carrefour).",
+        "Tipp: Beschreibe ein Verkehrsproblem aus deiner Stadt und wie man es lösen könnte. So verbindest du konkretes Vokabular mit deiner eigenen Erfahrung."
+      ], numero: 19, titre: "Problèmes de circulation", titreDE: "Verkehrsprobleme",
       theme: "Problèmes de circulation", duree: 50,
       objectifs: ["Décrire des problèmes de circulation", "Exprimer simultanéité / succession"],
       grammairePoints: ["Propositions temporelles", "während, als"],
@@ -202,7 +227,12 @@ window.MODULE_B12 = {
       ]
     },
     {
-      id: "b1t20", numero: 20, titre: "Moyens de transport", titreDE: "Verkehrsmittel",
+      id: "b1t20",
+      vocCoursDE: [
+        "In diesem Thema lernst du die **Verkehrsmittel** genauer kennen. Schlüsselwörter sind *öffentliche Verkehrsmittel* (les transports en commun), *die U-Bahn*, *die Straßenbahn* (le tram), *der Fahrplan* (l'horaire), *die Haltestelle* (l'arrêt), *die Fahrkarte* (le billet).",
+        "Die Struktur **mit + Dativ** sagt, womit man fährt: « *Ich fahre **mit der** Bahn* ». Beachte *einsteigen* (monter), *aussteigen* (descendre), *umsteigen* (changer) – alles trennbare Verben rund um den Verkehr.",
+        "Tipp: Beschreibe, wie du dich normalerweise fortbewegst und warum. Das Vokabular der Mobilität wird durch deinen eigenen Alltag sofort konkret."
+      ], numero: 20, titre: "Moyens de transport", titreDE: "Verkehrsmittel",
       theme: "Moyens de transport", duree: 50,
       objectifs: ["Comparer les moyens de transport", "Choisir la préposition de lieu"],
       grammairePoints: ["Prépositions (mit, mit dem)", "comparatif"],
@@ -239,7 +269,12 @@ window.MODULE_B12 = {
       ]
     },
     {
-      id: "b1t21", numero: 21, titre: "En route", titreDE: "Unterwegs",
+      id: "b1t21",
+      vocCoursDE: [
+        "Dieses Thema heißt **unterwegs** (en déplacement) und sammelt Wörter rund ums Reisen und Sich-Orientieren. Schlüsselwörter sind *die Reise*, *die Richtung* (la direction), *sich verirren* (se perdre), *der Weg* (le chemin), *die Karte* (la carte).",
+        "Nützlich sind die Frage *Wie komme ich zu …?* und die Richtungswörter *geradeaus, links, rechts, in der Nähe* (à proximité), *weit weg* (loin). Beachte das Verb *sich auskennen* (s'y connaître, connaître les lieux).",
+        "Tipp: Beschreibe einen Weg, den du gut kennst, Schritt für Schritt. Wegbeschreibungen sind eine klassische und sehr nützliche Sprechübung auf B1-Niveau."
+      ], numero: 21, titre: "En route", titreDE: "Unterwegs",
       theme: "En route", duree: 50,
       objectifs: ["Demander et indiquer un chemin", "Réserver et acheter un billet"],
       grammairePoints: ["Prépositions de lieu", "questions indirectes"],
@@ -277,7 +312,12 @@ window.MODULE_B12 = {
       ]
     },
     {
-      id: "b1t22", numero: 22, titre: "Quand on part en voyage", titreDE: "Wenn man verreist",
+      id: "b1t22",
+      vocCoursDE: [
+        "In diesem Thema geht es darum, **wegzufahren und zu verreisen**. Schlüsselwörter sind *verreisen* (partir en voyage), *die Reisevorbereitung* (la préparation), *der Reiseführer* (le guide), *die Versicherung* (l'assurance), *packen* (faire ses bagages).",
+        "Beachte die feinen Unterschiede: *die Reise* (le voyage), *die Fahrt* (le trajet), *der Ausflug* (l'excursion). Das Verb *verreisen* betont, dass man wegfährt; man benutzt es oft im **Perfekt** mit *sein*: « *Ich **bin** im Sommer **verreist*** ».",
+        "Tipp: Plane eine Traumreise und beschreibe deine Vorbereitungen. Reisethemen sind motivierend und verbinden Vokabular, Pläne und Vergangenheitserzählungen."
+      ], numero: 22, titre: "Quand on part en voyage", titreDE: "Wenn man verreist",
       theme: "Vacances et voyages", duree: 55,
       objectifs: ["Organiser un voyage", "Exprimer des conditions et des souhaits"],
       grammairePoints: ["Konjunktiv II (souhaits)", "wenn-Sätze"],
@@ -314,7 +354,12 @@ window.MODULE_B12 = {
       ]
     },
     {
-      id: "b1t23", numero: 23, titre: "Sentiments de bonheur", titreDE: "Glücksgefühle",
+      id: "b1t23",
+      vocCoursDE: [
+        "Dieses Thema behandelt **Gefühle**, besonders das **Glück**. Schlüsselwörter sind *das Glück* (le bonheur / la chance), *glücklich* (heureux), *zufrieden* (satisfait), *sich freuen* (se réjouir), *stolz* (fier), *dankbar* (reconnaissant).",
+        "Beachte das wichtige Wort *das Glück*: Es bedeutet sowohl **le bonheur** als auch **la chance** (« *Viel Glück!* » = bonne chance). Das Verb *sich freuen* steht mit Präpositionen: *sich freuen **über*** (etwas Vergangenes) und *sich freuen **auf*** (etwas in der Zukunft).",
+        "Tipp: Beschreibe einen Moment, in dem du glücklich warst, und warum. Über Gefühle zu sprechen, ist auf B1-Niveau wichtig und macht deine Sprache persönlicher und reicher."
+      ], numero: 23, titre: "Sentiments de bonheur", titreDE: "Glücksgefühle",
       theme: "Sentiments de bonheur", duree: 50,
       objectifs: ["Exprimer le bonheur et la satisfaction", "Décrire des émotions positives"],
       grammairePoints: ["Adjectifs + prépositions", "sich freuen über/auf"],
@@ -351,7 +396,12 @@ window.MODULE_B12 = {
       ]
     },
     {
-      id: "b1t24", numero: 24, titre: "Les qualités", titreDE: "Eigenschaften",
+      id: "b1t24",
+      vocCoursDE: [
+        "In diesem Thema lernst du **Charaktereigenschaften** (les traits de caractère). Schlüsselwörter sind *die Eigenschaft* (la qualité), *ehrlich* (honnête), *zuverlässig* (fiable), *geduldig* (patient), *großzügig* (généreux), *ehrgeizig* (ambitieux).",
+        "Diese Adjektive helfen dir, Menschen genau zu **beschreiben**. Lerne sie als **Gegensatzpaare**: *geduldig / ungeduldig*, *ehrlich / unehrlich*, *fleißig / faul*. Mit der Vorsilbe **un-** bildest du oft das Gegenteil.",
+        "Tipp: Beschreibe deinen eigenen Charakter oder den einer Person, die du bewunderst, mit drei oder vier Eigenschaften. Persönliche Beschreibungen verankern das Vokabular am besten."
+      ], numero: 24, titre: "Les qualités", titreDE: "Eigenschaften",
       theme: "Qualités et caractère", duree: 50,
       objectifs: ["Décrire le caractère d'une personne", "Décliner l'adjectif"],
       grammairePoints: ["Déclinaison de l'adjectif", "ein netter Mensch"],
@@ -388,7 +438,12 @@ window.MODULE_B12 = {
       ]
     },
     {
-      id: "b1t25", numero: 25, titre: "Stress, colère et joie", titreDE: "Stress, Ärger und Freude",
+      id: "b1t25",
+      vocCoursDE: [
+        "Dieses Thema sammelt Wörter für **Emotionen** – von Stress bis Freude. Schlüsselwörter sind *der Stress*, *der Ärger* (la contrariété), *die Freude* (la joie), *die Angst* (la peur), *sich ärgern über* (s'énerver contre), *sich entspannen* (se détendre).",
+        "Viele Gefühlsverben sind **reflexiv** und stehen mit einer **Präposition**: *sich ärgern **über*** + Akkusativ, *sich freuen **über/auf***, *Angst haben **vor*** + Dativ. Lerne Verb, Reflexivpronomen und Präposition immer zusammen.",
+        "Tipp: Sag, was dich stresst und was dich entspannt. Wenn du Gefühle mit echten Situationen deines Lebens verbindest, lernst du das Vokabular schneller und sprichst natürlicher."
+      ], numero: 25, titre: "Stress, colère et joie", titreDE: "Stress, Ärger und Freude",
       theme: "Stress et émotions", duree: 50,
       objectifs: ["Exprimer le stress et l'agacement", "Proposer des solutions"],
       grammairePoints: ["Causes et conséquences", "weil, deshalb"],
@@ -426,7 +481,12 @@ window.MODULE_B12 = {
       ]
     },
     {
-      id: "b1t26", numero: 26, titre: "Cuisine et restaurant", titreDE: "Essen und Restaurant",
+      id: "b1t26",
+      vocCoursDE: [
+        "In diesem Thema vertiefst du das Vokabular rund ums **Essen** und das **Restaurant**. Schlüsselwörter sind *die Speisekarte* (la carte), *die Vorspeise* (l'entrée), *das Hauptgericht* (le plat principal), *der Nachtisch* (le dessert), *bestellen*, *die Rechnung*.",
+        "Beachte die **Mahlzeiten** (*das Frühstück, das Mittagessen, das Abendessen*) und nützliche Sätze im Restaurant: « *Ich hätte gern…* », « *Zahlen, bitte!* », « *Schmeckt es Ihnen?* ». Für Essen benutzt man das Verb *schmecken* (« *Das schmeckt gut* »).",
+        "Tipp: Spiel eine ganze Restaurant-Szene durch: Platz nehmen, bestellen, essen, bezahlen. Dieses sehr praktische Vokabular lernst du am besten als zusammenhängenden Ablauf."
+      ], numero: 26, titre: "Cuisine et restaurant", titreDE: "Essen und Restaurant",
       theme: "Alimentation et restaurant", duree: 55,
       objectifs: ["Suivre et donner une recette", "Commander au restaurant"],
       grammairePoints: ["Impératif", "le passif (préparation)"],
@@ -463,7 +523,12 @@ window.MODULE_B12 = {
       ]
     },
     {
-      id: "b1t27", numero: 27, titre: "Invitations et vœux", titreDE: "Einladungen und Glückwünsche",
+      id: "b1t27",
+      vocCoursDE: [
+        "Dieses letzte B1-Thema dreht sich um **Einladungen** und **Glückwünsche** – das soziale Leben. Schlüsselwörter sind *die Einladung* (l'invitation), *einladen* (inviter), *die Feier / das Fest* (la fête), *gratulieren* (féliciter), *der Glückwunsch* (les vœux).",
+        "Lerne die festen **Glückwunsch-Formeln**: « *Herzlichen Glückwunsch zum Geburtstag!* », « *Frohe Weihnachten!* », « *Gute Besserung!* » (bon rétablissement). Das Verb *gratulieren* steht mit **Dativ**: « *Ich gratuliere **dir*** ».",
+        "Tipp: Lerne diese Formeln als feste Blöcke auswendig – sie sind im Alltag goldwert. Stell dir vor, du schreibst eine Einladung oder eine Glückwunschkarte auf Deutsch."
+      ], numero: 27, titre: "Invitations et vœux", titreDE: "Einladungen und Glückwünsche",
       theme: "Invitations et vœux", duree: 50,
       objectifs: ["Inviter, accepter, refuser poliment", "Présenter ses vœux"],
       grammairePoints: ["Konjunktiv II (politesse)", "formules de vœux"],
