@@ -134,11 +134,7 @@
     if (target === "fr") return node;
     node.classList.add("xl");
     const plain = stripMd(text);
-    // Lien de repli « Traduire avec Google » toujours disponible…
-    const a = el("a", "xl-google", "🌐 " + window.I18N.t("translate_google"));
-    a.href = window.I18N.googleUrl(plain, target, "fr"); a.target = "_blank"; a.rel = "noopener";
-    node.appendChild(a);
-    // …remplacé par la traduction automatique du navigateur si elle aboutit.
+    // Traduction automatique du navigateur si disponible ; sinon, texte de base.
     window.I18N.translate(plain, target, "fr").then((out) => {
       if (out && out !== plain) {
         node.innerHTML = mdLite(out);

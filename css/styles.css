@@ -869,7 +869,6 @@ html.can-install .install-btn { display: inline-flex; }
 .cours-tag-body { font-size: 14.5px; line-height: 1.65; }
 
 .xl-tag { display: inline-block; margin-left: 8px; font-size: 11px; color: var(--muted, #64748b); background: rgba(100, 116, 139, .12); border-radius: 6px; padding: 1px 7px; vertical-align: middle; }
-.xl-google { display: inline-block; margin-top: 6px; font-size: 12.5px; color: var(--blue, #2563eb); text-decoration: underline; }
 
 .dash-home { margin-left: auto; }
 .lesson-nav-3 { flex-wrap: wrap; }
