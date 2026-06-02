@@ -1703,18 +1703,27 @@
       frag.appendChild(intro);
     }
     if (I) frag.appendChild(buildLanguagePicker({ onPick: () => renderLanguagePage() }));
+    const chosen = I && I.isChosen();
     const nav = el("div", "lesson-nav");
     nav.appendChild(el("span", ""));
-    const cont = el("a", "btn btn-primary", (I ? I.t("continue") : "Continuer") + " →");
-    cont.href = dest;
-    nav.appendChild(cont);
+    if (chosen) {
+      const cont = el("a", "btn btn-primary", (I ? I.t("continue") : "Continuer") + " →");
+      cont.href = dest;
+      nav.appendChild(cont);
+    } else {
+      // Choix OBLIGATOIRE : aucun bouton « continuer » tant qu'on n'a pas choisi.
+      nav.appendChild(el("span", "lang-required", "👆 Choisis ta langue pour commencer à apprendre."));
+    }
     frag.appendChild(nav);
     app.innerHTML = "";
     app.appendChild(frag);
     if (window.TG) {
-      if (premier) { try { window.TG.hideBackButton && window.TG.hideBackButton(); } catch (e) {} }
-      else window.TG.showBackButton(() => { location.hash = "#/menu"; });
-      window.TG.setMainButton((I ? I.t("continue") : "Continuer") + " →", () => { location.hash = dest; });
+      try { window.TG.hideBackButton && window.TG.hideBackButton(); } catch (e) {}
+      if (!chosen) { try { window.TG.hideMainButton && window.TG.hideMainButton(); } catch (e) {} }
+      else {
+        if (!premier) window.TG.showBackButton(() => { location.hash = "#/menu"; });
+        window.TG.setMainButton((I ? I.t("continue") : "Continuer") + " →", () => { location.hash = dest; });
+      }
     }
     try { localizeUI(app); } catch (e) {}
     window.scrollTo(0, 0);
@@ -2598,8 +2607,9 @@
     const rawHash = location.hash;
     const hash = rawHash || "#/";
     let m;
-    // Étape 0 — tout premier écran : le choix de la langue (avant le menu).
-    if (window.I18N && !window.I18N.isChosen() && besoinOnboarding() && !hash.match(/^#\/langue/)) {
+    // Étape 0 OBLIGATOIRE — choix de la langue : tant qu'aucune langue n'est
+    // choisie, on ne peut RIEN faire d'autre (ni menu, ni cours).
+    if (window.I18N && !window.I18N.isChosen() && !hash.match(/^#\/langue/)) {
       return renderLanguagePage();
     }
     if (hash.match(/^#\/menu/)) renderMenu();

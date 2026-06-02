@@ -1003,3 +1003,7 @@ a.pflege-exam:hover { background: #ccfbf1; }
 .pflege-card .menu-badge { position: absolute; top: 14px; right: 14px; }
 [data-tg-scheme="dark"] .pflege-ic { background: #134e4a; }
 [data-tg-scheme="dark"] .pflege-tag { background: #134e4a; color: #5eead4; }
+
+/* Choix de langue obligatoire : indice quand aucune langue n'est encore choisie */
+.lang-required { color: var(--blue-dark); font-weight: 700; font-size: .95rem; background: var(--blue-light); border-radius: 10px; padding: 10px 14px; }
+[data-tg-scheme="dark"] .lang-required { background: #15263f; color: #bfdbfe; }
