@@ -2458,9 +2458,8 @@
     else if (hash.match(/^#\/revision/)) renderRevision();
     else if (hash.match(/^#\/langue/)) renderLanguagePage();
     else if (hash.match(/^#\/stats/)) renderDashboard();
-    else if (rawHash === "") renderMenu();            // ouverture de l'app → le hub
-    else if (besoinOnboarding()) renderOnboarding();
-    else renderHome();                                 // #/ explicite = aperçu du cours
+    else if (rawHash === "#/") { if (besoinOnboarding()) renderOnboarding(); else renderHome(); } // aperçu du cours (lien explicite)
+    else renderMenu(); // ouverture de l'app : hash vide OU « #tgWebAppData… » injecté par Telegram → le hub
     try { localizeUI(app); } catch (e) {} // traduit l'interface dans la langue choisie
   }
 
