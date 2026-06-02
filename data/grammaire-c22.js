@@ -10,6 +10,12 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g12", titre: "Le passif", titreDE: "Das Passiv", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Maîtriser le passif à tous les temps", "Employer le passif avec modal"],
     grammairePoints: ["werden + participe (tous temps)", "sein-Passiv, modal + werden"],
+    coursDE: [
+      "Auf C2-Niveau beherrschst du das **Passiv** in sämtlichen Zeitformen und setzt es bewusst ein, um Sachverhalte unpersönlich, objektiv und handlungsorientiert darzustellen – der typische Duktus wissenschaftlicher und amtlicher Texte.",
+      "Das **Vorgangspassiv** (*werden* + Partizip II) erscheint in allen Tempora: « *wird geprüft* », « *wurde geprüft* », « *ist geprüft **worden*** », « *war geprüft worden* », « *wird geprüft werden* ». Beachte stets *worden* (nicht *geworden*) im Perfekt.",
+      "Das **Zustandspassiv** (*sein* + Partizip II) bezeichnet das **Resultat**: « *Das Geschäft **ist geöffnet*** » beschreibt den Zustand, « *wird geöffnet* » den Vorgang. Diese Opposition präzise zu treffen, ist stilistisch entscheidend.",
+      "Anspruchsvoll ist das **Passiv mit Modalverb**: « *Die Frist **kann verlängert werden*** », im Nebensatz « *…, dass die Frist verlängert werden **kann*** ». Auch das **unpersönliche Passiv** ohne Subjekt (« *Hier **wird** nicht **geraucht*** ») gehört zum sicheren C2-Gebrauch."
+    ],
     grammaire: [
       { exemples: [{"de":"Das Gesetz wurde 2020 verabschiedet.","fr":"La loi a été adoptée en 2020."},{"de":"Der Brief muss heute unterschrieben werden.","fr":"La lettre doit être signée aujourd'hui."}], regle: "Passif à **tous les temps** (*wird / wurde / ist … worden / wird … werden*) ; avec modal : participe + **werden** (fin).", attention: "Perfekt passif : *werden → **worden*** ; agent : *von + datif*, cause : *durch + accusatif*.", titre: "Le passif sous toutes ses formes", intro: "Le Vorgangspassiv (werden + participe) existe à tous les temps ; avec un modal, l'infinitif passif (… werden) va à la fin.",
         tableau: { entetes: ["Temps", "Forme", "Exemple"], lignes: [["présent", "wird + participe", "Das Haus wird gebaut."], ["prétérit", "wurde + participe", "Das Haus wurde gebaut."], ["parfait", "ist + participe + worden", "Das Haus ist gebaut worden."], ["futur", "wird + participe + werden", "Das Haus wird gebaut werden."], ["+ modal", "muss … participe + werden", "Es muss gebaut werden."]] },
@@ -28,6 +34,12 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g13", titre: "Substituts du passif", titreDE: "Passiversatzformen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Remplacer le passif élégamment", "Employer man, sich lassen, sein+zu+Inf., -bar"],
     grammairePoints: ["man, sich lassen", "sein + zu + Inf., adjectifs en -bar"],
+    coursDE: [
+      "Neben dem eigentlichen Passiv verfügt das Deutsche über zahlreiche **Passiversatzformen**, die eine passivische Bedeutung – häufig verbunden mit Möglichkeit oder Notwendigkeit – ohne *werden* ausdrücken. Ihre Beherrschung verleiht dem Stil Variation.",
+      "Die wichtigsten Konstruktionen: **sich lassen + Infinitiv** (Möglichkeit: « *Das **lässt sich** leicht beweisen* »), **sein + zu + Infinitiv** (Notwendigkeit/Möglichkeit: « *Die Regeln **sind** strikt **einzuhalten*** »), und das unpersönliche **man** (« *So etwas **sagt man** nicht* »).",
+      "Hinzu treten **Adjektive auf -bar, -lich, -abel**, die eine passive Möglichkeit ausdrücken: *machbar* (= kann gemacht werden), *unlösbar, verständlich, akzeptabel*. Sie verdichten ganze Relativsätze zu einem einzigen Wort.",
+      "Auch reflexive Wendungen mit medialer Bedeutung (« *Das Buch **liest sich** gut* », « *Die Tür **öffnet sich*** ») zählen hierher. Die Wahl zwischen echtem Passiv und Ersatzform ist auf C2-Niveau eine **stilistische** Entscheidung, mit der du Nuancen fein steuerst."
+    ],
     grammaire: [
       { exemples: [{"de":"Das Buch liest sich gut.","fr":"Ce livre se lit bien."},{"de":"Das Problem ist nicht zu lösen.","fr":"Le problème ne peut pas être résolu."}], regle: "Alléger le passif : *man*, *sich lassen* (= können werden), *sein + zu + Inf.* (= müssen/können werden), adjectifs en **-bar**.", attention: "*Das Buch liest **sich** gut* : tournure pronominale à valeur **passive**.", titre: "Les alternatives au passif", intro: "Pour alléger le style, on remplace le passif par des tournures actives ou modales.",
         tableau: { entetes: ["Forme", "Exemple", "Équivaut à"], lignes: [["man", "Man löst das Problem.", "Das Problem wird gelöst."], ["sich lassen", "Das lässt sich lösen.", "kann gelöst werden"], ["sein + zu + Inf.", "Das ist zu lösen.", "muss/kann gelöst werden"], ["adjectif -bar", "lösbar, machbar", "kann gelöst/gemacht werden"], ["sich + Inf.", "Das Buch liest sich gut.", "kann gut gelesen werden"]] },
@@ -46,6 +58,12 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g14", titre: "Les verbes modaux", titreDE: "Die Modalverben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Maîtriser le sens subjectif des modaux", "Combiner modal, temps et passif"],
     grammairePoints: ["müsste, dürfte, soll, will (subjectif)", "hätte … müssen"],
+    coursDE: [
+      "Die **Modalverben** entfalten auf C2-Niveau ihre ganze Bandbreite – von der objektiven Grundbedeutung über die subjektive Vermutung bis zur Wiedergabe fremder Aussagen. Erwartet wird, dass du diese Ebenen mühelos auseinanderhältst.",
+      "Im **subjektiven** Gebrauch drücken sie den Grad einer Vermutung aus: *müsste* (sehr wahrscheinlich), *dürfte* (begründete Annahme), *könnte* (möglich), *mag* (einräumend): « *Sie **dürfte** inzwischen angekommen sein* ».",
+      "Eine besondere Funktion haben *sollen* und *wollen* als **Verben der Redewiedergabe**: *sollen* gibt eine fremde Behauptung wieder (« *Er **soll** sehr vermögend sein* »), *wollen* eine zweifelhafte **Selbstbehauptung** (« *Er **will** nichts gewusst haben* »).",
+      "In der Vergangenheit verlangen die Modalverben den **doppelten Infinitiv**: « *Ich habe es nicht **machen können*** »; im Nebensatz rückt das Finitum davor: « *…, weil ich es nicht **habe** machen können* ». Diese Strukturen sicher zu handhaben, ist Spitzengrammatik."
+    ],
     grammaire: [
       { exemples: [{"de":"Sie soll sehr begabt sein.","fr":"On dit qu'elle est très douée."},{"de":"Er will nichts davon gewusst haben.","fr":"Il prétend n'en avoir rien su."}], regle: "Sens subjectif (supposition : *dürfte/müsste* ; rumeur : *sollen* ; prétention : *wollen*) + combinaisons passé/passif.", attention: "*Er **will** es nicht gewusst haben* = il **prétend** ne pas l'avoir su.", titre: "Modaux : objectif, subjectif, composé", intro: "Au C2, les modaux nuancent la supposition et se combinent au passé et au passif.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["supposition", "dürfte / müsste", "Er dürfte recht haben."], ["rumeur", "sollen", "Sie soll sehr begabt sein."], ["prétention", "wollen", "Er will es nicht gewusst haben."], ["passé + modal", "hätte … müssen", "Ich hätte fragen müssen."], ["passif + modal", "muss … werden", "Es muss geprüft werden."]] },
@@ -63,6 +81,12 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g15", titre: "Adjectifs : déclinaison et comparaison", titreDE: "Adjektive: Deklination und Komparation", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Décliner sans faute", "Maîtriser comparatif et superlatif (y compris irréguliers)"],
     grammairePoints: ["faible/mixte/forte", "-er / am -sten, irréguliers"],
+    coursDE: [
+      "Die **Deklination** und **Steigerung** der Adjektive sollten auf C2-Niveau vollständig automatisiert und auch in ihren Ausnahmen sicher sein. Sie bilden die Grundlage präziser, fehlerfreier Nominalphrasen.",
+      "Die drei Deklinationstypen – **schwach** (nach bestimmtem Artikel), **gemischt** (nach unbestimmtem Artikel/Possessiv) und **stark** (ohne Artikel) – musst du blind beherrschen, ebenso die Fälle nach *viele, einige, alle, beide* und nach *etwas/nichts* + großgeschriebenem Adjektiv.",
+      "Die **Komparation** bildet den Komparativ mit *-er + als*, den Superlativ mit *am …-sten*. Viele einsilbige Adjektive erhalten einen **Umlaut** (*alt → älter → am ältesten*). Einige Formen sind **unregelmäßig**: *gut → besser → am besten*, *viel → mehr*, *hoch → höher*, *nah → näher*.",
+      "Auf C2 kommen feine Punkte hinzu: endungslose Sonderfälle (*hoch* → ein *hoh**es** Haus*), nicht steigerbare Adjektive (*tot, rund, optimal*) und die korrekte attributive Steigerung (« *der **schönere** Garten* »). Diese Details trennen das Korrekte vom Druckreifen."
+    ],
     grammaire: [
       { exemples: [{"de":"Das ist der schönste Tag meines Lebens.","fr":"C'est le plus beau jour de ma vie."},{"de":"Heute ist es wärmer als gestern.","fr":"Aujourd'hui, il fait plus chaud qu'hier."}], regle: "Déclinaison (faible/mixte/forte) + degrés : comparatif **-er**, superlatif **am … -sten / der … -ste**, avec irréguliers.", attention: "Irréguliers : *gut → besser → am besten* ; *viel → mehr → am meisten* ; *hoch → höher*.", titre: "Déclinaison et degrés", intro: "L'adjectif épithète se décline selon le déterminant ; les degrés se forment en -er / am -sten, avec des irréguliers.",
         tableau: { entetes: ["Aspect", "Règle", "Exemple"], lignes: [["après der", "faible (-e/-en)", "der gute Wein"], ["après ein", "mixte", "ein guter Wein"], ["sans article", "forte", "guter Wein"], ["comparatif", "-er (+ Umlaut)", "alt → älter"], ["superlatif", "am -sten / der -ste", "am ältesten / der älteste"]] },
@@ -80,6 +104,12 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g16", titre: "Adjectifs et leurs compléments", titreDE: "Adjektive mit Ergänzungen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Employer adjectifs à datif/génitif", "Maîtriser adjectifs à préposition"],
     grammairePoints: ["+ datif (treu, ähnlich)", "+ génitif, + préposition"],
+    coursDE: [
+      "Viele **Adjektive** verlangen – wie Verben – eine feste **Ergänzung** in einem bestimmten Kasus oder mit einer festen Präposition. Auf C2-Niveau gehört die sichere Rektion der Adjektive zum aktiven Können.",
+      "Eine Gruppe steht mit dem **Dativ**: *treu, ähnlich, bekannt, dankbar, fremd, überlegen, gewachsen*. Beispiel: « *Dieser Aufgabe ist er nicht **gewachsen*** », « *Das Bild ist dem Original **ähnlich*** ».",
+      "Eine gehobene, schriftsprachliche Gruppe regiert den **Genitiv**: *bewusst, sicher, würdig, fähig, verdächtig, schuldig*. Beispiel: « *Ich bin mir **dessen** **bewusst*** », « *Er gilt **des Diebstahls** **verdächtig*** ».",
+      "Die größte Gruppe verlangt eine feste **Präposition** mit ihrem Kasus: *stolz auf, reich an, arm an, fähig zu, interessiert an, abhängig von*. Wie bei den Verben verweist man auf Sachen mit *wo(r)-/da(r)-*. Die vollständige Rektion eines Adjektivs zu kennen, ist für idiomatisches Formulieren unerlässlich."
+    ],
     grammaire: [
       { exemples: [{"de":"Ich bin mir des Risikos bewusst.","fr":"Je suis conscient du risque."},{"de":"Der Sohn ist dem Vater sehr ähnlich.","fr":"Le fils ressemble beaucoup au père."}], regle: "La **rection des adjectifs** : datif (*treu, ähnlich*), **génitif** (*(sich) bewusst, sicher*), préposition (*stolz auf, fähig zu*).", attention: "Adjectifs à génitif (soutenus) : *Ich bin mir des Problems **bewusst***.", titre: "La rection des adjectifs", intro: "Certains adjectifs régissent un datif, un génitif ou une préposition fixe.",
         tableau: { entetes: ["Adjectif", "Complément", "Exemple"], lignes: [["treu / ähnlich", "+ Dat.", "Er bleibt sich treu."], ["bewusst / sicher", "+ Gen.", "Ich bin mir der Lage bewusst."], ["stolz", "auf + Akk.", "stolz auf den Erfolg"], ["fähig", "zu + Dat.", "zu allem fähig"], ["reich", "an + Dat.", "reich an Erfahrung"]] },
@@ -97,6 +127,12 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g17", titre: "Formation des adjectifs", titreDE: "Wortbildung: Adjektive", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Reconnaître les suffixes adjectivaux", "Former des adjectifs à partir de noms/verbes"],
     grammairePoints: ["-bar, -los, -haft, -ig", "-lich, -sam, -voll"],
+    coursDE: [
+      "Auch **Adjektive** entstehen größtenteils durch Ableitung mit **Suffixen**. Wer ihre Bedeutung kennt, versteht und bildet zahllose Adjektive selbst – eine Schlüsselkompetenz für den C2-Wortschatz und für das Lesen anspruchsvoller Texte.",
+      "Produktive Suffixe: **-bar** (Möglichkeit, passivisch: *essbar, lesbar*), **-los** (ohne: *arbeitslos, hilflos*), **-voll** (mit viel: *wertvoll, liebevoll*), **-reich** (*erfolgreich*), **-arm** (*kalorienarm*).",
+      "Weitere häufige Suffixe: **-ig** (*sonnig, mutig*), **-lich** (Art, Abschwächung: *freundlich, rötlich*), **-isch** (Herkunft/Art, oft wertend: *neidisch*), **-haft** (*vorbildhaft*), **-sam** (*sparsam*). Beachte den feinen Unterschied: *kindlich* (positiv: wie ein Kind) vs. *kindisch* (negativ: unreif).",
+      "Hinzu kommt die **Präfigierung** mit *un-* (Verneinung: *unmöglich, unklar*) und mit Steigerungspräfixen wie *hoch-, erz-, blut-* (*hochmodern, blutjung*). Diese Wortbildungsmuster aktiv zu nutzen, verleiht deinem Ausdruck Reichtum und Genauigkeit."
+    ],
     grammaire: [
       { exemples: [{"de":"Das Problem ist durchaus lösbar.","fr":"Le problème est tout à fait soluble."},{"de":"Eine sinnvolle Lösung wäre besser.","fr":"Une solution sensée serait préférable."}], regle: "Suffixes adjectivaux : **-bar** (possibilité), **-los** (sans), **-haft, -ig, -lich**, **-voll/-reich** (abondance).", attention: "Opposition utile : *-voll* (plein de) ↔ *-los* (sans) : *sinnvoll / sinnlos*.", titre: "Les suffixes adjectivaux", intro: "On forme des adjectifs par dérivation ; chaque suffixe apporte une nuance.",
         tableau: { entetes: ["Suffixe", "Sens", "Exemple"], lignes: [["-bar", "possibilité (passive)", "lösbar, essbar"], ["-los", "absence (sans)", "arbeitslos, hilflos"], ["-haft", "qui a la qualité de", "vorbildhaft, fehlerhaft"], ["-ig", "qualité", "sonnig, mutig"], ["-lich", "relation/atténuation", "freundlich, rötlich"], ["-voll / -reich", "abondance", "wertvoll, erfolgreich"]] },
@@ -114,6 +150,12 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g18", titre: "Le style nominal", titreDE: "Der Nominalstil", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Transformer le verbal en nominal", "Reconnaître le style écrit soutenu"],
     grammairePoints: ["Nominalstil ↔ Verbalstil", "prépositions + nominalisation"],
+    coursDE: [
+      "Der **Nominalstil** verdichtet Informationen, indem er Verben und ganze Nebensätze in **Nomengruppen** umwandelt. Er ist der charakteristische Duktus von Wissenschaft, Recht und Verwaltung. Auf C2-Niveau wechselst du souverän zwischen Nominal- und Verbalstil.",
+      "Die Umwandlung betrifft vor allem **adverbiale Nebensätze**, die zu **Präpositionalphrasen** werden: *weil* → *wegen/aufgrund* (+ Genitiv), *nachdem* → *nach*, *bevor* → *vor*, *obwohl* → *trotz*, *indem* → *durch*. Beispiel: « *Nach **Abschluss der Prüfung**… » statt « Nachdem die Prüfung abgeschlossen war,… ».",
+      "Kennzeichnend sind abgeleitete Verbalnomen (*die Durchführung, die Berücksichtigung, das Inkrafttreten*) und die Verbindung mit Funktionsverben. Der Stil wirkt **objektiv, präzise und dicht**, kann aber bei Übertreibung schwerfällig und unpersönlich werden.",
+      "Die eigentliche C2-Kunst besteht darin, beide Register zu **beherrschen und bewusst zu mischen**: den Nominalstil für sachliche Präzision, den Verbalstil für Lebendigkeit. Einen nominalen Text in einen verbalen umzuformen (und umgekehrt) ist eine typische Aufgabe auf höchstem Niveau."
+    ],
     grammaire: [
       { regle: "Le **style nominal** condense une subordonnée en groupe nominal (préposition + nom, souvent génitif) — typique de l'écrit soutenu.", attention: "Excessif, il **alourdit** ; au C2, on l'emploie **à bon escient**.", exemples: [{"de":"Wegen steigender Preise sank die Nachfrage.","fr":"En raison de la hausse des prix, la demande a baissé."},{"de":"Nach Prüfung der Unterlagen entschied sie.","fr":"Après examen des documents, elle a décidé."}], titre: "Du verbe au nom (registre écrit)", intro: "Le style nominal condense une subordonnée en groupe nominal ; il est typique de l'écrit administratif et scientifique.",
         tableau: { entetes: ["Verbal (subordonnée)", "Nominal (groupe)"], lignes: [["weil die Preise steigen", "wegen steigender Preise"], ["nachdem man geprüft hat", "nach der Prüfung"], ["obwohl es Widerstand gab", "trotz des Widerstands"], ["wenn man ankommt", "bei der Ankunft"], ["um zu informieren", "zur Information"]] },
@@ -132,6 +174,12 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g19", titre: "Prépositions de la langue écrite", titreDE: "Präpositionen der Schriftsprache", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Employer les prépositions soutenues à génitif", "Choisir la nuance exacte"],
     grammairePoints: ["mittels, anhand, infolge", "angesichts, seitens, zwecks"],
+    coursDE: [
+      "Die gehobene **Schriftsprache** verfügt über eine Reihe von **Präpositionen**, die in der Alltagssprache kaum vorkommen, in akademischen, juristischen und administrativen Texten aber unentbehrlich sind. Die meisten regieren den **Genitiv**.",
+      "Sie drücken oft ein **Mittel** oder eine **Grundlage** aus: **mittels** (au moyen de), **anhand** (à l'aide de), **kraft** (en vertu de), **vermöge** (en raison de). Beispiel: « ***Anhand** der Daten lässt sich zeigen…* », « ***Mittels** eines Verfahrens…* ».",
+      "Andere bezeichnen **Grund, Bezug oder Herkunft**: **infolge** (par suite de), **angesichts** (au vu de), **hinsichtlich / bezüglich** (concernant), **zwecks** (aux fins de), **seitens / vonseiten** (de la part de). Beispiel: « ***Seitens** der Behörde wurden keine Einwände erhoben* ».",
+      "Diese Präpositionen heben den Text auf eine **formelle, distanzierte Ebene** und ermöglichen eine knappe, präzise Ausdrucksweise. Ihre korrekte Genitiv-Rektion und ihr maßvoller Einsatz sind ein deutliches Zeichen stilistischer Souveränität auf C2-Niveau."
+    ],
     grammaire: [
       { exemples: [{"de":"Mittels eines Codes wird entschlüsselt.","fr":"On déchiffre au moyen d'un code."},{"de":"Infolge des Unfalls war die Straße gesperrt.","fr":"À la suite de l'accident, la route était fermée."}], regle: "Prépositions à génitif de l'écrit : *mittels* (au moyen de), *anhand* (à l'aide de), *infolge* (à la suite de), *angesichts, seitens, zwecks*.", attention: "Surtout à l'**écrit** ; à l'oral on dit plutôt *mit, wegen, von … aus*.", titre: "Les prépositions à génitif du registre écrit", intro: "La langue administrative et scientifique emploie des prépositions à génitif précises.",
         tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["mittels", "au moyen de", "mittels eines Codes"], ["anhand", "à l'aide de", "anhand der Daten"], ["infolge", "à la suite de", "infolge des Unfalls"], ["angesichts", "compte tenu de", "angesichts der Lage"], ["seitens", "de la part de", "seitens der Behörde"], ["zwecks", "aux fins de", "zwecks Überprüfung"]] },
