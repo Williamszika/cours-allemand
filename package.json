@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "name": "cours-allemand",
+  "version": "1.0.0",
+  "description": "Cours d'allemand A1->C2 + Deutsch fuer die Pflege (Mini App). Fonctions serverless dans /api (proxy TTS ElevenLabs).",
+  "license": "UNLICENSED"
+}
