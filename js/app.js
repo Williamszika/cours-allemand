@@ -162,7 +162,7 @@
     ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag", ".immersion-banner", ".genre-legende",
     ".cours-tag", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points", ".cours-table", "table",
     ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
-    ".trou-input", ".trou-phrase", ".trad-source", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript", ".ecoute-player", ".exo-question", ".exo-indice",
+    ".trou-input", ".trou-phrase", ".trad-source", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript", ".exo-question",
     ".xl", ".rp-fr", ".rp-bubble", ".gp-pts", ".stat-n", ".goal-num", ".nc-code", ".lang-name", ".lang-flag", ".badge-ic", ".comp-score",
     "code", "input", "textarea", "[contenteditable]"
   ].join(",");
@@ -190,6 +190,18 @@
         if (out && out !== t) groups[t].forEach((node) => { node.nodeValue = node.nodeValue.replace(t, function () { return out; }); });
       });
     });
+    // Attributs textuels (placeholders d'exercices, etc.) — pas captés par le TreeWalker.
+    try {
+      Array.prototype.forEach.call(root.querySelectorAll("[placeholder], [data-placeholder]"), function (e) {
+        [["placeholder", e.getAttribute("placeholder")], ["data-placeholder", e.getAttribute("data-placeholder")]].forEach(function (pair) {
+          const attr = pair[0], v = pair[1];
+          if (!v || !/[A-Za-zÀ-ÿ]/.test(v) || e.getAttribute("data-l10n-" + attr) === "1") return;
+          e.setAttribute("data-l10n-" + attr, "1");
+          const tt = v.trim();
+          window.I18N.translate(tt, lang, "fr").then(function (out) { if (out && out !== tt) e.setAttribute(attr, v.replace(tt, function () { return out; })); });
+        });
+      });
+    } catch (e) {}
   }
   window.localizeUI = localizeUI;
   function exLabel(ex, key, vars) { return ex && ex.de ? window.I18N.tIn("de", key, vars) : window.I18N.t(key, vars); }
