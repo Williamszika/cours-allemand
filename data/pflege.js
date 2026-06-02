@@ -391,12 +391,306 @@ window.PFLEGE = {
         ] } }
     ]},
     { code: "B1", titre: "Communiquer dans le soin", lecons: [
-      { id: "pb1-1", dom: "kh", titreDE: "Aufnahme eines Patienten", titre: "Admission d'un patient", desc: "Données personnelles et anamnèse simple." },
-      { id: "pb1-2", dom: "grund", titreDE: "Schmerzen erfassen", titre: "Évaluer la douleur", desc: "« Où avez-vous mal ? », l'échelle de la douleur." },
-      { id: "pb1-3", dom: "grund", titreDE: "Medikamente verabreichen", titre: "Donner les médicaments", desc: "Comprimés, gouttes, dosage et horaires." },
-      { id: "pb1-4", dom: "kh", titreDE: "Übergabe im Team", titre: "La transmission d'équipe", desc: "La relève : transmettre l'essentiel sans erreur." },
-      { id: "pb1-5", dom: "heim", titreDE: "Mit Angehörigen sprechen", titre: "Parler aux proches", desc: "Informer et rassurer les familles." },
-      { id: "pb1-6", dom: "grund", titreDE: "Notfälle erkennen und melden", titre: "Reconnaître et signaler une urgence", desc: "Chute, malaise, perte de connaissance." }
+      { id: "pb1-1", dom: "kh", titreDE: "Aufnahme eines Patienten", titre: "Admission d'un patient", desc: "Données personnelles et anamnèse simple.",
+        vocCoursDE: [
+          "Bei der **Aufnahme** kommt ein neuer Patient ins Krankenhaus. Du fragst nach den persönlichen Daten: Name, Geburtsdatum und Krankenversicherung.",
+          "Wichtig sind auch die **Beschwerden** (die Probleme des Patienten), **Vorerkrankungen** und **Allergien**. Frag freundlich und langsam und trag alles in den Aufnahmebogen ein."
+        ],
+        vocabulaire: [
+          { de: "die Aufnahme", fr: "l'admission", ex: "Die Aufnahme dauert etwa zwanzig Minuten." },
+          { de: "aufnehmen", fr: "admettre / accueillir", ex: "Wir nehmen den Patienten jetzt auf." },
+          { de: "die Beschwerden", fr: "les troubles / plaintes", ex: "Welche Beschwerden haben Sie?" },
+          { de: "die Vorerkrankung", fr: "l'antécédent médical", ex: "Haben Sie Vorerkrankungen?" },
+          { de: "die Allergie", fr: "l'allergie", ex: "Haben Sie eine Allergie gegen Medikamente?" },
+          { de: "die Versichertenkarte", fr: "la carte d'assuré", ex: "Bitte geben Sie mir Ihre Versichertenkarte." },
+          { de: "das Geburtsdatum", fr: "la date de naissance", ex: "Wie ist Ihr Geburtsdatum?" },
+          { de: "der Aufnahmebogen", fr: "le formulaire d'admission", ex: "Ich fülle den Aufnahmebogen aus." },
+          { de: "die Station", fr: "le service / l'unité", ex: "Sie kommen auf die Station 3." },
+          { de: "der Hausarzt", fr: "le médecin traitant", ex: "Wer ist Ihr Hausarzt?" }
+        ],
+        grammaire: [
+          { titre: "Le passé composé (Perfekt) pour l'anamnèse", titreDE: "Das Perfekt",
+            regle: "Pour demander ce qui s'est passé, on utilise le Perfekt : haben/sein + participe passé (à la fin). Ex. : « Wann haben die Beschwerden angefangen? » On emploie sein pour un mouvement (stürzen, kommen), haben dans les autres cas.",
+            points: [ "« Was ist passiert? » — Qu'est-il arrivé ?", "« Seit wann haben Sie Schmerzen? » — Depuis quand avez-vous mal ?", "« Ich habe schon Medikamente genommen. »" ],
+            exemples: [
+              { de: "Wann haben die Beschwerden angefangen?", fr: "Frage nach dem Beginn — Perfekt mit *haben*." },
+              { de: "Der Patient ist gestürzt.", fr: "Perfekt mit *sein* (Bewegung)." },
+              { de: "Ich habe gestern schlecht geschlafen.", fr: "Perfekt mit *haben*." }
+            ],
+            note: "Le participe passé (angefangen, gestürzt, geschlafen) se place toujours à la fin de la phrase." }
+        ],
+        dialogue: { titre: "Die Aufnahme", lieu: "An der Aufnahme im Krankenhaus", lignes: [
+          { loc: "Le soignant accueille le patient", de: "Guten Tag. Ich nehme Sie jetzt auf. Wie ist Ihr Name?", fr: "Bonjour. Je vais vous admettre. Quel est votre nom ?" },
+          { de: "Mein Name ist Peter Frank, geboren am 3. Mai 1958.", fr: "Je m'appelle Peter Frank, né le 3 mai 1958." },
+          { de: "Welche Beschwerden haben Sie?", fr: "Quels sont vos troubles ?" },
+          { de: "Ich habe seit zwei Tagen starke Bauchschmerzen.", fr: "J'ai de fortes douleurs au ventre depuis deux jours." },
+          { de: "Haben Sie Vorerkrankungen oder Allergien?", fr: "Avez-vous des antécédents ou des allergies ?" },
+          { de: "Ja, ich habe Diabetes. Allergien habe ich keine.", fr: "Oui, j'ai du diabète. Je n'ai pas d'allergies." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Seit wann hat Herr Frank Bauchschmerzen?", options: ["Seit zwei Tagen", "Seit einer Woche", "Seit heute Morgen"], correct: 0 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "die Aufnahme", droite: "l'admission" }, { gauche: "die Beschwerden", droite: "les troubles" }, { gauche: "die Allergie", droite: "l'allergie" }, { gauche: "der Aufnahmebogen", droite: "le formulaire d'admission" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète au passé composé (Perfekt).", texte: "Wann {0} die Beschwerden angefangen?", accepte: [["haben"]], indice: "haben + Partizip à la fin." },
+          { type: "qcm", cat: "appro", consigne: "Choisis l'auxiliaire correct.", question: "Quelle phrase est juste ?", options: ["Der Patient hat gestürzt.", "Der Patient ist gestürzt.", "Der Patient gestürzt ist."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la question dans l'ordre.", mots: ["Haben", "Sie", "Vorerkrankungen"], correct: "Haben Sie Vorerkrankungen", traduction: "Avez-vous des antécédents médicaux ?" },
+          { type: "production", cat: "prod", prompt: "Demande poliment au patient son nom et sa date de naissance.", modele: "Wie ist Ihr Name und Ihr Geburtsdatum?" }
+        ],
+        documentation: { task: "Note à l'admission : M. Frank, douleurs abdominales depuis 2 jours, antécédent de diabète, pas d'allergie.", modele: "Herr Frank aufgenommen: seit 2 Tagen Bauchschmerzen, Vorerkrankung Diabetes, keine Allergien bekannt." },
+        rp: { scene: "Zika spielt den neuen Patienten Herrn Frank. Du nimmst ihn auf.", intro: "Begrüße ihn, frag nach Beschwerden, Vorerkrankungen und Allergien.", fin: "Sehr gut! Du hast die Aufnahme freundlich und vollständig gemacht.", tours: [
+          { de: "Guten Tag. Ich soll heute aufgenommen werden.", options: [ { de: "Guten Tag. Wie ist Ihr Name und Ihr Geburtsdatum?", ok: true }, { de: "Warten Sie draußen.", ok: false }, { de: "Das interessiert mich nicht.", ok: false } ] },
+          { de: "Peter Frank, geboren 1958. Ich habe Bauchschmerzen.", options: [ { de: "Seit wann haben Sie die Schmerzen?", ok: true }, { de: "Das ist nicht wichtig.", ok: false } ] },
+          { de: "Seit zwei Tagen. Was brauchen Sie noch?", options: [ { de: "Haben Sie Vorerkrankungen oder Allergien?", ok: true }, { de: "Nichts, gehen Sie.", ok: false } ] }
+        ] } },
+      { id: "pb1-2", dom: "grund", titreDE: "Schmerzen erfassen", titre: "Évaluer la douleur", desc: "« Où avez-vous mal ? », l'échelle de la douleur.",
+        vocCoursDE: [
+          "Um Schmerzen zu **erfassen**, fragst du: Wo? Seit wann? Wie stark? Mit der **Schmerzskala** von 0 bis 10 beschreibt der Patient die **Intensität**.",
+          "Du beschreibst die Art des Schmerzes: **stechend** (wie eine Nadel), **dumpf** (nicht klar), **drückend**. Manchmal **strahlt** der Schmerz in einen anderen Körperteil **aus**."
+        ],
+        vocabulaire: [
+          { de: "erfassen", fr: "évaluer / recueillir", ex: "Ich erfasse jetzt Ihre Schmerzen." },
+          { de: "die Schmerzskala", fr: "l'échelle de la douleur", ex: "Auf der Schmerzskala von 0 bis 10?" },
+          { de: "die Intensität", fr: "l'intensité", ex: "Wie ist die Intensität der Schmerzen?" },
+          { de: "stechend", fr: "lancinant (comme une piqûre)", ex: "Der Schmerz ist stechend." },
+          { de: "dumpf", fr: "sourd", ex: "Ich habe einen dumpfen Schmerz." },
+          { de: "drückend", fr: "oppressant", ex: "Es ist ein drückendes Gefühl in der Brust." },
+          { de: "ausstrahlen", fr: "irradier", ex: "Der Schmerz strahlt in den Arm aus." },
+          { de: "erträglich", fr: "supportable", ex: "Sind die Schmerzen erträglich?" },
+          { de: "unerträglich", fr: "insupportable", ex: "Der Schmerz ist fast unerträglich." },
+          { de: "lindern", fr: "soulager", ex: "Dieses Medikament lindert den Schmerz." }
+        ],
+        grammaire: [
+          { titre: "Préciser l'intensité et la durée", titreDE: "seit, wie stark, immer noch",
+            regle: "Pour situer la douleur dans le temps, on utilise seit + datif (seit zwei Tagen). Pour l'intensité, on demande « Wie stark? » et on compare : stark, stärker, am stärksten.",
+            points: [ "« Seit wann haben Sie Schmerzen? » + seit + datif", "« Wie stark sind die Schmerzen? » (0–10)", "« Wird es besser oder schlechter? »" ],
+            exemples: [
+              { de: "Ich habe seit drei Tagen Kopfschmerzen.", fr: "*seit* + Dativ für die Dauer." },
+              { de: "Heute sind die Schmerzen stärker als gestern.", fr: "Vergleich: *stärker als*." },
+              { de: "Der Schmerz strahlt in den Rücken aus.", fr: "trennbares Verb *ausstrahlen*." }
+            ],
+            note: "Note toujours l'intensité avec un chiffre (z. B. 7/10) — c'est précis et utile pour le médecin." }
+        ],
+        dialogue: { titre: "Wie stark sind die Schmerzen?", lieu: "Am Krankenbett", lignes: [
+          { loc: "Le soignant évalue la douleur", de: "Sie sehen blass aus. Haben Sie Schmerzen?", fr: "Vous êtes pâle. Avez-vous mal ?" },
+          { de: "Ja, hier in der Brust. Es drückt sehr.", fr: "Oui, ici dans la poitrine. Ça appuie fort." },
+          { de: "Auf einer Skala von 0 bis 10 — wie stark?", fr: "Sur une échelle de 0 à 10, c'est quelle intensité ?" },
+          { de: "Ungefähr 7. Und es strahlt in den linken Arm aus.", fr: "Environ 7. Et ça irradie dans le bras gauche." },
+          { de: "Seit wann haben Sie diese Schmerzen?", fr: "Depuis quand avez-vous ces douleurs ?" },
+          { de: "Seit etwa einer halben Stunde.", fr: "Depuis environ une demi-heure." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Wie stark sind die Schmerzen?", options: ["3 von 10", "7 von 10", "10 von 10"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le type de douleur à sa traduction.", paires: [ { gauche: "stechend", droite: "lancinant" }, { gauche: "dumpf", droite: "sourd" }, { gauche: "drückend", droite: "oppressant" }, { gauche: "unerträglich", droite: "insupportable" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète avec la bonne préposition de durée.", texte: "Ich habe {0} drei Tagen Schmerzen.", accepte: [["seit"]], indice: "seit + datif." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la bonne question.", question: "Comment demander l'intensité ?", options: ["Wo sind die Schmerzen?", "Wie stark sind die Schmerzen?", "Wann kommen Sie?"], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase dans l'ordre.", mots: ["Der", "Schmerz", "strahlt", "in", "den", "Arm", "aus"], correct: "Der Schmerz strahlt in den Arm aus", traduction: "La douleur irradie dans le bras." },
+          { type: "production", cat: "prod", prompt: "Demande au patient où il a mal et l'intensité sur 10.", modele: "Wo haben Sie Schmerzen und wie stark sind sie von 0 bis 10?" }
+        ],
+        documentation: { task: "Note la douleur : poitrine, oppressante, 7/10, irradiant dans le bras gauche, depuis 30 minutes.", modele: "Schmerzen Brustbereich, drückend, 7/10, Ausstrahlung in den linken Arm, seit ca. 30 Min." },
+        rp: { scene: "Zika spielt einen Patienten mit Schmerzen. Du erfasst die Schmerzen.", intro: "Frag, wo es wehtut, wie stark (0–10) und seit wann.", fin: "Sehr gut! Du hast die Schmerzen genau erfasst und kannst sie dokumentieren.", tours: [
+          { de: "Es tut so weh in der Brust!", options: [ { de: "Auf einer Skala von 0 bis 10 — wie stark?", ok: true }, { de: "Das ist sicher nicht so schlimm.", ok: false }, { de: "Trinken Sie einen Kaffee.", ok: false } ] },
+          { de: "So ungefähr 7. Es drückt sehr.", options: [ { de: "Strahlt der Schmerz irgendwohin aus?", ok: true }, { de: "Gut, dann warten wir.", ok: false } ] },
+          { de: "Ja, in den linken Arm. Seit einer halben Stunde.", options: [ { de: "Ich informiere sofort den Arzt und dokumentiere alles.", ok: true }, { de: "Das geht bestimmt von allein weg.", ok: false } ] }
+        ] } },
+      { id: "pb1-3", dom: "grund", titreDE: "Medikamente verabreichen", titre: "Donner les médicaments", desc: "Comprimés, gouttes, dosage et horaires.",
+        vocCoursDE: [
+          "Du **verabreichst** Medikamente nach Plan: die richtige **Dosis**, zur richtigen Zeit. Manche Tabletten nimmt man **nüchtern** (vor dem Essen), andere **nach dem Essen**.",
+          "Achte auf **Nebenwirkungen** und erkläre dem Patienten ruhig, was er nimmt. Bei Fragen hilft der **Beipackzettel**."
+        ],
+        vocabulaire: [
+          { de: "verabreichen", fr: "administrer", ex: "Ich verabreiche jetzt Ihre Medikamente." },
+          { de: "die Dosis", fr: "la dose", ex: "Die Dosis ist eine Tablette." },
+          { de: "die Tablette", fr: "le comprimé", ex: "Nehmen Sie die Tablette mit Wasser." },
+          { de: "die Tropfen", fr: "les gouttes", ex: "Zehn Tropfen am Morgen." },
+          { de: "nüchtern", fr: "à jeun", ex: "Dieses Medikament nehmen Sie nüchtern." },
+          { de: "die Nebenwirkung", fr: "l'effet secondaire", ex: "Das Medikament hat wenige Nebenwirkungen." },
+          { de: "einnehmen", fr: "prendre (un médicament)", ex: "Bitte nehmen Sie die Tablette jetzt ein." },
+          { de: "regelmäßig", fr: "régulièrement", ex: "Nehmen Sie das Medikament regelmäßig." },
+          { de: "die Spritze", fr: "la piqûre / seringue", ex: "Sie bekommen eine Spritze." },
+          { de: "der Beipackzettel", fr: "la notice", ex: "Lesen Sie bitte den Beipackzettel." }
+        ],
+        grammaire: [
+          { titre: "Indiquer le moment et la fréquence", titreDE: "vor/nach dem Essen, dreimal täglich",
+            regle: "Pour dire QUAND prendre un médicament : vor dem Essen (avant le repas), nach dem Essen (après), zur Nacht (au coucher). Pour la fréquence : einmal / zweimal / dreimal täglich (une/deux/trois fois par jour).",
+            points: [ "« Nehmen Sie die Tablette nach dem Essen. »", "« dreimal täglich » = 3 fois par jour", "« morgens, mittags und abends »" ],
+            exemples: [
+              { de: "Nehmen Sie die Tablette dreimal täglich.", fr: "Häufigkeit: *dreimal täglich*." },
+              { de: "Diese Tropfen nehmen Sie vor dem Essen.", fr: "Zeitpunkt: *vor dem Essen* (Dativ)." },
+              { de: "Das Medikament wirkt nach einer Stunde.", fr: "*nach* + Dativ für die Zeit." }
+            ],
+            note: "vor / nach / zu sont suivis du datif : vor dem Essen, nach dem Frühstück." }
+        ],
+        dialogue: { titre: "Die Medikamentengabe", lieu: "Im Patientenzimmer", lignes: [
+          { loc: "Le soignant apporte les médicaments", de: "Guten Morgen. Hier sind Ihre Medikamente für heute.", fr: "Bonjour. Voici vos médicaments pour aujourd'hui." },
+          { de: "Was muss ich denn nehmen?", fr: "Que dois-je prendre ?" },
+          { de: "Eine Tablette gegen den Blutdruck, dreimal täglich.", fr: "Un comprimé pour la tension, trois fois par jour." },
+          { de: "Vor oder nach dem Essen?", fr: "Avant ou après le repas ?" },
+          { de: "Nach dem Essen, bitte. Hier ist ein Glas Wasser.", fr: "Après le repas, s'il vous plaît. Voici un verre d'eau." },
+          { de: "Gut. Gibt es Nebenwirkungen?", fr: "Bien. Y a-t-il des effets secondaires ?" }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Wann soll der Patient die Tablette nehmen?", options: ["Nüchtern", "Nach dem Essen", "Zur Nacht"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "die Dosis", droite: "la dose" }, { gauche: "nüchtern", droite: "à jeun" }, { gauche: "die Nebenwirkung", droite: "l'effet secondaire" }, { gauche: "die Spritze", droite: "la piqûre" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète avec la bonne préposition (+ datif).", texte: "Nehmen Sie die Tablette {0} dem Essen.", accepte: [["nach", "vor"]], indice: "vor / nach + datif." },
+          { type: "qcm", cat: "appro", consigne: "Choisis « 3 fois par jour ».", question: "Comment dire « trois fois par jour » ?", options: ["dreimal täglich", "drei Tage lang", "um drei Uhr"], correct: 0 },
+          { type: "ordre", cat: "appro", consigne: "Remets la consigne dans l'ordre.", mots: ["Nehmen", "Sie", "die", "Tablette", "nach", "dem", "Essen"], correct: "Nehmen Sie die Tablette nach dem Essen", traduction: "Prenez le comprimé après le repas." },
+          { type: "production", cat: "prod", prompt: "Explique au patient de prendre un comprimé trois fois par jour, après le repas.", modele: "Nehmen Sie bitte eine Tablette dreimal täglich, nach dem Essen." }
+        ],
+        documentation: { task: "Note l'administration : comprimé pour la tension donné après le déjeuner, patient l'a pris sans problème.", modele: "Blutdrucktablette nach dem Mittagessen verabreicht, vom Patienten problemlos eingenommen." },
+        rp: { scene: "Zika spielt einen Patienten. Du verabreichst die Medikamente und erklärst sie.", intro: "Erkläre, was er nimmt, wie oft und wann.", fin: "Sehr gut! Klare Erklärung und korrekte Gabe — und du dokumentierst es.", tours: [
+          { de: "Was sind das für Tabletten?", options: [ { de: "Das ist eine Tablette gegen den Blutdruck.", ok: true }, { de: "Keine Ahnung, nehmen Sie sie einfach.", ok: false }, { de: "Das müssen Sie nicht wissen.", ok: false } ] },
+          { de: "Wie oft muss ich sie nehmen?", options: [ { de: "Dreimal täglich, nach dem Essen.", ok: true }, { de: "Wann Sie wollen.", ok: false } ] },
+          { de: "Gut, ich nehme sie jetzt.", options: [ { de: "Sehr gut. Ich dokumentiere die Gabe.", ok: true }, { de: "Egal, das schreibe ich nicht auf.", ok: false } ] }
+        ] } },
+      { id: "pb1-4", dom: "kh", titreDE: "Übergabe im Team", titre: "La transmission d'équipe", desc: "La relève : transmettre l'essentiel sans erreur.",
+        vocCoursDE: [
+          "Bei der **Übergabe** (am Ende der **Schicht**) informierst du das Team über jeden Patienten: Name, **Zustand** und was heute passiert ist.",
+          "Sag klar, ob der Zustand **stabil** oder **auffällig** ist, und ob sich etwas **verbessert** oder **verschlechtert** hat. Kurz, präzise, vollständig."
+        ],
+        vocabulaire: [
+          { de: "die Übergabe", fr: "la transmission / relève", ex: "Die Übergabe ist um 14 Uhr." },
+          { de: "die Schicht", fr: "le poste / l'équipe (de travail)", ex: "Meine Schicht endet jetzt." },
+          { de: "der Zustand", fr: "l'état", ex: "Der Zustand ist stabil." },
+          { de: "stabil", fr: "stable", ex: "Der Patient ist stabil." },
+          { de: "auffällig", fr: "anormal / remarquable", ex: "Der Blutdruck war heute auffällig." },
+          { de: "unauffällig", fr: "sans particularité", ex: "Die Werte sind unauffällig." },
+          { de: "sich verschlechtern", fr: "se dégrader", ex: "Sein Zustand hat sich verschlechtert." },
+          { de: "sich verbessern", fr: "s'améliorer", ex: "Die Schmerzen haben sich verbessert." },
+          { de: "melden", fr: "signaler / rapporter", ex: "Ich melde das dem Arzt." },
+          { de: "der Verlauf", fr: "l'évolution", ex: "Der Verlauf ist positiv." }
+        ],
+        grammaire: [
+          { titre: "Rapporter ce qui s'est passé pendant la garde", titreDE: "Bericht im Perfekt",
+            regle: "Pour la transmission, on raconte au Perfekt ce qui s'est passé : « Frau Meier hat gut geschlafen. », « Der Blutdruck hat sich normalisiert. ». On résume l'état actuel au présent : « Der Patient ist stabil. »",
+            points: [ "« Es ist nichts Besonderes passiert. »", "« Herr X hat über Schmerzen geklagt. »", "« Der Zustand ist stabil / hat sich verschlechtert. »" ],
+            exemples: [
+              { de: "Frau Meier hat heute gut gegessen.", fr: "Bericht im *Perfekt*." },
+              { de: "Der Blutdruck hat sich normalisiert.", fr: "reflexives Verb im Perfekt." },
+              { de: "Der Patient ist im Moment stabil.", fr: "aktueller Zustand im *Präsens*." }
+            ],
+            note: "Transmets seulement les faits importants : sommeil, douleurs, valeurs, événements, soins en attente." }
+        ],
+        dialogue: { titre: "Schichtübergabe", lieu: "Im Stationszimmer", lignes: [
+          { loc: "La collègue de la garde de nuit transmet", de: "So, ich übergebe dir Zimmer 12, Herrn Frank.", fr: "Voilà, je te transmets la chambre 12, M. Frank." },
+          { de: "Wie war die Nacht?", fr: "Comment s'est passée la nuit ?" },
+          { de: "Er hat unruhig geschlafen und über Bauchschmerzen geklagt.", fr: "Il a dormi de façon agitée et s'est plaint de douleurs au ventre." },
+          { de: "Wie ist sein Zustand jetzt?", fr: "Quel est son état maintenant ?" },
+          { de: "Im Moment stabil. Der Arzt kommt um zehn zur Visite.", fr: "Pour l'instant stable. Le médecin passe à dix heures pour la visite." },
+          { de: "Alles klar, danke für die Übergabe.", fr: "C'est noté, merci pour la transmission." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Wie hat Herr Frank geschlafen?", options: ["Sehr gut", "Unruhig", "Gar nicht"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "der Zustand", droite: "l'état" }, { gauche: "stabil", droite: "stable" }, { gauche: "auffällig", droite: "anormal" }, { gauche: "die Schicht", droite: "le poste de travail" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète au passé composé (Perfekt).", texte: "Herr Frank {0} über Schmerzen geklagt.", accepte: [["hat"]], indice: "haben + Partizip." },
+          { type: "qcm", cat: "appro", consigne: "Choisis l'état actuel au présent.", question: "Comment dire « Il est stable en ce moment » ?", options: ["Er hat stabil.", "Er ist im Moment stabil.", "Er stabil ist."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase dans l'ordre.", mots: ["Der", "Zustand", "hat", "sich", "verschlechtert"], correct: "Der Zustand hat sich verschlechtert", traduction: "L'état s'est dégradé." },
+          { type: "production", cat: "prod", prompt: "Transmets en une phrase : M. Frank a bien dormi et est stable.", modele: "Herr Frank hat gut geschlafen und ist stabil." }
+        ],
+        documentation: { task: "Rédige la transmission : M. Frank, nuit agitée, douleurs abdominales, état stable, visite du médecin à 10h.", modele: "Herr Frank: unruhige Nacht, Bauchschmerzen, Zustand stabil, Arztvisite um 10 Uhr." },
+        rp: { scene: "Zika spielt deine Kollegin bei der Übergabe. Du übergibst Herrn Frank.", intro: "Berichte über die Nacht, den Zustand und die nächsten Schritte.", fin: "Perfekt! Eine klare und vollständige Übergabe.", tours: [
+          { de: "Wie war die Nacht bei Herrn Frank?", options: [ { de: "Er hat unruhig geschlafen und über Schmerzen geklagt.", ok: true }, { de: "Weiß ich nicht mehr.", ok: false }, { de: "Frag den Patienten selbst.", ok: false } ] },
+          { de: "Und wie ist sein Zustand jetzt?", options: [ { de: "Im Moment ist er stabil.", ok: true }, { de: "Keine Ahnung.", ok: false } ] },
+          { de: "Gibt es heute noch etwas zu tun?", options: [ { de: "Ja, der Arzt kommt um zehn zur Visite.", ok: true }, { de: "Nein, mach was du willst.", ok: false } ] }
+        ] } },
+      { id: "pb1-5", dom: "heim", titreDE: "Mit Angehörigen sprechen", titre: "Parler aux proches", desc: "Informer et rassurer les familles.",
+        vocCoursDE: [
+          "Die **Angehörigen** (die Familie) machen sich oft **Sorgen**. Deine Aufgabe ist es, sie freundlich zu **informieren** und zu **beruhigen**.",
+          "Sprich ruhig und **verständlich**. Achtung: Über medizinische Details entscheidet der Arzt — du gibst **Auskunft** im Rahmen deiner Aufgaben und zeigst **Verständnis**."
+        ],
+        vocabulaire: [
+          { de: "die Angehörigen", fr: "les proches / la famille", ex: "Die Angehörigen sind sehr besorgt." },
+          { de: "beruhigen", fr: "rassurer / calmer", ex: "Ich versuche, die Tochter zu beruhigen." },
+          { de: "informieren", fr: "informer", ex: "Ich informiere Sie gern." },
+          { de: "die Sorge", fr: "le souci / l'inquiétude", ex: "Ich verstehe Ihre Sorge." },
+          { de: "der Besuch", fr: "la visite", ex: "Der Besuch ist von 15 bis 18 Uhr." },
+          { de: "verständlich", fr: "compréhensible", ex: "Ich erkläre es Ihnen verständlich." },
+          { de: "das Verständnis", fr: "la compréhension", ex: "Danke für Ihr Verständnis." },
+          { de: "die Auskunft", fr: "le renseignement", ex: "Diese Auskunft gibt Ihnen der Arzt." },
+          { de: "sich kümmern um", fr: "s'occuper de", ex: "Wir kümmern uns gut um Ihre Mutter." },
+          { de: "geduldig", fr: "patient", ex: "Bleiben Sie bitte geduldig." }
+        ],
+        grammaire: [
+          { titre: "La forme de politesse (Konjunktiv II)", titreDE: "Höflich: könnten, würden, hätten",
+            regle: "Pour être très poli avec les proches, on utilise le Konjunktiv II : könnten Sie…? (pourriez-vous), würden Sie…? (voudriez-vous), ich hätte eine Frage. C'est plus doux que l'impératif.",
+            points: [ "« Könnten Sie bitte im Wartezimmer warten? »", "« Würden Sie später noch einmal anrufen? »", "« Ich hätte eine kurze Frage. »" ],
+            exemples: [
+              { de: "Könnten Sie bitte kurz warten?", fr: "höfliche Bitte mit *könnten*." },
+              { de: "Würden Sie mir Ihre Telefonnummer geben?", fr: "höfliche Bitte mit *würden*." },
+              { de: "Ich verstehe Ihre Sorge sehr gut.", fr: "Empathie zeigen." }
+            ],
+            note: "Montre de l'empathie : « Ich verstehe Ihre Sorge » apaise souvent plus que l'information seule." }
+        ],
+        dialogue: { titre: "Ein Gespräch mit der Tochter", lieu: "Auf dem Flur des Pflegeheims", lignes: [
+          { loc: "La fille d'une résidente est inquiète", de: "Entschuldigung, wie geht es meiner Mutter heute?", fr: "Excusez-moi, comment va ma mère aujourd'hui ?" },
+          { de: "Guten Tag. Ihrer Mutter geht es heute besser, keine Sorge.", fr: "Bonjour. Votre mère va mieux aujourd'hui, ne vous inquiétez pas." },
+          { de: "Sie hat gestern so wenig gegessen.", fr: "Elle a si peu mangé hier." },
+          { de: "Ich verstehe Ihre Sorge. Heute hat sie gut gefrühstückt.", fr: "Je comprends votre inquiétude. Aujourd'hui elle a bien pris son petit-déjeuner." },
+          { de: "Könnten Sie mir mehr zur Behandlung sagen?", fr: "Pourriez-vous m'en dire plus sur le traitement ?" },
+          { de: "Diese Auskunft gibt Ihnen am besten der Arzt.", fr: "Pour ce renseignement, le médecin est le mieux placé." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Wer gibt Auskunft über die Behandlung?", options: ["Die Pflegekraft", "Der Arzt", "Die Tochter"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "die Angehörigen", droite: "les proches" }, { gauche: "die Sorge", droite: "l'inquiétude" }, { gauche: "beruhigen", droite: "rassurer" }, { gauche: "der Besuch", droite: "la visite" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète la forme polie (Konjunktiv II).", texte: "{0} Sie bitte kurz im Wartezimmer warten?", accepte: [["Könnten", "Würden"]], indice: "könnten / würden Sie…?" },
+          { type: "qcm", cat: "appro", consigne: "Choisis la phrase la plus empathique.", question: "Que dire à une proche inquiète ?", options: ["Das ist nicht mein Problem.", "Ich verstehe Ihre Sorge.", "Beruhigen Sie sich endlich."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase polie dans l'ordre.", mots: ["Könnten", "Sie", "bitte", "kurz", "warten"], correct: "Könnten Sie bitte kurz warten", traduction: "Pourriez-vous patienter un instant ?" },
+          { type: "production", cat: "prod", prompt: "Rassure une proche : sa mère va mieux et a bien mangé aujourd'hui.", modele: "Keine Sorge, Ihrer Mutter geht es besser und sie hat heute gut gegessen." }
+        ],
+        documentation: { task: "Note l'entretien : entretien avec la fille de Mme X, informée de l'amélioration, orientée vers le médecin pour le traitement.", modele: "Gespräch mit der Tochter von Frau X: über Besserung informiert, für Behandlungsfragen an den Arzt verwiesen." },
+        rp: { scene: "Zika spielt die besorgte Tochter einer Bewohnerin. Du sprichst mit ihr.", intro: "Bleib freundlich, zeig Verständnis, informiere und verweise bei medizinischen Fragen an den Arzt.", fin: "Sehr gut! Freundlich, empathisch und korrekt — genau richtig.", tours: [
+          { de: "Wie geht es meiner Mutter? Ich mache mir Sorgen.", options: [ { de: "Ich verstehe Ihre Sorge. Ihrer Mutter geht es heute besser.", ok: true }, { de: "Sie müssen sich keine Sorgen machen, das nervt.", ok: false }, { de: "Dafür habe ich keine Zeit.", ok: false } ] },
+          { de: "Sie hat doch gestern fast nichts gegessen!", options: [ { de: "Heute hat sie gut gefrühstückt, das ist ein gutes Zeichen.", ok: true }, { de: "Das ist mir egal.", ok: false } ] },
+          { de: "Können Sie mir mehr zur Behandlung sagen?", options: [ { de: "Diese Auskunft gibt Ihnen am besten der Arzt.", ok: true }, { de: "Ja, ich ändere einfach die Medikamente.", ok: false } ] }
+        ] } },
+      { id: "pb1-6", dom: "grund", titreDE: "Notfälle erkennen und melden", titre: "Reconnaître et signaler une urgence", desc: "Chute, malaise, perte de connaissance.",
+        vocCoursDE: [
+          "Ein **Notfall** ist eine gefährliche Situation: ein **Sturz**, ein Patient ist **bewusstlos** oder die **Atmung** ist auffällig. Du musst **sofort reagieren**.",
+          "Sprich den Patienten an: « Hören Sie mich? » Ist er nicht **ansprechbar**, hol Hilfe und setz den **Notruf** ab. Bleib ruhig und melde klar, was passiert ist."
+        ],
+        vocabulaire: [
+          { de: "der Notfall", fr: "l'urgence", ex: "Das ist ein Notfall!" },
+          { de: "der Sturz", fr: "la chute", ex: "Der Patient hatte einen Sturz." },
+          { de: "bewusstlos", fr: "inconscient", ex: "Die Bewohnerin ist bewusstlos." },
+          { de: "die Atmung", fr: "la respiration", ex: "Die Atmung ist flach." },
+          { de: "ansprechbar", fr: "conscient / qui répond", ex: "Der Patient ist nicht ansprechbar." },
+          { de: "der Notruf", fr: "l'appel d'urgence", ex: "Ich setze den Notruf ab." },
+          { de: "sofort", fr: "immédiatement", ex: "Kommen Sie sofort!" },
+          { de: "reagieren", fr: "réagir", ex: "Wir müssen schnell reagieren." },
+          { de: "Hilfe holen", fr: "chercher de l'aide", ex: "Hol bitte sofort Hilfe!" },
+          { de: "stabil/instabil", fr: "stable / instable", ex: "Der Zustand ist instabil." }
+        ],
+        grammaire: [
+          { titre: "L'impératif d'urgence", titreDE: "Schnelle Anweisungen im Notfall",
+            regle: "Dans l'urgence, on donne des ordres courts et clairs à l'impératif : « Holen Sie Hilfe! », « Rufen Sie den Arzt! », « Bleiben Sie bei dem Patienten! ». On tutoie souvent un collègue : « Hol den Notfallwagen! »",
+            points: [ "« Holen Sie sofort den Arzt! »", "« Bleib bei ihr, ich hole Hilfe! »", "« Setzen Sie den Notruf ab! »" ],
+            exemples: [
+              { de: "Holen Sie sofort den Arzt!", fr: "Imperativ (Sie), dringend." },
+              { de: "Bleib bei dem Patienten!", fr: "Imperativ (du) für die Kollegin." },
+              { de: "Der Patient ist nicht ansprechbar.", fr: "wichtige Beobachtung melden." }
+            ],
+            note: "Dans l'urgence : reste calme, donne des ordres courts, et dis toujours QUI fait QUOI." }
+        ],
+        dialogue: { titre: "Ein Sturz im Zimmer", lieu: "Im Patientenzimmer", lignes: [
+          { loc: "Une aide-soignante découvre une chute", de: "Schnell, Frau Berg liegt auf dem Boden!", fr: "Vite, Mme Berg est par terre !" },
+          { de: "Ist sie ansprechbar? Frau Berg, hören Sie mich?", fr: "Est-elle consciente ? Mme Berg, vous m'entendez ?" },
+          { de: "Nein, sie reagiert nicht.", fr: "Non, elle ne réagit pas." },
+          { de: "Bleib bei ihr! Ich hole den Arzt und setze den Notruf ab.", fr: "Reste près d'elle ! Je vais chercher le médecin et je lance l'alerte." },
+          { de: "Atmet sie normal?", fr: "Respire-t-elle normalement ?" },
+          { de: "Ja, die Atmung ist da. Wir bleiben ruhig.", fr: "Oui, la respiration est présente. On reste calmes." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Ist Frau Berg ansprechbar?", options: ["Ja", "Nein, sie reagiert nicht", "Sie schläft"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "der Sturz", droite: "la chute" }, { gauche: "bewusstlos", droite: "inconscient" }, { gauche: "die Atmung", droite: "la respiration" }, { gauche: "der Notruf", droite: "l'appel d'urgence" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète l'ordre d'urgence (impératif, Sie).", texte: "{0} Sie sofort den Arzt!", accepte: [["Holen", "Rufen"]], indice: "Impératif : Holen/Rufen Sie…!" },
+          { type: "qcm", cat: "appro", consigne: "Choisis la bonne première réaction.", question: "Un patient est par terre. Que fais-tu d'abord ?", options: ["Ich gehe weiter.", "Ich spreche ihn an: Hören Sie mich?", "Ich rufe später an."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets l'ordre d'urgence dans le bon ordre.", mots: ["Bleib", "bei", "ihr", "und", "hol", "Hilfe"], correct: "Bleib bei ihr und hol Hilfe", traduction: "Reste près d'elle et va chercher de l'aide." },
+          { type: "production", cat: "prod", prompt: "Donne deux ordres clairs : aller chercher le médecin et rester près du patient.", modele: "Hol den Arzt und bleib bei dem Patienten!" }
+        ],
+        documentation: { task: "Note l'incident : Mme Berg trouvée au sol à 14h10, non réactive, respiration présente, médecin alerté immédiatement.", modele: "Frau Berg um 14:10 Uhr am Boden vorgefunden, nicht ansprechbar, Atmung vorhanden, Arzt sofort verständigt." },
+        rp: { scene: "Zika spielt deine Kollegin. Ihr entdeckt zusammen einen Notfall (ein Sturz).", intro: "Reagiere ruhig: prüfe die Reaktion, verteile Aufgaben, hol Hilfe.", fin: "Sehr gut! Ruhig, klar und richtig gehandelt — und du dokumentierst den Notfall.", tours: [
+          { de: "Hilfe! Herr Klein ist gestürzt und liegt am Boden!", options: [ { de: "Herr Klein, hören Sie mich? Sind Sie ansprechbar?", ok: true }, { de: "Lass ihn einfach liegen.", ok: false }, { de: "Ich mache erst meine Pause.", ok: false } ] },
+          { de: "Er antwortet nicht!", options: [ { de: "Bleib bei ihm, ich hole sofort den Arzt!", ok: true }, { de: "Vielleicht steht er gleich von allein auf.", ok: false } ] },
+          { de: "Soll ich sonst noch etwas tun?", options: [ { de: "Ja, prüfe die Atmung und bleib ruhig.", ok: true }, { de: "Nein, geh ruhig nach Hause.", ok: false } ] }
+        ] } }
     ]},
     { code: "B2", titre: "Langue professionnelle et documentation", lecons: [
       { id: "pb2-1", dom: "grund", titreDE: "Pflegedokumentation", titre: "La documentation des soins", desc: "Rédiger le rapport et la planification de soins." },
