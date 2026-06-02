@@ -1777,12 +1777,17 @@
 
     const pick = el("section", "section");
     pick.appendChild(el("h2", "section-title", "Je connais déjà mon niveau"));
+    pick.appendChild(el("p", "exo-group-sub", "Choisis ton niveau : pour le débloquer, tu passeras d'abord un court examen de chaque niveau précédent. À la première difficulté, Zika te place au bon niveau."));
     const grid = el("div", "niveau-choix");
     ORDRE_NIVEAUX.forEach((code) => {
       const b = el("button", "niveau-btn", "");
       b.type = "button";
       b.innerHTML = "<strong>" + code + "</strong><span>" + labels[code] + "</span>";
-      b.addEventListener("click", () => { placerAuNiveau(code); location.hash = prochaineEtape(); });
+      // A1 : aucun niveau précédent → on démarre directement. Sinon : examen de validation.
+      b.addEventListener("click", () => {
+        if (code === "A1") { placerAuNiveau("A1"); location.hash = prochaineEtape(); }
+        else location.hash = "#/placement-niveau/" + code;
+      });
       grid.appendChild(b);
     });
     pick.appendChild(grid);
@@ -1905,6 +1910,107 @@
     app.innerHTML = "";
     app.appendChild(frag);
     if (window.TG) { if (window.TG.haptic) window.TG.haptic("success"); window.TG.setMainButton("🚀 Commencer au niveau " + code, () => { location.hash = prochaineEtape(); }); }
+    window.scrollTo(0, 0);
+  }
+
+  /* ====================================================================
+     VALIDATION PAR PALIERS — quand l'utilisateur dit « je connais mon
+     niveau X », il doit d'abord RÉUSSIR un examen pour chaque niveau
+     précédent. Chaque niveau réussi est marqué « acquis » (vert). Au 1ᵉʳ
+     échec, Zika le place à CE niveau pour qu'il l'apprenne.
+     ==================================================================== */
+  function validerNiveau(niv) {
+    flat.forEach((f) => { if (f.lecon.niveau === niv) window.Progress.marquerTermine(f.lecon.id, 100); });
+    const KEYS = { A1: ["a1"], A2: ["a2", "final"], B1: ["b1"], B2: ["b2", "finalb"], C1: ["c1"], C2: ["c2", "finalc"] };
+    (KEYS[niv] || []).forEach((k) => window.Progress.setTestScore(k, 100, true));
+  }
+
+  function renderNiveauTest(cible, state) {
+    const all = window.PLACEMENT || [];
+    const cibleIdx = ORDRE_NIVEAUX.indexOf(cible);
+    // A1 (ou cible invalide) → aucun niveau précédent : on démarre directement.
+    if (cibleIdx <= 0) { placerAuNiveau(cible || "A1"); location.hash = prochaineEtape(); return; }
+    const blocks = all.filter((bk) => ORDRE_NIVEAUX.indexOf(bk.code) < cibleIdx);
+    if (!blocks.length) { placerAuNiveau(cible); location.hash = prochaineEtape(); return; }
+    state = state || { i: 0, faibles: [] };
+    if (state.i >= blocks.length) { niveauTestResultat(cible, true, null, state.faibles); return; }
+    const block = blocks[state.i];
+
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/start">← Choix du niveau</a><span class="lesson-top-mod">🎯 Validation → ' + cible + "</span>";
+    frag.appendChild(top);
+
+    const head = el("header", "test-head"); head.style.setProperty("--mod-color", "#0d9488");
+    head.innerHTML = '<div class="lesson-num">Niveau ' + block.code + " · étape " + (state.i + 1) + " / " + blocks.length + "</div><h1>" + block.titre + "</h1>" +
+      "<p>Tu veux commencer en <strong>" + cible + "</strong> : valide d'abord les niveaux précédents. Réponds du mieux possible (seuil 60 %).</p>";
+    frag.appendChild(head);
+
+    function sansAide(ex) { const c = Object.assign({}, ex); delete c.indice; delete c.aide; delete c.traduction; delete c.explication; delete c.modele; delete c.attendus; return c; }
+    const list = el("div", "test-list"); const nodes = [];
+    block.items.forEach((ex, i) => { const node = window.Exercises.render(sansAide(ex), i, null, { testMode: true, label: "Question " + (i + 1) }); nodes.push(node); list.appendChild(node); });
+    frag.appendChild(list);
+
+    const submit = el("button", "btn btn-primary big", "Valider l'étape " + block.code + " →"); submit.type = "button";
+    const row = el("div", "test-submit"); row.appendChild(submit); frag.appendChild(row);
+
+    const faibles = (state.faibles || []).slice();
+    function noteFaible(type) { const skill = type === "ecoute" ? "Compréhension orale (écoute)" : type === "oral" ? "Expression orale" : "Grammaire & expression écrite"; if (faibles.indexOf(skill) < 0) faibles.push(skill); }
+
+    submit.addEventListener("click", () => {
+      let correct = 0, total = 0;
+      block.items.forEach((ex, idx) => { const node = nodes[idx]; if (!node || typeof node._grade !== "function") return; const res = node._grade(false); total++; if (res.ok === true) correct++; else noteFaible(ex.type); });
+      const passe = total ? correct / total >= 0.6 : true;
+      submit.disabled = true; submit.textContent = "Étape " + block.code + " terminée";
+      if (passe) {
+        validerNiveau(block.code); // ✅ niveau marqué « acquis » (vert)
+        if (state.i < blocks.length - 1) {
+          const next = el("div", "test-result pass");
+          next.innerHTML = "<h2>✅ Niveau " + block.code + " validé (" + correct + "/" + total + ")</h2><p>Niveau marqué comme acquis. On valide le suivant…</p>" +
+            '<div class="rev-actions"><button class="btn btn-primary" id="nt-next">Continuer →</button></div>';
+          frag.appendChild(next); app.innerHTML = ""; app.appendChild(frag);
+          const nb = document.getElementById("nt-next"); nb.addEventListener("click", () => renderNiveauTest(cible, { i: state.i + 1, faibles: faibles }));
+          if (window.TG) window.TG.setMainButton("Continuer →", () => renderNiveauTest(cible, { i: state.i + 1, faibles: faibles }));
+          next.scrollIntoView({ behavior: "smooth" });
+        } else {
+          niveauTestResultat(cible, true, null, faibles); // tous les niveaux précédents réussis
+        }
+      } else {
+        niveauTestResultat(block.code, false, cible, faibles); // échec → on commence ici
+      }
+    });
+
+    app.innerHTML = ""; app.appendChild(frag);
+    if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/start"; }); window.TG.setMainButton("Valider l'étape " + block.code + " →", () => submit.click()); }
+    window.scrollTo(0, 0);
+  }
+
+  function niveauTestResultat(startNiv, allPassed, cible, faibles) {
+    window.Progress.setNiveau(startNiv);
+    window.Progress.setFaiblesses(faibles || []);
+    const labels = NIVEAU_LABELS;
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/start">← Choix du niveau</a><span class="lesson-top-mod">🎯 Résultat</span>';
+    frag.appendChild(top);
+    const sec = el("section", "section");
+    const card = el("div", "examen-final unlocked reussi");
+    let html;
+    if (allPassed) {
+      html = '<div class="examen-ic">🎉</div><h2>Niveaux validés — tu commences en ' + startNiv + " !</h2>" +
+        "<p>Bravo ! Tu as réussi l'examen de tous les niveaux précédents : ils sont <strong>marqués comme acquis (verts)</strong>. Le niveau <strong>" + startNiv + " — " + (labels[startNiv] || "") + "</strong> est maintenant disponible.</p>";
+    } else {
+      html = '<div class="examen-ic">📚</div><h2>Zika te place au niveau ' + startNiv + "</h2>" +
+        "<p>L'examen du niveau <strong>" + startNiv + "</strong> n'est pas encore validé. Pas de souci : tu commences à apprendre au <strong>niveau " + startNiv + " — " + (labels[startNiv] || "") + "</strong>" + (cible ? ", puis tu viseras le " + cible : "") + ". Les niveaux déjà réussis restent acquis.</p>";
+    }
+    if (faibles && faibles.length) html += '<div class="zika-conseil"><span class="cours-tag">💡 Le conseil de Zika</span><div>À travailler en priorité : <strong>' + faibles.map(escapeHtml).join("</strong>, <strong>") + "</strong>.</div></div>";
+    card.innerHTML = html;
+    const go = el("a", "btn btn-primary big", "🚀 Commencer au niveau " + startNiv); go.href = prochaineEtape(); card.appendChild(go);
+    const retest = el("a", "btn btn-ghost", "↺ Changer de niveau"); retest.href = "#/start"; card.appendChild(retest);
+    sec.appendChild(card); frag.appendChild(sec);
+    app.innerHTML = ""; app.appendChild(frag);
+    if (window.TG) { if (window.TG.haptic) window.TG.haptic(allPassed ? "success" : "warning"); window.TG.showBackButton(() => { location.hash = "#/start"; }); window.TG.setMainButton("🚀 Commencer au niveau " + startNiv, () => { location.hash = prochaineEtape(); }); }
+    try { localizeUI(app); } catch (e) {}
     window.scrollTo(0, 0);
   }
 
@@ -2618,6 +2724,7 @@
     else if (hash.match(/^#\/pflege\/glossar/)) renderPflegeGlossar();
     else if (hash.match(/^#\/pflege/)) renderPflege();
     else if (hash.match(/^#\/start/)) renderOnboarding();
+    else if ((m = hash.match(/^#\/placement-niveau\/(A1|A2|B1|B2|C1|C2)/))) renderNiveauTest(m[1]);
     else if (hash.match(/^#\/placement/)) renderPlacement();
     else if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);
     else if ((m = hash.match(/^#\/examen\/(a1|a2|finalb|finalc|final|b1|b2|c1|c2)/))) renderTest(m[1]);
