@@ -133,13 +133,21 @@
     const target = ex.lang;
     if (target === "fr") return node;
     node.classList.add("xl");
-    const plain = stripMd(text);
-    // Traduction automatique du navigateur si disponible ; sinon, texte de base.
-    window.I18N.translate(plain, target, "fr").then((out) => {
-      if (out && out !== plain) {
-        node.innerHTML = mdLite(out);
-        node.appendChild(el("span", "xl-tag", "🌐 " + window.I18N.t("auto_translated")));
-      }
+    // On protège les EXEMPLES allemands (entre « » ou en *italique*) avec des
+    // marqueurs, on traduit seulement l'explication française, puis on les
+    // remet en place. Ainsi l'explication passe dans la langue choisie mais
+    // les exemples restent en allemand.
+    const ph = [];
+    const keep = (m) => { ph.push(m); return " [[" + (ph.length - 1) + "]] "; };
+    let masked = String(text).replace(/«[^»]*»/g, keep);   // 1) exemples allemands « … »
+    masked = masked.replace(/\*\*(.+?)\*\*/g, "$1");          // 2) gras français → à traduire
+    masked = masked.replace(/\*[^*\n]+\*/g, keep);           // 3) mots allemands en *italique*
+    window.I18N.translate(masked, target, "fr").then((out) => {
+      if (!out || out === masked) return;
+      let restored = out.replace(/\[\[\s*(\d+)\s*\]\]/g, (m, n) => (ph[+n] != null ? ph[+n] : ""));
+      restored = restored.replace(/\[\[\s*\d+\s*\]\]/g, ""); // nettoie d'éventuels marqueurs résiduels
+      node.innerHTML = mdLite(restored);
+      node.appendChild(el("span", "xl-tag", "🌐 " + window.I18N.t("auto_translated")));
     });
     return node;
   }
