@@ -353,6 +353,11 @@
       '<div class="bar"><div class="bar-fill" style="width:' + res.pourcent + '%"></div></div>';
     hero.appendChild(prog);
 
+    /* Lien retour vers le menu (hub) — placé en tête de l'aperçu du cours. */
+    const menuBar = el("div", "lesson-top");
+    menuBar.innerHTML = '<a class="btn-link" href="#/menu">← Menu</a>';
+    frag.appendChild(menuBar);
+
     /* Progression DANS le niveau en cours */
     const etapeN = prochaineEtape();
     let curNiv = niveauActuel;
@@ -1686,10 +1691,10 @@
   function renderLanguagePage() {
     const I = window.I18N;
     const premier = besoinOnboarding(); // tout premier lancement (aucune progression)
-    const dest = premier ? "#/start" : "#/";
+    const dest = "#/menu"; // après le choix de la langue → le menu (hub)
     const frag = document.createDocumentFragment();
     const top = el("div", "lesson-top");
-    top.innerHTML = (premier ? '<span class="btn-link" style="visibility:hidden">·</span>' : '<a class="btn-link" href="#/">← Accueil</a>') +
+    top.innerHTML = (premier ? '<span class="btn-link" style="visibility:hidden">·</span>' : '<a class="btn-link" href="#/menu">← Menu</a>') +
       '<span class="lesson-top-mod">🌐 ' + (I ? I.t("language") : "Langue") + "</span>";
     frag.appendChild(top);
     if (premier) {
@@ -1708,7 +1713,7 @@
     app.appendChild(frag);
     if (window.TG) {
       if (premier) { try { window.TG.hideBackButton && window.TG.hideBackButton(); } catch (e) {} }
-      else window.TG.showBackButton(() => { location.hash = "#/"; });
+      else window.TG.showBackButton(() => { location.hash = "#/menu"; });
       window.TG.setMainButton((I ? I.t("continue") : "Continuer") + " →", () => { location.hash = dest; });
     }
     try { localizeUI(app); } catch (e) {}
@@ -1721,6 +1726,11 @@
   function renderOnboarding() {
     const labels = NIVEAU_LABELS;
     const frag = document.createDocumentFragment();
+
+    /* Retour vers le menu (hub). */
+    const obTop = el("div", "lesson-top");
+    obTop.innerHTML = '<a class="btn-link" href="#/menu">← Menu</a>';
+    frag.appendChild(obTop);
 
     /* La langue a déjà été choisie sur le 1ᵉʳ écran ; petit lien pour la changer. */
     if (window.I18N) {
@@ -1771,7 +1781,7 @@
 
     app.innerHTML = "";
     app.appendChild(frag);
-    if (window.TG) window.TG.setMainButton("🎯 Évaluer mon niveau", () => { location.hash = "#/placement"; });
+    if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/menu"; }); window.TG.setMainButton("🎯 Évaluer mon niveau", () => { location.hash = "#/placement"; }); }
     // Zika salue à voix haute (si autorisé par le navigateur)
     if (window.Speech && window.Speech.isSupported()) { try { setTimeout(() => window.Speech.speak(salutDE, { rate: 1, pitch: 0.95 }), 400); } catch (e) {} }
     try { localizeUI(app); } catch (e) {}
@@ -2063,16 +2073,97 @@
   }
 
   /* ====================================================================
+     MENU / HUB — point d'entrée de l'app. Le cours d'allemand est une
+     « option » parmi d'autres, prêt à en accueillir de nouvelles.
+
+     👉 POUR AJOUTER UNE OPTION : ajoute une entrée dans le tableau APPS
+        ci-dessous. { icon, titre, desc, href, actif }.
+        - actif:true  → tuile cliquable (href = route ou URL).
+        - actif:false → tuile « Bientôt disponible » (placeholder).
+     ==================================================================== */
+  function renderMenu() {
+    const I = window.I18N;
+    const frag = document.createDocumentFragment();
+
+    // Barre du haut : titre du hub + langue de l'interface (modifiable).
+    const top = el("div", "lesson-top menu-top");
+    top.appendChild(el("span", "btn-link", "")); // cale à gauche
+    top.appendChild(el("span", "lesson-top-mod", "🏠 Menu"));
+    if (I) {
+      const li = I.info();
+      const lang = el("a", "btn-link", "🌐 " + li.f + " " + li.n);
+      lang.href = "#/langue";
+      top.appendChild(lang);
+    } else { top.appendChild(el("span", "")); }
+    frag.appendChild(top);
+
+    // Héros
+    const hero = el("section", "section menu-hero");
+    hero.innerHTML =
+      '<div class="coach-avatar">🧑‍🏫</div>' +
+      '<p class="coach-nom">Coach Zika</p>' +
+      "<h1>Qu'aimerais-tu faire aujourd'hui ?</h1>" +
+      '<p class="menu-sub">Choisis une option pour commencer.</p>';
+    frag.appendChild(hero);
+
+    // Les « apps » du menu (extensible — voir le commentaire ci-dessus).
+    const APPS = [
+      {
+        icon: "🇩🇪",
+        titre: "Allemand · A1 → C2",
+        desc: "Cours complet avec le coach Zika : grammaire, vocabulaire, dialogues audio et examens.",
+        href: besoinOnboarding() ? "#/start" : "#/",
+        actif: true,
+        progres: true
+      },
+      { icon: "✨", titre: "Nouvelle option", desc: "Cet emplacement est prêt pour une prochaine fonctionnalité.", actif: false },
+      { icon: "➕", titre: "Et plus encore", desc: "D'autres options arriveront bientôt ici.", actif: false }
+    ];
+
+    const grid = el("div", "menu-grid");
+    APPS.forEach((a) => {
+      const card = a.actif ? el("a", "menu-card") : el("div", "menu-card menu-soon");
+      if (a.actif) card.href = a.href;
+      card.appendChild(el("div", "menu-ic", a.icon));
+      const body = el("div", "menu-card-body");
+      body.appendChild(el("h2", "", a.titre));
+      body.appendChild(el("p", "", a.desc));
+      if (a.actif && a.progres && !besoinOnboarding() && window.Progress && window.COURS) {
+        const r = window.Progress.resumeGlobal(window.COURS);
+        const pr = el("div", "menu-prog");
+        pr.innerHTML = '<div class="menu-bar"><span style="width:' + r.pourcent + '%"></span></div>' +
+          "<small>" + r.faites + "/" + r.total + " · " + r.pourcent + "%</small>";
+        body.appendChild(pr);
+      }
+      card.appendChild(body);
+      card.appendChild(a.actif ? el("span", "menu-go", "→") : el("span", "menu-badge", "Bientôt disponible"));
+      grid.appendChild(card);
+    });
+    frag.appendChild(grid);
+
+    app.innerHTML = "";
+    app.appendChild(frag);
+    if (window.TG) {
+      try { window.TG.hideBackButton && window.TG.hideBackButton(); } catch (e) {}
+      try { window.TG.hideMainButton && window.TG.hideMainButton(); } catch (e) {}
+    }
+    try { localizeUI(app); } catch (e) {}
+    window.scrollTo(0, 0);
+  }
+
+  /* ====================================================================
      ROUTAGE
      ==================================================================== */
   function route() {
-    const hash = location.hash || "#/";
+    const rawHash = location.hash;
+    const hash = rawHash || "#/";
     let m;
-    // Étape 0 — tout premier écran : le choix de la langue (avant l'accueil du coach).
+    // Étape 0 — tout premier écran : le choix de la langue (avant le menu).
     if (window.I18N && !window.I18N.isChosen() && besoinOnboarding() && !hash.match(/^#\/langue/)) {
       return renderLanguagePage();
     }
-    if (hash.match(/^#\/start/)) renderOnboarding();
+    if (hash.match(/^#\/menu/)) renderMenu();
+    else if (hash.match(/^#\/start/)) renderOnboarding();
     else if (hash.match(/^#\/placement/)) renderPlacement();
     else if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);
     else if ((m = hash.match(/^#\/examen\/(a1|a2|finalb|finalc|final|b1|b2|c1|c2)/))) renderTest(m[1]);
@@ -2080,8 +2171,9 @@
     else if (hash.match(/^#\/revision/)) renderRevision();
     else if (hash.match(/^#\/langue/)) renderLanguagePage();
     else if (hash.match(/^#\/stats/)) renderDashboard();
+    else if (rawHash === "") renderMenu();            // ouverture de l'app → le hub
     else if (besoinOnboarding()) renderOnboarding();
-    else renderHome();
+    else renderHome();                                 // #/ explicite = aperçu du cours
     try { localizeUI(app); } catch (e) {} // traduit l'interface dans la langue choisie
   }
 
