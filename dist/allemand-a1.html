@@ -13641,7 +13641,9 @@ window.Exercises = (function () {
     ".completion h3", ".completion p", ".completion .btn",
     ".setting-label", ".objectifs h3", ".ls-head h2", ".lecon-titles h3",
     ".lesson-nav .btn", ".onb-lang span", ".lang-cur-lab", ".goal-text", ".gp-lab", ".time-chart-cap",
-    ".niveau-actuel", ".dlg-lieu", ".rp-scene"
+    ".niveau-actuel", ".dlg-lieu", ".rp-scene", ".rp-intro",
+    ".onboarding h1", ".coach-nom", ".zika-conseil .cours-tag", ".zika-conseil .btn",
+    ".examen-final h3", ".comp-emoji + h3", ".locked-notice h2", ".locked-notice p"
   ].join(",");
   function localizeUI(root) {
     if (!root || !window.I18N) return;
@@ -13865,9 +13867,13 @@ window.Exercises = (function () {
     if (faibles && faibles.length) {
       const tip = el("section", "section");
       const tc = el("div", "zika-conseil");
-      tc.innerHTML = '<span class="cours-tag">💡 Le conseil de Zika</span>' +
-        "<div>D'après ton test, travaille en priorité : <strong>" + faibles.map(escapeHtml).join("</strong>, <strong>") + "</strong>.</div>" +
-        '<a class="btn btn-ghost small" href="#/revision" style="margin-top:10px">🔁 Réviser maintenant</a>';
+      tc.appendChild(el("span", "cours-tag", "💡 Le conseil de Zika"));
+      const msg = el("div", "zika-conseil-msg");
+      localizeInto(msg, "D'après ton test, travaille en priorité : " + faibles.map((f) => "**" + f + "**").join(", ") + ".", { lang: window.I18N ? window.I18N.lang() : "fr", de: false });
+      tc.appendChild(msg);
+      const rev = el("a", "btn btn-ghost small", "🔁 Réviser maintenant");
+      rev.href = "#/revision"; rev.style.marginTop = "10px";
+      tc.appendChild(rev);
       tip.appendChild(tc);
       frag.appendChild(tip);
     }
@@ -15143,7 +15149,7 @@ window.Exercises = (function () {
     hero.innerHTML =
       '<div class="coach-avatar">🧑‍🏫</div>' +
       '<p class="coach-nom">Coach Zika</p>' +
-      "<h1>Hallo, ich bin Zika — dein Deutsch-Coach!</h1>" +
+      "<h1>Bonjour, je suis Zika, ton coach d'allemand ! 🇩🇪</h1>" +
       '<p class="onboarding-intro">Pour te proposer les bonnes leçons, dis-moi où tu en es en allemand. ' +
       "Choisis ton niveau — ou laisse Zika l'évaluer avec un petit test (grammaire, écoute, écrit et oral, comme à l'examen).</p>";
     if (window.Speech && window.Speech.isSupported()) {
