@@ -766,6 +766,15 @@
       gram.appendChild(art);
     }
     l.grammaire.forEach((g) => gram.appendChild(renderGrammarBlock(g, l.niveau)));
+    /* Bloc « plus d'exemples en contexte » (enrichissement) */
+    if (l.exemplesPlus && l.exemplesPlus.length) {
+      const ep = el("div", "gram-block cours-block exemples-plus");
+      const h = el("h3", "cours-titre");
+      localizeInto(h, "💬 Plus d'exemples en contexte", gEx);
+      ep.appendChild(h);
+      ep.appendChild(buildExemples(l.exemplesPlus, gEx));
+      gram.appendChild(ep);
+    }
     frag.appendChild(gram);
 
     /* --- Dialogue (absent pour les leçons de grammaire) --- */

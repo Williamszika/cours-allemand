@@ -12,6 +12,7 @@ window.GRAMMAIRE = {
     theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Reconnaître les pronoms personnels", "Conjuguer un verbe régulier au présent", "Maîtriser le verbe « sein »"],
     grammairePoints: ["Personalpronomen", "Présent"],
+    exemplesPlus: [{"de":"Ich heiße Anna und ich wohne in Hamburg.","fr":"Je m'appelle Anna et j'habite à Hambourg."},{"de":"Du bist sehr nett.","fr":"Tu es très gentil."},{"de":"Wir lernen jeden Tag Deutsch.","fr":"Nous apprenons l'allemand tous les jours."},{"de":"Sie arbeitet bei einer großen Firma.","fr":"Elle travaille dans une grande entreprise."},{"de":"Seid ihr müde?","fr":"Êtes-vous fatigués ?"}],
     cours: [
       "En allemand, **chaque phrase a besoin d'un sujet**, et ce sujet est très souvent un **pronom personnel** : *ich* (je), *du* (tu), *er / sie / es* (il / elle / cela), *wir* (nous), *ihr* (vous, à plusieurs personnes qu'on tutoie) et *sie / Sie* (ils / elles, ainsi que le vouvoiement poli « Sie » avec une majuscule). Contrairement au français, le pronom n'est presque jamais sous-entendu : on ne dit pas « bin müde » mais toujours « *ich bin müde* » (je suis fatigué).",
       "Le cœur de la phrase, c'est le **verbe conjugué**. Pour le former au présent, on part de l'**infinitif** (par exemple *wohnen*, habiter), on retire la terminaison **-en** pour obtenir le **radical** (*wohn-*), puis on ajoute la terminaison qui correspond au pronom : **-e** (ich), **-st** (du), **-t** (er/sie/es), **-en** (wir), **-t** (ihr), **-en** (sie/Sie). Cela donne *ich wohne*, *du wohnst*, *er wohnt*, *wir wohnen*…",
@@ -51,6 +52,7 @@ window.GRAMMAIRE = {
     theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Distinguer verbes réguliers et irréguliers", "Gérer les verbes à changement de voyelle"],
     grammairePoints: ["Verbes irréguliers", "e→i, e→ie, a→ä"],
+    exemplesPlus: [{"de":"Er fährt mit dem Auto zur Arbeit.","fr":"Il va au travail en voiture."},{"de":"Du sprichst sehr gut Deutsch.","fr":"Tu parles très bien allemand."},{"de":"Sie liest gern Romane.","fr":"Elle aime lire des romans."},{"de":"Das Kind schläft schon.","fr":"L'enfant dort déjà."},{"de":"Nimmst du auch einen Kaffee?","fr":"Tu prends aussi un café ?"}],
     cours: [
       "Tu connais déjà les terminaisons régulières du présent. Mais l'allemand compte une famille de **verbes forts** qui, en plus des terminaisons, **changent la voyelle de leur radical**. Bonne nouvelle : ce changement ne se produit **que** pour deux personnes, la **2ᵉ du singulier (du)** et la **3ᵉ du singulier (er/sie/es)**. Partout ailleurs, le verbe reste parfaitement régulier.",
       "Il existe trois changements très fréquents. Le premier est **e → i** : le verbe *sprechen* (parler) donne « *du sprichst* », « *er spricht* ». Le deuxième est **e → ie** : *lesen* (lire) donne « *du liest* », « *sie liest* », et *sehen* (voir) donne « *er sieht* ». Le troisième est **a → ä** : *fahren* (rouler, aller) donne « *du fährst* », « *er fährt* », et *schlafen* (dormir) donne « *er schläft* ».",
@@ -84,6 +86,7 @@ window.GRAMMAIRE = {
     theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Reconnaître le genre des noms", "Utiliser l'article défini et indéfini"],
     grammairePoints: ["der/die/das", "ein/eine"],
+    exemplesPlus: [{"de":"Der Mann liest eine Zeitung.","fr":"L'homme lit un journal."},{"de":"Die Frau kauft ein Brot.","fr":"La femme achète un pain."},{"de":"Das Kind spielt im Garten.","fr":"L'enfant joue dans le jardin."},{"de":"Ein Hund läuft auf der Straße.","fr":"Un chien court dans la rue."},{"de":"Die Bücher sind sehr interessant.","fr":"Les livres sont très intéressants."}],
     cours: [
       "En allemand, **chaque nom possède un genre** : **masculin** (article *der*), **féminin** (article *die*) ou **neutre** (article *das*). Ce genre est souvent **différent du français** et n'est pas toujours logique : « le soleil » est féminin (*die Sonne*), « la lune » est masculin (*der Mond*) et « la jeune fille » est neutre (*das Mädchen*) ! La conclusion est simple : on **n'apprend jamais un nom seul**, mais toujours **avec son article**.",
       "Ces articles que tu viens de voir (*der, die, das*) sont les **articles définis** : ils désignent une chose précise et connue (« le livre dont je parle »). Au pluriel, et c'est une bonne nouvelle, **les trois genres se confondent** : l'article défini pluriel est *die* pour tout le monde (« *die Bücher* », les livres).",
@@ -117,6 +120,7 @@ window.GRAMMAIRE = {
     theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Choisir entre nicht et kein", "Décliner kein"],
     grammairePoints: ["nicht", "kein"],
+    exemplesPlus: [{"de":"Ich habe kein Geld dabei.","fr":"Je n'ai pas d'argent sur moi."},{"de":"Das ist nicht richtig.","fr":"Ce n'est pas correct."},{"de":"Er trinkt keinen Alkohol.","fr":"Il ne boit pas d'alcool."},{"de":"Wir wohnen nicht in Berlin.","fr":"Nous n'habitons pas à Berlin."},{"de":"— Magst du keinen Tee? — Doch!","fr":"— Tu n'aimes pas le thé ? — Si !"}],
     cours: [
       "Pour dire **non** ou exprimer une négation en allemand, tu disposes de deux outils, et tout l'enjeu est de savoir lequel choisir : **nicht** ou **kein**. Le bon réflexe se résume en une question : « est-ce que je nie un **nom** qui, à la forme positive, serait introduit par *ein/eine* ou par aucun article ? »",
       "On utilise **kein** pour nier un nom qui, à la forme positive, aurait *ein/eine* ou **pas d'article du tout**. *Kein* se comporte exactement comme *ein* : « *Ich habe ein Auto* » (j'ai une voiture) devient « *Ich habe kein Auto* » (je n'ai pas de voiture). De même : « *Ich trinke keinen Kaffee* » (je ne bois pas de café). En français, *kein* correspond à « pas de / aucun ».",
@@ -151,6 +155,7 @@ window.GRAMMAIRE = {
     theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Situer un objet (Wo?)", "Employer les prépositions de lieu + datif"],
     grammairePoints: ["in, auf, neben…", "Wo? + datif"],
+    exemplesPlus: [{"de":"Das Buch liegt auf dem Tisch.","fr":"Le livre est sur la table."},{"de":"Ich bin in der Schule.","fr":"Je suis à l'école."},{"de":"Die Katze schläft unter dem Stuhl.","fr":"Le chat dort sous la chaise."},{"de":"Wir warten an der Bushaltestelle.","fr":"Nous attendons à l'arrêt de bus."},{"de":"Das Bild hängt über dem Sofa.","fr":"Le tableau est accroché au-dessus du canapé."}],
     cours: [
       "Quand tu veux dire **où se trouve** quelque chose (la question **Wo?**, « où ? », sans déplacement), tu emploies des **prépositions de lieu** suivies du **datif**. Les plus courantes sont *in* (dans), *auf* (sur), *an* (à, contre, au bord de), *neben* (à côté de), *vor* (devant), *hinter* (derrière), *über* (au-dessus de), *unter* (sous) et *zwischen* (entre).",
       "L'idée clé est la suivante : ces neuf prépositions sont appelées **prépositions mixtes** (*Wechselpräpositionen*). Elles peuvent être suivies soit du **datif**, soit de l'accusatif. La règle est limpide : **pas de mouvement vers un lieu → datif** (on répond à *Wo?*). C'est ce cas que nous étudions ici.",
@@ -184,6 +189,7 @@ window.GRAMMAIRE = {
     theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Former l'accusatif (COD)", "Utiliser les pronoms à l'accusatif"],
     grammairePoints: ["den/einen", "mich/dich/ihn…"],
+    exemplesPlus: [{"de":"Ich sehe den Mann dort.","fr":"Je vois l'homme là-bas."},{"de":"Sie kauft einen Apfel.","fr":"Elle achète une pomme."},{"de":"Er liebt dich wirklich.","fr":"Il t'aime vraiment."},{"de":"Wir brauchen einen neuen Computer.","fr":"Nous avons besoin d'un nouvel ordinateur."},{"de":"Kennst du mich noch?","fr":"Tu me reconnais encore ?"}],
     cours: [
       "L'**accusatif** est le cas du **complément d'objet direct** : c'est ce (ou celui) qui **subit** directement l'action du verbe. Dans « je vois *le chien* », « le chien » est à l'accusatif. La question qui le révèle est **Wen?** (qui ?) ou **Was?** (quoi ?) : « je vois quoi / qui ? → le chien ».",
       "Voici la **grande simplification** à retenir : par rapport au nominatif, **seul le masculin change** à l'accusatif. *der* devient **den**, et *ein* devient **einen**. Le féminin (*die / eine*), le neutre (*das / ein*) et le pluriel (*die*) **ne changent pas du tout**. Autrement dit, si tu maîtrises le nominatif, tu n'as qu'**une seule nouveauté** à mémoriser : der → den, ein → einen.",
@@ -222,6 +228,7 @@ window.GRAMMAIRE = {
     theme: "Grammaire", type: "grammaire", duree: 40,
     objectifs: ["Employer les verbes de modalité", "Reconnaître les verbes séparables", "Former le passé composé"],
     grammairePoints: ["müssen/können/wollen", "trennbare Verben", "Perfekt"],
+    exemplesPlus: [{"de":"Ich muss heute lange arbeiten.","fr":"Je dois travailler longtemps aujourd'hui."},{"de":"Kannst du mir helfen?","fr":"Peux-tu m'aider ?"},{"de":"Er steht jeden Morgen um sechs Uhr auf.","fr":"Il se lève à six heures chaque matin."},{"de":"Wir haben gestern Fußball gespielt.","fr":"Nous avons joué au foot hier."},{"de":"Ich bin nach München gefahren.","fr":"Je suis allé à Munich."}],
     cours: [
       "Cette leçon réunit trois mécanismes essentiels du verbe allemand. Le premier : les **verbes de modalité** (*Modalverben*), qui expriment une nuance — la possibilité, l'obligation, la volonté. Les principaux sont *können* (pouvoir), *müssen* (devoir), *wollen* (vouloir), *sollen* (devoir, conseil), *dürfen* (avoir le droit) et *mögen* (aimer).",
       "Leur fonctionnement crée une structure très typique de l'allemand : le **verbe modal est conjugué en 2ᵉ position**, et **l'autre verbe part à l'infinitif tout à la fin** de la phrase. On parle de structure « en parenthèse » (*Satzklammer*). Exemple : « *Ich muss heute viel arbeiten* » (je dois beaucoup travailler aujourd'hui) — *muss* en 2ᵉ position, *arbeiten* rejeté à la fin.",
@@ -271,6 +278,7 @@ window.GRAMMAIRE = {
     theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Choisir la bonne préposition de temps"],
     grammairePoints: ["am, um, im, von…bis"],
+    exemplesPlus: [{"de":"Am Montag habe ich frei.","fr":"Lundi, je suis en congé."},{"de":"Der Kurs beginnt um neun Uhr.","fr":"Le cours commence à neuf heures."},{"de":"Im Sommer fahren wir ans Meer.","fr":"En été, nous allons à la mer."},{"de":"Ich arbeite von Montag bis Freitag.","fr":"Je travaille du lundi au vendredi."},{"de":"Seit zwei Jahren lerne ich Deutsch.","fr":"J'apprends l'allemand depuis deux ans."}],
     cours: [
       "Pour situer une action **dans le temps**, l'allemand utilise des prépositions précises, et le piège pour un francophone est qu'on ne peut pas les traduire mot à mot. Il faut apprendre quelle préposition va avec quel type d'expression. La plupart de ces prépositions de temps sont suivies du **datif**.",
       "Avec les **moments de la journée** et les **jours**, on emploie **am** (contraction de *an dem*) : « *am Morgen* » (le matin), « *am Montag* » (lundi), « *am Wochenende* » (le week-end). Seule exception à mémoriser : « *in der Nacht* » (la nuit), qui prend *in*.",
@@ -304,6 +312,7 @@ window.GRAMMAIRE = {
     theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Relier deux phrases", "Distinguer und/aber/denn et weil (verbe à la fin)"],
     grammairePoints: ["und, oder, aber, denn", "weil"],
+    exemplesPlus: [{"de":"Ich bleibe zu Hause, denn ich bin krank.","fr":"Je reste à la maison, car je suis malade."},{"de":"Ich bleibe zu Hause, weil ich krank bin.","fr":"Je reste à la maison parce que je suis malade."},{"de":"Möchtest du Kaffee oder Tee?","fr":"Veux-tu du café ou du thé ?"},{"de":"Es ist spät, aber ich bin nicht müde.","fr":"Il est tard, mais je ne suis pas fatigué."},{"de":"Ich weiß, dass du recht hast.","fr":"Je sais que tu as raison."}],
     cours: [
       "Les **conjonctions** servent à relier deux idées. En allemand, elles se divisent en deux familles qui se comportent de façon **radicalement différente** vis-à-vis de la place du verbe. Comprendre cette différence, c'est franchir une étape majeure vers des phrases riches et correctes.",
       "La première famille, ce sont les **conjonctions de coordination** : *und* (et), *oder* (ou), *aber* (mais), *denn* (car), *sondern* (mais au contraire). Leur grande qualité : elles **ne changent rien** à l'ordre des mots. Le verbe reste en **2ᵉ position** dans les deux propositions : « *Ich bleibe zu Hause, denn ich bin krank* » (je reste à la maison, car je suis malade).",
@@ -343,6 +352,7 @@ window.GRAMMAIRE = {
     theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Former le datif", "Employer les prépositions + datif (mit, zu, bei…)"],
     grammairePoints: ["dem/der/dem", "mit, zu, bei, von…"],
+    exemplesPlus: [{"de":"Ich helfe meiner Mutter.","fr":"J'aide ma mère."},{"de":"Das Buch gehört dem Lehrer.","fr":"Le livre appartient au professeur."},{"de":"Wir fahren mit dem Bus.","fr":"Nous allons en bus."},{"de":"Er gibt dem Kind einen Apfel.","fr":"Il donne une pomme à l'enfant."},{"de":"Nach der Arbeit gehe ich nach Hause.","fr":"Après le travail, je rentre à la maison."}],
     cours: [
       "Le **datif** est le cas du **complément d'objet indirect** : il répond à la question **Wem?** (« à qui ? »). Dans « je donne le livre *à mon ami* », « à mon ami » est au datif. C'est le cas de la personne à qui l'on donne, dit, montre ou achète quelque chose.",
       "Les articles au datif sont à mémoriser car ils changent pour tous les genres : masculin **dem**, neutre **dem**, féminin **der**, et — particularité importante — le **pluriel devient den**, avec en plus un **-n** ajouté au nom (s'il ne se termine pas déjà par -n ou -s) : « *Ich helfe den Kindern* » (j'aide les enfants). Pour les indéfinis : **einem** (masc./neutre), **einer** (fém.).",
@@ -376,6 +386,7 @@ window.GRAMMAIRE = {
     theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Dire où (Wo?) et où aller (Wohin?)", "Choisir nach / zu / in"],
     grammairePoints: ["nach, zu, in", "Wo? / Wohin?"],
+    exemplesPlus: [{"de":"Ich gehe in die Schule.","fr":"Je vais à l'école."},{"de":"Wir fahren nach Italien.","fr":"Nous allons en Italie."},{"de":"Er geht zum Arzt.","fr":"Il va chez le médecin."},{"de":"Stell die Lampe auf den Tisch.","fr":"Pose la lampe sur la table."},{"de":"Am Abend gehe ich nach Hause.","fr":"Le soir, je rentre à la maison."}],
     cours: [
       "Cette leçon complète celle des prépositions de lieu en introduisant le **mouvement vers un endroit** : la question **Wohin?** (« vers où ? »). C'est ici que se révèle toute la logique des **prépositions mixtes** (in, auf, an, neben, vor…) : avec mouvement, elles passent à l'**accusatif** ; sans mouvement (Wo?), elles restaient au datif.",
       "Compare les deux pour bien sentir la différence. **Sans mouvement** (*Wo?* → datif) : « *Ich bin in der Schule* » (je suis à l'école). **Avec mouvement** (*Wohin?* → accusatif) : « *Ich gehe in die Schule* » (je vais à l'école). Le même mot *in* déclenche *der* (datif) ou *die* (accusatif) selon qu'il y a déplacement ou non. C'est LA grande règle des Wechselpräpositionen.",
@@ -409,6 +420,7 @@ window.GRAMMAIRE = {
     theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Utiliser l'adjectif attribut", "Former un comparatif simple"],
     grammairePoints: ["sein + adjectif", "comparatif"],
+    exemplesPlus: [{"de":"Das Wetter ist heute schön.","fr":"Le temps est beau aujourd'hui."},{"de":"Anna ist größer als Tom.","fr":"Anna est plus grande que Tom."},{"de":"Dieses Auto ist schneller.","fr":"Cette voiture est plus rapide."},{"de":"Berlin ist so groß wie Madrid.","fr":"Berlin est aussi grande que Madrid."},{"de":"Im Sommer sind die Tage am längsten.","fr":"En été, les jours sont les plus longs."}],
     cours: [
       "Les **adjectifs** permettent de décrire, de nuancer, de donner ton avis. En allemand, leur comportement dépend d'une distinction fondamentale : l'adjectif est-il **attribut** (après le verbe) ou **épithète** (devant le nom) ? Cette leçon se concentre sur le cas le plus simple et le plus utile au début : l'adjectif **attribut**.",
       "Excellente nouvelle pour commencer : quand l'adjectif est **attribut**, c'est-à-dire placé **après** un verbe comme *sein* (être), *werden* (devenir) ou *bleiben* (rester), il est **totalement invariable**. Il ne prend **aucune terminaison**, quel que soit le genre ou le nombre : « *Der Mann ist groß* », « *Die Frau ist groß* », « *Die Kinder sind groß* ». Profite de cette simplicité !",
