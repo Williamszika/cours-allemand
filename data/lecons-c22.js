@@ -60,6 +60,7 @@ window.MODULE_C22 = {
       theme: "Le progrès technique", duree: 65,
       objectifs: ["Évaluer les enjeux éthiques de la technique", "Argumenter de façon dialectique"],
       grammairePoints: ["Style nominal", "Passif et substituts"],
+      exemplesPlus: [{"de":"Die Digitalisierung verändert die Arbeitswelt grundlegend.","fr":"*die Digitalisierung* = die Umstellung auf digitale Technik und Prozesse."},{"de":"Die Automatisierung macht manche Berufe überflüssig.","fr":"*die Automatisierung* = das Ersetzen menschlicher Arbeit durch Maschinen."},{"de":"Beim Datenschutz muss man Chancen und Risiken abwägen.","fr":"*abwägen* = das Für und Wider sorgfältig gegeneinander prüfen."},{"de":"Die ständige Erreichbarkeit führt zur Entgrenzung der Arbeit.","fr":"*die Entgrenzung* = das Verschwimmen klarer Grenzen (z. B. Arbeit und Freizeit)."},{"de":"Diese Technologie gilt als bahnbrechend.","fr":"*bahnbrechend* = wegweisend, einen Durchbruch bedeutend."}],
       vocabulaire: [
         { de: "die Digitalisierung", fr: "la numérisation", ex: "Die Digitalisierung durchdringt alle Bereiche." },
         { de: "die Automatisierung", fr: "l'automatisation", ex: "Die Automatisierung verändert die Arbeitswelt." },
@@ -137,6 +138,7 @@ window.MODULE_C22 = {
       theme: "Environnement et pollution", duree: 65,
       objectifs: ["Analyser des problèmes écologiques", "Formuler des solutions au passif"],
       grammairePoints: ["Passif", "Connecteurs de conséquence"],
+      exemplesPlus: [{"de":"Der Raubbau an der Natur bedroht die Artenvielfalt.","fr":"*der Raubbau* = die rücksichtslose Ausbeutung natürlicher Ressourcen."},{"de":"Die Kreislaufwirtschaft soll Abfälle drastisch reduzieren.","fr":"*die Kreislaufwirtschaft* = ein System, in dem Materialien wiederverwendet statt weggeworfen werden."},{"de":"Schadstoffe belasten Luft und Wasser.","fr":"*der Schadstoff* = ein Stoff, der der Umwelt oder Gesundheit schadet."},{"de":"Den Treibhausgasausstoß muss man dringend eindämmen.","fr":"*eindämmen* = wirksam begrenzen und zurückdrängen."},{"de":"Nur nachhaltiges Wirtschaften sichert die Zukunft.","fr":"*nachhaltig* = so, dass die Lebensgrundlagen langfristig erhalten bleiben."}],
       vocabulaire: [
         { de: "die Umweltverschmutzung", fr: "la pollution", ex: "Die Umweltverschmutzung bedroht Ökosysteme." },
         { de: "der Schadstoff", fr: "le polluant", ex: "Schadstoffe gelangen ins Grundwasser." },
@@ -214,6 +216,7 @@ window.MODULE_C22 = {
       theme: "Médecine", duree: 65,
       objectifs: ["Débattre d'éthique médicale", "Comprendre un texte spécialisé"],
       grammairePoints: ["Verbes modaux (devoir/pouvoir)", "Style nominal"],
+      exemplesPlus: [{"de":"Eine frühe Diagnose erhöht die Chance auf Heilung.","fr":"*die Diagnose* = die ärztliche Feststellung einer Krankheit."},{"de":"Vorsorge ist oft wirksamer als Behandlung.","fr":"*die Vorsorge* = vorbeugende Maßnahmen gegen Krankheiten."},{"de":"Jedes Medikament kann Nebenwirkungen haben.","fr":"*die Nebenwirkung* = eine unerwünschte Begleitwirkung."},{"de":"Der Eingriff verlief ohne Komplikationen.","fr":"*der Eingriff* = eine (meist operative) ärztliche Maßnahme."},{"de":"Medizinische Fragen berühren oft die Ethik.","fr":"*lindern* = (Schmerzen) abschwächen, erträglicher machen."}],
       vocabulaire: [
         { de: "die Heilung", fr: "la guérison", ex: "Die Heilung verlief erfolgreich." },
         { de: "die Diagnose", fr: "le diagnostic", ex: "Die Diagnose war eindeutig." },
@@ -291,6 +294,7 @@ window.MODULE_C22 = {
       theme: "Compétences particulières", duree: 60,
       objectifs: ["Décrire talents et expertises", "Valoriser un profil"],
       grammairePoints: ["Adjectifs et compléments", "Comparaison"],
+      exemplesPlus: [{"de":"Ihre rasche Auffassungsgabe fällt sofort auf.","fr":"*die Auffassungsgabe* = die Fähigkeit, Neues schnell zu verstehen."},{"de":"Er zeichnet sich durch große Vielseitigkeit aus.","fr":"*sich auszeichnen* = sich durch besondere Qualitäten hervortun."},{"de":"Hochbegabung allein garantiert keinen Erfolg.","fr":"*die Hochbegabung* = eine weit überdurchschnittliche Begabung."},{"de":"Spitzenleistungen verlangen Ausdauer und Disziplin.","fr":"*die Spitzenleistung* = eine herausragende, beste Leistung."},{"de":"Sie beherrscht ihr Instrument meisterhaft.","fr":"*beherrschen* = etwas vollkommen können."}],
       vocabulaire: [
         { de: "die Hochbegabung", fr: "le haut potentiel", ex: "Hochbegabung will gefördert werden." },
         { de: "das Talent", fr: "le talent", ex: "Sie hat ein außergewöhnliches Talent." },
@@ -368,6 +372,7 @@ window.MODULE_C22 = {
       theme: "Sentiments", duree: 60,
       objectifs: ["Exprimer des émotions complexes", "Nuancer l'intensité"],
       grammairePoints: ["Adjectifs de sentiment", "Comparaison / intensité"],
+      exemplesPlus: [{"de":"Eine tiefe Sehnsucht nach der Heimat ergriff sie.","fr":"*die Sehnsucht* = ein starkes, schmerzliches Verlangen nach etwas."},{"de":"Zu Hause fühlt er eine wohlige Geborgenheit.","fr":"*die Geborgenheit* = das Gefühl, sicher und geschützt zu sein."},{"de":"Mit Wehmut blickte sie auf ihre Jugend zurück.","fr":"*die Wehmut* = eine leise, sehnsüchtige Traurigkeit."},{"de":"Seine Gefühle waren ambivalent.","fr":"*ambivalent* = zwiespältig, von gegensätzlichen Gefühlen geprägt."},{"de":"Der Anblick war schlicht überwältigend.","fr":"*überwältigend* = so eindrucksvoll, dass es einen tief ergreift."}],
       vocabulaire: [
         { de: "die Sehnsucht", fr: "la nostalgie / l'aspiration", ex: "Eine tiefe Sehnsucht ergriff sie." },
         { de: "die Geborgenheit", fr: "le sentiment de sécurité", ex: "Zuhause empfinde ich Geborgenheit." },
@@ -445,6 +450,7 @@ window.MODULE_C22 = {
       theme: "Vivre", duree: 60,
       objectifs: ["Réfléchir aux choix de vie", "Exprimer des valeurs"],
       grammairePoints: ["Konjunktiv II (souhait)", "Nominalisation"],
+      exemplesPlus: [{"de":"Viele streben nach einer bewussten Lebensgestaltung.","fr":"*bewusst* = mit Überlegung und Absicht, nicht beiläufig."},{"de":"Entschleunigen tut Körper und Geist gut.","fr":"*entschleunigen* = das Lebenstempo bewusst verlangsamen."},{"de":"Selbstbestimmung ist vielen wichtiger als Wohlstand.","fr":"*die Selbstbestimmung* = das Recht, frei über das eigene Leben zu entscheiden."},{"de":"Bewusster Verzicht kann das Wohlbefinden steigern.","fr":"*der Verzicht* = das freiwillige Weglassen von etwas."},{"de":"Die Suche nach dem Sinn begleitet uns ein Leben lang.","fr":"*das Wohlbefinden* = das Gefühl, körperlich und seelisch gesund zu sein."}],
       vocabulaire: [
         { de: "die Lebensgestaltung", fr: "l'art de vivre / l'organisation de la vie", ex: "Jeder ist für seine Lebensgestaltung verantwortlich." },
         { de: "die Work-Life-Balance", fr: "l'équilibre vie/travail", ex: "Eine gute Work-Life-Balance ist mir wichtig." },
@@ -522,6 +528,7 @@ window.MODULE_C22 = {
       theme: "Art et créativité", duree: 60,
       objectifs: ["Interpréter une œuvre", "Exprimer un jugement esthétique"],
       grammairePoints: ["Participes attributs", "Adjectifs nominalisés"],
+      exemplesPlus: [{"de":"Jedes Kunstwerk trägt eine eigene Aussage in sich.","fr":"*die Aussage* = die Botschaft, die etwas vermitteln will."},{"de":"Abstrakte Werke lassen sich auf viele Weisen deuten.","fr":"*deuten* = den Sinn von etwas auslegen."},{"de":"Seine Schöpfung gilt als überaus gewagt.","fr":"*gewagt* = kühn, mit dem Risiko zu provozieren."},{"de":"Die Farben verstärken die emotionale Wirkung.","fr":"*die Wirkung* = der Eindruck, den etwas hervorruft."},{"de":"Kunst ist immer auch Ausdruck einer Epoche.","fr":"*der Ausdruck* = das Sichtbarmachen von Gefühlen oder Ideen."}],
       vocabulaire: [
         { de: "das Kunstwerk", fr: "l'œuvre d'art", ex: "Das Kunstwerk regt zum Nachdenken an." },
         { de: "die Aussage", fr: "le message / le propos", ex: "Was ist die Aussage des Bildes?" },
@@ -599,6 +606,7 @@ window.MODULE_C22 = {
       theme: "Livres et littérature", duree: 60,
       objectifs: ["Parler de littérature", "Résumer et commenter une œuvre"],
       grammairePoints: ["Temps du récit", "Propositions relatives"],
+      exemplesPlus: [{"de":"Der Roman fesselt von der ersten bis zur letzten Seite.","fr":"*fesseln* = die Aufmerksamkeit ganz gefangen nehmen."},{"de":"Der allwissende Erzähler kennt alle Gedanken der Figuren.","fr":"*der Erzähler* = die Instanz, die die Geschichte vermittelt."},{"de":"Die Handlung steuert auf einen dramatischen Höhepunkt zu.","fr":"*der Höhepunkt* = der spannendste, wichtigste Moment."},{"de":"Die Metapher verleiht dem Text poetische Tiefe.","fr":"*die Metapher* = ein bildhafter, übertragener Ausdruck."},{"de":"Es ist ein anspruchsvolles, vielschichtiges Werk.","fr":"*anspruchsvoll* = hohe Ansprüche stellend, nicht leicht zu lesen."}],
       vocabulaire: [
         { de: "der Roman", fr: "le roman", ex: "Der Roman spielt im 19. Jahrhundert." },
         { de: "die Handlung", fr: "l'intrigue", ex: "Die Handlung ist vielschichtig." },
@@ -676,6 +684,7 @@ window.MODULE_C22 = {
       theme: "Politique", duree: 65,
       objectifs: ["Débattre d'enjeux politiques", "Argumenter avec rigueur"],
       grammairePoints: ["Connecteurs argumentatifs", "Style nominal / passif"],
+      exemplesPlus: [{"de":"Die Gesetzgebung obliegt dem Parlament.","fr":"*die Gesetzgebung* = das Schaffen und Beschließen von Gesetzen."},{"de":"Man muss den komplexen Sachverhalt erst klären.","fr":"*der Sachverhalt* = die tatsächliche Lage eines Falls."},{"de":"Für die Maßnahme braucht es eine Mehrheit.","fr":"*die Maßnahme* = eine gezielte Handlung zur Lösung eines Problems."},{"de":"Ein tragfähiger Kompromiss ließ sich aushandeln.","fr":"*der Kompromiss* = eine Einigung durch gegenseitiges Nachgeben."},{"de":"Versprechen muss man auch glaubwürdig umsetzen.","fr":"*umsetzen* = einen Plan in die Tat verwandeln."}],
       vocabulaire: [
         { de: "die Gesetzgebung", fr: "la législation", ex: "Die Gesetzgebung muss angepasst werden." },
         { de: "der Sachverhalt", fr: "l'état de fait / la situation", ex: "Der Sachverhalt ist komplex." },

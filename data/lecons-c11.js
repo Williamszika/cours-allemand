@@ -59,6 +59,7 @@ window.MODULE_C11 = {
       theme: "Météo et petites conversations", duree: 60,
       objectifs: ["Manier les expressions idiomatiques liées au temps", "Entretenir une conversation nuancée"],
       grammairePoints: ["Expressions idiomatiques", "Connecteurs de relance"],
+      exemplesPlus: [{"de":"Die schwüle, drückende Luft kündigt ein Gewitter an.","fr":"*drückend* = schwül und unangenehm heiß."},{"de":"Am Nachmittag soll das Wetter umschlagen.","fr":"*umschlagen* = sich plötzlich stark ändern."},{"de":"Nach dem Regen gab es eine kurze Aufheiterung.","fr":"*die Aufheiterung* = wenn die Wolken kurz aufreißen."},{"de":"Eine lockere Plauderei über das Wetter bricht das Eis.","fr":"*die Plauderei* = ein leichtes, unverbindliches Gespräch."},{"de":"Der Sturm kam aus heiterem Himmel.","fr":"*aus heiterem Himmel* = völlig überraschend, unerwartet."}],
       vocabulaire: [
         { de: "die Abwechslung", fr: "le changement / la variété", ex: "Das Wetter bietet wenig Abwechslung." },
         { de: "drückend", fr: "lourd (chaleur)", ex: "Die Hitze ist drückend." },
@@ -136,6 +137,7 @@ window.MODULE_C11 = {
       theme: "Langues", duree: 60,
       objectifs: ["Réfléchir au plurilinguisme", "Argumenter sur l'apprentissage des langues"],
       grammairePoints: ["Nominalisation", "Connecteurs d'argumentation"],
+      exemplesPlus: [{"de":"Mehrsprachigkeit gilt heute als großer Vorteil.","fr":"*die Mehrsprachigkeit* = das Beherrschen mehrerer Sprachen."},{"de":"Kinder eignen sich Sprachen erstaunlich schnell an.","fr":"*sich aneignen* = selbst lernen, erwerben."},{"de":"Für die Verständigung reichen oft einfache Worte.","fr":"*die Verständigung* = das gegenseitige Verstehen."},{"de":"Sie beherrscht die feinen Nuancen der Sprache.","fr":"*die Nuance* = ein feiner Bedeutungsunterschied."},{"de":"In Bayern spricht man einen starken Dialekt.","fr":"*der Dialekt* = die regionale Variante einer Sprache."}],
       vocabulaire: [
         { de: "die Mehrsprachigkeit", fr: "le plurilinguisme", ex: "Mehrsprachigkeit ist ein Vorteil." },
         { de: "der Spracherwerb", fr: "l'acquisition d'une langue", ex: "Der Spracherwerb beginnt früh." },
@@ -213,6 +215,7 @@ window.MODULE_C11 = {
       theme: "Chance", duree: 55,
       objectifs: ["Distinguer chance et bonheur", "Employer des expressions idiomatiques"],
       grammairePoints: ["Glück / Zufall", "Konjunktiv II (irréel)"],
+      exemplesPlus: [{"de":"Durch einen glücklichen Zufall trafen wir uns wieder.","fr":"*der Zufall* = etwas, das ohne Absicht geschieht."},{"de":"Diese Gelegenheit darfst du nicht verpassen.","fr":"*die Gelegenheit* = eine günstige Chance."},{"de":"Seinen Erfolg verdankt er auch etwas Glück.","fr":"*verdanken* = jemandem für etwas dankbar sein müssen."},{"de":"Bei der Prüfung hatte ich richtig Schwein.","fr":"*Schwein haben* = (umgangssprachlich) großes Glück haben."},{"de":"Sein Einsatz war für den Sieg ausschlaggebend.","fr":"*ausschlaggebend* = entscheidend, am wichtigsten."}],
       vocabulaire: [
         { de: "der Zufall", fr: "le hasard", ex: "Es war reiner Zufall." },
         { de: "das Schicksal", fr: "le destin", ex: "Man kann dem Schicksal nicht entkommen." },
@@ -290,6 +293,7 @@ window.MODULE_C11 = {
       theme: "Stress", duree: 60,
       objectifs: ["Décrire causes et effets du stress", "Proposer des stratégies"],
       grammairePoints: ["Causes/conséquences", "Verbes pronominaux"],
+      exemplesPlus: [{"de":"Der ständige Leistungsdruck führt oft zum Burnout.","fr":"*der Leistungsdruck* = der Zwang, immer viel leisten zu müssen."},{"de":"Man sollte sich nicht ständig überfordern.","fr":"*sich überfordern* = mehr von sich verlangen, als man schafft."},{"de":"Mit Gelassenheit bewältigt sie auch schwierige Aufgaben.","fr":"*die Gelassenheit* = innere Ruhe, auch unter Druck."},{"de":"Am Wochenende muss ich einfach abschalten.","fr":"*abschalten* = sich entspannen, nicht an die Arbeit denken."},{"de":"Nach Wochen ohne Pause folgte die völlige Erschöpfung.","fr":"*die Erschöpfung* = ein Zustand tiefer Müdigkeit."}],
       vocabulaire: [
         { de: "die Belastung", fr: "la charge / la pression", ex: "Die Belastung ist enorm." },
         { de: "der Leistungsdruck", fr: "la pression de la performance", ex: "Der Leistungsdruck nimmt zu." },
@@ -367,6 +371,7 @@ window.MODULE_C11 = {
       theme: "Rire", duree: 55,
       objectifs: ["Parler du rôle de l'humour", "Comprendre l'humour et l'ironie"],
       grammairePoints: ["Ironie / nuance", "Comparaisons"],
+      exemplesPlus: [{"de":"Mit seinem feinen Humor bringt er alle zum Lachen.","fr":"*der Humor* = die Fähigkeit, Dinge mit Heiterkeit zu sehen."},{"de":"Ihre schlagfertige Antwort sorgte für Gelächter.","fr":"*schlagfertig* = man hat sofort eine treffende Antwort."},{"de":"Ironie wird nicht immer richtig verstanden.","fr":"*die Ironie* = man sagt das Gegenteil von dem, was man meint."},{"de":"Selbstironie macht ihn sehr sympathisch.","fr":"*die Selbstironie* = über sich selbst lachen können."},{"de":"Ich konnte mir das Lachen kaum verkneifen.","fr":"*sich verkneifen* = mühsam unterdrücken."}],
       vocabulaire: [
         { de: "der Humor", fr: "l'humour", ex: "Er hat einen feinen Humor." },
         { de: "die Ironie", fr: "l'ironie", ex: "Ironie wird oft missverstanden." },
@@ -444,6 +449,7 @@ window.MODULE_C11 = {
       theme: "Succès : sport et profession", duree: 60,
       objectifs: ["Analyser les facteurs de réussite", "Nuancer la notion de succès"],
       grammairePoints: ["Nominalisation", "Connecteurs en deux parties"],
+      exemplesPlus: [{"de":"Ohne Ehrgeiz und Durchhaltevermögen geht es nicht.","fr":"*das Durchhaltevermögen* = die Fähigkeit, nicht aufzugeben."},{"de":"Im harten Wettbewerb muss man sich durchsetzen.","fr":"*sich durchsetzen* = sich gegen andere behaupten."},{"de":"Für ihre Leistung erhielt sie große Anerkennung.","fr":"*die Anerkennung* = Lob und Wertschätzung."},{"de":"Auch wer scheitert, kann etwas lernen.","fr":"*scheitern* = keinen Erfolg haben, misslingen."},{"de":"Eine Niederlage ist kein Grund aufzugeben.","fr":"*die Niederlage* = das Gegenteil von Sieg."}],
       vocabulaire: [
         { de: "der Ehrgeiz", fr: "l'ambition", ex: "Ohne Ehrgeiz kein Erfolg." },
         { de: "die Leistung", fr: "la performance", ex: "Ihre Leistung war herausragend." },
@@ -522,6 +528,7 @@ window.MODULE_C11 = {
       theme: "Échecs", duree: 60,
       objectifs: ["Parler de l'échec et du rebond", "Exprimer l'irréel du passé (regret)"],
       grammairePoints: ["Konjunktiv II passé", "hätte … sollen"],
+      exemplesPlus: [{"de":"Nach jedem Rückschlag muss man sich neu aufraffen.","fr":"*der Rückschlag* = ein plötzliches Scheitern nach Fortschritt."},{"de":"Aus seinen Fehlern sollte man eine Lehre ziehen.","fr":"*eine Lehre ziehen* = aus Erfahrung etwas lernen."},{"de":"Trotz des Misserfolgs gab sie nicht auf.","fr":"*der Misserfolg* = ausbleibender Erfolg."},{"de":"Seine Widerstandskraft beeindruckt mich.","fr":"*die Widerstandskraft* = die innere Stärke, Krisen zu überstehen."},{"de":"Der Versuch war ein totaler Fehlschlag.","fr":"*der Fehlschlag* = ein gescheiterter Versuch."}],
       vocabulaire: [
         { de: "der Misserfolg", fr: "l'échec", ex: "Ein Misserfolg ist kein Weltuntergang." },
         { de: "der Rückschlag", fr: "le revers", ex: "Nach dem Rückschlag gab er nicht auf." },

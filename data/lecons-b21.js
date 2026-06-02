@@ -61,6 +61,7 @@ window.MODULE_B21 = {
       theme: "École et formation", duree: 60,
       objectifs: ["Parler de son parcours et de la formation", "Exprimer une opinion nuancée sur le système éducatif"],
       grammairePoints: ["Nominalisation", "Verbes modaux (sens)"],
+      exemplesPlus: [{"de":"Für diesen Studiengang ist das Abitur eine Voraussetzung.","fr":"*die Voraussetzung* = etwas, das man vorher erfüllen muss."},{"de":"Nach dem Abschluss bewerbe ich mich bei einer Firma.","fr":"*der Abschluss* = das Ende einer Ausbildung mit Zertifikat."},{"de":"Lebenslanges Lernen wird immer wichtiger.","fr":"*lebenslang* = das ganze Leben lang."},{"de":"Der Lehrgang dauert sechs Monate.","fr":"*der Lehrgang* = ein Kurs zu einem bestimmten Thema."},{"de":"Sie hat die nötigen Fähigkeiten für diese Stelle.","fr":"*die Fähigkeit* = das, was man kann."}],
       vocabulaire: [
         { de: "die Ausbildung", fr: "la formation (professionnelle)", ex: "Sie macht eine Ausbildung zur Krankenschwester." },
         { de: "der Studiengang", fr: "la filière d'études", ex: "Welchen Studiengang hast du gewählt?" },
@@ -138,6 +139,7 @@ window.MODULE_B21 = {
       theme: "Relations interpersonnelles", duree: 60,
       objectifs: ["Décrire des relations et des sentiments", "Gérer un désaccord avec tact"],
       grammairePoints: ["Verbes pronominaux réciproques", "Adjectifs + prépositions"],
+      exemplesPlus: [{"de":"Vertrauen ist die Basis jeder Beziehung.","fr":"*das Vertrauen* = man glaubt, dass jemand ehrlich und treu ist."},{"de":"Wir verstehen uns sehr gut.","fr":"*sich verstehen* = gut miteinander auskommen."},{"de":"Nach dem Streit haben sie einen Kompromiss gefunden.","fr":"*der Kompromiss* = eine Lösung, bei der beide nachgeben."},{"de":"Auf ihn kann man sich immer verlassen.","fr":"*sich verlassen auf* = sicher sein, dass jemand hilft."},{"de":"Eifersucht kann eine Beziehung zerstören.","fr":"*die Eifersucht* = die Angst, den Partner zu verlieren."}],
       vocabulaire: [
         { de: "die Beziehung", fr: "la relation", ex: "Eine gute Beziehung braucht Vertrauen." },
         { de: "das Vertrauen", fr: "la confiance", ex: "Vertrauen muss man sich verdienen." },
@@ -215,6 +217,7 @@ window.MODULE_B21 = {
       theme: "Logement et location", duree: 60,
       objectifs: ["Comprendre une annonce et un contrat de location", "Décrire un logement et négocier"],
       grammairePoints: ["Wechselpräpositionen", "Adjectifs déclinés"],
+      exemplesPlus: [{"de":"Die Miete beträgt 800 Euro plus Nebenkosten.","fr":"*die Nebenkosten* = Kosten für Wasser, Heizung, Strom."},{"de":"Vor dem Einzug zahlt man eine Kaution.","fr":"*die Kaution* = Geld als Sicherheit für den Vermieter."},{"de":"Die Wohnung ist möbliert.","fr":"*möbliert* = mit Möbeln (Bett, Tisch …)."},{"de":"Morgen ist die Besichtigung der Wohnung.","fr":"*die Besichtigung* = man schaut sich die Wohnung an."},{"de":"Ich möchte den Mietvertrag kündigen.","fr":"*kündigen* = einen Vertrag offiziell beenden."}],
       vocabulaire: [
         { de: "die Miete", fr: "le loyer", ex: "Die Miete ist im Voraus zu zahlen." },
         { de: "die Kaution", fr: "la caution", ex: "Die Kaution beträgt drei Monatsmieten." },
@@ -293,6 +296,7 @@ window.MODULE_B21 = {
       theme: "Voyages et lettres de réclamation", duree: 60,
       objectifs: ["Décrire un problème en vacances", "Rédiger une lettre de réclamation formelle"],
       grammairePoints: ["Lettre formelle", "Konjunktiv II (politesse/exigence)"],
+      exemplesPlus: [{"de":"Wegen der Verspätung fordere ich eine Entschädigung.","fr":"*die Entschädigung* = Geld als Ausgleich für einen Schaden."},{"de":"Der Service war mangelhaft.","fr":"*mangelhaft* = nicht gut genug, mit Fehlern."},{"de":"Die Airline erstattet die Kosten.","fr":"*erstatten* = das Geld zurückzahlen."},{"de":"Ich reiche eine Beschwerde ein.","fr":"*die Beschwerde* = eine schriftliche Klage über ein Problem."},{"de":"Bitte antworten Sie umgehend.","fr":"*umgehend* = sofort, ohne zu warten."}],
       vocabulaire: [
         { de: "die Beschwerde", fr: "la réclamation", ex: "Ich möchte eine Beschwerde einreichen." },
         { de: "die Reklamation", fr: "la réclamation (produit/service)", ex: "Die Reklamation wurde bearbeitet." },
@@ -370,6 +374,7 @@ window.MODULE_B21 = {
       theme: "Différences culturelles professionnelles", duree: 60,
       objectifs: ["Comparer des cultures de travail", "Exprimer une généralisation prudente"],
       grammairePoints: ["man / es heißt, dass", "Comparatifs"],
+      exemplesPlus: [{"de":"In manchen Firmen ist die Hierarchie sehr flach.","fr":"*die Hierarchie* = die Ordnung vom Chef bis zum Mitarbeiter."},{"de":"Pünktlichkeit gilt als Zeichen von Respekt.","fr":"*die Pünktlichkeit* = immer zur richtigen Zeit kommen."},{"de":"Deutsche kommunizieren oft sehr direkt.","fr":"*direkt* = klar und offen, ohne Umwege."},{"de":"Man sollte Vorurteile vermeiden.","fr":"*das Vorurteil* = eine feste Meinung ohne echte Gründe."},{"de":"Bei uns zählt die Eigenverantwortung.","fr":"*die Eigenverantwortung* = selbst für seine Arbeit verantwortlich sein."}],
       vocabulaire: [
         { de: "die Hierarchie", fr: "la hiérarchie", ex: "Die Hierarchie ist hier eher flach." },
         { de: "die Pünktlichkeit", fr: "la ponctualité", ex: "Pünktlichkeit gilt als wichtig." },
@@ -447,6 +452,7 @@ window.MODULE_B21 = {
       theme: "L'Europe et les Allemands", duree: 60,
       objectifs: ["Discuter de l'Europe et de l'identité", "Argumenter pour et contre"],
       grammairePoints: ["Connecteurs d'argumentation", "Passif"],
+      exemplesPlus: [{"de":"In der EU gibt es Freizügigkeit für alle Bürger.","fr":"*die Freizügigkeit* = man darf überall leben und arbeiten."},{"de":"Der Euro ist die gemeinsame Währung.","fr":"*die Währung* = das Geld eines Landes (Euro, Dollar …)."},{"de":"Der Binnenmarkt erleichtert den Handel.","fr":"*der Binnenmarkt* = ein gemeinsamer Markt ohne Grenzen."},{"de":"Die kulturelle Vielfalt ist ein großer Wert.","fr":"*die Vielfalt* = viele verschiedene Dinge und Kulturen."},{"de":"Die Zusammenarbeit der Länder ist wichtig.","fr":"*die Zusammenarbeit* = gemeinsam an etwas arbeiten."}],
       vocabulaire: [
         { de: "die Europäische Union", fr: "l'Union européenne", ex: "Deutschland ist Mitglied der Europäischen Union." },
         { de: "die Grenze", fr: "la frontière", ex: "Innerhalb der EU gibt es offene Grenzen." },
@@ -524,6 +530,7 @@ window.MODULE_B21 = {
       theme: "Petites conversations", duree: 55,
       objectifs: ["Engager et entretenir une conversation légère", "Éviter les sujets sensibles"],
       grammairePoints: ["Questions ouvertes", "Formules de relance"],
+      exemplesPlus: [{"de":"Mit Small Talk lockert man die Stimmung auf.","fr":"*auflockern* = entspannter und lockerer machen."},{"de":"Das Wetter ist ein typisches Thema.","fr":"*das Thema* = das, worüber man spricht."},{"de":"Über Politik zu reden ist oft heikel.","fr":"*heikel* = schwierig, man muss vorsichtig sein."},{"de":"*Wie geht es dir?* ist eine höfliche Floskel.","fr":"*die Floskel* = ein Satz, den man fast automatisch sagt."},{"de":"Man kann an ein gemeinsames Interesse anknüpfen.","fr":"*anknüpfen an* = ein Gespräch mit etwas verbinden."}],
       vocabulaire: [
         { de: "das Gespräch", fr: "la conversation", ex: "Ein lockeres Gespräch entspannt die Stimmung." },
         { de: "die Stimmung", fr: "l'ambiance / l'humeur", ex: "Die Stimmung war gut." },

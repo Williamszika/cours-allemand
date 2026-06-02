@@ -60,6 +60,7 @@ window.MODULE_C21 = {
       theme: "Communication et médias", duree: 65,
       objectifs: ["Analyser le rôle des médias avec nuance", "Argumenter de façon structurée"],
       grammairePoints: ["Style nominal", "Connecteurs argumentatifs"],
+      exemplesPlus: [{"de":"Eine seriöse Berichterstattung wahrt ihre Glaubwürdigkeit.","fr":"*die Glaubwürdigkeit* = das Maß, in dem man jemandem Vertrauen schenken kann."},{"de":"Algorithmen verstärken die sogenannte Filterblase.","fr":"*die Filterblase* = der mediale Raum, der nur die eigene Sicht bestätigt."},{"de":"Schlagzeilen verzerren oft den eigentlichen Sachverhalt.","fr":"*verzerren* = verfälscht oder einseitig darstellen."},{"de":"Man sollte Quellen stets kritisch hinterfragen.","fr":"*hinterfragen* = kritisch auf ihre Richtigkeit prüfen."},{"de":"Die ständige Reizüberflutung erschwert die Meinungsbildung.","fr":"*die Reizüberflutung* = ein Übermaß an Eindrücken und Informationen."}],
       vocabulaire: [
         { de: "die Berichterstattung", fr: "la couverture médiatique", ex: "Die Berichterstattung war einseitig." },
         { de: "die Glaubwürdigkeit", fr: "la crédibilité", ex: "Die Glaubwürdigkeit der Quelle ist fraglich." },
@@ -137,6 +138,7 @@ window.MODULE_C21 = {
       theme: "Histoire et souvenirs", duree: 65,
       objectifs: ["Évoquer la mémoire collective", "Nuancer un récit du passé"],
       grammairePoints: ["Temps du passé", "Konjunktiv (recul)"],
+      exemplesPlus: [{"de":"Die Vergangenheitsbewältigung ist ein langwieriger Prozess.","fr":"*die Vergangenheitsbewältigung* = der gesellschaftliche Umgang mit einer belastenden Geschichte."},{"de":"Mit der Zeit neigt man dazu, Erinnerungen zu verklären.","fr":"*verklären* = im Rückblick schöner erscheinen lassen."},{"de":"Schmerzhafte Erlebnisse werden oft verdrängt.","fr":"*verdrängen* = unbewusst aus dem Bewusstsein fernhalten."},{"de":"Das Mahnmal soll an die Opfer erinnern.","fr":"*das Mahnmal* = ein Denkmal, das mahnen und erinnern soll."},{"de":"Die Zeitzeugin schilderte ihre Erlebnisse eindringlich.","fr":"*prägen* = nachhaltig formen und beeinflussen."}],
       vocabulaire: [
         { de: "die Erinnerung", fr: "le souvenir", ex: "Die Erinnerung verblasst mit der Zeit." },
         { de: "das Gedächtnis", fr: "la mémoire", ex: "Das kollektive Gedächtnis prägt eine Nation." },
@@ -214,6 +216,7 @@ window.MODULE_C21 = {
       theme: "Sentiments, mensonges, forces et faiblesses", duree: 65,
       objectifs: ["Décrire des traits de caractère avec finesse", "Exprimer l'ambivalence"],
       grammairePoints: ["Adjectifs nuancés", "Konjunktiv II (hypothèse)"],
+      exemplesPlus: [{"de":"Aufrichtigkeit schafft Vertrauen, auch wenn sie wehtut.","fr":"*die Aufrichtigkeit* = die ehrliche, ungeschönte Haltung."},{"de":"Eine kleine Notlüge gilt manchmal als entschuldbar.","fr":"*die Notlüge* = eine Lüge, um jemanden zu schonen."},{"de":"Ein einfühlsamer Mensch erkennt die Stimmungen anderer.","fr":"*einfühlsam* = fähig, sich in andere hineinzuversetzen."},{"de":"Seine Selbstüberschätzung führte ihn ins Verderben.","fr":"*die Selbstüberschätzung* = die zu hohe Einschätzung der eigenen Fähigkeiten."},{"de":"Sie ist nachtragend und vergisst keinen Streit.","fr":"*nachtragend* = jemandem lange böse sein."}],
       vocabulaire: [
         { de: "die Aufrichtigkeit", fr: "la sincérité", ex: "Aufrichtigkeit schafft Vertrauen." },
         { de: "die Notlüge", fr: "le pieux mensonge", ex: "Eine Notlüge kann Schlimmeres verhindern." },
@@ -291,6 +294,7 @@ window.MODULE_C21 = {
       theme: "Les années scolaires", duree: 60,
       objectifs: ["Porter un regard critique sur l'école", "Comparer des systèmes éducatifs"],
       grammairePoints: ["Comparaison", "Subordonnées"],
+      exemplesPlus: [{"de":"Chancengleichheit im Bildungsweg bleibt eine Herausforderung.","fr":"*die Chancengleichheit* = gleiche Möglichkeiten für alle, unabhängig von der Herkunft."},{"de":"Begabte Kinder sollte man gezielt fördern.","fr":"*fördern* = gezielt unterstützen und voranbringen."},{"de":"Der Notendruck belastet viele Jugendliche.","fr":"*der Notendruck* = der Stress durch die Erwartung guter Noten."},{"de":"Stures Auswendiglernen ersetzt kein echtes Verständnis.","fr":"*auswendig lernen* = Wort für Wort einprägen, ohne zu verstehen."},{"de":"Mit der Reife wächst auch die Selbstständigkeit.","fr":"*die Reife* = der Zustand geistiger und charakterlicher Entwicklung."}],
       vocabulaire: [
         { de: "der Bildungsweg", fr: "le parcours scolaire", ex: "Jeder Bildungsweg ist individuell." },
         { de: "die Chancengleichheit", fr: "l'égalité des chances", ex: "Chancengleichheit bleibt ein Ideal." },
@@ -368,6 +372,7 @@ window.MODULE_C21 = {
       theme: "Possibilités de carrière et professions", duree: 65,
       objectifs: ["Discuter de trajectoires professionnelles", "Argumenter un choix de carrière"],
       grammairePoints: ["Verbes à compléments", "Style nominal"],
+      exemplesPlus: [{"de":"Sein beruflicher Werdegang verlief alles andere als geradlinig.","fr":"*der Werdegang* = die berufliche Entwicklung im Lebenslauf."},{"de":"Viele suchen heute vor allem Selbstverwirklichung.","fr":"*die Selbstverwirklichung* = das Entfalten der eigenen Fähigkeiten und Wünsche."},{"de":"Der Quereinstieg eröffnet neue Karrierewege.","fr":"*der Quereinstieg* = der Wechsel in einen Beruf ohne die klassische Ausbildung dafür."},{"de":"Die Vereinbarkeit von Beruf und Familie ist zentral.","fr":"*die Vereinbarkeit* = die Möglichkeit, zwei Bereiche miteinander zu verbinden."},{"de":"Wer aufsteigen will, muss sich ständig qualifizieren.","fr":"*sich qualifizieren* = sich die nötigen Kompetenzen aneignen."}],
       vocabulaire: [
         { de: "der Werdegang", fr: "le parcours professionnel", ex: "Ihr Werdegang ist beeindruckend." },
         { de: "die Selbstverwirklichung", fr: "l'épanouissement personnel", ex: "Viele suchen Selbstverwirklichung im Beruf." },

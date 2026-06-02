@@ -60,6 +60,7 @@ window.MODULE_C12 = {
       theme: "Le progrès", duree: 60,
       objectifs: ["Débattre des bienfaits et risques du progrès", "Exprimer des hypothèses nuancées"],
       grammairePoints: ["Hypothèses (dürfte, vermutlich)", "Nominalisation"],
+      exemplesPlus: [{"de":"Künstliche Intelligenz ist Segen und Fluch zugleich.","fr":"*der Segen* = etwas sehr Positives; Gegenteil: *der Fluch*."},{"de":"Diese Erfindung war wirklich bahnbrechend.","fr":"*bahnbrechend* = völlig neu und richtungsweisend."},{"de":"Der medizinische Fortschritt rettet Leben.","fr":"*der Fortschritt* = eine positive Entwicklung."},{"de":"Man muss die ethischen Auswirkungen bedenken.","fr":"*ethisch* = die Moral, Gut und Böse betreffend."},{"de":"Das Internet ist eine große Errungenschaft.","fr":"*die Errungenschaft* = ein wichtiges, erreichtes Ergebnis."}],
       vocabulaire: [
         { de: "der Fortschritt", fr: "le progrès", ex: "Der technische Fortschritt ist rasant." },
         { de: "die Errungenschaft", fr: "l'acquis / la conquête", ex: "Das Internet ist eine große Errungenschaft." },
@@ -137,6 +138,7 @@ window.MODULE_C12 = {
       theme: "Environnement et climat", duree: 60,
       objectifs: ["Argumenter sur le climat", "Proposer des solutions au passif"],
       grammairePoints: ["Passif et alternatives", "Connecteurs de conséquence"],
+      exemplesPlus: [{"de":"Wir müssen den CO2-Ausstoß deutlich eindämmen.","fr":"*eindämmen* = begrenzen, verringern."},{"de":"Erneuerbare Energien schonen die Ressourcen.","fr":"*erneuerbar* = praktisch unbegrenzt verfügbar (Sonne, Wind)."},{"de":"Nachhaltigkeit bedeutet, an die Zukunft zu denken.","fr":"*die Nachhaltigkeit* = so handeln, dass die Ressourcen erhalten bleiben."},{"de":"Der Treibhauseffekt verstärkt den Klimawandel.","fr":"*der Treibhauseffekt* = die Erwärmung durch Gase in der Atmosphäre."},{"de":"Ein gewisser Verzicht ist unvermeidlich.","fr":"*der Verzicht* = das bewusste Weglassen von etwas."}],
       vocabulaire: [
         { de: "der Klimawandel", fr: "le changement climatique", ex: "Der Klimawandel schreitet voran." },
         { de: "der Treibhauseffekt", fr: "l'effet de serre", ex: "Der Treibhauseffekt verstärkt sich." },
@@ -215,6 +217,7 @@ window.MODULE_C12 = {
       theme: "Histoire de la division", duree: 60,
       objectifs: ["Comprendre la division de l'Allemagne", "Raconter au prétérit et au passif"],
       grammairePoints: ["Prétérit (récit)", "Passif historique"],
+      exemplesPlus: [{"de":"Nach dem Krieg wurde Deutschland in Besatzungszonen geteilt.","fr":"*die Besatzungszone* = ein von den Siegermächten kontrolliertes Gebiet."},{"de":"Der Eiserne Vorhang spaltete Europa.","fr":"*der Eiserne Vorhang* = die Grenze zwischen Ost und West."},{"de":"Der Wiederaufbau dauerte viele Jahre.","fr":"*der Wiederaufbau* = das Neuerrichten nach der Zerstörung."},{"de":"1990 kam es zur Wiedervereinigung.","fr":"*die Wiedervereinigung* = die Vereinigung der beiden deutschen Staaten."},{"de":"Die Teilung prägte zwei Generationen.","fr":"*spalten* = in zwei Teile trennen."}],
       vocabulaire: [
         { de: "die Teilung", fr: "la division", ex: "Die Teilung dauerte über 40 Jahre." },
         { de: "die Besatzungszone", fr: "la zone d'occupation", ex: "Deutschland wurde in Besatzungszonen geteilt." },
@@ -292,6 +295,7 @@ window.MODULE_C12 = {
       theme: "Le Mur", duree: 60,
       objectifs: ["Raconter la construction et la chute du Mur", "Décrire des conséquences humaines"],
       grammairePoints: ["Plusquamperfekt", "Propositions relatives"],
+      exemplesPlus: [{"de":"1961 wurde die Mauer errichtet.","fr":"*errichten* = (ein Bauwerk) aufbauen."},{"de":"Viele wagten die gefährliche Flucht in den Westen.","fr":"*die Flucht* = das heimliche, oft riskante Verlassen eines Landes."},{"de":"Der Mauerfall 1989 veränderte alles.","fr":"*der Mauerfall* = die Öffnung der Berliner Mauer."},{"de":"Die Wende brachte tiefgreifende Veränderungen.","fr":"*die Wende* = der politische Umbruch 1989/90."},{"de":"Die Trennung von Familien war schmerzhaft.","fr":"*überwinden* = (ein Hindernis) hinter sich lassen."}],
       vocabulaire: [
         { de: "die Mauer", fr: "le mur", ex: "Die Mauer wurde 1961 errichtet." },
         { de: "errichten", fr: "ériger / construire", ex: "Man errichtete die Mauer über Nacht." },
@@ -370,6 +374,7 @@ window.MODULE_C12 = {
       theme: "Vivre en RDA", duree: 60,
       objectifs: ["Décrire le quotidien en RDA", "Nuancer mémoire et jugement"],
       grammairePoints: ["Discours indirect (Konjunktiv I)", "Prétérit"],
+      exemplesPlus: [{"de":"In der Planwirtschaft waren viele Güter Mangelware.","fr":"*die Mangelware* = etwas, das nur selten zu bekommen ist."},{"de":"Die Stasi betrieb eine umfassende Überwachung.","fr":"*die Überwachung* = das ständige Beobachten der Menschen."},{"de":"Es gab keine echte Meinungsfreiheit.","fr":"*die Meinungsfreiheit* = das Recht, seine Meinung frei zu äußern."},{"de":"Manche verklären die Vergangenheit heute.","fr":"*verklären* = die Vergangenheit schöner darstellen, als sie war."},{"de":"Trotz allem war der Zusammenhalt oft groß.","fr":"*der Zusammenhalt* = das Gefühl der Verbundenheit."}],
       vocabulaire: [
         { de: "die Planwirtschaft", fr: "l'économie planifiée", ex: "Die DDR hatte eine Planwirtschaft." },
         { de: "die Versorgung", fr: "l'approvisionnement", ex: "Die Versorgung war oft knapp." },
@@ -447,6 +452,7 @@ window.MODULE_C12 = {
       theme: "Histoire et politique", duree: 60,
       objectifs: ["Discuter d'enjeux politiques", "Exprimer une opinion argumentée"],
       grammairePoints: ["Nominalisation", "Connecteurs d'argumentation"],
+      exemplesPlus: [{"de":"Die Gewaltenteilung schützt die Demokratie.","fr":"*die Gewaltenteilung* = die Trennung von Gesetzgebung, Regierung und Justiz."},{"de":"Das Grundgesetz garantiert die Grundrechte.","fr":"*das Grundgesetz* = die Verfassung Deutschlands."},{"de":"Eine niedrige Wahlbeteiligung ist bedenklich.","fr":"*die Wahlbeteiligung* = der Anteil der Bürger, die wählen gehen."},{"de":"Diese Maßnahme ist politisch sehr umstritten.","fr":"*umstritten* = es gibt sehr unterschiedliche Meinungen dazu."},{"de":"Demokratie verlangt Kompromisse und Verantwortung.","fr":"*der Kompromiss* = eine Einigung, bei der beide Seiten nachgeben."}],
       vocabulaire: [
         { de: "die Demokratie", fr: "la démocratie", ex: "Die Demokratie lebt vom Mitmachen." },
         { de: "die Gewaltenteilung", fr: "la séparation des pouvoirs", ex: "Die Gewaltenteilung schützt die Freiheit." },
@@ -524,6 +530,7 @@ window.MODULE_C12 = {
       theme: "Musique et photographie", duree: 55,
       objectifs: ["Parler d'art et d'esthétique", "Décrire une œuvre et son effet"],
       grammairePoints: ["Adjectifs nominalisés", "Participe attribut"],
+      exemplesPlus: [{"de":"Die Aufnahme fängt die Stimmung perfekt ein.","fr":"*die Aufnahme* = ein Foto oder eine Tonaufzeichnung."},{"de":"Aus dieser Perspektive wirkt das Bild dramatisch.","fr":"*die Perspektive* = der Blickwinkel."},{"de":"Die Melodie ist zeitlos und ergreifend.","fr":"*ergreifend* = es berührt einen tief."},{"de":"Eine gute Belichtung ist für das Foto entscheidend.","fr":"*die Belichtung* = die Menge an Licht beim Fotografieren."},{"de":"Ein Foto kann einen Moment für immer verewigen.","fr":"*verewigen* = für immer festhalten."}],
       vocabulaire: [
         { de: "die Aufnahme", fr: "l'enregistrement / la prise de vue", ex: "Die Aufnahme ist gestochen scharf." },
         { de: "die Stimmung", fr: "l'atmosphère", ex: "Das Foto fängt die Stimmung ein." },

@@ -76,6 +76,7 @@ window.MODULE_A21 = {
       theme: "Se présenter", duree: 45,
       objectifs: ["Se présenter de façon développée", "Parler de sa famille", "Utiliser les adjectifs possessifs"],
       grammairePoints: ["Adjectifs possessifs", "W-Fragen (révision)"],
+      exemplesPlus: [{"de":"Ich bin verheiratet und habe zwei Kinder.","fr":"Je suis marié(e) et j'ai deux enfants."},{"de":"Meine Schwester ist noch ledig.","fr":"Ma sœur est encore célibataire."},{"de":"Ich bin in Madrid geboren.","fr":"Je suis né(e) à Madrid."},{"de":"Meine Eltern wohnen seit dreißig Jahren hier.","fr":"Mes parents habitent ici depuis trente ans."},{"de":"Mein Bruder und ich haben denselben Wohnort.","fr":"Mon frère et moi avons le même lieu de résidence."}],
       vocabulaire: [
         { de: "die Familie", fr: "la famille", ex: "Meine Familie ist groß." },
         { de: "verheiratet", fr: "marié(e)", ex: "Ich bin verheiratet." },
@@ -158,6 +159,7 @@ window.MODULE_A21 = {
       theme: "Professions et activités", duree: 50,
       objectifs: ["Décrire son métier et ses tâches", "Dire ce qu'on fait au travail"],
       grammairePoints: ["als + profession", "Verbes d'activité"],
+      exemplesPlus: [{"de":"Ich arbeite als Verkäufer und berate die Kunden.","fr":"Je travaille comme vendeur et je conseille les clients."},{"de":"Meine Schwester ist Krankenpflegerin.","fr":"Ma sœur est infirmière."},{"de":"Er ist selbstständig und verdient gut.","fr":"Il est indépendant et gagne bien sa vie."},{"de":"Meine Aufgabe ist es, das Team zu organisieren.","fr":"Ma tâche est d'organiser l'équipe."},{"de":"Wie viel verdient man in diesem Beruf?","fr":"Combien gagne-t-on dans ce métier ?"}],
       vocabulaire: [
         { de: "der Beruf", fr: "le métier", ex: "Was sind Sie von Beruf?" },
         { de: "arbeiten als", fr: "travailler comme", ex: "Ich arbeite als Lehrer." },
@@ -240,6 +242,7 @@ window.MODULE_A21 = {
       theme: "Raconter le passé", duree: 55,
       objectifs: ["Raconter au passé composé", "Utiliser war / hatte (prétérit de sein/haben)"],
       grammairePoints: ["Perfekt (révision)", "Präteritum: war, hatte"],
+      exemplesPlus: [{"de":"Gestern habe ich einen alten Freund getroffen.","fr":"Hier, j'ai rencontré un vieil ami."},{"de":"Letzte Woche waren wir im Urlaub.","fr":"La semaine dernière, nous étions en vacances."},{"de":"Was ist vor zwei Tagen passiert?","fr":"Que s'est-il passé il y a deux jours ?"},{"de":"Wir haben das Wochenende am Meer verbracht.","fr":"Nous avons passé le week-end à la mer."},{"de":"Erzähl mir von deiner Reise!","fr":"Raconte-moi ton voyage !"}],
       vocabulaire: [
         { de: "gestern", fr: "hier", ex: "Gestern war ich müde." },
         { de: "letzte Woche", fr: "la semaine dernière", ex: "Letzte Woche war ich krank." },
@@ -322,6 +325,7 @@ window.MODULE_A21 = {
       theme: "École, formation, curriculum vitae", duree: 50,
       objectifs: ["Parler de son parcours scolaire", "Lire/écrire un CV simple", "Dire des dates et durées"],
       grammairePoints: ["von … bis", "Dates et années"],
+      exemplesPlus: [{"de":"Ich habe mein Studium letztes Jahr abgeschlossen.","fr":"J'ai terminé mes études l'année dernière."},{"de":"Ich bewerbe mich um eine Stelle als Ingenieur.","fr":"Je postule à un poste d'ingénieur."},{"de":"Meine Ausbildung hat drei Jahre gedauert.","fr":"Ma formation a duré trois ans."},{"de":"Bitte schicken Sie uns Ihren Lebenslauf.","fr":"Veuillez nous envoyer votre CV."},{"de":"Er hat viel Erfahrung in diesem Bereich.","fr":"Il a beaucoup d'expérience dans ce domaine."}],
       vocabulaire: [
         { de: "die Schule", fr: "l'école", ex: "Ich war auf einer Schule in Wien." },
         { de: "die Ausbildung", fr: "la formation", ex: "Ich mache eine Ausbildung." },
@@ -404,6 +408,7 @@ window.MODULE_A21 = {
       theme: "Activités quotidiennes, loisirs", duree: 50,
       objectifs: ["Décrire sa journée en détail", "Utiliser les verbes pronominaux (sich)"],
       grammairePoints: ["Verbes réfléchis (sich)", "Adverbes de fréquence"],
+      exemplesPlus: [{"de":"Morgens wasche ich mich und ziehe mich an.","fr":"Le matin, je me lave et je m'habille."},{"de":"Am Wochenende treffe ich mich oft mit Freunden.","fr":"Le week-end, je retrouve souvent des amis."},{"de":"Abends entspanne ich mich vor dem Fernseher.","fr":"Le soir, je me détends devant la télé."},{"de":"Ich gehe selten ins Kino, aber nie ins Theater.","fr":"Je vais rarement au cinéma, mais jamais au théâtre."},{"de":"Manchmal lese ich, manchmal höre ich Musik.","fr":"Parfois je lis, parfois j'écoute de la musique."}],
       vocabulaire: [
         { de: "sich waschen", fr: "se laver", ex: "Ich wasche mich." },
         { de: "sich anziehen", fr: "s'habiller", ex: "Er zieht sich an." },
@@ -501,6 +506,7 @@ window.MODULE_A21 = {
       theme: "Acheter et dépenser de l'argent", duree: 50,
       objectifs: ["Faire des achats", "Comparer les prix (comparatif/superlatif)"],
       grammairePoints: ["Comparatif et superlatif", "kosten, ausgeben"],
+      exemplesPlus: [{"de":"Diese Schuhe sind zu teuer, gibt es ein Angebot?","fr":"Ces chaussures sont trop chères, y a-t-il une offre ?"},{"de":"Kann ich die Jacke in Größe M anprobieren?","fr":"Puis-je essayer la veste en taille M ?"},{"de":"Mit dem Rabatt ist es jetzt sehr günstig.","fr":"Avec la réduction, c'est maintenant très avantageux."},{"de":"Bitte zahlen Sie an der Kasse.","fr":"Veuillez payer à la caisse."},{"de":"Kann ich das Hemd umtauschen?","fr":"Puis-je échanger la chemise ?"}],
       vocabulaire: [
         { de: "ausgeben", fr: "dépenser", ex: "Ich gebe viel Geld aus." },
         { de: "billig", fr: "bon marché", ex: "Das ist billig." },
@@ -583,6 +589,7 @@ window.MODULE_A21 = {
       theme: "Les mots autour de l'argent", duree: 45,
       objectifs: ["Utiliser le vocabulaire de la banque", "Payer en espèces ou par carte"],
       grammairePoints: ["Verbes avec datif (zahlen, gehören)"],
+      exemplesPlus: [{"de":"Ich zahle lieber bar als mit Kreditkarte.","fr":"Je préfère payer en espèces qu'avec une carte de crédit."},{"de":"Kannst du mir zwanzig Euro leihen?","fr":"Peux-tu me prêter vingt euros ?"},{"de":"Ich überweise den Betrag auf dein Konto.","fr":"Je vire le montant sur ton compte."},{"de":"Wir sparen Geld für den Urlaub.","fr":"Nous économisons de l'argent pour les vacances."},{"de":"Die Rechnung kommt am Ende des Monats.","fr":"La facture arrive à la fin du mois."}],
       vocabulaire: [
         { de: "das Geld", fr: "l'argent", ex: "Ich habe kein Geld dabei." },
         { de: "das Konto", fr: "le compte", ex: "Mein Konto ist leer." },
@@ -665,6 +672,7 @@ window.MODULE_A21 = {
       theme: "Le rêve de la richesse : Et si… ?", duree: 55,
       objectifs: ["Exprimer un souhait / une hypothèse", "Utiliser le Konjunktiv II (würde, wäre, hätte)"],
       grammairePoints: ["Subjonctif II (conditionnel)", "wenn-Sätze"],
+      exemplesPlus: [{"de":"Wenn ich eine Million gewinnen würde, würde ich um die Welt reisen.","fr":"Si je gagnais un million, je voyagerais autour du monde."},{"de":"Mit viel Geld könnte ich mir ein Haus leisten.","fr":"Avec beaucoup d'argent, je pourrais m'offrir une maison."},{"de":"Reich zu sein ist nicht alles; Glück ist wichtiger.","fr":"Être riche n'est pas tout ; le bonheur est plus important."},{"de":"Vielleicht würde ich einen Teil spenden.","fr":"Peut-être que j'en donnerais une partie."},{"de":"Würdest du aufhören zu arbeiten?","fr":"Arrêterais-tu de travailler ?"}],
       vocabulaire: [
         { de: "reich", fr: "riche", ex: "Wenn ich reich wäre…" },
         { de: "der Traum", fr: "le rêve", ex: "Das ist mein Traum." },
@@ -747,6 +755,7 @@ window.MODULE_A21 = {
       theme: "Au bureau, au téléphone, prendre des rendez-vous", duree: 55,
       objectifs: ["Téléphoner professionnellement", "Prendre/décaler un rendez-vous", "Utiliser « dass » et « weil »"],
       grammairePoints: ["Subordonnées (dass, weil)", "Formules de politesse"],
+      exemplesPlus: [{"de":"Ich verbinde Sie mit Herrn Klein.","fr":"Je vous mets en relation avec M. Klein."},{"de":"Können Sie mich später zurückrufen?","fr":"Pouvez-vous me rappeler plus tard ?"},{"de":"Die Besprechung wurde auf morgen verschoben.","fr":"La réunion a été reportée à demain."},{"de":"Es ist dringend, bitte geben Sie mir Bescheid.","fr":"C'est urgent, tenez-moi au courant s'il vous plaît."},{"de":"Ich habe eine Nachricht auf dem Anrufbeantworter hinterlassen.","fr":"J'ai laissé un message sur le répondeur."}],
       vocabulaire: [
         { de: "der Termin", fr: "le rendez-vous", ex: "Ich hätte gern einen Termin." },
         { de: "verbinden", fr: "mettre en relation", ex: "Ich verbinde Sie." },

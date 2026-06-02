@@ -59,6 +59,7 @@ window.MODULE_B11 = {
       theme: "Temps et activités", duree: 55,
       objectifs: ["Organiser et raconter ses activités", "Situer deux actions passées dans le temps"],
       grammairePoints: ["Plus-que-parfait (Plusquamperfekt)", "nachdem / bevor"],
+      exemplesPlus: [{"de":"Ich muss heute noch viele Aufgaben erledigen.","fr":"*erledigen* = etwas fertig machen."},{"de":"Beeil dich, wir haben nicht viel Zeit!","fr":"*sich beeilen* = schnell machen."},{"de":"Verschwende deine Zeit nicht mit dem Handy.","fr":"*Zeit verschwenden* = Zeit unnütz verbrauchen."},{"de":"Zuerst arbeite ich, anschließend mache ich Sport.","fr":"*anschließend* = danach."},{"de":"Ich kann nicht zwei Dinge gleichzeitig machen.","fr":"*gleichzeitig* = zur selben Zeit."}],
       vocabulaire: [
         { de: "die Aktivität", fr: "l'activité", ex: "Ich plane meine Aktivitäten." },
         { de: "der Zeitplan", fr: "l'emploi du temps", ex: "Mein Zeitplan ist voll." },
@@ -136,6 +137,7 @@ window.MODULE_B11 = {
       theme: "Ponctualité", duree: 50,
       objectifs: ["Parler de ponctualité et de retard", "Exprimer une habitude / une attente sociale"],
       grammairePoints: ["Indicateurs de temps", "pünktlich, rechtzeitig"],
+      exemplesPlus: [{"de":"In Deutschland ist es wichtig, pünktlich zu sein.","fr":"*pünktlich* = genau zur richtigen Zeit."},{"de":"Komm rechtzeitig, damit wir den Zug nicht verpassen.","fr":"*rechtzeitig* = früh genug."},{"de":"Er ist sehr zuverlässig und kommt nie zu spät.","fr":"*zuverlässig* = man kann ihm vertrauen."},{"de":"Entschuldigung, ich habe mich verspätet.","fr":"*sich verspäten* = zu spät kommen."},{"de":"Pünktlichkeit ist bei uns eine wichtige Gewohnheit.","fr":"*die Gewohnheit* = etwas, das man immer macht."}],
       vocabulaire: [
         { de: "pünktlich", fr: "ponctuel", ex: "Sei bitte pünktlich!" },
         { de: "die Verspätung", fr: "le retard", ex: "Entschuldige die Verspätung." },
@@ -213,6 +215,7 @@ window.MODULE_B11 = {
       theme: "Le temps libre: Musées", duree: 50,
       objectifs: ["Parler d'une visite culturelle", "Donner une appréciation"],
       grammairePoints: ["Propositions relatives", "Adjectifs"],
+      exemplesPlus: [{"de":"Die Ausstellung im Museum war sehr beeindruckend.","fr":"*beeindruckend* = es macht großen Eindruck."},{"de":"Der Eintritt kostet zehn Euro.","fr":"*der Eintritt* = das Geld zum Hineingehen."},{"de":"Wir machen eine Führung durch die Sammlung.","fr":"*die Führung* = jemand zeigt und erklärt alles."},{"de":"Dieses Gemälde ist sehr berühmt.","fr":"*das Gemälde* = ein gemaltes Bild."},{"de":"Der Besuch lohnt sich wirklich.","fr":"*sich lohnen* = es ist die Mühe wert."}],
       vocabulaire: [
         { de: "das Museum", fr: "le musée", ex: "Das Museum ist berühmt." },
         { de: "die Ausstellung", fr: "l'exposition", ex: "Die Ausstellung ist sehenswert." },
@@ -291,6 +294,7 @@ window.MODULE_B11 = {
       theme: "Le temps libre: Beaux-arts", duree: 50,
       objectifs: ["Décrire une œuvre d'art", "Exprimer goûts et opinions"],
       grammairePoints: ["Adjectifs (comparatif/superlatif)", "gefallen + datif"],
+      exemplesPlus: [{"de":"Der Künstler drückt seine Gefühle mit Farben aus.","fr":"*ausdrücken* = zeigen, was man fühlt."},{"de":"Dieses Kunstwerk ist sehr abstrakt.","fr":"*abstrakt* = ohne klare, reale Formen."},{"de":"Im Park steht eine große Skulptur.","fr":"*die Skulptur* = ein Kunstwerk aus Stein oder Metall."},{"de":"Über Geschmack kann man nicht streiten.","fr":"*der Geschmack* = was jeder schön findet."},{"de":"Moderne Kunst gefällt nicht jedem.","fr":"*die Kunst* = Malerei, Musik, Skulptur usw."}],
       vocabulaire: [
         { de: "die Kunst", fr: "l'art", ex: "Ich interessiere mich für Kunst." },
         { de: "der Künstler", fr: "l'artiste", ex: "Ein berühmter Künstler." },
@@ -368,6 +372,7 @@ window.MODULE_B11 = {
       theme: "Professions", duree: 50,
       objectifs: ["Décrire un métier en détail", "Parler de compétences"],
       grammairePoints: ["Verbes + prépositions", "als / wie"],
+      exemplesPlus: [{"de":"Ich bewerbe mich um eine Stelle als Manager.","fr":"*sich bewerben um* = um eine Arbeit fragen."},{"de":"Diese Arbeit bringt viel Verantwortung mit sich.","fr":"*die Verantwortung* = man muss für etwas sorgen."},{"de":"Sie arbeitet in Teilzeit, nur zwanzig Stunden.","fr":"*Teilzeit* = nicht den ganzen Tag arbeiten."},{"de":"Das Gehalt ist gut, aber die Arbeit ist hart.","fr":"*das Gehalt* = das Geld für die Arbeit pro Monat."},{"de":"Für diese Stelle braucht man viel Erfahrung.","fr":"*die Erfahrung* = was man schon gelernt und gemacht hat."}],
       vocabulaire: [
         { de: "die Stelle", fr: "le poste", ex: "Ich habe eine neue Stelle." },
         { de: "die Fähigkeit", fr: "la compétence", ex: "Er hat viele Fähigkeiten." },
@@ -445,6 +450,7 @@ window.MODULE_B11 = {
       theme: "Problèmes au travail", duree: 55,
       objectifs: ["Exprimer un problème et une solution", "Nuancer avec le Konjunktiv II"],
       grammairePoints: ["Konjunktiv II (conseil/reproche)", "sollte / könnte"],
+      exemplesPlus: [{"de":"Es gibt oft Konflikte zwischen den Kollegen.","fr":"*der Konflikt* = ein Streit oder Problem."},{"de":"Ich mache jeden Tag Überstunden.","fr":"*die Überstunde* = Arbeit nach der normalen Zeit."},{"de":"Der Druck bei der Arbeit ist sehr hoch.","fr":"*der Druck* = man muss viel und schnell arbeiten."},{"de":"Wir suchen zusammen eine Lösung.","fr":"*die Lösung* = die Antwort auf ein Problem."},{"de":"Wenn es so weitergeht, kündige ich.","fr":"*kündigen* = die Arbeit beenden."}],
       vocabulaire: [
         { de: "der Konflikt", fr: "le conflit", ex: "Es gibt einen Konflikt im Team." },
         { de: "der Kollege", fr: "le collègue", ex: "Mein Kollege ist schwierig." },
@@ -522,6 +528,7 @@ window.MODULE_B11 = {
       theme: "Prendre des rendez-vous", duree: 50,
       objectifs: ["Fixer/décaler un rendez-vous professionnel", "Proposer poliment"],
       grammairePoints: ["Konjunktiv II (politesse)", "würde / könnte"],
+      exemplesPlus: [{"de":"Können wir einen Termin vereinbaren?","fr":"*vereinbaren* = zusammen einen Termin festlegen."},{"de":"Leider muss ich die Besprechung verschieben.","fr":"*verschieben* = auf später legen."},{"de":"Passt Ihnen Montag um zehn Uhr?","fr":"*passen* = gut sein für jemanden."},{"de":"Ich bestätige den Termin per E-Mail.","fr":"*bestätigen* = sicher sagen, dass es gilt."},{"de":"Mein Vorschlag ist Dienstagnachmittag.","fr":"*der Vorschlag* = eine Idee, die man anbietet."}],
       vocabulaire: [
         { de: "vereinbaren", fr: "convenir", ex: "Wir vereinbaren einen Termin." },
         { de: "verschieben", fr: "décaler", ex: "Können wir verschieben?" },
@@ -599,6 +606,7 @@ window.MODULE_B11 = {
       theme: "Les bonnes manières dans le monde du travail", duree: 50,
       objectifs: ["Connaître les codes professionnels", "Exprimer ce qui se fait / ne se fait pas"],
       grammairePoints: ["man / es ist üblich", "sollen (norme)"],
+      exemplesPlus: [{"de":"Im Büro siezt man die Kollegen meistens.","fr":"*siezen* = jemanden mit *Sie* anreden."},{"de":"Es ist üblich, morgens alle zu grüßen.","fr":"*üblich* = normal, man macht es oft."},{"de":"Man sollte die Kollegen respektieren.","fr":"*respektieren* = jemanden achten."},{"de":"Höfliche Umgangsformen sind wichtig.","fr":"*die Umgangsform* = wie man sich benimmt."},{"de":"Im Büro trägt man oft elegante Kleidung.","fr":"*die Kleidung* = was man anzieht."}],
       vocabulaire: [
         { de: "höflich", fr: "poli", ex: "Man sollte höflich sein." },
         { de: "die Umgangsform", fr: "les bonnes manières", ex: "Gute Umgangsformen sind wichtig." },
@@ -676,6 +684,7 @@ window.MODULE_B11 = {
       theme: "La lecture", duree: 50,
       objectifs: ["Parler de ses lectures", "Résumer / recommander un livre"],
       grammairePoints: ["Propositions relatives", "Genre littéraire"],
+      exemplesPlus: [{"de":"Ich lese gerade einen spannenden Roman.","fr":"*spannend* = sehr interessant, man will weiterlesen."},{"de":"Die Handlung spielt in Berlin.","fr":"*die Handlung* = was in der Geschichte passiert."},{"de":"Die Hauptfigur ist ein junger Arzt.","fr":"*die Figur* = eine Person in der Geschichte."},{"de":"Ich kann dir dieses Buch sehr empfehlen.","fr":"*empfehlen* = sagen, dass etwas gut ist."},{"de":"Das Buch war leider sehr langweilig.","fr":"*langweilig* = nicht interessant."}],
       vocabulaire: [
         { de: "das Buch", fr: "le livre", ex: "Ich lese ein spannendes Buch." },
         { de: "der Roman", fr: "le roman", ex: "Ein historischer Roman." },
@@ -753,6 +762,7 @@ window.MODULE_B11 = {
       theme: "Passé et enfance", duree: 55,
       objectifs: ["Raconter des souvenirs d'enfance", "Utiliser le prétérit pour le récit"],
       grammairePoints: ["Prétérit (récit)", "als / wenn (passé)"],
+      exemplesPlus: [{"de":"In meiner Kindheit war ich oft bei den Großeltern.","fr":"*die Kindheit* = die Zeit, als man ein Kind war."},{"de":"Ich bin auf dem Land aufgewachsen.","fr":"*aufwachsen* = als Kind groß werden."},{"de":"Ich erinnere mich gern an damals.","fr":"*sich erinnern an* = an Vergangenes denken."},{"de":"Früher hatten wir kein Handy.","fr":"*früher* = vor langer Zeit."},{"de":"Mein liebstes Spielzeug war ein Teddybär.","fr":"*das Spielzeug* = womit Kinder spielen."}],
       vocabulaire: [
         { de: "die Kindheit", fr: "l'enfance", ex: "Meine Kindheit war glücklich." },
         { de: "die Erinnerung", fr: "le souvenir", ex: "Ich habe schöne Erinnerungen." },
@@ -830,6 +840,7 @@ window.MODULE_B11 = {
       theme: "Médias", duree: 50,
       objectifs: ["Parler des médias et de leur usage", "Comprendre le passif"],
       grammairePoints: ["Le passif (Passiv)", "werden + participe"],
+      exemplesPlus: [{"de":"Die Medien berichten über das Ereignis.","fr":"*berichten* = Informationen geben."},{"de":"Diese Sendung läuft jeden Abend.","fr":"*die Sendung* = ein Programm im TV oder Radio."},{"de":"Man sollte die Quelle einer Nachricht prüfen.","fr":"*die Quelle* = woher eine Information kommt."},{"de":"Die Zeitung hat den Artikel veröffentlicht.","fr":"*veröffentlichen* = öffentlich machen."},{"de":"Ich habe einen Beitrag online gelesen.","fr":"*der Beitrag* = ein Artikel oder Text."}],
       vocabulaire: [
         { de: "die Medien", fr: "les médias", ex: "Die Medien berichten darüber." },
         { de: "die Nachricht", fr: "l'information", ex: "Die Nachricht wurde gesendet." },
@@ -908,6 +919,7 @@ window.MODULE_B11 = {
       theme: "Publicité: Impact et histoire", duree: 50,
       objectifs: ["Parler de l'impact de la publicité", "Exprimer cause et conséquence"],
       grammairePoints: ["deshalb / weil", "Cause et conséquence"],
+      exemplesPlus: [{"de":"Werbung beeinflusst, was wir kaufen.","fr":"*beeinflussen* = auf etwas wirken, etwas ändern."},{"de":"Diese Marke ist sehr bekannt.","fr":"*die Marke* = der Name eines Produkts."},{"de":"Der Slogan überzeugt viele Verbraucher.","fr":"*überzeugen* = jemanden sicher machen."},{"de":"Die Werbung hat eine starke Wirkung.","fr":"*die Wirkung* = was etwas bewirkt."},{"de":"Der Verbraucher entscheidet am Ende.","fr":"*der Verbraucher* = wer ein Produkt kauft."}],
       vocabulaire: [
         { de: "die Werbung", fr: "la publicité", ex: "Die Werbung ist überall." },
         { de: "die Wirkung", fr: "l'effet", ex: "Werbung hat eine starke Wirkung." },
@@ -985,6 +997,7 @@ window.MODULE_B11 = {
       theme: "Publicité: Les produits et leurs propriétés", duree: 50,
       objectifs: ["Décrire les qualités d'un produit", "Décliner l'adjectif épithète"],
       grammairePoints: ["Déclinaison de l'adjectif", "Comparatif (Werbesprache)"],
+      exemplesPlus: [{"de":"Dieses Gerät ist praktisch und hochwertig.","fr":"*hochwertig* = von guter Qualität."},{"de":"Das Produkt ist günstig und umweltfreundlich.","fr":"*umweltfreundlich* = gut für die Natur."},{"de":"Auf das Gerät gibt es zwei Jahre Garantie.","fr":"*die Garantie* = kostenlose Reparatur bei Defekt."},{"de":"Die Schuhe sind sehr haltbar.","fr":"*haltbar* = sie halten lange."},{"de":"Eine wichtige Eigenschaft ist der Preis.","fr":"*die Eigenschaft* = ein Merkmal von etwas."}],
       vocabulaire: [
         { de: "die Eigenschaft", fr: "la propriété/qualité", ex: "Das Produkt hat gute Eigenschaften." },
         { de: "praktisch", fr: "pratique", ex: "Ein praktisches Gerät." },
@@ -1062,6 +1075,7 @@ window.MODULE_B11 = {
       theme: "Les réclamations", duree: 55,
       objectifs: ["Faire une réclamation", "Demander un remboursement / échange poliment"],
       grammairePoints: ["Konjunktiv II (politesse)", "weil / deshalb"],
+      exemplesPlus: [{"de":"Das Gerät ist kaputt, ich möchte mich beschweren.","fr":"*sich beschweren* = sagen, dass etwas nicht gut ist."},{"de":"Kann ich das Produkt umtauschen?","fr":"*umtauschen* = gegen ein anderes wechseln."},{"de":"Ich möchte die Ware zurückgeben.","fr":"*zurückgeben* = zurückbringen."},{"de":"Ich bekomme eine Rückerstattung des Geldes.","fr":"*die Rückerstattung* = man bekommt das Geld zurück."},{"de":"Das Handy funktioniert nicht mehr.","fr":"*funktionieren* = richtig arbeiten."}],
       vocabulaire: [
         { de: "die Reklamation", fr: "la réclamation", ex: "Ich habe eine Reklamation." },
         { de: "sich beschweren über", fr: "se plaindre de", ex: "Ich beschwere mich über das Produkt." },

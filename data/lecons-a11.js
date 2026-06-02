@@ -93,6 +93,7 @@ window.MODULE_A11 = {
         "Poser des questions simples (Wie? Woher? Wo?)"
       ],
       grammairePoints: ["Pronoms personnels", "sein, heißen, kommen, wohnen au présent"],
+      exemplesPlus: [{"de":"Hallo! Ich heiße Anna. Wie heißt du?","fr":"Bonjour ! Je m'appelle Anna. Comment t'appelles-tu ?"},{"de":"Guten Tag! Mein Name ist Herr Klein.","fr":"Bonjour ! Mon nom est M. Klein."},{"de":"Ich komme aus Frankreich und wohne in Berlin.","fr":"Je viens de France et j'habite à Berlin."},{"de":"— Bist du Student? — Ja, und du?","fr":"— Es-tu étudiant ? — Oui, et toi ?"},{"de":"Danke und auf Wiedersehen!","fr":"Merci et au revoir !"}],
       vocabulaire: [
         { de: "Hallo", fr: "Salut / Bonjour", ex: "Hallo, ich bin Anna." },
         { de: "Guten Tag", fr: "Bonjour (journée)", ex: "Guten Tag, Frau Meyer!" },
@@ -244,6 +245,7 @@ window.MODULE_A11 = {
         "Donner un numéro de téléphone et un âge"
       ],
       grammairePoints: ["W-Fragen (questions en W)", "Verbe sein avec les nombres"],
+      exemplesPlus: [{"de":"Können Sie das bitte buchstabieren?","fr":"Pouvez-vous l'épeler, s'il vous plaît ?"},{"de":"Meine Telefonnummer ist null-eins-sieben.","fr":"Mon numéro de téléphone est zéro-un-sept."},{"de":"— Wie alt bist du? — Ich bin zwanzig Jahre alt.","fr":"— Quel âge as-tu ? — J'ai vingt ans."},{"de":"Der Buchstabe ä ist ein Umlaut.","fr":"La lettre « ä » est un Umlaut (tréma)."},{"de":"Zehn plus zehn ist zwanzig.","fr":"Dix plus dix font vingt."}],
       vocabulaire: [
         { de: "das Alphabet", fr: "l'alphabet", ex: "Das Alphabet hat 26 Buchstaben." },
         { de: "buchstabieren", fr: "épeler", ex: "Buchstabieren Sie bitte!" },
@@ -440,6 +442,7 @@ window.MODULE_A11 = {
         "Utiliser le verbe « sprechen »"
       ],
       grammairePoints: ["Verbe sprechen (changement de voyelle)", "in / aus + pays"],
+      exemplesPlus: [{"de":"Welche Sprache sprichst du? — Ein bisschen Deutsch.","fr":"Quelle langue parles-tu ? — Un peu d'allemand."},{"de":"In Deutschland und in Österreich spricht man Deutsch.","fr":"En Allemagne et en Autriche, on parle allemand."},{"de":"Meine Muttersprache ist Spanisch.","fr":"Ma langue maternelle est l'espagnol."},{"de":"Ich lerne seit einem Jahr Deutsch.","fr":"J'apprends l'allemand depuis un an."},{"de":"Kommst du aus Italien? — Ja, aus Rom.","fr":"Tu viens d'Italie ? — Oui, de Rome."}],
       vocabulaire: [
         { de: "das Land", fr: "le pays", ex: "Deutschland ist ein Land." },
         { de: "die Sprache", fr: "la langue", ex: "Deutsch ist eine Sprache." },
@@ -577,6 +580,7 @@ window.MODULE_A11 = {
         "Présenter d'autres personnes"
       ],
       grammairePoints: ["Verbes + gern", "er/sie (3e personne)"],
+      exemplesPlus: [{"de":"In meiner Freizeit lese ich gern und höre Musik.","fr":"Pendant mon temps libre, j'aime lire et écouter de la musique."},{"de":"Mein Hobby ist Sport: Ich schwimme und tanze gern.","fr":"Mon hobby, c'est le sport : j'aime nager et danser."},{"de":"Am Wochenende kocht meine Familie zusammen.","fr":"Le week-end, ma famille cuisine ensemble."},{"de":"Meine Freundin reist sehr gern.","fr":"Mon amie aime beaucoup voyager."},{"de":"Spielst du gern Fußball? — Ja, sehr gern!","fr":"Tu aimes jouer au foot ? — Oui, beaucoup !"}],
       vocabulaire: [
         { de: "das Hobby", fr: "le loisir", ex: "Mein Hobby ist Lesen." },
         { de: "die Freizeit", fr: "le temps libre", ex: "In der Freizeit lese ich." },
@@ -764,6 +768,7 @@ window.MODULE_A11 = {
         "Utiliser les adjectifs possessifs mein / dein"
       ],
       grammairePoints: ["Articles indéfinis ein/eine", "Possessifs mein/dein", "als + profession"],
+      exemplesPlus: [{"de":"Was bist du von Beruf? — Ich bin Lehrer.","fr":"Quel est ton métier ? — Je suis professeur."},{"de":"Meine Schwester arbeitet als Ärztin im Krankenhaus.","fr":"Ma sœur travaille comme médecin à l'hôpital."},{"de":"Mein Büro ist in einer großen Firma.","fr":"Mon bureau est dans une grande entreprise."},{"de":"Der Chef spricht mit den Kollegen.","fr":"Le chef parle avec les collègues."},{"de":"Die Studentin lernt an der Schule.","fr":"L'étudiante étudie à l'école."}],
       vocabulaire: [
         { de: "die Arbeit", fr: "le travail", ex: "Die Arbeit beginnt um 9 Uhr." },
         { de: "der Beruf", fr: "la profession", ex: "Was ist Ihr Beruf?" },
@@ -890,6 +895,7 @@ window.MODULE_A11 = {
         "Utiliser les verbes à particule séparable"
       ],
       grammairePoints: ["Verbes à particule séparable", "Uhrzeit (l'heure)", "Wann?"],
+      exemplesPlus: [{"de":"Wie spät ist es? — Es ist halb acht.","fr":"Quelle heure est-il ? — Il est sept heures et demie."},{"de":"Am Montag stehe ich um sechs Uhr auf.","fr":"Le lundi, je me lève à six heures."},{"de":"Am Samstag kaufe ich ein und sehe fern.","fr":"Le samedi, je fais les courses et je regarde la télé."},{"de":"Ich rufe dich am Sonntag an.","fr":"Je t'appelle dimanche."},{"de":"Der Zug kommt um neun Uhr an.","fr":"Le train arrive à neuf heures."}],
       vocabulaire: [
         { de: "die Uhr", fr: "l'heure / la montre", ex: "Wie viel Uhr ist es?" },
         { de: "die Zeit", fr: "le temps", ex: "Ich habe keine Zeit." },
@@ -1074,6 +1080,7 @@ window.MODULE_A11 = {
         "Utiliser « es gibt » + accusatif"
       ],
       grammairePoints: ["es gibt + accusatif", "möchten (politesse)", "haben"],
+      exemplesPlus: [{"de":"Ich möchte ein Doppelzimmer für zwei Nächte reservieren.","fr":"Je voudrais réserver une chambre double pour deux nuits."},{"de":"Haben Sie ein Zimmer frei? — Ja, es gibt noch eins.","fr":"Avez-vous une chambre libre ? — Oui, il en reste une."},{"de":"Was kostet das Einzelzimmer mit Frühstück?","fr":"Combien coûte la chambre simple avec petit-déjeuner ?"},{"de":"Hier ist Ihr Schlüssel. Die Rezeption ist immer offen.","fr":"Voici votre clé. La réception est toujours ouverte."},{"de":"Der Preis ist sehr gut.","fr":"Le prix est très bon."}],
       vocabulaire: [
         { de: "das Hotel", fr: "l'hôtel", ex: "Das Hotel ist im Zentrum." },
         { de: "das Zimmer", fr: "la chambre", ex: "Ich brauche ein Zimmer." },
@@ -1207,6 +1214,7 @@ window.MODULE_A11 = {
         "Utiliser les prépositions de lieu"
       ],
       grammairePoints: ["Prépositions de lieu (in, neben, hinter...)", "Wo ist...?", "es gibt"],
+      exemplesPlus: [{"de":"Entschuldigung, wo ist der Bahnhof? — Gehen Sie geradeaus.","fr":"Pardon, où est la gare ? — Allez tout droit."},{"de":"Die Apotheke ist neben der Post.","fr":"La pharmacie est à côté de la poste."},{"de":"Die Bank ist zwischen dem Museum und dem Platz.","fr":"La banque est entre le musée et la place."},{"de":"Gehen Sie links und dann rechts.","fr":"Allez à gauche puis à droite."},{"de":"Haben Sie einen Stadtplan?","fr":"Avez-vous un plan de la ville ?"}],
       vocabulaire: [
         { de: "die Stadt", fr: "la ville", ex: "Die Stadt ist schön." },
         { de: "der Stadtplan", fr: "le plan de la ville", ex: "Wo ist der Stadtplan?" },
@@ -1395,6 +1403,7 @@ window.MODULE_A11 = {
         "Utiliser la négation kein et l'accusatif"
       ],
       grammairePoints: ["La négation : nicht / kein", "Accusatif des articles", "möchten / nehmen"],
+      exemplesPlus: [{"de":"Die Speisekarte, bitte! Was nehmen Sie?","fr":"La carte, s'il vous plaît ! Que prenez-vous ?"},{"de":"Ich möchte eine Suppe und einen Salat bestellen.","fr":"Je voudrais commander une soupe et une salade."},{"de":"Als Getränk nehme ich ein Wasser und einen Kaffee.","fr":"Comme boisson, je prends une eau et un café."},{"de":"Das Essen ist sehr lecker!","fr":"Le repas est très bon !"},{"de":"Die Rechnung, bitte.","fr":"L'addition, s'il vous plaît."}],
       vocabulaire: [
         { de: "das Essen", fr: "le repas / la nourriture", ex: "Das Essen ist lecker." },
         { de: "das Getränk", fr: "la boisson", ex: "Was möchten Sie als Getränk?" },

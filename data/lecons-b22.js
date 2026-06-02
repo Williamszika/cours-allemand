@@ -59,6 +59,7 @@ window.MODULE_B22 = {
       theme: "Travail quotidien : e-mails et appels", duree: 60,
       objectifs: ["Rédiger un e-mail professionnel", "Mener un appel téléphonique formel"],
       grammairePoints: ["Registre formel", "Discours rapporté"],
+      exemplesPlus: [{"de":"Schreiben Sie bitte einen klaren Betreff.","fr":"*der Betreff* = das Thema oben in der E-Mail."},{"de":"Die Dokumente finden Sie in der Anlage.","fr":"*die Anlage* = eine Datei, die man der E-Mail hinzufügt."},{"de":"Ich leite Ihre E-Mail an den Chef weiter.","fr":"*weiterleiten* = an jemand anderen schicken."},{"de":"Ich erwarte Ihre Rückmeldung bis Freitag.","fr":"*die Rückmeldung* = eine Antwort oder Reaktion."},{"de":"Ich verbinde Sie mit der richtigen Durchwahl.","fr":"*die Durchwahl* = die direkte Telefonnummer einer Person."}],
       vocabulaire: [
         { de: "der Betreff", fr: "l'objet (du mail)", ex: "Schreiben Sie einen klaren Betreff." },
         { de: "die Anlage", fr: "la pièce jointe", ex: "Die Unterlagen finden Sie in der Anlage." },
@@ -136,6 +137,7 @@ window.MODULE_B22 = {
       theme: "Activités et loisirs", duree: 55,
       objectifs: ["Parler de ses loisirs en détail", "Exprimer préférence et fréquence"],
       grammairePoints: ["Comparatif/superlatif", "Adverbes de fréquence"],
+      exemplesPlus: [{"de":"Sport ist ein guter Ausgleich zur Arbeit.","fr":"*der Ausgleich* = etwas, das ein Gegengewicht bildet."},{"de":"Sie engagiert sich in einem Ehrenamt.","fr":"*das Ehrenamt* = freiwillige Arbeit ohne Bezahlung."},{"de":"Ich möchte mal etwas Neues ausprobieren.","fr":"*ausprobieren* = etwas zum ersten Mal testen."},{"de":"Abwechslung macht die Freizeit interessant.","fr":"*die Abwechslung* = nicht immer dasselbe."},{"de":"Er spricht mit großer Begeisterung über sein Hobby.","fr":"*die Begeisterung* = große Freude und großes Interesse."}],
       vocabulaire: [
         { de: "die Freizeitgestaltung", fr: "l'organisation des loisirs", ex: "Meine Freizeitgestaltung ist abwechslungsreich." },
         { de: "sich entspannen", fr: "se détendre", ex: "Beim Lesen entspanne ich mich." },
@@ -213,6 +215,7 @@ window.MODULE_B22 = {
       theme: "Université", duree: 60,
       objectifs: ["Décrire la vie universitaire", "Comprendre l'organisation des études"],
       grammairePoints: ["Nominalisation", "Subordonnées avec dass"],
+      exemplesPlus: [{"de":"Die Vorlesung beginnt um neun Uhr.","fr":"*die Vorlesung* = der Dozent spricht, viele Studenten hören zu."},{"de":"Im Seminar diskutieren wir in kleinen Gruppen.","fr":"*das Seminar* = ein Kurs mit aktiver Mitarbeit."},{"de":"Für den Kurs brauche ich einen Leistungsnachweis.","fr":"*der Leistungsnachweis* = ein Beweis für die erbrachte Leistung."},{"de":"Ich habe mich für das Studium eingeschrieben.","fr":"*sich einschreiben* = sich offiziell anmelden."},{"de":"Sie bekommt ein Stipendium.","fr":"*das Stipendium* = finanzielle Hilfe für Studenten."}],
       vocabulaire: [
         { de: "die Vorlesung", fr: "le cours magistral", ex: "Die Vorlesung beginnt um neun." },
         { de: "das Seminar", fr: "le séminaire / TD", ex: "Im Seminar diskutieren wir viel." },
@@ -291,6 +294,7 @@ window.MODULE_B22 = {
       theme: "Histoire et politique", duree: 60,
       objectifs: ["Parler d'événements historiques", "Comprendre le système politique allemand"],
       grammairePoints: ["Prétérit (récit historique)", "Passif"],
+      exemplesPlus: [{"de":"1990 kam es zur Wiedervereinigung Deutschlands.","fr":"*die Wiedervereinigung* = zwei Teile werden wieder ein Land."},{"de":"Die Berliner Mauer fiel 1989.","fr":"*die Mauer* = eine hohe Wand, die Berlin teilte."},{"de":"In einer Demokratie wählt das Volk die Regierung.","fr":"*die Demokratie* = das Volk hat die Macht."},{"de":"Der Bundeskanzler leitet die Regierung.","fr":"*der Bundeskanzler* = der Regierungschef in Deutschland."},{"de":"Die Verfassung schützt die Grundrechte.","fr":"*die Verfassung* = das wichtigste Gesetz eines Landes."}],
       vocabulaire: [
         { de: "die Wiedervereinigung", fr: "la réunification", ex: "Die Wiedervereinigung war 1990." },
         { de: "die Mauer", fr: "le mur", ex: "Die Mauer fiel 1989." },
@@ -368,6 +372,7 @@ window.MODULE_B22 = {
       theme: "Actualités internationales", duree: 60,
       objectifs: ["Comprendre une information journalistique", "Résumer et commenter une nouvelle"],
       grammairePoints: ["Discours indirect (Konjunktiv I)", "Nominalisation"],
+      exemplesPlus: [{"de":"Die Schlagzeile steht groß auf der ersten Seite.","fr":"*die Schlagzeile* = der große Titel einer Nachricht."},{"de":"Man sollte nur zuverlässige Quellen nutzen.","fr":"*zuverlässig* = man kann sich darauf verlassen."},{"de":"Die Zeitung berichtet über die aktuelle Lage.","fr":"*die Lage* = die Situation."},{"de":"Das Ereignis hat große Auswirkungen.","fr":"*die Auswirkung* = die Folge von etwas."},{"de":"Gestern hat sich ein Unfall ereignet.","fr":"*sich ereignen* = passieren, geschehen."}],
       vocabulaire: [
         { de: "die Schlagzeile", fr: "le gros titre", ex: "Die Schlagzeile war alarmierend." },
         { de: "die Meldung", fr: "la dépêche / l'info", ex: "Laut einer Meldung steigt die Inflation." },
@@ -445,6 +450,7 @@ window.MODULE_B22 = {
       theme: "Histoires criminelles", duree: 60,
       objectifs: ["Raconter un fait divers", "Formuler des hypothèses sur un coupable"],
       grammairePoints: ["Prétérit (récit)", "Supposition (Modalverben subjectifs)"],
+      exemplesPlus: [{"de":"Die Polizei ermittelt gegen den Täter.","fr":"*der Täter* = die Person, die etwas Schlimmes getan hat."},{"de":"Es gibt einen Zeugen für die Tat.","fr":"*der Zeuge* = jemand, der etwas gesehen hat."},{"de":"Gegen ihn besteht ein dringender Verdacht.","fr":"*der Verdacht* = man glaubt, dass jemand schuldig ist."},{"de":"Ohne Beweis kann man niemanden verurteilen.","fr":"*der Beweis* = etwas, das die Wahrheit zeigt."},{"de":"Der Verdächtige hatte ein Alibi.","fr":"*das Alibi* = ein Beweis, dass man woanders war."}],
       vocabulaire: [
         { de: "der Täter", fr: "le coupable / l'auteur", ex: "Der Täter ist noch flüchtig." },
         { de: "das Opfer", fr: "la victime", ex: "Das Opfer blieb unverletzt." },

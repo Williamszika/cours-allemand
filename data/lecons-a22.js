@@ -60,6 +60,7 @@ window.MODULE_A22 = {
       theme: "Vacances", duree: 50,
       objectifs: ["Parler de ses vacances", "Raconter un séjour au passé"],
       grammairePoints: ["Perfekt (révision)", "Indicateurs de lieu"],
+      exemplesPlus: [{"de":"Im Urlaub fahren wir ans Meer.","fr":"En vacances, nous allons à la mer."},{"de":"Wir haben eine Unterkunft am Strand gebucht.","fr":"Nous avons réservé un logement à la plage."},{"de":"In den Bergen kann man sich gut erholen.","fr":"À la montagne, on peut bien se reposer."},{"de":"Wir haben viele Sehenswürdigkeiten besucht.","fr":"Nous avons visité beaucoup de curiosités."},{"de":"Ich schicke dir eine Postkarte.","fr":"Je t'envoie une carte postale."}],
       vocabulaire: [
         { de: "der Urlaub", fr: "les vacances", ex: "Wir machen Urlaub am Meer." },
         { de: "das Meer", fr: "la mer", ex: "Das Meer ist warm." },
@@ -142,6 +143,7 @@ window.MODULE_A22 = {
       theme: "Pays et nationalités", duree: 45,
       objectifs: ["Nommer pays et nationalités", "Dire d'où l'on vient et où l'on va"],
       grammairePoints: ["Nationalités", "nach / in + pays"],
+      exemplesPlus: [{"de":"Die Hauptstadt von Deutschland ist Berlin.","fr":"La capitale de l'Allemagne est Berlin."},{"de":"Welche Nationalität hast du? — Ich bin französisch.","fr":"Quelle est ta nationalité ? — Je suis française."},{"de":"An der Grenze zeigt man seinen Pass.","fr":"À la frontière, on montre son passeport."},{"de":"Auf dem Kontinent Afrika spricht man viele Sprachen.","fr":"Sur le continent africain, on parle beaucoup de langues."},{"de":"Als Ausländer lernt man eine neue Kultur kennen.","fr":"En tant qu'étranger, on découvre une nouvelle culture."}],
       vocabulaire: [
         { de: "das Land", fr: "le pays", ex: "Welches Land besuchst du?" },
         { de: "die Nationalität", fr: "la nationalité", ex: "Welche Nationalität hast du?" },
@@ -224,6 +226,7 @@ window.MODULE_A22 = {
       theme: "Planifier un voyage", duree: 50,
       objectifs: ["Organiser un voyage", "Acheter des billets, réserver"],
       grammairePoints: ["Futur avec « werden »", "Verbes + prépositions"],
+      exemplesPlus: [{"de":"Ich freue mich schon auf die Reise.","fr":"J'attends déjà le voyage avec impatience."},{"de":"Wir müssen in Frankfurt umsteigen.","fr":"Nous devons changer à Francfort."},{"de":"Hast du die Reservierung für den Flug?","fr":"As-tu la réservation pour le vol ?"},{"de":"Der Zug fährt mit Verspätung ab.","fr":"Le train part avec du retard."},{"de":"Vergiss nicht, den Koffer zu packen!","fr":"N'oublie pas de faire la valise !"}],
       vocabulaire: [
         { de: "die Fahrkarte", fr: "le billet", ex: "Ich kaufe eine Fahrkarte." },
         { de: "der Flug", fr: "le vol", ex: "Der Flug ist um 10 Uhr." },
@@ -306,6 +309,7 @@ window.MODULE_A22 = {
       theme: "Animaux et animaux dangereux", duree: 45,
       objectifs: ["Nommer des animaux", "Décrire un animal (taille, danger)"],
       grammairePoints: ["Adjectifs (révision)", "können (capacité)"],
+      exemplesPlus: [{"de":"Mein Lieblingstier ist der Hund.","fr":"Mon animal préféré est le chien."},{"de":"Vorsicht, diese Schlange ist giftig!","fr":"Attention, ce serpent est venimeux !"},{"de":"Der Löwe ist ein wildes und gefährliches Tier.","fr":"Le lion est un animal sauvage et dangereux."},{"de":"Die Katze schläft, der Vogel singt.","fr":"Le chat dort, l'oiseau chante."},{"de":"Haie sind nicht immer gefährlich.","fr":"Les requins ne sont pas toujours dangereux."}],
       vocabulaire: [
         { de: "das Tier", fr: "l'animal", ex: "Mein Lieblingstier ist der Hund." },
         { de: "der Hund", fr: "le chien", ex: "Der Hund bellt." },
@@ -388,6 +392,7 @@ window.MODULE_A22 = {
       theme: "Personnes", duree: 50,
       objectifs: ["Décrire l'apparence et le caractère", "Utiliser les adjectifs"],
       grammairePoints: ["Adjectifs", "Description physique/caractère"],
+      exemplesPlus: [{"de":"Sie ist groß, schlank und hat blaue Augen.","fr":"Elle est grande, mince et a les yeux bleus."},{"de":"Er trägt eine Brille und hat kurze Haare.","fr":"Il porte des lunettes et a les cheveux courts."},{"de":"Meine Nachbarin ist sehr freundlich und nett.","fr":"Ma voisine est très aimable et gentille."},{"de":"Mein Bruder ist ruhig, meine Schwester ist lustig.","fr":"Mon frère est calme, ma sœur est drôle."},{"de":"Wie sieht dein Freund aus?","fr":"À quoi ressemble ton ami ?"}],
       vocabulaire: [
         { de: "groß / klein", fr: "grand / petit", ex: "Er ist groß." },
         { de: "die Haare", fr: "les cheveux", ex: "Sie hat blonde Haare." },
@@ -470,6 +475,7 @@ window.MODULE_A22 = {
       theme: "Vivre: jardin, ville etc.", duree: 50,
       objectifs: ["Décrire son lieu de vie", "Comparer ville et campagne"],
       grammairePoints: ["Prépositions de lieu", "Comparatif"],
+      exemplesPlus: [{"de":"Wir wohnen lieber auf dem Land als in der Stadt.","fr":"Nous préférons vivre à la campagne qu'en ville."},{"de":"Unsere Wohnung hat einen kleinen Garten.","fr":"Notre appartement a un petit jardin."},{"de":"Die Miete in der Stadt ist sehr hoch.","fr":"Le loyer en ville est très élevé."},{"de":"Nächsten Monat ziehen wir in ein Dorf um.","fr":"Le mois prochain, nous déménageons dans un village."},{"de":"Die Umgebung ist ruhig und grün.","fr":"Les environs sont calmes et verts."}],
       vocabulaire: [
         { de: "die Stadt", fr: "la ville", ex: "Ich wohne in der Stadt." },
         { de: "das Dorf", fr: "le village", ex: "Mein Dorf ist klein." },
@@ -552,6 +558,7 @@ window.MODULE_A22 = {
       theme: "Alimentation saine", duree: 50,
       objectifs: ["Parler d'alimentation et de santé", "Donner des conseils"],
       grammairePoints: ["sollen (conseil)", "Substantifs (pluriels)"],
+      exemplesPlus: [{"de":"Eine gesunde Ernährung hat viel Obst und Gemüse.","fr":"Une alimentation saine contient beaucoup de fruits et légumes."},{"de":"Zu viel Zucker ist ungesund.","fr":"Trop de sucre est mauvais pour la santé."},{"de":"Ich vermeide fettes Essen.","fr":"J'évite les aliments gras."},{"de":"Eine ausgewogene Mahlzeit ist wichtig.","fr":"Un repas équilibré est important."},{"de":"Er möchte ein paar Kilo abnehmen.","fr":"Il aimerait perdre quelques kilos."}],
       vocabulaire: [
         { de: "die Ernährung", fr: "l'alimentation", ex: "Gesunde Ernährung ist wichtig." },
         { de: "das Gemüse", fr: "les légumes", ex: "Iss mehr Gemüse!" },
@@ -634,6 +641,7 @@ window.MODULE_A22 = {
       theme: "Actualités nationales et internationales", duree: 50,
       objectifs: ["Comprendre une info simple", "Donner son opinion"],
       grammairePoints: ["Subordonnée « dass »", "Opinion : ich finde, dass…"],
+      exemplesPlus: [{"de":"Ich lese jeden Morgen die Zeitung.","fr":"Je lis le journal chaque matin."},{"de":"Die Nachrichten berichten über die Wahl.","fr":"Les informations parlent de l'élection."},{"de":"Was ist deine Meinung zu diesem Ereignis?","fr":"Quel est ton avis sur cet événement ?"},{"de":"Die Regierung hat eine wichtige Entscheidung getroffen.","fr":"Le gouvernement a pris une décision importante."},{"de":"In der Welt passiert jeden Tag etwas Neues.","fr":"Dans le monde, il se passe chaque jour quelque chose de nouveau."}],
       vocabulaire: [
         { de: "die Nachrichten", fr: "les informations", ex: "Ich sehe die Nachrichten." },
         { de: "die Zeitung", fr: "le journal", ex: "Ich lese die Zeitung." },
@@ -716,6 +724,7 @@ window.MODULE_A22 = {
       theme: "Thème: Environnement", duree: 50,
       objectifs: ["Parler d'écologie", "Dire ce qu'on fait pour la planète"],
       grammairePoints: ["Verbes + prépositions", "Conseils (sollte)"],
+      exemplesPlus: [{"de":"Wir müssen die Umwelt schützen.","fr":"Nous devons protéger l'environnement."},{"de":"Zu Hause trennen wir den Müll und recyceln.","fr":"À la maison, nous trions les déchets et recyclons."},{"de":"Der Klimawandel ist ein großes Problem.","fr":"Le changement climatique est un grand problème."},{"de":"Mit öffentlichen Verkehrsmitteln sparen wir Energie.","fr":"Avec les transports en commun, nous économisons de l'énergie."},{"de":"In der Natur sollte man keinen Müll lassen.","fr":"Dans la nature, on ne devrait pas laisser de déchets."}],
       vocabulaire: [
         { de: "die Umwelt", fr: "l'environnement", ex: "Wir müssen die Umwelt schützen." },
         { de: "der Müll", fr: "les déchets", ex: "Trenne den Müll!" },
@@ -798,6 +807,7 @@ window.MODULE_A22 = {
       theme: "Thème: Technologie", duree: 50,
       objectifs: ["Parler du numérique au quotidien", "Exprimer avantages et inconvénients"],
       grammairePoints: ["Subordonnée « wenn »", "Verbes + prépositions"],
+      exemplesPlus: [{"de":"Ich habe eine neue App heruntergeladen.","fr":"J'ai téléchargé une nouvelle application."},{"de":"Soziale Netzwerke haben Vorteile und Nachteile.","fr":"Les réseaux sociaux ont des avantages et des inconvénients."},{"de":"Ich schreibe dir eine Nachricht über das Handy.","fr":"Je t'écris un message depuis le portable."},{"de":"Den ganzen Tag vor dem Bildschirm ist ungesund.","fr":"Toute la journée devant l'écran, c'est mauvais pour la santé."},{"de":"Bist du gerade online?","fr":"Es-tu en ligne en ce moment ?"}],
       vocabulaire: [
         { de: "das Handy", fr: "le portable", ex: "Mein Handy ist neu." },
         { de: "das Internet", fr: "internet", ex: "Ich surfe im Internet." },

@@ -33,6 +33,7 @@ window.MODULE_A12 = {
         "Indiquer l'heure et les moments de la journée"
       ],
       grammairePoints: ["Verbes séparables (révision)", "Moments de la journée", "zuerst, dann, danach"],
+      exemplesPlus: [{"de":"Mein Tagesablauf: Ich wache um sechs auf und stehe auf.","fr":"Ma journée : je me réveille à six heures et je me lève."},{"de":"Zuerst frühstücke ich, dann gehe ich zur Arbeit.","fr":"D'abord je prends le petit-déjeuner, puis je vais travailler."},{"de":"Am Mittag mache ich eine Pause.","fr":"À midi, je fais une pause."},{"de":"Am Abend gehe ich nach Hause und koche.","fr":"Le soir, je rentre à la maison et je cuisine."},{"de":"Um elf Uhr gehe ich schlafen.","fr":"À onze heures, je vais dormir."}],
       vocabulaire: [
         { de: "der Tagesablauf", fr: "le déroulement de la journée", ex: "Mein Tagesablauf ist voll." },
         { de: "aufwachen", fr: "se réveiller", ex: "Ich wache um 6 Uhr auf." },
@@ -155,6 +156,7 @@ window.MODULE_A12 = {
         "Décrire une journée de travail chargée"
       ],
       grammairePoints: ["Verbes de modalité : müssen, können, wollen", "Structure: modal + infinitif à la fin"],
+      exemplesPlus: [{"de":"Heute habe ich eine wichtige Besprechung.","fr":"Aujourd'hui, j'ai une réunion importante."},{"de":"Ich muss diese E-Mail noch schreiben, sie ist dringend.","fr":"Je dois encore écrire cet e-mail, il est urgent."},{"de":"Die Arbeit ist heute sehr anstrengend.","fr":"Le travail est très fatigant aujourd'hui."},{"de":"Schaffst du den Termin? — Ja, ich bin fast fertig.","fr":"Tu y arrives pour le rendez-vous ? — Oui, j'ai presque fini."},{"de":"Endlich Feierabend! Heute keine Überstunden.","fr":"Enfin la fin de la journée ! Pas d'heures supplémentaires aujourd'hui."}],
       vocabulaire: [
         { de: "der Stress", fr: "le stress", ex: "Ich habe viel Stress." },
         { de: "die Besprechung", fr: "la réunion", ex: "Die Besprechung ist um 10 Uhr." },
@@ -289,6 +291,7 @@ window.MODULE_A12 = {
         "Résoudre un petit problème technique"
       ],
       grammairePoints: ["L'impératif (du, Sie, ihr)", "Verbes d'instruction : klicken, öffnen, speichern"],
+      exemplesPlus: [{"de":"Mein Computer funktioniert heute nicht.","fr":"Mon ordinateur ne marche pas aujourd'hui."},{"de":"Klick hier und öffne die Datei.","fr":"Clique ici et ouvre le fichier."},{"de":"Vergiss nicht, das Dokument zu speichern!","fr":"N'oublie pas d'enregistrer le document !"},{"de":"Ich habe mein Passwort vergessen.","fr":"J'ai oublié mon mot de passe."},{"de":"Kann ich das aus dem Internet herunterladen?","fr":"Puis-je télécharger ça depuis Internet ?"}],
       vocabulaire: [
         { de: "der Computer", fr: "l'ordinateur", ex: "Mein Computer ist neu." },
         { de: "der Laptop", fr: "l'ordinateur portable", ex: "Der Laptop ist schnell." },
@@ -470,6 +473,7 @@ window.MODULE_A12 = {
         "Proposer et refuser poliment"
       ],
       grammairePoints: ["Prépositions de temps : am, um, von...bis, im", "Modalverb können (poli)"],
+      exemplesPlus: [{"de":"Ich möchte einen Termin beim Arzt vereinbaren.","fr":"Je voudrais prendre un rendez-vous chez le médecin."},{"de":"Passt Ihnen Montagvormittag? — Ja, das geht.","fr":"Lundi matin vous convient ? — Oui, ça marche."},{"de":"Leider muss ich den Termin verschieben.","fr":"Malheureusement, je dois reporter le rendez-vous."},{"de":"Am Nachmittag habe ich frei.","fr":"L'après-midi, je suis libre."},{"de":"Bitte seien Sie pünktlich in der Praxis.","fr":"Soyez ponctuel au cabinet, s'il vous plaît."}],
       vocabulaire: [
         { de: "der Termin", fr: "le rendez-vous", ex: "Ich brauche einen Termin." },
         { de: "vereinbaren", fr: "convenir / fixer", ex: "Wir vereinbaren einen Termin." },
@@ -600,6 +604,7 @@ window.MODULE_A12 = {
         "Utiliser les adjectifs et conjonctions simples"
       ],
       grammairePoints: ["Conjonctions : und, oder, aber, denn", "es ist + adjectif"],
+      exemplesPlus: [{"de":"Wie ist das Wetter heute? — Die Sonne scheint.","fr":"Quel temps fait-il aujourd'hui ? — Le soleil brille."},{"de":"Im Winter ist es kalt und es schneit.","fr":"En hiver, il fait froid et il neige."},{"de":"Im Sommer ist es warm, oft dreißig Grad.","fr":"En été, il fait chaud, souvent trente degrés."},{"de":"Im Herbst regnet es viel.","fr":"En automne, il pleut beaucoup."},{"de":"Der Frühling ist meine Lieblingsjahreszeit.","fr":"Le printemps est ma saison préférée."}],
       vocabulaire: [
         { de: "das Wetter", fr: "le temps (météo)", ex: "Wie ist das Wetter?" },
         { de: "die Jahreszeit", fr: "la saison", ex: "Welche Jahreszeit ist das?" },
@@ -730,6 +735,7 @@ window.MODULE_A12 = {
         "Préparer ses bagages"
       ],
       grammairePoints: ["Le passé composé (Perfekt) avec haben/sein", "Participe passé (ge-...-t / ge-...-en)"],
+      exemplesPlus: [{"de":"Ich packe meinen Koffer für den Urlaub.","fr":"Je fais ma valise pour les vacances."},{"de":"Vergiss deinen Pass und das Ticket nicht!","fr":"N'oublie pas ton passeport et ton billet !"},{"de":"Wir buchen eine Reise nach Spanien.","fr":"Nous réservons un voyage en Espagne."},{"de":"Fliegen wir oder fahren wir mit dem Auto?","fr":"On prend l'avion ou la voiture ?"},{"de":"Das Reiseziel ist sehr schön.","fr":"La destination de voyage est très belle."}],
       vocabulaire: [
         { de: "die Reise", fr: "le voyage", ex: "Die Reise war toll." },
         { de: "das Reiseziel", fr: "la destination", ex: "Mein Reiseziel ist Italien." },
@@ -914,6 +920,7 @@ window.MODULE_A12 = {
         "Acheter un billet"
       ],
       grammairePoints: ["mit + datif", "Indicateurs de lieu : nach, zu, in"],
+      exemplesPlus: [{"de":"Ich fahre mit dem Bus zur Arbeit.","fr":"Je vais au travail en bus."},{"de":"An der Haltestelle müssen wir umsteigen.","fr":"À l'arrêt, nous devons changer."},{"de":"Der Zug hat heute zehn Minuten Verspätung.","fr":"Le train a dix minutes de retard aujourd'hui."},{"de":"Eine Fahrkarte nach München, bitte.","fr":"Un billet pour Munich, s'il vous plaît."},{"de":"Zur Schule gehe ich zu Fuß.","fr":"Je vais à l'école à pied."}],
       vocabulaire: [
         { de: "das Verkehrsmittel", fr: "le moyen de transport", ex: "Welches Verkehrsmittel?" },
         { de: "der Bus", fr: "le bus", ex: "Ich fahre mit dem Bus." },
@@ -1045,6 +1052,7 @@ window.MODULE_A12 = {
         "Situer des objets (Wechselpräpositionen)"
       ],
       grammairePoints: ["Prépositions mixtes (Wechselpräpositionen) + datif (Wo?)", "es gibt + accusatif"],
+      exemplesPlus: [{"de":"Unsere Wohnung hat drei Zimmer und eine Küche.","fr":"Notre appartement a trois pièces et une cuisine."},{"de":"Im Schlafzimmer stehen ein Bett und ein Schrank.","fr":"Dans la chambre, il y a un lit et une armoire."},{"de":"Das Sofa und der Teppich sind neu.","fr":"Le canapé et le tapis sont neufs."},{"de":"Die Lampe steht auf dem Tisch.","fr":"La lampe est sur la table."},{"de":"Unser Haus ist klein, aber sehr gemütlich.","fr":"Notre maison est petite, mais très accueillante."}],
       vocabulaire: [
         { de: "die Wohnung", fr: "l'appartement", ex: "Die Wohnung ist groß." },
         { de: "das Haus", fr: "la maison", ex: "Das Haus hat einen Garten." },
@@ -1228,6 +1236,7 @@ window.MODULE_A12 = {
         "Donner un conseil (sollen / impératif)"
       ],
       grammairePoints: ["Verbe modal sollen (conseil)", "haben + Schmerzen", "Körperteile"],
+      exemplesPlus: [{"de":"Was tut dir weh? — Mein Kopf und mein Hals.","fr":"Où as-tu mal ? — La tête et la gorge."},{"de":"Ich bin krank und habe eine Erkältung.","fr":"Je suis malade et j'ai un rhume."},{"de":"Du solltest dich ausruhen und viel trinken.","fr":"Tu devrais te reposer et boire beaucoup."},{"de":"Der Arzt gibt mir ein Medikament.","fr":"Le médecin me donne un médicament."},{"de":"Mein Rücken tut seit gestern weh.","fr":"J'ai mal au dos depuis hier."}],
       vocabulaire: [
         { de: "die Gesundheit", fr: "la santé", ex: "Gesundheit ist wichtig." },
         { de: "der Körper", fr: "le corps", ex: "Der Körper braucht Schlaf." },
@@ -1413,6 +1422,7 @@ window.MODULE_A12 = {
         "Raconter un contretemps au passé"
       ],
       grammairePoints: ["Conjonction de subordination « weil » (verbe à la fin)", "Perfekt (révision)"],
+      exemplesPlus: [{"de":"Es tut mir leid, ich komme zu spät.","fr":"Je suis désolé, j'arrive en retard."},{"de":"Ich habe verschlafen und den Bus verpasst.","fr":"J'ai trop dormi et j'ai raté le bus."},{"de":"Entschuldigung, es gab einen Stau.","fr":"Pardon, il y avait un embouteillage."},{"de":"Warum bist du nicht gekommen? — Weil ich krank war.","fr":"Pourquoi n'es-tu pas venu ? — Parce que j'étais malade."},{"de":"Kein Problem, das passiert.","fr":"Pas de problème, ça arrive."}],
       vocabulaire: [
         { de: "die Entschuldigung", fr: "l'excuse", ex: "Entschuldigung für die Verspätung!" },
         { de: "sich entschuldigen", fr: "s'excuser", ex: "Ich entschuldige mich." },

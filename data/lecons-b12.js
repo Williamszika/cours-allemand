@@ -60,6 +60,7 @@ window.MODULE_B12 = {
       theme: "Apprentissage des langues", duree: 55,
       objectifs: ["Parler de sa façon d'apprendre", "Exprimer une condition (si…)"],
       grammairePoints: ["Konjunktiv II (wenn)", "Indicateurs de conditionnel"],
+      exemplesPlus: [{"de":"Ich lerne Deutsch als Fremdsprache.","fr":"*die Fremdsprache* = eine Sprache, die nicht die Muttersprache ist."},{"de":"Man muss jeden Tag den Wortschatz üben.","fr":"*der Wortschatz* = alle Wörter, die man kennt."},{"de":"Ihre Aussprache ist schon sehr gut.","fr":"*die Aussprache* = wie man die Wörter spricht."},{"de":"Hab keine Angst vor Fehlern!","fr":"*der Fehler* = etwas, das nicht richtig ist."},{"de":"Nach zwei Jahren spricht er fast fließend.","fr":"*fließend* = schnell und sicher, ohne Probleme."}],
       vocabulaire: [
         { de: "die Fremdsprache", fr: "la langue étrangère", ex: "Englisch ist eine Fremdsprache." },
         { de: "die Aussprache", fr: "la prononciation", ex: "Ihre Aussprache ist gut." },
@@ -137,6 +138,7 @@ window.MODULE_B12 = {
       theme: "Apprentissage permanent", duree: 50,
       objectifs: ["Parler de formation continue", "Justifier un but (pour…)"],
       grammairePoints: ["Propositions finales (um … zu)", "damit"],
+      exemplesPlus: [{"de":"Eine Weiterbildung ist gut für die Karriere.","fr":"*die Weiterbildung* = weiter lernen nach der Ausbildung."},{"de":"Ich möchte meine Fähigkeiten verbessern.","fr":"*sich verbessern* = besser werden."},{"de":"Dieser Kurs ist sehr nützlich.","fr":"*nützlich* = es hilft, es bringt etwas."},{"de":"Mein Ziel ist ein guter Abschluss.","fr":"*das Ziel* = was man erreichen will."},{"de":"Nach dem Kurs bekomme ich ein Zertifikat.","fr":"*der Kurs* = Unterricht über ein Thema."}],
       vocabulaire: [
         { de: "die Weiterbildung", fr: "la formation continue", ex: "Ich mache eine Weiterbildung." },
         { de: "der Kurs", fr: "le cours", ex: "Der Kurs beginnt im September." },
@@ -215,6 +217,7 @@ window.MODULE_B12 = {
       theme: "Conseils d'apprentissage", duree: 50,
       objectifs: ["Donner et recevoir des conseils", "Structurer un récit (d'abord, ensuite)"],
       grammairePoints: ["Konjunktiv II (sollte)", "Adverbes d'ordre"],
+      exemplesPlus: [{"de":"Mein Tipp: Lerne regelmäßig, aber nicht zu lange.","fr":"*regelmäßig* = immer wieder, oft."},{"de":"Mach Pausen, das hilft beim Konzentrieren.","fr":"*sich konzentrieren* = nur an eine Sache denken."},{"de":"Die Wiederholung ist sehr wichtig.","fr":"*die Wiederholung* = etwas noch einmal machen."},{"de":"Mit Geduld kommt der Erfolg.","fr":"*die Geduld* = ruhig warten können."},{"de":"Bleib motiviert, dann schaffst du es!","fr":"*die Motivation* = die Lust, etwas zu tun."}],
       vocabulaire: [
         { de: "der Tipp", fr: "le conseil / l'astuce", ex: "Ich gebe dir einen Tipp." },
         { de: "die Pause", fr: "la pause", ex: "Mach regelmäßig Pausen." },
@@ -292,6 +295,7 @@ window.MODULE_B12 = {
       theme: "École et diplômes", duree: 50,
       objectifs: ["Parler de son parcours scolaire", "Raconter au passé"],
       grammairePoints: ["Temps du passé", "Système scolaire allemand"],
+      exemplesPlus: [{"de":"Ich habe die Prüfung bestanden!","fr":"*bestehen* = eine Prüfung erfolgreich machen."},{"de":"Leider ist er durchgefallen.","fr":"*durchfallen* = eine Prüfung nicht bestehen."},{"de":"Mein Lieblingsfach ist Mathematik.","fr":"*das Fach* = ein Thema in der Schule (Mathe, Deutsch …)."},{"de":"Im Zeugnis stehen alle Noten.","fr":"*das Zeugnis* = ein Papier mit allen Noten."},{"de":"Mit dem Abitur kann man studieren.","fr":"*das Abitur* = der Abschluss am Ende des Gymnasiums."}],
       vocabulaire: [
         { de: "das Zeugnis", fr: "le bulletin / certificat", ex: "Ich habe ein gutes Zeugnis bekommen." },
         { de: "die Note", fr: "la note", ex: "Meine Note in Mathe war eine Zwei." },
@@ -369,6 +373,7 @@ window.MODULE_B12 = {
       theme: "Problèmes de circulation", duree: 50,
       objectifs: ["Décrire des problèmes de circulation", "Exprimer simultanéité / succession"],
       grammairePoints: ["Propositions temporelles", "während, als"],
+      exemplesPlus: [{"de":"Wir stehen seit einer Stunde im Stau.","fr":"*der Stau* = viele Autos, die nicht fahren können."},{"de":"Wegen einer Baustelle gibt es eine Umleitung.","fr":"*die Umleitung* = ein anderer Weg."},{"de":"Die Ampel ist rot, wir müssen warten.","fr":"*die Ampel* = das Licht für den Verkehr (rot/gelb/grün)."},{"de":"Mein Auto hatte eine Panne.","fr":"*die Panne* = das Auto fährt plötzlich nicht mehr."},{"de":"Der Bus war total überfüllt.","fr":"*überfüllt* = sehr voll, zu viele Menschen."}],
       vocabulaire: [
         { de: "der Stau", fr: "l'embouteillage", ex: "Wir standen im Stau." },
         { de: "die Baustelle", fr: "le chantier", ex: "Vor der Baustelle ist es eng." },
@@ -446,6 +451,7 @@ window.MODULE_B12 = {
       theme: "Moyens de transport", duree: 50,
       objectifs: ["Comparer les moyens de transport", "Choisir la préposition de lieu"],
       grammairePoints: ["Prépositions (mit, mit dem)", "comparatif"],
+      exemplesPlus: [{"de":"Ich fahre mit der U-Bahn zur Arbeit.","fr":"*die U-Bahn* = ein Zug unter der Stadt."},{"de":"Öffentliche Verkehrsmittel sind umweltfreundlich.","fr":"*öffentliche Verkehrsmittel* = Bus, Bahn, U-Bahn usw."},{"de":"Ich muss einmal umsteigen.","fr":"*umsteigen* = in ein anderes Verkehrsmittel wechseln."},{"de":"Mit dem Fahrrad bin ich schnell da.","fr":"*das Fahrrad* = ein Rad mit zwei Reifen, ohne Motor."},{"de":"Die Strecke dauert zwanzig Minuten.","fr":"*die Strecke* = der Weg von A nach B."}],
       vocabulaire: [
         { de: "die U-Bahn", fr: "le métro", ex: "Ich fahre mit der U-Bahn." },
         { de: "die Straßenbahn", fr: "le tramway", ex: "Die Straßenbahn ist pünktlich." },
@@ -523,6 +529,7 @@ window.MODULE_B12 = {
       theme: "En route", duree: 50,
       objectifs: ["Demander et indiquer un chemin", "Réserver et acheter un billet"],
       grammairePoints: ["Prépositions de lieu", "questions indirectes"],
+      exemplesPlus: [{"de":"Der Zug fährt von Bahnsteig drei ab.","fr":"*der Bahnsteig* = wo man in den Zug einsteigt."},{"de":"Wann kommt der Zug in München an?","fr":"*ankommen* = am Ziel sein."},{"de":"Ich habe den Anschluss verpasst.","fr":"*der Anschluss* = der nächste Zug zum Weiterfahren."},{"de":"Der Fahrplan hängt am Bahnhof.","fr":"*der Fahrplan* = wann die Züge fahren."},{"de":"Ich frage an der Auskunft.","fr":"*die Auskunft* = wo man Informationen bekommt."}],
       vocabulaire: [
         { de: "der Bahnsteig", fr: "le quai", ex: "Der Zug fährt von Bahnsteig 3 ab." },
         { de: "der Fahrplan", fr: "les horaires", ex: "Ich schaue auf den Fahrplan." },
@@ -601,6 +608,7 @@ window.MODULE_B12 = {
       theme: "Vacances et voyages", duree: 55,
       objectifs: ["Organiser un voyage", "Exprimer des conditions et des souhaits"],
       grammairePoints: ["Konjunktiv II (souhaits)", "wenn-Sätze"],
+      exemplesPlus: [{"de":"Wir haben die Reise online gebucht.","fr":"*buchen* = im Voraus reservieren."},{"de":"Die Unterkunft liegt im Zentrum.","fr":"*die Unterkunft* = wo man schläft (Hotel usw.)."},{"de":"Vergiss dein Gepäck nicht!","fr":"*das Gepäck* = die Koffer und Taschen."},{"de":"Im Urlaub will ich mich erholen.","fr":"*sich erholen* = ausruhen, neue Kraft bekommen."},{"de":"An der Grenze braucht man einen Pass.","fr":"*die Grenze* = wo ein Land endet und ein anderes beginnt."}],
       vocabulaire: [
         { de: "die Reise", fr: "le voyage", ex: "Die Reise war wunderbar." },
         { de: "buchen", fr: "réserver", ex: "Ich habe ein Hotel gebucht." },
@@ -678,6 +686,7 @@ window.MODULE_B12 = {
       theme: "Sentiments de bonheur", duree: 50,
       objectifs: ["Exprimer le bonheur et la satisfaction", "Décrire des émotions positives"],
       grammairePoints: ["Adjectifs + prépositions", "sich freuen über/auf"],
+      exemplesPlus: [{"de":"Ich bin sehr glücklich mit meinem Leben.","fr":"*glücklich* = man fühlt sich sehr gut."},{"de":"Sie ist stolz auf ihre Tochter.","fr":"*stolz* = man freut sich sehr über etwas Eigenes."},{"de":"Ich bin dankbar für deine Hilfe.","fr":"*dankbar* = man möchte sich bedanken."},{"de":"Genieß den Moment!","fr":"*genießen* = etwas Schönes mit Freude erleben."},{"de":"Sein Lächeln macht mir Freude.","fr":"*die Freude* = ein schönes, glückliches Gefühl."}],
       vocabulaire: [
         { de: "das Glück", fr: "le bonheur / la chance", ex: "Ich wünsche dir viel Glück." },
         { de: "glücklich", fr: "heureux", ex: "Ich bin sehr glücklich." },
@@ -755,6 +764,7 @@ window.MODULE_B12 = {
       theme: "Qualités et caractère", duree: 50,
       objectifs: ["Décrire le caractère d'une personne", "Décliner l'adjectif"],
       grammairePoints: ["Déclinaison de l'adjectif", "ein netter Mensch"],
+      exemplesPlus: [{"de":"Er ist immer ehrlich und sagt die Wahrheit.","fr":"*ehrlich* = man lügt nicht."},{"de":"Meine Freundin ist sehr hilfsbereit.","fr":"*hilfsbereit* = man hilft gern."},{"de":"Ein guter Lehrer muss geduldig sein.","fr":"*geduldig* = man kann ruhig warten."},{"de":"Sie ist neugierig und will alles wissen.","fr":"*neugierig* = man will viel wissen."},{"de":"Großzügigkeit ist eine schöne Eigenschaft.","fr":"*großzügig* = man gibt gern."}],
       vocabulaire: [
         { de: "ehrlich", fr: "honnête", ex: "Sie ist ein ehrlicher Mensch." },
         { de: "zuverlässig", fr: "fiable", ex: "Er ist sehr zuverlässig." },
@@ -832,6 +842,7 @@ window.MODULE_B12 = {
       theme: "Stress et émotions", duree: 50,
       objectifs: ["Exprimer le stress et l'agacement", "Proposer des solutions"],
       grammairePoints: ["Causes et conséquences", "weil, deshalb"],
+      exemplesPlus: [{"de":"Bei Stress sollte man tief atmen.","fr":"*atmen* = Luft holen."},{"de":"Ich ärgere mich über den Stau.","fr":"*sich ärgern* = wütend oder sauer werden."},{"de":"Mach dir keine Sorgen, alles wird gut.","fr":"*die Sorge* = ein schlechtes Gefühl wegen der Zukunft."},{"de":"Beim Yoga kann ich mich entspannen.","fr":"*sich entspannen* = ruhig werden, Stress abbauen."},{"de":"Bleib ruhig, auch wenn der Druck hoch ist.","fr":"*ruhig* = nicht nervös, friedlich."}],
       vocabulaire: [
         { de: "der Stress", fr: "le stress", ex: "Ich habe viel Stress." },
         { de: "sich ärgern", fr: "s'énerver", ex: "Ich ärgere mich über den Lärm." },
@@ -910,6 +921,7 @@ window.MODULE_B12 = {
       theme: "Alimentation et restaurant", duree: 55,
       objectifs: ["Suivre et donner une recette", "Commander au restaurant"],
       grammairePoints: ["Impératif", "le passif (préparation)"],
+      exemplesPlus: [{"de":"Für das Rezept braucht man frische Zutaten.","fr":"*die Zutat* = was man zum Kochen braucht."},{"de":"Schneide das Gemüse in kleine Stücke.","fr":"*schneiden* = mit dem Messer teilen."},{"de":"Als Vorspeise nehme ich eine Suppe.","fr":"*die Vorspeise* = das erste, kleine Gericht."},{"de":"Wir bestellen die Hauptspeise.","fr":"*die Hauptspeise* = das große Hauptgericht."},{"de":"Können wir bitte die Rechnung haben?","fr":"*die Rechnung* = das Papier, wie viel man zahlt."}],
       vocabulaire: [
         { de: "die Zutat", fr: "l'ingrédient", ex: "Welche Zutaten brauchst du?" },
         { de: "das Rezept", fr: "la recette", ex: "Das ist ein altes Rezept." },
@@ -987,6 +999,7 @@ window.MODULE_B12 = {
       theme: "Invitations et vœux", duree: 50,
       objectifs: ["Inviter, accepter, refuser poliment", "Présenter ses vœux"],
       grammairePoints: ["Konjunktiv II (politesse)", "formules de vœux"],
+      exemplesPlus: [{"de":"Danke für die Einladung zur Party!","fr":"*die Einladung* = man bittet jemanden zu kommen."},{"de":"Leider muss ich absagen.","fr":"*absagen* = Nein sagen, nicht kommen."},{"de":"Ich sage gern zu und komme.","fr":"*zusagen* = Ja sagen, kommen."},{"de":"Herzlichen Glückwunsch zum Geburtstag!","fr":"*der Glückwunsch* = gute Wünsche zu einem Anlass."},{"de":"Ich gratuliere dir zur Hochzeit.","fr":"*gratulieren* = jemandem Glück wünschen."}],
       vocabulaire: [
         { de: "die Einladung", fr: "l'invitation", ex: "Danke für die Einladung." },
         { de: "einladen", fr: "inviter", ex: "Ich lade dich zum Essen ein." },
