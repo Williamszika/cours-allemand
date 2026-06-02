@@ -374,7 +374,9 @@ window.I18N = (function () {
     var mm = "https://api.mymemory.translated.net/get?q=" + encodeURIComponent(text) + "&langpair=" + encodeURIComponent(src + "|" + tgt);
     return fetch(mm).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
       var t = j && j.responseData && j.responseData.translatedText;
-      if (t && (j.responseStatus == 200 || j.responseStatus === "200") && !/MYMEMORY WARNING|INVALID/i.test(t)) return decodeEntities(t);
+      // Rejette aussi les réponses aberrantes (un même caractère répété, ex. « Оооооо »).
+      var junk = t && /(.)\1{7,}/.test(t);
+      if (t && (j.responseStatus == 200 || j.responseStatus === "200") && !/MYMEMORY WARNING|INVALID/i.test(t) && !junk) return decodeEntities(t);
       return gtxTranslate(text, tgt, src);
     }).catch(function () { return gtxTranslate(text, tgt, src); });
   }
