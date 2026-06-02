@@ -2130,7 +2130,13 @@
       const grid = el("div", "pflege-grid");
       niv.lecons.forEach((l) => {
         const dom = P.domaines[l.dom] || { ic: "•", nom: "" };
-        const card = el("div", "pflege-card");
+        const has = pflegeHasContent(l);
+        const done = has && window.Progress && window.Progress.estTermine(l.id);
+        const card = el(has ? "a" : "div", "pflege-card" + (done ? " done" : ""));
+        if (has) card.href = "#/pflege/lecon/" + l.id;
+        const trailing = has
+          ? '<span class="menu-go">' + (done ? "✓" : "→") + "</span>"
+          : '<span class="menu-badge">Bientôt</span>';
         card.innerHTML =
           '<div class="pflege-ic">' + dom.ic + "</div>" +
           '<div class="pflege-body">' +
@@ -2138,8 +2144,7 @@
           '<div class="pflege-fr">' + l.titre + "</div>" +
           '<p class="pflege-desc">' + l.desc + "</p>" +
           '<span class="pflege-tag">' + dom.nom + "</span>" +
-          "</div>" +
-          '<span class="menu-badge">Bientôt</span>';
+          "</div>" + trailing;
         grid.appendChild(card);
       });
       sec.appendChild(grid);
@@ -2148,6 +2153,197 @@
 
     app.innerHTML = ""; app.appendChild(frag);
     if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/menu"; }); try { window.TG.hideMainButton && window.TG.hideMainButton(); } catch (e) {} }
+    try { localizeUI(app); } catch (e) {}
+    window.scrollTo(0, 0);
+  }
+
+  /* --- Moteur de leçon du parcours Pflege (réutilise les briques du cours
+     général : vocabulaire, cours, dialogue, exercices, « plus d'exemples »).
+     Progression et déblocage propres à Pflege (clé = id de la leçon). --- */
+  let _pflat = null;
+  function pflatList() {
+    if (_pflat) return _pflat;
+    _pflat = [];
+    ((window.PFLEGE && window.PFLEGE.niveaux) || []).forEach((niv) => (niv.lecons || []).forEach((l) => _pflat.push({ niv: niv.code, lecon: l })));
+    return _pflat;
+  }
+  function pIndexOf(id) { return pflatList().findIndex((f) => f.lecon.id === id); }
+  function pflegeHasContent(l) { return !!(l && (l.vocabulaire || (l.grammaire && l.grammaire.length) || l.dialogue || (l.exercices && l.exercices.length))); }
+  function isUnlockedPflege(idx) {
+    if (!pflegeDebloque()) return false;
+    if (idx <= 0) return true;
+    const prev = pflatList()[idx - 1];
+    // On ne se laisse bloquer que par une leçon précédente qui a, elle aussi, du contenu.
+    if (!pflegeHasContent(prev.lecon)) return true;
+    return window.Progress.estTermine(prev.lecon.id);
+  }
+
+  function pflegeCompletion(container, score, idx, passed) {
+    const old = container.querySelector(".completion"); if (old) old.remove();
+    const seuil = 70;
+    const c = el("div", "completion " + (passed ? "ok" : "ko"));
+    if (!passed) {
+      c.innerHTML = '<div class="comp-emoji">📚</div><h3>Presque !</h3><p>Score : <span class="comp-score ko">' + score +
+        "%</span> — il faut <strong>" + seuil + "%</strong> pour valider la leçon. Reprends les exercices en rouge.</p>";
+      container.appendChild(c); try { localizeUI(app); } catch (e) {} c.scrollIntoView({ behavior: "smooth" }); return;
+    }
+    const pflat = pflatList(); const next = pflat[idx + 1];
+    const suivante = next && pflegeHasContent(next.lecon);
+    c.innerHTML = '<div class="comp-emoji">🎉</div><h3>Leçon validée !</h3><p>Score : <span class="comp-score">' + score +
+      "%</span> (requis " + seuil + "%) — " + (suivante ? "leçon suivante débloquée !" : "tu as terminé les leçons disponibles ! 🎓") + "</p>";
+    const actions = el("div", "rev-actions");
+    const go = el("a", "btn btn-primary", suivante ? "→ " + next.lecon.titre : "← Programme Pflege");
+    go.href = suivante ? "#/pflege/lecon/" + next.lecon.id : "#/pflege";
+    actions.appendChild(go);
+    c.appendChild(actions); container.appendChild(c); try { localizeUI(app); } catch (e) {} c.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function renderPflegeLecon(id) {
+    const P = window.PFLEGE; if (!P) { location.hash = "#/pflege"; return; }
+    const pflat = pflatList();
+    const idx = pIndexOf(id);
+    if (idx < 0) return renderPflege();
+    const f = pflat[idx]; const l = f.lecon;
+    if (!pflegeDebloque() || !pflegeHasContent(l)) return renderPflege();
+
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/pflege">← Programme Pflege</a><span class="lesson-top-mod">🩺 ' + f.niv + "</span>";
+    frag.appendChild(top);
+
+    /* Garde séquentielle dans le parcours Pflege. */
+    if (!isUnlockedPflege(idx)) {
+      const prev = pflat[idx - 1].lecon;
+      const lock = el("section", "lesson-section locked-notice");
+      lock.innerHTML = '<div class="comp-emoji">🔒</div><h2>Leçon verrouillée</h2><p>Termine d\'abord la leçon précédente : <strong class="pflege-de">' + prev.titreDE + "</strong>.</p>";
+      const go = el("a", "btn btn-primary", "→ " + prev.titre); go.href = "#/pflege/lecon/" + prev.id; lock.appendChild(go);
+      frag.appendChild(lock); app.innerHTML = ""; app.appendChild(frag);
+      if (window.TG) window.TG.showBackButton(() => { location.hash = "#/pflege"; });
+      try { localizeUI(app); } catch (e) {} window.scrollTo(0, 0); return;
+    }
+
+    const niveau = l.niveau || f.niv;
+    const gEx = window.I18N ? window.I18N.explication(niveau) : { lang: "fr", de: false, niveau: null };
+    const dom = P.domaines[l.dom] || { ic: "🩺", nom: "" };
+
+    const hero = el("header", "hero pflege-hero");
+    hero.innerHTML = '<p class="hero-eyebrow">' + dom.ic + " " + dom.nom + "</p><h1><span class=\"pflege-de\">" + l.titreDE + "</span></h1><p class=\"hero-desc\">" + l.titre + "</p>";
+    frag.appendChild(hero);
+
+    /* --- Vocabulaire professionnel --- */
+    if (l.vocabulaire && l.vocabulaire.length) {
+      const voc = el("section", "lesson-section cours");
+      const vHead = el("div", "ls-head");
+      vHead.appendChild(el("h2", "", "🗂️ Wortschatz — vocabulaire du soin"));
+      const playAll = el("button", "btn btn-ghost small", "🔊 Tout écouter");
+      playAll.type = "button"; playAll.addEventListener("click", () => playSequence(l.vocabulaire.map((v) => v.de)));
+      vHead.appendChild(playAll); voc.appendChild(vHead);
+      const vNatifDE = gEx.de && l.vocCoursDE && l.vocCoursDE.length;
+      const vArr = vNatifDE ? l.vocCoursDE : l.vocCours;
+      if (vArr && vArr.length) {
+        const vart = el("article", "cours-article voc-article");
+        vArr.forEach((para) => { const pe = el("p", "cours-art-p"); if (vNatifDE) pe.innerHTML = mdLite(para); else localizeInto(pe, para, gEx); vart.appendChild(pe); });
+        voc.appendChild(vart);
+      }
+      const grid = el("div", "voc-grid");
+      l.vocabulaire.forEach((v) => {
+        const card = el("div", "voc-card");
+        const gm = String(v.de).match(/^(der|die|das)\s/); if (gm) card.classList.add("genre-" + gm[1]);
+        const top2 = el("div", "voc-top"); const deWrap = el("div", "voc-de");
+        const span = el("span", ""); span.innerHTML = vocDeHtml(v.de);
+        deWrap.appendChild(span); deWrap.appendChild(speakButton(v.de)); top2.appendChild(deWrap); card.appendChild(top2);
+        card.appendChild(el("div", "voc-fr", v.fr));
+        if (v.ex) { const ex = el("div", "voc-ex"); ex.innerHTML = "« " + escapeHtml(v.ex) + " »"; card.appendChild(ex); }
+        grid.appendChild(card);
+      });
+      voc.appendChild(grid); frag.appendChild(voc);
+    }
+
+    /* --- Cours / grammaire appliquée --- */
+    if ((l.grammaire && l.grammaire.length) || (l.exemplesPlus && l.exemplesPlus.length)) {
+      const gram = el("section", "lesson-section cours");
+      gram.appendChild(el("h2", "", "📐 " + exLabel(gEx, "course")));
+      (l.grammaire || []).forEach((g) => gram.appendChild(renderGrammarBlock(g, niveau)));
+      if (l.exemplesPlus && l.exemplesPlus.length) {
+        const ep = el("div", "gram-block cours-block exemples-plus");
+        const h = el("h3", "cours-titre");
+        if (gEx.de) { h.classList.add("cours-ex-gl-de"); h.textContent = "💬 " + window.I18N.tIn("de", "more_examples"); }
+        else localizeInto(h, "💬 Plus d'exemples en contexte", gEx);
+        ep.appendChild(h); ep.appendChild(buildExemples(l.exemplesPlus, gEx)); gram.appendChild(ep);
+      }
+      frag.appendChild(gram);
+    }
+
+    /* --- Dialogue de situation --- */
+    if (l.dialogue && l.dialogue.lignes) {
+      const dlg = el("section", "lesson-section");
+      const dHead = el("div", "ls-head");
+      dHead.appendChild(el("h2", "", "💬 Dialogue — " + l.dialogue.titre));
+      const playDlg = el("button", "btn btn-ghost small", "🎭 Jouer le dialogue (multi-voix)");
+      playDlg.type = "button"; playDlg.addEventListener("click", () => playDialogue(l.dialogue.lignes));
+      dHead.appendChild(playDlg); dlg.appendChild(dHead);
+      if (l.dialogue.lieu) dlg.appendChild(el("p", "dlg-lieu", "📍 " + l.dialogue.lieu));
+      const conv = el("div", "conv");
+      l.dialogue.lignes.forEach((line, i) => {
+        const row = el("div", "conv-row " + (i % 2 ? "right" : "left"));
+        const bubble = el("div", "bubble");
+        if (line.loc) bubble.appendChild(el("div", "conv-loc", line.loc));
+        const deLine = el("div", "conv-de"); deLine.appendChild(el("span", "", line.de)); deLine.appendChild(speakButton(line.de));
+        bubble.appendChild(deLine); bubble.appendChild(el("div", "conv-fr", line.fr));
+        row.appendChild(bubble); conv.appendChild(row);
+      });
+      dlg.appendChild(conv); frag.appendChild(dlg);
+    }
+
+    /* --- Exercices --- */
+    if (l.exercices && l.exercices.length) {
+      const exo = el("section", "lesson-section"); exo.id = "exo";
+      exo.appendChild(el("h2", "", "✍️ Exercices interactifs"));
+      const seuil = 70;
+      exo.appendChild(el("p", "exo-group-sub", "Fais tous les exercices et atteins <strong>" + seuil + "%</strong> de réussite pour valider la leçon."));
+      const exProg = el("div", "exo-progress"); const bar = el("div", "bar"); const fill = el("div", "bar-fill");
+      bar.appendChild(fill); const label = el("span", "exo-progress-label", ""); exProg.appendChild(label); exProg.appendChild(bar); exo.appendChild(exProg);
+      const allEx = l.exercices.slice();
+      const total = allEx.length; const done = new Set(); const success = new Set(); let shown = false;
+      function refresh() {
+        const sc = done.size ? Math.round((success.size / done.size) * 100) : 0;
+        label.textContent = done.size + "/" + total + " faits · " + sc + "% justes (requis " + seuil + "%)";
+        fill.style.width = total ? (done.size / total) * 100 + "%" : "0%";
+        if (done.size === total && total > 0) {
+          const score = Math.round((success.size / total) * 100); const passed = score >= seuil;
+          if (passed) window.Progress.marquerTermine(l.id, score);
+          if (!shown) { shown = true; pflegeCompletion(exo, score, idx, passed); }
+          if (passed) unlockNext();
+        }
+      }
+      const groupDefs = { comp: ["📖 Compréhension", "Vérifie que tu as compris le vocabulaire et le dialogue."], appro: ["🎯 Application", "Ancre le vocabulaire et les tournures du soin."], prod: ["✍️ Production", "À toi de produire en allemand."] };
+      const groups = {};
+      function groupOf(cat) { if (!groups[cat]) { const g = el("div", "exo-group exo-group-" + cat); g.appendChild(el("h3", "exo-group-title", groupDefs[cat][0])); g.appendChild(el("p", "exo-group-sub", groupDefs[cat][1])); groups[cat] = g; } return groups[cat]; }
+      allEx.forEach((ex, i) => {
+        const node = window.Exercises.render(ex, i, (ok) => { done.add(i); if (ok) success.add(i); else success.delete(i); window.Progress.setExercice(l.id, i, ok); refresh(); });
+        groupOf(exoCat(ex)).appendChild(node);
+      });
+      ["comp", "appro", "prod"].forEach((cat) => { if (groups[cat]) exo.appendChild(groups[cat]); });
+      refresh(); frag.appendChild(exo);
+      var unlockNext = function () { if (nextBtn) { nextBtn.classList.remove("is-locked"); nextBtn.textContent = nextLabel; nextBtn.href = nextHref; } };
+    }
+
+    /* --- Navigation préc / suiv (séquentielle, comme le cours général) --- */
+    const nav = el("div", "lesson-nav");
+    if (idx > 0 && pflegeHasContent(pflat[idx - 1].lecon)) {
+      const prev = el("a", "btn btn-ghost", "← " + pflat[idx - 1].lecon.titre); prev.href = "#/pflege/lecon/" + pflat[idx - 1].lecon.id; nav.appendChild(prev);
+    } else nav.appendChild(el("span", ""));
+    const next = pflat[idx + 1];
+    var nextHref = next && pflegeHasContent(next.lecon) ? "#/pflege/lecon/" + next.lecon.id : "#/pflege";
+    var nextLabel = next && pflegeHasContent(next.lecon) ? next.lecon.titre + " →" : "← Programme Pflege";
+    const dejaValide = window.Progress.estTermine(l.id) || !(l.exercices && l.exercices.length);
+    var nextBtn = el("a", "btn btn-primary" + (dejaValide ? "" : " is-locked"), dejaValide ? nextLabel : "🔒 Termine tous les exercices");
+    if (dejaValide) nextBtn.href = nextHref;
+    else nextBtn.addEventListener("click", (e) => { e.preventDefault(); const x = document.getElementById("exo"); if (x) x.scrollIntoView({ behavior: "smooth" }); toast("Termine les exercices (≥ 70 %) pour débloquer la suite. 💪"); });
+    nav.appendChild(nextBtn); frag.appendChild(nav);
+
+    app.innerHTML = ""; app.appendChild(frag);
+    if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/pflege"; }); try { window.TG.hideMainButton && window.TG.hideMainButton(); } catch (e) {} }
     try { localizeUI(app); } catch (e) {}
     window.scrollTo(0, 0);
   }
@@ -2252,6 +2448,7 @@
       return renderLanguagePage();
     }
     if (hash.match(/^#\/menu/)) renderMenu();
+    else if ((m = hash.match(/^#\/pflege\/lecon\/(.+)$/))) renderPflegeLecon(m[1]);
     else if (hash.match(/^#\/pflege/)) renderPflege();
     else if (hash.match(/^#\/start/)) renderOnboarding();
     else if (hash.match(/^#\/placement/)) renderPlacement();

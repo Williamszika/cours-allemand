@@ -15104,12 +15104,336 @@ window.PFLEGE = {
   },
   niveaux: [
     { code: "A2", titre: "Premiers pas dans le soin", lecons: [
-      { id: "pa2-1", dom: "grund", titreDE: "Der Körper und die Pflege", titre: "Le corps et les soins", desc: "Parties du corps et vocabulaire de base des soins." },
-      { id: "pa2-2", dom: "grund", titreDE: "Körperpflege und Hygiene", titre: "Toilette et hygiène", desc: "Laver, habiller, soins d'hygiène au quotidien." },
-      { id: "pa2-3", dom: "heim", titreDE: "Im Pflegeheim: der Tagesablauf", titre: "En maison de retraite : la journée", desc: "Lever, repas, coucher : accompagner les résidents." },
-      { id: "pa2-4", dom: "grund", titreDE: "Begrüßung und einfache Kommunikation", titre: "Accueil et communication simple", desc: "Saluer, se présenter, phrases utiles avec le patient." },
-      { id: "pa2-5", dom: "grund", titreDE: "Vitalzeichen messen", titre: "Mesurer les signes vitaux", desc: "Température, pouls, tension : mots et consignes." },
-      { id: "pa2-6", dom: "grund", titreDE: "Hilfsmittel und Mobilität", titre: "Aides et mobilité", desc: "Fauteuil roulant, déambulateur, aider à se déplacer." }
+      { id: "pa2-1", dom: "grund", titreDE: "Der Körper und die Pflege", titre: "Le corps et les soins", desc: "Parties du corps et vocabulaire de base des soins.",
+        vocCours: [
+          "Pour soigner, il faut d'abord savoir nommer le corps. Apprends chaque mot avec son article : der Kopf (la tête), der Arm (le bras), das Bein (la jambe), der Rücken (le dos), die Hand (la main).",
+          "Tu parleras aussi du patient et de son état : der Patient / die Patientin, die Pflegekraft (le soignant), Schmerzen haben (avoir mal). Ce sont les tout premiers mots du quotidien soignant."
+        ],
+        vocabulaire: [
+          { de: "der Körper", fr: "le corps", ex: "Der Körper des Patienten ist warm." },
+          { de: "der Kopf", fr: "la tête", ex: "Der Kopf tut ihm weh." },
+          { de: "der Arm", fr: "le bras", ex: "Heben Sie bitte den Arm." },
+          { de: "das Bein", fr: "la jambe", ex: "Das linke Bein ist geschwollen." },
+          { de: "der Rücken", fr: "le dos", ex: "Sie hat Schmerzen im Rücken." },
+          { de: "die Hand", fr: "la main", ex: "Geben Sie mir bitte die Hand." },
+          { de: "der Bauch", fr: "le ventre", ex: "Der Bauch ist weich." },
+          { de: "der Patient / die Patientin", fr: "le patient / la patiente", ex: "Der Patient liegt in Zimmer 12." },
+          { de: "die Pflegekraft", fr: "le soignant / la soignante", ex: "Die Pflegekraft hilft beim Aufstehen." },
+          { de: "die Schmerzen", fr: "les douleurs", ex: "Haben Sie Schmerzen?" }
+        ],
+        grammaire: [
+          { titre: "L'impératif de politesse", titreDE: "Der Imperativ mit Sie",
+            regle: "Pour demander poliment à un patient de faire quelque chose, on utilise l'impératif avec « Sie » : verbe en première position + Sie. Exemple : « Heben Sie den Arm. » (Levez le bras.) On ajoute souvent « bitte » pour rester poli.",
+            points: [
+              "« Atmen Sie tief ein. » — Respirez profondément.",
+              "« Kommen Sie bitte. » — Venez, s'il vous plaît.",
+              "« Drücken Sie hier. » — Appuyez ici."
+            ],
+            exemples: [
+              { de: "Heben Sie bitte den Arm.", fr: "Levez le bras, s'il vous plaît." },
+              { de: "Öffnen Sie den Mund.", fr: "Ouvrez la bouche." },
+              { de: "Atmen Sie ruhig.", fr: "Respirez calmement." }
+            ],
+            note: "Avec « Sie », on reste toujours poli et respectueux — la règle de base avec les patients." }
+        ],
+        dialogue: { titre: "Wo haben Sie Schmerzen?", lieu: "Im Patientenzimmer", lignes: [
+          { loc: "L'aide-soignante salue le patient", de: "Guten Morgen, Herr Bauer. Wie geht es Ihnen?", fr: "Bonjour M. Bauer. Comment allez-vous ?" },
+          { de: "Nicht so gut. Mein Rücken tut weh.", fr: "Pas très bien. J'ai mal au dos." },
+          { de: "Wo genau haben Sie Schmerzen?", fr: "Où avez-vous mal exactement ?" },
+          { de: "Hier unten, im unteren Rücken.", fr: "Ici en bas, dans le bas du dos." },
+          { de: "Ich helfe Ihnen. Drehen Sie sich bitte langsam.", fr: "Je vous aide. Tournez-vous lentement, s'il vous plaît." },
+          { de: "Danke, das tut gut.", fr: "Merci, ça fait du bien." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Was tut Herrn Bauer weh?", options: ["Der Kopf", "Der Rücken", "Das Bein"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe chaque mot à sa traduction.", paires: [ { gauche: "der Kopf", droite: "la tête" }, { gauche: "die Hand", droite: "la main" }, { gauche: "das Bein", droite: "la jambe" }, { gauche: "der Rücken", droite: "le dos" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète l'impératif de politesse.", texte: "Heben Sie bitte {0} Arm.", accepte: [["den"]], indice: "Accusatif masculin de « der »." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la formulation polie.", question: "Comment dire poliment « Ouvrez la bouche » ?", options: ["Mach den Mund auf.", "Öffnen Sie den Mund.", "Du öffnest den Mund."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase dans l'ordre.", mots: ["Heben", "Sie", "den", "Arm"], correct: "Heben Sie den Arm", traduction: "Levez le bras." },
+          { type: "production", cat: "prod", prompt: "Écris une phrase pour demander poliment à un patient de lever le bras.", modele: "Heben Sie bitte den Arm." }
+        ],
+        exemplesPlus: [
+          { de: "Guten Morgen! Wie geht es Ihnen heute?", fr: "Bonjour ! Comment allez-vous aujourd'hui ?" },
+          { de: "Haben Sie Schmerzen?", fr: "Avez-vous des douleurs ?" },
+          { de: "Heben Sie bitte langsam den Arm.", fr: "Levez le bras lentement, s'il vous plaît." },
+          { de: "Ich helfe Ihnen beim Aufstehen.", fr: "Je vous aide à vous lever." },
+          { de: "Der Rücken tut weh.", fr: "Le dos fait mal." }
+        ] },
+      { id: "pa2-2", dom: "grund", titreDE: "Körperpflege und Hygiene", titre: "Toilette et hygiène", desc: "Laver, habiller, soins d'hygiène au quotidien.",
+        vocCours: [
+          "La toilette est un soin quotidien. Mots-clés : waschen (laver), sich waschen (se laver), die Seife (le savon), das Handtuch (la serviette), die Zähne putzen (se brosser les dents).",
+          "Beaucoup de verbes du soin sont pronominaux (avec « sich ») : sich waschen, sich anziehen (s'habiller), sich duschen. Tu les apprendras dans la partie grammaire."
+        ],
+        vocabulaire: [
+          { de: "waschen", fr: "laver", ex: "Ich wasche dem Patienten den Rücken." },
+          { de: "sich waschen", fr: "se laver", ex: "Können Sie sich allein waschen?" },
+          { de: "die Seife", fr: "le savon", ex: "Hier ist die Seife." },
+          { de: "das Handtuch", fr: "la serviette", ex: "Ich bringe Ihnen ein frisches Handtuch." },
+          { de: "die Zähne putzen", fr: "se brosser les dents", ex: "Bitte putzen Sie die Zähne." },
+          { de: "sich anziehen", fr: "s'habiller", ex: "Möchten Sie sich jetzt anziehen?" },
+          { de: "duschen", fr: "se doucher", ex: "Heute duschen wir zusammen." },
+          { de: "die Windel", fr: "la protection / couche", ex: "Ich wechsle jetzt die Windel." },
+          { de: "die Haut", fr: "la peau", ex: "Die Haut ist trocken." },
+          { de: "sauber", fr: "propre", ex: "Jetzt sind Sie wieder sauber." }
+        ],
+        grammaire: [
+          { titre: "Les verbes pronominaux", titreDE: "Reflexive Verben (sich)",
+            regle: "Beaucoup de gestes de la toilette se disent avec un verbe pronominal : sich waschen (se laver), sich anziehen (s'habiller). Le pronom « sich » change avec la personne : ich wasche mich, Sie waschen sich.",
+            points: [
+              "ich wasche mich — je me lave",
+              "Sie waschen sich — vous vous lavez",
+              "er/sie wäscht sich — il/elle se lave"
+            ],
+            exemples: [
+              { de: "Können Sie sich allein waschen?", fr: "Pouvez-vous vous laver seul ?" },
+              { de: "Ich ziehe mich an.", fr: "Je m'habille." },
+              { de: "Möchten Sie sich duschen?", fr: "Voulez-vous vous doucher ?" }
+            ],
+            note: "Quand TU fais le soin, le verbe redevient simple : « Ich wasche Ihnen den Rücken. » (Je vous lave le dos.)" }
+        ],
+        dialogue: { titre: "Die Morgenpflege", lieu: "Im Badezimmer des Pflegeheims", lignes: [
+          { loc: "L'aide-soignante propose la toilette", de: "Guten Morgen, Frau Lang. Möchten Sie sich jetzt waschen?", fr: "Bonjour Mme Lang. Voulez-vous vous laver maintenant ?" },
+          { de: "Ja, gern. Aber ich brauche Hilfe.", fr: "Oui, volontiers. Mais j'ai besoin d'aide." },
+          { de: "Kein Problem. Hier sind Seife und Handtuch.", fr: "Pas de problème. Voici le savon et la serviette." },
+          { de: "Können Sie mir den Rücken waschen?", fr: "Pouvez-vous me laver le dos ?" },
+          { de: "Natürlich. Putzen Sie danach bitte die Zähne.", fr: "Bien sûr. Brossez-vous les dents ensuite, s'il vous plaît." },
+          { de: "Danke, jetzt fühle ich mich sauber.", fr: "Merci, maintenant je me sens propre." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Was braucht Frau Lang?", options: ["Medikamente", "Hilfe beim Waschen", "ein Glas Wasser"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "die Seife", droite: "le savon" }, { gauche: "das Handtuch", droite: "la serviette" }, { gauche: "die Haut", droite: "la peau" }, { gauche: "sauber", droite: "propre" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète avec le bon pronom réfléchi.", texte: "Können Sie {0} allein waschen?", accepte: [["sich"]], indice: "Forme de politesse (Sie)." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la bonne phrase.", question: "Comment dire « Je m'habille » ?", options: ["Ich ziehe mich an.", "Ich ziehe Sie an.", "Du ziehst sich an."], correct: 0 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase dans l'ordre.", mots: ["Möchten", "Sie", "sich", "duschen"], correct: "Möchten Sie sich duschen", traduction: "Voulez-vous vous doucher ?" },
+          { type: "production", cat: "prod", prompt: "Propose poliment à un résident de se laver maintenant.", modele: "Möchten Sie sich jetzt waschen?" }
+        ],
+        exemplesPlus: [
+          { de: "Möchten Sie sich jetzt waschen?", fr: "Voulez-vous vous laver maintenant ?" },
+          { de: "Ich wasche Ihnen den Rücken.", fr: "Je vous lave le dos." },
+          { de: "Hier sind Seife und Handtuch.", fr: "Voici le savon et la serviette." },
+          { de: "Bitte putzen Sie die Zähne.", fr: "Brossez-vous les dents, s'il vous plaît." },
+          { de: "Ich wechsle jetzt die Windel.", fr: "Je change la protection maintenant." }
+        ] },
+      { id: "pa2-3", dom: "heim", titreDE: "Im Pflegeheim: der Tagesablauf", titre: "En maison de retraite : la journée", desc: "Lever, repas, coucher : accompagner les résidents.",
+        vocCours: [
+          "En maison de retraite (das Pflegeheim), la journée du résident (der Bewohner / die Bewohnerin) est rythmée : aufstehen (se lever), das Frühstück (le petit-déjeuner), das Mittagessen (le déjeuner), das Abendessen (le dîner), ins Bett gehen (aller au lit).",
+          "Beaucoup de ces verbes sont « séparables » : aufstehen, anziehen, einnehmen. Le préfixe part à la fin de la phrase : « Ich stehe um 7 Uhr auf. »"
+        ],
+        vocabulaire: [
+          { de: "das Pflegeheim", fr: "la maison de retraite", ex: "Sie wohnt seit zwei Jahren im Pflegeheim." },
+          { de: "der Bewohner / die Bewohnerin", fr: "le résident / la résidente", ex: "Die Bewohnerin möchte aufstehen." },
+          { de: "aufstehen", fr: "se lever", ex: "Frau Klein steht um sieben Uhr auf." },
+          { de: "das Frühstück", fr: "le petit-déjeuner", ex: "Das Frühstück ist um halb neun." },
+          { de: "das Mittagessen", fr: "le déjeuner", ex: "Nach dem Mittagessen ruhen sich viele aus." },
+          { de: "das Abendessen", fr: "le dîner", ex: "Das Abendessen gibt es um achtzehn Uhr." },
+          { de: "die Mahlzeit", fr: "le repas", ex: "Guten Appetit, eine schöne Mahlzeit!" },
+          { de: "die Medikamente einnehmen", fr: "prendre les médicaments", ex: "Bitte nehmen Sie jetzt die Medikamente ein." },
+          { de: "ins Bett gehen", fr: "aller au lit", ex: "Möchten Sie schon ins Bett gehen?" },
+          { de: "der Spaziergang", fr: "la promenade", ex: "Am Nachmittag machen wir einen Spaziergang." }
+        ],
+        grammaire: [
+          { titre: "Les verbes à particule séparable", titreDE: "Trennbare Verben",
+            regle: "Des verbes comme aufstehen, anziehen, einnehmen ont un préfixe « séparable ». Dans une phrase simple, le préfixe se place tout à la fin : « Ich stehe um 7 Uhr auf. » (auf-stehen).",
+            points: [
+              "aufstehen → Ich stehe auf.",
+              "einnehmen → Sie nehmen die Tablette ein.",
+              "anziehen → Wir ziehen die Jacke an."
+            ],
+            exemples: [
+              { de: "Frau Klein steht um sieben Uhr auf.", fr: "Mme Klein se lève à sept heures." },
+              { de: "Bitte nehmen Sie die Medikamente ein.", fr: "Prenez vos médicaments, s'il vous plaît." },
+              { de: "Wir gehen jetzt ins Bett.", fr: "Nous allons au lit maintenant." }
+            ],
+            note: "À l'impératif aussi, le préfixe part à la fin : « Stehen Sie bitte auf. »" }
+        ],
+        dialogue: { titre: "Der Morgen im Heim", lieu: "Im Zimmer der Bewohnerin", lignes: [
+          { loc: "L'aide-soignant accompagne le lever", de: "Guten Morgen, Frau Klein. Es ist sieben Uhr. Möchten Sie aufstehen?", fr: "Bonjour Mme Klein. Il est sept heures. Voulez-vous vous lever ?" },
+          { de: "Ja. Gibt es bald Frühstück?", fr: "Oui. Y a-t-il bientôt le petit-déjeuner ?" },
+          { de: "Das Frühstück ist um halb neun.", fr: "Le petit-déjeuner est à huit heures et demie." },
+          { de: "Gut. Und meine Tabletten?", fr: "Bien. Et mes comprimés ?" },
+          { de: "Die nehmen Sie nach dem Frühstück ein.", fr: "Vous les prenez après le petit-déjeuner." },
+          { de: "Am Nachmittag machen wir einen Spaziergang, ja?", fr: "L'après-midi, nous faisons une promenade, d'accord ?" }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Wann ist das Frühstück?", options: ["Um sieben Uhr", "Um halb neun", "Am Nachmittag"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le repas à sa traduction.", paires: [ { gauche: "das Frühstück", droite: "le petit-déjeuner" }, { gauche: "das Mittagessen", droite: "le déjeuner" }, { gauche: "das Abendessen", droite: "le dîner" }, { gauche: "der Spaziergang", droite: "la promenade" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète le verbe séparable (la particule à la fin).", texte: "Frau Klein steht um sieben Uhr {0}.", accepte: [["auf"]], indice: "auf-stehen." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la phrase correcte.", question: "Quelle phrase est juste ?", options: ["Ich auf stehe um 7 Uhr.", "Ich stehe um 7 Uhr auf.", "Ich stehe auf um 7 Uhr."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase dans l'ordre.", mots: ["Bitte", "nehmen", "Sie", "die", "Tablette", "ein"], correct: "Bitte nehmen Sie die Tablette ein", traduction: "Prenez le comprimé, s'il vous plaît." },
+          { type: "production", cat: "prod", prompt: "Demande poliment à un résident s'il veut se lever maintenant.", modele: "Möchten Sie jetzt aufstehen?" }
+        ],
+        exemplesPlus: [
+          { de: "Es ist sieben Uhr. Möchten Sie aufstehen?", fr: "Il est sept heures. Voulez-vous vous lever ?" },
+          { de: "Das Frühstück ist um halb neun.", fr: "Le petit-déjeuner est à huit heures et demie." },
+          { de: "Bitte nehmen Sie die Medikamente ein.", fr: "Prenez vos médicaments, s'il vous plaît." },
+          { de: "Am Nachmittag machen wir einen Spaziergang.", fr: "L'après-midi, nous faisons une promenade." },
+          { de: "Möchten Sie jetzt ins Bett gehen?", fr: "Voulez-vous aller au lit maintenant ?" }
+        ] },
+      { id: "pa2-4", dom: "grund", titreDE: "Begrüßung und einfache Kommunikation", titre: "Accueil et communication simple", desc: "Saluer, se présenter, phrases utiles avec le patient.",
+        vocCours: [
+          "Le premier contact compte. On salue (begrüßen), on se présente (sich vorstellen) et on demande comment va la personne : « Wie geht es Ihnen? ». Des mots simples mettent le patient en confiance.",
+          "Pour comprendre les besoins, on pose des questions en W : Wie? (comment), Wo? (où), Was? (quoi), Wann? (quand). Ce sont tes outils de tous les jours."
+        ],
+        vocabulaire: [
+          { de: "begrüßen", fr: "saluer", ex: "Ich begrüße jeden Bewohner freundlich." },
+          { de: "sich vorstellen", fr: "se présenter", ex: "Darf ich mich vorstellen? Ich bin Frau Sané." },
+          { de: "Wie geht es Ihnen?", fr: "Comment allez-vous ?", ex: "Guten Tag! Wie geht es Ihnen?" },
+          { de: "der Durst", fr: "la soif", ex: "Haben Sie Durst?" },
+          { de: "der Hunger", fr: "la faim", ex: "Haben Sie Hunger?" },
+          { de: "müde", fr: "fatigué", ex: "Sind Sie müde?" },
+          { de: "brauchen", fr: "avoir besoin de", ex: "Brauchen Sie etwas?" },
+          { de: "helfen", fr: "aider", ex: "Kann ich Ihnen helfen?" },
+          { de: "verstehen", fr: "comprendre", ex: "Verstehen Sie mich?" },
+          { de: "langsam", fr: "lentement", ex: "Ich spreche langsam." }
+        ],
+        grammaire: [
+          { titre: "Les questions en W", titreDE: "W-Fragen",
+            regle: "Pour s'informer, on commence la question par un mot en W : Wie? (comment), Wo? (où), Was? (quoi), Wann? (quand), Warum? (pourquoi). Le verbe vient juste après : « Wo haben Sie Schmerzen? »",
+            points: [
+              "Wie geht es Ihnen? — Comment allez-vous ?",
+              "Wo tut es weh? — Où avez-vous mal ?",
+              "Was brauchen Sie? — De quoi avez-vous besoin ?"
+            ],
+            exemples: [
+              { de: "Wie heißen Sie?", fr: "Comment vous appelez-vous ?" },
+              { de: "Wann haben Sie Schmerzen?", fr: "Quand avez-vous mal ?" },
+              { de: "Was möchten Sie trinken?", fr: "Que voulez-vous boire ?" }
+            ],
+            note: "Avec un patient, parle lentement (langsam) et répète si besoin." }
+        ],
+        dialogue: { titre: "Die neue Bewohnerin", lieu: "Im Aufnahmezimmer", lignes: [
+          { loc: "Le soignant accueille une nouvelle résidente", de: "Guten Tag! Darf ich mich vorstellen? Ich bin Herr Sané, Ihre Pflegekraft.", fr: "Bonjour ! Puis-je me présenter ? Je suis M. Sané, votre soignant." },
+          { de: "Guten Tag. Ich bin Frau Weber.", fr: "Bonjour. Je suis Mme Weber." },
+          { de: "Wie geht es Ihnen heute, Frau Weber?", fr: "Comment allez-vous aujourd'hui, Mme Weber ?" },
+          { de: "Ein bisschen müde. Und ich habe Durst.", fr: "Un peu fatiguée. Et j'ai soif." },
+          { de: "Brauchen Sie etwas zu trinken? Ich bringe Wasser.", fr: "Avez-vous besoin de boire ? J'apporte de l'eau." },
+          { de: "Ja, danke. Sie sprechen schön langsam.", fr: "Oui, merci. Vous parlez bien lentement." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Was braucht Frau Weber?", options: ["Etwas zu trinken", "Ein Medikament", "Einen Spaziergang"], correct: 0 },
+          { type: "association", cat: "comp", consigne: "Associe le mot interrogatif à son sens.", paires: [ { gauche: "Wie?", droite: "comment ?" }, { gauche: "Wo?", droite: "où ?" }, { gauche: "Was?", droite: "quoi ?" }, { gauche: "Wann?", droite: "quand ?" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète avec le bon mot en W.", texte: "{0} geht es Ihnen heute?", accepte: [["Wie"]], indice: "On demande l'état (comment)." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la question correcte.", question: "Comment demander « Où avez-vous mal ? »", options: ["Was tut weh Ihnen?", "Wo tut es weh?", "Wie weh Sie haben?"], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la question dans l'ordre.", mots: ["Was", "brauchen", "Sie"], correct: "Was brauchen Sie", traduction: "De quoi avez-vous besoin ?" },
+          { type: "production", cat: "prod", prompt: "Présente-toi à un patient et demande comment il va.", modele: "Guten Tag, ich bin Ihre Pflegekraft. Wie geht es Ihnen?" }
+        ],
+        exemplesPlus: [
+          { de: "Darf ich mich vorstellen? Ich bin Ihre Pflegekraft.", fr: "Puis-je me présenter ? Je suis votre soignant." },
+          { de: "Wie geht es Ihnen heute?", fr: "Comment allez-vous aujourd'hui ?" },
+          { de: "Haben Sie Durst oder Hunger?", fr: "Avez-vous soif ou faim ?" },
+          { de: "Brauchen Sie etwas?", fr: "Avez-vous besoin de quelque chose ?" },
+          { de: "Ich spreche langsam. Verstehen Sie mich?", fr: "Je parle lentement. Me comprenez-vous ?" }
+        ] },
+      { id: "pa2-5", dom: "grund", titreDE: "Vitalzeichen messen", titre: "Mesurer les signes vitaux", desc: "Température, pouls, tension : mots et consignes.",
+        vocCours: [
+          "Chaque jour, on mesure les signes vitaux (die Vitalzeichen) : die Temperatur (la température), der Puls (le pouls), der Blutdruck (la tension). Le verbe clé est messen (mesurer).",
+          "On décrit ensuite les valeurs : hoch (élevé), niedrig (bas), normal. Et on dit ce qu'on doit faire avec « müssen » : « Ich muss den Blutdruck messen. »"
+        ],
+        vocabulaire: [
+          { de: "die Vitalzeichen", fr: "les signes vitaux", ex: "Ich kontrolliere die Vitalzeichen." },
+          { de: "die Temperatur", fr: "la température", ex: "Ich messe jetzt die Temperatur." },
+          { de: "das Fieber", fr: "la fièvre", ex: "Der Patient hat Fieber." },
+          { de: "der Puls", fr: "le pouls", ex: "Der Puls ist regelmäßig." },
+          { de: "der Blutdruck", fr: "la tension artérielle", ex: "Der Blutdruck ist ein bisschen hoch." },
+          { de: "messen", fr: "mesurer", ex: "Ich muss den Blutdruck messen." },
+          { de: "das Thermometer", fr: "le thermomètre", ex: "Wo ist das Thermometer?" },
+          { de: "hoch", fr: "élevé / haut", ex: "Die Temperatur ist hoch." },
+          { de: "niedrig", fr: "bas", ex: "Der Blutdruck ist niedrig." },
+          { de: "der Wert", fr: "la valeur", ex: "Ich notiere den Wert." }
+        ],
+        grammaire: [
+          { titre: "Le verbe de modalité « müssen »", titreDE: "Modalverb: müssen",
+            regle: "Pour dire ce qu'on DOIT faire, on utilise « müssen ». Le verbe principal va à l'infinitif, tout à la fin : « Ich muss den Blutdruck messen. » (Je dois mesurer la tension.)",
+            points: [
+              "ich muss … messen — je dois … mesurer",
+              "Sie müssen … bleiben — vous devez … rester",
+              "L'infinitif (messen, bleiben) se place à la fin."
+            ],
+            exemples: [
+              { de: "Ich muss die Temperatur messen.", fr: "Je dois mesurer la température." },
+              { de: "Sie müssen ruhig sitzen.", fr: "Vous devez rester assis tranquillement." },
+              { de: "Wir müssen den Wert notieren.", fr: "Nous devons noter la valeur." }
+            ],
+            note: "Pour annoncer un soin avec douceur : « Ich muss jetzt … » + infinitif." }
+        ],
+        dialogue: { titre: "Blutdruck und Temperatur", lieu: "Am Patientenbett", lignes: [
+          { loc: "L'infirmière annonce la mesure", de: "Guten Morgen. Ich muss jetzt den Blutdruck messen.", fr: "Bonjour. Je dois maintenant mesurer la tension." },
+          { de: "In Ordnung. Tut das weh?", fr: "D'accord. Est-ce que ça fait mal ?" },
+          { de: "Nein, gar nicht. Bitte sitzen Sie ruhig.", fr: "Non, pas du tout. Restez assis tranquillement, s'il vous plaît." },
+          { de: "Und meine Temperatur?", fr: "Et ma température ?" },
+          { de: "Die messe ich auch. Sie haben kein Fieber.", fr: "Je la mesure aussi. Vous n'avez pas de fièvre." },
+          { de: "Der Blutdruck ist ein bisschen hoch. Ich notiere den Wert.", fr: "La tension est un peu élevée. Je note la valeur." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Hat der Patient Fieber?", options: ["Ja", "Nein", "Man weiß es nicht"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le signe vital à sa traduction.", paires: [ { gauche: "die Temperatur", droite: "la température" }, { gauche: "der Puls", droite: "le pouls" }, { gauche: "der Blutdruck", droite: "la tension" }, { gauche: "das Fieber", droite: "la fièvre" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète avec « müssen » (infinitif à la fin).", texte: "Ich {0} den Blutdruck messen.", accepte: [["muss"]], indice: "1re personne du singulier de müssen." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la phrase correcte.", question: "Quelle phrase est juste ?", options: ["Ich muss messen den Blutdruck.", "Ich muss den Blutdruck messen.", "Ich den Blutdruck muss messen."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase dans l'ordre.", mots: ["Sie", "müssen", "ruhig", "sitzen"], correct: "Sie müssen ruhig sitzen", traduction: "Vous devez rester assis tranquillement." },
+          { type: "production", cat: "prod", prompt: "Annonce à un patient que tu dois mesurer sa température.", modele: "Ich muss jetzt die Temperatur messen." }
+        ],
+        exemplesPlus: [
+          { de: "Ich muss jetzt den Blutdruck messen.", fr: "Je dois maintenant mesurer la tension." },
+          { de: "Bitte sitzen Sie ruhig.", fr: "Restez assis tranquillement, s'il vous plaît." },
+          { de: "Sie haben kein Fieber.", fr: "Vous n'avez pas de fièvre." },
+          { de: "Der Blutdruck ist ein bisschen hoch.", fr: "La tension est un peu élevée." },
+          { de: "Ich notiere den Wert.", fr: "Je note la valeur." }
+        ] },
+      { id: "pa2-6", dom: "grund", titreDE: "Hilfsmittel und Mobilität", titre: "Aides et mobilité", desc: "Fauteuil roulant, déambulateur, aider à se déplacer.",
+        vocCours: [
+          "Aider à se déplacer fait partie du soin. Les aides (die Hilfsmittel) : der Rollstuhl (le fauteuil roulant), der Rollator (le déambulateur), die Gehhilfe (l'aide à la marche).",
+          "On accompagne les gestes : aufstehen (se lever), sich setzen (s'asseoir), sich festhalten (se tenir). Et on rassure avec « können » : « Sie können sich an mir festhalten. »"
+        ],
+        vocabulaire: [
+          { de: "das Hilfsmittel", fr: "l'aide technique", ex: "Der Rollator ist ein Hilfsmittel." },
+          { de: "der Rollstuhl", fr: "le fauteuil roulant", ex: "Ich hole den Rollstuhl." },
+          { de: "der Rollator", fr: "le déambulateur", ex: "Mit dem Rollator gehen Sie sicher." },
+          { de: "aufstehen", fr: "se lever", ex: "Können Sie allein aufstehen?" },
+          { de: "sich setzen", fr: "s'asseoir", ex: "Bitte setzen Sie sich langsam." },
+          { de: "sich festhalten", fr: "se tenir / s'agripper", ex: "Halten Sie sich gut fest." },
+          { de: "der Sturz", fr: "la chute", ex: "Wir wollen einen Sturz vermeiden." },
+          { de: "fallen", fr: "tomber", ex: "Vorsicht, nicht fallen!" },
+          { de: "vorsichtig", fr: "prudent / doucement", ex: "Wir machen das vorsichtig." },
+          { de: "langsam", fr: "lentement", ex: "Stehen Sie langsam auf." }
+        ],
+        grammaire: [
+          { titre: "Le verbe de modalité « können »", titreDE: "Modalverb: können",
+            regle: "Pour parler de ce qu'on PEUT (ou ne peut pas) faire, on utilise « können ». L'infinitif va à la fin : « Können Sie allein aufstehen? » (Pouvez-vous vous lever seul ?)",
+            points: [
+              "Ich kann Ihnen helfen. — Je peux vous aider.",
+              "Können Sie aufstehen? — Pouvez-vous vous lever ?",
+              "Sie können sich festhalten. — Vous pouvez vous tenir."
+            ],
+            exemples: [
+              { de: "Können Sie allein aufstehen?", fr: "Pouvez-vous vous lever seul ?" },
+              { de: "Ich kann Ihnen helfen.", fr: "Je peux vous aider." },
+              { de: "Sie können sich an mir festhalten.", fr: "Vous pouvez vous tenir à moi." }
+            ],
+            note: "« können » rassure : il propose de l'aide sans imposer." }
+        ],
+        dialogue: { titre: "Vom Bett in den Rollstuhl", lieu: "Im Zimmer", lignes: [
+          { loc: "Le soignant aide au transfert", de: "Frau Hofer, möchten Sie aufstehen? Ich hole den Rollstuhl.", fr: "Mme Hofer, voulez-vous vous lever ? Je vais chercher le fauteuil roulant." },
+          { de: "Ja, aber ich habe Angst zu fallen.", fr: "Oui, mais j'ai peur de tomber." },
+          { de: "Keine Sorge. Halten Sie sich gut an mir fest.", fr: "Pas d'inquiétude. Tenez-vous bien à moi." },
+          { de: "Können Sie mir helfen?", fr: "Pouvez-vous m'aider ?" },
+          { de: "Natürlich. Wir machen das langsam und vorsichtig.", fr: "Bien sûr. Nous faisons ça lentement et prudemment." },
+          { de: "Gut, jetzt sitze ich sicher im Rollstuhl.", fr: "Bien, maintenant je suis assise en sécurité dans le fauteuil." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Wovor hat Frau Hofer Angst?", options: ["Vor dem Essen", "Zu fallen", "Vor dem Arzt"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe l'aide à sa traduction.", paires: [ { gauche: "der Rollstuhl", droite: "le fauteuil roulant" }, { gauche: "der Rollator", droite: "le déambulateur" }, { gauche: "der Sturz", droite: "la chute" }, { gauche: "vorsichtig", droite: "prudemment" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète avec « können » (infinitif à la fin).", texte: "{0} Sie allein aufstehen?", accepte: [["Können"]], indice: "Question polie avec können." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la phrase correcte.", question: "Comment dire « Je peux vous aider » ?", options: ["Ich kann Ihnen helfen.", "Ich helfen kann Ihnen.", "Ich kann helfen Ihnen."], correct: 0 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase dans l'ordre.", mots: ["Halten", "Sie", "sich", "gut", "fest"], correct: "Halten Sie sich gut fest", traduction: "Tenez-vous bien." },
+          { type: "production", cat: "prod", prompt: "Propose ton aide à un résident pour se lever.", modele: "Kann ich Ihnen beim Aufstehen helfen?" }
+        ],
+        exemplesPlus: [
+          { de: "Möchten Sie aufstehen? Ich hole den Rollstuhl.", fr: "Voulez-vous vous lever ? Je vais chercher le fauteuil roulant." },
+          { de: "Halten Sie sich gut an mir fest.", fr: "Tenez-vous bien à moi." },
+          { de: "Können Sie mir helfen?", fr: "Pouvez-vous m'aider ?" },
+          { de: "Wir machen das langsam und vorsichtig.", fr: "Nous faisons ça lentement et prudemment." },
+          { de: "Stehen Sie bitte langsam auf.", fr: "Levez-vous lentement, s'il vous plaît." }
+        ] }
     ]},
     { code: "B1", titre: "Communiquer dans le soin", lecons: [
       { id: "pb1-1", dom: "kh", titreDE: "Aufnahme eines Patienten", titre: "Admission d'un patient", desc: "Données personnelles et anamnèse simple." },
@@ -19082,7 +19406,13 @@ window.Exercises = (function () {
       const grid = el("div", "pflege-grid");
       niv.lecons.forEach((l) => {
         const dom = P.domaines[l.dom] || { ic: "•", nom: "" };
-        const card = el("div", "pflege-card");
+        const has = pflegeHasContent(l);
+        const done = has && window.Progress && window.Progress.estTermine(l.id);
+        const card = el(has ? "a" : "div", "pflege-card" + (done ? " done" : ""));
+        if (has) card.href = "#/pflege/lecon/" + l.id;
+        const trailing = has
+          ? '<span class="menu-go">' + (done ? "✓" : "→") + "</span>"
+          : '<span class="menu-badge">Bientôt</span>';
         card.innerHTML =
           '<div class="pflege-ic">' + dom.ic + "</div>" +
           '<div class="pflege-body">' +
@@ -19090,8 +19420,7 @@ window.Exercises = (function () {
           '<div class="pflege-fr">' + l.titre + "</div>" +
           '<p class="pflege-desc">' + l.desc + "</p>" +
           '<span class="pflege-tag">' + dom.nom + "</span>" +
-          "</div>" +
-          '<span class="menu-badge">Bientôt</span>';
+          "</div>" + trailing;
         grid.appendChild(card);
       });
       sec.appendChild(grid);
@@ -19100,6 +19429,197 @@ window.Exercises = (function () {
 
     app.innerHTML = ""; app.appendChild(frag);
     if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/menu"; }); try { window.TG.hideMainButton && window.TG.hideMainButton(); } catch (e) {} }
+    try { localizeUI(app); } catch (e) {}
+    window.scrollTo(0, 0);
+  }
+
+  /* --- Moteur de leçon du parcours Pflege (réutilise les briques du cours
+     général : vocabulaire, cours, dialogue, exercices, « plus d'exemples »).
+     Progression et déblocage propres à Pflege (clé = id de la leçon). --- */
+  let _pflat = null;
+  function pflatList() {
+    if (_pflat) return _pflat;
+    _pflat = [];
+    ((window.PFLEGE && window.PFLEGE.niveaux) || []).forEach((niv) => (niv.lecons || []).forEach((l) => _pflat.push({ niv: niv.code, lecon: l })));
+    return _pflat;
+  }
+  function pIndexOf(id) { return pflatList().findIndex((f) => f.lecon.id === id); }
+  function pflegeHasContent(l) { return !!(l && (l.vocabulaire || (l.grammaire && l.grammaire.length) || l.dialogue || (l.exercices && l.exercices.length))); }
+  function isUnlockedPflege(idx) {
+    if (!pflegeDebloque()) return false;
+    if (idx <= 0) return true;
+    const prev = pflatList()[idx - 1];
+    // On ne se laisse bloquer que par une leçon précédente qui a, elle aussi, du contenu.
+    if (!pflegeHasContent(prev.lecon)) return true;
+    return window.Progress.estTermine(prev.lecon.id);
+  }
+
+  function pflegeCompletion(container, score, idx, passed) {
+    const old = container.querySelector(".completion"); if (old) old.remove();
+    const seuil = 70;
+    const c = el("div", "completion " + (passed ? "ok" : "ko"));
+    if (!passed) {
+      c.innerHTML = '<div class="comp-emoji">📚</div><h3>Presque !</h3><p>Score : <span class="comp-score ko">' + score +
+        "%</span> — il faut <strong>" + seuil + "%</strong> pour valider la leçon. Reprends les exercices en rouge.</p>";
+      container.appendChild(c); try { localizeUI(app); } catch (e) {} c.scrollIntoView({ behavior: "smooth" }); return;
+    }
+    const pflat = pflatList(); const next = pflat[idx + 1];
+    const suivante = next && pflegeHasContent(next.lecon);
+    c.innerHTML = '<div class="comp-emoji">🎉</div><h3>Leçon validée !</h3><p>Score : <span class="comp-score">' + score +
+      "%</span> (requis " + seuil + "%) — " + (suivante ? "leçon suivante débloquée !" : "tu as terminé les leçons disponibles ! 🎓") + "</p>";
+    const actions = el("div", "rev-actions");
+    const go = el("a", "btn btn-primary", suivante ? "→ " + next.lecon.titre : "← Programme Pflege");
+    go.href = suivante ? "#/pflege/lecon/" + next.lecon.id : "#/pflege";
+    actions.appendChild(go);
+    c.appendChild(actions); container.appendChild(c); try { localizeUI(app); } catch (e) {} c.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function renderPflegeLecon(id) {
+    const P = window.PFLEGE; if (!P) { location.hash = "#/pflege"; return; }
+    const pflat = pflatList();
+    const idx = pIndexOf(id);
+    if (idx < 0) return renderPflege();
+    const f = pflat[idx]; const l = f.lecon;
+    if (!pflegeDebloque() || !pflegeHasContent(l)) return renderPflege();
+
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/pflege">← Programme Pflege</a><span class="lesson-top-mod">🩺 ' + f.niv + "</span>";
+    frag.appendChild(top);
+
+    /* Garde séquentielle dans le parcours Pflege. */
+    if (!isUnlockedPflege(idx)) {
+      const prev = pflat[idx - 1].lecon;
+      const lock = el("section", "lesson-section locked-notice");
+      lock.innerHTML = '<div class="comp-emoji">🔒</div><h2>Leçon verrouillée</h2><p>Termine d\'abord la leçon précédente : <strong class="pflege-de">' + prev.titreDE + "</strong>.</p>";
+      const go = el("a", "btn btn-primary", "→ " + prev.titre); go.href = "#/pflege/lecon/" + prev.id; lock.appendChild(go);
+      frag.appendChild(lock); app.innerHTML = ""; app.appendChild(frag);
+      if (window.TG) window.TG.showBackButton(() => { location.hash = "#/pflege"; });
+      try { localizeUI(app); } catch (e) {} window.scrollTo(0, 0); return;
+    }
+
+    const niveau = l.niveau || f.niv;
+    const gEx = window.I18N ? window.I18N.explication(niveau) : { lang: "fr", de: false, niveau: null };
+    const dom = P.domaines[l.dom] || { ic: "🩺", nom: "" };
+
+    const hero = el("header", "hero pflege-hero");
+    hero.innerHTML = '<p class="hero-eyebrow">' + dom.ic + " " + dom.nom + "</p><h1><span class=\"pflege-de\">" + l.titreDE + "</span></h1><p class=\"hero-desc\">" + l.titre + "</p>";
+    frag.appendChild(hero);
+
+    /* --- Vocabulaire professionnel --- */
+    if (l.vocabulaire && l.vocabulaire.length) {
+      const voc = el("section", "lesson-section cours");
+      const vHead = el("div", "ls-head");
+      vHead.appendChild(el("h2", "", "🗂️ Wortschatz — vocabulaire du soin"));
+      const playAll = el("button", "btn btn-ghost small", "🔊 Tout écouter");
+      playAll.type = "button"; playAll.addEventListener("click", () => playSequence(l.vocabulaire.map((v) => v.de)));
+      vHead.appendChild(playAll); voc.appendChild(vHead);
+      const vNatifDE = gEx.de && l.vocCoursDE && l.vocCoursDE.length;
+      const vArr = vNatifDE ? l.vocCoursDE : l.vocCours;
+      if (vArr && vArr.length) {
+        const vart = el("article", "cours-article voc-article");
+        vArr.forEach((para) => { const pe = el("p", "cours-art-p"); if (vNatifDE) pe.innerHTML = mdLite(para); else localizeInto(pe, para, gEx); vart.appendChild(pe); });
+        voc.appendChild(vart);
+      }
+      const grid = el("div", "voc-grid");
+      l.vocabulaire.forEach((v) => {
+        const card = el("div", "voc-card");
+        const gm = String(v.de).match(/^(der|die|das)\s/); if (gm) card.classList.add("genre-" + gm[1]);
+        const top2 = el("div", "voc-top"); const deWrap = el("div", "voc-de");
+        const span = el("span", ""); span.innerHTML = vocDeHtml(v.de);
+        deWrap.appendChild(span); deWrap.appendChild(speakButton(v.de)); top2.appendChild(deWrap); card.appendChild(top2);
+        card.appendChild(el("div", "voc-fr", v.fr));
+        if (v.ex) { const ex = el("div", "voc-ex"); ex.innerHTML = "« " + escapeHtml(v.ex) + " »"; card.appendChild(ex); }
+        grid.appendChild(card);
+      });
+      voc.appendChild(grid); frag.appendChild(voc);
+    }
+
+    /* --- Cours / grammaire appliquée --- */
+    if ((l.grammaire && l.grammaire.length) || (l.exemplesPlus && l.exemplesPlus.length)) {
+      const gram = el("section", "lesson-section cours");
+      gram.appendChild(el("h2", "", "📐 " + exLabel(gEx, "course")));
+      (l.grammaire || []).forEach((g) => gram.appendChild(renderGrammarBlock(g, niveau)));
+      if (l.exemplesPlus && l.exemplesPlus.length) {
+        const ep = el("div", "gram-block cours-block exemples-plus");
+        const h = el("h3", "cours-titre");
+        if (gEx.de) { h.classList.add("cours-ex-gl-de"); h.textContent = "💬 " + window.I18N.tIn("de", "more_examples"); }
+        else localizeInto(h, "💬 Plus d'exemples en contexte", gEx);
+        ep.appendChild(h); ep.appendChild(buildExemples(l.exemplesPlus, gEx)); gram.appendChild(ep);
+      }
+      frag.appendChild(gram);
+    }
+
+    /* --- Dialogue de situation --- */
+    if (l.dialogue && l.dialogue.lignes) {
+      const dlg = el("section", "lesson-section");
+      const dHead = el("div", "ls-head");
+      dHead.appendChild(el("h2", "", "💬 Dialogue — " + l.dialogue.titre));
+      const playDlg = el("button", "btn btn-ghost small", "🎭 Jouer le dialogue (multi-voix)");
+      playDlg.type = "button"; playDlg.addEventListener("click", () => playDialogue(l.dialogue.lignes));
+      dHead.appendChild(playDlg); dlg.appendChild(dHead);
+      if (l.dialogue.lieu) dlg.appendChild(el("p", "dlg-lieu", "📍 " + l.dialogue.lieu));
+      const conv = el("div", "conv");
+      l.dialogue.lignes.forEach((line, i) => {
+        const row = el("div", "conv-row " + (i % 2 ? "right" : "left"));
+        const bubble = el("div", "bubble");
+        if (line.loc) bubble.appendChild(el("div", "conv-loc", line.loc));
+        const deLine = el("div", "conv-de"); deLine.appendChild(el("span", "", line.de)); deLine.appendChild(speakButton(line.de));
+        bubble.appendChild(deLine); bubble.appendChild(el("div", "conv-fr", line.fr));
+        row.appendChild(bubble); conv.appendChild(row);
+      });
+      dlg.appendChild(conv); frag.appendChild(dlg);
+    }
+
+    /* --- Exercices --- */
+    if (l.exercices && l.exercices.length) {
+      const exo = el("section", "lesson-section"); exo.id = "exo";
+      exo.appendChild(el("h2", "", "✍️ Exercices interactifs"));
+      const seuil = 70;
+      exo.appendChild(el("p", "exo-group-sub", "Fais tous les exercices et atteins <strong>" + seuil + "%</strong> de réussite pour valider la leçon."));
+      const exProg = el("div", "exo-progress"); const bar = el("div", "bar"); const fill = el("div", "bar-fill");
+      bar.appendChild(fill); const label = el("span", "exo-progress-label", ""); exProg.appendChild(label); exProg.appendChild(bar); exo.appendChild(exProg);
+      const allEx = l.exercices.slice();
+      const total = allEx.length; const done = new Set(); const success = new Set(); let shown = false;
+      function refresh() {
+        const sc = done.size ? Math.round((success.size / done.size) * 100) : 0;
+        label.textContent = done.size + "/" + total + " faits · " + sc + "% justes (requis " + seuil + "%)";
+        fill.style.width = total ? (done.size / total) * 100 + "%" : "0%";
+        if (done.size === total && total > 0) {
+          const score = Math.round((success.size / total) * 100); const passed = score >= seuil;
+          if (passed) window.Progress.marquerTermine(l.id, score);
+          if (!shown) { shown = true; pflegeCompletion(exo, score, idx, passed); }
+          if (passed) unlockNext();
+        }
+      }
+      const groupDefs = { comp: ["📖 Compréhension", "Vérifie que tu as compris le vocabulaire et le dialogue."], appro: ["🎯 Application", "Ancre le vocabulaire et les tournures du soin."], prod: ["✍️ Production", "À toi de produire en allemand."] };
+      const groups = {};
+      function groupOf(cat) { if (!groups[cat]) { const g = el("div", "exo-group exo-group-" + cat); g.appendChild(el("h3", "exo-group-title", groupDefs[cat][0])); g.appendChild(el("p", "exo-group-sub", groupDefs[cat][1])); groups[cat] = g; } return groups[cat]; }
+      allEx.forEach((ex, i) => {
+        const node = window.Exercises.render(ex, i, (ok) => { done.add(i); if (ok) success.add(i); else success.delete(i); window.Progress.setExercice(l.id, i, ok); refresh(); });
+        groupOf(exoCat(ex)).appendChild(node);
+      });
+      ["comp", "appro", "prod"].forEach((cat) => { if (groups[cat]) exo.appendChild(groups[cat]); });
+      refresh(); frag.appendChild(exo);
+      var unlockNext = function () { if (nextBtn) { nextBtn.classList.remove("is-locked"); nextBtn.textContent = nextLabel; nextBtn.href = nextHref; } };
+    }
+
+    /* --- Navigation préc / suiv (séquentielle, comme le cours général) --- */
+    const nav = el("div", "lesson-nav");
+    if (idx > 0 && pflegeHasContent(pflat[idx - 1].lecon)) {
+      const prev = el("a", "btn btn-ghost", "← " + pflat[idx - 1].lecon.titre); prev.href = "#/pflege/lecon/" + pflat[idx - 1].lecon.id; nav.appendChild(prev);
+    } else nav.appendChild(el("span", ""));
+    const next = pflat[idx + 1];
+    var nextHref = next && pflegeHasContent(next.lecon) ? "#/pflege/lecon/" + next.lecon.id : "#/pflege";
+    var nextLabel = next && pflegeHasContent(next.lecon) ? next.lecon.titre + " →" : "← Programme Pflege";
+    const dejaValide = window.Progress.estTermine(l.id) || !(l.exercices && l.exercices.length);
+    var nextBtn = el("a", "btn btn-primary" + (dejaValide ? "" : " is-locked"), dejaValide ? nextLabel : "🔒 Termine tous les exercices");
+    if (dejaValide) nextBtn.href = nextHref;
+    else nextBtn.addEventListener("click", (e) => { e.preventDefault(); const x = document.getElementById("exo"); if (x) x.scrollIntoView({ behavior: "smooth" }); toast("Termine les exercices (≥ 70 %) pour débloquer la suite. 💪"); });
+    nav.appendChild(nextBtn); frag.appendChild(nav);
+
+    app.innerHTML = ""; app.appendChild(frag);
+    if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/pflege"; }); try { window.TG.hideMainButton && window.TG.hideMainButton(); } catch (e) {} }
     try { localizeUI(app); } catch (e) {}
     window.scrollTo(0, 0);
   }
@@ -19204,6 +19724,7 @@ window.Exercises = (function () {
       return renderLanguagePage();
     }
     if (hash.match(/^#\/menu/)) renderMenu();
+    else if ((m = hash.match(/^#\/pflege\/lecon\/(.+)$/))) renderPflegeLecon(m[1]);
     else if (hash.match(/^#\/pflege/)) renderPflege();
     else if (hash.match(/^#\/start/)) renderOnboarding();
     else if (hash.match(/^#\/placement/)) renderPlacement();
