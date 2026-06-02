@@ -162,7 +162,7 @@
   // JAMAIS traduit par localizeUI.
   const NOLOC = [
     ".voc-de", ".voc-nom", ".art", ".voc-ex", ".cours-ex-de", ".cours-ex-gl-de", ".hl-de", ".conv-de", ".conv-loc",
-    ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag",
+    ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag", ".pflege-de",
     ".cours-tag", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points",
     ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
     ".trou-input", ".trou-phrase", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript",
@@ -2073,6 +2073,86 @@
   }
 
   /* ====================================================================
+     DEUTSCH FÜR DIE PFLEGE — parcours « allemand pour les soignants ».
+     Accès verrouillé tant que l'examen A2 du cours général n'est pas
+     réussi. Affiche le programme A2 → C2 (le contenu interactif des
+     leçons sera ajouté ensuite). Données : window.PFLEGE (data/pflege.js).
+     ==================================================================== */
+  function pflegeDebloque() { return examPasse("a2") || examPasse("final"); }
+  function renderPflege() {
+    const P = window.PFLEGE;
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/menu">← Menu</a><span class="lesson-top-mod">🩺 Deutsch Pflege</span>';
+    frag.appendChild(top);
+
+    if (!P) { app.innerHTML = ""; app.appendChild(frag); return; }
+
+    /* Garde : il faut avoir réussi l'examen A2. */
+    if (!pflegeDebloque()) {
+      const lock = el("section", "lesson-section locked-notice");
+      lock.innerHTML =
+        '<div class="comp-emoji">🔒</div><h2>Cours réservé</h2>' +
+        "<p>Le parcours <strong>« Allemand pour les soignants »</strong> démarre au niveau A2. " +
+        "Réussis d'abord l'<strong>examen A2</strong> du cours d'allemand pour y accéder.</p>";
+      const go = el("a", "btn btn-primary", "🎓 Passer l'examen A2"); go.href = "#/examen/a2";
+      lock.appendChild(go);
+      const go2 = el("a", "btn btn-ghost small", "← Aller au cours d'allemand"); go2.href = "#/"; go2.style.marginTop = "10px";
+      lock.appendChild(go2);
+      frag.appendChild(lock);
+      app.innerHTML = ""; app.appendChild(frag);
+      if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/menu"; }); try { window.TG.hideMainButton && window.TG.hideMainButton(); } catch (e) {} }
+      try { localizeUI(app); } catch (e) {}
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    const hero = el("header", "hero pflege-hero");
+    hero.innerHTML =
+      '<p class="hero-eyebrow">' + P.sousTitre + "</p>" +
+      "<h1>🩺 " + P.titre + "</h1>" +
+      '<p class="hero-desc">' + P.description + "</p>";
+    frag.appendChild(hero);
+
+    const leg = el("div", "pflege-domaines");
+    Object.keys(P.domaines).forEach((k) => {
+      const d = P.domaines[k];
+      const s = el("span", "pflege-dom-leg"); s.innerHTML = d.ic + " " + d.nom;
+      leg.appendChild(s);
+    });
+    frag.appendChild(leg);
+
+    frag.appendChild(el("p", "exo-group-sub", "📋 Voici le programme, de A2 à C2. Les leçons interactives arrivent progressivement."));
+
+    P.niveaux.forEach((niv) => {
+      const sec = el("section", "pflege-niveau");
+      sec.appendChild(el("h2", "pflege-niv-titre", niv.code + " — " + niv.titre));
+      const grid = el("div", "pflege-grid");
+      niv.lecons.forEach((l) => {
+        const dom = P.domaines[l.dom] || { ic: "•", nom: "" };
+        const card = el("div", "pflege-card");
+        card.innerHTML =
+          '<div class="pflege-ic">' + dom.ic + "</div>" +
+          '<div class="pflege-body">' +
+          '<div class="pflege-de">' + l.titreDE + "</div>" +
+          '<div class="pflege-fr">' + l.titre + "</div>" +
+          '<p class="pflege-desc">' + l.desc + "</p>" +
+          '<span class="pflege-tag">' + dom.nom + "</span>" +
+          "</div>" +
+          '<span class="menu-badge">Bientôt</span>';
+        grid.appendChild(card);
+      });
+      sec.appendChild(grid);
+      frag.appendChild(sec);
+    });
+
+    app.innerHTML = ""; app.appendChild(frag);
+    if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/menu"; }); try { window.TG.hideMainButton && window.TG.hideMainButton(); } catch (e) {} }
+    try { localizeUI(app); } catch (e) {}
+    window.scrollTo(0, 0);
+  }
+
+  /* ====================================================================
      MENU / HUB — point d'entrée de l'app. Le cours d'allemand est une
      « option » parmi d'autres, prêt à en accueillir de nouvelles.
 
@@ -2116,7 +2196,14 @@
         actif: true,
         progres: true
       },
-      { icon: "✨", titre: "Nouvelle option", desc: "Cet emplacement est prêt pour une prochaine fonctionnalité.", actif: false },
+      {
+        icon: "🩺",
+        titre: "Deutsch für die Pflege",
+        desc: "Allemand pour les soignants : soins infirmiers, hôpital, maison de retraite, soins à domicile. Dès l'A2.",
+        href: "#/pflege",
+        actif: true,
+        verrou: !pflegeDebloque()
+      },
       { icon: "➕", titre: "Et plus encore", desc: "D'autres options arriveront bientôt ici.", actif: false }
     ];
 
@@ -2135,8 +2222,10 @@
           "<small>" + r.faites + "/" + r.total + " · " + r.pourcent + "%</small>";
         body.appendChild(pr);
       }
+      if (a.verrou) body.appendChild(el("p", "menu-lockhint", "🔒 Réussis l'examen A2 pour débloquer"));
       card.appendChild(body);
-      card.appendChild(a.actif ? el("span", "menu-go", "→") : el("span", "menu-badge", "Bientôt disponible"));
+      if (a.actif) card.appendChild(el("span", "menu-go", a.verrou ? "🔒" : "→"));
+      else card.appendChild(el("span", "menu-badge", "Bientôt disponible"));
       grid.appendChild(card);
     });
     frag.appendChild(grid);
@@ -2163,6 +2252,7 @@
       return renderLanguagePage();
     }
     if (hash.match(/^#\/menu/)) renderMenu();
+    else if (hash.match(/^#\/pflege/)) renderPflege();
     else if (hash.match(/^#\/start/)) renderOnboarding();
     else if (hash.match(/^#\/placement/)) renderPlacement();
     else if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);

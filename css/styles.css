@@ -950,3 +950,27 @@ a.menu-card:active { transform: translateY(-1px); }
 [data-tg-scheme="dark"] .menu-soon .menu-ic { background: #1e293b; }
 [data-tg-scheme="dark"] .menu-badge { background: #0b121b; }
 [dir="rtl"] .menu-go { transform: scaleX(-1); }
+
+/* =====================================================================
+   DEUTSCH FÜR DIE PFLEGE — parcours soignants (programme A2 → C2)
+   ===================================================================== */
+.menu-lockhint { margin: 8px 0 0; font-size: .82rem; color: #b45309; font-weight: 700; }
+.pflege-hero { background: linear-gradient(160deg, #0d9488, #0f766e); color: #fff; border-color: #0f766e; }
+.pflege-hero .hero-eyebrow { color: rgba(255,255,255,.85); }
+.pflege-hero h1 { color: #fff; }
+.pflege-hero .hero-desc { color: rgba(255,255,255,.92); }
+.pflege-domaines { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 6px; }
+.pflege-dom-leg { font-size: .82rem; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; color: var(--muted); }
+.pflege-niveau { margin-top: 24px; }
+.pflege-niv-titre { font-size: 1.15rem; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 2px solid #99f6e4; }
+.pflege-grid { display: grid; gap: 12px; }
+.pflege-card { display: flex; gap: 14px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); position: relative; }
+.pflege-ic { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-size: 1.5rem; background: #ccfbf1; }
+.pflege-body { flex: 1; min-width: 0; }
+.pflege-de { font-weight: 700; font-size: 1.02rem; }
+.pflege-fr { color: var(--muted); font-size: .92rem; margin-top: 1px; }
+.pflege-desc { margin: 8px 56px 8px 0; font-size: .9rem; line-height: 1.45; }
+.pflege-tag { font-size: .72rem; font-weight: 700; color: #0f766e; background: #ccfbf1; border-radius: 999px; padding: 3px 9px; }
+.pflege-card .menu-badge { position: absolute; top: 14px; right: 14px; }
+[data-tg-scheme="dark"] .pflege-ic { background: #134e4a; }
+[data-tg-scheme="dark"] .pflege-tag { background: #134e4a; color: #5eead4; }

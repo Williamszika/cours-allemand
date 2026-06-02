@@ -964,6 +964,30 @@ a.menu-card:active { transform: translateY(-1px); }
 [data-tg-scheme="dark"] .menu-badge { background: #0b121b; }
 [dir="rtl"] .menu-go { transform: scaleX(-1); }
 
+/* =====================================================================
+   DEUTSCH FÜR DIE PFLEGE — parcours soignants (programme A2 → C2)
+   ===================================================================== */
+.menu-lockhint { margin: 8px 0 0; font-size: .82rem; color: #b45309; font-weight: 700; }
+.pflege-hero { background: linear-gradient(160deg, #0d9488, #0f766e); color: #fff; border-color: #0f766e; }
+.pflege-hero .hero-eyebrow { color: rgba(255,255,255,.85); }
+.pflege-hero h1 { color: #fff; }
+.pflege-hero .hero-desc { color: rgba(255,255,255,.92); }
+.pflege-domaines { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 6px; }
+.pflege-dom-leg { font-size: .82rem; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; color: var(--muted); }
+.pflege-niveau { margin-top: 24px; }
+.pflege-niv-titre { font-size: 1.15rem; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 2px solid #99f6e4; }
+.pflege-grid { display: grid; gap: 12px; }
+.pflege-card { display: flex; gap: 14px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); position: relative; }
+.pflege-ic { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-size: 1.5rem; background: #ccfbf1; }
+.pflege-body { flex: 1; min-width: 0; }
+.pflege-de { font-weight: 700; font-size: 1.02rem; }
+.pflege-fr { color: var(--muted); font-size: .92rem; margin-top: 1px; }
+.pflege-desc { margin: 8px 56px 8px 0; font-size: .9rem; line-height: 1.45; }
+.pflege-tag { font-size: .72rem; font-weight: 700; color: #0f766e; background: #ccfbf1; border-radius: 999px; padding: 3px 9px; }
+.pflege-card .menu-badge { position: absolute; top: 14px; right: 14px; }
+[data-tg-scheme="dark"] .pflege-ic { background: #134e4a; }
+[data-tg-scheme="dark"] .pflege-tag { background: #134e4a; color: #5eead4; }
+
 </style>
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="theme-color" content="#1e3a8a" />
@@ -15054,6 +15078,75 @@ window.PLACEMENT = [
 ];
 
 </script>
+    <script>
+/* =====================================================================
+   DEUTSCH FÜR DIE PFLEGE — Allemand pour les métiers du soin (A2 → C2)
+   Parcours spécialisé, accessible après l'examen A2 du cours général.
+   Domaines : soins infirmiers (bases), hôpital, maison de retraite,
+   soins à domicile (ambulante Pflege).
+
+   Pour l'instant : le PROGRAMME (curriculum). Le contenu interactif des
+   leçons sera ajouté niveau par niveau. Pour ajouter/éditer une leçon,
+   modifie le tableau « lecons » du niveau concerné ci-dessous.
+   ===================================================================== */
+window.PFLEGE = {
+  titre: "Deutsch für die Pflege",
+  sousTitre: "Allemand pour les métiers du soin",
+  description:
+    "L'allemand professionnel des soignants : soins infirmiers, hôpital, maison de retraite et soins à domicile. " +
+    "Le parcours démarre au niveau A2 et va jusqu'au C2.",
+  prerequis: "a2", // examen requis dans le cours général pour débloquer
+  domaines: {
+    grund: { ic: "🩺", nom: "Soins infirmiers" },
+    kh:    { ic: "🏥", nom: "Hôpital" },
+    heim:  { ic: "🏡", nom: "Maison de retraite" },
+    ambul: { ic: "🚗", nom: "Soins à domicile" }
+  },
+  niveaux: [
+    { code: "A2", titre: "Premiers pas dans le soin", lecons: [
+      { id: "pa2-1", dom: "grund", titreDE: "Der Körper und die Pflege", titre: "Le corps et les soins", desc: "Parties du corps et vocabulaire de base des soins." },
+      { id: "pa2-2", dom: "grund", titreDE: "Körperpflege und Hygiene", titre: "Toilette et hygiène", desc: "Laver, habiller, soins d'hygiène au quotidien." },
+      { id: "pa2-3", dom: "heim", titreDE: "Im Pflegeheim: der Tagesablauf", titre: "En maison de retraite : la journée", desc: "Lever, repas, coucher : accompagner les résidents." },
+      { id: "pa2-4", dom: "grund", titreDE: "Begrüßung und einfache Kommunikation", titre: "Accueil et communication simple", desc: "Saluer, se présenter, phrases utiles avec le patient." },
+      { id: "pa2-5", dom: "grund", titreDE: "Vitalzeichen messen", titre: "Mesurer les signes vitaux", desc: "Température, pouls, tension : mots et consignes." },
+      { id: "pa2-6", dom: "grund", titreDE: "Hilfsmittel und Mobilität", titre: "Aides et mobilité", desc: "Fauteuil roulant, déambulateur, aider à se déplacer." }
+    ]},
+    { code: "B1", titre: "Communiquer dans le soin", lecons: [
+      { id: "pb1-1", dom: "kh", titreDE: "Aufnahme eines Patienten", titre: "Admission d'un patient", desc: "Données personnelles et anamnèse simple." },
+      { id: "pb1-2", dom: "grund", titreDE: "Schmerzen erfassen", titre: "Évaluer la douleur", desc: "« Où avez-vous mal ? », l'échelle de la douleur." },
+      { id: "pb1-3", dom: "grund", titreDE: "Medikamente verabreichen", titre: "Donner les médicaments", desc: "Comprimés, gouttes, dosage et horaires." },
+      { id: "pb1-4", dom: "kh", titreDE: "Übergabe im Team", titre: "La transmission d'équipe", desc: "La relève : transmettre l'essentiel sans erreur." },
+      { id: "pb1-5", dom: "heim", titreDE: "Mit Angehörigen sprechen", titre: "Parler aux proches", desc: "Informer et rassurer les familles." },
+      { id: "pb1-6", dom: "grund", titreDE: "Notfälle erkennen und melden", titre: "Reconnaître et signaler une urgence", desc: "Chute, malaise, perte de connaissance." }
+    ]},
+    { code: "B2", titre: "Langue professionnelle et documentation", lecons: [
+      { id: "pb2-1", dom: "grund", titreDE: "Pflegedokumentation", titre: "La documentation des soins", desc: "Rédiger le rapport et la planification de soins." },
+      { id: "pb2-2", dom: "kh", titreDE: "Krankheitsbilder I", titre: "Tableaux cliniques I", desc: "Diabète, démence, AVC : décrire et accompagner." },
+      { id: "pb2-3", dom: "grund", titreDE: "Wundversorgung und Dekubitus", titre: "Plaies et escarres", desc: "Prévention et soins des plaies." },
+      { id: "pb2-4", dom: "kh", titreDE: "Ärztliche Anordnungen umsetzen", titre: "Appliquer les prescriptions", desc: "Comprendre et exécuter les consignes du médecin." },
+      { id: "pb2-5", dom: "ambul", titreDE: "Ambulante Pflege: der Hausbesuch", titre: "Soins à domicile : la visite", desc: "Organiser et documenter une visite à domicile." },
+      { id: "pb2-6", dom: "grund", titreDE: "Schwierige Gespräche führen", titre: "Conversations difficiles", desc: "Refus de soin, agressivité, désorientation." }
+    ]},
+    { code: "C1", titre: "Soins complexes et responsabilité", lecons: [
+      { id: "pc1-1", dom: "kh", titreDE: "Krankheitsbilder II", titre: "Tableaux cliniques II", desc: "Soins palliatifs, oncologie, BPCO." },
+      { id: "pc1-2", dom: "grund", titreDE: "Pflegeprozess und Pflegeplanung", titre: "Processus et planification de soins", desc: "Le raisonnement clinique, en allemand." },
+      { id: "pc1-3", dom: "grund", titreDE: "Beratung und Anleitung", titre: "Conseil et accompagnement", desc: "Conseiller patients, proches et stagiaires." },
+      { id: "pc1-4", dom: "grund", titreDE: "Ethik und Recht in der Pflege", titre: "Éthique et droit du soin", desc: "Directives anticipées, secret professionnel." },
+      { id: "pc1-5", dom: "heim", titreDE: "Interkulturelle Pflege", titre: "Soins interculturels", desc: "Tenir compte des cultures et des croyances." },
+      { id: "pc1-6", dom: "grund", titreDE: "Hygiene und Qualitätsmanagement", titre: "Hygiène et qualité", desc: "Normes d'hygiène et prévention des infections." }
+    ]},
+    { code: "C2", titre: "Expertise et encadrement", lecons: [
+      { id: "pc2-1", dom: "kh", titreDE: "Fachgespräche mit Ärzten", titre: "Échanges spécialisés avec les médecins", desc: "Argumenter, alerter, proposer." },
+      { id: "pc2-2", dom: "grund", titreDE: "Palliativversorgung und Sterbebegleitung", titre: "Soins palliatifs et fin de vie", desc: "Accompagner la fin de vie et les proches." },
+      { id: "pc2-3", dom: "grund", titreDE: "Teamleitung und Konfliktmanagement", titre: "Encadrement et gestion des conflits", desc: "Diriger et soutenir une équipe soignante." },
+      { id: "pc2-4", dom: "grund", titreDE: "Fallbesprechung und Fachvortrag", titre: "Étude de cas et exposé", desc: "Présenter un cas, intervenir en réunion." },
+      { id: "pc2-5", dom: "grund", titreDE: "Pflegewissenschaft und Leitlinien", titre: "Sciences infirmières et recommandations", desc: "Lire et appliquer les recommandations." },
+      { id: "pc2-6", dom: "ambul", titreDE: "Begutachtung und Pflegegrade", titre: "Évaluation et niveaux de dépendance", desc: "Évaluer l'autonomie (Pflegegrade, MD)." }
+    ]}
+  ]
+};
+
+</script>
     <!-- Modules applicatifs -->
     <script>
 /* =====================================================================
@@ -17021,7 +17114,7 @@ window.Exercises = (function () {
   // JAMAIS traduit par localizeUI.
   const NOLOC = [
     ".voc-de", ".voc-nom", ".art", ".voc-ex", ".cours-ex-de", ".cours-ex-gl-de", ".hl-de", ".conv-de", ".conv-loc",
-    ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag",
+    ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag", ".pflege-de",
     ".cours-tag", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points",
     ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
     ".trou-input", ".trou-phrase", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript",
@@ -18932,6 +19025,86 @@ window.Exercises = (function () {
   }
 
   /* ====================================================================
+     DEUTSCH FÜR DIE PFLEGE — parcours « allemand pour les soignants ».
+     Accès verrouillé tant que l'examen A2 du cours général n'est pas
+     réussi. Affiche le programme A2 → C2 (le contenu interactif des
+     leçons sera ajouté ensuite). Données : window.PFLEGE (data/pflege.js).
+     ==================================================================== */
+  function pflegeDebloque() { return examPasse("a2") || examPasse("final"); }
+  function renderPflege() {
+    const P = window.PFLEGE;
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/menu">← Menu</a><span class="lesson-top-mod">🩺 Deutsch Pflege</span>';
+    frag.appendChild(top);
+
+    if (!P) { app.innerHTML = ""; app.appendChild(frag); return; }
+
+    /* Garde : il faut avoir réussi l'examen A2. */
+    if (!pflegeDebloque()) {
+      const lock = el("section", "lesson-section locked-notice");
+      lock.innerHTML =
+        '<div class="comp-emoji">🔒</div><h2>Cours réservé</h2>' +
+        "<p>Le parcours <strong>« Allemand pour les soignants »</strong> démarre au niveau A2. " +
+        "Réussis d'abord l'<strong>examen A2</strong> du cours d'allemand pour y accéder.</p>";
+      const go = el("a", "btn btn-primary", "🎓 Passer l'examen A2"); go.href = "#/examen/a2";
+      lock.appendChild(go);
+      const go2 = el("a", "btn btn-ghost small", "← Aller au cours d'allemand"); go2.href = "#/"; go2.style.marginTop = "10px";
+      lock.appendChild(go2);
+      frag.appendChild(lock);
+      app.innerHTML = ""; app.appendChild(frag);
+      if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/menu"; }); try { window.TG.hideMainButton && window.TG.hideMainButton(); } catch (e) {} }
+      try { localizeUI(app); } catch (e) {}
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    const hero = el("header", "hero pflege-hero");
+    hero.innerHTML =
+      '<p class="hero-eyebrow">' + P.sousTitre + "</p>" +
+      "<h1>🩺 " + P.titre + "</h1>" +
+      '<p class="hero-desc">' + P.description + "</p>";
+    frag.appendChild(hero);
+
+    const leg = el("div", "pflege-domaines");
+    Object.keys(P.domaines).forEach((k) => {
+      const d = P.domaines[k];
+      const s = el("span", "pflege-dom-leg"); s.innerHTML = d.ic + " " + d.nom;
+      leg.appendChild(s);
+    });
+    frag.appendChild(leg);
+
+    frag.appendChild(el("p", "exo-group-sub", "📋 Voici le programme, de A2 à C2. Les leçons interactives arrivent progressivement."));
+
+    P.niveaux.forEach((niv) => {
+      const sec = el("section", "pflege-niveau");
+      sec.appendChild(el("h2", "pflege-niv-titre", niv.code + " — " + niv.titre));
+      const grid = el("div", "pflege-grid");
+      niv.lecons.forEach((l) => {
+        const dom = P.domaines[l.dom] || { ic: "•", nom: "" };
+        const card = el("div", "pflege-card");
+        card.innerHTML =
+          '<div class="pflege-ic">' + dom.ic + "</div>" +
+          '<div class="pflege-body">' +
+          '<div class="pflege-de">' + l.titreDE + "</div>" +
+          '<div class="pflege-fr">' + l.titre + "</div>" +
+          '<p class="pflege-desc">' + l.desc + "</p>" +
+          '<span class="pflege-tag">' + dom.nom + "</span>" +
+          "</div>" +
+          '<span class="menu-badge">Bientôt</span>';
+        grid.appendChild(card);
+      });
+      sec.appendChild(grid);
+      frag.appendChild(sec);
+    });
+
+    app.innerHTML = ""; app.appendChild(frag);
+    if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/menu"; }); try { window.TG.hideMainButton && window.TG.hideMainButton(); } catch (e) {} }
+    try { localizeUI(app); } catch (e) {}
+    window.scrollTo(0, 0);
+  }
+
+  /* ====================================================================
      MENU / HUB — point d'entrée de l'app. Le cours d'allemand est une
      « option » parmi d'autres, prêt à en accueillir de nouvelles.
 
@@ -18975,7 +19148,14 @@ window.Exercises = (function () {
         actif: true,
         progres: true
       },
-      { icon: "✨", titre: "Nouvelle option", desc: "Cet emplacement est prêt pour une prochaine fonctionnalité.", actif: false },
+      {
+        icon: "🩺",
+        titre: "Deutsch für die Pflege",
+        desc: "Allemand pour les soignants : soins infirmiers, hôpital, maison de retraite, soins à domicile. Dès l'A2.",
+        href: "#/pflege",
+        actif: true,
+        verrou: !pflegeDebloque()
+      },
       { icon: "➕", titre: "Et plus encore", desc: "D'autres options arriveront bientôt ici.", actif: false }
     ];
 
@@ -18994,8 +19174,10 @@ window.Exercises = (function () {
           "<small>" + r.faites + "/" + r.total + " · " + r.pourcent + "%</small>";
         body.appendChild(pr);
       }
+      if (a.verrou) body.appendChild(el("p", "menu-lockhint", "🔒 Réussis l'examen A2 pour débloquer"));
       card.appendChild(body);
-      card.appendChild(a.actif ? el("span", "menu-go", "→") : el("span", "menu-badge", "Bientôt disponible"));
+      if (a.actif) card.appendChild(el("span", "menu-go", a.verrou ? "🔒" : "→"));
+      else card.appendChild(el("span", "menu-badge", "Bientôt disponible"));
       grid.appendChild(card);
     });
     frag.appendChild(grid);
@@ -19022,6 +19204,7 @@ window.Exercises = (function () {
       return renderLanguagePage();
     }
     if (hash.match(/^#\/menu/)) renderMenu();
+    else if (hash.match(/^#\/pflege/)) renderPflege();
     else if (hash.match(/^#\/start/)) renderOnboarding();
     else if (hash.match(/^#\/placement/)) renderPlacement();
     else if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);
