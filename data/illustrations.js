@@ -174,3 +174,44 @@ Object.assign(window.ILLUSTRATIONS, {
   b2g16: { kw: "puzzle,phrase,book", intro: "Les locutions verbo-nominales (eine Entscheidung treffen, zur Verfügung stehen)." },
   b2g17: { kw: "grammar,notebook,study", intro: "Les prépositions à génitif : wegen, trotz, während, aufgrund." }
 });
+
+// === Niveau C1 — thèmes (C1.1 + C1.2) : photos réelles + intros explicatives ===
+Object.assign(window.ILLUSTRATIONS, {
+  c1t01: { kw: "weather,sky,clouds", intro: "Météo et small talk : manier les expressions imagées et entretenir une conversation avec aisance." },
+  c1t02: { kw: "languages,books,communication", intro: "Les langues : réfléchir au plurilinguisme et argumenter, en style soutenu (nominalisation)." },
+  c1t03: { kw: "luck,clover,fortune", intro: "La chance : distinguer chance, hasard et destin, avec des expressions idiomatiques et l'irréel." },
+  c1t04: { kw: "stress,pressure,office", intro: "Le stress : décrire causes et effets, et proposer des stratégies (cause/conséquence)." },
+  c1t05: { kw: "laughing,comedy,joy", intro: "Le rire : parler du rôle de l'humour et comprendre l'ironie et l'autodérision." },
+  c1t06: { kw: "success,trophy,achievement", intro: "Le succès : analyser les facteurs de réussite avec des connecteurs corrélés (sowohl…als auch, je…desto)." },
+  c1t07: { kw: "failure,setback,resilience", intro: "Les échecs : parler du rebond et exprimer le regret (Konjunktiv II passé : hätte … sollen)." },
+  c1t08: { kw: "innovation,technology,future", intro: "Le progrès : débattre de ses bienfaits et risques et nuancer ses hypothèses (dürfte, vermutlich)." },
+  c1t09: { kw: "climate,environment,nature", intro: "Environnement et climat : argumenter et proposer des solutions au passif et à ses alternatives." },
+  c1t10: { kw: "germany,history,map", intro: "La division de l'Allemagne : raconter l'Histoire au prétérit et au passif." },
+  c1t11: { kw: "berlin,wall,history", intro: "Le Mur : construction et chute, avec le plus-que-parfait et les propositions relatives." },
+  c1t12: { kw: "vintage,history,memory", intro: "Vivre en RDA : décrire le quotidien et rapporter des témoignages (Konjunktiv I)." },
+  c1t13: { kw: "politics,parliament,history", intro: "Histoire et politique : discuter d'enjeux et argumenter avec des connecteurs soutenus." },
+  c1t14: { kw: "music,photography,art", intro: "Musique et photographie : parler d'art avec les participes attributs et les adjectifs nominalisés." }
+});
+
+// === Niveau C1 — fiches de grammaire : photos d'étude variées + intro courte ===
+Object.assign(window.ILLUSTRATIONS, {
+  c1g01: { kw: "history,timeline,clock", intro: "Les temps du passé : registre et antériorité (Perfekt, Präteritum, Plusquamperfekt)." },
+  c1g02: { kw: "map,compass,clock", intro: "Prépositions de lieu et de temps, et le cas qu'elles imposent." },
+  c1g03: { kw: "chain,link,grammar", intro: "Les connecteurs de subordination (obwohl, indem, sodass) : verbe à la fin." },
+  c1g04: { kw: "grammar,words,study", intro: "Les adjectifs à préposition fixe (stolz auf, fähig zu, überzeugt von)." },
+  c1g05: { kw: "balance,pair,connection", intro: "Les connecteurs corrélés (sowohl…als auch, weder…noch, je…desto)." },
+  c1g06: { kw: "arrows,flow,bridge", intro: "Les adverbes connecteurs (deshalb, trotzdem, folglich) : verbe en 2e position." },
+  c1g07: { kw: "signpost,rules,choice", intro: "Les modaux : sens subjectif, passé et passif." },
+  c1g08: { kw: "thinking,dream,idea", intro: "Le subjonctif II : politesse, souhait et irréel (présent/passé, als ob)." },
+  c1g09: { kw: "grammar,notebook,study", intro: "Les prépositions à génitif soutenues (angesichts, hinsichtlich, zugunsten)." },
+  c1g10: { kw: "fog,question,uncertainty", intro: "Exprimer des hypothèses graduées (dürfte, vermutlich, offenbar)." },
+  c1g11: { kw: "chain,link,connection", intro: "Les relatives avancées (dessen/deren, was, wo)." },
+  c1g12: { kw: "puzzle,grammar,structure", intro: "Les attributs participiaux (das lachende Kind, der gelesene Roman)." },
+  c1g13: { kw: "grammar,words,book", intro: "La déclinaison de l'adjectif, y compris après etwas/viel." },
+  c1g14: { kw: "bridge,connection,flow", intro: "Les locutions connectrices (im Gegensatz dazu, aus diesem Grund)." },
+  c1g15: { kw: "letters,transform,words", intro: "Participes et adjectifs nominalisés (der Angestellte, etwas Neues)." },
+  c1g16: { kw: "speech,quote,microphone", intro: "Le subjonctif I : discours indirect (affirmations, questions, ordres)." },
+  c1g17: { kw: "signpost,command,arrow", intro: "L'impératif et ses alternatives (infinitif, sollen)." },
+  c1g18: { kw: "transform,arrows,grammar", intro: "La nominalisation : du style verbal au style nominal." },
+  c1g19: { kw: "factory,process,gears", intro: "Le passif et ses formes de substitution (man, sich lassen, sein + zu + Inf.)." }
+});
