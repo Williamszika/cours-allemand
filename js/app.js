@@ -675,11 +675,20 @@
       imm.innerHTML = "🇩🇪 <strong>" + window.I18N.tIn("de", "immersion_on") + "</strong> — " + window.I18N.t("immersion_notice", { lvl: gEx.niveau });
       gram.appendChild(imm);
     }
-    /* Cours long-format (texte détaillé) : nouvelle pédagogie « vrai cours » */
-    if (l.cours && l.cours.length) {
+    /* Cours long-format (texte détaillé) : nouvelle pédagogie « vrai cours ».
+       En immersion (B1+), on privilégie une version rédigée en allemand
+       gradué (coursDE) rendue telle quelle ; sinon le cours (français) est
+       affiché dans la langue de l'utilisateur (traduction si besoin). */
+    const coursNatifDE = gEx.de && l.coursDE && l.coursDE.length;
+    const coursArr = coursNatifDE ? l.coursDE : l.cours;
+    if (coursArr && coursArr.length) {
       const art = el("article", "cours-article");
       art.appendChild(el("h3", "cours-art-titre", "📖 " + exLabel(gEx, "course")));
-      l.cours.forEach((p) => { const pe = el("p", "cours-art-p"); localizeInto(pe, p, gEx); art.appendChild(pe); });
+      coursArr.forEach((p) => {
+        const pe = el("p", "cours-art-p");
+        if (coursNatifDE) pe.innerHTML = mdLite(p); else localizeInto(pe, p, gEx);
+        art.appendChild(pe);
+      });
       gram.appendChild(art);
     }
     l.grammaire.forEach((g) => gram.appendChild(renderGrammarBlock(g, l.niveau)));
