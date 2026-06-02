@@ -283,6 +283,10 @@
     installBtn.type = "button";
     installBtn.addEventListener("click", promptInstall);
     secondRow.appendChild(installBtn);
+    const themeBtn = el("button", "btn btn-ghost", Theme.label());
+    themeBtn.type = "button";
+    themeBtn.addEventListener("click", () => { Theme.cycle(); themeBtn.textContent = Theme.label(); });
+    secondRow.appendChild(themeBtn);
     cta.appendChild(secondRow);
 
     const audioInfo = el("p", "hero-audio-info", window.Speech && window.Speech.isSupported()
@@ -954,6 +958,31 @@
     sec1.appendChild(cards);
     frag.appendChild(sec1);
 
+    // Temps d'étude (aujourd'hui / semaine / total + 7 derniers jours)
+    const st = window.Progress.statsTemps();
+    const secT = el("section", "lesson-section");
+    secT.appendChild(el("h2", "", "⏱️ Temps d'étude"));
+    const tcards = el("div", "stats-row");
+    [["📅", formatDuree(st.aujourdhui), "aujourd'hui"], ["🗓️", formatDuree(st.semaine), "cette semaine"], ["⏳", formatDuree(st.total), "au total"], ["📆", st.joursActifs + " j", "jours actifs"]].forEach((x) => {
+      const c = el("div", "stat");
+      c.innerHTML = '<span class="stat-ic">' + x[0] + '</span><span class="stat-n">' + x[1] + '</span><span class="stat-l">' + x[2] + "</span>";
+      tcards.appendChild(c);
+    });
+    secT.appendChild(tcards);
+    const maxSec = Math.max.apply(null, [60].concat(st.last7.map((d) => d.sec)));
+    const chart = el("div", "time-chart");
+    st.last7.forEach((d) => {
+      const jour = new Date(d.date).toLocaleDateString("fr-FR", { weekday: "short" }).slice(0, 2);
+      const h = Math.round((d.sec / maxSec) * 100);
+      const col = el("div", "tc-col");
+      col.innerHTML = '<div class="tc-bar-wrap"><div class="tc-bar' + (d.sec ? "" : " vide") + '" style="height:' + Math.max(4, h) + '%"></div></div>' +
+        '<span class="tc-val">' + (d.sec ? formatDuree(d.sec) : "—") + '</span><span class="tc-day">' + jour + "</span>";
+      chart.appendChild(col);
+    });
+    secT.appendChild(chart);
+    secT.appendChild(el("p", "exo-group-sub", "Temps d'étude actif des 7 derniers jours."));
+    frag.appendChild(secT);
+
     // Progression par niveau (A1 → C2)
     const secN = el("section", "lesson-section");
     secN.appendChild(el("h2", "", "📊 Progression par niveau"));
@@ -1039,6 +1068,38 @@
     });
     sec3.appendChild(list);
     frag.appendChild(sec3);
+
+    // Réglages : thème + rappel quotidien
+    const secR = el("section", "lesson-section");
+    secR.appendChild(el("h2", "", "⚙️ Réglages"));
+    const themeRow = el("div", "setting-row");
+    themeRow.appendChild(el("span", "setting-label", "🎨 Thème de l'application"));
+    const themeSel = el("button", "btn btn-ghost small", Theme.label());
+    themeSel.type = "button";
+    themeSel.addEventListener("click", () => { Theme.cycle(); themeSel.textContent = Theme.label(); });
+    themeRow.appendChild(themeSel);
+    secR.appendChild(themeRow);
+
+    const rg = window.Progress.getReglages();
+    const remRow = el("div", "setting-row");
+    remRow.appendChild(el("span", "setting-label", "⏰ Rappel quotidien"));
+    const ctrl = el("div", "setting-ctrl");
+    const timeInput = el("input", "time-input");
+    timeInput.type = "time"; timeInput.value = rg.rappelHeure || "19:00";
+    timeInput.addEventListener("change", () => { window.Progress.setReglages({ rappelHeure: timeInput.value }); Reminders.syncState(); });
+    const toggle = el("button", "btn btn-ghost small", rg.rappel ? "✅ Activé" : "Activer");
+    toggle.type = "button";
+    toggle.addEventListener("click", async () => {
+      if (window.Progress.getReglages().rappel) { Reminders.disable(); toggle.textContent = "Activer"; }
+      else { toggle.textContent = "…"; const ok = await Reminders.enable(); toggle.textContent = ok ? "✅ Activé" : "Refusé"; }
+    });
+    ctrl.appendChild(timeInput); ctrl.appendChild(toggle);
+    remRow.appendChild(ctrl);
+    secR.appendChild(remRow);
+    secR.appendChild(el("p", "exo-group-sub", Reminders.supported()
+      ? "Zika te rappellera d'étudier à l'heure choisie si tu ne l'as pas encore fait (app ouverte ou installée)."
+      : "Les notifications ne sont pas disponibles sur ce navigateur."));
+    frag.appendChild(secR);
 
     const nav = el("div", "lesson-nav");
     const a1 = el("a", "btn btn-ghost", "🔁 Réviser le vocabulaire");
@@ -1456,6 +1517,95 @@
   }
 
   /* ====================================================================
+     THÈME (clair / sombre / auto) — réutilise les styles sombres existants
+     ==================================================================== */
+  const Theme = (function () {
+    const mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+    function tgScheme() { return (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.colorScheme) || null; }
+    function get() { return window.Progress.getReglages().theme || "auto"; }
+    function applyScheme(scheme) {
+      document.documentElement.setAttribute("data-tg-scheme", scheme === "dark" ? "dark" : "light");
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", scheme === "dark" ? "#0e1621" : "#1e3a8a");
+    }
+    function apply() {
+      const pref = get();
+      let scheme = pref === "dark" ? "dark" : pref === "light" ? "light" : (tgScheme() || (mq && mq.matches ? "dark" : "light"));
+      applyScheme(scheme);
+    }
+    function set(pref) { window.Progress.setReglages({ theme: pref }); apply(); }
+    function cycle() { const order = ["auto", "light", "dark"]; const cur = get(); set(order[(order.indexOf(cur) + 1) % order.length]); return get(); }
+    function label() { const t = get(); return t === "dark" ? "🌙 Sombre" : t === "light" ? "☀️ Clair" : "🌗 Auto"; }
+    if (mq && mq.addEventListener) mq.addEventListener("change", () => { if (get() === "auto") apply(); });
+    return { apply, set, get, cycle, label };
+  })();
+  Theme.apply();
+
+  /* Temps d'étude : comptabilise le temps actif (onglet visible + activité) */
+  let lastActivity = Date.now();
+  ["pointerdown", "keydown", "scroll", "touchstart"].forEach((ev) => window.addEventListener(ev, () => { lastActivity = Date.now(); }, { passive: true }));
+  function startStudyTimer() {
+    const TICK = 20;
+    setInterval(() => {
+      if (document.visibilityState !== "visible") return;
+      if (Date.now() - lastActivity > 120000) return; // inactif > 2 min → non compté
+      window.Progress.ajouterTemps(TICK);
+      Reminders.syncState();
+    }, TICK * 1000);
+  }
+  function formatDuree(sec) {
+    sec = Math.round(sec || 0);
+    const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60);
+    if (h > 0) return h + " h " + (m < 10 ? "0" : "") + m;
+    if (m > 0) return m + " min";
+    return sec + " s";
+  }
+
+  /* Rappels quotidiens : notification en-app + periodicSync (PWA installée) */
+  const Reminders = (function () {
+    function supported() { return "Notification" in window; }
+    function syncState() {
+      if (!("caches" in window)) return;
+      const r = window.Progress.getReglages();
+      const payload = JSON.stringify({ rappel: !!r.rappel, heure: r.rappelHeure || "19:00", last: window.Progress.getLastStudy(), notified: window.Progress.getLastNotified() });
+      caches.open("deutsch-state").then((c) => c.put("/__study", new Response(payload, { headers: { "Content-Type": "application/json" } }))).catch(function () {});
+    }
+    function check() {
+      const r = window.Progress.getReglages();
+      if (!r.rappel || !supported() || Notification.permission !== "granted") return;
+      const now = new Date(), hhmm = (r.rappelHeure || "19:00").split(":");
+      const due = now.getHours() * 60 + now.getMinutes() >= (parseInt(hhmm[0], 10) * 60 + parseInt(hhmm[1] || "0", 10));
+      const today = new Date().toISOString().slice(0, 10);
+      if (due && window.Progress.getLastNotified() !== today && window.Progress.getLastStudy() !== today) {
+        try {
+          new Notification("⏰ Ton allemand t'attend !", { body: "Coach Zika : 5 minutes aujourd'hui suffisent pour garder ta série. 🇩🇪", icon: "icon-192.png", tag: "daily-reminder" });
+          window.Progress.markNotified(); syncState();
+        } catch (e) {}
+      }
+    }
+    async function enable() {
+      if (!supported()) return false;
+      let perm = Notification.permission;
+      if (perm === "default") { try { perm = await Notification.requestPermission(); } catch (e) {} }
+      if (perm !== "granted") { window.Progress.setReglages({ rappel: false }); return false; }
+      window.Progress.setReglages({ rappel: true });
+      syncState();
+      try {
+        const reg = await navigator.serviceWorker.ready;
+        if (reg && "periodicSync" in reg) {
+          const st = await navigator.permissions.query({ name: "periodic-background-sync" });
+          if (st.state === "granted") await reg.periodicSync.register("daily-reminder", { minInterval: 12 * 60 * 60 * 1000 });
+        }
+      } catch (e) {}
+      check();
+      return true;
+    }
+    function disable() { window.Progress.setReglages({ rappel: false }); syncState(); }
+    function start() { syncState(); check(); setInterval(check, 60000); }
+    return { supported, enable, disable, check, start, syncState };
+  })();
+
+  /* ====================================================================
      ROUTAGE
      ==================================================================== */
   function route() {
@@ -1484,6 +1634,7 @@
 
   function boot() {
     if (window.TG) window.TG.init();
+    Theme.apply(); // applique le thème choisi (après l'init Telegram)
     route(); // rendu immédiat avec les données locales
     // Fusion avec la progression cloud (Telegram) puis re-rendu si besoin
     if (window.Sync) window.Sync.load(function (changed) { if (changed) route(); });
@@ -1491,6 +1642,8 @@
     if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
       navigator.serviceWorker.register("sw.js").catch(function () {});
     }
+    startStudyTimer();
+    Reminders.start();
   }
 
   window.addEventListener("hashchange", route);

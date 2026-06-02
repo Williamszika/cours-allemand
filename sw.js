@@ -4,7 +4,7 @@
    cache-first (instantané et hors-ligne) avec mise à jour en arrière-plan.
    Les photos LoremFlickr sont mises en cache au fil de la navigation.
    ===================================================================== */
-var VERSION = "v1.0.0";
+var VERSION = "v1.1.0";
 var CACHE = "deutsch-a1c2-" + VERSION;
 
 var SHELL = [
@@ -32,8 +32,47 @@ self.addEventListener("install", function (e) {
 self.addEventListener("activate", function (e) {
   e.waitUntil(
     caches.keys().then(function (keys) {
-      return Promise.all(keys.filter(function (k) { return k !== CACHE; }).map(function (k) { return caches.delete(k); }));
+      return Promise.all(keys.filter(function (k) { return k !== CACHE && k !== "deutsch-state"; }).map(function (k) { return caches.delete(k); }));
     }).then(function () { return self.clients.claim(); })
+  );
+});
+
+/* Rappel quotidien en arrière-plan (PWA installée, Chrome) */
+self.addEventListener("periodicsync", function (e) {
+  if (e.tag !== "daily-reminder") return;
+  e.waitUntil(checkRappel());
+});
+self.addEventListener("sync", function (e) {
+  if (e.tag === "daily-reminder") e.waitUntil(checkRappel());
+});
+function checkRappel() {
+  return caches.open("deutsch-state").then(function (c) {
+    return c.match("/__study").then(function (r) {
+      if (!r) return;
+      return r.json().then(function (s) {
+        if (!s || !s.rappel) return;
+        var today = new Date().toISOString().slice(0, 10);
+        var hh = (s.heure || "19:00").split(":");
+        var due = (new Date().getHours() * 60 + new Date().getMinutes()) >= (parseInt(hh[0], 10) * 60 + parseInt(hh[1] || "0", 10));
+        if (!due || s.notified === today || s.last === today) return;
+        s.notified = today;
+        return c.put("/__study", new Response(JSON.stringify(s), { headers: { "Content-Type": "application/json" } })).then(function () {
+          return self.registration.showNotification("⏰ Ton allemand t'attend !", {
+            body: "Coach Zika : 5 minutes aujourd'hui suffisent pour garder ta série. 🇩🇪",
+            icon: "icon-192.png", badge: "icon-192.png", tag: "daily-reminder"
+          });
+        });
+      });
+    });
+  });
+}
+self.addEventListener("notificationclick", function (e) {
+  e.notification.close();
+  e.waitUntil(
+    self.clients.matchAll({ type: "window", includeUncontrolled: true }).then(function (list) {
+      for (var i = 0; i < list.length; i++) { if ("focus" in list[i]) return list[i].focus(); }
+      if (self.clients.openWindow) return self.clients.openWindow("./");
+    })
   );
 });
 
