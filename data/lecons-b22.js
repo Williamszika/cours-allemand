@@ -16,6 +16,41 @@ window.MODULE_B22 = {
   lecons: [
     {
       id: "b2t08",
+      rp: {
+        "scene": "Am Telefon (Beruf)",
+        "intro": "Beruflicher Anruf. Zika ist am Apparat.",
+        "fin": "Perfekt! Du gehst professionell ans Telefon.",
+        "tours": [
+          {
+            "de": "Firma Berger, guten Tag. Mit wem spreche ich?",
+            "options": [
+              {
+                "de": "Guten Tag, hier spricht Anna Klein.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin ein Telefon.",
+                "hint": "Stell dich vor: « Hier spricht … »."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          },
+          {
+            "de": "Möchten Sie eine Nachricht hinterlassen?",
+            "options": [
+              {
+                "de": "Ja, bitte sagen Sie ihm, er soll zurückrufen.",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich bin eine Nachricht.",
+                "hint": "« Ja, er soll zurückrufen » oder « Nein, danke »."
+              }
+            ],
+            "bravo": "Genau!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt **berufliche E-Mails** und **Telefonate**. Schlüsselwörter sind *die E-Mail*, *der Betreff* (l'objet), *der Anhang* (la pièce jointe), *zurückrufen* (rappeler), *eine Nachricht hinterlassen* (laisser un message), *weiterleiten* (transférer).",
         "Wichtig ist der Unterschied zwischen **formell** und **informell**. Formell: « *Sehr geehrte Frau Müller … Mit freundlichen Grüßen* ». Informell: « *Hallo Anna … Liebe Grüße* ». Am Telefon meldet man sich mit dem Namen: « *Schmidt, guten Tag* ».",
@@ -58,6 +93,41 @@ window.MODULE_B22 = {
     },
     {
       id: "b2t09",
+      rp: {
+        "scene": "Freizeit & Verein",
+        "intro": "Ihr sprecht über Vereine und Hobbys.",
+        "fin": "Sehr gut! Du kannst über Freizeit sprechen.",
+        "tours": [
+          {
+            "de": "Engagierst du dich in einem Verein?",
+            "options": [
+              {
+                "de": "Ja, ich spiele in einem Sportverein.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin ein Verein.",
+                "hint": "« Ja, ich bin in einem … verein » oder « Nein »."
+              }
+            ],
+            "bravo": "Prima!"
+          },
+          {
+            "de": "Wie oft trainiert ihr?",
+            "options": [
+              {
+                "de": "Zweimal pro Woche.",
+                "ok": true
+              },
+              {
+                "de": "In der Stadt.",
+                "hint": "Zika fragt WIE OFT: « Zweimal pro Woche »."
+              }
+            ],
+            "bravo": "Richtig!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema vertiefst du **Aktivitäten** und **Freizeit** auf höherem Niveau. Schlüsselwörter sind *die Freizeitgestaltung* (l'organisation du temps libre), *das Ehrenamt* (le bénévolat), *der Verein* (l'association/le club), *sich engagieren* (s'engager), *die Abwechslung* (la variété).",
         "In Deutschland spielt der **Verein** eine große Rolle: Sportverein, Musikverein, Gesangverein. Viele Menschen engagieren sich **ehrenamtlich** (bénévolement). Nützliche Verben: *teilnehmen an* (+ Dativ), *beitreten* (+ Dativ), *organisieren*.",
@@ -100,6 +170,41 @@ window.MODULE_B22 = {
     },
     {
       id: "b2t10",
+      rp: {
+        "scene": "An der Universität",
+        "intro": "Ihr sprecht über das Studium.",
+        "fin": "Bravo! Du kannst über das Studium sprechen.",
+        "tours": [
+          {
+            "de": "Was studierst du?",
+            "options": [
+              {
+                "de": "Ich studiere Informatik.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin eine Universität.",
+                "hint": "« Ich studiere … » + Fach."
+              }
+            ],
+            "bravo": "Perfekt!"
+          },
+          {
+            "de": "Wie gefallen dir die Vorlesungen?",
+            "options": [
+              {
+                "de": "Sie sind interessant, aber anspruchsvoll.",
+                "ok": true
+              },
+              {
+                "de": "Ich habe Hunger.",
+                "hint": "Antworte zur Uni: « interessant », « schwierig »."
+              }
+            ],
+            "bravo": "Bravo!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt die **Universität** und das **Studium**. Schlüsselwörter sind *die Universität*, *das Studienfach* (la matière), *die Vorlesung* (le cours magistral), *das Seminar*, *die Prüfung*, *der Bachelor / der Master*, *die Bibliothek*.",
         "Beachte typische Wörter des Studiums: *sich einschreiben* (s'inscrire), *das Semester*, *die Hausarbeit* (le mémoire), *die Note*. Wichtig ist auch *das Abitur* (le bac), die Voraussetzung fürs Studium an der Universität.",
@@ -143,6 +248,41 @@ window.MODULE_B22 = {
     },
     {
       id: "b2t11",
+      rp: {
+        "scene": "Geschichte & Politik",
+        "intro": "Ihr sprecht über Politik.",
+        "fin": "Stark! Du kannst über Politik sprechen.",
+        "tours": [
+          {
+            "de": "Gehst du wählen?",
+            "options": [
+              {
+                "de": "Ja, wählen ist mir wichtig.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin eine Wahl.",
+                "hint": "« Ja, ich wähle » oder « Nein »."
+              }
+            ],
+            "bravo": "Stark!"
+          },
+          {
+            "de": "Welches Thema interessiert dich in der Politik?",
+            "options": [
+              {
+                "de": "Vor allem die Umweltpolitik.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin Politik.",
+                "hint": "Nenne ein Thema: « die Umweltpolitik »."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es um **Geschichte** und **Politik** – anspruchsvolle, aber wichtige Felder. Schlüsselwörter sind *die Regierung* (le gouvernement), *die Wahl* (l'élection), *die Demokratie*, *das Gesetz* (la loi), *die Partei* (le parti), *der Bürger* (le citoyen).",
         "Viele politische Begriffe sind **Nomen auf -ung** (*die Regierung, die Verfassung* la constitution) oder international (*die Demokratie, die Republik*). Nützlich sind auch *wählen* (élire / voter) und *abstimmen über* (voter sur).",
@@ -185,6 +325,41 @@ window.MODULE_B22 = {
     },
     {
       id: "b2t12",
+      rp: {
+        "scene": "Nachrichten",
+        "intro": "Ihr sprecht über Medien und Nachrichten.",
+        "fin": "Sehr gut! Du bist kritisch informiert.",
+        "tours": [
+          {
+            "de": "Wie informierst du dich über das Weltgeschehen?",
+            "options": [
+              {
+                "de": "Ich lese mehrere Nachrichtenseiten.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin eine Nachricht.",
+                "hint": "Nenne eine Quelle: « Ich lese … »."
+              }
+            ],
+            "bravo": "Genau!"
+          },
+          {
+            "de": "Vertraust du allen Quellen?",
+            "options": [
+              {
+                "de": "Nein, ich prüfe die Quelle immer.",
+                "ok": true
+              },
+              {
+                "de": "Ja, allen.",
+                "hint": "Kritisch bleiben: « Nein, ich prüfe die Quelle »."
+              }
+            ],
+            "bravo": "Prima!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema dreht sich um **internationale Nachrichten**. Schlüsselwörter sind *die Nachricht* (l'information), *das Ereignis* (l'événement), *die Katastrophe*, *die Krise*, *berichten über* (rapporter), *die Quelle* (la source), *zuverlässig* (fiable).",
         "Auf B2-Niveau geht es auch um **kritisches Lesen**: Was ist eine Tatsache (*die Tatsache*), was eine Meinung (*die Meinung*)? Nützliche Verben sind *behaupten* (affirmer), *bezweifeln* (douter), *bestätigen* (confirmer).",
@@ -227,6 +402,41 @@ window.MODULE_B22 = {
     },
     {
       id: "b2t13",
+      rp: {
+        "scene": "Als Zeuge",
+        "intro": "Du bist Zeuge. Zika ist Polizist.",
+        "fin": "Bravo! Du hast den B2-Wortschatz gemeistert!",
+        "tours": [
+          {
+            "de": "Haben Sie gesehen, was passiert ist?",
+            "options": [
+              {
+                "de": "Ja, ein Mann hat eine Tasche gestohlen.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin ein Dieb.",
+                "hint": "Beschreibe als Zeuge: « Ein Mann hat … gestohlen »."
+              }
+            ],
+            "bravo": "Richtig!"
+          },
+          {
+            "de": "Können Sie den Täter beschreiben?",
+            "options": [
+              {
+                "de": "Er war groß und trug eine schwarze Jacke.",
+                "ok": true
+              },
+              {
+                "de": "Ich weiß nicht, wie spät es ist.",
+                "hint": "Beschreibe die Person: « Er war groß / trug … »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem unterhaltsamen Thema geht es um **Kriminalgeschichten** und Krimis. Schlüsselwörter sind *das Verbrechen* (le crime), *der Täter* (l'auteur du crime), *das Opfer* (la victime), *der Zeuge* (le témoin), *die Ermittlung* (l'enquête), *der Verdacht* (le soupçon).",
         "Krimis sind ideal, um die **Vergangenheitsformen** zu üben, denn man erzählt, was passiert ist. Nützliche Verben: *stehlen* (voler), *einbrechen* (cambrioler), *verdächtigen* (soupçonner), *aufklären* (élucider), *verhaften* (arrêter).",

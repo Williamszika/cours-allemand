@@ -17,6 +17,41 @@ window.MODULE_C12 = {
   lecons: [
     {
       id: "c1t08",
+      rp: {
+        "scene": "Über Fortschritt",
+        "intro": "Diskutiere über den Fortschritt.",
+        "fin": "Genau!",
+        "tours": [
+          {
+            "de": "Ist technischer Fortschritt immer positiv?",
+            "options": [
+              {
+                "de": "Nicht unbedingt, er hat auch Risiken.",
+                "ok": true
+              },
+              {
+                "de": "Ja, immer.",
+                "hint": "Differenziere: « Nicht unbedingt, … »."
+              }
+            ],
+            "bravo": "Bravo!"
+          },
+          {
+            "de": "Können Sie ein Beispiel nennen?",
+            "options": [
+              {
+                "de": "Künstliche Intelligenz bietet Chancen und Gefahren.",
+                "ok": true
+              },
+              {
+                "de": "Nein.",
+                "hint": "Gib ein Beispiel mit Vor- und Nachteil."
+              }
+            ],
+            "bravo": "Stark!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt den **Fortschritt** – technisch, wissenschaftlich und gesellschaftlich. Schlüsselwörter sind *der Fortschritt*, *die Entwicklung*, *die Erfindung* (l'invention), *die Forschung* (la recherche), *die Innovation*, *der Wandel* (le changement).",
         "Auf C1 betrachtest du den Fortschritt **kritisch**: *die Chance* vs. *das Risiko*, *der Nutzen* (l'utilité) vs. *die Gefahr*, *die Folgen* (les conséquences). Nützliche Verben: *ermöglichen* (rendre possible), *gefährden* (mettre en danger), *bewerten* (évaluer).",
@@ -59,6 +94,41 @@ window.MODULE_C12 = {
     },
     {
       id: "c1t09",
+      rp: {
+        "scene": "Umwelt & Klima",
+        "intro": "Ihr sprecht über Klimaschutz.",
+        "fin": "Sehr gut!",
+        "tours": [
+          {
+            "de": "Was sollte man gegen den Klimawandel tun?",
+            "options": [
+              {
+                "de": "Wir sollten erneuerbare Energien fördern.",
+                "ok": true
+              },
+              {
+                "de": "Nichts, das ist normal.",
+                "hint": "Schlage etwas vor: « Wir sollten … »."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          },
+          {
+            "de": "Tun Sie selbst etwas für die Umwelt?",
+            "options": [
+              {
+                "de": "Ja, ich fahre meistens mit dem Rad.",
+                "ok": true
+              },
+              {
+                "de": "Ich fahre gern Auto.",
+                "hint": "Nenne eine konkrete Handlung."
+              }
+            ],
+            "bravo": "Genau!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es um **Umwelt** und **Klima** auf anspruchsvollem Niveau. Schlüsselwörter sind *der Klimawandel* (le changement climatique), *die Nachhaltigkeit* (la durabilité), *die erneuerbaren Energien* (les énergies renouvelables), *der CO2-Ausstoß* (les émissions de CO2), *schützen* (protéger).",
         "Viele Begriffe sind komplexe **Komposita** (*Klimaschutz, Umweltverschmutzung, Energiewende* la transition énergétique), die du in ihre Teile zerlegen kannst. Nützliche Wendungen: *Maßnahmen ergreifen* (prendre des mesures), *den Verbrauch senken* (réduire la consommation).",
@@ -102,6 +172,41 @@ window.MODULE_C12 = {
     },
     {
       id: "c1t10",
+      rp: {
+        "scene": "Die deutsche Teilung",
+        "intro": "Ein Gespräch über Geschichte.",
+        "fin": "Richtig!",
+        "tours": [
+          {
+            "de": "Wissen Sie, wann Deutschland geteilt wurde?",
+            "options": [
+              {
+                "de": "Ja, nach dem Zweiten Weltkrieg.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin geteilt.",
+                "hint": "Antworte historisch: « Nach dem Zweiten Weltkrieg »."
+              }
+            ],
+            "bravo": "Prima!"
+          },
+          {
+            "de": "Was bedeutete die Teilung für die Menschen?",
+            "options": [
+              {
+                "de": "Viele Familien wurden getrennt.",
+                "ok": true
+              },
+              {
+                "de": "Nichts Besonderes.",
+                "hint": "Beschreibe die Folgen: « Familien wurden getrennt »."
+              }
+            ],
+            "bravo": "Richtig!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt ein zentrales Kapitel der deutschen Geschichte: die **Teilung Deutschlands**. Schlüsselwörter sind *die Teilung* (la division), *der Zweite Weltkrieg*, *die Besatzung* (l'occupation), *die BRD* (RFA) und *die DDR* (RDA), *der Kalte Krieg* (la guerre froide).",
         "Du lernst, historische Ereignisse **chronologisch** darzustellen – ideal, um das Präteritum und Zeitangaben zu üben. Nützliche Wendungen: *nach dem Krieg*, *in den 1950er Jahren*, *zur Zeit der Teilung*.",
@@ -144,6 +249,41 @@ window.MODULE_C12 = {
     },
     {
       id: "c1t11",
+      rp: {
+        "scene": "Die Berliner Mauer",
+        "intro": "Ihr sprecht über die Mauer.",
+        "fin": "Sehr gut!",
+        "tours": [
+          {
+            "de": "Was symbolisiert die Berliner Mauer?",
+            "options": [
+              {
+                "de": "Sie symbolisiert die Teilung und den Kalten Krieg.",
+                "ok": true
+              },
+              {
+                "de": "Eine Mauer aus Stein.",
+                "hint": "Geh über das Konkrete hinaus: « Sie symbolisiert … »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          },
+          {
+            "de": "Wissen Sie, wann sie fiel?",
+            "options": [
+              {
+                "de": "1989, ein historischer Moment.",
+                "ok": true
+              },
+              {
+                "de": "Ich weiß es nicht.",
+                "hint": "« 1989 »."
+              }
+            ],
+            "bravo": "Bravo!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema widmet sich der **Berliner Mauer** – einem Symbol der deutschen Teilung. Schlüsselwörter sind *die Mauer* (le Mur), *der Bau* (la construction), *die Flucht* (la fuite), *die Grenze* (la frontière), *der Fall der Mauer* (la chute du Mur), *die Wiedervereinigung* (la réunification).",
         "Die Mauer wurde 1961 gebaut und fiel 1989. Du lernst, über ein **emotional aufgeladenes** historisches Ereignis zu sprechen: *die Trennung* (la séparation), *die Sehnsucht* (le désir ardent), *die Freiheit* (la liberté), *die Freude über den Fall*.",
@@ -187,6 +327,41 @@ window.MODULE_C12 = {
     },
     {
       id: "c1t12",
+      rp: {
+        "scene": "Leben in der DDR",
+        "intro": "Ein Gespräch über die DDR.",
+        "fin": "Stark!",
+        "tours": [
+          {
+            "de": "Wie war das Leben in der DDR?",
+            "options": [
+              {
+                "de": "Es war stark eingeschränkt und überwacht.",
+                "ok": true
+              },
+              {
+                "de": "Sehr modern und frei.",
+                "hint": "Beschreibe realistisch: « eingeschränkt, überwacht »."
+              }
+            ],
+            "bravo": "Stark!"
+          },
+          {
+            "de": "Gibt es heute noch Nostalgie danach?",
+            "options": [
+              {
+                "de": "Ja, man nennt das Ostalgie.",
+                "ok": true
+              },
+              {
+                "de": "Nein, nie.",
+                "hint": "Das Wort lautet « Ostalgie »."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es um das **Leben in der DDR** (RDA). Schlüsselwörter sind *der Alltag* (le quotidien), *die Mangelwirtschaft* (l'économie de pénurie), *die Stasi* (la police secrète), *die Überwachung* (la surveillance), *die Planwirtschaft* (l'économie planifiée), *die Ostalgie*.",
         "Du lernst, **Lebensbedingungen** zu beschreiben und zu bewerten: *eingeschränkt* (limité), *die Versorgung* (l'approvisionnement), *die Meinungsfreiheit* (la liberté d'opinion). Das Wort *die Ostalgie* (mélange de « Ost » et « Nostalgie ») beschreibt die nostalgische Erinnerung an den Osten.",
@@ -229,6 +404,41 @@ window.MODULE_C12 = {
     },
     {
       id: "c1t13",
+      rp: {
+        "scene": "Erinnerungskultur",
+        "intro": "Ihr sprecht über Geschichte und Verantwortung.",
+        "fin": "Sehr reif!",
+        "tours": [
+          {
+            "de": "Warum ist Erinnerungskultur wichtig?",
+            "options": [
+              {
+                "de": "Damit sich die Fehler der Vergangenheit nicht wiederholen.",
+                "ok": true
+              },
+              {
+                "de": "Sie ist nicht wichtig.",
+                "hint": "Begründe: « Damit … »."
+              }
+            ],
+            "bravo": "Genau!"
+          },
+          {
+            "de": "Sollte jede Generation Verantwortung tragen?",
+            "options": [
+              {
+                "de": "Ja, jede Generation trägt Verantwortung.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin eine Generation.",
+                "hint": "Beziehe Stellung."
+              }
+            ],
+            "bravo": "Prima!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema vertieft **Geschichte** und **Politik**. Schlüsselwörter sind *die Verfassung* (la constitution), *die Demokratie*, *das Parlament*, *die Wiedervereinigung*, *die Verantwortung* (la responsabilité), *die Erinnerungskultur* (la culture du souvenir).",
         "Auf C1 verbindest du historisches und politisches Vokabular zu komplexen Aussagen. Nützlich sind abstrakte Nomen (*die Entwicklung, die Auseinandersetzung* le débat, *die Bewältigung* le fait de surmonter) und formelle Konnektoren (*infolgedessen, angesichts dessen*).",
@@ -271,6 +481,41 @@ window.MODULE_C12 = {
     },
     {
       id: "c1t14",
+      rp: {
+        "scene": "Musik & Fotografie",
+        "intro": "Ein Gespräch über Kunst.",
+        "fin": "Wunderbar! C1-Wortschatz gemeistert.",
+        "tours": [
+          {
+            "de": "Welche Musik berührt Sie am meisten?",
+            "options": [
+              {
+                "de": "Ruhige Musik berührt mich am meisten.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin Musik.",
+                "hint": "Beschreibe und begründe: « … berührt mich, weil … »."
+              }
+            ],
+            "bravo": "Richtig!"
+          },
+          {
+            "de": "Was macht ein gutes Foto aus?",
+            "options": [
+              {
+                "de": "Es erzählt eine Geschichte und schafft eine Stimmung.",
+                "ok": true
+              },
+              {
+                "de": "Ein teures Handy.",
+                "hint": "Geh in die Tiefe: « Es erzählt … »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt **Musik** und **Fotografie** als Formen des künstlerischen Ausdrucks. Schlüsselwörter sind *die Musik*, *der Klang* (le son), *die Stimmung* (l'ambiance), *die Fotografie*, *das Motiv* (le sujet), *die Aufnahme* (la prise/l'enregistrement), *der Ausdruck* (l'expression).",
         "Auf C1 beschreibst du nicht nur, sondern **interpretierst** und **bewertest**: *wirken auf* (faire effet sur), *etwas ausdrücken*, *eine Atmosphäre schaffen* (créer une atmosphère), *berühren* (émouvoir). Viele Begriffe sind international (*das Genre, das Album, das Porträt*).",

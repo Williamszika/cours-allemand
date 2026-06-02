@@ -17,6 +17,41 @@ window.MODULE_C22 = {
   lecons: [
     {
       id: "c2t06",
+      rp: {
+        "scene": "Technik & KI",
+        "intro": "Eine Debatte über Technik.",
+        "fin": "Sehr ausgewogen!",
+        "tours": [
+          {
+            "de": "Wird künstliche Intelligenz mehr nützen oder schaden?",
+            "options": [
+              {
+                "de": "Beides — entscheidend ist, wie wir sie regulieren.",
+                "ok": true
+              },
+              {
+                "de": "Nur schaden.",
+                "hint": "Formuliere eine ausgewogene These."
+              }
+            ],
+            "bravo": "Genau!"
+          },
+          {
+            "de": "Sollten wir den Datenschutz strenger regeln?",
+            "options": [
+              {
+                "de": "Ja, der Schutz der Privatsphäre ist grundlegend.",
+                "ok": true
+              },
+              {
+                "de": "Nein, egal.",
+                "hint": "Beziehe Stellung mit Begründung."
+              }
+            ],
+            "bravo": "Prima!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt den **technischen Fortschritt** und seine Ambivalenz. Schlüsselwörter sind *die Digitalisierung*, *die künstliche Intelligenz* (l'IA), *die Automatisierung*, *die Errungenschaft* (la conquête, l'acquis), *die Kehrseite* (le revers de la médaille).",
         "Auf C2 argumentierst du **differenziert** über Chancen und Risiken: *revolutionieren*, *Arbeitsplätze ersetzen*, *ethische Bedenken* (des réserves éthiques), *der Datenschutz* (la protection des données). Du erkennst die Doppeldeutigkeit jeder Technologie.",
@@ -59,6 +94,41 @@ window.MODULE_C22 = {
     },
     {
       id: "c2t07",
+      rp: {
+        "scene": "Umwelt & Wirtschaft",
+        "intro": "Ein Gespräch über Zielkonflikte.",
+        "fin": "Stark argumentiert!",
+        "tours": [
+          {
+            "de": "Wie lässt sich Wachstum mit Umweltschutz vereinbaren?",
+            "options": [
+              {
+                "de": "Durch nachhaltige Technologien und bewussten Verzicht.",
+                "ok": true
+              },
+              {
+                "de": "Gar nicht, das geht nicht.",
+                "hint": "Schlage einen Lösungsweg vor."
+              }
+            ],
+            "bravo": "Richtig!"
+          },
+          {
+            "de": "Wer trägt die größte Verantwortung?",
+            "options": [
+              {
+                "de": "Politik, Industrie und jeder Einzelne zugleich.",
+                "ok": true
+              },
+              {
+                "de": "Niemand.",
+                "hint": "Differenziere die Verantwortung."
+              }
+            ],
+            "bravo": "Perfekt!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema vertieft **Umwelt** und **Umweltverschmutzung**. Schlüsselwörter sind *die Umweltverschmutzung* (la pollution), *der Treibhauseffekt* (l'effet de serre), *die Ressourcen* (les ressources), *die Nachhaltigkeit*, *der ökologische Fußabdruck* (l'empreinte écologique), *die Wende* (le tournant).",
         "Auf C2 verknüpfst du **wissenschaftliche** und **politische** Dimensionen: *die Verantwortung der Industrie*, *internationale Abkommen* (les accords internationaux), *der Verzicht* (le renoncement), *die Eigenverantwortung* (la responsabilité individuelle).",
@@ -101,6 +171,41 @@ window.MODULE_C22 = {
     },
     {
       id: "c2t08",
+      rp: {
+        "scene": "Medizin & Ethik",
+        "intro": "Eine heikle Debatte.",
+        "fin": "Sehr besonnen!",
+        "tours": [
+          {
+            "de": "Sollte aktive Sterbehilfe erlaubt sein?",
+            "options": [
+              {
+                "de": "Ein heikles Thema mit guten Argumenten auf beiden Seiten.",
+                "ok": true
+              },
+              {
+                "de": "Ist mir egal.",
+                "hint": "Zeig, dass du beide Seiten siehst."
+              }
+            ],
+            "bravo": "Bravo!"
+          },
+          {
+            "de": "Wie wichtig ist die Vorsorge?",
+            "options": [
+              {
+                "de": "Sehr wichtig — Vorbeugen ist besser als Heilen.",
+                "ok": true
+              },
+              {
+                "de": "Unwichtig.",
+                "hint": "Begründe knapp."
+              }
+            ],
+            "bravo": "Stark!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es um die **Medizin** und das Gesundheitswesen. Schlüsselwörter sind *die Behandlung* (le traitement), *die Diagnose*, *die Vorsorge* (la prévention), *das Gesundheitswesen* (le système de santé), *die Forschung*, *die Ethik* (l'éthique).",
         "Auf C2 verbindest du **Fachvokabular** mit **ethischen Debatten**: *die Organspende* (le don d'organes), *die Sterbehilfe* (l'euthanasie), *der medizinische Fortschritt*, *die Lebensqualität*. Viele Begriffe sind lateinisch-international oder präzise Komposita.",
@@ -143,6 +248,41 @@ window.MODULE_C22 = {
     },
     {
       id: "c2t09",
+      rp: {
+        "scene": "Besondere Fähigkeiten",
+        "intro": "Diskutiere über Talent und Übung.",
+        "fin": "Genau!",
+        "tours": [
+          {
+            "de": "Sind außergewöhnliche Leistungen eher angeboren oder erlernt?",
+            "options": [
+              {
+                "de": "Meist erlernt — Übung schlägt oft das Talent.",
+                "ok": true
+              },
+              {
+                "de": "Immer angeboren.",
+                "hint": "Beziehe eine begründete Position."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          },
+          {
+            "de": "Kann man jede Fähigkeit trainieren?",
+            "options": [
+              {
+                "de": "Fast jede, mit genug Geduld und Übung.",
+                "ok": true
+              },
+              {
+                "de": "Keine.",
+                "hint": "Antworte differenziert."
+              }
+            ],
+            "bravo": "Genau!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt **besondere Fähigkeiten** und Begabungen. Schlüsselwörter sind *die Begabung* (le don), *das Talent*, *die Fähigkeit* (la capacité), *die Hochbegabung* (la surdouance), *die Fertigkeit* (l'aptitude), *angeboren* (inné) vs. *erlernt* (acquis).",
         "Auf C2 unterscheidest du fein zwischen Anlage und Übung: *das Potenzial*, *die Veranlagung* (la prédisposition), *Übung macht den Meister*. Nützliche Wendungen: *eine Fähigkeit entwickeln*, *sein Talent entfalten* (épanouir son talent).",
@@ -185,6 +325,41 @@ window.MODULE_C22 = {
     },
     {
       id: "c2t10",
+      rp: {
+        "scene": "Gefühle",
+        "intro": "Ein Gespräch über innere Zustände.",
+        "fin": "Sehr feinfühlig!",
+        "tours": [
+          {
+            "de": "Können Sie einen zwiespältigen Moment beschreiben?",
+            "options": [
+              {
+                "de": "Als ich wegzog: Vorfreude und Wehmut zugleich.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin ein Gefühl.",
+                "hint": "Beschreibe widersprüchliche Gefühle."
+              }
+            ],
+            "bravo": "Prima!"
+          },
+          {
+            "de": "Zeigen Sie Ihre Gefühle offen?",
+            "options": [
+              {
+                "de": "Es kommt ganz auf die Situation an.",
+                "ok": true
+              },
+              {
+                "de": "Nie.",
+                "hint": "Antworte nuanciert."
+              }
+            ],
+            "bravo": "Richtig!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema erschließt das gesamte Spektrum der **Gefühle** mit größter Differenzierung. Schlüsselwörter sind *die Emotion*, *die Empfindung* (le ressenti), *die Stimmung* (l'humeur), *die Gemütslage* (l'état d'âme), *zwiespältig* (ambivalent), *überwältigend* (bouleversant).",
         "Auf C2 verfügst du über zahlreiche **nuancierte** Gefühlswörter jenseits von « froh » und « traurig »: *die Wehmut* (la mélancolie douce), *die Zuversicht* (la confiance/l'espoir), *die Verzweiflung* (le désespoir), *die Ehrfurcht* (le respect mêlé de crainte), *die Gelassenheit* (la sérénité).",
@@ -227,6 +402,41 @@ window.MODULE_C22 = {
     },
     {
       id: "c2t11",
+      rp: {
+        "scene": "Lebensgestaltung",
+        "intro": "Ihr sprecht über Werte und Lebensstil.",
+        "fin": "Sehr reflektiert!",
+        "tours": [
+          {
+            "de": "Was macht für Sie ein erfülltes Leben aus?",
+            "options": [
+              {
+                "de": "Sinnvolle Beziehungen und persönliches Wachstum.",
+                "ok": true
+              },
+              {
+                "de": "Nur viel Geld.",
+                "hint": "Formuliere deine Werte."
+              }
+            ],
+            "bravo": "Perfekt!"
+          },
+          {
+            "de": "Streben Sie nach Entschleunigung?",
+            "options": [
+              {
+                "de": "Ja, ich versuche, bewusster zu leben.",
+                "ok": true
+              },
+              {
+                "de": "Nein, schneller ist besser.",
+                "hint": "Begründe deinen Lebensstil."
+              }
+            ],
+            "bravo": "Bravo!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema dreht sich um die bewusste **Lebensgestaltung**. Schlüsselwörter sind *der Lebensstil* (le mode de vie), *die Selbstverwirklichung* (l'épanouissement personnel), *die Prioritäten* (les priorités), *die Entschleunigung* (le ralentissement), *der Sinn* (le sens).",
         "Auf C2 reflektierst du über **Werte** und **Lebensentwürfe**: *ein erfülltes Leben* (une vie épanouie), *Verzicht üben*, *im Einklang mit* (en harmonie avec), *die Balance finden*. Viele Begriffe sind abstrakt und gesellschaftlich aktuell (*der Minimalismus, die Achtsamkeit* la pleine conscience).",
@@ -269,6 +479,41 @@ window.MODULE_C22 = {
     },
     {
       id: "c2t12",
+      rp: {
+        "scene": "Kunst & Gesellschaft",
+        "intro": "Eine Debatte über Kunst.",
+        "fin": "Stark!",
+        "tours": [
+          {
+            "de": "Kann Kunst die Gesellschaft verändern?",
+            "options": [
+              {
+                "de": "Ja, sie regt zum Nachdenken an und provoziert.",
+                "ok": true
+              },
+              {
+                "de": "Nein, nie.",
+                "hint": "Begründe mit einem Beispiel."
+              }
+            ],
+            "bravo": "Stark!"
+          },
+          {
+            "de": "Darf Kunst alles?",
+            "options": [
+              {
+                "de": "Sie braucht Freiheit, aber auch Verantwortung.",
+                "ok": true
+              },
+              {
+                "de": "Ja, einfach alles.",
+                "hint": "Wäge Freiheit und Grenzen ab."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt **Kunst** und **Kreativität**. Schlüsselwörter sind *das Kunstwerk* (l'œuvre d'art), *die Schöpfung* (la création), *die Inspiration*, *der Ausdruck* (l'expression), *die Interpretation*, *die Ästhetik* (l'esthétique), *zeitgenössisch* (contemporain).",
         "Auf C2 **interpretierst** und **bewertest** du Kunst mit anspruchsvollem Vokabular: *etwas verkörpern* (incarner), *eine Botschaft vermitteln* (transmettre un message), *provozieren*, *vieldeutig* (polysémique). Du erkennst, dass Kunst unterschiedlich gedeutet werden kann.",
@@ -311,6 +556,41 @@ window.MODULE_C22 = {
     },
     {
       id: "c2t13",
+      rp: {
+        "scene": "Literatur",
+        "intro": "Ihr sprecht über Bücher.",
+        "fin": "Wunderbar!",
+        "tours": [
+          {
+            "de": "Welches Buch hat Sie geprägt und warum?",
+            "options": [
+              {
+                "de": "Ein Roman, der mich Empathie gelehrt hat.",
+                "ok": true
+              },
+              {
+                "de": "Ich lese nicht.",
+                "hint": "Nenne ein Werk und seine Wirkung."
+              }
+            ],
+            "bravo": "Genau!"
+          },
+          {
+            "de": "Wozu dient Literatur heute noch?",
+            "options": [
+              {
+                "de": "Sie eröffnet uns fremde Perspektiven und Welten.",
+                "ok": true
+              },
+              {
+                "de": "Zu nichts.",
+                "hint": "Begründe ihren Wert."
+              }
+            ],
+            "bravo": "Prima!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema widmet sich **Büchern** und der **Literatur**. Schlüsselwörter sind *die Literatur*, *der Roman*, *die Gattung* (le genre littéraire), *die Handlung* (l'intrigue), *die Figur* (le personnage), *der Erzähler* (le narrateur), *die Metapher*, *der Stil*.",
         "Auf C2 sprichst du wie über **Literaturwissenschaft**: *eine Figur charakterisieren*, *die Erzählperspektive* (le point de vue narratif), *zwischen den Zeilen lesen*, *ein Werk in seinen Kontext einordnen*. Du unterscheidest *die Lyrik* (la poésie), *die Epik* und *die Dramatik*.",
@@ -353,6 +633,41 @@ window.MODULE_C22 = {
     },
     {
       id: "c2t14",
+      rp: {
+        "scene": "Politik & Demokratie",
+        "intro": "Die letzte Debatte mit Zika.",
+        "fin": "Glückwunsch! Du hast den ganzen Kurs A1–C2 gemeistert! 🎉🏆",
+        "tours": [
+          {
+            "de": "Wie wichtig ist Kompromissbereitschaft in der Politik?",
+            "options": [
+              {
+                "de": "Sehr — ohne Kompromisse funktioniert keine Demokratie.",
+                "ok": true
+              },
+              {
+                "de": "Unwichtig.",
+                "hint": "Begründe ihre Bedeutung."
+              }
+            ],
+            "bravo": "Richtig!"
+          },
+          {
+            "de": "Sollte man auch Gegenargumente ernst nehmen?",
+            "options": [
+              {
+                "de": "Unbedingt, das stärkt sogar die eigene Position.",
+                "ok": true
+              },
+              {
+                "de": "Nein, nie.",
+                "hint": "Beziehe Stellung."
+              }
+            ],
+            "bravo": "Perfekt!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses letzte Thema behandelt die **Politik** auf höchstem Niveau. Schlüsselwörter sind *die Politik*, *die Demokratie*, *die Gewaltenteilung* (la séparation des pouvoirs), *der Kompromiss* (le compromis), *die Opposition*, *die Bürgerbeteiligung* (la participation citoyenne), *die Wahlbeteiligung* (le taux de participation).",
         "Auf C2 verfügst du über das **abstrakte, präzise** Vokabular der politischen Debatte: *eine Position vertreten* (défendre une position), *Argumente entkräften* (réfuter des arguments), *einen Konsens erzielen* (parvenir à un consensus), *die öffentliche Meinung*.",

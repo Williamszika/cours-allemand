@@ -18,6 +18,41 @@ window.MODULE_B21 = {
   lecons: [
     {
       id: "b2t01",
+      rp: {
+        "scene": "Ausbildung",
+        "intro": "Sprich mit Zika über deine Ausbildung.",
+        "fin": "Sehr gut! Du kannst über deine Ausbildung sprechen.",
+        "tours": [
+          {
+            "de": "Welche Ausbildung haben Sie gemacht?",
+            "options": [
+              {
+                "de": "Ich habe eine Ausbildung als Mechaniker gemacht.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin eine Ausbildung.",
+                "hint": "Nenne deine Ausbildung: « Ich habe eine Ausbildung als … gemacht »."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          },
+          {
+            "de": "Möchten Sie sich weiterbilden?",
+            "options": [
+              {
+                "de": "Ja, ich interessiere mich für einen Computerkurs.",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich bin fertig.",
+                "hint": "Antworte konkret: « Ja, ich möchte einen … Kurs machen »."
+              }
+            ],
+            "bravo": "Genau!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es um **Schule** und **Ausbildung** auf einem höheren Niveau. Wichtige Wörter sind *die Ausbildung* (la formation professionnelle), *das Studium* (les études), *die Fortbildung* (le perfectionnement), *der Abschluss* (le diplôme), *die Kenntnisse* (les connaissances).",
         "Das deutsche Bildungssystem hat einige Besonderheiten. Nach der Grundschule gehen Schüler aufs *Gymnasium*, auf die *Realschule* oder die *Hauptschule*. Eine typisch deutsche Stärke ist die **duale Ausbildung**, bei der man gleichzeitig im Betrieb arbeitet und zur Berufsschule geht.",
@@ -60,6 +95,41 @@ window.MODULE_B21 = {
     },
     {
       id: "b2t02",
+      rp: {
+        "scene": "Beziehungen",
+        "intro": "Ihr sprecht über Beziehungen am Arbeitsplatz.",
+        "fin": "Schön! Du kannst über Beziehungen sprechen.",
+        "tours": [
+          {
+            "de": "Verstehst du dich gut mit deinen Kollegen?",
+            "options": [
+              {
+                "de": "Ja, wir verstehen uns sehr gut.",
+                "ok": true
+              },
+              {
+                "de": "Ja, ich arbeite.",
+                "hint": "Nutze « sich verstehen mit »: « Wir verstehen uns gut »."
+              }
+            ],
+            "bravo": "Prima!"
+          },
+          {
+            "de": "Gibt es manchmal Konflikte?",
+            "options": [
+              {
+                "de": "Selten, aber wir reden immer darüber.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin ein Konflikt.",
+                "hint": "Antworte: « Selten » oder « Ja, manchmal »."
+              }
+            ],
+            "bravo": "Richtig!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt **zwischenmenschliche Beziehungen** – Freundschaft, Liebe, Familie und Konflikte. Schlüsselwörter sind *die Beziehung* (la relation), *die Freundschaft*, *das Vertrauen* (la confiance), *sich verstehen mit* (bien s'entendre avec), *streiten* (se disputer).",
         "Viele Ausdrücke sind **feste Wendungen**: *eine Beziehung führen*, *sich auf jemanden verlassen* (compter sur quelqu'un), *jemandem vertrauen* (+ Dativ). Achte auf die reflexiven Verben mit Präposition: *sich verlieben **in*** (+ Akkusativ), *sich trennen **von*** (+ Dativ).",
@@ -102,6 +172,41 @@ window.MODULE_B21 = {
     },
     {
       id: "b2t03",
+      rp: {
+        "scene": "Wohnungssuche",
+        "intro": "Du besichtigst eine Wohnung. Zika vermietet sie.",
+        "fin": "Gut! Du kannst eine Wohnung mieten.",
+        "tours": [
+          {
+            "de": "Guten Tag, Sie interessieren sich für die Wohnung?",
+            "options": [
+              {
+                "de": "Ja, wie hoch ist die Miete?",
+                "ok": true
+              },
+              {
+                "de": "Ja, ich bin eine Wohnung.",
+                "hint": "Frag etwas Konkretes: « Wie hoch ist die Miete? »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          },
+          {
+            "de": "Die Miete beträgt 700 Euro plus Nebenkosten.",
+            "options": [
+              {
+                "de": "Sind Haustiere erlaubt?",
+                "ok": true
+              },
+              {
+                "de": "Wie spät ist es?",
+                "hint": "Stell eine sinnvolle Frage: « Sind Haustiere erlaubt? »."
+              }
+            ],
+            "bravo": "Bravo!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es ums **Wohnen** und **Mieten** – ein praktisch sehr wichtiges Feld. Schlüsselwörter sind *eine Wohnung mieten* (louer un appartement), *der Mietvertrag* (le bail), *die Miete* (le loyer), *die Nebenkosten* (les charges), *der Vermieter* (le bailleur), *der Mieter* (le locataire).",
         "Beachte die Unterscheidung *mieten* (louer en tant que locataire) und *vermieten* (louer en tant que propriétaire) – ein häufiger Fehler! Wichtig sind auch *die Kaution* (la caution) und *die Wohnungsbesichtigung* (la visite du logement).",
@@ -145,6 +250,41 @@ window.MODULE_B21 = {
     },
     {
       id: "b2t04",
+      rp: {
+        "scene": "Im Hotel — Beschwerde",
+        "intro": "Etwas stimmt nicht im Hotel. Beschwere dich höflich.",
+        "fin": "Gut gemacht! Du kannst dich beschweren.",
+        "tours": [
+          {
+            "de": "Rezeption, guten Tag. Was kann ich für Sie tun?",
+            "options": [
+              {
+                "de": "Die Klimaanlage in meinem Zimmer funktioniert nicht.",
+                "ok": true
+              },
+              {
+                "de": "Ich möchte ein Eis.",
+                "hint": "Beschwere dich: « … funktioniert nicht »."
+              }
+            ],
+            "bravo": "Stark!"
+          },
+          {
+            "de": "Das tut mir leid. Wir kümmern uns sofort darum.",
+            "options": [
+              {
+                "de": "Danke. Ich erwarte eine schnelle Lösung.",
+                "ok": true
+              },
+              {
+                "de": "Auf Wiedersehen, guten Morgen.",
+                "hint": "Höflich, aber bestimmt: « Danke, ich erwarte … »."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema verbindet **Reisen** mit dem Schreiben von **Beschwerden** (réclamations). Schlüsselwörter sind *eine Reise buchen*, *die Reklamation*, *sich beschweren über* (se plaindre de), *die Entschädigung* (le dédommagement), *erstatten* (rembourser), *mangelhaft* (défectueux).",
         "Eine schriftliche Beschwerde ist **formell**. Man benutzt höfliche, aber bestimmte Formulierungen: « *Leider muss ich feststellen, dass…* », « *Ich erwarte eine Entschädigung* », « *Mit freundlichen Grüßen* ». Der Konjunktiv II macht den Ton höflich.",
@@ -187,6 +327,41 @@ window.MODULE_B21 = {
     },
     {
       id: "b2t05",
+      rp: {
+        "scene": "Kulturelle Unterschiede",
+        "intro": "Ihr vergleicht Arbeitskulturen.",
+        "fin": "Sehr gut! Du kannst vergleichen.",
+        "tours": [
+          {
+            "de": "Was findest du an der deutschen Arbeitskultur besonders?",
+            "options": [
+              {
+                "de": "Die Pünktlichkeit ist sehr wichtig.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin Kultur.",
+                "hint": "Nenne einen Aspekt: « die Pünktlichkeit / die Direktheit »."
+              }
+            ],
+            "bravo": "Genau!"
+          },
+          {
+            "de": "Ist das in deinem Land anders?",
+            "options": [
+              {
+                "de": "Ja, bei uns ist man oft lockerer.",
+                "ok": true
+              },
+              {
+                "de": "Ja, ich bin müde.",
+                "hint": "Vergleiche: « Ja, bei uns … » / « Nein, ähnlich »."
+              }
+            ],
+            "bravo": "Prima!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es um **kulturelle Unterschiede** in der Arbeitswelt. Schlüsselwörter sind *die Kultur*, *der Unterschied* (la différence), *die Hierarchie*, *die Pünktlichkeit*, *die Direktheit* (la franchise), *das Missverständnis* (le malentendu).",
         "Im Beruf gelten in Deutschland oft **Direktheit**, **Pünktlichkeit** und eine klare Trennung von Beruf und Privatleben als wichtig. Nützliche Verben sind *sich anpassen an* (+ Akkusativ), *respektieren*, *vergleichen* (comparer).",
@@ -229,6 +404,41 @@ window.MODULE_B21 = {
     },
     {
       id: "b2t06",
+      rp: {
+        "scene": "Europa und Klischees",
+        "intro": "Ihr sprecht über Klischees.",
+        "fin": "Stark! Du kannst Klischees hinterfragen.",
+        "tours": [
+          {
+            "de": "Glaubst du, alle Deutschen sind immer pünktlich?",
+            "options": [
+              {
+                "de": "Nein, das ist ein Klischee.",
+                "ok": true
+              },
+              {
+                "de": "Ja, ich bin Deutscher.",
+                "hint": "Relativiere: « Nein, das ist ein Klischee »."
+              }
+            ],
+            "bravo": "Richtig!"
+          },
+          {
+            "de": "Was schätzt du an Europa?",
+            "options": [
+              {
+                "de": "Die Vielfalt und die offenen Grenzen.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin Europa.",
+                "hint": "Nenne etwas Positives: « die Vielfalt »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt **Europa** und das Bild der **Deutschen**. Schlüsselwörter sind *die Europäische Union (EU)*, *das Klischee* (le cliché), *das Vorurteil* (le préjugé), *die Grenze* (la frontière), *die Mehrheit* (la majorité), *die Vielfalt* (la diversité).",
         "Es geht oft um **Stereotype**: Sind die Deutschen wirklich immer pünktlich und ordentlich? Nützliche Strukturen sind das Relativieren (« *Viele Deutsche, aber nicht alle…* ») und das Widersprechen (« *Das ist ein Klischee, in Wirklichkeit…* »).",
@@ -271,6 +481,41 @@ window.MODULE_B21 = {
     },
     {
       id: "b2t07",
+      rp: {
+        "scene": "Small Talk",
+        "intro": "Übe lockeren Small Talk mit Zika.",
+        "fin": "Prima! Dein Small Talk sitzt.",
+        "tours": [
+          {
+            "de": "Schönes Wetter heute, nicht wahr?",
+            "options": [
+              {
+                "de": "Ja, endlich mal Sonne!",
+                "ok": true
+              },
+              {
+                "de": "Mein Gehalt ist zu niedrig.",
+                "hint": "Beim Small Talk bleibt man leicht: « Ja, endlich Sonne! »."
+              }
+            ],
+            "bravo": "Bravo!"
+          },
+          {
+            "de": "Haben Sie schöne Pläne fürs Wochenende?",
+            "options": [
+              {
+                "de": "Ja, ich besuche Freunde.",
+                "ok": true
+              },
+              {
+                "de": "Das geht Sie nichts an.",
+                "hint": "Antworte freundlich: « Ja, ich … »."
+              }
+            ],
+            "bravo": "Stark!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema lernst du den **Small Talk** – die leichte, höfliche Konversation. Schlüsselwörter sind *das Gespräch* (la conversation), *das Wetter*, *plaudern* (bavarder), *die Höflichkeit*, *unverbindlich* (sans engagement), *das Thema wechseln* (changer de sujet).",
         "Beim Small Talk gibt es **sichere** und **heikle** Themen. Sicher sind Wetter, Urlaub und Hobbys; heikel sind Geld, Politik, Religion und persönliche Probleme. Nützliche Floskeln: « *Schönes Wetter heute, oder?* », « *Wie war Ihr Wochenende?* ».",

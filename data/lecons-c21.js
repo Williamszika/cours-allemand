@@ -17,6 +17,41 @@ window.MODULE_C21 = {
   lecons: [
     {
       id: "c2t01",
+      rp: {
+        "scene": "Medien & Gesellschaft",
+        "intro": "Diskutiere auf hohem Niveau mit Zika.",
+        "fin": "Ausgezeichnet!",
+        "tours": [
+          {
+            "de": "Wie beeinflussen soziale Medien die Gesellschaft?",
+            "options": [
+              {
+                "de": "Sie beschleunigen die Meinungsbildung, oft auf Kosten der Tiefe.",
+                "ok": true
+              },
+              {
+                "de": "Gar nicht.",
+                "hint": "Formuliere eine differenzierte These."
+              }
+            ],
+            "bravo": "Bravo!"
+          },
+          {
+            "de": "Wie erkennt man Desinformation?",
+            "options": [
+              {
+                "de": "Indem man Quellen kritisch prüft und vergleicht.",
+                "ok": true
+              },
+              {
+                "de": "Man kann es nicht.",
+                "hint": "Nenne ein Kriterium: « Indem man … »."
+              }
+            ],
+            "bravo": "Stark!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Auf C2-Niveau betrachtest du **Kommunikation** und **Medien** in ihrer ganzen Komplexität. Schlüsselwörter sind *die Massenmedien*, *die Meinungsbildung* (la formation de l'opinion), *die Glaubwürdigkeit* (la crédibilité), *die Reizüberflutung* (la surcharge d'informations), *die Filterblase* (la bulle de filtres).",
         "Es geht um **abstrakte und kritische** Begriffe: *die Manipulation*, *die Objektivität*, *die Quellenkritik* (l'analyse critique des sources), *die Reichweite* (la portée). Beachte feine Unterschiede wie *die Information* vs. *die Desinformation* und *die Nachricht* vs. *die Meldung*.",
@@ -59,6 +94,41 @@ window.MODULE_C21 = {
     },
     {
       id: "c2t02",
+      rp: {
+        "scene": "Geschichte & Erinnerung",
+        "intro": "Ein anspruchsvolles Gespräch.",
+        "fin": "Sehr differenziert!",
+        "tours": [
+          {
+            "de": "Wie sollte eine Gesellschaft mit ihrer Vergangenheit umgehen?",
+            "options": [
+              {
+                "de": "Offen und kritisch, ohne etwas zu verdrängen.",
+                "ok": true
+              },
+              {
+                "de": "Sie sollte alles vergessen.",
+                "hint": "Nimm eine begründete Haltung ein."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          },
+          {
+            "de": "Welche Rolle spielen Zeitzeugen?",
+            "options": [
+              {
+                "de": "Sie halten das Gedächtnis lebendig.",
+                "ok": true
+              },
+              {
+                "de": "Keine.",
+                "hint": "Begründe ihre Bedeutung."
+              }
+            ],
+            "bravo": "Genau!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema verbindet **Geschichte** mit persönlicher und kollektiver **Erinnerung**. Schlüsselwörter sind *die Erinnerung* (le souvenir), *das Gedächtnis* (la mémoire), *die Vergangenheitsbewältigung* (le travail de mémoire), *das Gedenken* (la commémoration), *die Zeitzeugen* (les témoins de l'époque).",
         "Auf C2 unterscheidest du feinste Nuancen: *sich erinnern* (se souvenir), *gedenken* (+ Genitiv, commémorer solennellement), *verdrängen* (refouler), *aufarbeiten* (assumer, élucider le passé). Das Wort *die Vergangenheitsbewältigung* ist ein zentraler deutscher Begriff.",
@@ -101,6 +171,41 @@ window.MODULE_C21 = {
     },
     {
       id: "c2t03",
+      rp: {
+        "scene": "Persönlichkeit",
+        "intro": "Ihr sprecht über Charakter und Gefühle.",
+        "fin": "Stark!",
+        "tours": [
+          {
+            "de": "Würden Sie sich als eher rationalen oder emotionalen Menschen beschreiben?",
+            "options": [
+              {
+                "de": "Eher rational, aber ich höre auch auf mein Gefühl.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin ein Mensch.",
+                "hint": "Charakterisiere dich nuanciert."
+              }
+            ],
+            "bravo": "Prima!"
+          },
+          {
+            "de": "Ist eine Notlüge manchmal gerechtfertigt?",
+            "options": [
+              {
+                "de": "Manchmal ja, um jemanden zu schonen.",
+                "ok": true
+              },
+              {
+                "de": "Nie, niemals.",
+                "hint": "Argumentiere abwägend: « Manchmal …, um … »."
+              }
+            ],
+            "bravo": "Richtig!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema erkundet die menschliche **Persönlichkeit** in ihrer Tiefe: Gefühle, Lügen, Stärken und Schwächen. Schlüsselwörter sind *die Eigenschaft*, *die Stärke / die Schwäche*, *die Aufrichtigkeit* (la sincérité), *die Notlüge* (le mensonge pieux), *die Selbsterkenntnis* (la connaissance de soi).",
         "Auf C2 verfügst du über ein reiches, **nuanciertes** Wortfeld für Charakterzüge: *einfühlsam* (empathique), *nachtragend* (rancunier), *gewissenhaft* (consciencieux), *impulsiv*, *zurückhaltend* (réservé). Viele lassen sich mit Suffixen und Vorsilben ableiten.",
@@ -143,6 +248,41 @@ window.MODULE_C21 = {
     },
     {
       id: "c2t04",
+      rp: {
+        "scene": "Schuljahre",
+        "intro": "Diskutiere über Bildung.",
+        "fin": "Sehr gut begründet!",
+        "tours": [
+          {
+            "de": "Was macht für Sie eine gute Schule aus?",
+            "options": [
+              {
+                "de": "Sie fördert jedes Kind individuell.",
+                "ok": true
+              },
+              {
+                "de": "Strenge Noten.",
+                "hint": "Formuliere ein Bildungsideal."
+              }
+            ],
+            "bravo": "Perfekt!"
+          },
+          {
+            "de": "Schadet zu viel Leistungsdruck?",
+            "options": [
+              {
+                "de": "Ja, er kann die Motivation zerstören.",
+                "ok": true
+              },
+              {
+                "de": "Nein, er ist nur gut.",
+                "hint": "Beziehe begründet Stellung."
+              }
+            ],
+            "bravo": "Bravo!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema blickt reflektiert auf die **Schuljahre** zurück. Schlüsselwörter sind *die Schulzeit*, *prägen* (marquer, façonner), *die Erziehung* (l'éducation), *der Bildungsweg* (le parcours scolaire), *die Chancengleichheit* (l'égalité des chances), *der Leistungsdruck* (la pression de la performance).",
         "Auf C2 geht es nicht nur um Erinnerungen, sondern um eine **kritische Bewertung** des Bildungssystems: *fördern* (encourager) vs. *überfordern* (surmener), *die Bildungsgerechtigkeit*, *das Potenzial entfalten* (développer le potentiel).",
@@ -185,6 +325,41 @@ window.MODULE_C21 = {
     },
     {
       id: "c2t05",
+      rp: {
+        "scene": "Karrierewege",
+        "intro": "Ihr sprecht über Beruf und Werte.",
+        "fin": "Ausgezeichnet!",
+        "tours": [
+          {
+            "de": "Was ist Ihnen wichtiger: Sicherheit oder Selbstverwirklichung?",
+            "options": [
+              {
+                "de": "Selbstverwirklichung, auch wenn sie Risiken birgt.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin eine Karriere.",
+                "hint": "Wäge ab und entscheide dich."
+              }
+            ],
+            "bravo": "Stark!"
+          },
+          {
+            "de": "Halten Sie einen Quereinstieg für sinnvoll?",
+            "options": [
+              {
+                "de": "Ja, neue Perspektiven bereichern ein Team.",
+                "ok": true
+              },
+              {
+                "de": "Nein, nie.",
+                "hint": "Begründe deine Meinung."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es um **Karrierewege** und die moderne Arbeitswelt. Schlüsselwörter sind *die Laufbahn* (la carrière), *der Werdegang* (le parcours professionnel), *die Selbstständigkeit* (le statut d'indépendant), *die Work-Life-Balance*, *der Quereinsteiger* (la personne en reconversion), *die Beförderung* (la promotion).",
         "Auf C2 beherrschst du das **formelle Vokabular** von Bewerbung und Beruf: *sich bewerben um*, *die Qualifikation*, *die berufliche Neuorientierung*, *aufsteigen* (gravir les échelons). Viele Begriffe sind abstrakte Komposita oder Anglizismen.",

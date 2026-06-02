@@ -16,6 +16,41 @@ window.MODULE_C11 = {
   lecons: [
     {
       id: "c1t01",
+      rp: {
+        "scene": "Small Talk (gehoben)",
+        "intro": "Übe eleganten Small Talk mit Zika.",
+        "fin": "Sehr gut!",
+        "tours": [
+          {
+            "de": "Furchtbares Wetter, finden Sie nicht?",
+            "options": [
+              {
+                "de": "Allerdings, dieser Regen hört einfach nicht auf.",
+                "ok": true
+              },
+              {
+                "de": "Mein Privatleben ist kompliziert.",
+                "hint": "Bleib beim Small Talk: « Allerdings, der Regen … »."
+              }
+            ],
+            "bravo": "Bravo!"
+          },
+          {
+            "de": "Haben Sie sich hier schon eingelebt?",
+            "options": [
+              {
+                "de": "Ja, langsam fühle ich mich richtig wohl.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin ein Wetter.",
+                "hint": "Antworte höflich: « Ja, langsam … »."
+              }
+            ],
+            "bravo": "Stark!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Auf C1-Niveau wird selbst der **Small Talk** über das **Wetter** zu einer Kunst der Nuancierung. Schlüsselwörter sind *die Stimmung* (l'ambiance/l'humeur), *die Gesprächseröffnung* (l'amorce de conversation), *unverfänglich* (anodin), *die Floskel* (la formule toute faite), *plaudern* (bavarder).",
         "Das Wetter dient als **neutraler Einstieg** in fast jedes Gespräch. Über die reine Beschreibung hinaus lernst du, Stimmungen und feine Bewertungen auszudrücken: *drückend* (lourd, étouffant), *wechselhaft* (changeant), *strahlend* (radieux), *trüb* (maussade).",
@@ -58,6 +93,41 @@ window.MODULE_C11 = {
     },
     {
       id: "c1t02",
+      rp: {
+        "scene": "Über Sprachen",
+        "intro": "Diskutiere über das Sprachenlernen.",
+        "fin": "Genau!",
+        "tours": [
+          {
+            "de": "Wie viele Sprachen sprechen Sie?",
+            "options": [
+              {
+                "de": "Drei: meine Muttersprache, Englisch und Deutsch.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin eine Sprache.",
+                "hint": "Nenne deine Sprachen konkret."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          },
+          {
+            "de": "Was ist beim Sprachenlernen am wichtigsten?",
+            "options": [
+              {
+                "de": "Regelmäßiges Üben und keine Angst vor Fehlern.",
+                "ok": true
+              },
+              {
+                "de": "Nichts.",
+                "hint": "Gib eine begründete Meinung."
+              }
+            ],
+            "bravo": "Genau!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema betrachtet **Sprachen** und das Sprachenlernen aus einer reflektierten Perspektive. Schlüsselwörter sind *die Mehrsprachigkeit* (le plurilinguisme), *der Dialekt*, *die Muttersprache*, *der Spracherwerb* (l'acquisition du langage), *fließend* (couramment), *die Sprachbarriere*.",
         "Auf C1 geht es um abstrakte Aspekte: den **Wert** von Sprachen, ihren Einfluss auf das Denken, den Umgang mit Fehlern. Nützliche Wendungen sind *eine Sprache beherrschen* (maîtriser), *sich verständigen* (se faire comprendre), *sich ausdrücken* (s'exprimer).",
@@ -100,6 +170,41 @@ window.MODULE_C11 = {
     },
     {
       id: "c1t03",
+      rp: {
+        "scene": "Über das Glück",
+        "intro": "Ein Gespräch über das Glück.",
+        "fin": "Schön gesagt!",
+        "tours": [
+          {
+            "de": "Was bedeutet Glück für Sie persönlich?",
+            "options": [
+              {
+                "de": "Für mich bedeutet Glück innere Zufriedenheit.",
+                "ok": true
+              },
+              {
+                "de": "Glück ist Glück.",
+                "hint": "Antworte durchdacht: « Für mich bedeutet Glück … »."
+              }
+            ],
+            "bravo": "Prima!"
+          },
+          {
+            "de": "Kann man Glück lernen?",
+            "options": [
+              {
+                "de": "Ich glaube, man kann lernen, dankbarer zu sein.",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich bin müde.",
+                "hint": "Argumentiere: « Ich glaube, … »."
+              }
+            ],
+            "bravo": "Richtig!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es um das **Glück** im weiteren Sinne. Das deutsche Wort *das Glück* umfasst zwei Bedeutungen: **la chance** (« *Glück haben* ») und **le bonheur** (« *das Glück finden* »). Diese Doppeldeutigkeit ist zentral.",
         "Auf C1 unterscheidest du feine Nuancen: *die Zufriedenheit* (la satisfaction durable), *die Freude* (la joie momentanée), *das Wohlbefinden* (le bien-être), *die Gelassenheit* (la sérénité). Nützliche Wendungen: *zum Glück* (heureusement), *Glück im Unglück* (un mal pour un bien).",
@@ -142,6 +247,41 @@ window.MODULE_C11 = {
     },
     {
       id: "c1t04",
+      rp: {
+        "scene": "Mit Stress umgehen",
+        "intro": "Ihr sprecht über Stressbewältigung.",
+        "fin": "Sehr gut!",
+        "tours": [
+          {
+            "de": "Wie gehen Sie mit Stress um?",
+            "options": [
+              {
+                "de": "Ich versuche, regelmäßig abzuschalten.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin Stress.",
+                "hint": "Nenne eine Strategie: « Ich … abschalten / Sport »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          },
+          {
+            "de": "Finden Sie einen guten Ausgleich?",
+            "options": [
+              {
+                "de": "Ja, Sport hilft mir sehr.",
+                "ok": true
+              },
+              {
+                "de": "Nein, ich arbeite mehr.",
+                "hint": "Antworte konstruktiv: « Ja, … hilft mir »."
+              }
+            ],
+            "bravo": "Bravo!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt den **Stress** und den Umgang damit. Schlüsselwörter sind *der Stress*, *die Belastung* (la charge), *die Überforderung* (le surmenage), *der Druck* (la pression), *die Entspannung* (la détente), *der Ausgleich* (l'équilibre).",
         "Auf C1 sprichst du über **Ursachen** und **Bewältigung**: *unter Druck stehen*, *mit Stress umgehen* (gérer le stress), *abschalten* (déconnecter), *einen Ausgleich finden*. Beachte die Nuance zwischen *gestresst* (stressé) und *angespannt* (tendu).",
@@ -184,6 +324,41 @@ window.MODULE_C11 = {
     },
     {
       id: "c1t05",
+      rp: {
+        "scene": "Über Humor",
+        "intro": "Ein Gespräch über Humor.",
+        "fin": "Prima!",
+        "tours": [
+          {
+            "de": "Worüber lachen Sie am meisten?",
+            "options": [
+              {
+                "de": "Über cleveren, feinen Humor.",
+                "ok": true
+              },
+              {
+                "de": "Ich bin Humor.",
+                "hint": "Beschreibe deinen Humor: « Über … Humor »."
+              }
+            ],
+            "bravo": "Stark!"
+          },
+          {
+            "de": "Ist Humor in jeder Kultur gleich?",
+            "options": [
+              {
+                "de": "Nein, Humor ist stark kulturgeprägt.",
+                "ok": true
+              },
+              {
+                "de": "Ja, überall gleich.",
+                "hint": "Argumentiere: « Nein, er ist kulturgeprägt »."
+              }
+            ],
+            "bravo": "Sehr gut!"
+          }
+        ]
+      },
       vocCoursDE: [
         "In diesem Thema geht es um das **Lachen** und den **Humor**. Schlüsselwörter sind *der Humor*, *der Witz* (la blague), *die Ironie*, *der Spott* (la moquerie), *zum Lachen bringen* (faire rire), *sich amüsieren*, *der Sinn für Humor*.",
         "Humor ist stark **kulturgeprägt**: Was in einem Land lustig ist, kann anderswo unverständlich sein. Nützliche Unterscheidungen: *der Witz* (blague racontée), *die Pointe* (la chute), *die Ironie* (dire le contraire de ce qu'on pense), *der Sarkasmus*.",
@@ -226,6 +401,41 @@ window.MODULE_C11 = {
     },
     {
       id: "c1t06",
+      rp: {
+        "scene": "Über Erfolg",
+        "intro": "Diskutiere über Erfolg.",
+        "fin": "Stark!",
+        "tours": [
+          {
+            "de": "Was bedeutet Erfolg für Sie?",
+            "options": [
+              {
+                "de": "Erfolg heißt für mich, meine Ziele zu erreichen.",
+                "ok": true
+              },
+              {
+                "de": "Erfolg ist Erfolg.",
+                "hint": "Definiere: « Erfolg heißt für mich … »."
+              }
+            ],
+            "bravo": "Genau!"
+          },
+          {
+            "de": "Beruht Erfolg eher auf Talent oder Disziplin?",
+            "options": [
+              {
+                "de": "Vor allem auf Disziplin und Ausdauer.",
+                "ok": true
+              },
+              {
+                "de": "Ich weiß nicht.",
+                "hint": "Beziehe Stellung: « Vor allem auf … »."
+              }
+            ],
+            "bravo": "Prima!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Dieses Thema behandelt den **Erfolg** in Sport und Beruf. Schlüsselwörter sind *der Erfolg*, *erfolgreich*, *die Leistung* (la performance), *der Ehrgeiz* (l'ambition), *ein Ziel erreichen* (atteindre un but), *sich durchsetzen* (s'imposer).",
         "Auf C1 unterscheidest du **Voraussetzungen** und **Wege** zum Erfolg: *die Begabung* (le talent), *die Disziplin*, *die Ausdauer* (la persévérance), *der Durchbruch* (la percée). Nützliche Wendungen: *Erfolg haben*, *aus eigener Kraft* (par ses propres moyens).",
@@ -269,6 +479,41 @@ window.MODULE_C11 = {
     },
     {
       id: "c1t07",
+      rp: {
+        "scene": "Über das Scheitern",
+        "intro": "Ein Gespräch über Misserfolg.",
+        "fin": "Sehr reif gesagt!",
+        "tours": [
+          {
+            "de": "Wie wichtig ist es, aus Fehlern zu lernen?",
+            "options": [
+              {
+                "de": "Sehr wichtig — Scheitern macht uns stärker.",
+                "ok": true
+              },
+              {
+                "de": "Ich scheitere nie.",
+                "hint": "Reflektiere: « Sehr wichtig, weil … »."
+              }
+            ],
+            "bravo": "Richtig!"
+          },
+          {
+            "de": "Hatten Sie schon einmal einen Rückschlag?",
+            "options": [
+              {
+                "de": "Ja, aber ich habe es einfach erneut versucht.",
+                "ok": true
+              },
+              {
+                "de": "Nein, nie.",
+                "hint": "Erzähle kurz: « Ja, aber ich … »."
+              }
+            ],
+            "bravo": "Perfekt!"
+          }
+        ]
+      },
       vocCoursDE: [
         "Im Gegensatz zum Erfolg behandelt dieses Thema das **Scheitern** und den **Misserfolg**. Schlüsselwörter sind *das Scheitern*, *der Misserfolg* (l'échec), *die Niederlage* (la défaite), *aufgeben* (abandonner), *die Enttäuschung* (la déception), *aus Fehlern lernen*.",
         "Auf C1 geht es um die **positive Seite** des Scheiterns: *die Fehlerkultur* (la culture de l'erreur), *einen Rückschlag verkraften* (encaisser un revers), *es erneut versuchen*. Nützlich ist die Wendung *scheitern an* (+ Dativ): « *Er ist an der Prüfung gescheitert* ».",
