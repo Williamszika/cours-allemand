@@ -7,6 +7,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g10", titre: "Les indicateurs de lieu", titreDE: "Ortsangaben", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Distinguer Wo / Wohin / Woher", "Indiquer une direction"],
     grammairePoints: ["Wo? Wohin? Woher?", "hier, dort, links…"],
+    exemplesPlus: [{"de":"Wo wohnst du? — In Köln.","fr":"Où habites-tu ? — À Cologne."},{"de":"Wohin gehst du? — Nach Hause.","fr":"Où vas-tu ? — À la maison."},{"de":"Woher kommst du? — Aus Spanien.","fr":"D'où viens-tu ? — D'Espagne."},{"de":"Das Kino ist gleich um die Ecke.","fr":"Le cinéma est juste au coin."},{"de":"Wir treffen uns vor dem Bahnhof.","fr":"On se retrouve devant la gare."}],
     cours: [
       "Décrire l'espace en allemand, c'est distinguer trois questions : **Wo?** (où, position), **Wohin?** (vers où, destination) et **Woher?** (d'où, provenance). À chacune correspondent des prépositions et des cas différents : c'est cette logique à trois directions qu'on consolide au niveau A2.",
       "**Wo?** (position, sans mouvement) → datif avec les prépositions mixtes : « *Ich bin **in der** Stadt* », « *Das Buch liegt **auf dem** Tisch* ». **Wohin?** (destination, mouvement) → accusatif avec ces mêmes prépositions : « *Ich gehe **in die** Stadt* ». Le même mot change de cas selon qu'il y a déplacement ou non.",
@@ -35,6 +36,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g11", titre: "La possession (génitif)", titreDE: "Der Genitiv / Besitz", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Exprimer la possession", "Reconnaître le génitif et « von + datif »"],
     grammairePoints: ["Genitiv (des/der)", "von + datif"],
+    exemplesPlus: [{"de":"Das ist das Haus meiner Eltern.","fr":"C'est la maison de mes parents."},{"de":"Wegen des Wetters bleiben wir zu Hause.","fr":"À cause du temps, nous restons à la maison."},{"de":"Annas Auto ist neu.","fr":"La voiture d'Anna est neuve."},{"de":"Trotz der Kälte gehen wir spazieren.","fr":"Malgré le froid, nous nous promenons."},{"de":"Während des Films habe ich geschlafen.","fr":"Pendant le film, j'ai dormi."}],
     cours: [
       "Le **génitif** (*Genitiv*) exprime l'**appartenance** : il répond à la question **Wessen?** (de qui ?) et correspond souvent au « de » français (« la voiture **de** mon père »). C'est le 4ᵉ cas de l'allemand, plus rare à l'oral mais indispensable à l'écrit soigné.",
       "Ses articles : masculin et neutre **des**, féminin et pluriel **der**. Particularité importante : au masculin et au neutre, le **nom prend en plus un -s (ou -es)** : *das Auto **des** Mann**es***, *das Buch **des** Kind**es***. Au féminin, rien ne s'ajoute au nom : *das Auto **der** Frau*.",
@@ -59,6 +61,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g12", titre: "Les adjectifs (déclinaison)", titreDE: "Adjektivdeklination", theme: "Grammaire", type: "grammaire", duree: 40,
     objectifs: ["Accorder l'adjectif devant un nom", "Cas simples (nominatif/accusatif)"],
     grammairePoints: ["Terminaisons -e / -en", "après der / ein"],
+    exemplesPlus: [{"de":"Ich trinke einen heißen Kaffee.","fr":"Je bois un café chaud."},{"de":"Das ist eine gute Idee.","fr":"C'est une bonne idée."},{"de":"Wir wohnen in einem kleinen Dorf.","fr":"Nous habitons dans un petit village."},{"de":"Sie trägt ein rotes Kleid.","fr":"Elle porte une robe rouge."},{"de":"Der alte Mann liest viele interessante Bücher.","fr":"Le vieil homme lit beaucoup de livres intéressants."}],
     cours: [
       "Au niveau A1, tu as vu l'adjectif **attribut** (après *sein*), toujours invariable. Place maintenant un adjectif **directement devant un nom** (épithète) : là, il prend une **terminaison**. C'est l'une des grandes difficultés de l'allemand, mais elle obéit à une logique qu'on peut apprivoiser.",
       "La terminaison dépend de **trois facteurs** : le genre du nom, le cas, et surtout **l'article qui précède**. La clé : si l'article a déjà « marqué » le cas et le genre (comme *der, die, das*), l'adjectif se contente d'une terminaison « faible », le plus souvent **-e** ou **-en**.",
@@ -83,6 +86,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g13", titre: "Verbes à particule", titreDE: "Trennbare und untrennbare Verben", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Distinguer séparables et inséparables", "Placer la particule"],
     grammairePoints: ["trennbar / untrennbar", "Préfixes"],
+    exemplesPlus: [{"de":"Ich stehe um sechs Uhr auf.","fr":"Je me lève à six heures."},{"de":"Er kauft jeden Samstag ein.","fr":"Il fait les courses chaque samedi."},{"de":"Wann kommt der Zug an?","fr":"Quand le train arrive-t-il ?"},{"de":"Ich verstehe dich gut.","fr":"Je te comprends bien."},{"de":"Sie ruft mich später an.","fr":"Elle m'appelle plus tard."}],
     cours: [
       "Beaucoup de verbes allemands sont formés d'un **verbe de base + une particule** (un préfixe) qui en modifie le sens, parfois radicalement. *kommen* (venir) donne *ankommen* (arriver), *mitkommen* (venir avec), *bekommen* (recevoir !). Manier ces particules multiplie ton vocabulaire d'un coup.",
       "La distinction capitale est entre particules **séparables** et **inséparables**. Les **séparables** sont accentuées et se **détachent** : la particule part en fin de phrase au présent et au prétérit. *aufstehen* → « *Ich stehe um 7 Uhr **auf*** ». Les plus fréquentes : *an-, auf-, aus-, ein-, mit-, vor-, zu-, ab-, nach-, zurück-, weg-*.",
@@ -107,6 +111,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g14", titre: "Perfekt ou prétérit ?", titreDE: "Perfekt oder Präteritum?", theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Choisir le bon temps du passé", "À l'oral vs à l'écrit"],
     grammairePoints: ["Perfekt (oral)", "Präteritum (écrit, sein/haben/modaux)"],
+    exemplesPlus: [{"de":"Gestern habe ich lange geschlafen.","fr":"Hier, j'ai dormi longtemps."},{"de":"Er war sehr müde.","fr":"Il était très fatigué."},{"de":"Wir haben den ganzen Tag gearbeitet.","fr":"Nous avons travaillé toute la journée."},{"de":"Ich hatte keine Zeit.","fr":"Je n'avais pas le temps."},{"de":"Plötzlich klingelte das Telefon.","fr":"Soudain, le téléphone sonna."}],
     cours: [
       "Tu connais désormais deux passés : le **Perfekt** (haben/sein + participe) et le **Präteritum** (formes en -te ou à voyelle changée). Une question revient sans cesse : **lequel utiliser ?** La réponse tient surtout au **registre** (oral ou écrit) et à **quelques verbes** particuliers.",
       "Règle n°1 : **à l'oral et dans les messages** (conversation, e-mails amicaux, SMS), on raconte le passé au **Perfekt**. « *Gestern **habe** ich einen Film **gesehen*** ». C'est le passé par défaut quand tu parles de ta vie. Si tu hésites en parlant, choisis le Perfekt : tu auras raison neuf fois sur dix.",
@@ -131,6 +136,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g15", titre: "Verbes + prépositions", titreDE: "Verben mit Präpositionen", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Connaître les verbes à préposition fixe", "Choisir le bon cas"],
     grammairePoints: ["warten auf, denken an…", "Préposition fixe"],
+    exemplesPlus: [{"de":"Ich warte auf den Bus.","fr":"J'attends le bus."},{"de":"Wir denken oft an dich.","fr":"Nous pensons souvent à toi."},{"de":"Sie interessiert sich für Kunst.","fr":"Elle s'intéresse à l'art."},{"de":"Ich freue mich auf das Wochenende.","fr":"J'attends le week-end avec impatience."},{"de":"Er hat Angst vor Hunden.","fr":"Il a peur des chiens."}],
     cours: [
       "De nombreux verbes s'accompagnent d'une **préposition fixe**, souvent **sans rapport logique** avec la préposition française. *warten **auf*** (attendre), *denken **an*** (penser à), *sich freuen **auf/über*** (se réjouir de), *sprechen **über/von*** (parler de). Ces couples verbe + préposition s'apprennent **en bloc**, comme un seul mot.",
       "Chaque préposition impose son **cas**, à mémoriser avec le verbe. *warten auf* + **accusatif** : « *Ich warte **auf den** Bus* ». *denken an* + **accusatif** : « *Ich denke **an dich*** ». *teilnehmen an* + **datif** : « *Ich nehme **an dem** Kurs teil* ». Note toujours : verbe + préposition + cas.",
@@ -155,6 +161,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g16", titre: "Les substantifs (noms)", titreDE: "Die Substantive", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Former le pluriel", "Comprendre les noms composés"],
     grammairePoints: ["Pluriels", "Komposita", "suffixes"],
+    exemplesPlus: [{"de":"Die Kinder spielen im Park.","fr":"Les enfants jouent dans le parc."},{"de":"Ich brauche eine neue Brille.","fr":"J'ai besoin de nouvelles lunettes."},{"de":"Der Apfelsaft schmeckt gut.","fr":"Le jus de pomme est bon."},{"de":"Wir kaufen drei Flaschen Wasser.","fr":"Nous achetons trois bouteilles d'eau."},{"de":"Die Häuser hier sind sehr alt.","fr":"Les maisons ici sont très vieilles."}],
     cours: [
       "En allemand, tout **nom** (substantif) s'écrit avec une **majuscule**, où qu'il soit dans la phrase : *der Tisch*, *die Freude*, *das Lernen*. C'est une règle absolue et un repère visuel précieux. Au niveau A2, on approfondit deux aspects : le **pluriel** et la **formation de noms composés**.",
       "Le **pluriel** allemand n'est pas régulier comme le -s anglais : plusieurs schémas existent, à apprendre **avec chaque mot**. Les principaux : **-e** (*der Tisch → die Tische*), souvent avec Umlaut (*der Stuhl → die Stühle*) ; **-(e)n** (*die Frau → die Frauen*) ; **-er** avec Umlaut (*das Kind → die Kinder*) ; **-s** (mots étrangers : *das Auto → die Autos*) ; parfois **aucun changement** (*der Lehrer → die Lehrer*).",
@@ -179,6 +186,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g17", titre: "Prépositions de lieu et de temps", titreDE: "Präpositionen: Ort und Zeit", theme: "Grammaire", type: "grammaire", duree: 40,
     objectifs: ["Maîtriser les prépositions mixtes", "Choisir accusatif (Wohin) ou datif (Wo)"],
     grammairePoints: ["Wechselpräpositionen", "temporelles"],
+    exemplesPlus: [{"de":"Ich gehe durch den Park.","fr":"Je traverse le parc."},{"de":"Das Geschenk ist für dich.","fr":"Le cadeau est pour toi."},{"de":"Wir fahren mit dem Zug nach Hamburg.","fr":"Nous allons à Hambourg en train."},{"de":"Nach der Arbeit treffe ich Freunde.","fr":"Après le travail, je retrouve des amis."},{"de":"Seit einem Monat lerne ich Klavier.","fr":"Depuis un mois, j'apprends le piano."}],
     cours: [
       "Cette leçon fait la **synthèse** des prépositions, en réunissant celles du **lieu** et celles du **temps**. L'enjeu, au niveau A2, est de fixer **quel cas** commande chaque préposition, car c'est de là que dépendent toutes les terminaisons d'articles et d'adjectifs.",
       "Les **prépositions toujours suivies de l'accusatif** : *durch* (à travers), *für* (pour), *gegen* (contre), *ohne* (sans), *um* (autour de / à telle heure). Mémo : *durch, ohne, gegen, für, um*. « *Ich gehe **durch den** Park* », « *ein Geschenk **für dich*** ».",

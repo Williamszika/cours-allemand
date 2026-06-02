@@ -7,6 +7,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g01", titre: "Les verbes au prétérit", titreDE: "Das Präteritum", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Former le prétérit (récit écrit)", "Connaître le prétérit des modaux"],
     grammairePoints: ["Präteritum", "konnte, musste…"],
+    exemplesPlus: [{"de":"Als Kind war ich oft krank.","fr":"Enfant, j'étais souvent malade."},{"de":"Wir hatten kein Auto.","fr":"Nous n'avions pas de voiture."},{"de":"Er ging jeden Tag zur Schule.","fr":"Il allait à l'école tous les jours."},{"de":"Ich konnte gestern nicht kommen.","fr":"Je n'ai pas pu venir hier."},{"de":"Sie sprach langsam und deutlich.","fr":"Elle parlait lentement et distinctement."}],
     cours: [
       "Le **prétérit** (*Präteritum*) est le **passé de l'écrit** et du récit : on le trouve dans les livres, les articles et les contes. À l'oral, on lui préfère le Perfekt — sauf pour quelques verbes très courants que tu emploieras tout le temps au prétérit, même en parlant : *sein*, *haben* et les verbes de modalité.",
       "Commençons par les indispensables. **sein** → *ich war, du warst, er war, wir waren, ihr wart, sie waren* (j'étais…). **haben** → *ich hatte, du hattest, er hatte, wir hatten…* (j'avais…). Ces deux-là sont à connaître par cœur absolument, car on les utilise sans cesse, à l'oral comme à l'écrit.",
@@ -31,6 +32,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g02", titre: "Le passé composé (approfondi)", titreDE: "Das Perfekt", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Former le Perfekt", "Choisir haben ou sein", "Participes irréguliers"],
     grammairePoints: ["haben/sein + participe", "Partizip II"],
+    exemplesPlus: [{"de":"Ich habe einen Film gesehen.","fr":"J'ai vu un film."},{"de":"Wir sind nach Berlin gefahren.","fr":"Nous sommes allés à Berlin."},{"de":"Hast du schon gegessen?","fr":"As-tu déjà mangé ?"},{"de":"Er hat das Fenster geöffnet.","fr":"Il a ouvert la fenêtre."},{"de":"Sie ist früh aufgestanden.","fr":"Elle s'est levée tôt."}],
     cours: [
       "Tu as déjà rencontré le **Perfekt** au niveau A1 : c'est le **passé de l'oral**, celui qu'on utilise pour raconter sa journée, écrire un message, parler de ses vacances. Il se forme avec un **auxiliaire** (*haben* ou *sein*) conjugué au présent en 2ᵉ position + le **participe passé** (*Partizip II*) rejeté tout à la fin de la phrase.",
       "Le point à approfondir, c'est la **formation du participe**. Verbes **faibles** : *ge- + radical + -t* (*machen → gemacht*, *spielen → gespielt*, *arbeiten → gearbeitet*). Verbes **forts** : souvent *ge- + radical (modifié) + -en* (*sprechen → gesprochen*, *trinken → getrunken*, *schreiben → geschrieben*). Ces participes forts s'apprennent verbe par verbe.",
@@ -55,6 +57,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g03", titre: "Le groupe de noms (déclinaison)", titreDE: "Die Nomengruppe", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Décliner l'article selon le cas", "Reconnaître nominatif / accusatif / datif"],
     grammairePoints: ["Déclinaison de l'article", "Nom./Acc./Dat."],
+    exemplesPlus: [{"de":"Ich kenne den neuen Lehrer.","fr":"Je connais le nouveau professeur."},{"de":"Das ist das Auto meines Bruders.","fr":"C'est la voiture de mon frère."},{"de":"Wir helfen den Kindern.","fr":"Nous aidons les enfants."},{"de":"Sie gibt der Frau das Buch.","fr":"Elle donne le livre à la femme."},{"de":"Der Hund des Nachbarn bellt laut.","fr":"Le chien du voisin aboie fort."}],
     cours: [
       "Au niveau A1, tu as appris les articles cas par cas. Il est temps de les voir **ensemble**, sous forme de **déclinaison** : le tableau complet des formes de l'article selon le **genre** (masculin, féminin, neutre, pluriel) et le **cas** (la fonction dans la phrase).",
       "Voici l'**article défini**. Nominatif : *der, die, das, die*. Accusatif : *den, die, das, die*. Datif : *dem, der, dem, den (+n au nom)*. Observe la logique : seul le **masculin** bouge entre nominatif et accusatif (*der → den*) ; et au **datif**, presque tout change. C'est ce tableau qu'il faut finir par connaître les yeux fermés.",
@@ -79,6 +82,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g04", titre: "La négation (approfondie)", titreDE: "Die Verneinung", theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Placer nicht correctement", "Utiliser kein, nichts, niemand, nie"],
     grammairePoints: ["nicht / kein", "nichts, niemand, nie"],
+    exemplesPlus: [{"de":"Ich habe niemanden gesehen.","fr":"Je n'ai vu personne."},{"de":"Er sagt nie die Wahrheit.","fr":"Il ne dit jamais la vérité."},{"de":"Wir haben kein Geld mehr.","fr":"Nous n'avons plus d'argent."},{"de":"Das interessiert mich gar nicht.","fr":"Ça ne m'intéresse pas du tout."},{"de":"— Hast du nichts gehört? — Doch!","fr":"— Tu n'as rien entendu ? — Si !"}],
     cours: [
       "Tu connais déjà le duo **nicht / kein**. Au niveau A2, on précise la **place exacte de nicht** et on enrichit la palette avec des mots plus expressifs : *nichts* (rien), *niemand* (personne), *nie / niemals* (jamais), *nirgendwo* (nulle part), *kein… mehr* (ne… plus) et *noch nicht* (pas encore).",
       "Rappel du choix de base : **kein** nie un nom qui aurait *ein* ou pas d'article (« *Ich habe kein Geld* ») ; **nicht** nie tout le reste — un verbe, un adjectif, un nom défini. Nuance fine : *nicht* se place **à la fin** s'il nie toute la phrase, mais **juste devant** l'élément précis qu'il vise (adjectif, complément de lieu, infinitif).",
@@ -103,6 +107,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g05", titre: "Principales et subordonnées", titreDE: "Haupt- und Nebensätze", theme: "Grammaire", type: "grammaire", duree: 40,
     objectifs: ["Distinguer principale et subordonnée", "Placer le verbe (2e position vs fin)"],
     grammairePoints: ["weil, dass, wenn, obwohl", "Ordre des mots"],
+    exemplesPlus: [{"de":"Ich glaube, dass er recht hat.","fr":"Je crois qu'il a raison."},{"de":"Wir bleiben hier, obwohl es regnet.","fr":"Nous restons ici bien qu'il pleuve."},{"de":"Wenn ich Zeit habe, helfe ich dir.","fr":"Si j'ai le temps, je t'aide."},{"de":"Sie weiß nicht, ob er kommt.","fr":"Elle ne sait pas s'il vient."},{"de":"Weil ich müde war, bin ich früh ins Bett gegangen.","fr":"Comme j'étais fatigué, je me suis couché tôt."}],
     cours: [
       "Une **phrase principale** (*Hauptsatz*) peut tenir seule ; une **subordonnée** (*Nebensatz*) en dépend et commence par une conjonction de subordination. La grande affaire de l'allemand, c'est que ces deux propositions **ne placent pas le verbe au même endroit**. Bien le comprendre débloque des phrases complexes et naturelles.",
       "Dans la **principale**, la règle d'or tient : le **verbe conjugué est en 2ᵉ position**. Dans la **subordonnée**, au contraire, le **verbe conjugué part tout à la fin** : « *Ich bleibe zu Hause, **weil** ich müde **bin*** ». Les conjonctions qui déclenchent ce rejet sont *weil, dass, wenn, ob, obwohl, als*.",
@@ -131,6 +136,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g06", titre: "Verbes avec datif et accusatif", titreDE: "Verben mit Dativ und Akkusativ", theme: "Grammaire", type: "grammaire", duree: 40,
     objectifs: ["Reconnaître les verbes à datif", "Construire « donner qqch à qqn »"],
     grammairePoints: ["helfen, danken (datif)", "geben jdm etwas"],
+    exemplesPlus: [{"de":"Ich schenke meiner Mutter Blumen.","fr":"J'offre des fleurs à ma mère."},{"de":"Er zeigt dem Touristen den Weg.","fr":"Il montre le chemin au touriste."},{"de":"Kannst du mir das Salz geben?","fr":"Peux-tu me passer le sel ?"},{"de":"Sie erklärt den Schülern die Regel.","fr":"Elle explique la règle aux élèves."},{"de":"Ich bringe dir einen Kaffee.","fr":"Je t'apporte un café."}],
     cours: [
       "Certains verbes se construisent avec **deux compléments** : une **personne au datif** (à qui ?) et une **chose à l'accusatif** (quoi ?). Ce sont les verbes de don et de communication : *geben* (donner), *schenken* (offrir), *zeigen* (montrer), *bringen* (apporter), *schicken* (envoyer), *erklären* (expliquer), *empfehlen* (recommander).",
       "Le modèle est : *sujet + verbe + datif (personne) + accusatif (chose)*. « *Ich gebe **dem Kind** (datif) **einen Apfel** (accusatif)* » (je donne une pomme à l'enfant). La personne qui reçoit est au datif, l'objet donné est à l'accusatif. Mémorise un exemple type et décline-le.",
@@ -158,6 +164,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g07", titre: "Le subjonctif II (conditionnel)", titreDE: "Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 40,
     objectifs: ["Exprimer l'irréel et le souhait", "Faire une demande polie"],
     grammairePoints: ["würde + Inf.", "wäre, hätte, könnte"],
+    exemplesPlus: [{"de":"Ich hätte gern einen Tee.","fr":"Je voudrais un thé."},{"de":"Könnten Sie mir helfen?","fr":"Pourriez-vous m'aider ?"},{"de":"Wenn ich reich wäre, würde ich reisen.","fr":"Si j'étais riche, je voyagerais."},{"de":"Du solltest mehr schlafen.","fr":"Tu devrais dormir plus."},{"de":"Das wäre wirklich schön.","fr":"Ce serait vraiment bien."}],
     cours: [
       "Le **Konjunktiv II** est le mode de l'**irréel** et de la **politesse** : il sert à exprimer ce qui n'est pas réel (« si j'étais riche… »), un souhait, un conseil ou une demande polie. Il correspond souvent au **conditionnel** français.",
       "La forme la plus courante et la plus facile : **würde + infinitif** (rejeté à la fin), exactement comme « would + verbe » en anglais. « *Ich würde gern nach Italien fahren* » (j'aimerais bien aller en Italie). Cette construction marche avec presque tous les verbes et te permet de t'exprimer tout de suite.",
@@ -182,6 +189,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g08", titre: "Les indicateurs de temps", titreDE: "Temporale Angaben", theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Situer dans le temps", "Choisir la bonne préposition / le bon cas"],
     grammairePoints: ["am, im, um, seit, vor", "jeden Tag (accusatif)"],
+    exemplesPlus: [{"de":"Jeden Tag stehe ich um sieben auf.","fr":"Chaque jour, je me lève à sept heures."},{"de":"Letzte Woche war ich krank.","fr":"La semaine dernière, j'étais malade."},{"de":"Nächstes Jahr fahren wir nach Japan.","fr":"L'année prochaine, nous allons au Japon."},{"de":"Vor drei Tagen habe ich ihn gesehen.","fr":"Il y a trois jours, je l'ai vu."},{"de":"Wir treffen uns am Abend.","fr":"Nous nous retrouvons le soir."}],
     cours: [
       "Pour situer une action dans le temps avec précision, l'allemand combine **prépositions temporelles** et **adverbes**. Au niveau A2, l'objectif est de savoir répondre clairement à la question **Wann?** (quand ?) : à quel moment, depuis quand, pour combien de temps, à quelle fréquence.",
       "Côté **prépositions** (souvent + datif) : **am** pour les jours et moments de la journée (*am Montag*, *am Abend*), **um** pour l'heure (*um 8 Uhr*), **im** pour les mois et saisons (*im Mai*, *im Sommer*), **seit** pour « depuis » (*seit einem Jahr*), **vor** pour « il y a » (*vor zwei Tagen*), **von… bis** pour une période.",
@@ -206,6 +214,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     id: "a2g09", titre: "Les cas (vue d'ensemble)", titreDE: "Die Fälle", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Comprendre à quoi sert chaque cas", "Poser la bonne question (wer/wen/wem)"],
     grammairePoints: ["Nominatif/Accusatif/Datif", "wer? wen? wem?"],
+    exemplesPlus: [{"de":"Der Lehrer erklärt den Schülern die Grammatik.","fr":"Le professeur explique la grammaire aux élèves."},{"de":"Wer hat das gesagt?","fr":"Qui a dit ça ?"},{"de":"Wen hast du eingeladen?","fr":"Qui as-tu invité ?"},{"de":"Wem gehört diese Tasche?","fr":"À qui appartient ce sac ?"},{"de":"Ich danke dir für deine Hilfe.","fr":"Je te remercie pour ton aide."}],
     cours: [
       "Le **système des cas** est le squelette de la grammaire allemande. Un « cas » indique la **fonction** d'un groupe dans la phrase, et cette fonction se marque sur l'**article** (et parfois sur le nom ou l'adjectif). Au niveau A2, on prend de la hauteur pour voir comment **nominatif, accusatif et datif** s'articulent.",
       "Le **nominatif** est le cas du **sujet** — celui qui fait l'action ou dont on parle. Question : **Wer? / Was?**. C'est aussi la forme de l'attribut après *sein, werden, bleiben* : « *Das ist **ein guter Freund*** ». C'est la forme « de base » du dictionnaire.",
