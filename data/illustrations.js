@@ -282,5 +282,11 @@ Object.assign(window.ILLUSTRATIONS, {
   "pc1-3": { kw: "training,teaching,nurse" },
   "pc1-4": { kw: "document,signature,ethics" },
   "pc1-5": { kw: "diversity,care,people" },
-  "pc1-6": { kw: "gloves,hygiene,disinfect" }
+  "pc1-6": { kw: "gloves,hygiene,disinfect" },
+  "pc2-1": { kw: "doctor,nurse,discussion" },
+  "pc2-2": { kw: "palliative,hand,comfort" },
+  "pc2-3": { kw: "team,meeting,nurses" },
+  "pc2-4": { kw: "presentation,meeting,medical" },
+  "pc2-5": { kw: "research,medical,books" },
+  "pc2-6": { kw: "assessment,elderly,care" }
 });

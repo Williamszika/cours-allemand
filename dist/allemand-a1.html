@@ -15033,7 +15033,13 @@ Object.assign(window.ILLUSTRATIONS, {
   "pc1-3": { kw: "training,teaching,nurse" },
   "pc1-4": { kw: "document,signature,ethics" },
   "pc1-5": { kw: "diversity,care,people" },
-  "pc1-6": { kw: "gloves,hygiene,disinfect" }
+  "pc1-6": { kw: "gloves,hygiene,disinfect" },
+  "pc2-1": { kw: "doctor,nurse,discussion" },
+  "pc2-2": { kw: "palliative,hand,comfort" },
+  "pc2-3": { kw: "team,meeting,nurses" },
+  "pc2-4": { kw: "presentation,meeting,medical" },
+  "pc2-5": { kw: "research,medical,books" },
+  "pc2-6": { kw: "assessment,elderly,care" }
 });
 
 </script>
@@ -16406,12 +16412,306 @@ window.PFLEGE = {
         ] } }
     ]},
     { code: "C2", titre: "Expertise et encadrement", lecons: [
-      { id: "pc2-1", dom: "kh", titreDE: "Fachgespräche mit Ärzten", titre: "Échanges spécialisés avec les médecins", desc: "Argumenter, alerter, proposer." },
-      { id: "pc2-2", dom: "grund", titreDE: "Palliativversorgung und Sterbebegleitung", titre: "Soins palliatifs et fin de vie", desc: "Accompagner la fin de vie et les proches." },
-      { id: "pc2-3", dom: "grund", titreDE: "Teamleitung und Konfliktmanagement", titre: "Encadrement et gestion des conflits", desc: "Diriger et soutenir une équipe soignante." },
-      { id: "pc2-4", dom: "grund", titreDE: "Fallbesprechung und Fachvortrag", titre: "Étude de cas et exposé", desc: "Présenter un cas, intervenir en réunion." },
-      { id: "pc2-5", dom: "grund", titreDE: "Pflegewissenschaft und Leitlinien", titre: "Sciences infirmières et recommandations", desc: "Lire et appliquer les recommandations." },
-      { id: "pc2-6", dom: "ambul", titreDE: "Begutachtung und Pflegegrade", titre: "Évaluation et niveaux de dépendance", desc: "Évaluer l'autonomie (Pflegegrade, MD)." }
+      { id: "pc2-1", dom: "kh", titreDE: "Fachgespräche mit Ärzten", titre: "Échanges spécialisés avec les médecins", desc: "Argumenter, alerter, proposer.",
+        vocCoursDE: [
+          "Als erfahrene Fachkraft führst du **Fachgespräche** mit Ärzten auf Augenhöhe. Du **schilderst** den Verlauf präzise, **äußerst** eine fundierte **Einschätzung** und schlägst Maßnahmen vor.",
+          "Bleib sachlich und **strukturiert**: erst die **Beobachtung**, dann deine **Einschätzung**, dann dein **Vorschlag**. Bei einer **Verschlechterung** alarmierst du klar und **nachdrücklich**."
+        ],
+        vocabulaire: [
+          { de: "das Fachgespräch", fr: "l'entretien spécialisé", ex: "Im Fachgespräch berichte ich strukturiert." },
+          { de: "schildern", fr: "décrire / exposer", ex: "Ich schildere Ihnen den Verlauf." },
+          { de: "die Einschätzung", fr: "l'évaluation / l'appréciation", ex: "Meine Einschätzung ist, dass sich der Zustand verschlechtert." },
+          { de: "äußern", fr: "exprimer / formuler", ex: "Ich äußere eine fachliche Einschätzung." },
+          { de: "der Vorschlag", fr: "la proposition", ex: "Mein Vorschlag wäre eine engmaschige Kontrolle." },
+          { de: "fundiert", fr: "fondé / solide", ex: "Eine fundierte Einschätzung beruht auf Fakten." },
+          { de: "nachdrücklich", fr: "avec insistance", ex: "Ich weise nachdrücklich auf das Risiko hin." },
+          { de: "die Verschlechterung", fr: "l'aggravation", ex: "Es zeigt sich eine deutliche Verschlechterung." },
+          { de: "abwägen", fr: "peser / évaluer", ex: "Wir müssen Nutzen und Risiko abwägen." },
+          { de: "veranlassen", fr: "déclencher / faire procéder à", ex: "Können Sie eine Blutkontrolle veranlassen?" }
+        ],
+        grammaire: [
+          { titre: "Le subjonctif de politesse pour proposer", titreDE: "Konjunktiv II: würde, wäre, sollte",
+            regle: "Pour proposer ou recommander à un médecin avec tact mais assurance, on utilise le Konjunktiv II : « Ich würde eine engmaschige Kontrolle vorschlagen. », « Es wäre sinnvoll, … », « Man sollte … in Betracht ziehen. »",
+            points: [ "« Ich würde eine Blutkontrolle empfehlen. »", "« Es wäre ratsam, die Dosis anzupassen. »", "« Man sollte eine Verschlechterung ausschließen. »" ],
+            exemples: [
+              { de: "Ich würde eine engmaschige Überwachung vorschlagen.", fr: "höflicher Vorschlag mit *würde*." },
+              { de: "Es wäre sinnvoll, die Werte erneut zu kontrollieren.", fr: "Empfehlung mit *wäre* + zu-Infinitiv." },
+              { de: "Man sollte ein Risiko nicht ausschließen.", fr: "vorsichtige Empfehlung mit *sollte*." }
+            ],
+            note: "Communication SBAR-mäßig : Situation → Beobachtung → Einschätzung → Vorschlag. Clair et structuré." }
+        ],
+        dialogue: { titre: "Ein Fachgespräch mit dem Arzt", lieu: "Auf der Station, telefonisch", lignes: [
+          { loc: "Tu alertes le médecin et proposes une conduite", de: "Herr Doktor, der Zustand von Frau Berg hat sich verschlechtert.", fr: "Docteur, l'état de Mme Berg s'est aggravé." },
+          { de: "Was beobachten Sie konkret?", fr: "Qu'observez-vous concrètement ?" },
+          { de: "Der Blutdruck fällt, sie ist zunehmend verwirrt.", fr: "La tension chute, elle est de plus en plus confuse." },
+          { de: "Und Ihre Einschätzung?", fr: "Et votre appréciation ?" },
+          { de: "Ich würde eine engmaschige Überwachung und eine Blutkontrolle vorschlagen.", fr: "Je proposerais une surveillance rapprochée et un contrôle sanguin." },
+          { de: "Einverstanden. Veranlassen Sie das und rufen Sie mich bei Veränderung.", fr: "D'accord. Faites le nécessaire et appelez-moi en cas de changement." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Was schlägt die Pflegekraft vor?", options: ["Nichts zu tun", "Engmaschige Überwachung und Blutkontrolle", "Die Patientin zu entlassen"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "schildern", droite: "exposer" }, { gauche: "die Einschätzung", droite: "l'appréciation" }, { gauche: "der Vorschlag", droite: "la proposition" }, { gauche: "abwägen", droite: "peser" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète le subjonctif de politesse.", texte: "Ich {0} eine Blutkontrolle vorschlagen.", accepte: [["würde"]], indice: "Konjunktiv II de werden." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la formulation la plus professionnelle.", question: "Comment recommander une mesure au médecin ?", options: ["Machen Sie endlich was!", "Es wäre sinnvoll, die Werte zu kontrollieren.", "Keine Ahnung, Sie sind der Arzt."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la recommandation dans l'ordre.", mots: ["Man", "sollte", "eine", "Verschlechterung", "ausschließen"], correct: "Man sollte eine Verschlechterung ausschließen", traduction: "On devrait exclure une aggravation." },
+          { type: "production", cat: "prod", prompt: "Alerte le médecin de façon structurée : état aggravé, tension qui chute, proposition de surveillance rapprochée.", modele: "Der Zustand hat sich verschlechtert, der Blutdruck fällt. Ich würde eine engmaschige Überwachung vorschlagen." }
+        ],
+        documentation: { task: "Note l'échange médical : aggravation de Mme Berg (TA basse, confusion) signalée au médecin, surveillance rapprochée et contrôle sanguin convenus.", modele: "Verschlechterung Frau Berg (RR niedrig, zunehmend verwirrt) an Arzt gemeldet; engmaschige Überwachung und Blutkontrolle vereinbart." },
+        rp: { scene: "Zika spielt den Arzt. Du führst ein Fachgespräch und alarmierst strukturiert.", intro: "Schildere die Beobachtung, gib deine Einschätzung und mach einen klaren Vorschlag.", fin: "Ausgezeichnet! Sachlich, strukturiert und auf Augenhöhe argumentiert.", tours: [
+          { de: "Sie wollten mich sprechen — was gibt es?", options: [ { de: "Der Zustand von Frau Berg hat sich verschlechtert, der Blutdruck fällt.", ok: true }, { de: "Eigentlich nichts Dringendes.", ok: false }, { de: "Ich habe einfach so angerufen.", ok: false } ] },
+          { de: "Wie schätzen Sie die Lage ein?", options: [ { de: "Ich halte eine engmaschige Überwachung für nötig.", ok: true }, { de: "Das müssen Sie wissen, nicht ich.", ok: false } ] },
+          { de: "Gut, was schlagen Sie vor?", options: [ { de: "Ich würde eine Blutkontrolle veranlassen und Sie bei Veränderung sofort informieren.", ok: true }, { de: "Warten wir einfach ab.", ok: false } ] }
+        ] } },
+      { id: "pc2-2", dom: "grund", titreDE: "Palliativversorgung und Sterbebegleitung", titre: "Soins palliatifs et fin de vie", desc: "Accompagner la fin de vie et les proches.",
+        vocCoursDE: [
+          "Die **Sterbebegleitung** verlangt fachliches Können und viel **Feingefühl**. Im Vordergrund stehen **Schmerzfreiheit**, **Würde** und die Nähe der Angehörigen.",
+          "Auch die **Trauer** der Familie begleitest du. Höre zu, halte Stille aus und sprich **einfühlsam**. Floskeln helfen nicht — **aufrichtige** Anteilnahme schon."
+        ],
+        vocabulaire: [
+          { de: "die Sterbebegleitung", fr: "l'accompagnement de fin de vie", ex: "Die Sterbebegleitung ist eine anspruchsvolle Aufgabe." },
+          { de: "das Feingefühl", fr: "le tact / la sensibilité", ex: "Hier braucht man viel Feingefühl." },
+          { de: "die Würde", fr: "la dignité", ex: "Wir wahren die Würde bis zuletzt." },
+          { de: "die Schmerzfreiheit", fr: "l'absence de douleur", ex: "Schmerzfreiheit hat höchste Priorität." },
+          { de: "die Trauer", fr: "le deuil / le chagrin", ex: "Wir begleiten die Familie in ihrer Trauer." },
+          { de: "die Anteilnahme", fr: "la compassion", ex: "Ich drücke mein aufrichtiges Beileid aus." },
+          { de: "einfühlsam", fr: "empathique", ex: "Sprechen Sie einfühlsam mit den Angehörigen." },
+          { de: "aufrichtig", fr: "sincère", ex: "Aufrichtige Worte sind wichtiger als Floskeln." },
+          { de: "begleiten", fr: "accompagner", ex: "Wir begleiten den Patienten und seine Familie." },
+          { de: "die Ruhe", fr: "le calme / la sérénité", ex: "Wir sorgen für eine ruhige Atmosphäre." }
+        ],
+        grammaire: [
+          { titre: "Atténuer et nuancer (langage soutenu)", titreDE: "Abtönung: vielleicht, womöglich, scheinen … zu",
+            regle: "Dans des moments délicats, on s'exprime avec prudence : « Es scheint, als ob … », « Vielleicht möchten Sie … », « Womöglich wäre es gut, … ». Le verbe scheinen + zu + infinitif exprime une impression sans affirmer.",
+            points: [ "« Sie scheint ruhig zu schlafen. »", "« Vielleicht möchten Sie einen Moment allein sein. »", "« Es ist verständlich, dass Sie traurig sind. »" ],
+            exemples: [
+              { de: "Ihr Mann scheint keine Schmerzen zu haben.", fr: "*scheinen … zu* für einen behutsamen Eindruck." },
+              { de: "Vielleicht möchten Sie sich kurz setzen.", fr: "behutsames Angebot mit *vielleicht*." },
+              { de: "Es ist völlig verständlich, dass Sie weinen.", fr: "Gefühle der Familie anerkennen." }
+            ],
+            note: "Devant la mort : la présence et l'écoute valent plus que les mots. Le silence partagé est permis." }
+        ],
+        dialogue: { titre: "Begleitung der Angehörigen", lieu: "Im Zimmer einer sterbenden Patientin", lignes: [
+          { loc: "Tu soutiens la fille d'une patiente en fin de vie", de: "Ich weiß nicht, ob ich das aushalte… meine Mutter stirbt.", fr: "Je ne sais pas si je vais le supporter… ma mère est en train de mourir." },
+          { de: "Es ist völlig verständlich, dass Sie traurig sind. Ich bin hier.", fr: "C'est tout à fait compréhensible que vous soyez triste. Je suis là." },
+          { de: "Hat sie Schmerzen?", fr: "A-t-elle des douleurs ?" },
+          { de: "Nein, sie scheint ruhig und schmerzfrei zu sein.", fr: "Non, elle semble calme et sans douleur." },
+          { de: "Darf ich ihre Hand halten?", fr: "Puis-je tenir sa main ?" },
+          { de: "Natürlich. Nehmen Sie sich alle Zeit, die Sie brauchen.", fr: "Bien sûr. Prenez tout le temps dont vous avez besoin." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Wie reagiert die Pflegekraft auf die Trauer?", options: ["Sie wechselt das Thema.", "Sie zeigt Verständnis und bietet Nähe an.", "Sie geht hinaus."], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "die Sterbebegleitung", droite: "l'accompagnement de fin de vie" }, { gauche: "die Würde", droite: "la dignité" }, { gauche: "die Trauer", droite: "le deuil" }, { gauche: "das Feingefühl", droite: "le tact" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète avec « scheinen … zu ».", texte: "Ihre Mutter {0} ruhig zu schlafen.", accepte: [["scheint"]], indice: "scheinen + zu + infinitif." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la parole la plus juste.", question: "Que dire à un proche en deuil ?", options: ["Das wird schon wieder.", "Es ist verständlich, dass Sie traurig sind. Ich bin für Sie da.", "Jeder muss mal sterben."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets l'offre délicate dans l'ordre.", mots: ["Vielleicht", "möchten", "Sie", "einen", "Moment", "allein", "sein"], correct: "Vielleicht möchten Sie einen Moment allein sein", traduction: "Peut-être souhaitez-vous rester seul un instant." },
+          { type: "production", cat: "prod", prompt: "Réconforte une fille dont la mère est en fin de vie, sans douleur ; propose ta présence.", modele: "Es ist verständlich, dass Sie traurig sind. Ihre Mutter ist ruhig und schmerzfrei, und ich bin für Sie da." }
+        ],
+        documentation: { task: "Note : patiente en fin de vie calme et sans douleur, fille présente et accompagnée, atmosphère apaisée assurée.", modele: "Patientin in der Sterbephase ruhig und schmerzfrei, Tochter anwesend und begleitet, für ruhige Atmosphäre gesorgt." },
+        rp: { scene: "Zika spielt die Tochter einer sterbenden Patientin. Du begleitest sie einfühlsam.", intro: "Zeig Anteilnahme, halte auch Stille aus, biete deine Nähe und Hilfe an.", fin: "Sehr gut! Einfühlsam, würdevoll und aufrichtig begleitet — das ist hohe Pflegekunst.", tours: [
+          { de: "Ich habe solche Angst, sie zu verlieren.", options: [ { de: "Das ist verständlich. Ich bin hier, Sie sind nicht allein.", ok: true }, { de: "Reißen Sie sich zusammen.", ok: false }, { de: "Da kann man nichts machen.", ok: false } ] },
+          { de: "Leidet sie? Das kann ich nicht ertragen.", options: [ { de: "Sie scheint ruhig und schmerzfrei zu sein. Wir achten genau darauf.", ok: true }, { de: "Das weiß ich nicht.", ok: false } ] },
+          { de: "Darf ich einfach bei ihr bleiben?", options: [ { de: "Natürlich. Nehmen Sie sich alle Zeit, die Sie brauchen.", ok: true }, { de: "Die Besuchszeit ist gleich vorbei.", ok: false } ] }
+        ] } },
+      { id: "pc2-3", dom: "grund", titreDE: "Teamleitung und Konfliktmanagement", titre: "Encadrement et gestion des conflits", desc: "Diriger et soutenir une équipe soignante.",
+        vocCoursDE: [
+          "Als **Teamleitung** koordinierst du den **Dienstplan**, **delegierst** Aufgaben und sorgst für ein gutes Klima. **Konflikte** gehören dazu — wichtig ist, sie früh und sachlich zu lösen.",
+          "Höre beide Seiten, bleib **neutral** und suche eine **Lösung**, mit der alle leben können. Wertschätzung und klare Absprachen **beugen** vielen Konflikten **vor**."
+        ],
+        vocabulaire: [
+          { de: "die Teamleitung", fr: "la direction d'équipe", ex: "Sie übernimmt die Teamleitung." },
+          { de: "der Dienstplan", fr: "le planning de service", ex: "Der Dienstplan ist gerecht verteilt." },
+          { de: "delegieren", fr: "déléguer", ex: "Ich delegiere die Aufgabe an eine Kollegin." },
+          { de: "der Konflikt", fr: "le conflit", ex: "Wir lösen den Konflikt im Gespräch." },
+          { de: "neutral", fr: "neutre / impartial", ex: "Als Leitung bleibe ich neutral." },
+          { de: "die Lösung", fr: "la solution", ex: "Wir suchen gemeinsam eine Lösung." },
+          { de: "vermitteln", fr: "arbitrer / faire le médiateur", ex: "Ich vermittle zwischen den Kolleginnen." },
+          { de: "die Wertschätzung", fr: "la reconnaissance / l'estime", ex: "Wertschätzung motiviert das Team." },
+          { de: "die Absprache", fr: "l'accord / la concertation", ex: "Wir treffen klare Absprachen." },
+          { de: "ansprechen", fr: "aborder (un sujet)", ex: "Ich spreche das Problem direkt an." }
+        ],
+        grammaire: [
+          { titre: "Diriger avec diplomatie (Ich-Botschaften et nominalisation)", titreDE: "Sachlich führen: mir ist wichtig, dass…",
+            regle: "Pour mener un entretien de conflit, on reste factuel : « Mir ist wichtig, dass wir respektvoll miteinander umgehen. » On décrit le comportement, pas la personne, et on propose : « Lassen Sie uns gemeinsam eine Lösung finden. »",
+            points: [ "« Mir ist wichtig, dass jeder gehört wird. »", "« Ich habe beobachtet, dass die Übergaben oft zu spät sind. »", "« Lassen Sie uns eine Absprache treffen. »" ],
+            exemples: [
+              { de: "Mir ist wichtig, dass wir fair zusammenarbeiten.", fr: "klare Haltung als Leitung." },
+              { de: "Ich habe beobachtet, dass es bei der Übergabe hakt.", fr: "Verhalten statt Person beschreiben." },
+              { de: "Lassen Sie uns gemeinsam eine Lösung finden.", fr: "lösungsorientiert führen." }
+            ],
+            note: "Manager un conflit : on critique un comportement précis, jamais la personne ; on cherche une solution commune." }
+        ],
+        dialogue: { titre: "Ein Konflikt im Team", lieu: "Im Büro der Stationsleitung", lignes: [
+          { loc: "Tu médies entre deux collègues", de: "Ich kann mit ihr einfach nicht mehr arbeiten!", fr: "Je ne peux tout simplement plus travailler avec elle !" },
+          { de: "Ich höre Ihnen zu. Was genau ist passiert?", fr: "Je vous écoute. Que s'est-il passé exactement ?" },
+          { de: "Die Übergabe war wieder unvollständig.", fr: "La transmission était de nouveau incomplète." },
+          { de: "Verstehe. Mir ist wichtig, dass wir das sachlich klären.", fr: "Je comprends. Il m'importe qu'on règle ça de façon factuelle." },
+          { de: "Und wie soll das gehen?", fr: "Et comment faire ?" },
+          { de: "Lassen Sie uns zu dritt eine klare Absprache treffen.", fr: "Réglons cela à trois avec un accord clair." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Wie reagiert die Leitung auf den Konflikt?", options: ["Sie gibt einer Seite recht.", "Sie hört zu und sucht eine sachliche Lösung.", "Sie ignoriert das Problem."], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "der Dienstplan", droite: "le planning" }, { gauche: "delegieren", droite: "déléguer" }, { gauche: "vermitteln", droite: "arbitrer" }, { gauche: "die Wertschätzung", droite: "la reconnaissance" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète le message en « je » de direction.", texte: "Mir ist wichtig, {0} wir respektvoll zusammenarbeiten.", accepte: [["dass"]], indice: "subordonnée → verbe à la fin." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la formulation managériale.", question: "Comment aborder un problème d'équipe ?", options: ["Sie sind unzuverlässig!", "Ich habe beobachtet, dass die Übergaben oft zu spät sind.", "Das ist mir egal."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la proposition dans l'ordre.", mots: ["Lassen", "Sie", "uns", "eine", "Lösung", "finden"], correct: "Lassen Sie uns eine Lösung finden", traduction: "Trouvons une solution ensemble." },
+          { type: "production", cat: "prod", prompt: "En tant que cheffe, aborde un retard récurrent des transmissions de façon factuelle et propose une solution.", modele: "Ich habe beobachtet, dass die Übergaben oft zu spät sind. Lassen Sie uns gemeinsam eine Absprache treffen." }
+        ],
+        documentation: { task: "Note l'entretien : conflit autour de transmissions incomplètes, entretien à trois mené, accord clair sur le déroulement des relèves.", modele: "Konfliktgespräch wegen unvollständiger Übergaben geführt (zu dritt); klare Absprache zum Übergabeablauf getroffen." },
+        rp: { scene: "Zika spielt eine Kollegin, die sich über eine andere beschwert. Du leitest das Team und vermittelst.", intro: "Hör zu, bleib neutral, beschreibe Verhalten statt Person und steuere auf eine Lösung zu.", fin: "Sehr gut! Zugehört, neutral geblieben und lösungsorientiert geführt.", tours: [
+          { de: "Mit der neuen Kollegin klappt gar nichts, das nervt total!", options: [ { de: "Ich höre Ihnen zu. Können Sie mir ein konkretes Beispiel nennen?", ok: true }, { de: "Dann arbeiten Sie eben nicht mit ihr.", ok: false }, { de: "Stellen Sie sich nicht so an.", ok: false } ] },
+          { de: "Die Übergabe ist immer unvollständig!", options: [ { de: "Verstanden. Mir ist wichtig, dass wir das sachlich klären.", ok: true }, { de: "Dann ist sie eben unfähig.", ok: false } ] },
+          { de: "Und was machen wir jetzt?", options: [ { de: "Lassen Sie uns zu dritt eine klare Absprache treffen.", ok: true }, { de: "Nichts, regeln Sie das selbst.", ok: false } ] }
+        ] } },
+      { id: "pc2-4", dom: "grund", titreDE: "Fallbesprechung und Fachvortrag", titre: "Étude de cas et exposé", desc: "Présenter un cas, intervenir en réunion.",
+        vocCoursDE: [
+          "In der **Fallbesprechung** stellst du einen Patienten strukturiert vor: **Anamnese**, aktueller **Befund**, **Pflegeproblem**, Ziel und Maßnahmen. So entsteht ein gemeinsames Vorgehen.",
+          "Bei einem kurzen **Fachvortrag** **gliederst** du klar: Einleitung, Hauptteil, **Fazit**. Sprich frei, **fasse** am Ende das Wichtigste **zusammen** und lade zu Fragen ein."
+        ],
+        vocabulaire: [
+          { de: "die Fallbesprechung", fr: "la réunion d'étude de cas", ex: "In der Fallbesprechung stelle ich den Fall vor." },
+          { de: "der Fachvortrag", fr: "l'exposé spécialisé", ex: "Sie hält einen Fachvortrag über Wundpflege." },
+          { de: "der Befund", fr: "le constat / les résultats", ex: "Der aktuelle Befund ist unauffällig." },
+          { de: "gliedern", fr: "structurer / articuler", ex: "Ich gliedere den Vortrag in drei Teile." },
+          { de: "das Fazit", fr: "la conclusion / le bilan", ex: "Mein Fazit ist eindeutig." },
+          { de: "zusammenfassen", fr: "résumer", ex: "Ich fasse die wichtigsten Punkte zusammen." },
+          { de: "darstellen", fr: "présenter / exposer", ex: "Ich stelle den Verlauf übersichtlich dar." },
+          { de: "die Empfehlung", fr: "la recommandation", ex: "Meine Empfehlung lautet, die Therapie fortzusetzen." },
+          { de: "nachvollziehbar", fr: "clair / logique", ex: "Die Argumentation ist nachvollziehbar." },
+          { de: "die Schlussfolgerung", fr: "la conclusion (raisonnée)", ex: "Daraus ziehe ich folgende Schlussfolgerung." }
+        ],
+        grammaire: [
+          { titre: "Structurer un exposé (connecteurs soutenus)", titreDE: "Vortrag gliedern: zunächst, des Weiteren, abschließend",
+            regle: "Pour un exposé clair, on enchaîne avec des connecteurs de registre soutenu : zunächst (tout d'abord), des Weiteren / außerdem (de plus), schließlich / abschließend (enfin). Après ces mots en tête, inversion (verbe en 2ᵉ position).",
+            points: [ "« Zunächst stelle ich den Patienten vor. »", "« Des Weiteren beschreibe ich den Verlauf. »", "« Abschließend gebe ich eine Empfehlung. »" ],
+            exemples: [
+              { de: "Zunächst möchte ich den Fall kurz darstellen.", fr: "Einleitung mit *zunächst*." },
+              { de: "Des Weiteren ist die Schmerzsituation zu beachten.", fr: "Ergänzung mit *des Weiteren*." },
+              { de: "Abschließend empfehle ich eine engmaschige Kontrolle.", fr: "Fazit mit *abschließend*." }
+            ],
+            note: "Un bon exposé pro : annonce le plan, va à l'essentiel, conclut par une recommandation claire." }
+        ],
+        dialogue: { titre: "Eine Fallbesprechung", lieu: "Im Besprechungsraum, vor dem Team", lignes: [
+          { loc: "Tu présentes un cas à l'équipe", de: "Zunächst stelle ich Frau Roth vor, 78 Jahre, nach Schlaganfall.", fr: "Tout d'abord, je présente Mme Roth, 78 ans, après un AVC." },
+          { de: "Wie ist der aktuelle Befund?", fr: "Quel est le constat actuel ?" },
+          { de: "Die rechte Seite ist gelähmt, die Sprache ist eingeschränkt.", fr: "Le côté droit est paralysé, la parole est limitée." },
+          { de: "Und das Hauptproblem aus pflegerischer Sicht?", fr: "Et le problème principal du point de vue des soins ?" },
+          { de: "Die Mobilität. Des Weiteren besteht Sturzgefahr.", fr: "La mobilité. De plus, il y a un risque de chute." },
+          { de: "Abschließend empfehle ich tägliche Mobilisation mit der Physiotherapie.", fr: "Enfin, je recommande une mobilisation quotidienne avec la kiné." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Was empfiehlt die Pflegekraft abschließend?", options: ["Bettruhe", "Tägliche Mobilisation mit Physiotherapie", "Entlassung"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "die Fallbesprechung", droite: "l'étude de cas" }, { gauche: "der Befund", droite: "le constat" }, { gauche: "das Fazit", droite: "la conclusion" }, { gauche: "die Empfehlung", droite: "la recommandation" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète le connecteur d'introduction.", texte: "{0} stelle ich den Patienten kurz vor.", accepte: [["Zunächst"]], indice: "« tout d'abord »." },
+          { type: "qcm", cat: "appro", consigne: "Choisis le connecteur de conclusion.", question: "Comment introduire la conclusion d'un exposé ?", options: ["Zunächst", "Abschließend", "Vielleicht"], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase de présentation dans l'ordre.", mots: ["Des", "Weiteren", "beschreibe", "ich", "den", "Verlauf"], correct: "Des Weiteren beschreibe ich den Verlauf", traduction: "De plus, je décris l'évolution." },
+          { type: "production", cat: "prod", prompt: "Présente brièvement un cas en 3 temps : d'abord la patiente, ensuite le problème, enfin ta recommandation.", modele: "Zunächst stelle ich die Patientin vor. Des Weiteren beschreibe ich das Pflegeproblem. Abschließend gebe ich meine Empfehlung." }
+        ],
+        documentation: { task: "Rédige le compte-rendu de la réunion : cas de Mme Roth (post-AVC) présenté, problème de mobilité et risque de chute, mobilisation quotidienne décidée.", modele: "Fallbesprechung Frau Roth (Z. n. Schlaganfall): Mobilitätsproblem und Sturzgefahr dargestellt; tägliche Mobilisation mit Physiotherapie beschlossen." },
+        rp: { scene: "Zika spielt eine Kollegin in der Fallbesprechung und stellt Fragen. Du präsentierst den Fall strukturiert.", intro: "Gliedere klar: Vorstellung, Befund, Problem, Empfehlung.", fin: "Ausgezeichnet! Klar gegliedert, fachlich präzise und mit einer konkreten Empfehlung.", tours: [
+          { de: "Du wolltest einen Fall vorstellen — leg los.", options: [ { de: "Zunächst stelle ich Frau Roth vor, 78, nach einem Schlaganfall.", ok: true }, { de: "Ähm, eigentlich weiß ich nicht, wo ich anfangen soll.", ok: false }, { de: "Lies einfach selbst die Akte.", ok: false } ] },
+          { de: "Was ist das pflegerische Hauptproblem?", options: [ { de: "Die eingeschränkte Mobilität, des Weiteren besteht Sturzgefahr.", ok: true }, { de: "Schwer zu sagen, alles irgendwie.", ok: false } ] },
+          { de: "Und deine Empfehlung?", options: [ { de: "Abschließend empfehle ich tägliche Mobilisation mit der Physiotherapie.", ok: true }, { de: "Macht einfach, was ihr wollt.", ok: false } ] }
+        ] } },
+      { id: "pc2-5", dom: "grund", titreDE: "Pflegewissenschaft und Leitlinien", titre: "Sciences infirmières et recommandations", desc: "Lire et appliquer les recommandations.",
+        vocCoursDE: [
+          "Moderne Pflege ist **evidenzbasiert**: Sie stützt sich auf **Studien** und **Leitlinien** (zum Beispiel **Expertenstandards**), nicht nur auf Gewohnheit.",
+          "Du liest eine **Empfehlung**, **beurteilst** ihre **Aussagekraft** und **setzt** sie im Alltag **um**. So verbessert die **Pflegewissenschaft** ständig die Qualität."
+        ],
+        vocabulaire: [
+          { de: "die Pflegewissenschaft", fr: "les sciences infirmières", ex: "Die Pflegewissenschaft liefert neue Erkenntnisse." },
+          { de: "evidenzbasiert", fr: "fondé sur les preuves", ex: "Wir arbeiten evidenzbasiert." },
+          { de: "die Leitlinie", fr: "la recommandation / directive", ex: "Die Leitlinie empfiehlt regelmäßiges Lagern." },
+          { de: "der Expertenstandard", fr: "le standard d'expert", ex: "Der Expertenstandard zur Dekubitusprophylaxe ist klar." },
+          { de: "die Studie", fr: "l'étude", ex: "Eine aktuelle Studie zeigt das deutlich." },
+          { de: "die Erkenntnis", fr: "le résultat / la découverte", ex: "Neue Erkenntnisse ändern die Praxis." },
+          { de: "beurteilen", fr: "évaluer / juger", ex: "Ich beurteile die Aussagekraft der Studie." },
+          { de: "die Aussagekraft", fr: "la pertinence / valeur probante", ex: "Die Aussagekraft ist hoch." },
+          { de: "umsetzen", fr: "appliquer", ex: "Wir setzen die Empfehlung in die Praxis um." },
+          { de: "der Beleg", fr: "la preuve", ex: "Es gibt klare Belege für diese Methode." }
+        ],
+        grammaire: [
+          { titre: "Citer une source et nuancer (langue académique)", titreDE: "laut, zufolge, demnach",
+            regle: "Pour s'appuyer sur une source de façon soutenue : laut der Leitlinie… (selon la recommandation), der Studie zufolge… (d'après l'étude), demnach… (par conséquent). « laut » et « zufolge » introduisent la source ; « demnach » introduit la conséquence.",
+            points: [ "« Laut dem Expertenstandard sollte man alle zwei Stunden lagern. »", "« Der Studie zufolge sinkt das Risiko deutlich. »", "« Demnach passen wir unsere Praxis an. »" ],
+            exemples: [
+              { de: "Laut der aktuellen Leitlinie ist diese Methode wirksam.", fr: "Quelle mit *laut* + Dativ." },
+              { de: "Der Studie zufolge sinkt die Infektionsrate.", fr: "Quelle mit *zufolge* (nachgestellt)." },
+              { de: "Demnach sollten wir unser Vorgehen anpassen.", fr: "Schlussfolgerung mit *demnach*." }
+            ],
+            note: "Evidenzbasiert arbeiten = ne pas dire « on a toujours fait comme ça », mais « selon les données actuelles… »." }
+        ],
+        dialogue: { titre: "Eine neue Leitlinie", lieu: "In der Teambesprechung", lignes: [
+          { loc: "Tu présentes une recommandation à une collègue sceptique", de: "Warum sollen wir das jetzt anders machen?", fr: "Pourquoi devrions-nous faire ça autrement maintenant ?" },
+          { de: "Laut dem neuen Expertenstandard senkt das die Dekubitusrate.", fr: "Selon le nouveau standard d'expert, ça réduit le taux d'escarres." },
+          { de: "Gibt es dafür wirklich Belege?", fr: "Y a-t-il vraiment des preuves pour ça ?" },
+          { de: "Ja, mehrere Studien zeigen das übereinstimmend.", fr: "Oui, plusieurs études le montrent de façon concordante." },
+          { de: "Und wie setzen wir das konkret um?", fr: "Et comment l'appliquons-nous concrètement ?" },
+          { de: "Wir lagern künftig alle zwei Stunden und dokumentieren es.", fr: "À l'avenir nous repositionnons toutes les deux heures et nous le documentons." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Worauf stützt sich die neue Praxis?", options: ["Auf eine Gewohnheit", "Auf Expertenstandard und Studien", "Auf eine Vermutung"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "evidenzbasiert", droite: "fondé sur les preuves" }, { gauche: "die Leitlinie", droite: "la recommandation" }, { gauche: "die Studie", droite: "l'étude" }, { gauche: "der Beleg", droite: "la preuve" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète avec la source (+ datif).", texte: "{0} der Leitlinie sollte man alle zwei Stunden lagern.", accepte: [["Laut"]], indice: "« selon » + datif." },
+          { type: "qcm", cat: "appro", consigne: "Choisis l'argument evidenzbasiert.", question: "Comment justifier un changement de pratique ?", options: ["Das haben wir immer so gemacht.", "Laut aktuellen Studien ist diese Methode wirksamer.", "Mir gefällt es so besser."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase dans l'ordre.", mots: ["Der", "Studie", "zufolge", "sinkt", "das", "Risiko"], correct: "Der Studie zufolge sinkt das Risiko", traduction: "D'après l'étude, le risque diminue." },
+          { type: "production", cat: "prod", prompt: "Justifie une nouvelle pratique en citant la recommandation et en proposant l'application.", modele: "Laut dem Expertenstandard sollten wir alle zwei Stunden lagern. Demnach passen wir unser Vorgehen an." }
+        ],
+        documentation: { task: "Note la décision d'équipe : adoption du standard d'expert sur la prévention des escarres, repositionnement toutes les 2h, mise en œuvre documentée.", modele: "Team beschließt Umsetzung des Expertenstandards zur Dekubitusprophylaxe: Lagerung alle 2 Stunden, Umsetzung dokumentiert." },
+        rp: { scene: "Zika spielt eine skeptische Kollegin. Du begründest eine neue, evidenzbasierte Praxis.", intro: "Stütze dich auf Leitlinie und Studien, bleib sachlich und erkläre die Umsetzung.", fin: "Ausgezeichnet! Sachlich, evidenzbasiert und überzeugend argumentiert.", tours: [
+          { de: "Wir haben das doch immer so gemacht. Warum ändern?", options: [ { de: "Laut dem aktuellen Expertenstandard senkt das neue Vorgehen das Risiko.", ok: true }, { de: "Weil ich es so will.", ok: false }, { de: "Keine Ahnung, von oben angeordnet.", ok: false } ] },
+          { de: "Und das ist wirklich belegt?", options: [ { de: "Ja, mehrere Studien zeigen das übereinstimmend.", ok: true }, { de: "Glaub es einfach.", ok: false } ] },
+          { de: "Gut, wie genau setzen wir das um?", options: [ { de: "Wir lagern künftig alle zwei Stunden und dokumentieren es.", ok: true }, { de: "Das überlegen wir uns irgendwann.", ok: false } ] }
+        ] } },
+      { id: "pc2-6", dom: "ambul", titreDE: "Begutachtung und Pflegegrade", titre: "Évaluation et niveaux de dépendance", desc: "Évaluer l'autonomie (Pflegegrade, MD).",
+        vocCoursDE: [
+          "Der **Pflegegrad** (von 1 bis 5) beschreibt, wie **selbstständig** ein Mensch noch ist. Bei der **Begutachtung** prüft der Medizinische Dienst die **Selbstständigkeit** in Bereichen wie Mobilität, Körperpflege und Ernährung.",
+          "Deine genaue **Pflegedokumentation** ist dabei entscheidend: Sie belegt den **Hilfebedarf** objektiv. Den Angehörigen erklärst du das Verfahren **verständlich**."
+        ],
+        vocabulaire: [
+          { de: "der Pflegegrad", fr: "le niveau de dépendance", ex: "Frau Adam hat Pflegegrad 3." },
+          { de: "die Begutachtung", fr: "l'évaluation / expertise", ex: "Die Begutachtung findet nächste Woche statt." },
+          { de: "die Selbstständigkeit", fr: "l'autonomie", ex: "Wir fördern die Selbstständigkeit." },
+          { de: "der Hilfebedarf", fr: "le besoin d'aide", ex: "Der Hilfebedarf ist hoch." },
+          { de: "der Medizinische Dienst", fr: "le service médical (MD)", ex: "Der Medizinische Dienst kommt zur Begutachtung." },
+          { de: "beantragen", fr: "demander / faire une demande", ex: "Die Familie beantragt einen höheren Pflegegrad." },
+          { de: "einstufen", fr: "classer / attribuer un niveau", ex: "Der Gutachter stuft den Pflegegrad ein." },
+          { de: "der Antrag", fr: "la demande / le dossier", ex: "Der Antrag liegt schon vor." },
+          { de: "die Einschränkung", fr: "la limitation", ex: "Die Einschränkungen nehmen zu." },
+          { de: "verständlich", fr: "compréhensible", ex: "Ich erkläre das Verfahren verständlich." }
+        ],
+        grammaire: [
+          { titre: "Le style nominal (registre administratif)", titreDE: "Nominalstil: bei der Begutachtung, zur Einstufung",
+            regle: "La langue administrative préfère les noms aux verbes : « Bei der Begutachtung wird der Hilfebedarf festgestellt. » (= Quand on évalue, on établit…). On utilise souvent des groupes nominaux avec préposition : zur Einstufung, nach der Antragstellung.",
+            points: [ "« Bei der Begutachtung … » (= wenn begutachtet wird)", "« Zur Einstufung des Pflegegrads … »", "« Nach Eingang des Antrags … »" ],
+            exemples: [
+              { de: "Bei der Begutachtung wird die Selbstständigkeit geprüft.", fr: "Nominalstil mit *bei der*." },
+              { de: "Zur Einstufung ist eine genaue Dokumentation nötig.", fr: "Zweck im Nominalstil mit *zur*." },
+              { de: "Nach der Antragstellung folgt ein Termin.", fr: "zeitlicher Ablauf im Nominalstil." }
+            ],
+            note: "Le style nominal sonne « administratif » : utile pour les rapports et les demandes (Anträge), mais reste simple à l'oral avec les familles." }
+        ],
+        dialogue: { titre: "Erklärung des Pflegegrads", lieu: "Hausbesuch, Gespräch mit der Tochter", lignes: [
+          { loc: "Tu expliques l'évaluation à la fille d'une patiente", de: "Was bedeutet dieser Pflegegrad genau?", fr: "Que signifie exactement ce niveau de dépendance ?" },
+          { de: "Er zeigt, wie viel Hilfe Ihre Mutter im Alltag braucht.", fr: "Il indique combien d'aide votre mère a besoin au quotidien." },
+          { de: "Und wer entscheidet darüber?", fr: "Et qui en décide ?" },
+          { de: "Der Medizinische Dienst — bei der Begutachtung zu Hause.", fr: "Le service médical — lors de l'évaluation à domicile." },
+          { de: "Können wir einen höheren Grad beantragen?", fr: "Pouvons-nous demander un niveau plus élevé ?" },
+          { de: "Ja. Unsere Dokumentation belegt den steigenden Hilfebedarf.", fr: "Oui. Notre documentation prouve le besoin d'aide croissant." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Wer entscheidet über den Pflegegrad?", options: ["Die Pflegekraft allein", "Der Medizinische Dienst bei der Begutachtung", "Die Tochter"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "der Pflegegrad", droite: "le niveau de dépendance" }, { gauche: "die Begutachtung", droite: "l'évaluation" }, { gauche: "der Hilfebedarf", droite: "le besoin d'aide" }, { gauche: "einstufen", droite: "classer" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète le style nominal.", texte: "{0} der Begutachtung wird der Hilfebedarf festgestellt.", accepte: [["Bei"]], indice: "« lors de » + datif." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la phrase administrative correcte.", question: "Quelle formulation est juste (style nominal) ?", options: ["Zur Einstufung des Pflegegrads ist eine Dokumentation nötig.", "Zur einstufen ist eine Dokumentation nötig.", "Bei begutachten wird geprüft."], correct: 0 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase dans l'ordre.", mots: ["Nach", "der", "Antragstellung", "folgt", "ein", "Termin"], correct: "Nach der Antragstellung folgt ein Termin", traduction: "Après le dépôt de la demande, un rendez-vous suit." },
+          { type: "production", cat: "prod", prompt: "Explique simplement à une proche ce qu'est l'évaluation du Pflegegrad et qui la réalise.", modele: "Bei der Begutachtung prüft der Medizinische Dienst zu Hause, wie viel Hilfe Ihre Mutter braucht." }
+        ],
+        documentation: { task: "Note en vue de l'évaluation : besoin d'aide croissant (mobilité, toilette), demande d'un niveau supérieur soutenue par la documentation, famille informée.", modele: "Hinblick auf Begutachtung: steigender Hilfebedarf (Mobilität, Körperpflege); Höherstufung durch Doku belegt; Angehörige informiert." },
+        rp: { scene: "Zika spielt die Tochter einer pflegebedürftigen Frau. Du erklärst die Begutachtung und den Pflegegrad.", intro: "Erkläre verständlich, was der Pflegegrad ist, wer entscheidet und wie die Doku hilft.", fin: "Ausgezeichnet! Verständlich erklärt, fachlich korrekt — ein würdiger Abschluss des Parcours!", tours: [
+          { de: "Ich verstehe dieses ganze Pflegegrad-System nicht.", options: [ { de: "Das erkläre ich Ihnen gern. Der Pflegegrad zeigt, wie viel Hilfe Ihre Mutter braucht.", ok: true }, { de: "Das ist zu kompliziert für Sie.", ok: false }, { de: "Lesen Sie das selbst nach.", ok: false } ] },
+          { de: "Und wer legt den Grad fest?", options: [ { de: "Der Medizinische Dienst, bei einer Begutachtung zu Hause.", ok: true }, { de: "Das mache ich einfach.", ok: false } ] },
+          { de: "Meine Mutter braucht inzwischen viel mehr Hilfe.", options: [ { de: "Dann beantragen wir eine Höherstufung — unsere Dokumentation belegt den Bedarf.", ok: true }, { de: "Da kann man leider nichts machen.", ok: false } ] }
+        ] } }
     ]}
   ]
 };
