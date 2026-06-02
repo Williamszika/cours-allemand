@@ -322,7 +322,7 @@ window.I18N = (function () {
   try { cache = JSON.parse(localStorage.getItem("i18n-tcache") || "{}") || {}; } catch (e) {}
   // File d'attente : on limite les requêtes simultanées pour éviter les 429
   // (limites de débit des services de traduction gratuits).
-  var Q = [], active = 0, MAXC = 2;
+  var Q = [], active = 0, MAXC = 5;
   function enqueue(fn) {
     return new Promise(function (res) { Q.push({ fn: fn, res: res }); pump(); });
   }
