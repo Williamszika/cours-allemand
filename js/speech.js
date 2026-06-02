@@ -52,22 +52,21 @@ window.Speech = (function () {
     window.speechSynthesis.onvoiceschanged = pickGermanVoice;
   }
 
-  function speak(text, opts) {
-    opts = opts || {};
-    if (!("speechSynthesis" in window)) {
-      console.warn("Synthèse vocale non supportée par ce navigateur.");
-      return false;
-    }
-    // Nettoie le texte (enlève les emojis et parenthèses de traduction)
-    const clean = String(text)
-      .replace(/\([^)]*\)/g, "")
-      .replace(/[🔊✓✗→—]/g, "")
-      .trim();
-    if (!clean) return false;
-
+  // ---- Voix naturelles en ligne (ElevenLabs via /api/tts) ----
+  let cloudAudio = null;
+  function cloudEnabled() { try { return localStorage.getItem("deutsch-tts-cloud") === "1"; } catch (e) { return false; } }
+  function setCloud(on) { try { localStorage.setItem("deutsch-tts-cloud", on ? "1" : "0"); } catch (e) {} }
+  function stopSpeak() {
+    try { if ("speechSynthesis" in window) window.speechSynthesis.cancel(); } catch (e) {}
+    if (cloudAudio) { try { cloudAudio.pause(); } catch (e) {} cloudAudio = null; }
+  }
+  function cleanText(text) {
+    return String(text).replace(/\([^)]*\)/g, "").replace(/[🔊✓✗→—]/g, "").trim();
+  }
+  function deviceSpeak(clean, opts) {
+    if (!("speechSynthesis" in window)) return false;
     window.speechSynthesis.cancel();
     if (!voicesLoaded) pickGermanVoice();
-
     const u = new SpeechSynthesisUtterance(clean);
     u.lang = "de-DE";
     if (germanVoice) u.voice = germanVoice;
@@ -77,6 +76,26 @@ window.Speech = (function () {
     if (opts.onerror) u.onerror = opts.onerror;
     window.speechSynthesis.speak(u);
     return true;
+  }
+  function cloudSpeak(clean, opts) {
+    if (cloudAudio) { try { cloudAudio.pause(); } catch (e) {} cloudAudio = null; }
+    let settled = false;
+    const a = new Audio(); cloudAudio = a;
+    try { a.preservesPitch = a.mozPreservesPitch = a.webkitPreservesPitch = true; } catch (e) {}
+    a.playbackRate = opts.rate || 1;
+    function fallback() { if (settled) return; settled = true; if (cloudAudio === a) cloudAudio = null; deviceSpeak(clean, opts); } // repli voix de l'appareil
+    a.onended = function () { if (settled) return; settled = true; if (cloudAudio === a) cloudAudio = null; if (opts.onend) opts.onend(); };
+    a.onerror = fallback;
+    a.src = "/api/tts?text=" + encodeURIComponent(clean) + (opts.voice ? "&v=" + encodeURIComponent(opts.voice) : "");
+    const pr = a.play(); if (pr && pr.catch) pr.catch(fallback);
+    return true;
+  }
+  function speak(text, opts) {
+    opts = opts || {};
+    const clean = cleanText(text);
+    if (!clean) return false;
+    if (cloudEnabled() && navigator.onLine) return cloudSpeak(clean, opts);
+    return deviceSpeak(clean, opts);
   }
 
   function isSupported() {
@@ -136,5 +155,5 @@ window.Speech = (function () {
     }
   }
 
-  return { speak, isSupported, hasGermanVoice, voice, voices, setVoice, recognitionSupported, recognize };
+  return { speak, isSupported, hasGermanVoice, voice, voices, setVoice, cloudEnabled, setCloud, stopSpeak, recognitionSupported, recognize };
 })();

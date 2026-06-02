@@ -1035,20 +1035,13 @@
   function playSequence(list) {
     if (!window.Speech || !window.Speech.isSupported()) return;
     let i = 0;
-    function next() {
+    (function next() {
       if (i >= list.length) return;
       const txt = String(list[i]).replace(/\([^)]*\)/g, "").trim();
       i++;
-      const u = new SpeechSynthesisUtterance(txt);
-      u.lang = "de-DE";
-      const v = window.Speech.voice && window.Speech.voice();
-      if (v) u.voice = v;
-      u.rate = 0.9;
-      u.onend = () => setTimeout(next, 250);
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(u);
-    }
-    next();
+      // via Speech.speak → profite des voix naturelles (ElevenLabs) si activées
+      window.Speech.speak(txt, { rate: 0.9, onend: () => setTimeout(next, 250), onerror: () => setTimeout(next, 250) });
+    })();
   }
 
   /* Lecture d'un dialogue avec une VOIX DIFFÉRENTE par interlocuteur. */
@@ -1707,7 +1700,16 @@
     const S = window.Speech;
     const wrap = el("section", "section voice-picker");
     wrap.appendChild(el("h2", "section-title", "🔊 Voix allemande (audios & dictée)"));
-    if (!S || !S.isSupported()) { wrap.appendChild(el("p", "onboarding-intro", "La synthèse vocale n'est pas disponible sur cet appareil.")); return wrap; }
+    // Voix naturelles en ligne (ElevenLabs) — son plus humain
+    if (S && S.cloudEnabled) {
+      const cloudRow = el("label", "voice-cloud");
+      const cb = el("input", ""); cb.type = "checkbox"; cb.checked = !!S.cloudEnabled();
+      cloudRow.appendChild(cb);
+      cloudRow.appendChild(el("span", "", "🌟 Voix naturelles en ligne (ElevenLabs) — son plus humain (nécessite internet)"));
+      cb.addEventListener("change", () => { S.setCloud(cb.checked); if (cb.checked) setTimeout(() => S.speak("Hallo! Ich bin Zika, dein Deutsch-Coach.", { rate: 0.95 }), 150); });
+      wrap.appendChild(cloudRow);
+    }
+    if (!S || !S.isSupported()) { wrap.appendChild(el("p", "onboarding-intro", "La synthèse vocale de l'appareil n'est pas disponible ; les voix naturelles en ligne restent possibles.")); return wrap; }
     const list = (S.voices && S.voices()) || [];
     if (!list.length) {
       wrap.appendChild(el("p", "onboarding-intro", "Aucune voix allemande trouvée. Pour un son plus naturel, installe une voix allemande dans les réglages de ton appareil (Android : Réglages → Synthèse vocale ; iPhone : Réglages → Accessibilité → Contenu énoncé → Voix → Allemand → choisis une voix « Améliorée » ou « Premium »)."));
@@ -2262,7 +2264,7 @@
   function jouerDictee(phrases, rate, ecoutes, onProgress, onDone) {
     if (_dicteeStop) _dicteeStop();
     let stopped = false, rep = 0, i = 0;
-    _dicteeStop = function () { stopped = true; try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (e) {} };
+    _dicteeStop = function () { stopped = true; try { (window.Speech && window.Speech.stopSpeak) ? window.Speech.stopSpeak() : (window.speechSynthesis && window.speechSynthesis.cancel()); } catch (e) {} };
     function pauseFor(ph) { return Math.max(2600, ph.split(/\s+/).length * 700); }
     function suite() {
       if (stopped) return;

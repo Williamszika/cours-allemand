@@ -1066,6 +1066,11 @@ a.dictee-card:hover { background: #cfe0fb; }
 .voice-select { flex: 1; min-width: 200px; padding: 11px 12px; border: 1.5px solid var(--line); border-radius: 12px; font-size: .95rem; background: var(--card); color: var(--ink); }
 .voice-select:focus { outline: none; border-color: var(--blue); }
 
+/* Toggle voix naturelles (ElevenLabs) */
+.voice-cloud { display: flex; align-items: center; gap: 10px; margin: 10px 0; padding: 12px 14px; background: linear-gradient(135deg, #faf5ff, #f0f9ff); border: 1px solid var(--line); border-radius: 12px; cursor: pointer; font-size: .92rem; }
+.voice-cloud input { width: 20px; height: 20px; flex: 0 0 auto; accent-color: var(--blue); }
+[data-tg-scheme="dark"] .voice-cloud { background: #1a2238; }
+
 </style>
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="theme-color" content="#1e3a8a" />
@@ -17291,22 +17296,21 @@ window.Speech = (function () {
     window.speechSynthesis.onvoiceschanged = pickGermanVoice;
   }
 
-  function speak(text, opts) {
-    opts = opts || {};
-    if (!("speechSynthesis" in window)) {
-      console.warn("Synthèse vocale non supportée par ce navigateur.");
-      return false;
-    }
-    // Nettoie le texte (enlève les emojis et parenthèses de traduction)
-    const clean = String(text)
-      .replace(/\([^)]*\)/g, "")
-      .replace(/[🔊✓✗→—]/g, "")
-      .trim();
-    if (!clean) return false;
-
+  // ---- Voix naturelles en ligne (ElevenLabs via /api/tts) ----
+  let cloudAudio = null;
+  function cloudEnabled() { try { return localStorage.getItem("deutsch-tts-cloud") === "1"; } catch (e) { return false; } }
+  function setCloud(on) { try { localStorage.setItem("deutsch-tts-cloud", on ? "1" : "0"); } catch (e) {} }
+  function stopSpeak() {
+    try { if ("speechSynthesis" in window) window.speechSynthesis.cancel(); } catch (e) {}
+    if (cloudAudio) { try { cloudAudio.pause(); } catch (e) {} cloudAudio = null; }
+  }
+  function cleanText(text) {
+    return String(text).replace(/\([^)]*\)/g, "").replace(/[🔊✓✗→—]/g, "").trim();
+  }
+  function deviceSpeak(clean, opts) {
+    if (!("speechSynthesis" in window)) return false;
     window.speechSynthesis.cancel();
     if (!voicesLoaded) pickGermanVoice();
-
     const u = new SpeechSynthesisUtterance(clean);
     u.lang = "de-DE";
     if (germanVoice) u.voice = germanVoice;
@@ -17316,6 +17320,26 @@ window.Speech = (function () {
     if (opts.onerror) u.onerror = opts.onerror;
     window.speechSynthesis.speak(u);
     return true;
+  }
+  function cloudSpeak(clean, opts) {
+    if (cloudAudio) { try { cloudAudio.pause(); } catch (e) {} cloudAudio = null; }
+    let settled = false;
+    const a = new Audio(); cloudAudio = a;
+    try { a.preservesPitch = a.mozPreservesPitch = a.webkitPreservesPitch = true; } catch (e) {}
+    a.playbackRate = opts.rate || 1;
+    function fallback() { if (settled) return; settled = true; if (cloudAudio === a) cloudAudio = null; deviceSpeak(clean, opts); } // repli voix de l'appareil
+    a.onended = function () { if (settled) return; settled = true; if (cloudAudio === a) cloudAudio = null; if (opts.onend) opts.onend(); };
+    a.onerror = fallback;
+    a.src = "/api/tts?text=" + encodeURIComponent(clean) + (opts.voice ? "&v=" + encodeURIComponent(opts.voice) : "");
+    const pr = a.play(); if (pr && pr.catch) pr.catch(fallback);
+    return true;
+  }
+  function speak(text, opts) {
+    opts = opts || {};
+    const clean = cleanText(text);
+    if (!clean) return false;
+    if (cloudEnabled() && navigator.onLine) return cloudSpeak(clean, opts);
+    return deviceSpeak(clean, opts);
   }
 
   function isSupported() {
@@ -17375,7 +17399,7 @@ window.Speech = (function () {
     }
   }
 
-  return { speak, isSupported, hasGermanVoice, voice, voices, setVoice, recognitionSupported, recognize };
+  return { speak, isSupported, hasGermanVoice, voice, voices, setVoice, cloudEnabled, setCloud, stopSpeak, recognitionSupported, recognize };
 })();
 
 </script>
@@ -19679,20 +19703,13 @@ window.Exercises = (function () {
   function playSequence(list) {
     if (!window.Speech || !window.Speech.isSupported()) return;
     let i = 0;
-    function next() {
+    (function next() {
       if (i >= list.length) return;
       const txt = String(list[i]).replace(/\([^)]*\)/g, "").trim();
       i++;
-      const u = new SpeechSynthesisUtterance(txt);
-      u.lang = "de-DE";
-      const v = window.Speech.voice && window.Speech.voice();
-      if (v) u.voice = v;
-      u.rate = 0.9;
-      u.onend = () => setTimeout(next, 250);
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(u);
-    }
-    next();
+      // via Speech.speak → profite des voix naturelles (ElevenLabs) si activées
+      window.Speech.speak(txt, { rate: 0.9, onend: () => setTimeout(next, 250), onerror: () => setTimeout(next, 250) });
+    })();
   }
 
   /* Lecture d'un dialogue avec une VOIX DIFFÉRENTE par interlocuteur. */
@@ -20351,7 +20368,16 @@ window.Exercises = (function () {
     const S = window.Speech;
     const wrap = el("section", "section voice-picker");
     wrap.appendChild(el("h2", "section-title", "🔊 Voix allemande (audios & dictée)"));
-    if (!S || !S.isSupported()) { wrap.appendChild(el("p", "onboarding-intro", "La synthèse vocale n'est pas disponible sur cet appareil.")); return wrap; }
+    // Voix naturelles en ligne (ElevenLabs) — son plus humain
+    if (S && S.cloudEnabled) {
+      const cloudRow = el("label", "voice-cloud");
+      const cb = el("input", ""); cb.type = "checkbox"; cb.checked = !!S.cloudEnabled();
+      cloudRow.appendChild(cb);
+      cloudRow.appendChild(el("span", "", "🌟 Voix naturelles en ligne (ElevenLabs) — son plus humain (nécessite internet)"));
+      cb.addEventListener("change", () => { S.setCloud(cb.checked); if (cb.checked) setTimeout(() => S.speak("Hallo! Ich bin Zika, dein Deutsch-Coach.", { rate: 0.95 }), 150); });
+      wrap.appendChild(cloudRow);
+    }
+    if (!S || !S.isSupported()) { wrap.appendChild(el("p", "onboarding-intro", "La synthèse vocale de l'appareil n'est pas disponible ; les voix naturelles en ligne restent possibles.")); return wrap; }
     const list = (S.voices && S.voices()) || [];
     if (!list.length) {
       wrap.appendChild(el("p", "onboarding-intro", "Aucune voix allemande trouvée. Pour un son plus naturel, installe une voix allemande dans les réglages de ton appareil (Android : Réglages → Synthèse vocale ; iPhone : Réglages → Accessibilité → Contenu énoncé → Voix → Allemand → choisis une voix « Améliorée » ou « Premium »)."));
@@ -20906,7 +20932,7 @@ window.Exercises = (function () {
   function jouerDictee(phrases, rate, ecoutes, onProgress, onDone) {
     if (_dicteeStop) _dicteeStop();
     let stopped = false, rep = 0, i = 0;
-    _dicteeStop = function () { stopped = true; try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (e) {} };
+    _dicteeStop = function () { stopped = true; try { (window.Speech && window.Speech.stopSpeak) ? window.Speech.stopSpeak() : (window.speechSynthesis && window.speechSynthesis.cancel()); } catch (e) {} };
     function pauseFor(ph) { return Math.max(2600, ph.split(/\s+/).length * 700); }
     function suite() {
       if (stopped) return;

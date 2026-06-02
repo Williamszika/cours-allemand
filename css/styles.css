@@ -1052,3 +1052,8 @@ a.dictee-card:hover { background: #cfe0fb; }
 .voice-row { display: flex; gap: 10px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
 .voice-select { flex: 1; min-width: 200px; padding: 11px 12px; border: 1.5px solid var(--line); border-radius: 12px; font-size: .95rem; background: var(--card); color: var(--ink); }
 .voice-select:focus { outline: none; border-color: var(--blue); }
+
+/* Toggle voix naturelles (ElevenLabs) */
+.voice-cloud { display: flex; align-items: center; gap: 10px; margin: 10px 0; padding: 12px 14px; background: linear-gradient(135deg, #faf5ff, #f0f9ff); border: 1px solid var(--line); border-radius: 12px; cursor: pointer; font-size: .92rem; }
+.voice-cloud input { width: 20px; height: 20px; flex: 0 0 auto; accent-color: var(--blue); }
+[data-tg-scheme="dark"] .voice-cloud { background: #1a2238; }
