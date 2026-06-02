@@ -2483,7 +2483,19 @@
     if (window.Sync) window.Sync.load(function (changed) { if (changed) route(); });
     // Service worker : hors-ligne + installable (hors Telegram, qui gère son propre cache)
     if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
-      navigator.serviceWorker.register("sw.js").catch(function () {});
+      // Auto-mise à jour : si une nouvelle version du service worker prend la
+      // main (déploiement), on recharge UNE fois pour afficher le contenu frais.
+      // (Seulement si la page était déjà contrôlée → pas de reload au 1ᵉʳ install.)
+      if (navigator.serviceWorker.controller) {
+        var _swRefreshing = false;
+        navigator.serviceWorker.addEventListener("controllerchange", function () {
+          if (_swRefreshing) return; _swRefreshing = true; location.reload();
+        });
+      }
+      navigator.serviceWorker.register("sw.js").then(function (reg) {
+        // Cherche activement une mise à jour à chaque démarrage.
+        try { reg.update(); } catch (e) {}
+      }).catch(function () {});
     }
     startStudyTimer();
     Reminders.start();
