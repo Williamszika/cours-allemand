@@ -21,6 +21,7 @@ window.Progress = (function () {
     return {
       lecons: {}, // { l01: { exercices: {0:true,...}, termine: bool, score: n } }
       tests: {}, // { "a1-1": { meilleur: n, reussi: bool } }
+      niveau: null, // niveau de départ choisi/déterminé (A1..C2)
       derniereVisite: null,
       streak: 0
     };
@@ -98,12 +99,23 @@ window.Progress = (function () {
     return (data.tests && data.tests[moduleId]) || null;
   }
 
+  function getNiveau() {
+    return load().niveau || null;
+  }
+
+  function setNiveau(code) {
+    const data = load();
+    data.niveau = code;
+    save(data);
+  }
+
   function reset() {
     save(defaults());
   }
 
   return {
     load, save, touchStreak, getLecon, setExercice, marquerTermine,
-    estTermine, resumeGlobal, setTestScore, getTestScore, reset
+    estTermine, resumeGlobal, setTestScore, getTestScore,
+    getNiveau, setNiveau, reset
   };
 })();

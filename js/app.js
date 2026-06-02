@@ -66,6 +66,24 @@
     if (next && next.lecon.niveau === l.niveau) return "#/lecon/" + next.lecon.id;
     return "#/examen/" + (l.niveau === "A1" ? "a1" : l.niveau === "A2" ? "a2" : l.niveau === "B1" ? "b1" : l.niveau === "B2" ? "b2" : l.niveau === "C1" ? "c1" : "c2");
   }
+  /* Placement : ouvre le parcours jusqu'au niveau choisi/déterminé, en
+     marquant les niveaux antérieurs comme acquis (leçons + examens-verrous). */
+  const ORDRE_NIVEAUX = ["A1", "A2", "B1", "B2", "C1", "C2"];
+  const EXAMENS_AVANT = {
+    A1: [], A2: ["a1"], B1: ["a1", "a2", "final"], B2: ["a1", "a2", "final", "b1"],
+    C1: ["a1", "a2", "final", "b1", "b2", "finalb"], C2: ["a1", "a2", "final", "b1", "b2", "finalb", "c1"]
+  };
+  function placerAuNiveau(code) {
+    const idx = ORDRE_NIVEAUX.indexOf(code);
+    if (idx < 0) return;
+    flat.forEach((f) => { if (ORDRE_NIVEAUX.indexOf(f.lecon.niveau) < idx) window.Progress.marquerTermine(f.lecon.id, 100); });
+    (EXAMENS_AVANT[code] || []).forEach((k) => window.Progress.setTestScore(k, 100, true));
+    window.Progress.setNiveau(code);
+  }
+  function besoinOnboarding() {
+    if (window.Progress.getNiveau()) return false;
+    return window.Progress.resumeGlobal(COURS).faites === 0;
+  }
   /* Catégorie d'un exercice : comp (compréhension), appro (approfondi), prod (production) */
   function exoCat(ex) {
     if (ex.cat) return ex.cat;
@@ -164,6 +182,9 @@
     const statsBtn = el("a", "btn btn-ghost", "📊 Statistiques");
     statsBtn.href = "#/stats";
     secondRow.appendChild(statsBtn);
+    const niveauBtn = el("a", "btn btn-ghost", "🎯 Tester / changer mon niveau");
+    niveauBtn.href = "#/start";
+    secondRow.appendChild(niveauBtn);
     cta.appendChild(secondRow);
 
     const audioInfo = el("p", "hero-audio-info", window.Speech && window.Speech.isSupported()
@@ -1063,16 +1084,151 @@
   }
 
   /* ====================================================================
+     ACCUEIL DU COACH — choix / test de niveau
+     ==================================================================== */
+  function renderOnboarding() {
+    const labels = { A1: "Débutant", A2: "Élémentaire", B1: "Intermédiaire", B2: "Avancé", C1: "Autonome", C2: "Maîtrise" };
+    const frag = document.createDocumentFragment();
+
+    const hero = el("section", "section onboarding");
+    hero.innerHTML =
+      '<div class="coach-avatar">🧑‍🏫</div>' +
+      "<h1>Willkommen! Ich bin dein Coach.</h1>" +
+      '<p class="onboarding-intro">Pour te proposer les bonnes leçons, dis-moi où tu en es en allemand. ' +
+      "Choisis ton niveau — ou laisse-moi l'évaluer avec un petit test (grammaire, écoute et écrit, comme à l'examen).</p>";
+    frag.appendChild(hero);
+
+    const testSec = el("section", "section");
+    const testCard = el("div", "examen-final unlocked");
+    testCard.innerHTML = '<div class="examen-ic">🎯</div><h2>Tester mon niveau</h2>' +
+      "<p>Le coach te pose des questions à partir de A1 et monte tant que tu réussis ; dès que ça devient difficile, il détermine ton niveau actuel.</p>";
+    const testBtn = el("a", "btn btn-primary big", "🎯 Évaluer mon niveau");
+    testBtn.href = "#/placement";
+    testCard.appendChild(testBtn);
+    testSec.appendChild(testCard);
+    frag.appendChild(testSec);
+
+    const pick = el("section", "section");
+    pick.appendChild(el("h2", "section-title", "Je connais déjà mon niveau"));
+    const grid = el("div", "niveau-choix");
+    ORDRE_NIVEAUX.forEach((code) => {
+      const b = el("button", "niveau-btn", "");
+      b.type = "button";
+      b.innerHTML = "<strong>" + code + "</strong><span>" + labels[code] + "</span>";
+      b.addEventListener("click", () => { placerAuNiveau(code); location.hash = prochaineEtape(); });
+      grid.appendChild(b);
+    });
+    pick.appendChild(grid);
+    frag.appendChild(pick);
+
+    app.innerHTML = "";
+    app.appendChild(frag);
+    if (window.TG) window.TG.setMainButton("🎯 Évaluer mon niveau", () => { location.hash = "#/placement"; });
+    window.scrollTo(0, 0);
+  }
+
+  /* Test de placement adaptatif (étape par étape, de A1 vers le haut) */
+  function renderPlacement(state) {
+    const blocks = window.PLACEMENT || [];
+    if (!blocks.length) { location.hash = "#/"; return; }
+    state = state || { i: 0 };
+    const block = blocks[state.i];
+
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/start">← Choix du niveau</a><span class="lesson-top-mod">🎯 Test de placement</span>';
+    frag.appendChild(top);
+
+    const head = el("header", "test-head");
+    head.style.setProperty("--mod-color", "#0d9488");
+    head.innerHTML = '<div class="lesson-num">Étape ' + (state.i + 1) + " / " + blocks.length + "</div><h1>" + block.titre + "</h1>" +
+      "<p>Réponds du mieux possible. Le coach détermine ton niveau dès que cela devient trop difficile.</p>";
+    frag.appendChild(head);
+
+    const list = el("div", "test-list");
+    const nodes = [];
+    block.items.forEach((ex, i) => {
+      const node = window.Exercises.render(ex, i, null, { testMode: true, label: "Question " + (i + 1) });
+      nodes.push(node);
+      list.appendChild(node);
+    });
+    frag.appendChild(list);
+
+    const submit = el("button", "btn btn-primary big", "Valider cette étape →");
+    submit.type = "button";
+    const row = el("div", "test-submit");
+    row.appendChild(submit);
+    frag.appendChild(row);
+
+    submit.addEventListener("click", () => {
+      let correct = 0, total = 0;
+      nodes.forEach((node) => {
+        if (typeof node._grade !== "function") return; // production / oral : non noté (auto-évalué)
+        const res = node._grade(true);
+        total++;
+        if (res.ok === true) correct++;
+      });
+      const passe = total ? correct / total >= 0.6 : true;
+      submit.disabled = true;
+      submit.textContent = "Étape validée";
+      if (passe && state.i < blocks.length - 1) {
+        const next = el("div", "test-result pass");
+        next.innerHTML = "<h2>✅ Étape " + block.code + " réussie (" + correct + "/" + total + ")</h2><p>On monte d'un cran…</p>" +
+          '<div class="rev-actions"><button class="btn btn-primary" id="pl-next">Continuer →</button></div>';
+        frag.appendChild(next);
+        app.innerHTML = ""; app.appendChild(frag);
+        const nb = document.getElementById("pl-next");
+        nb.addEventListener("click", () => renderPlacement({ i: state.i + 1 }));
+        if (window.TG) window.TG.setMainButton("Continuer →", () => renderPlacement({ i: state.i + 1 }));
+        next.scrollIntoView({ behavior: "smooth" });
+      } else {
+        const code = passe ? blocks[blocks.length - 1].code : block.code;
+        placementResultat(code);
+      }
+    });
+
+    app.innerHTML = ""; app.appendChild(frag);
+    if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/start"; }); window.TG.setMainButton("Valider cette étape →", () => submit.click()); }
+    window.scrollTo(0, 0);
+  }
+
+  function placementResultat(code) {
+    placerAuNiveau(code);
+    const labels = { A1: "Débutant", A2: "Élémentaire", B1: "Intermédiaire", B2: "Avancé", C1: "Autonome", C2: "Maîtrise" };
+    const frag = document.createDocumentFragment();
+    const sec = el("section", "section");
+    const card = el("div", "examen-final unlocked reussi");
+    card.innerHTML = '<div class="examen-ic">🎓</div><h2>Ton niveau : ' + code + " — " + (labels[code] || "") + "</h2>" +
+      "<p>D'après tes réponses (grammaire, écoute et écrit), le coach te place au <strong>niveau " + code + "</strong>. " +
+      "Tu commences ici ; les niveaux précédents restent débloqués si tu veux les revoir.</p>";
+    const go = el("a", "btn btn-primary big", "🚀 Commencer au niveau " + code);
+    go.href = prochaineEtape();
+    card.appendChild(go);
+    const retest = el("a", "btn btn-ghost", "↺ Refaire le test");
+    retest.href = "#/placement";
+    card.appendChild(retest);
+    sec.appendChild(card);
+    frag.appendChild(sec);
+    app.innerHTML = "";
+    app.appendChild(frag);
+    if (window.TG) { if (window.TG.haptic) window.TG.haptic("success"); window.TG.setMainButton("🚀 Commencer au niveau " + code, () => { location.hash = prochaineEtape(); }); }
+    window.scrollTo(0, 0);
+  }
+
+  /* ====================================================================
      ROUTAGE
      ==================================================================== */
   function route() {
     const hash = location.hash || "#/";
     let m;
-    if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);
+    if (hash.match(/^#\/start/)) renderOnboarding();
+    else if (hash.match(/^#\/placement/)) renderPlacement();
+    else if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);
     else if ((m = hash.match(/^#\/examen\/(a1|a2|finalb|finalc|final|b1|b2|c1|c2)/))) renderTest(m[1]);
     else if (hash.match(/^#\/examen/)) renderTest("a1");
     else if (hash.match(/^#\/revision/)) renderRevision();
     else if (hash.match(/^#\/stats/)) renderDashboard();
+    else if (besoinOnboarding()) renderOnboarding();
     else renderHome();
   }
 
