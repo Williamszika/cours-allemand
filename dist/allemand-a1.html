@@ -1060,6 +1060,12 @@ a.dictee-card:hover { background: #cfe0fb; }
 [data-tg-scheme="dark"] a.dictee-card:hover { background: #1b3157; }
 [data-tg-scheme="dark"] .dictee-feedback { background: #0b121b; }
 
+/* Sélecteur de voix allemande (audios plus naturels) */
+.voice-picker { margin-top: 8px; }
+.voice-row { display: flex; gap: 10px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
+.voice-select { flex: 1; min-width: 200px; padding: 11px 12px; border: 1.5px solid var(--line); border-radius: 12px; font-size: .95rem; background: var(--card); color: var(--ink); }
+.voice-select:focus { outline: none; border-color: var(--blue); }
+
 </style>
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="theme-color" content="#1e3a8a" />
@@ -17241,20 +17247,25 @@ window.Speech = (function () {
   let voicesLoaded = false;
 
   // Pas d'attribut « genre » dans l'API : on devine via le nom de la voix.
-  // On privilégie une voix ALLEMANDE, MASCULINE et NATURELLE (neural/online).
+  // PRIORITÉ À LA NATURALITÉ (voix neuronales/online), puis langue, puis genre.
   const MALE_HINTS = ["conrad", "stefan", "bernd", "christoph", "killian", "klaus", "ralf", "markus", "yannick", "hans", "daniel", "viktor", "wolfgang", "florian", "jan", "male", "mann", "männl"];
-  const NATURAL_HINTS = ["neural", "natural", "online", "premium", "wavenet", "enhanced", "google"];
+  const NATURAL_HINTS = ["neural", "natural", "online", "premium", "wavenet", "enhanced", "google", "siri"];
+  const LOWQ_HINTS = ["espeak", "compact", "pico", "embedded"];
   const FEMALE_HINTS = ["anna", "petra", "katja", "vicki", "amala", "marlene", "hedda", "female", "frau", "weibl"];
 
   function scoreVoice(v) {
     const n = (v.name || "").toLowerCase();
     let s = 0;
-    if (MALE_HINTS.some((k) => n.indexOf(k) >= 0)) s += 5;
-    if (FEMALE_HINTS.some((k) => n.indexOf(k) >= 0)) s -= 3;
-    if (NATURAL_HINTS.some((k) => n.indexOf(k) >= 0)) s += 2;
-    if (v.lang === "de-DE") s += 1;
+    if (NATURAL_HINTS.some((k) => n.indexOf(k) >= 0)) s += 12; // la naturalité prime
+    if (LOWQ_HINTS.some((k) => n.indexOf(k) >= 0)) s -= 8;     // voix robotiques connues
+    if (v.localService === false) s += 3;                       // voix « online » (souvent neuronales)
+    if (v.lang === "de-DE") s += 2;
+    if (MALE_HINTS.some((k) => n.indexOf(k) >= 0)) s += 2;      // genre = simple départage
+    else if (FEMALE_HINTS.some((k) => n.indexOf(k) >= 0)) s += 1;
     return s;
   }
+
+  function preferredVoiceName() { try { return localStorage.getItem("deutsch-voix") || null; } catch (e) { return null; } }
 
   function pickGermanVoice() {
     if (!("speechSynthesis" in window)) return;
@@ -17262,9 +17273,17 @@ window.Speech = (function () {
     if (!voices || voices.length === 0) return;
     const de = voices.filter((v) => v.lang && v.lang.toLowerCase().indexOf("de") === 0);
     if (!de.length) { germanVoice = null; voicesLoaded = true; return; }
+    const pref = preferredVoiceName();
+    const chosen = pref ? de.filter((v) => v.name === pref)[0] : null;
     de.sort((a, b) => scoreVoice(b) - scoreVoice(a));
-    germanVoice = de[0]; // meilleure voix allemande masculine/naturelle disponible
+    germanVoice = chosen || de[0]; // voix choisie par l'utilisateur, sinon la plus naturelle
     voicesLoaded = true;
+  }
+
+  // Permet à l'utilisateur de choisir sa voix allemande préférée (persistée).
+  function setVoice(name) {
+    try { if (name) localStorage.setItem("deutsch-voix", name); else localStorage.removeItem("deutsch-voix"); } catch (e) {}
+    voicesLoaded = false; pickGermanVoice();
   }
 
   if ("speechSynthesis" in window) {
@@ -17356,7 +17375,7 @@ window.Speech = (function () {
     }
   }
 
-  return { speak, isSupported, hasGermanVoice, voice, voices, recognitionSupported, recognize };
+  return { speak, isSupported, hasGermanVoice, voice, voices, setVoice, recognitionSupported, recognize };
 })();
 
 </script>
@@ -18791,7 +18810,7 @@ window.Exercises = (function () {
     ".cours-tag", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points",
     ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
     ".trou-input", ".trou-phrase", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript",
-    ".xl", ".rp-fr", ".rp-bubble", ".rp-scene", ".rp-intro", ".gp-pts", ".stat-n", ".goal-num", ".nc-code", ".lang-name", ".lang-flag", ".badge-ic", ".comp-score",
+    ".xl", ".rp-fr", ".rp-bubble", ".rp-scene", ".rp-intro", ".gp-pts", ".stat-n", ".goal-num", ".nc-code", ".lang-name", ".lang-flag", ".voice-select", ".badge-ic", ".comp-score",
     "code", "input", "textarea", "[contenteditable]"
   ].join(",");
   // SOFT : conteneurs MIXTES (allemand + français) — tableaux, légendes, énoncés
@@ -20326,6 +20345,40 @@ window.Exercises = (function () {
     return wrap;
   }
 
+  /* Sélecteur de voix allemande : laisse l'utilisateur choisir la voix la
+     plus NATURELLE disponible sur son appareil (et la tester). */
+  function buildVoicePicker() {
+    const S = window.Speech;
+    const wrap = el("section", "section voice-picker");
+    wrap.appendChild(el("h2", "section-title", "🔊 Voix allemande (audios & dictée)"));
+    if (!S || !S.isSupported()) { wrap.appendChild(el("p", "onboarding-intro", "La synthèse vocale n'est pas disponible sur cet appareil.")); return wrap; }
+    const list = (S.voices && S.voices()) || [];
+    if (!list.length) {
+      wrap.appendChild(el("p", "onboarding-intro", "Aucune voix allemande trouvée. Pour un son plus naturel, installe une voix allemande dans les réglages de ton appareil (Android : Réglages → Synthèse vocale ; iPhone : Réglages → Accessibilité → Contenu énoncé → Voix → Allemand → choisis une voix « Améliorée » ou « Premium »)."));
+      return wrap;
+    }
+    wrap.appendChild(el("p", "onboarding-intro", "Choisis la voix la plus naturelle de ton appareil (⭐ = voix naturelle/en ligne), puis teste-la."));
+    const cur = S.voice && S.voice();
+    const sel = el("select", "voice-select");
+    list.forEach((v) => {
+      const o = document.createElement("option");
+      o.value = v.name;
+      const naturel = /neural|natural|online|premium|wavenet|enhanced|google|siri/i.test(v.name) || v.localService === false ? " ⭐" : "";
+      o.textContent = v.name + naturel;
+      if (cur && v.name === cur.name) o.selected = true;
+      sel.appendChild(o);
+    });
+    const row = el("div", "voice-row");
+    row.appendChild(sel);
+    const test = el("button", "btn btn-ghost small", "🔊 Tester"); test.type = "button";
+    const phrase = "Hallo! Ich bin Zika, dein Deutsch-Coach. Lass uns gemeinsam Deutsch lernen!";
+    test.addEventListener("click", () => { window.Speech.speak(phrase, { rate: 0.95 }); });
+    row.appendChild(test);
+    wrap.appendChild(row);
+    sel.addEventListener("change", () => { window.Speech.setVoice(sel.value); setTimeout(() => window.Speech.speak(phrase, { rate: 0.95 }), 150); });
+    return wrap;
+  }
+
   function renderLanguagePage() {
     const I = window.I18N;
     const premier = besoinOnboarding(); // tout premier lancement (aucune progression)
@@ -20341,6 +20394,7 @@ window.Exercises = (function () {
       frag.appendChild(intro);
     }
     if (I) frag.appendChild(buildLanguagePicker({ onPick: () => renderLanguagePage() }));
+    frag.appendChild(buildVoicePicker());
     const chosen = I && I.isChosen();
     const nav = el("div", "lesson-nav");
     nav.appendChild(el("span", ""));

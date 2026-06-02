@@ -166,7 +166,7 @@
     ".cours-tag", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points",
     ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
     ".trou-input", ".trou-phrase", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript",
-    ".xl", ".rp-fr", ".rp-bubble", ".rp-scene", ".rp-intro", ".gp-pts", ".stat-n", ".goal-num", ".nc-code", ".lang-name", ".lang-flag", ".badge-ic", ".comp-score",
+    ".xl", ".rp-fr", ".rp-bubble", ".rp-scene", ".rp-intro", ".gp-pts", ".stat-n", ".goal-num", ".nc-code", ".lang-name", ".lang-flag", ".voice-select", ".badge-ic", ".comp-score",
     "code", "input", "textarea", "[contenteditable]"
   ].join(",");
   // SOFT : conteneurs MIXTES (allemand + français) — tableaux, légendes, énoncés
@@ -1701,6 +1701,40 @@
     return wrap;
   }
 
+  /* Sélecteur de voix allemande : laisse l'utilisateur choisir la voix la
+     plus NATURELLE disponible sur son appareil (et la tester). */
+  function buildVoicePicker() {
+    const S = window.Speech;
+    const wrap = el("section", "section voice-picker");
+    wrap.appendChild(el("h2", "section-title", "🔊 Voix allemande (audios & dictée)"));
+    if (!S || !S.isSupported()) { wrap.appendChild(el("p", "onboarding-intro", "La synthèse vocale n'est pas disponible sur cet appareil.")); return wrap; }
+    const list = (S.voices && S.voices()) || [];
+    if (!list.length) {
+      wrap.appendChild(el("p", "onboarding-intro", "Aucune voix allemande trouvée. Pour un son plus naturel, installe une voix allemande dans les réglages de ton appareil (Android : Réglages → Synthèse vocale ; iPhone : Réglages → Accessibilité → Contenu énoncé → Voix → Allemand → choisis une voix « Améliorée » ou « Premium »)."));
+      return wrap;
+    }
+    wrap.appendChild(el("p", "onboarding-intro", "Choisis la voix la plus naturelle de ton appareil (⭐ = voix naturelle/en ligne), puis teste-la."));
+    const cur = S.voice && S.voice();
+    const sel = el("select", "voice-select");
+    list.forEach((v) => {
+      const o = document.createElement("option");
+      o.value = v.name;
+      const naturel = /neural|natural|online|premium|wavenet|enhanced|google|siri/i.test(v.name) || v.localService === false ? " ⭐" : "";
+      o.textContent = v.name + naturel;
+      if (cur && v.name === cur.name) o.selected = true;
+      sel.appendChild(o);
+    });
+    const row = el("div", "voice-row");
+    row.appendChild(sel);
+    const test = el("button", "btn btn-ghost small", "🔊 Tester"); test.type = "button";
+    const phrase = "Hallo! Ich bin Zika, dein Deutsch-Coach. Lass uns gemeinsam Deutsch lernen!";
+    test.addEventListener("click", () => { window.Speech.speak(phrase, { rate: 0.95 }); });
+    row.appendChild(test);
+    wrap.appendChild(row);
+    sel.addEventListener("change", () => { window.Speech.setVoice(sel.value); setTimeout(() => window.Speech.speak(phrase, { rate: 0.95 }), 150); });
+    return wrap;
+  }
+
   function renderLanguagePage() {
     const I = window.I18N;
     const premier = besoinOnboarding(); // tout premier lancement (aucune progression)
@@ -1716,6 +1750,7 @@
       frag.appendChild(intro);
     }
     if (I) frag.appendChild(buildLanguagePicker({ onPick: () => renderLanguagePage() }));
+    frag.appendChild(buildVoicePicker());
     const chosen = I && I.isChosen();
     const nav = el("div", "lesson-nav");
     nav.appendChild(el("span", ""));

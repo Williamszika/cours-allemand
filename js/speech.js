@@ -8,20 +8,25 @@ window.Speech = (function () {
   let voicesLoaded = false;
 
   // Pas d'attribut « genre » dans l'API : on devine via le nom de la voix.
-  // On privilégie une voix ALLEMANDE, MASCULINE et NATURELLE (neural/online).
+  // PRIORITÉ À LA NATURALITÉ (voix neuronales/online), puis langue, puis genre.
   const MALE_HINTS = ["conrad", "stefan", "bernd", "christoph", "killian", "klaus", "ralf", "markus", "yannick", "hans", "daniel", "viktor", "wolfgang", "florian", "jan", "male", "mann", "männl"];
-  const NATURAL_HINTS = ["neural", "natural", "online", "premium", "wavenet", "enhanced", "google"];
+  const NATURAL_HINTS = ["neural", "natural", "online", "premium", "wavenet", "enhanced", "google", "siri"];
+  const LOWQ_HINTS = ["espeak", "compact", "pico", "embedded"];
   const FEMALE_HINTS = ["anna", "petra", "katja", "vicki", "amala", "marlene", "hedda", "female", "frau", "weibl"];
 
   function scoreVoice(v) {
     const n = (v.name || "").toLowerCase();
     let s = 0;
-    if (MALE_HINTS.some((k) => n.indexOf(k) >= 0)) s += 5;
-    if (FEMALE_HINTS.some((k) => n.indexOf(k) >= 0)) s -= 3;
-    if (NATURAL_HINTS.some((k) => n.indexOf(k) >= 0)) s += 2;
-    if (v.lang === "de-DE") s += 1;
+    if (NATURAL_HINTS.some((k) => n.indexOf(k) >= 0)) s += 12; // la naturalité prime
+    if (LOWQ_HINTS.some((k) => n.indexOf(k) >= 0)) s -= 8;     // voix robotiques connues
+    if (v.localService === false) s += 3;                       // voix « online » (souvent neuronales)
+    if (v.lang === "de-DE") s += 2;
+    if (MALE_HINTS.some((k) => n.indexOf(k) >= 0)) s += 2;      // genre = simple départage
+    else if (FEMALE_HINTS.some((k) => n.indexOf(k) >= 0)) s += 1;
     return s;
   }
+
+  function preferredVoiceName() { try { return localStorage.getItem("deutsch-voix") || null; } catch (e) { return null; } }
 
   function pickGermanVoice() {
     if (!("speechSynthesis" in window)) return;
@@ -29,9 +34,17 @@ window.Speech = (function () {
     if (!voices || voices.length === 0) return;
     const de = voices.filter((v) => v.lang && v.lang.toLowerCase().indexOf("de") === 0);
     if (!de.length) { germanVoice = null; voicesLoaded = true; return; }
+    const pref = preferredVoiceName();
+    const chosen = pref ? de.filter((v) => v.name === pref)[0] : null;
     de.sort((a, b) => scoreVoice(b) - scoreVoice(a));
-    germanVoice = de[0]; // meilleure voix allemande masculine/naturelle disponible
+    germanVoice = chosen || de[0]; // voix choisie par l'utilisateur, sinon la plus naturelle
     voicesLoaded = true;
+  }
+
+  // Permet à l'utilisateur de choisir sa voix allemande préférée (persistée).
+  function setVoice(name) {
+    try { if (name) localStorage.setItem("deutsch-voix", name); else localStorage.removeItem("deutsch-voix"); } catch (e) {}
+    voicesLoaded = false; pickGermanVoice();
   }
 
   if ("speechSynthesis" in window) {
@@ -123,5 +136,5 @@ window.Speech = (function () {
     }
   }
 
-  return { speak, isSupported, hasGermanVoice, voice, voices, recognitionSupported, recognize };
+  return { speak, isSupported, hasGermanVoice, voice, voices, setVoice, recognitionSupported, recognize };
 })();
