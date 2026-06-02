@@ -58,7 +58,7 @@ window.Progress = (function () {
     return { aujourdhui: temps[t] || 0, semaine: semaine, total: total, last7: last7, joursActifs: Object.keys(temps).length };
   }
 
-  function getReglages() { return Object.assign({ theme: "auto", rappel: false, rappelHeure: "19:00" }, load().reglages || {}); }
+  function getReglages() { return Object.assign({ theme: "auto", rappel: false, rappelHeure: "19:00", objectifMin: 10 }, load().reglages || {}); }
   function setReglages(obj) { const data = load(); data.reglages = Object.assign(getReglages(), obj); save(data); }
   function getLastStudy() { return load().lastStudy; }
   function getLastNotified() { return load().lastNotified; }

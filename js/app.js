@@ -129,7 +129,15 @@
   }
   function buildExemples(arr) {
     const box = el("div", "cours-exemples");
-    box.appendChild(el("div", "cours-tag", "✅ Exemples"));
+    const head = el("div", "cours-ex-head");
+    head.appendChild(el("span", "cours-tag", "✅ Exemples"));
+    if (window.Speech && window.Speech.isSupported()) {
+      const playAll = el("button", "btn-audio small", "🔊 Tout écouter");
+      playAll.type = "button";
+      playAll.addEventListener("click", () => playSequence(arr.map((e) => e.de)));
+      head.appendChild(playAll);
+    }
+    box.appendChild(head);
     arr.forEach((e, i) => {
       const row = el("div", "cours-ex-row");
       row.appendChild(el("span", "cours-ex-num", i + 1 + "."));
@@ -247,6 +255,18 @@
         '<div class="bar"><div class="bar-fill" style="width:' + pctNiv + "%;background:" + mColor + '"></div></div>';
       hero.appendChild(progN);
     }
+
+    /* Points (XP), objectif quotidien, badges */
+    const gamif = el("div", "hero-gamif");
+    gamif.appendChild(objectifRing());
+    const pts = calcPoints();
+    const nbBadges = badgesGagnes().filter((x) => x.gagne).length;
+    const gp = el("a", "gamif-pts");
+    gp.href = "#/stats";
+    gp.innerHTML = '<div class="gp-pts">⭐ ' + pts + ' <span class="gp-rang">' + rangPoints(pts) + "</span></div>" +
+      '<div class="gp-lab">points · 🏅 ' + nbBadges + "/" + BADGES.length + " badges · voir le détail →</div>";
+    gamif.appendChild(gp);
+    hero.appendChild(gamif);
 
     const cta = el("div", "hero-cta");
     const etape = prochaineEtape();
@@ -943,6 +963,7 @@
     // Vue d'ensemble
     const cards = el("div", "stats-row");
     [
+      ["⭐", calcPoints(), "points (" + rangPoints(calcPoints()) + ")"],
       ["📖", res.faites + "/" + res.total, "leçons validées"],
       ["📈", res.pourcent + "%", "du parcours"],
       ["🔥", res.streak + " j", "série"],
@@ -962,6 +983,14 @@
     const st = window.Progress.statsTemps();
     const secT = el("section", "lesson-section");
     secT.appendChild(el("h2", "", "⏱️ Temps d'étude"));
+    const goalWrap = el("div", "goal-wrap");
+    goalWrap.appendChild(objectifRing());
+    const objMin = window.Progress.getReglages().objectifMin || 10;
+    const todayMin = Math.round((st.aujourdhui || 0) / 60);
+    goalWrap.appendChild(el("div", "goal-text", todayMin >= objMin
+      ? "🎉 Objectif du jour atteint (" + objMin + " min) ! Bravo."
+      : "Objectif du jour : encore " + (objMin - todayMin) + " min. Tu peux le faire 💪"));
+    secT.appendChild(goalWrap);
     const tcards = el("div", "stats-row");
     [["📅", formatDuree(st.aujourdhui), "aujourd'hui"], ["🗓️", formatDuree(st.semaine), "cette semaine"], ["⏳", formatDuree(st.total), "au total"], ["📆", st.joursActifs + " j", "jours actifs"]].forEach((x) => {
       const c = el("div", "stat");
@@ -1069,9 +1098,65 @@
     sec3.appendChild(list);
     frag.appendChild(sec3);
 
-    // Réglages : thème + rappel quotidien
+    // Badges / récompenses
+    const bg = badgesGagnes();
+    const secB = el("section", "lesson-section");
+    secB.appendChild(el("h2", "", "🏅 Badges (" + bg.filter((x) => x.gagne).length + "/" + BADGES.length + ")"));
+    const bgrid = el("div", "badge-grid");
+    bg.forEach((x) => {
+      const cell = el("div", "badge " + (x.gagne ? "on" : "off"));
+      cell.innerHTML = '<span class="badge-ic">' + (x.gagne ? x.b.ic : "🔒") + '</span><span class="badge-t">' + x.b.t + '</span><span class="badge-d">' + x.b.d + "</span>";
+      bgrid.appendChild(cell);
+    });
+    secB.appendChild(bgrid);
+    frag.appendChild(secB);
+
+    // Niveaux validés (certificats)
+    const secL = el("section", "lesson-section");
+    secL.appendChild(el("h2", "", "🎖️ Niveaux validés"));
+    const lgrid = el("div", "niv-grid");
+    niveauxValides().forEach((n) => {
+      const cell = el("div", "niv-cert " + (n.valide ? "on" : "off"));
+      cell.innerHTML = '<span class="nc-medal">' + (n.valide ? "🎖️" : "🔒") + '</span><span class="nc-code">' + n.code + '</span><span class="nc-lab">' + (n.valide ? "Validé" : "À valider") + "</span>";
+      if (n.valide) {
+        const sh = el("button", "btn-link nc-share", "Partager");
+        sh.type = "button";
+        sh.addEventListener("click", () => partager("🎉 J'ai validé le niveau " + n.code + " en allemand avec le coach Zika ! 🇩🇪 À ton tour 👇"));
+        cell.appendChild(sh);
+      }
+      lgrid.appendChild(cell);
+    });
+    secL.appendChild(lgrid);
+    frag.appendChild(secL);
+
+    // Partage & amis
+    const secP = el("section", "lesson-section");
+    secP.appendChild(el("h2", "", "📤 Partage & amis"));
+    const prow = el("div", "share-row");
+    const shareBtn = el("button", "btn btn-primary", "📣 Partager ma progression");
+    shareBtn.type = "button"; shareBtn.addEventListener("click", partagerProgression);
+    const inviteBtn = el("button", "btn btn-ghost", "👥 Inviter des amis");
+    inviteBtn.type = "button"; inviteBtn.addEventListener("click", inviterAmis);
+    const exportBtn = el("button", "btn btn-ghost", "⬇️ Exporter ma sauvegarde");
+    exportBtn.type = "button"; exportBtn.addEventListener("click", exporterProgression);
+    prow.appendChild(shareBtn); prow.appendChild(inviteBtn); prow.appendChild(exportBtn);
+    secP.appendChild(prow);
+    secP.appendChild(el("p", "exo-group-sub", "Partage tes progrès ou invite un ami. « Exporter » télécharge une sauvegarde de ta progression (fichier .json)."));
+    frag.appendChild(secP);
+
+    // Réglages : objectif quotidien + thème + rappel
     const secR = el("section", "lesson-section");
     secR.appendChild(el("h2", "", "⚙️ Réglages"));
+    const objRow = el("div", "setting-row");
+    objRow.appendChild(el("span", "setting-label", "🎯 Objectif quotidien (minutes)"));
+    const objCtrl = el("div", "setting-ctrl");
+    const objInput = el("input", "time-input num");
+    objInput.type = "number"; objInput.min = "1"; objInput.max = "240"; objInput.step = "5";
+    objInput.value = window.Progress.getReglages().objectifMin || 10;
+    objInput.addEventListener("change", () => { const v = Math.max(1, Math.min(240, parseInt(objInput.value, 10) || 10)); window.Progress.setReglages({ objectifMin: v }); objInput.value = v; toast("🎯 Objectif : " + v + " min/jour"); });
+    objCtrl.appendChild(objInput);
+    objRow.appendChild(objCtrl);
+    secR.appendChild(objRow);
     const themeRow = el("div", "setting-row");
     themeRow.appendChild(el("span", "setting-label", "🎨 Thème de l'application"));
     const themeSel = el("button", "btn btn-ghost small", Theme.label());
@@ -1604,6 +1689,90 @@
     function start() { syncState(); check(); setInterval(check, 60000); }
     return { supported, enable, disable, check, start, syncState };
   })();
+
+  /* ====================================================================
+     GAMIFICATION : points (XP), rang, badges, niveaux validés
+     ==================================================================== */
+  function calcPoints() {
+    let pts = 0;
+    flat.forEach((f) => { const lp = window.Progress.getLecon(f.lecon.id); if (lp.termine) pts += 10 + Math.round((lp.score || 0) / 10); });
+    COURS.examens.forEach((e) => { const t = window.Progress.getTestScore(e.id); if (t && t.reussi) pts += 50; });
+    pts += Math.round((window.Progress.statsTemps().total || 0) / 60);
+    pts += (window.Progress.resumeGlobal(COURS).streak || 0) * 5;
+    return pts;
+  }
+  function rangPoints(pts) {
+    const paliers = [[0, "Débutant"], [200, "Apprenti"], [600, "Confirmé"], [1500, "Avancé"], [3000, "Expert"], [6000, "Maître"]];
+    let r = "Débutant";
+    paliers.forEach((p) => { if (pts >= p[0]) r = p[1]; });
+    return r;
+  }
+  const BADGES = [
+    { id: "start", ic: "🎉", t: "Premier pas", d: "Terminer ta 1ʳᵉ leçon", ok: (c) => c.faites >= 1 },
+    { id: "dix", ic: "📚", t: "Sur la lancée", d: "10 leçons terminées", ok: (c) => c.faites >= 10 },
+    { id: "cent", ic: "💯", t: "Centurion", d: "100 leçons terminées", ok: (c) => c.faites >= 100 },
+    { id: "feu7", ic: "🔥", t: "Assidu", d: "Série de 7 jours", ok: (c) => c.streak >= 7 },
+    { id: "temps1", ic: "⏱️", t: "Studieux", d: "1 h d'étude cumulée", ok: (c) => c.minutes >= 60 },
+    { id: "temps10", ic: "🏃", t: "Marathonien", d: "10 h d'étude cumulées", ok: (c) => c.minutes >= 600 },
+    { id: "voc50", ic: "🗂️", t: "Lexicophile", d: "50 mots maîtrisés", ok: (c) => c.mots >= 50 },
+    { id: "parfait", ic: "🌟", t: "Sans-faute", d: "Un examen à 100 %", ok: (c) => c.examenParfait },
+    { id: "a1", ic: "🥉", t: "A1 validé", d: "Réussir l'examen A1", ok: (c) => c.exam.a1 },
+    { id: "b1", ic: "🥈", t: "B1 validé", d: "Réussir l'examen B1", ok: (c) => c.exam.b1 },
+    { id: "c1", ic: "🥇", t: "C1 validé", d: "Réussir l'examen C1", ok: (c) => c.exam.c1 },
+    { id: "c2", ic: "🏆", t: "Maîtrise C2", d: "Réussir l'examen C2", ok: (c) => c.exam.c2 }
+  ];
+  function gamifContext() {
+    const r = window.Progress.resumeGlobal(COURS);
+    const srs = window.Revision.stats(COURS);
+    const exam = {}; let examenParfait = false;
+    COURS.examens.forEach((e) => { const t = window.Progress.getTestScore(e.id); exam[e.id] = !!(t && t.reussi); if (t && t.meilleur >= 100) examenParfait = true; });
+    return { faites: r.faites, streak: r.streak, minutes: Math.round((window.Progress.statsTemps().total || 0) / 60), mots: srs.apprises, exam: exam, examenParfait: examenParfait };
+  }
+  function badgesGagnes() { const c = gamifContext(); return BADGES.map((b) => ({ b: b, gagne: b.ok(c) })); }
+  function niveauxValides() { return ORDRE_NIVEAUX.map((code) => ({ code: code, valide: examPasse(code.toLowerCase()) })); }
+  function objectifRing() {
+    const obj = window.Progress.getReglages().objectifMin || 10;
+    const min = Math.round((window.Progress.statsTemps().aujourdhui || 0) / 60);
+    const pct = Math.min(100, Math.round((min / obj) * 100));
+    const wrap = el("div", "goal-ring" + (pct >= 100 ? " done" : ""));
+    wrap.style.setProperty("--p", pct);
+    wrap.innerHTML = '<div class="goal-inner"><span class="goal-num">' + min + '</span><span class="goal-lab">/ ' + obj + ' min</span></div>';
+    return wrap;
+  }
+
+  /* Partage / export / invitation */
+  function toast(msg) {
+    let t = document.querySelector(".toast");
+    if (!t) { t = el("div", "toast"); document.body.appendChild(t); }
+    t.textContent = msg; t.classList.add("show");
+    clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("show"), 2400);
+  }
+  function partager(text, url) {
+    url = url || "https://sprachakademie.app";
+    if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.openTelegramLink) {
+      window.Telegram.WebApp.openTelegramLink("https://t.me/share/url?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(text));
+    } else if (navigator.share) {
+      navigator.share({ text: text, url: url }).catch(function () {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(text + " " + url).then(function () { toast("📋 Lien copié dans le presse-papiers"); }).catch(function () { toast(text); });
+    } else { toast(text); }
+  }
+  function partagerProgression() {
+    const pts = calcPoints(), r = window.Progress.resumeGlobal(COURS), niv = window.Progress.getNiveau() || "A1";
+    partager("🇩🇪 J'apprends l'allemand avec le coach Zika ! Niveau " + niv + " · " + pts + " points · " + r.faites + " leçons terminées. Rejoins-moi 👇");
+  }
+  function inviterAmis() {
+    partager("Apprends l'allemand de A1 à C2 avec le coach Zika 🇩🇪 — cours, audio, examens, installable et hors-ligne, gratuit ! 👇");
+  }
+  function exporterProgression() {
+    try {
+      const blob = new Blob([JSON.stringify(window.Progress.load(), null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a"); a.href = url; a.download = "ma-progression-allemand.json"; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+      toast("⬇️ Sauvegarde exportée");
+    } catch (e) { toast("Export indisponible ici"); }
+  }
 
   /* ====================================================================
      ROUTAGE
