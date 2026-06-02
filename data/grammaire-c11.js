@@ -8,6 +8,12 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g01", titre: "Les temps du passé", titreDE: "Die Vergangenheitstempora", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
     objectifs: ["Choisir le temps selon le registre et la chronologie", "Combiner les temps dans un texte"],
     grammairePoints: ["Perfekt / Präteritum", "Plusquamperfekt (antériorité)"],
+    coursDE: [
+      "Auf C1-Niveau musst du die drei Vergangenheitstempora nicht nur bilden, sondern auch **stilistisch sicher einsetzen** können. Die Wahl zwischen Perfekt und Präteritum hängt vom **Register** und vom **Texttyp** ab, nicht vom Inhalt.",
+      "Das **Perfekt** dominiert in der mündlichen Kommunikation und in persönlichen Texten, während das **Präteritum** die typische Tempusform schriftlicher Erzählungen und journalistischer Berichte ist. In gesprochener Sprache bleiben jedoch *sein, haben* und die Modalverben auch im Präteritum üblich.",
+      "Das **Plusquamperfekt** markiert die **Vorzeitigkeit**: ein Ereignis, das vor einem anderen vergangenen Ereignis abgeschlossen war. In Verbindung mit *nachdem* ist die Zeitenfolge streng: « *Nachdem man die Ergebnisse **veröffentlicht hatte**, **begann** die Diskussion* ».",
+      "Beachte den feinen Unterschied: Das Präteritum schildert Ereignisse als zusammenhängenden Verlauf, das Perfekt betont eher das **Resultat** und den Bezug zur Gegenwart. Auf C1-Niveau wird erwartet, dass du diese Nuancen bewusst und konsequent verwendest."
+    ],
     grammaire: [
       { exemples: [{"de":"Nachdem er gegangen war, wurde es still.","fr":"Après son départ, le silence s'installa."},{"de":"Damals lebte sie noch in Berlin.","fr":"À l'époque, elle vivait encore à Berlin."}], regle: "Perfekt (oral/lettres), Präteritum (récit écrit), Plusquamperfekt (antériorité). On les **combine** dans un texte cohérent.", attention: "Le **Präteritum** domine le récit littéraire ; le **Perfekt** l'oral et la correspondance.", titre: "Trois temps, trois fonctions", intro: "Perfekt (oral, lettres), Präteritum (récit écrit, presse), Plusquamperfekt (action antérieure). On les combine dans un texte cohérent.",
         tableau: { entetes: ["Temps", "Registre / rôle", "Exemple"], lignes: [["Perfekt", "oral, e-mail", "Ich habe es erledigt."], ["Präteritum", "récit écrit", "Er verließ das Haus."], ["Plusquamperfekt", "antériorité", "Nachdem er gegangen war, …"], ["sein/haben/Modale", "Präteritum à l'oral aussi", "Ich war / hatte / musste"]] },
@@ -26,6 +32,12 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g02", titre: "Prépositions de lieu et de temps", titreDE: "Lokale und temporale Präpositionen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Choisir la bonne préposition et le bon cas", "Distinguer lieu et temps"],
     grammairePoints: ["an, in, auf, nach, zu", "vor, seit, bis, innerhalb"],
+    coursDE: [
+      "Präpositionen wirken einfach, sind aber eine der häufigsten Fehlerquellen – selbst auf hohem Niveau. Auf C1 geht es darum, **lokale** und **temporale** Präpositionen samt ihrer **Rektion** (Kasus) souverän und idiomatisch zu beherrschen.",
+      "Bei den **lokalen** Präpositionen ist die Unterscheidung von Position und Richtung entscheidend (Dativ bei *Wo?*, Akkusativ bei *Wohin?*). Hinzu kommen idiomatische Feinheiten: *nach* (Städte, Länder ohne Artikel), *zu* (Personen, bestimmte Ziele), *in* (mit Artikel, z. B. *in die Schweiz*).",
+      "Bei den **temporalen** Präpositionen solltest du sicher unterscheiden: *vor* (Vergangenheit, + Dativ), *seit* (Beginn bis Gegenwart, + Dativ), *bis* (Endpunkt), *innerhalb* (+ Genitiv). Eine Verwechslung von *vor* und *seit* gilt auf diesem Niveau als auffälliger Fehler.",
+      "Mein Rat: Lerne Präpositionen nicht isoliert, sondern in **festen Wendungen** und mit ihrem Kasus. Achte besonders auf die formellen Genitiv-Präpositionen, die in geschriebenen Texten häufig sind und deinen Ausdruck präziser machen."
+    ],
     grammaire: [
       { exemples: [{"de":"Wir fahren in die Schweiz.","fr":"Nous allons en Suisse."},{"de":"Seit Montag arbeite ich von zu Hause.","fr":"Depuis lundi, je travaille de chez moi."}], regle: "Le choix dépend du **sens** (position/direction, point/durée) et chaque préposition impose un **cas**.", attention: "*nach* + ville/pays **sans** article ; *in* + pays **avec** article (*in die Schweiz*).", titre: "Lieu et temps : préposition + cas", intro: "Le choix dépend du sens (position/direction, point/durée) et chaque préposition impose un cas.",
         tableau: { entetes: ["Type", "Préposition", "Exemple"], lignes: [["lieu (où)", "an/in + Dat.", "an der Wand, in der Stadt"], ["lieu (vers)", "nach/zu/in + …", "nach Berlin, zur Arbeit"], ["temps (point)", "an/um/in + Dat.", "am Montag, um acht, im Mai"], ["temps (durée)", "seit/während/innerhalb", "seit Jahren, innerhalb einer Woche"]] },
@@ -43,6 +55,12 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g03", titre: "Connecteurs : subordonnées", titreDE: "Konnektoren: Nebensätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
     objectifs: ["Relier les idées par subordination", "Placer le verbe à la fin"],
     grammairePoints: ["obwohl, indem, sodass", "während, sofern, falls"],
+    coursDE: [
+      "Komplexe Sätze entstehen durch **Nebensätze**, die mit einer subordinierenden Konjunktion eingeleitet werden. Auf C1 erweiterst du dein Repertoire deutlich über *weil* und *dass* hinaus. In all diesen Nebensätzen steht das **konjugierte Verb am Ende**.",
+      "Für **Einräumungen** benutzt du **obwohl** (bien que): « *Obwohl es regnete, gingen wir spazieren* ». Für die **Art und Weise** dient **indem** (en … -ant): « *Man lernt eine Sprache, **indem** man sie spricht* ».",
+      "Für die **Folge** steht **sodass**: « *Er sprach leise, **sodass** ihn niemand verstand* ». Für **Bedingungen** dienen **falls** und **sofern**, die präziser sind als das einfache *wenn*: « *Sofern keine Einwände bestehen, beginnen wir* ».",
+      "Achte auf die Zeichensetzung: Vor dem Nebensatz steht stets ein **Komma**. Steht der Nebensatz am Anfang, folgt die Inversion im Hauptsatz. Die bewusste Variation dieser Konnektoren ist ein deutliches Merkmal eines gehobenen Stils."
+    ],
     grammaire: [
       { exemples: [{"de":"Man lernt, indem man Fehler macht.","fr":"On apprend en faisant des erreurs."},{"de":"Obwohl es schwierig war, gab er nicht auf.","fr":"Bien que ce fût difficile, il n'a pas abandonné."}], regle: "Conjonctions de subordination (*obwohl, indem, sodass, sofern, falls*) → **verbe à la fin**.", attention: "*indem* = **moyen** (en faisant…) ; à ne pas confondre avec *so … dass*.", titre: "La subordination rejette le verbe à la fin", intro: "Les conjonctions de subordination introduisent une proposition où le verbe conjugué va à la fin.",
         tableau: { entetes: ["Conjonction", "Sens", "Exemple"], lignes: [["obwohl", "bien que", "Obwohl es regnet, gehe ich."], ["indem", "en (moyen)", "Man lernt, indem man übt."], ["sodass", "de sorte que", "Es war kalt, sodass wir blieben."], ["sofern", "dans la mesure où", "Sofern es klappt, komme ich."], ["falls", "au cas où", "Falls du Zeit hast, ruf an."]] },
@@ -61,6 +79,12 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g04", titre: "Adjectifs à cas prépositionnel", titreDE: "Adjektive mit Präpositionalkasus", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Mémoriser les adjectifs à préposition fixe", "Appliquer le cas imposé"],
     grammairePoints: ["stolz auf, fähig zu", "verantwortlich für, überzeugt von"],
+    coursDE: [
+      "Wie viele Verben verlangen auch zahlreiche **Adjektive** eine feste Präposition mit einem bestimmten Kasus. Diese Verbindungen sind idiomatisch und müssen als Einheit gelernt werden, da sie sich oft nicht aus dem Französischen ableiten lassen.",
+      "Häufige Beispiele mit **Akkusativ**: *stolz **auf*** (fier de), *verantwortlich **für*** (responsable de), *gespannt **auf***, *neugierig **auf***. Beispiel: « *Sie ist **verantwortlich für** das Projekt* ».",
+      "Beispiele mit **Dativ**: *fähig **zu*** (capable de), *überzeugt **von*** (convaincu de), *zufrieden **mit***. Die Präposition bestimmt den Kasus: « *Ich bin **überzeugt von** seiner Ehrlichkeit* ».",
+      "Für Fragen und Verweise auf Sachen gelten dieselben Pronominaladverbien wie bei den Verben: **wo(r)-** und **da(r)-** (« *Worauf bist du stolz? – Darauf.* »). Lege dir eine systematische Liste an; auf C1 zeigt die korrekte Rektion sprachliche Reife."
+    ],
     grammaire: [
       { exemples: [{"de":"Ich bin gespannt auf das Ergebnis.","fr":"J'ai hâte de connaître le résultat."},{"de":"Sie ist von der Idee überzeugt.","fr":"Elle est convaincue par l'idée."}], regle: "Adjectifs à préposition fixe : *stolz **auf***, *fähig **zu***, *verantwortlich **für***, *überzeugt **von***, *abhängig **von***.", attention: "Interroger/reprendre comme les verbes : *Worauf bist du stolz? – darauf*.", titre: "Adjectif + préposition + cas", intro: "De nombreux adjectifs C1 régissent une préposition fixe (et un cas). À mémoriser par paires.",
         tableau: { entetes: ["Adjectif", "Préposition + cas", "Exemple"], lignes: [["stolz", "auf + Akk.", "stolz auf den Erfolg"], ["fähig", "zu + Dat.", "zu allem fähig"], ["verantwortlich", "für + Akk.", "verantwortlich für das Projekt"], ["überzeugt", "von + Dat.", "überzeugt von der Idee"], ["abhängig", "von + Dat.", "abhängig von der Hilfe"], ["gespannt", "auf + Akk.", "gespannt auf das Ergebnis"]] },
@@ -78,6 +102,12 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g05", titre: "Connecteurs en deux parties", titreDE: "Zweiteilige Konnektoren", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Relier deux éléments avec des connecteurs corrélés", "Employer je … desto"],
     grammairePoints: ["sowohl…als auch, weder…noch", "je…desto, zwar…aber"],
+    coursDE: [
+      "**Zweiteilige Konnektoren** verbinden zwei Elemente durch ein festes Wortpaar. Sie verleihen deinen Sätzen Präzision und Eleganz und sind ein Markenzeichen des fortgeschrittenen Ausdrucks.",
+      "Für **Aufzählung und Alternative**: *sowohl … als auch*, *weder … noch*, *entweder … oder*, *nicht nur … sondern auch*. Beispiel: « *Das Konzept ist **nicht nur** innovativ, **sondern auch** praktisch* ».",
+      "Besonders nützlich ist **je … desto / umso** (plus … plus). Achte auf die Wortstellung: « ***Je** mehr man übt, **desto** sicherer wird man* » – nach *je* steht das Verb am Ende, nach *desto* folgt es direkt.",
+      "Für die **Einräumung** dient *zwar … aber*: « *Das Buch ist **zwar** lang, **aber** sehr interessant* ». Mit diesen Wortpaaren strukturierst du komplexe Aussagen klar und wirkst sprachlich versiert."
+    ],
     grammaire: [
       { exemples: [{"de":"Je mehr man übt, desto besser wird man.","fr":"Plus on s'entraîne, meilleur on devient."},{"de":"Entweder du kommst mit, oder du bleibst.","fr":"Soit tu viens, soit tu restes."}], regle: "Connecteurs corrélés : *sowohl … als auch*, *weder … noch*, *entweder … oder*, *nicht nur … sondern auch*, **je … desto**.", attention: "Après **je** le verbe va à la **fin** ; après **desto** il vient en **2ᵉ** position.", titre: "Les connecteurs corrélés", intro: "Ils relient deux éléments et nuancent (addition, exclusion, gradation, concession).",
         tableau: { entetes: ["Connecteur", "Sens", "Exemple"], lignes: [["sowohl … als auch", "aussi bien … que", "sowohl klug als auch fleißig"], ["weder … noch", "ni … ni", "weder Zeit noch Geld"], ["nicht nur … sondern auch", "non seulement … mais aussi", "nicht nur er, sondern auch sie"], ["entweder … oder", "soit … soit", "entweder jetzt oder nie"], ["je … desto", "plus … plus", "je mehr, desto besser"]] },
@@ -96,6 +126,12 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g06", titre: "Connecteurs : principales", titreDE: "Verbindungsadverbien", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Relier deux principales par un adverbe connecteur", "Gérer l'inversion (verbe en 2e)"],
     grammairePoints: ["deshalb, trotzdem, dennoch", "folglich, allerdings, jedoch"],
+    coursDE: [
+      "**Verbindungsadverbien** (Konjunktionaladverbien) verknüpfen zwei Hauptsätze logisch. Anders als Konjunktionen besetzen sie eine **Satzposition**: Stehen sie am Anfang, folgt das Verb direkt danach (Inversion).",
+      "Für die **Folge**: *deshalb, deswegen, daher, folglich, somit*. Für den **Gegensatz**: *trotzdem, dennoch* (néanmoins), *allerdings, jedoch* (cependant). Beispiel: « *Die Lage war schwierig; **dennoch** **blieb** er ruhig* ».",
+      "Der entscheidende Unterschied zu Konjunktionen wie *weil* oder *obwohl* ist die Wortstellung: Nach einem Verbindungsadverb steht das Verb auf **Position 2**, nicht am Ende. Vergleiche: « *…, **obwohl** er müde **war*** » und « *…; **trotzdem** **arbeitete** er weiter* ».",
+      "Diese Adverbien sind oft beweglich und können auch im Satzinneren stehen: « *Er arbeitete **trotzdem** weiter* ». Ihr bewusster Einsatz macht deine Argumentation flüssig und logisch nachvollziehbar."
+    ],
     grammaire: [
       { exemples: [{"de":"Es regnete; trotzdem gingen wir spazieren.","fr":"Il pleuvait ; malgré tout, nous nous sommes promenés."},{"de":"Er log, folglich glaubt man ihm nicht mehr.","fr":"Il a menti, par conséquent on ne le croit plus."}], regle: "Adverbes connecteurs (*deshalb, trotzdem, dennoch, folglich, allerdings*) : le verbe reste en **2ᵉ position**.", attention: "Différence clé : *weil* → verbe à la **fin** ; *deshalb* → verbe en **2ᵉ** position.", titre: "Les adverbes connecteurs (Position 1 → inversion)", intro: "Contrairement aux conjonctions de subordination, ces adverbes laissent le verbe en 2e position ; placés en tête, ils provoquent l'inversion.",
         tableau: { entetes: ["Adverbe", "Sens", "Exemple"], lignes: [["deshalb", "c'est pourquoi", "Es regnet, deshalb bleibe ich."], ["trotzdem", "malgré tout", "Es regnet, trotzdem gehe ich."], ["dennoch", "néanmoins", "Schwierig, dennoch schaffte er es."], ["folglich", "par conséquent", "Er log, folglich glaubt man ihm nicht."], ["allerdings", "toutefois", "Gut, allerdings teuer."]] },
@@ -114,6 +150,12 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g07", titre: "Les verbes modaux", titreDE: "Die Modalverben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Distinguer sens objectif et subjectif", "Employer le modal au passé et au passif"],
     grammairePoints: ["müsste, dürfte (supposition)", "hätte … müssen, … werden müssen"],
+    coursDE: [
+      "Auf C1-Niveau beherrschst du die **subjektive** Bedeutung der Modalverben, mit der du den **Sicherheitsgrad** einer Vermutung ausdrückst, sowie ihre **Vergangenheitsformen**, die syntaktisch anspruchsvoll sind.",
+      "Subjektive Vermutungen: *müsste* (hohe Wahrscheinlichkeit: « *Er **müsste** schon da sein* »), *dürfte* (begründete Annahme: « *Das **dürfte** stimmen* »), *könnte* (Möglichkeit), *soll* (Wiedergabe fremder Aussagen: « *Er **soll** sehr reich sein* »).",
+      "Die Vergangenheit der subjektiven Modalverben bildet man mit *müsste/könnte/dürfte* + **Partizip II + haben/sein**: « *Er **müsste** das **gewusst haben*** ». Diese Konstruktion mit doppeltem Infinitiv ist typisch C1.",
+      "Auch die objektive Vergangenheit verlangt im Perfekt einen **doppelten Infinitiv**: « *Ich habe arbeiten **müssen*** » (statt « gemusst »). Im Nebensatz rückt das konjugierte Verb vor die Infinitive: « *…, weil ich **habe** arbeiten müssen* ». Diese Feinheit unterscheidet fortgeschrittene Lerner."
+    ],
     grammaire: [
       { exemples: [{"de":"Ich hätte früher kommen sollen.","fr":"J'aurais dû venir plus tôt."},{"de":"Das muss bis morgen erledigt werden.","fr":"Cela doit être fait pour demain."}], regle: "Sens **subjectif** (supposition : *dürfte, müsste*), combinaisons au **passé** (*hätte … müssen*) et au **passif** (*muss … werden*).", attention: "Ordre final : *Ich hätte gehen **müssen*** (infinitif + modal à l'infinitif).", titre: "Modaux : nuances avancées", intro: "Au C1, les modaux expriment la supposition (sens subjectif) et se combinent au passé et au passif.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["supposition", "dürfte / müsste", "Er dürfte schon da sein."], ["rumeur", "sollen", "Er soll sehr reich sein."], ["prétention", "wollen", "Sie will nichts gewusst haben."], ["passé + modal", "hätte … müssen", "Ich hätte gehen müssen."], ["passif + modal", "muss … werden", "Das muss erledigt werden."]] },
@@ -131,6 +173,12 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g08", titre: "Le subjonctif II", titreDE: "Der Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
     objectifs: ["Maîtriser présent et passé du Konjunktiv II", "Exprimer politesse, souhait et irréel"],
     grammairePoints: ["würde, hätte, wäre, könnte", "hätte/wäre + participe (passé)"],
+    coursDE: [
+      "Der **Konjunktiv II** ist auf C1-Niveau ein zentrales Stilmittel für **Irrealität, Höflichkeit und Distanzierung**. Du solltest die Gegenwarts- und Vergangenheitsformen mühelos und situationsgerecht einsetzen.",
+      "In der **Gegenwart** stehen die echten Formen (*wäre, hätte, käme, ginge, könnte*) neben der Umschreibung *würde* + Infinitiv. In gepflegter Sprache bevorzugt man bei häufigen Verben die echte Form: « *Das **käme** für mich nicht infrage* ».",
+      "Die **Vergangenheit** kennt nur eine Form: *hätte/wäre* + Partizip II: « *Wenn ich das **gewusst hätte**, **wäre** ich nicht **gekommen*** ». Sie drückt Bedauern über Nicht-Geschehenes präzise aus.",
+      "Funktional dient der Konjunktiv II der **diplomatischen Distanz**: höfliche Bitten (« *Wären Sie so freundlich…* »), vorsichtige Behauptungen (« *Man könnte argumentieren, dass…* ») und irreale Vergleiche mit *als ob* (« *Er tut, **als ob** er nichts **wüsste*** »)."
+    ],
     grammaire: [
       { exemples: [{"de":"An deiner Stelle wäre ich vorsichtiger.","fr":"À ta place, je serais plus prudent."},{"de":"Er tut, als ob nichts geschehen wäre.","fr":"Il fait comme si rien ne s'était passé."}], regle: "Présent (würde/hätte/wäre/könnte) et passé (**hätte/wäre + participe**) ; comparaison **als ob** + KII (fin).", attention: "Après *als ob* → verbe à la **fin** ; souhait : *Wenn ich doch nur … hätte!*", titre: "Présent et passé de l'irréel", intro: "Présent : würde + infinitif ou formes propres ; passé : hätte/wäre + participe II.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["politesse", "könnte / würde", "Könnten Sie mir helfen?"], ["souhait irréel", "wenn … doch nur", "Wenn ich doch nur Zeit hätte!"], ["irréel présent", "würde + infinitif", "Ich würde sofort kündigen."], ["irréel passé", "hätte/wäre + participe", "Ich wäre gern gekommen."], ["comparaison", "als ob + KII (fin)", "Er tut, als ob er alles wüsste."]] },
@@ -149,6 +197,12 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g09", titre: "Prépositions avec le génitif", titreDE: "Präpositionen mit Genitiv", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Employer les prépositions à génitif soutenues", "Exprimer cause, opposition, point de vue"],
     grammairePoints: ["wegen, trotz, während", "angesichts, hinsichtlich, zugunsten"],
+    coursDE: [
+      "Die **Präpositionen mit Genitiv** sind ein Kennzeichen der gehobenen Schriftsprache. Auf C1 erweiterst du die bekannten Formen um zahlreiche **formelle** Präpositionen, die in akademischen und beruflichen Texten unverzichtbar sind.",
+      "Neben *wegen, trotz, während, (an)statt* treten anspruchsvollere hinzu: **angesichts** (au vu de), **hinsichtlich / bezüglich** (concernant), **zugunsten** (en faveur de), **anlässlich** (à l'occasion de), **infolge** (par suite de), **mittels** (au moyen de). Beispiel: « ***Angesichts** der Lage müssen wir handeln* ».",
+      "Die Genitiv-Rektion bleibt konstant: maskulin/neutral *des …-(e)s*, feminin/Plural *der …*: « *hinsichtlich **der** Kosten* », « *infolge **des** Sturm**s*** ».",
+      "Stilistisch signalisieren diese Präpositionen ein **formelles Register**. In der Umgangssprache werden manche durch *wegen + Dativ* ersetzt, doch im schriftlichen Kontext erwartet man den Genitiv. Ihr gezielter Einsatz hebt das Niveau deiner Texte deutlich."
+    ],
     grammaire: [
       { exemples: [{"de":"Angesichts der Lage müssen wir handeln.","fr":"Compte tenu de la situation, nous devons agir."},{"de":"Hinsichtlich der Kosten gibt es noch Fragen.","fr":"Concernant les coûts, il reste des questions."}], regle: "Outre *wegen/trotz/während*, le C1 emploie *angesichts* (compte tenu de), *hinsichtlich* (concernant), *zugunsten*, *mangels* (+ génitif).", attention: "Registre **écrit** : à l'oral, on les remplace souvent par *wegen/von … aus*.", titre: "Le registre soutenu impose le génitif", intro: "Outre wegen/trotz/während, le C1 emploie des prépositions à génitif plus rares et formelles.",
         tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["wegen", "à cause de", "wegen des Wetters"], ["trotz", "malgré", "trotz aller Probleme"], ["angesichts", "compte tenu de", "angesichts der Lage"], ["hinsichtlich", "concernant", "hinsichtlich der Kosten"], ["zugunsten", "en faveur de", "zugunsten der Kinder"], ["mangels", "faute de", "mangels Beweisen"]] },
