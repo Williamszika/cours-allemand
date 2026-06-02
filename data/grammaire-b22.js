@@ -10,6 +10,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g09", titre: "Le subjonctif II", titreDE: "Der Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
     objectifs: ["Former le Konjunktiv II présent et passé", "Exprimer politesse, souhait et irréel"],
     grammairePoints: ["würde, hätte, wäre, könnte", "hätte/wäre + participe (passé)"],
+    exemplesPlus: [{"de":"An deiner Stelle würde ich mit dem Chef sprechen.","fr":"Höflicher Rat mit *würde*."},{"de":"Wenn ich mehr Zeit hätte, würde ich ein Instrument lernen.","fr":"Irreale Bedingung: es ist gerade nicht möglich."},{"de":"Könnten Sie mir bitte kurz weiterhelfen?","fr":"Sehr höfliche Bitte mit *könnten*."},{"de":"Wenn ich das früher gewusst hätte, hätte ich anders gehandelt.","fr":"Konjunktiv II der Vergangenheit."},{"de":"Beinahe wäre ich zu spät gekommen.","fr":"*beinahe* + Konjunktiv II: es ist fast passiert."}],
     coursDE: [
       "Der **Konjunktiv II** drückt **Irreales**, **Höfliches** und **Wünsche** aus. Auf B2-Niveau solltest du nicht nur *würde* benutzen, sondern auch die echten Formen sicher beherrschen und die Vergangenheit bilden können.",
       "Für die **Gegenwart** nimmst du *würde* + Infinitiv oder die kurze Form: **wäre, hätte, könnte, müsste, dürfte, sollte**. Bei *sein, haben* und den Modalverben ist die kurze Form besser: « *Ich **wäre** froh* », « *Ich **hätte** Zeit* ».",
@@ -34,6 +35,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g10", titre: "L'accord du verbe", titreDE: "Die Verbkongruenz", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B2",
     objectifs: ["Accorder le verbe avec le sujet", "Gérer les sujets collectifs et coordonnés"],
     grammairePoints: ["singulier / pluriel", "sowohl…als auch, eine Reihe von"],
+    exemplesPlus: [{"de":"Sowohl der Lehrer als auch die Schüler waren zufrieden.","fr":"Zwei Subjekte: das Verb steht im Plural."},{"de":"Eine Reihe von Problemen wurde diskutiert.","fr":"*eine Reihe von*: meistens Singular."},{"de":"Die Mehrheit der Studenten ist dafür.","fr":"*die Mehrheit*: Verb im Singular."},{"de":"Weder er noch seine Freunde kommen zur Party.","fr":"Bei *weder … noch* richtet sich das Verb meist nach dem Letzten."},{"de":"Ein Drittel der Mitglieder hat abgestimmt.","fr":"Bruchzahl als Subjekt: Singular."}],
     coursDE: [
       "Die **Verbkongruenz** bedeutet, dass das Verb mit dem Subjekt in **Person und Zahl** übereinstimmt. Meistens ist das einfach, aber bei zusammengesetzten Subjekten gibt es auf B2-Niveau einige feine Regeln.",
       "Bei zwei Subjekten mit **und** steht das Verb im **Plural**: « *Anna und Tom **kommen** heute* ». Bei **sowohl … als auch** ebenfalls Plural. Bei **entweder … oder** und **weder … noch** richtet sich das Verb meist nach dem **näheren** Subjekt.",
@@ -57,6 +59,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g11", titre: "L'ordre des mots", titreDE: "Die Wortstellung", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
     objectifs: ["Ordonner les compléments (TeKaMoLo)", "Placer correctement « nicht »"],
     grammairePoints: ["Te-Ka-Mo-Lo", "parenthèse verbale, position de nicht"],
+    exemplesPlus: [{"de":"Ich fahre morgen mit dem Auto zur Arbeit.","fr":"Reihenfolge: temporal – modal – lokal (Te-Ka-Mo-Lo)."},{"de":"Er hat gestern in der Stadt ein Geschenk gekauft.","fr":"Satzklammer: *hat … gekauft* umschließt den Satz."},{"de":"Sie ruft heute Abend ihre Mutter an.","fr":"Trennbares Verb: *an* steht am Ende."},{"de":"Ich habe den Film nicht gesehen.","fr":"*nicht* steht vor dem Partizip."},{"de":"Wir fahren nicht nach Berlin, sondern nach Dresden.","fr":"*nicht* vor dem Teil, der verneint wird."}],
     coursDE: [
       "Die **Wortstellung** im deutschen Satz folgt klaren Regeln. Auf B2-Niveau geht es darum, die Reihenfolge im Mittelfeld und die Position von *nicht* zu beherrschen, damit deine Sätze natürlich klingen.",
       "Im Hauptsatz steht das Verb immer auf **Position 2**, und bei zusammengesetzten Formen bildet sich eine **Satzklammer**: das konjugierte Verb vorn, der zweite Teil am Ende. « *Ich **habe** gestern einen Brief **geschrieben*** ».",
@@ -81,6 +84,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g12", titre: "Les indicateurs de temps", titreDE: "Temporalangaben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Relier des actions dans le temps", "Choisir conjonction, préposition ou adverbe"],
     grammairePoints: ["als, während, nachdem, seitdem", "vor/seit/bis, danach"],
+    exemplesPlus: [{"de":"Als ich gestern aufwachte, schien die Sonne.","fr":"*als*: einmal in der Vergangenheit."},{"de":"Während ich arbeitete, hörte ich Musik.","fr":"*während*: zwei Dinge gleichzeitig."},{"de":"Seitdem er umgezogen ist, sehen wir uns selten.","fr":"*seitdem*: ab einem Zeitpunkt bis jetzt."},{"de":"Nachdem das Spiel zu Ende war, gingen alle nach Hause.","fr":"*nachdem*: das eine nach dem anderen."},{"de":"Seit drei Wochen habe ich nichts von ihr gehört.","fr":"*seit* + Dativ: Dauer bis zur Gegenwart."}],
     coursDE: [
       "**Temporalangaben** verbinden Sätze in der Zeit. Auf B2-Niveau benutzt du vor allem **Temporalsätze** mit verschiedenen Konjunktionen, die genau zeigen, ob etwas gleichzeitig, vorher oder nachher passiert.",
       "Für **Gleichzeitigkeit** benutzt du **während** (parallel), **als** (einmalig in der Vergangenheit) und **wenn** (Gegenwart oder Wiederholung): « *Als ich klein war, wohnte ich in Bonn* », « *Während sie kochte, deckte er den Tisch* ».",
@@ -104,6 +108,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g13", titre: "L'emploi du conditionnel", titreDE: "Gebrauch des Konjunktivs II", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Exprimer souhait irréel et comparaison irréelle", "Employer « als ob »"],
     grammairePoints: ["wenn … doch nur", "als ob / als wenn + Konjunktiv II"],
+    exemplesPlus: [{"de":"Wenn er doch nur pünktlicher wäre!","fr":"Irrealer Wunsch mit *doch nur*."},{"de":"Hätte ich doch mehr gelernt!","fr":"Wunsch über die Vergangenheit."},{"de":"Er tut so, als ob er alles wüsste.","fr":"*als ob* + Konjunktiv II: es ist nicht wirklich so."},{"de":"Sie sieht aus, als wäre sie krank.","fr":"*als* + Konjunktiv II (ohne *ob*, Verb folgt direkt)."},{"de":"Wenn ich nur früher davon erfahren hätte!","fr":"Bedauern über die Vergangenheit."}],
     coursDE: [
       "In dieser Lektion vertiefst du den **Gebrauch** des Konjunktivs II in besonderen Strukturen, die typisch für B2 sind: irreale Wünsche, irreale Vergleiche und höfliche Distanz.",
       "Für **irreale Wünsche** benutzt du **wenn … doch (nur)**: « *Wenn ich **doch nur** mehr Zeit **hätte!*** », « *Wäre ich **doch** früher gekommen!* ». Diese Sätze drücken Bedauern oder einen starken Wunsch aus.",
@@ -128,6 +133,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g14", titre: "Le discours indirect (Konjunktiv I)", titreDE: "Indirekte Rede: Konjunktiv I", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
     objectifs: ["Former le Konjunktiv I", "Rapporter des propos (presse)"],
     grammairePoints: ["sei, habe, könne, werde", "rapport neutre"],
+    exemplesPlus: [{"de":"Er sagt, er sei sehr beschäftigt.","fr":"Indirekte Rede mit Konjunktiv I: *sei*."},{"de":"Sie meint, sie habe keine Zeit.","fr":"Konjunktiv I: *habe*."},{"de":"Der Minister erklärte, man werde die Steuern senken.","fr":"Konjunktiv I: *werde* für die Zukunft."},{"de":"Im Bericht heißt es, das Projekt könne bald beginnen.","fr":"Konjunktiv I: *könne*."},{"de":"Sie fragte, ob er am Montag komme.","fr":"Indirekte Frage mit *ob*."}],
     coursDE: [
       "Die **indirekte Rede** benutzt man, um wiederzugeben, was eine andere Person gesagt hat – besonders in Nachrichten, Berichten und formellen Texten. Dafür gibt es im Deutschen den **Konjunktiv I**.",
       "Der Konjunktiv I zeigt, dass der Sprecher die Information nur **wiedergibt** und sich **distanziert**. Die wichtigsten Formen kommen vom Verbstamm + -e: *er **sei***, *er **habe***, *er **könne***, *er **werde***, *er **gehe***.",
@@ -151,6 +157,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g15", titre: "Konjunktiv I : formes de substitution", titreDE: "Ersatzformen des Konjunktivs I", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Savoir quand remplacer le Konjunktiv I", "Utiliser le Konjunktiv II / würde à la place"],
     grammairePoints: ["KI = indicatif → KII", "würde + infinitif"],
+    exemplesPlus: [{"de":"Sie sagen, sie hätten keine Zeit.","fr":"Klingt Konjunktiv I wie der Indikativ, nimmt man Konjunktiv II: *hätten*."},{"de":"Er behauptet, sie würden bald heiraten.","fr":"Ersatzform: *würde* + Infinitiv."},{"de":"Die Kinder sagen, sie wären schon fertig.","fr":"Konjunktiv II *wären* statt *seien*."},{"de":"Man berichtet, die Preise würden weiter steigen.","fr":"*würde* + Infinitiv für die indirekte Rede."},{"de":"Sie meinten, sie könnten uns nicht helfen.","fr":"Konjunktiv II *könnten*."}],
     coursDE: [
       "Der **Konjunktiv I** sieht manchmal genauso aus wie der **Indikativ** (besonders im Plural). Dann ist die indirekte Rede nicht klar erkennbar, und man braucht eine **Ersatzform**.",
       "Die Regel ist einfach: Wenn der Konjunktiv I **gleich** wie der Indikativ ist, benutzt du stattdessen den **Konjunktiv II**. Beispiel: « *sie haben* » ist in beiden Formen gleich → man sagt « *sie **hätten*** »: « *Sie sagen, sie **hätten** keine Zeit* ».",
@@ -174,6 +181,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g16", titre: "Locutions verbo-nominales", titreDE: "Nomen-Verb-Verbindungen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Employer des locutions figées nom + verbe", "Reformuler avec un verbe simple"],
     grammairePoints: ["in Frage stellen, zur Verfügung stehen", "Bezug nehmen auf"],
+    exemplesPlus: [{"de":"Niemand stellt deine Kompetenz in Frage.","fr":"*in Frage stellen* = bezweifeln."},{"de":"Ich stehe Ihnen gern zur Verfügung.","fr":"*zur Verfügung stehen* = bereit sein zu helfen."},{"de":"Wir möchten Bezug auf Ihr Schreiben nehmen.","fr":"*Bezug nehmen auf* = sich beziehen auf."},{"de":"Die Regierung hat eine Entscheidung getroffen.","fr":"*eine Entscheidung treffen* = entscheiden."},{"de":"Dieses Thema spielt eine wichtige Rolle.","fr":"*eine Rolle spielen* = wichtig sein."}],
     coursDE: [
       "**Nomen-Verb-Verbindungen** (auch *Funktionsverbgefüge*) sind feste Verbindungen aus einem Nomen und einem Verb. Sie sind typisch für die **formelle und schriftliche** Sprache und gehören zum guten B2-Niveau.",
       "Bei diesen Ausdrücken trägt das **Nomen** die Hauptbedeutung, und das Verb hat nur eine Hilfsfunktion. Oft kann man sie durch ein einfaches Verb ersetzen: *eine Entscheidung **treffen*** = entscheiden, *in Frage **stellen*** = bezweifeln, *zur Verfügung **stehen*** = verfügbar sein.",
@@ -197,6 +205,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g17", titre: "Les prépositions (génitif)", titreDE: "Präpositionen mit Genitiv", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Employer les prépositions à génitif", "Exprimer cause, opposition, lieu, moyen"],
     grammairePoints: ["wegen, trotz, während", "aufgrund, innerhalb, statt"],
+    exemplesPlus: [{"de":"Wegen des Streiks fielen viele Züge aus.","fr":"*wegen* + Genitiv: der Grund."},{"de":"Trotz des Regens fand das Konzert statt.","fr":"*trotz* + Genitiv."},{"de":"Während der Sitzung wurden viele Fragen geklärt.","fr":"*während* + Genitiv: in dieser Zeit."},{"de":"Aufgrund eines Fehlers verzögert sich die Lieferung.","fr":"*aufgrund* + Genitiv: die Ursache."},{"de":"Statt eines Briefes schickte sie eine E-Mail.","fr":"*statt* + Genitiv: an Stelle von."}],
     coursDE: [
       "Auf B2-Niveau benutzt du viele **Präpositionen mit Genitiv**. Sie sind typisch für die **gehobene und schriftliche** Sprache und machen deine Texte präziser und formeller.",
       "Die wichtigsten sind: **wegen** (à cause de), **trotz** (malgré), **während** (pendant), **aufgrund** (en raison de), **innerhalb** (à l'intérieur de), **außerhalb**, **statt / anstatt** (au lieu de). Nach ihnen steht der Genitiv: « ***wegen** des schlechten Wetter**s*** ».",

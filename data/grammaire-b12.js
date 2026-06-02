@@ -8,6 +8,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g15", titre: "Indicateurs de conditionnel", titreDE: "Irreale Bedingungen (wenn)", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Exprimer une hypothèse irréelle", "Relier condition et conséquence (wenn … würde)"],
     grammairePoints: ["wenn + Konjunktiv II", "sonst, andernfalls"],
+    exemplesPlus: [{"de":"Wenn ich reich wäre, würde ich um die Welt reisen.","fr":"Irreale Bedingung: es ist gerade nicht so."},{"de":"Wenn du mehr lernen würdest, hättest du bessere Noten.","fr":"*würde* im Nebensatz, Folge im Konjunktiv II."},{"de":"Beeil dich, sonst verpassen wir den Zug!","fr":"*sonst*: die andere, schlechte Folge."},{"de":"Wenn es nicht regnen würde, könnten wir grillen.","fr":"Bedingung + Möglichkeit (*könnten*)."},{"de":"Hätte ich das gewusst, wäre ich früher gekommen.","fr":"Ohne *wenn*: das Verb steht am Anfang."}],
     coursDE: [
       "Mit einem **Bedingungssatz** sagst du, was unter einer bestimmten Bedingung passiert. Bei **irrealen** (unmöglichen oder unwahrscheinlichen) Bedingungen benutzt du den **Konjunktiv II**. Das ist wie « si… » + Konditional im Französischen.",
       "Die Struktur ist: **wenn** + Konjunktiv II, dann + Konjunktiv II. Beispiel: « ***Wenn** ich Zeit **hätte**, **würde** ich dir helfen* ». Im *wenn*-Satz steht das Verb am Ende, und der zweite Satz beginnt oft mit *dann*.",
@@ -32,6 +33,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g16", titre: "Les propositions finales", titreDE: "Finalsätze: um … zu / damit", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Exprimer un but", "Choisir um … zu (même sujet) ou damit (sujet différent)"],
     grammairePoints: ["um … zu + Infinitiv", "damit + Nebensatz"],
+    exemplesPlus: [{"de":"Ich lerne Deutsch, um in Wien zu studieren.","fr":"*um … zu*: das Ziel, gleiches Subjekt."},{"de":"Sie spart Geld, um ein Auto zu kaufen.","fr":"*um … zu* + Infinitiv am Ende."},{"de":"Ich erkläre es noch einmal, damit alle es verstehen.","fr":"*damit*: das Ziel, anderes Subjekt."},{"de":"Er ruft an, damit wir uns keine Sorgen machen.","fr":"*damit* + Nebensatz (Verb am Ende)."},{"de":"Wir nehmen ein Taxi, um pünktlich zu sein.","fr":"*um … zu*: warum wir das tun."}],
     coursDE: [
       "Ein **Finalsatz** drückt ein **Ziel** oder eine **Absicht** aus – das « Wofür? » im Sinne von « pour quoi faire? ». Im Deutschen gibt es dafür zwei Strukturen: **um … zu + Infinitiv** und **damit + Nebensatz**.",
       "Du benutzt **um … zu + Infinitiv**, wenn das Subjekt in beiden Satzteilen **gleich** ist. Beispiel: « *Ich lerne Deutsch, **um** in Deutschland zu **arbeiten*** » (ich lerne und ich arbeite – dieselbe Person). Das *zu* + Infinitiv steht am Ende.",
@@ -56,6 +58,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g17", titre: "Noms, verbes & connecteurs", titreDE: "Nomen-Verb-Verbindungen & Konnektoren", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Utiliser des locutions nom + verbe", "Relier ses idées avec des connecteurs"],
     grammairePoints: ["eine Entscheidung treffen", "trotzdem, außerdem, deswegen"],
+    exemplesPlus: [{"de":"Wir müssen heute eine Entscheidung treffen.","fr":"Feste Verbindung: *eine Entscheidung treffen*."},{"de":"Ich stelle dir eine Frage.","fr":"Feste Verbindung: *eine Frage stellen*."},{"de":"Es war kalt; trotzdem sind wir schwimmen gegangen.","fr":"*trotzdem*: trotz des Problems."},{"de":"Das Hotel war schön. Außerdem war es billig.","fr":"*außerdem*: noch ein Punkt dazu."},{"de":"Ich war krank, deswegen bin ich zu Hause geblieben.","fr":"*deswegen*: die Folge."}],
     coursDE: [
       "Auf B1-Niveau lernst du festere Ausdrücke und bessere **Konnektoren** (Verbindungswörter), damit dein Deutsch flüssiger und erwachsener klingt.",
       "**Nomen-Verb-Verbindungen** sind feste Paare aus einem Nomen und einem Verb: *eine Entscheidung **treffen*** (= entscheiden), *eine Frage **stellen*** (= fragen), *Hilfe **leisten***, *in Kontakt **bleiben***. Lerne sie als feste Ausdrücke.",
@@ -79,6 +82,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g18", titre: "Les temps du passé (récit)", titreDE: "Vergangenheit im Text", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Choisir le bon temps dans un récit", "Combiner Präteritum et Plusquamperfekt"],
     grammairePoints: ["Präteritum (récit écrit)", "Plusquamperfekt (antériorité)"],
+    exemplesPlus: [{"de":"Es war einmal ein König, der drei Töchter hatte.","fr":"*Präteritum*: typisch für Märchen und Geschichten."},{"de":"Sie öffnete die Tür und trat ins Zimmer.","fr":"Mehrere Handlungen im Präteritum."},{"de":"Nachdem er gegessen hatte, las er ein Buch.","fr":"*Plusquamperfekt*: das war vorher passiert."},{"de":"Der Zug war schon abgefahren, als wir ankamen.","fr":"Vorher (Plusquamperfekt) und danach (Präteritum)."},{"de":"Plötzlich klingelte das Telefon laut.","fr":"*Präteritum* in der Erzählung."}],
     coursDE: [
       "Wenn du eine **Geschichte schreibst** oder einen Text liest, triffst du vor allem das **Präteritum** und das **Plusquamperfekt**. Diese Lektion zeigt dir, wie man die Vergangenheit in einem Text richtig benutzt.",
       "Das **Präteritum** ist die normale Erzählzeit im geschriebenen Text: « *Sie **stand** früh **auf**, **trank** einen Kaffee und **ging** zur Arbeit* ». Die Verben sind oft stark (unregelmäßig): *gehen → ging*, *kommen → kam*, *sehen → sah*.",
@@ -102,6 +106,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g19", titre: "Propositions temporelles", titreDE: "Temporalsätze: Gleichzeitigkeit & Vorzeitigkeit", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Exprimer la simultanéité (während, solange)", "Exprimer la non-simultanéité (bevor, nachdem, sobald)"],
     grammairePoints: ["während, solange", "bevor, nachdem, sobald"],
+    exemplesPlus: [{"de":"Während ich koche, deckst du den Tisch.","fr":"*während*: zwei Dinge gleichzeitig."},{"de":"Solange es regnet, bleiben wir drinnen.","fr":"*solange*: die ganze Zeit über."},{"de":"Bevor ich schlafe, lese ich noch etwas.","fr":"*bevor*: davor."},{"de":"Nachdem wir gegessen hatten, gingen wir spazieren.","fr":"*nachdem* + Plusquamperfekt: danach."},{"de":"Sobald ich ankomme, rufe ich dich an.","fr":"*sobald*: sofort danach."}],
     coursDE: [
       "**Temporalsätze** sind Nebensätze, die sagen, **wann** etwas passiert. Sie beginnen mit einer Konjunktion, und das **Verb steht am Ende**. Die Konjunktion zeigt, ob die Handlungen gleichzeitig oder nacheinander passieren.",
       "Für **Gleichzeitigkeit** (zwei Dinge zur gleichen Zeit) benutzt du **während** (= pendant que) und **solange** (= tant que): « ***Während** ich koche, **hört** er Musik ». Für eine einmalige Handlung in der Vergangenheit gibt es **als**, für Gegenwart oder Wiederholung **wenn**.",
@@ -126,6 +131,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g20", titre: "Les prépositions", titreDE: "Wechselpräpositionen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Choisir le cas après une préposition mixte", "Distinguer lieu (Dat.) et direction (Akk.)"],
     grammairePoints: ["an, auf, in, über…", "Wo? + Dat. / Wohin? + Akk."],
+    exemplesPlus: [{"de":"Das Buch liegt auf dem Tisch.","fr":"*Wo?* + Dativ (Ort, keine Bewegung)."},{"de":"Ich lege das Buch auf den Tisch.","fr":"*Wohin?* + Akkusativ (Bewegung zum Ziel)."},{"de":"Die Katze sitzt unter dem Stuhl.","fr":"*Wo?* + Dativ: *unter dem Stuhl*."},{"de":"Wir gehen heute Abend ins Kino.","fr":"*Wohin?* + Akkusativ: *ins Kino*."},{"de":"Das Bild hängt an der Wand.","fr":"*Wo?* + Dativ: *an der Wand*."}],
     coursDE: [
       "Die **Wechselpräpositionen** sind neun besondere Präpositionen, die **zwei Fälle** haben können: Akkusativ **oder** Dativ. Welcher Fall richtig ist, hängt von der Frage *Wo?* oder *Wohin?* ab.",
       "Diese neun Präpositionen sind: **in, an, auf, über, unter, vor, hinter, neben, zwischen**. Lerne sie gut, denn du brauchst sie ständig, um Orte und Bewegungen zu beschreiben.",
@@ -150,6 +156,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g21", titre: "Adjectifs avec prépositions", titreDE: "Adjektive mit Präpositionen", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
     objectifs: ["Mémoriser les adjectifs à préposition fixe", "Appliquer le cas imposé"],
     grammairePoints: ["stolz auf, zufrieden mit", "böse auf, bereit zu"],
+    exemplesPlus: [{"de":"Ich bin sehr stolz auf dich.","fr":"*stolz auf* + Akkusativ."},{"de":"Bist du mit deiner Arbeit zufrieden?","fr":"*zufrieden mit* + Dativ."},{"de":"Sie ist böse auf ihren Bruder.","fr":"*böse auf* + Akkusativ."},{"de":"Ich bin bereit zu einem Kompromiss.","fr":"*bereit zu* + Dativ."},{"de":"Er ist bekannt für seine guten Ideen.","fr":"*bekannt für* + Akkusativ."}],
     coursDE: [
       "Wie viele Verben haben auch viele **Adjektive** eine feste **Präposition**. Du musst das Adjektiv und seine Präposition zusammen lernen, denn sie sind oft nicht logisch und der Fall ist festgelegt.",
       "Häufige Beispiele mit **Akkusativ**: *stolz **auf*** (fier de), *böse **auf*** (fâché contre), *neugierig **auf***, *bereit **zu***. Beispiel: « *Ich bin **stolz auf** dich* ».",
@@ -173,6 +180,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g22", titre: "Les énumérations", titreDE: "Doppelkonnektoren", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
     objectifs: ["Relier deux éléments avec des connecteurs doubles", "Nuancer (et… et, ni… ni, soit… soit)"],
     grammairePoints: ["sowohl … als auch", "weder … noch, entweder … oder, nicht nur … sondern auch"],
+    exemplesPlus: [{"de":"Ich spreche sowohl Englisch als auch Spanisch.","fr":"*sowohl … als auch*: beides zusammen."},{"de":"Er trinkt weder Kaffee noch Tee.","fr":"*weder … noch*: keins von beiden."},{"de":"Entweder du kommst mit, oder du bleibst hier.","fr":"*entweder … oder*: eine von zwei Möglichkeiten."},{"de":"Sie ist nicht nur klug, sondern auch fleißig.","fr":"*nicht nur … sondern auch*: noch mehr dazu."},{"de":"Wir fahren entweder nach Italien oder nach Spanien.","fr":"*entweder … oder*: zwei Optionen."}],
     coursDE: [
       "**Doppelkonnektoren** sind Wortpaare, die zwei Elemente verbinden. Sie machen deine Sätze reicher und präziser. Du benutzt sie für Aufzählungen, Alternativen und Gegensätze.",
       "Für eine **positive Aufzählung** (« et… et… ») nimmst du **sowohl … als auch**: « *Ich spreche **sowohl** Deutsch **als auch** Englisch* ». Für eine **Alternative** (« ou… ou… ») nimmst du **entweder … oder**: « ***Entweder** gehen wir ins Kino, **oder** wir bleiben zu Hause* ».",
@@ -196,6 +204,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g23", titre: "Causes et conséquences", titreDE: "Grund und Folge", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Exprimer la cause (weil, da, denn)", "Exprimer la conséquence (deshalb, deswegen, daher)"],
     grammairePoints: ["weil, da, denn", "deshalb, deswegen, daher, darum"],
+    exemplesPlus: [{"de":"Ich bleibe zu Hause, weil ich krank bin.","fr":"*weil*: der Grund, Verb am Ende."},{"de":"Da es regnet, nehmen wir den Bus.","fr":"*da*: bekannter Grund, oft am Anfang."},{"de":"Ich gehe schlafen, denn ich bin müde.","fr":"*denn*: der Grund, normale Wortstellung."},{"de":"Es war spät, deshalb sind wir gegangen.","fr":"*deshalb*: die Folge."},{"de":"Ich habe verschlafen, deswegen komme ich zu spät.","fr":"*deswegen*: die Folge."}],
     coursDE: [
       "In dieser Lektion lernst du, **Gründe** (warum?) und **Folgen** (mit welchem Ergebnis?) auszudrücken. Das Wichtigste ist die **Wortstellung**: Manche Wörter schicken das Verb ans Ende, andere nicht.",
       "Für den **Grund** (« parce que ») hast du drei Möglichkeiten. **weil** und **da** sind Subordinationen → Verb am **Ende**: « *Ich bleibe zu Hause, **weil** ich krank **bin*** ». **denn** ist eine Koordination → Verb auf **Position 2**: « *Ich bleibe zu Hause, **denn** ich **bin** krank* ».",

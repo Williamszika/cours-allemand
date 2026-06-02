@@ -10,6 +10,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g10", titre: "Exprimer des hypothèses", titreDE: "Vermutungen ausdrücken", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Graduer la probabilité", "Employer modaux subjectifs et adverbes"],
     grammairePoints: ["dürfte, müsste, könnte", "wohl, vermutlich, offenbar"],
+    exemplesPlus: [{"de":"Er ist offenbar bereits informiert worden.","fr":"*offenbar*: deutlich erkennbar."},{"de":"Die Ergebnisse dürften erst nächste Woche vorliegen.","fr":"*dürften*: eine wahrscheinliche Annahme."},{"de":"Vermutlich liegt das Problem an der Software.","fr":"*vermutlich*: eine begründete Vermutung."},{"de":"Sie müsste eigentlich längst zu Hause sein.","fr":"*müsste*: eine starke Annahme."},{"de":"Das wird wohl niemand bestreiten.","fr":"*wohl*: vorsichtige Sicherheit."}],
     coursDE: [
       "Über die Modalverben hinaus verfügt das Deutsche über ein reiches Inventar, um **Vermutungen** und **Wahrscheinlichkeitsgrade** auszudrücken. Auf C1 wählst du das passende Mittel je nach Sicherheit bewusst aus.",
       "Mit **Modalverben** im subjektiven Gebrauch: *dürfte* (begründete Annahme), *müsste* (hohe Wahrscheinlichkeit), *könnte* (Möglichkeit). Mit dem **Futur I** drückt man oft eine Gegenwartsvermutung aus: « *Er **wird** wohl zu Hause sein* ».",
@@ -33,6 +34,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g11", titre: "Les propositions relatives", titreDE: "Relativsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
     objectifs: ["Maîtriser tous les pronoms relatifs", "Employer dessen/deren, was, wo"],
     grammairePoints: ["der/die/das + cas", "dessen/deren, was, wo"],
+    exemplesPlus: [{"de":"Der Autor, dessen Roman ich gerade lese, lebt in Wien.","fr":"*dessen*: Relativpronomen im Genitiv (maskulin)."},{"de":"Die Kollegin, deren Vorschlag angenommen wurde, ist sehr erfahren.","fr":"*deren*: Genitiv feminin."},{"de":"Das Einzige, was mich stört, ist der Lärm.","fr":"*was* nach *das Einzige*."},{"de":"Wir besuchten die Stadt, wo meine Großeltern geboren wurden.","fr":"*wo* als Relativadverb für den Ort."},{"de":"Er hat die Prüfung bestanden, was ihn sehr freute.","fr":"*, was*: bezieht sich auf den ganzen Satz."}],
     coursDE: [
       "**Relativsätze** liefern Zusatzinformationen zu einem Nomen. Auf C1 beherrschst du auch den **Genitiv** des Relativpronomens sowie die Relativadverbien *was* und *wo*.",
       "Das Relativpronomen richtet sich in **Genus und Numerus** nach dem Bezugswort, im **Kasus** aber nach seiner Funktion im Relativsatz: « *der Mann, **der** kommt* » / « *den ich kenne* » / « *dem ich helfe* ». Das Verb steht am Ende.",
@@ -57,6 +59,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g12", titre: "Les attributs participiaux", titreDE: "Partizipialattribute", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
     objectifs: ["Construire un participe attribut", "Transformer une relative en participe"],
     grammairePoints: ["Partizip I (actif)", "Partizip II (passif/accompli)"],
+    exemplesPlus: [{"de":"Die steigende Nachfrage bereitet den Herstellern Probleme.","fr":"Partizip I (*steigend*): aktiv und gleichzeitig."},{"de":"Das gerade renovierte Gebäude wirkt sehr modern.","fr":"Partizip II (*renoviert*): passiv und abgeschlossen."},{"de":"Der lachende Junge erinnerte mich an meinen Sohn.","fr":"Partizip I als Adjektiv vor dem Nomen."},{"de":"Die von Experten geprüften Daten sind zuverlässig.","fr":"Erweitertes Partizip: *von Experten geprüft*."},{"de":"Ein vielversprechendes Konzept wurde vorgestellt.","fr":"Partizip I in einem zusammengesetzten Adjektiv."}],
     coursDE: [
       "Das **Partizipialattribut** ist eine typisch schriftsprachliche, verdichtete Konstruktion: Ein Partizip steht – oft mit eigenen Ergänzungen – **vor** dem Nomen und ersetzt einen ganzen Relativsatz. Diese Struktur prägt formelle deutsche Texte.",
       "Das **Partizip I** (Infinitiv + -d) hat eine **aktive** Bedeutung und drückt Gleichzeitigkeit aus: « *das **schlafende** Kind* » (= das Kind, das schläft). Es wird wie ein Adjektiv dekliniert.",
@@ -81,6 +84,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g13", titre: "La déclinaison des adjectifs", titreDE: "Adjektivdeklination", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Décliner après der/ein/ø", "Gérer les cas particuliers (etwas/viel)"],
     grammairePoints: ["faible / mixte / forte", "etwas Gutes, viele nette"],
+    exemplesPlus: [{"de":"Ich habe etwas Interessantes gehört.","fr":"Nach *etwas*: großgeschrieben und mit *-es*."},{"de":"Es gibt nichts Besseres als einen freien Tag.","fr":"Nach *nichts*: nominalisiertes Adjektiv."},{"de":"Viele engagierte Freiwillige halfen bei der Aktion.","fr":"Starke Endung im Plural ohne Artikel."},{"de":"Trotz des schlechten Wetters kamen alle.","fr":"Gemischte Endung nach *des* (Genitiv)."},{"de":"Wir suchen einen erfahrenen, zuverlässigen Mitarbeiter.","fr":"Zwei Adjektive mit gleicher Endung."}],
     coursDE: [
       "Die **Adjektivdeklination** sollte auf C1 vollständig automatisiert sein. Entscheidend ist, ob das vorangehende Wort den Kasus bereits markiert (dann schwache Endung) oder nicht (dann starke Endung).",
       "Man unterscheidet drei Typen: **schwach** nach dem bestimmten Artikel (-e/-en), **gemischt** nach dem unbestimmten Artikel und den Possessiva, **stark** ohne Artikel (das Adjektiv übernimmt die Artikelendung): « *guter Wein* », « *kaltes Wasser* ».",
@@ -104,6 +108,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g14", titre: "Les connecteurs fixes", titreDE: "Feste Konnektoren", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Employer des locutions connectrices", "Structurer un texte argumentatif"],
     grammairePoints: ["im Gegensatz dazu, aus diesem Grund", "in diesem Zusammenhang, im Vergleich dazu"],
+    exemplesPlus: [{"de":"Im Gegensatz dazu vertritt sie eine ganz andere Auffassung.","fr":"*im Gegensatz dazu*: drückt einen Gegensatz aus."},{"de":"Aus diesem Grund wurde die Sitzung verschoben.","fr":"*aus diesem Grund*: nennt die Ursache."},{"de":"In diesem Zusammenhang sei auf eine Studie verwiesen.","fr":"*in diesem Zusammenhang*: thematische Verbindung."},{"de":"Im Vergleich dazu ist das alte Modell günstiger.","fr":"*im Vergleich dazu*: ein Vergleich."},{"de":"Vor diesem Hintergrund erscheint die Kritik berechtigt.","fr":"*vor diesem Hintergrund*: angesichts der Lage."}],
     coursDE: [
       "Auf C1 strukturierst du längere Texte mit **festen Konnektoren** – mehrteiligen Wendungen, die Abschnitte logisch verbinden und deinen Argumenten Klarheit verleihen. Sie sind das Gerüst kohärenter Darstellungen.",
       "Für den **Gegensatz**: *im Gegensatz dazu*, *im Vergleich dazu*, *demgegenüber*, *einerseits … andererseits*. Beispiel: « *Die Theorie ist überzeugend. **Im Gegensatz dazu** scheitert sie in der Praxis* ».",
@@ -127,6 +132,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g15", titre: "Participes et adjectifs nominalisés", titreDE: "Nominalisierte Partizipien und Adjektive", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Nominaliser un adjectif/participe", "Décliner ces noms correctement"],
     grammairePoints: ["der/die Angestellte, der Reisende", "das Beste, etwas Neues"],
+    exemplesPlus: [{"de":"Die Angestellten fordern bessere Arbeitsbedingungen.","fr":"Nominalisiertes Partizip: *der/die Angestellte*."},{"de":"Ein Reisender hatte seinen Koffer vergessen.","fr":"*der Reisende*, hier ohne Artikel: *ein Reisender*."},{"de":"Wir wünschen Ihnen nur das Beste.","fr":"*das Beste*: nominalisierter Superlativ."},{"de":"Sie hat etwas völlig Neues ausprobiert.","fr":"*etwas Neues*: nominalisiertes Adjektiv."},{"de":"Der Vorsitzende eröffnete die Versammlung.","fr":"*der Vorsitzende*: nominalisiertes Partizip."}],
     coursDE: [
       "Im Deutschen können **Adjektive und Partizipien als Nomen** verwendet werden. Diese **Nominalisierung** ist sehr produktiv und gehört zum aktiven Repertoire auf C1. Das Wort wird **großgeschrieben**, behält aber seine **Adjektivendung**.",
       "Bei **Personen** entstehen geläufige Nomen: *der/die **Angestellte***, *der **Reisende***, *der **Bekannte***, *der **Deutsche***. Die Endung folgt der Adjektivdeklination: « *ein **Angestellter*** », « *die **Angestellten*** », « *mit einem **Bekannten*** ».",
@@ -150,6 +156,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g16", titre: "Le subjonctif I", titreDE: "Der Konjunktiv I", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
     objectifs: ["Former le Konjunktiv I", "Rapporter affirmations, questions et ordres"],
     grammairePoints: ["sei, habe, könne, werde", "questions et ordres indirects"],
+    exemplesPlus: [{"de":"Der Sprecher betonte, das Unternehmen sei nicht betroffen.","fr":"Konjunktiv I (*sei*) in der indirekten Rede."},{"de":"Sie erklärte, sie habe die Unterlagen bereits eingereicht.","fr":"Konjunktiv I: *habe*."},{"de":"Er fragte, ob das Angebot noch gültig sei.","fr":"Indirekte Frage mit *ob*."},{"de":"Im Gesetz heißt es, jeder Bürger habe dieses Recht.","fr":"Konjunktiv I in einem offiziellen Text."},{"de":"Der Arzt riet, der Patient solle sich schonen.","fr":"Indirekte Aufforderung mit *solle*."}],
     coursDE: [
       "Der **Konjunktiv I** ist die Form der **indirekten Rede** in formellen, vor allem schriftlichen Texten wie Nachrichten und Berichten. Er signalisiert, dass der Sprecher eine fremde Aussage **wiedergibt**, ohne sie zu bewerten.",
       "Die Formen leiten sich vom Verbstamm + -e ab und sind in der 3. Person besonders klar: *er **sei***, *er **habe***, *er **könne***, *er **werde***. Beispiel: « *Der Minister erklärte, er **sei** zuversichtlich und die Lage **werde** sich bessern* ».",
@@ -173,6 +180,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g17", titre: "L'impératif", titreDE: "Der Imperativ", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "C1",
     objectifs: ["Former l'impératif (du/ihr/Sie/wir)", "Connaître les alternatives à l'impératif"],
     grammairePoints: ["Geh! Geht! Gehen Sie!", "Infinitif, sollen, passif"],
+    exemplesPlus: [{"de":"Nehmen Sie bitte Platz!","fr":"Höflichkeitsform mit *Sie*."},{"de":"Seid bitte etwas leiser!","fr":"Imperativ der 2. Person Plural."},{"de":"Bitte nicht rauchen!","fr":"Infinitiv als Aufforderung (z. B. auf Schildern)."},{"de":"Du sollst dich ausruhen.","fr":"*sollen* als indirekter Befehl."},{"de":"Vor Gebrauch gut schütteln!","fr":"Unpersönliche Aufforderung (Gebrauchsanweisung)."}],
     coursDE: [
       "Der **Imperativ** dient Aufforderungen, Bitten, Ratschlägen und Anweisungen. Auf C1 kennst du nicht nur die Grundformen, sondern auch die **stilistischen Alternativen**, die je nach Situation passender sein können.",
       "Die drei Grundformen: **du** (Verbstamm, oft ohne -e: « *Geh!*, *Komm!*, *Hör zu!* »), **ihr** (wie die Präsensform: « *Geht!* »), **Sie** (mit Pronomen und Inversion: « *Gehen Sie bitte!* »). Bei *sein*: « *Sei … / Seid … / Seien Sie …* ».",
@@ -196,6 +204,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g18", titre: "La nominalisation", titreDE: "Die Nominalisierung", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Passer du style verbal au style nominal", "Employer les prépositions adéquates"],
     grammairePoints: ["weil → wegen, nachdem → nach", "das Lernen, die Prüfung"],
+    exemplesPlus: [{"de":"Wegen des starken Schneefalls blieb die Schule geschlossen.","fr":"Nominalstil: *weil* wird zu *wegen* + Nomen."},{"de":"Nach dem Lesen des Berichts war alles klar.","fr":"*nachdem* wird zu *nach* + Nominalisierung."},{"de":"Beim Kochen höre ich gern Musik.","fr":"*während ich koche* wird zu *beim Kochen*."},{"de":"Trotz mangelnder Erfahrung wurde sie eingestellt.","fr":"*obwohl* wird zu *trotz* + Nomen."},{"de":"Durch regelmäßiges Üben verbessert man seine Aussprache.","fr":"*indem* wird zu *durch* + Nominalisierung."}],
     coursDE: [
       "Die **Nominalisierung** – die Umwandlung von Verben und Nebensätzen in Nomengruppen – prägt den **Nominalstil** der deutschen Schriftsprache. Auf C1 musst du zwischen verbalem und nominalem Stil bewusst wechseln können.",
       "Verben werden zu Nomen, oft mit Artikel: *lernen → **das Lernen***, *ankommen → **die Ankunft***, *prüfen → **die Prüfung***. Statt « *Während wir lernten…* » schreibt man « *Während des Lernens…* ».",
@@ -220,6 +229,7 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     id: "c1g19", titre: "Les formes passives", titreDE: "Passiv und Passiversatz", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
     objectifs: ["Maîtriser passif de processus et d'état", "Employer les formes de substitution du passif"],
     grammairePoints: ["werden/sein + participe", "man, sich lassen, sein + zu + Inf., -bar"],
+    exemplesPlus: [{"de":"Das Problem lässt sich leicht lösen.","fr":"*sich lassen* = kann gelöst werden (Passiversatz)."},{"de":"Diese Frage ist nicht so einfach zu beantworten.","fr":"*sein + zu + Infinitiv*: muss/kann beantwortet werden."},{"de":"Man hat die Entscheidung mehrfach verschoben.","fr":"*man* statt eines Passivs."},{"de":"Der Fehler ist kaum vermeidbar.","fr":"Adjektiv auf *-bar*: kann kaum vermieden werden."},{"de":"Die Akten werden derzeit überprüft.","fr":"Klassisches Vorgangspassiv mit *werden*."}],
     coursDE: [
       "Auf C1 beherrschst du nicht nur das **Passiv** in allen Zeitformen, sondern auch seine zahlreichen **Ersatzformen**, mit denen man eine passivische Bedeutung ohne *werden* ausdrückt. Das bereichert den Stil und vermeidet Wiederholungen.",
       "Zur Erinnerung: Das **Vorgangspassiv** mit *werden + Partizip II* (« *Das Haus **wird gebaut*** »), das **Zustandspassiv** mit *sein + Partizip II* (« *Das Haus **ist gebaut*** »). Mit Modalverb: « *Das **muss erledigt werden*** ».",

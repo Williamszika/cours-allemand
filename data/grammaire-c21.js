@@ -8,6 +8,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g01", titre: "Les temps des verbes", titreDE: "Die Tempora", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Maîtriser les six temps", "Employer le futur II (supposition sur le passé)"],
     grammairePoints: ["Präsens, Perfekt, Präteritum, Plusquamperfekt", "Futur I / Futur II"],
+    exemplesPlus: [{"de":"Bis zum Jahresende wird das Unternehmen die Umstrukturierung abgeschlossen haben.","fr":"Futur II: eine Handlung, die in der Zukunft bereits vollendet sein wird."},{"de":"Man wird die Ergebnisse wohl erst im nächsten Quartal veröffentlichen.","fr":"Futur I mit *wohl*: drückt eine Vermutung aus."},{"de":"Kaum hatte sich die Lage beruhigt, brach eine neue Krise aus.","fr":"Plusquamperfekt: markiert die Vorzeitigkeit."},{"de":"Seit Jahrzehnten prägt diese Theorie die wissenschaftliche Debatte.","fr":"Präsens mit Dauerwirkung bis in die Gegenwart."},{"de":"Damals galt die Annahme als unumstößlich.","fr":"Präteritum für einen vergangenen Zustand."}],
     coursDE: [
       "Auf C2-Niveau verfügst du über das **vollständige Tempussystem** des Deutschen und setzt jede Form bewusst und stilistisch treffend ein. Neben den Vergangenheitstempora gehören dazu die beiden Futurformen, deren Funktion über den reinen Zeitbezug hinausgeht.",
       "Im Bereich der Vergangenheit gilt die bekannte Arbeitsteilung: Das **Präteritum** trägt die schriftliche Erzählung, das **Perfekt** dominiert die mündliche Rede und betont das Resultat, das **Plusquamperfekt** kennzeichnet die Vorzeitigkeit. Versierte Texte nutzen den Tempuswechsel gezielt, um Vorder- und Hintergrund zu staffeln.",
@@ -31,6 +32,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g02", titre: "Verbes à préfixes", titreDE: "Verben mit Vorsilben", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Distinguer préfixes séparables et inséparables", "Gérer les préfixes à double valeur"],
     grammairePoints: ["be-, er-, ver- (inséparables)", "um-, durch-, über- (mixtes)"],
+    exemplesPlus: [{"de":"Der Roman behandelt die Folgen des Krieges eindringlich.","fr":"*be-*: untrennbares Präfix, kein *ge-* im Partizip."},{"de":"Es gelang ihr, das Publikum vollständig zu überzeugen.","fr":"*über-* hier untrennbar (übertragene Bedeutung)."},{"de":"Wir mussten den gesamten Plan noch einmal überdenken.","fr":"*überdenken*: untrennbar, abstrakt."},{"de":"Der Fährmann setzte die Passagiere ans andere Ufer über.","fr":"*übersetzen* trennbar in der wörtlichen Bedeutung."},{"de":"Das Unternehmen hat die Krise erstaunlich gut überstanden.","fr":"*überstehen*: untrennbar."}],
     coursDE: [
       "Die deutsche **Wortbildung** durch Vorsilben (Präfixe) ist außerordentlich produktiv und erlaubt es, aus einem Grundverb eine ganze Bedeutungsfamilie abzuleiten. Auf C2-Niveau erschließt du auch unbekannte Verben aus ihren Bestandteilen.",
       "Die **untrennbaren** Präfixe (*be-, er-, ver-, zer-, ent-, ge-, miss-*) sind unbetont und bilden im Perfekt **kein** *ge-*: *verstehen → verstanden*. Sie verändern die Bedeutung oft grundlegend und machen intransitive Verben häufig transitiv (*antworten* → *beantworten + Akkusativ*).",
@@ -55,6 +57,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g03", titre: "Le subjonctif II", titreDE: "Der Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Maîtriser présent, passé et modaux", "Exprimer l'irréel complexe"],
     grammairePoints: ["würde, hätte, wäre", "hätte … können (passé + modal)"],
+    exemplesPlus: [{"de":"Ohne diesen glücklichen Zufall hätte das Experiment scheitern können.","fr":"Konjunktiv II der Vergangenheit mit Modalverb: *hätte … können*."},{"de":"Man hätte die Katastrophe durchaus verhindern können.","fr":"Drückt eine versäumte Möglichkeit aus."},{"de":"Es wäre verfehlt, die Bedeutung dieser Entwicklung zu unterschätzen.","fr":"Vorsichtige, distanzierte Bewertung."},{"de":"Selbst mit größerem Aufwand wäre das Ziel kaum erreichbar gewesen.","fr":"Irreale Aussage über die Vergangenheit."},{"de":"Hätte man rechtzeitig eingegriffen, ließen sich die Schäden begrenzen.","fr":"Bedingungssatz ohne *wenn* (Verberststellung)."}],
     coursDE: [
       "Der **Konjunktiv II** ist auf C2-Niveau ein selbstverständliches Ausdrucksmittel für Irrealität, Höflichkeit und vorsichtige Distanzierung. Erwartet wird, dass du die echten Formen den Umschreibungen mit *würde* dort vorziehst, wo der Stil es verlangt.",
       "In der Gegenwart sind neben *wäre, hätte* auch die selteneren Stammformen starker Verben aktiv zu beherrschen: *käme, ginge, gäbe, ließe, wüsste, bräuchte*. In gepflegter Schriftsprache wirkt « *Es gäbe viel zu sagen* » eleganter als die *würde*-Umschreibung.",
@@ -79,6 +82,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g04", titre: "Le subjonctif I", titreDE: "Der Konjunktiv I", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Former le Konjunktiv I", "Rapporter affirmations, questions et ordres"],
     grammairePoints: ["sei, habe, könne, werde", "Ersatzformen (→ KII)"],
+    exemplesPlus: [{"de":"Der Sprecher versicherte, die Vorwürfe entbehrten jeder Grundlage.","fr":"Indirekte Rede; bei Gleichheit mit dem Indikativ tritt der Konjunktiv II ein."},{"de":"Sie führte aus, das Modell sei in mehrfacher Hinsicht überholt.","fr":"Konjunktiv I: *sei*."},{"de":"In der Studie heißt es, die Datenlage lasse keine eindeutigen Schlüsse zu.","fr":"Konjunktiv I: *lasse*."},{"de":"Er betonte, man werde an den Vereinbarungen festhalten.","fr":"Konjunktiv I: *werde* für die Zukunft."},{"de":"Die Zeugin gab an, sie habe nichts Verdächtiges bemerkt.","fr":"Konjunktiv I: *habe*."}],
     coursDE: [
       "Der **Konjunktiv I** ist das Kennzeichen der seriösen **indirekten Rede** in Presse, Wissenschaft und offizieller Kommunikation. Er gibt fremde Aussagen wieder und wahrt zugleich eine neutrale Distanz, ohne ihren Wahrheitsgehalt zu beurteilen.",
       "Die Bildung erfolgt vom Infinitivstamm + Endung; eindeutig sind vor allem die 3. Personen: *er sei, habe, könne, werde, gehe*. Beispiel: « *Die Sprecherin betonte, man **werde** die Maßnahmen prüfen und **sei** zu Gesprächen bereit* ».",
@@ -102,6 +106,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g05", titre: "Les subordonnées circonstancielles", titreDE: "Adverbialsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Reconnaître les types de circonstancielles", "Choisir la bonne conjonction"],
     grammairePoints: ["temporal, kausal, konzessiv", "final, konditional, modal"],
+    exemplesPlus: [{"de":"Sooft die Frage aufkam, wich er einer klaren Antwort aus.","fr":"Temporal (*sooft*): jedes Mal, wenn."},{"de":"Zumal die Mittel knapp waren, verzichtete man auf den Ausbau.","fr":"Kausal (*zumal*): ein zusätzlicher, gewichtiger Grund."},{"de":"So überzeugend die Argumente auch klingen mögen, sie bleiben unbewiesen.","fr":"Konzessiv (*so … auch*): trotz allem."},{"de":"Indem man die Prozesse automatisierte, senkte man die Kosten erheblich.","fr":"Modal (*indem*): nennt das Mittel."},{"de":"Sofern keine Einwände erhoben werden, gilt der Antrag als angenommen.","fr":"Konditional (*sofern*): unter dieser Bedingung."}],
     coursDE: [
       "**Adverbialsätze** sind Nebensätze, die die Umstände einer Handlung angeben. Auf C2-Niveau verfügst du über das gesamte Spektrum ihrer semantischen Typen und wählst die präziseste Konjunktion – stets mit dem Verb am Satzende.",
       "Die wichtigsten Typen: **temporal** (*als, während, nachdem, sobald, bevor, seitdem*), **kausal** (*weil, da, zumal*), **konzessiv** (*obwohl, obgleich, wenngleich*), **final** (*damit, um … zu*), **konditional** (*wenn, falls, sofern*) und **modal** (*indem, dadurch dass, ohne dass, anstatt dass*).",
@@ -125,6 +130,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g06", titre: "Les compléments des verbes", titreDE: "Verbergänzungen und Kasus", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Maîtriser la rection des verbes", "Employer les verbes à génitif"],
     grammairePoints: ["verbes à datif/accusatif", "verbes à génitif (bedürfen, gedenken)"],
+    exemplesPlus: [{"de":"Diese Angelegenheit bedarf einer gründlichen Prüfung.","fr":"*bedürfen* + Genitiv (gehoben)."},{"de":"Wir gedenken der Opfer dieser Tragödie.","fr":"*gedenken* + Genitiv."},{"de":"Man beschuldigte ihn des Betruges.","fr":"*beschuldigen* + Genitiv."},{"de":"Der Vorfall entzog sich jeder Kontrolle.","fr":"*sich entziehen* + Dativ."},{"de":"Solche Aussagen entbehren jeder sachlichen Grundlage.","fr":"*entbehren* + Genitiv."}],
     coursDE: [
       "Jedes Verb verlangt bestimmte **Ergänzungen** in einem festgelegten **Kasus** – das ist seine *Valenz* oder *Rektion*. Auf C2-Niveau beherrschst du auch die selteneren Rektionen und die Verben mit Genitivobjekt, die der gehobenen Sprache angehören.",
       "Die meisten Verben verlangen den **Akkusativ** oder kombinieren **Dativ** (Person) und **Akkusativ** (Sache). Eine kleinere Gruppe steht ausschließlich mit dem **Dativ**: *helfen, danken, gratulieren, begegnen, widersprechen, zustimmen*.",
@@ -148,6 +154,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g07", titre: "Locutions verbo-nominales", titreDE: "Nomen-Verb-Verbindungen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Employer des Funktionsverbgefüge soutenues", "Reformuler avec un verbe simple"],
     grammairePoints: ["in Anspruch nehmen, in Betracht ziehen", "zur Sprache bringen"],
+    exemplesPlus: [{"de":"Das Verfahren nimmt erhebliche Ressourcen in Anspruch.","fr":"*in Anspruch nehmen* = beanspruchen."},{"de":"Auch alternative Lösungen sollten in Betracht gezogen werden.","fr":"*in Betracht ziehen* = erwägen."},{"de":"Sie brachte das heikle Thema diplomatisch zur Sprache.","fr":"*zur Sprache bringen* = ansprechen."},{"de":"Die Reform stellt die bisherige Praxis grundlegend in Frage.","fr":"*in Frage stellen* = grundsätzlich anzweifeln."},{"de":"Der Vorschlag stieß auf breite Zustimmung.","fr":"*auf Zustimmung stoßen* = angenommen werden."}],
     coursDE: [
       "**Nomen-Verb-Verbindungen** (Funktionsverbgefüge) sind feste Verbindungen, in denen ein Nomen die Bedeutung trägt und ein abgeblasstes Verb die grammatische Funktion übernimmt. Sie prägen den **formellen Stil** von Verwaltung, Recht und Wissenschaft.",
       "Charakteristisch ist, dass sie sich meist durch ein einfaches Vollverb ersetzen lassen, dabei aber förmlicher wirken: *in Anspruch nehmen* (= beanspruchen), *in Betracht ziehen* (= erwägen), *zur Sprache bringen* (= ansprechen), *in Frage stellen* (= bezweifeln).",
@@ -171,6 +178,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g08", titre: "Formation des noms", titreDE: "Wortbildung: Nomen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Reconnaître les suffixes nominaux", "Former des noms et des composés"],
     grammairePoints: ["-ung, -heit, -keit, -schaft", "Komposita"],
+    exemplesPlus: [{"de":"Die Umsetzung der Reform stößt auf Widerstand.","fr":"*-ung*: bezeichnet einen Vorgang oder dessen Ergebnis."},{"de":"Seine Hilfsbereitschaft beeindruckte alle.","fr":"*-schaft*: eine Eigenschaft oder ein Kollektiv."},{"de":"Die Nachhaltigkeit spielt eine immer größere Rolle.","fr":"*-keit*: bildet abstrakte Begriffe."},{"de":"Die Geschwindigkeitsbegrenzung wurde verschärft.","fr":"Kompositum: mehrere Nomen werden verbunden."},{"de":"Die Vergänglichkeit alles Irdischen ist ein altes Motiv.","fr":"*-keit* aus einem Adjektiv (*vergänglich*)."}],
     coursDE: [
       "Die **nominale Wortbildung** ist ein Schlüssel zum deutschen Wortschatz: Wer die Mechanismen der Ableitung und Zusammensetzung versteht, erschließt und bildet selbstständig Tausende von Nomen. Auf C2-Niveau nutzt du dies aktiv.",
       "Durch **Suffixe** entstehen Nomen mit festem Genus. Feminin sind regelmäßig die Bildungen auf **-ung** (*die Prüfung*), **-heit/-keit** (*die Freiheit, die Möglichkeit*), **-schaft** (*die Freundschaft*) und **-ion** (*die Diskussion*). Diese Genus-Regeln sind verlässlich und sehr nützlich.",
@@ -194,6 +202,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g09", titre: "Participes comme adjectifs", titreDE: "Partizipien als Adjektive", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Employer le participe attribut", "Construire un attribut participial étendu"],
     grammairePoints: ["Partizip I (actif)", "Partizip II (passif/accompli)"],
+    exemplesPlus: [{"de":"Die wachsende Ungleichheit beschäftigt die Forschung.","fr":"Partizip I (*wachsend*): aktiv und andauernd."},{"de":"Die von der Kommission verabschiedeten Richtlinien treten bald in Kraft.","fr":"Erweitertes Partizip II als Attribut."},{"de":"Ein alles entscheidender Moment stand bevor.","fr":"Partizip I mit Objekt (*alles entscheidend*)."},{"de":"Die längst überfällige Reform wurde endlich beschlossen.","fr":"Partizip II als Adjektiv mit Steigerungswort."},{"de":"Das zugrunde liegende Prinzip bleibt umstritten.","fr":"Partizip I in einer festen Wendung."}],
     coursDE: [
       "**Partizipien** lassen sich wie Adjektive vor ein Nomen stellen und dort deklinieren. Auf C2-Niveau setzt du diese verdichteten Attribute aktiv ein und erkennst ihre genaue Zeit- und Diathesebedeutung.",
       "Das **Partizip I** (*lesend, lächelnd*) ist **aktivisch** und drückt **Gleichzeitigkeit** aus: « *das **lachende** Kind* » = das Kind, das lacht. Das **Partizip II** (*gelesen, repariert*) ist meist **passivisch** und **abgeschlossen**: « *der **renovierte** Altbau* ».",
@@ -218,6 +227,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g10", titre: "Adjectifs et participes nominalisés", titreDE: "Nominalisierte Adjektive und Partizipien", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Nominaliser adjectifs et participes", "Décliner ces noms"],
     grammairePoints: ["der Reisende, der Angestellte", "das Wesentliche, etwas Neues"],
+    exemplesPlus: [{"de":"Das Wesentliche lässt sich in einem Satz zusammenfassen.","fr":"*das Wesentliche*: nominalisiertes Adjektiv."},{"de":"Die Verantwortlichen wurden zur Rechenschaft gezogen.","fr":"*die Verantwortlichen*: nominalisiert, Plural."},{"de":"Sie suchte nach etwas grundlegend Anderem.","fr":"*etwas Anderes*: nach *etwas* großgeschrieben."},{"de":"Den Vorsitzenden traf keine Schuld.","fr":"*der Vorsitzende → den Vorsitzenden* (Akkusativ)."},{"de":"Im Folgenden werden die Ergebnisse erläutert.","fr":"*im Folgenden*: feste nominalisierte Wendung."}],
     coursDE: [
       "Die **Nominalisierung** von Adjektiven und Partizipien ist im Deutschen hochproduktiv. Das umgewandelte Wort wird **großgeschrieben**, behält jedoch seine **Adjektivdeklination** – ein Detail, das auf C2 fehlerfrei beherrscht werden muss.",
       "Für **Personen** entstehen geläufige Substantive: *der/die Reisende, der Angestellte, der Vorsitzende, der/die Deutsche*. Die Endung richtet sich nach Artikel und Kasus wie bei einem Adjektiv: « *ein **Reisender*** », « *die Rechte **des Angestellten*** », « *mit den **Vorsitzenden*** ».",
@@ -241,6 +251,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g11", titre: "Les propositions relatives", titreDE: "Relativsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Maîtriser tous les relatifs", "Employer les relatives explicatives (weiterführend)"],
     grammairePoints: ["dessen/deren, was, wo", "relative explicative (, was …)"],
+    exemplesPlus: [{"de":"Der Wissenschaftler, dessen Thesen lange umstritten waren, erhielt nun den Preis.","fr":"*dessen*: Relativpronomen im Genitiv."},{"de":"Sie schwieg, was die Lage zusätzlich verschärfte.","fr":"*, was*: bezieht sich auf den ganzen Hauptsatz."},{"de":"Alles, was glänzt, ist nicht Gold.","fr":"*was* als Relativpronomen nach *alles*."},{"de":"Die Region, aus der er stammt, ist wirtschaftlich schwach.","fr":"Präposition + Relativpronomen: *aus der*."},{"de":"Es gibt Momente, in denen Schweigen beredter ist als Worte.","fr":"Relativsatz mit Präposition im Plural."}],
     coursDE: [
       "**Relativsätze** sind auf C2-Niveau in ihrer ganzen Bandbreite verfügbar – einschließlich der Genitivformen, der Relativadverbien und der weiterführenden Relativsätze, die einen ganzen Sachverhalt kommentieren.",
       "Das Relativpronomen kongruiert in **Genus und Numerus** mit dem Bezugswort, sein **Kasus** ergibt sich aus der Funktion im Relativsatz. Die **Genitivformen** *dessen* (m./n.) und *deren* (f./Pl.) sind aktiv zu verwenden: « *der Wissenschaftler, **dessen** Theorie umstritten ist* ».",

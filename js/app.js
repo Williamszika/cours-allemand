@@ -159,7 +159,7 @@
      allemand à apprendre (vocabulaire, exemples, dialogues, réponses
      d'exercices) et ce qui est déjà localisé. */
   const NOLOC = [
-    ".voc-de", ".voc-nom", ".art", ".voc-ex", ".cours-ex-de", ".hl-de", ".conv-de", ".conv-loc",
+    ".voc-de", ".voc-nom", ".art", ".voc-ex", ".cours-ex-de", ".cours-ex-gl-de", ".hl-de", ".conv-de", ".conv-loc",
     ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag", ".immersion-banner", ".genre-legende",
     ".cours-tag", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points", ".cours-table", "table",
     ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
@@ -230,7 +230,16 @@
       de.appendChild(el("span", "", e.de));
       de.appendChild(speakButton(e.de));
       body.appendChild(de);
-      if (e.fr) body.appendChild(el("div", "cours-ex-fr", e.fr));
+      if (e.fr) {
+        if (ex && ex.de) {
+          // Immersion B1+ : la glose est en allemand (niveau précédent) → rendu brut, jamais traduit.
+          const gl = el("div", "cours-ex-fr cours-ex-gl-de");
+          gl.innerHTML = window.mdLite ? window.mdLite(e.fr) : e.fr;
+          body.appendChild(gl);
+        } else {
+          body.appendChild(el("div", "cours-ex-fr", e.fr));
+        }
+      }
       row.appendChild(body);
       box.appendChild(row);
     });
@@ -770,7 +779,13 @@
     if (l.exemplesPlus && l.exemplesPlus.length) {
       const ep = el("div", "gram-block cours-block exemples-plus");
       const h = el("h3", "cours-titre");
-      localizeInto(h, "💬 Plus d'exemples en contexte", gEx);
+      if (gEx.de) {
+        // Immersion B1+ : titre en allemand soigné, jamais traduit.
+        h.classList.add("cours-ex-gl-de");
+        h.textContent = "💬 " + window.I18N.tIn("de", "more_examples");
+      } else {
+        localizeInto(h, "💬 Plus d'exemples en contexte", gEx);
+      }
       ep.appendChild(h);
       ep.appendChild(buildExemples(l.exemplesPlus, gEx));
       gram.appendChild(ep);

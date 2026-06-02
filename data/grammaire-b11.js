@@ -9,6 +9,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g01", titre: "Les temps du passé", titreDE: "Perfekt, Präteritum, Plusquamperfekt", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B1",
     objectifs: ["Distinguer Perfekt, Präteritum et Plusquamperfekt", "Choisir le bon temps selon l'oral/l'écrit et la chronologie"],
     grammairePoints: ["Perfekt (oral)", "Präteritum (récit écrit)", "Plusquamperfekt (antériorité)"],
+    exemplesPlus: [{"de":"Ich habe gestern einen guten Film gesehen.","fr":"*Perfekt* (haben/sein + Partizip): die Vergangenheit zum Sprechen."},{"de":"Wir sind am Wochenende nach Hamburg gefahren.","fr":"*Perfekt* mit *sein*, weil es eine Bewegung ist."},{"de":"Früher wohnte meine Familie in einem kleinen Dorf.","fr":"*Präteritum*: oft beim Schreiben und Erzählen."},{"de":"Nachdem ich gegessen hatte, ging ich spazieren.","fr":"*Plusquamperfekt* (hatte + Partizip): das passiert davor."},{"de":"Als der Film zu Ende war, gingen alle nach Hause.","fr":"*als* + Präteritum für eine Situation in der Vergangenheit."}],
     coursDE: [
       "Im Deutschen gibt es **drei Zeitformen für die Vergangenheit**: das **Perfekt**, das **Präteritum** und das **Plusquamperfekt**. Jede Form hat eine eigene Funktion. Wenn du sie verstehst, kannst du klar über die Vergangenheit sprechen und schreiben.",
       "Das **Perfekt** benutzt du, wenn du **sprichst** oder eine Nachricht schreibst. Du bildest es mit **haben** oder **sein** + Partizip II. Beispiel: « *Ich habe einen Film gesehen* » oder « *Ich bin nach Berlin gefahren* ». Das ist die wichtigste Vergangenheitsform für das tägliche Leben.",
@@ -34,6 +35,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g02", titre: "Verbes avec prépositions", titreDE: "Verben mit Präpositionen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Mémoriser les verbes à préposition fixe", "Appliquer le cas imposé par la préposition"],
     grammairePoints: ["warten auf, denken an", "sich freuen über/auf"],
+    exemplesPlus: [{"de":"Ich warte schon lange auf den Bus.","fr":"*warten auf* + Akkusativ. Die Präposition gehört fest zum Verb."},{"de":"Denkst du oft an deine Familie?","fr":"*denken an* + Akkusativ."},{"de":"Wir freuen uns sehr auf die Ferien.","fr":"*sich freuen auf*: man freut sich auf etwas in der Zukunft."},{"de":"Sie freut sich über das schöne Geschenk.","fr":"*sich freuen über*: über etwas jetzt oder in der Vergangenheit."},{"de":"Ich interessiere mich für moderne Kunst.","fr":"*sich interessieren für* + Akkusativ."}],
     coursDE: [
       "Viele deutsche Verben haben eine **feste Präposition**. Das Verb und die Präposition gehören zusammen, wie ein Paar. Oft ist die Präposition **nicht logisch**, darum musst du das Verb immer **zusammen mit seiner Präposition** lernen.",
       "Wichtige Beispiele: **warten auf** (« *Ich warte auf den Bus* »), **denken an** (« *Ich denke an dich* »), **sich freuen über** (etwas Vergangenes) und **sich freuen auf** (etwas in der Zukunft). Lerne immer das ganze Paar: *warten + auf*, *denken + an*.",
@@ -57,6 +59,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g03", titre: "Particules d'interrogation", titreDE: "Frage- und Pronominaladverbien", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
     objectifs: ["Poser une question avec wo(r)- + préposition", "Reprendre avec da(r)- + préposition"],
     grammairePoints: ["Wofür? Worauf? Woran?", "dafür, darauf, daran"],
+    exemplesPlus: [{"de":"Worauf wartest du? — Auf den Bus.","fr":"Frage nach einer Sache: *wo(r)- + Präposition*."},{"de":"Worüber sprecht ihr? — Über den Film.","fr":"*worüber* fragt nach dem Thema."},{"de":"Ich interessiere mich dafür.","fr":"*da(r)- + Präposition* ersetzt eine Sache."},{"de":"Wofür brauchst du das Geld?","fr":"*wofür* = für welche Sache?"},{"de":"Auf wen wartest du? — Auf meinen Bruder.","fr":"Bei Personen: *Präposition + wen/wem*."}],
     coursDE: [
       "Wenn ein Verb eine feste Präposition hat, brauchst du besondere Wörter für Fragen und Antworten. Bei **Sachen** (nicht Personen) benutzt du keine normale Präposition + Pronomen, sondern ein zusammengesetztes Wort.",
       "Für **Fragen** über eine Sache nimmst du **wo + Präposition**: **wofür?**, **worauf?**, **woran?**, **worüber?**. Wenn die Präposition mit einem Vokal beginnt, kommt ein **-r-** dazwischen: *wo**r**auf*, *wo**r**an*. Beispiel: « *Worauf wartest du?* » – « *Auf den Bus.* »",
@@ -80,6 +83,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g04", titre: "Verbes modaux & brauchen + zu", titreDE: "Modalverben, brauchen … zu", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Nuancer avec les modaux", "Remplacer müssen (négatif) par brauchen … zu"],
     grammairePoints: ["müssen, dürfen, sollen…", "nicht brauchen + zu + Infinitiv"],
+    exemplesPlus: [{"de":"Ich muss heute noch viel arbeiten.","fr":"*müssen*: etwas ist nötig."},{"de":"Du darfst hier nicht rauchen.","fr":"*dürfen*: Erlaubnis oder Verbot."},{"de":"Wir sollen pünktlich sein.","fr":"*sollen*: ein Auftrag von einer anderen Person."},{"de":"Du brauchst nicht zu kommen, wenn du müde bist.","fr":"*nicht brauchen + zu*: es ist nicht nötig."},{"de":"Können Sie mir bitte helfen?","fr":"*können*: Möglichkeit oder höfliche Frage."}],
     coursDE: [
       "Die **Modalverben** kennst du schon: *können, müssen, wollen, sollen, dürfen, mögen*. Sie stehen auf **Position 2**, und das zweite Verb steht im **Infinitiv am Satzende**: « *Ich muss heute arbeiten* ». Auf B1-Niveau lernst du die Bedeutungen genauer.",
       "Wichtige Unterschiede: **müssen** = eine Notwendigkeit (« *Ich muss gehen* »); **sollen** = ein Rat oder ein Auftrag von einer anderen Person (« *Du sollst mehr schlafen* »); **dürfen** = eine Erlaubnis (« *Hier darf man rauchen* »); **können** = eine Fähigkeit oder Möglichkeit.",
@@ -104,6 +108,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g05", titre: "Le subjonctif II (conditionnel)", titreDE: "Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B1",
     objectifs: ["Formuler demandes polies et souhaits", "Exprimer l'irréel au présent et au passé"],
     grammairePoints: ["würde, könnte, hätte, wäre", "hätte/wäre + participe (passé)"],
+    exemplesPlus: [{"de":"Wenn ich Zeit hätte, würde ich dir helfen.","fr":"Irreale Bedingung: *hätte* + *würde*. Es ist gerade nicht so."},{"de":"An deiner Stelle wäre ich vorsichtiger.","fr":"*wäre*: ein höflicher Rat."},{"de":"Könntest du mir bitte das Salz geben?","fr":"*könnte*: eine höfliche Bitte."},{"de":"Ich hätte gern noch einen Kaffee.","fr":"*hätte gern*: ein höflicher Wunsch."},{"de":"Wenn er früher gekommen wäre, hätte er den Zug nicht verpasst.","fr":"Vergangenheit: *wäre/hätte* + Partizip."}],
     coursDE: [
       "Der **Konjunktiv II** ist die Form für **irreale Situationen** (« wenn ich reich wäre… »), für **Wünsche** und für **höfliche Bitten**. Er ist sehr nützlich im Alltag.",
       "Die einfachste Form ist **würde + Infinitiv**: « *Ich würde gern nach Italien fahren* ». Diese Form funktioniert mit fast allen Verben. Wenn du unsicher bist, benutze einfach *würde* + Infinitiv – das ist fast immer richtig.",
@@ -128,6 +133,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g06", titre: "Verbes avec datif et accusatif", titreDE: "Verben mit Dativ und Akkusativ", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Reconnaître les verbes à datif", "Construire « donner qqch à qqn »"],
     grammairePoints: ["geben, schenken, zeigen", "datif (personne) + accusatif (chose)"],
+    exemplesPlus: [{"de":"Ich gebe meinem Bruder das Buch.","fr":"Person im *Dativ*, Sache im *Akkusativ*."},{"de":"Sie schenkt ihrer Freundin eine Kette.","fr":"*schenken*: jemandem (Dativ) etwas (Akkusativ)."},{"de":"Kannst du mir bitte den Weg zeigen?","fr":"*zeigen*: mir (Dativ) den Weg (Akkusativ)."},{"de":"Der Lehrer erklärt den Schülern die Regel.","fr":"*erklären*: den Schülern (Dativ) die Regel (Akkusativ)."},{"de":"Ich bringe dir morgen die Fotos mit.","fr":"*mitbringen*: dir (Dativ) die Fotos (Akkusativ)."}],
     coursDE: [
       "Manche Verben haben **zwei Objekte**: eine **Person im Dativ** (wem?) und eine **Sache im Akkusativ** (was?). Das sind oft Verben des Gebens und Sagens: *geben, schenken, zeigen, bringen, schicken, erklären, empfehlen*.",
       "Das Modell ist: **Subjekt + Verb + Dativ (Person) + Akkusativ (Sache)**. Beispiel: « *Ich gebe **dem Kind** (Dativ) **einen Apfel** (Akkusativ)* ». Die Person, die etwas bekommt, steht im Dativ; die Sache steht im Akkusativ.",
@@ -152,6 +158,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g07", titre: "La déclinaison en -n (N-Deklination)", titreDE: "Die N-Deklination", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
     objectifs: ["Reconnaître les noms de la N-Deklination", "Ajouter -n / -en hors nominatif"],
     grammairePoints: ["der Junge → den Jungen", "Herr, Kollege, Student, Mensch"],
+    exemplesPlus: [{"de":"Ich kenne den Jungen aus meiner Klasse.","fr":"*der Junge → den Jungen*: diese Nomen bekommen ein *-n*."},{"de":"Wir helfen dem Studenten bei den Hausaufgaben.","fr":"*der Student → dem Studenten*."},{"de":"Kennst du diesen netten Kollegen?","fr":"*der Kollege → den Kollegen*."},{"de":"Der Name des Kunden steht auf der Liste.","fr":"*der Kunde → des Kunden* (Genitiv)."},{"de":"Ich habe mit einem Polizisten gesprochen.","fr":"*der Polizist → einem Polizisten*."}],
     coursDE: [
       "Die **N-Deklination** ist eine spezielle Gruppe von **maskulinen Nomen**. Diese Nomen bekommen in fast allen Fällen ein **-n** oder **-en** am Ende – nur im Nominativ Singular nicht. Viele Lerner vergessen dieses -n, darum ist diese Lektion wichtig.",
       "Welche Nomen gehören dazu? Oft sind es **Personen und Berufe**: *der Junge, der Kollege, der Student, der Kunde, der Nachbar, der Mensch, der Herr*. Und einige andere wie *der Name, der Tourist, der Polizist*.",
@@ -175,6 +182,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g08", titre: "Indicateurs de temps", titreDE: "Temporale Präpositionen", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
     objectifs: ["Situer une action dans le temps", "Choisir la préposition et le cas corrects"],
     grammairePoints: ["vor, seit, bis, ab", "über, innerhalb (+ Gen.)"],
+    exemplesPlus: [{"de":"Vor drei Jahren bin ich nach Berlin gezogen.","fr":"*vor* + Dativ: ein Punkt in der Vergangenheit."},{"de":"Ich lerne seit zwei Monaten Deutsch.","fr":"*seit* + Dativ: es hat angefangen und geht bis jetzt."},{"de":"Wir bleiben bis Freitag hier.","fr":"*bis*: der Endpunkt einer Zeit."},{"de":"Ab nächster Woche habe ich mehr Zeit.","fr":"*ab*: der Startpunkt."},{"de":"Innerhalb einer Woche musst du antworten.","fr":"*innerhalb* + Genitiv: in diesem Zeitraum."}],
     coursDE: [
       "**Temporale Präpositionen** sagen, **wann** etwas passiert. Auf B1-Niveau lernst du mehr als nur *am, um, im*. Die meisten dieser Präpositionen stehen mit dem **Dativ**.",
       "Für einen **Zeitpunkt in der Vergangenheit** benutzt du **vor** (+ Dativ): « *vor zwei Jahren* » (il y a deux ans). Für einen Zeitraum vom Anfang bis jetzt benutzt du **seit** (+ Dativ): « *seit drei Monaten* » (depuis trois mois). Verwechsle *vor* und *seit* nicht!",
@@ -198,6 +206,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g09", titre: "Adverbes de temps", titreDE: "Temporaladverbien", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
     objectifs: ["Enrichir un récit avec des adverbes temporels", "Ordonner les étapes (d'abord, ensuite, enfin)"],
     grammairePoints: ["damals, früher, neulich", "zuerst, dann, schließlich"],
+    exemplesPlus: [{"de":"Damals gab es noch keine Handys.","fr":"*damals*: vor langer Zeit."},{"de":"Früher habe ich viel Sport gemacht.","fr":"*früher*: in der Vergangenheit, nicht mehr heute."},{"de":"Neulich habe ich einen alten Freund getroffen.","fr":"*neulich*: vor Kurzem."},{"de":"Zuerst frühstücke ich, dann gehe ich zur Arbeit.","fr":"*zuerst … dann*: die Reihenfolge."},{"de":"Schließlich sind wir doch noch angekommen.","fr":"*schließlich*: am Ende."}],
     coursDE: [
       "**Temporaladverbien** sind Wörter, die etwas über die **Zeit** sagen, aber ohne Präposition. Sie helfen dir, eine Geschichte klar und in der richtigen Reihenfolge zu erzählen.",
       "Für die **Vergangenheit**: *damals* (à cette époque), *früher* (autrefois), *neulich* (récemment), *gestern, vorgestern*. Beispiel: « *Früher habe ich in Berlin gewohnt* ».",
@@ -222,6 +231,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g10", titre: "Les verbes réfléchis", titreDE: "Reflexive Verben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Conjuguer un verbe réfléchi", "Placer le pronom réfléchi (accusatif/datif)"],
     grammairePoints: ["sich freuen, sich interessieren", "mich/mir, dich/dir…"],
+    exemplesPlus: [{"de":"Ich freue mich auf das Wochenende.","fr":"Reflexivpronomen im Akkusativ: *mich*."},{"de":"Wäschst du dir die Hände?","fr":"Mit einem Objekt steht der Dativ: *dir*."},{"de":"Wir treffen uns um acht vor dem Kino.","fr":"*sich treffen*: wir treffen uns (Akkusativ *uns*)."},{"de":"Sie interessiert sich für Politik.","fr":"*sich interessieren für* + Akkusativ."},{"de":"Setz dich bitte!","fr":"Imperativ mit Reflexivpronomen: *dich*."}],
     coursDE: [
       "**Reflexive Verben** sind Verben mit einem **Reflexivpronomen** wie *sich*. Die Handlung geht zurück auf das Subjekt: die Person macht etwas mit sich selbst. Beispiele: *sich waschen, sich freuen, sich interessieren, sich erinnern*.",
       "Die Reflexivpronomen sind: *ich → **mich***, *du → **dich***, *er/sie/es → **sich***, *wir → **uns***, *ihr → **euch***, *sie/Sie → **sich***. Beispiel: « *Ich freue mich* », « *Er wäscht sich* ».",
@@ -246,6 +256,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g11", titre: "Le passif", titreDE: "Das Passiv", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Former le passif au présent", "Mettre l'accent sur l'action plutôt que l'agent"],
     grammairePoints: ["werden + participe II", "von + datif (agent)"],
+    exemplesPlus: [{"de":"Das Haus wird gerade renoviert.","fr":"Passiv: *werden* + Partizip II. Wichtig ist die Handlung."},{"de":"Der Brief wurde gestern geschrieben.","fr":"Passiv im Präteritum: *wurde* + Partizip."},{"de":"Das Auto wird von einem Mechaniker repariert.","fr":"Wer es macht, steht mit *von* + Dativ."},{"de":"Hier werden viele Autos produziert.","fr":"Passiv ohne Person: wichtig ist nur die Handlung."},{"de":"Das Fenster ist schon geöffnet.","fr":"Zustandspassiv: *sein* + Partizip (das Ergebnis)."}],
     coursDE: [
       "Das **Passiv** benutzt du, wenn die **Handlung wichtiger ist als die Person**, die sie macht. Im Aktiv steht die Person im Zentrum (« *Der Mechaniker repariert das Auto* »). Im Passiv steht die Sache im Zentrum (« *Das Auto wird repariert* »).",
       "Du bildest das Passiv mit **werden + Partizip II**. Das Verb *werden* steht auf Position 2, das Partizip II steht am Satzende: « *Das Haus **wird** **gebaut*** », « *Die Briefe **werden** **geschrieben*** ». Verwechsle dieses *werden* nicht mit dem Futur.",
@@ -270,6 +281,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g12", titre: "Adjectifs : comparatif et superlatif", titreDE: "Komparativ und Superlativ", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Former le comparatif et le superlatif", "Employer l'adjectif comparatif devant le nom"],
     grammairePoints: ["-er / am -sten", "der/die/das + -ste"],
+    exemplesPlus: [{"de":"Anna ist größer als ihr Bruder.","fr":"Komparativ: *-er* + *als*."},{"de":"Heute ist es kälter als gestern.","fr":"*kalt → kälter*: oft mit Umlaut."},{"de":"Das ist das schönste Bild im Museum.","fr":"Superlativ: *der/die/das + -ste*."},{"de":"Im Sommer sind die Tage am längsten.","fr":"*am -sten*: Superlativ als Adverb."},{"de":"Mein Auto ist gut, aber deins ist besser.","fr":"Unregelmäßig: *gut → besser → am besten*."}],
     coursDE: [
       "Mit dem **Komparativ** und dem **Superlativ** vergleichst du Dinge. Der Komparativ vergleicht **zwei** Dinge (größer), der Superlativ zeigt die **Nummer eins** (am größten).",
       "Den **Komparativ** bildest du mit **-er**, und danach kommt **als** (que): « *Anna ist **größer als** Tom* ». Viele kurze Adjektive bekommen einen **Umlaut**: *alt → **älter***, *groß → **größer***, *jung → **jünger***.",
@@ -293,6 +305,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g13", titre: "Le génitif", titreDE: "Der Genitiv", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Exprimer l'appartenance avec le génitif", "Employer les prépositions à génitif"],
     grammairePoints: ["des Mannes, der Frau", "wegen, trotz, während (+ Gen.)"],
+    exemplesPlus: [{"de":"Das ist das Auto meines Vaters.","fr":"Genitiv: *des Vaters* zeigt, wem etwas gehört."},{"de":"Die Farbe der Wand gefällt mir.","fr":"*der Wand*: Genitiv feminin."},{"de":"Wegen des schlechten Wetters bleiben wir zu Hause.","fr":"*wegen* + Genitiv: der Grund."},{"de":"Trotz der Kälte gehen wir spazieren.","fr":"*trotz* + Genitiv."},{"de":"Während des Films habe ich geschlafen.","fr":"*während* + Genitiv: in dieser Zeit."}],
     coursDE: [
       "Der **Genitiv** zeigt, wem etwas **gehört** (Wessen?). Im Französischen ist das oft « de » (« la voiture **du** père »). Der Genitiv ist der vierte Kasus. Beim Sprechen ist er seltener, aber beim Schreiben ist er wichtig.",
       "Die Artikel im Genitiv sind: maskulin und neutral **des**, feminin und Plural **der**. Wichtig: Bei maskulinen und neutralen Nomen bekommt das Nomen ein **-s** oder **-es**: « *das Auto **des Mannes*** », « *das Buch **des Kindes*** ». Bei femininen Nomen ändert sich das Nomen nicht: « *das Auto **der Frau*** ».",
@@ -316,6 +329,7 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     id: "b1g14", titre: "Les propositions relatives", titreDE: "Relativsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B1",
     objectifs: ["Relier deux phrases avec un pronom relatif", "Choisir le pronom (nominatif/accusatif/datif, avec préposition)"],
     grammairePoints: ["der/die/das relatifs", "préposition + pronom relatif"],
+    exemplesPlus: [{"de":"Das ist der Mann, der nebenan wohnt.","fr":"Relativpronomen *der* im Nominativ."},{"de":"Die Frau, die ich gestern traf, ist Lehrerin.","fr":"*die* im Akkusativ (Objekt)."},{"de":"Das Kind, dem ich geholfen habe, lacht wieder.","fr":"*dem* im Dativ (helfen + Dativ)."},{"de":"Der Freund, mit dem ich reise, kommt aus Wien.","fr":"Präposition + Relativpronomen: *mit dem*."},{"de":"Das ist das Buch, das mir am besten gefällt.","fr":"*das*: Nominativ neutrum."}],
     coursDE: [
       "Ein **Relativsatz** gibt mehr Informationen über ein Nomen. Er beginnt mit einem **Relativpronomen** (*der, die, das*) und – sehr wichtig – das **Verb steht am Ende** des Relativsatzes. Beispiel: « *Das ist der Mann, **der** in Berlin **wohnt*** ».",
       "Das Relativpronomen hat das **Genus und den Numerus** des Nomens (maskulin, feminin, neutral oder Plural). Aber den **Kasus** bekommt es von seiner **Funktion im Relativsatz**. Das ist der schwierige, aber logische Teil.",

@@ -10,6 +10,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g12", titre: "Le passif", titreDE: "Das Passiv", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Maîtriser le passif à tous les temps", "Employer le passif avec modal"],
     grammairePoints: ["werden + participe (tous temps)", "sein-Passiv, modal + werden"],
+    exemplesPlus: [{"de":"Die Verhandlungen waren bereits abgeschlossen worden, als die Presse eintraf.","fr":"Plusquamperfekt Passiv: *waren … worden*."},{"de":"Derartige Eingriffe müssen sorgfältig abgewogen werden.","fr":"Passiv mit Modalverb."},{"de":"Die Frist ist um zwei Wochen verlängert worden.","fr":"Perfekt Passiv: *ist … worden*."},{"de":"Sämtliche Einwände wurden im Protokoll festgehalten.","fr":"Vorgangspassiv im Präteritum."},{"de":"Das Verfahren wird voraussichtlich neu aufgerollt werden.","fr":"Futur Passiv: *wird … werden*."}],
     coursDE: [
       "Auf C2-Niveau beherrschst du das **Passiv** in sämtlichen Zeitformen und setzt es bewusst ein, um Sachverhalte unpersönlich, objektiv und handlungsorientiert darzustellen – der typische Duktus wissenschaftlicher und amtlicher Texte.",
       "Das **Vorgangspassiv** (*werden* + Partizip II) erscheint in allen Tempora: « *wird geprüft* », « *wurde geprüft* », « *ist geprüft **worden*** », « *war geprüft worden* », « *wird geprüft werden* ». Beachte stets *worden* (nicht *geworden*) im Perfekt.",
@@ -34,6 +35,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g13", titre: "Substituts du passif", titreDE: "Passiversatzformen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Remplacer le passif élégamment", "Employer man, sich lassen, sein+zu+Inf., -bar"],
     grammairePoints: ["man, sich lassen", "sein + zu + Inf., adjectifs en -bar"],
+    exemplesPlus: [{"de":"Der Aufwand lässt sich kaum rechtfertigen.","fr":"*sich lassen* = kann kaum gerechtfertigt werden."},{"de":"Die Konsequenzen sind nur schwer abzusehen.","fr":"*sein + zu + Infinitiv* als Passiversatz."},{"de":"Solche Fehler sind durchaus vermeidbar.","fr":"Adjektiv auf *-bar*: lässt sich vermeiden."},{"de":"Man neigt dazu, derartige Risiken zu unterschätzen.","fr":"*man* als unpersönlicher Passiversatz."},{"de":"Diese Behauptung ist kaum haltbar.","fr":"Adjektiv auf *-bar*: lässt sich kaum halten."}],
     coursDE: [
       "Neben dem eigentlichen Passiv verfügt das Deutsche über zahlreiche **Passiversatzformen**, die eine passivische Bedeutung – häufig verbunden mit Möglichkeit oder Notwendigkeit – ohne *werden* ausdrücken. Ihre Beherrschung verleiht dem Stil Variation.",
       "Die wichtigsten Konstruktionen: **sich lassen + Infinitiv** (Möglichkeit: « *Das **lässt sich** leicht beweisen* »), **sein + zu + Infinitiv** (Notwendigkeit/Möglichkeit: « *Die Regeln **sind** strikt **einzuhalten*** »), und das unpersönliche **man** (« *So etwas **sagt man** nicht* »).",
@@ -58,6 +60,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g14", titre: "Les verbes modaux", titreDE: "Die Modalverben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Maîtriser le sens subjectif des modaux", "Combiner modal, temps et passif"],
     grammairePoints: ["müsste, dürfte, soll, will (subjectif)", "hätte … müssen"],
+    exemplesPlus: [{"de":"Der Politiker soll Gelder veruntreut haben.","fr":"*sollen*: gibt ein Gerücht / eine fremde Behauptung wieder."},{"de":"Sie will von der Absprache nichts gewusst haben.","fr":"*wollen*: eine eigene, oft zweifelhafte Behauptung."},{"de":"Die Maßnahme dürfte kaum ausreichen.","fr":"*dürfte*: eine vorsichtige Vermutung."},{"de":"Man hätte die Warnungen ernster nehmen müssen.","fr":"*hätte … müssen*: eine versäumte Pflicht."},{"de":"Das müsste sich eigentlich überprüfen lassen.","fr":"*müsste*: starke Annahme, mit Passiversatz."}],
     coursDE: [
       "Die **Modalverben** entfalten auf C2-Niveau ihre ganze Bandbreite – von der objektiven Grundbedeutung über die subjektive Vermutung bis zur Wiedergabe fremder Aussagen. Erwartet wird, dass du diese Ebenen mühelos auseinanderhältst.",
       "Im **subjektiven** Gebrauch drücken sie den Grad einer Vermutung aus: *müsste* (sehr wahrscheinlich), *dürfte* (begründete Annahme), *könnte* (möglich), *mag* (einräumend): « *Sie **dürfte** inzwischen angekommen sein* ».",
@@ -81,6 +84,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g15", titre: "Adjectifs : déclinaison et comparaison", titreDE: "Adjektive: Deklination und Komparation", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Décliner sans faute", "Maîtriser comparatif et superlatif (y compris irréguliers)"],
     grammairePoints: ["faible/mixte/forte", "-er / am -sten, irréguliers"],
+    exemplesPlus: [{"de":"Bei näherer Betrachtung erweist sich die These als haltlos.","fr":"Komparativ attributiv (*näher*)."},{"de":"Die wenigsten waren sich der Tragweite bewusst.","fr":"Superlativ als Nomen (*die wenigsten*)."},{"de":"Je komplexer das System, desto höher die Fehleranfälligkeit.","fr":"*je … desto* + Komparativ."},{"de":"Mit größtmöglicher Sorgfalt wurde vorgegangen.","fr":"Superlativ in einem zusammengesetzten Adjektiv."},{"de":"Das ist bei Weitem die eleganteste Lösung.","fr":"Superlativ mit Verstärkung (*bei Weitem*)."}],
     coursDE: [
       "Die **Deklination** und **Steigerung** der Adjektive sollten auf C2-Niveau vollständig automatisiert und auch in ihren Ausnahmen sicher sein. Sie bilden die Grundlage präziser, fehlerfreier Nominalphrasen.",
       "Die drei Deklinationstypen – **schwach** (nach bestimmtem Artikel), **gemischt** (nach unbestimmtem Artikel/Possessiv) und **stark** (ohne Artikel) – musst du blind beherrschen, ebenso die Fälle nach *viele, einige, alle, beide* und nach *etwas/nichts* + großgeschriebenem Adjektiv.",
@@ -104,6 +108,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g16", titre: "Adjectifs et leurs compléments", titreDE: "Adjektive mit Ergänzungen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Employer adjectifs à datif/génitif", "Maîtriser adjectifs à préposition"],
     grammairePoints: ["+ datif (treu, ähnlich)", "+ génitif, + préposition"],
+    exemplesPlus: [{"de":"Er ist sich seiner Verantwortung durchaus bewusst.","fr":"Adjektiv + Genitiv: *sich bewusst* + Genitiv."},{"de":"Das Ergebnis ist dem Aufwand kaum angemessen.","fr":"Adjektiv + Dativ: *angemessen* + Dativ."},{"de":"Sie blieb ihren Prinzipien stets treu.","fr":"*treu* + Dativ."},{"de":"Die Studie ist für die Praxis von großer Relevanz.","fr":"Adjektivische Wendung + Präposition."},{"de":"Solche Pauschalurteile sind der Sache nicht dienlich.","fr":"*dienlich* + Dativ."}],
     coursDE: [
       "Viele **Adjektive** verlangen – wie Verben – eine feste **Ergänzung** in einem bestimmten Kasus oder mit einer festen Präposition. Auf C2-Niveau gehört die sichere Rektion der Adjektive zum aktiven Können.",
       "Eine Gruppe steht mit dem **Dativ**: *treu, ähnlich, bekannt, dankbar, fremd, überlegen, gewachsen*. Beispiel: « *Dieser Aufgabe ist er nicht **gewachsen*** », « *Das Bild ist dem Original **ähnlich*** ».",
@@ -127,6 +132,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g17", titre: "Formation des adjectifs", titreDE: "Wortbildung: Adjektive", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Reconnaître les suffixes adjectivaux", "Former des adjectifs à partir de noms/verbes"],
     grammairePoints: ["-bar, -los, -haft, -ig", "-lich, -sam, -voll"],
+    exemplesPlus: [{"de":"Der Vorwurf erwies sich als haltlos.","fr":"*-los*: ohne, ein Mangel."},{"de":"Sein Verhalten war ausgesprochen rücksichtsvoll.","fr":"*-voll*: voll von einer Eigenschaft."},{"de":"Die Ergebnisse sind kaum nachvollziehbar.","fr":"*-bar*: etwas ist möglich."},{"de":"Eine derart leichtfertige Entscheidung verbietet sich.","fr":"*-fertig*: drückt eine Haltung aus."},{"de":"Ihr Vorgehen war äußerst bedachtsam.","fr":"*-sam*: nennt eine Art und Weise."}],
     coursDE: [
       "Auch **Adjektive** entstehen größtenteils durch Ableitung mit **Suffixen**. Wer ihre Bedeutung kennt, versteht und bildet zahllose Adjektive selbst – eine Schlüsselkompetenz für den C2-Wortschatz und für das Lesen anspruchsvoller Texte.",
       "Produktive Suffixe: **-bar** (Möglichkeit, passivisch: *essbar, lesbar*), **-los** (ohne: *arbeitslos, hilflos*), **-voll** (mit viel: *wertvoll, liebevoll*), **-reich** (*erfolgreich*), **-arm** (*kalorienarm*).",
@@ -150,6 +156,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g18", titre: "Le style nominal", titreDE: "Der Nominalstil", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Transformer le verbal en nominal", "Reconnaître le style écrit soutenu"],
     grammairePoints: ["Nominalstil ↔ Verbalstil", "prépositions + nominalisation"],
+    exemplesPlus: [{"de":"Nach Abschluss der Untersuchung werden die Ergebnisse veröffentlicht.","fr":"Nominalstil: *nachdem … abgeschlossen ist* wird zu *nach Abschluss*."},{"de":"Aufgrund mangelnder Beweise wurde das Verfahren eingestellt.","fr":"Nominalstil kausal (*aufgrund* + Nomen)."},{"de":"Bei Nichteinhaltung der Frist verfällt der Anspruch.","fr":"Typisch für die Amts- und Rechtssprache."},{"de":"Zur Vermeidung von Missverständnissen folgt eine Erläuterung.","fr":"*zur* + Nominalisierung drückt den Zweck aus."},{"de":"Trotz wiederholter Aufforderung blieb eine Reaktion aus.","fr":"Nominalstil konzessiv (*trotz* + Nomen)."}],
     coursDE: [
       "Der **Nominalstil** verdichtet Informationen, indem er Verben und ganze Nebensätze in **Nomengruppen** umwandelt. Er ist der charakteristische Duktus von Wissenschaft, Recht und Verwaltung. Auf C2-Niveau wechselst du souverän zwischen Nominal- und Verbalstil.",
       "Die Umwandlung betrifft vor allem **adverbiale Nebensätze**, die zu **Präpositionalphrasen** werden: *weil* → *wegen/aufgrund* (+ Genitiv), *nachdem* → *nach*, *bevor* → *vor*, *obwohl* → *trotz*, *indem* → *durch*. Beispiel: « *Nach **Abschluss der Prüfung**… » statt « Nachdem die Prüfung abgeschlossen war,… ».",
@@ -174,6 +181,7 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     id: "c2g19", titre: "Prépositions de la langue écrite", titreDE: "Präpositionen der Schriftsprache", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Employer les prépositions soutenues à génitif", "Choisir la nuance exacte"],
     grammairePoints: ["mittels, anhand, infolge", "angesichts, seitens, zwecks"],
+    exemplesPlus: [{"de":"Mittels eines speziellen Verfahrens lassen sich die Daten rekonstruieren.","fr":"*mittels* + Genitiv: mit Hilfe von."},{"de":"Anhand konkreter Beispiele wurde die Theorie veranschaulicht.","fr":"*anhand* + Genitiv: auf der Grundlage von."},{"de":"Infolge der Finanzkrise brach der Markt ein.","fr":"*infolge* + Genitiv: als Folge von."},{"de":"Seitens der Behörde gab es keine Stellungnahme.","fr":"*seitens* + Genitiv: vonseiten."},{"de":"Zwecks besserer Übersicht wurden Tabellen eingefügt.","fr":"*zwecks* + Genitiv: zu dem Zweck."}],
     coursDE: [
       "Die gehobene **Schriftsprache** verfügt über eine Reihe von **Präpositionen**, die in der Alltagssprache kaum vorkommen, in akademischen, juristischen und administrativen Texten aber unentbehrlich sind. Die meisten regieren den **Genitiv**.",
       "Sie drücken oft ein **Mittel** oder eine **Grundlage** aus: **mittels** (au moyen de), **anhand** (à l'aide de), **kraft** (en vertu de), **vermöge** (en raison de). Beispiel: « ***Anhand** der Daten lässt sich zeigen…* », « ***Mittels** eines Verfahrens…* ».",

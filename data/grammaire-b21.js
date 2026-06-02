@@ -8,6 +8,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g01", titre: "Les verbes modaux", titreDE: "Die Modalverben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Distinguer sens objectif et subjectif des modaux", "Exprimer la supposition (müssen/können/dürfte)"],
     grammairePoints: ["sens objectif vs subjectif", "Vermutung : müsste, könnte, dürfte"],
+    exemplesPlus: [{"de":"Du musst den Bericht bis Freitag abgeben.","fr":"Objektiv: eine echte Notwendigkeit."},{"de":"Er müsste eigentlich schon zu Hause sein.","fr":"Subjektiv: eine ziemlich sichere Vermutung."},{"de":"Sie könnte im Stau stehen.","fr":"Subjektiv: eine von mehreren Möglichkeiten."},{"de":"Das dürfte die richtige Lösung sein.","fr":"Subjektiv: wahrscheinlich richtig."},{"de":"Du darfst das Gebäude nicht ohne Ausweis betreten.","fr":"Objektiv: ein klares Verbot."}],
     coursDE: [
       "Die **Modalverben** (*können, müssen, dürfen, sollen, wollen, mögen*) kennst du schon aus dem Alltag. Auf B2-Niveau lernst du, dass sie **zwei verschiedene Bedeutungen** haben können: eine **objektive** und eine **subjektive**.",
       "Die **objektive** Bedeutung ist die normale: Sie beschreibt eine Möglichkeit, eine Pflicht oder eine Erlaubnis. « *Ich muss arbeiten* » bedeutet, dass es wirklich notwendig ist. Das ist die Bedeutung, die du schon gut kennst.",
@@ -31,6 +32,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g02", titre: "Les temps du passé", titreDE: "Perfekt, Präteritum, Plusquamperfekt", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Choisir le temps selon le registre", "Marquer l'antériorité dans un texte"],
     grammairePoints: ["Perfekt / Präteritum", "Plusquamperfekt + nachdem"],
+    exemplesPlus: [{"de":"Gestern habe ich meine alten Freunde getroffen.","fr":"Perfekt: im Gespräch über die Vergangenheit."},{"de":"Der Schriftsteller lebte lange im Ausland und schrieb dort seine Romane.","fr":"Präteritum: typisch für geschriebene Texte."},{"de":"Nachdem sie die Prüfung bestanden hatte, feierte sie mit Freunden.","fr":"Plusquamperfekt + *nachdem*: das war vorher."},{"de":"Als ich klein war, verbrachten wir jeden Sommer am Meer.","fr":"*als* + Präteritum für die Vergangenheit."},{"de":"Er hatte den Schlüssel vergessen, deshalb konnte er nicht ins Haus.","fr":"Plusquamperfekt für die frühere Ursache."}],
     coursDE: [
       "Auf B2-Niveau solltest du die drei Vergangenheitsformen sicher beherrschen und vor allem **richtig kombinieren** können. Jede Form hat ihre Funktion, und im Text arbeiten sie oft zusammen.",
       "Das **Perfekt** bleibt die Form der **gesprochenen Sprache** und der persönlichen Texte: « *Ich habe gestern lange gearbeitet* ». Das **Präteritum** ist die Form der **geschriebenen Erzählung** und der Nachrichten: « *Die Regierung beschloss ein neues Gesetz* ».",
@@ -55,6 +57,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g03", titre: "La déclinaison des adjectifs", titreDE: "Die Adjektivdeklination", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
     objectifs: ["Maîtriser les trois déclinaisons de l'adjectif", "Décliner sans article"],
     grammairePoints: ["après der / ein / ø", "terminaisons -e / -en / forte"],
+    exemplesPlus: [{"de":"Der neue Kollege ist sehr freundlich.","fr":"Nach *der*: schwache Endung *-e*."},{"de":"Ich habe einen interessanten Artikel gelesen.","fr":"Nach *ein*: gemischte Endung *-en*."},{"de":"Sie trinkt gern heißen Tee mit Zitrone.","fr":"Ohne Artikel: starke Endung."},{"de":"Die Meinung der jungen Leute ist wichtig.","fr":"Nach *der* (Genitiv Plural): *-en*."},{"de":"Mit freundlichen Grüßen schließe ich den Brief.","fr":"Nach Präposition ohne Artikel: starke Endung."}],
     coursDE: [
       "Die **Adjektivdeklination** ist eine der wichtigsten Strukturen auf B2-Niveau. Ein Adjektiv vor einem Nomen bekommt eine Endung, und diese Endung hängt vom **Artikel**, vom **Kasus** und vom **Genus** ab. Es gibt drei Deklinationstypen.",
       "Nach dem **bestimmten Artikel** (der, die, das) ist die Endung schwach: meistens **-e** oder **-en**. Beispiel: « *der **gute** Wein* », « *den **guten** Wein* », « *mit dem **guten** Wein* ». Der Artikel zeigt schon den Kasus, deshalb braucht das Adjektiv wenig Information.",
@@ -78,6 +81,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g04", titre: "Prépositions de lieu à deux cas", titreDE: "Wechselpräpositionen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Choisir datif ou accusatif", "Distinguer position et direction"],
     grammairePoints: ["Wo? + Dat. / Wohin? + Akk.", "an, auf, in, über…"],
+    exemplesPlus: [{"de":"Die Lampe hängt über dem Tisch.","fr":"*Wo?* + Dativ: Position, keine Bewegung."},{"de":"Häng das Bild bitte über das Sofa.","fr":"*Wohin?* + Akkusativ: Bewegung zum Ziel."},{"de":"Der Hund liegt zwischen den beiden Stühlen.","fr":"*Wo?* + Dativ: *zwischen den Stühlen*."},{"de":"Ich stelle die Flasche in den Kühlschrank.","fr":"*Wohin?* + Akkusativ: *in den Kühlschrank*."},{"de":"Wir treffen uns vor dem Theater.","fr":"*Wo?* + Dativ: *vor dem Theater*."}],
     coursDE: [
       "Die **Wechselpräpositionen** sind neun Präpositionen, die mit **Dativ oder Akkusativ** stehen können: *in, an, auf, über, unter, vor, hinter, neben, zwischen*. Auf B2-Niveau geht es darum, sie ohne Nachdenken richtig zu benutzen.",
       "Die Grundregel kennst du: **Wo? → Dativ** (Position), **Wohin? → Akkusativ** (Bewegung zu einem Ziel). « *Das Bild hängt **an der** Wand* » (Wo?, Dativ) aber « *Ich hänge das Bild **an die** Wand* » (Wohin?, Akkusativ).",
@@ -102,6 +106,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g05", titre: "Le passif", titreDE: "Das Passiv", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
     objectifs: ["Former le passif à tous les temps", "Employer le passif avec modal et le passif d'état"],
     grammairePoints: ["werden + participe II", "Passiv mit Modalverb, Zustandspassiv"],
+    exemplesPlus: [{"de":"Die Brücke wird zurzeit gebaut.","fr":"Vorgangspassiv im Präsens: die Handlung läuft."},{"de":"Das Problem muss schnell gelöst werden.","fr":"Passiv mit Modalverb: *werden* am Ende."},{"de":"Der Vertrag wurde letzte Woche unterschrieben.","fr":"Passiv im Präteritum: *wurde* + Partizip."},{"de":"Die Tür ist bereits abgeschlossen.","fr":"Zustandspassiv: *sein* + Partizip (Ergebnis)."},{"de":"In dieser Fabrik werden Maschinen hergestellt.","fr":"Passiv ohne Handelnden: wichtig ist die Handlung."}],
     coursDE: [
       "Das **Passiv** ist auf B2-Niveau sehr wichtig, besonders in formellen und sachlichen Texten. Es stellt die **Handlung** in den Mittelpunkt, nicht die handelnde Person. Du bildest es mit **werden + Partizip II**.",
       "Wiederhole die Zeitformen: Präsens « *Das Haus **wird** gebaut* », Präteritum « *Das Haus **wurde** gebaut* », Perfekt « *Das Haus **ist** gebaut **worden*** » (Achtung: *worden*, nicht « geworden »). Den Urheber nennst du mit **von + Dativ**.",
@@ -126,6 +131,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g06", titre: "Verbes à cas prépositionnel", titreDE: "Verben mit präpositionalem Kasus", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Mémoriser les verbes à préposition fixe", "Reprendre avec da(r)- et interroger avec wo(r)-"],
     grammairePoints: ["sich bewerben um, bestehen aus", "darauf, worauf"],
+    exemplesPlus: [{"de":"Ich bewerbe mich um eine Stelle als Ingenieur.","fr":"*sich bewerben um* + Akkusativ."},{"de":"Das Team besteht aus fünf Personen.","fr":"*bestehen aus* + Dativ."},{"de":"Worauf legst du beim Essen besonderen Wert?","fr":"Frage nach der Sache: *worauf*."},{"de":"Ich verlasse mich völlig darauf, dass du kommst.","fr":"*darauf* kündigt den *dass*-Satz an."},{"de":"Sie beschäftigt sich seit Jahren mit diesem Thema.","fr":"*sich beschäftigen mit* + Dativ."}],
     coursDE: [
       "Viele Verben verlangen eine **feste Präposition** mit einem bestimmten Kasus. Auf B2-Niveau erweiterst du deine Liste deutlich und lernst auch anspruchsvollere Verben für formelle Situationen.",
       "Beispiele mit festem Kasus: *sich bewerben **um*** + Akkusativ (« *Ich bewerbe mich um die Stelle* »), *bestehen **aus*** + Dativ (« *Das Team besteht aus fünf Personen* »), *teilnehmen **an*** + Dativ. Lerne jedes Verb mit Präposition **und** Kasus.",
@@ -149,6 +155,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g07", titre: "La n-déclinaison", titreDE: "Die n-Deklination", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B2",
     objectifs: ["Identifier les noms en -n", "Ajouter -(e)n hors du nominatif"],
     grammairePoints: ["der Kollege → den Kollegen", "Herr, Student, Kunde, Mensch"],
+    exemplesPlus: [{"de":"Ich habe gestern mit einem Kollegen gesprochen.","fr":"*der Kollege → einem Kollegen* (n-Deklination)."},{"de":"Kennst du diesen Studenten aus dem Seminar?","fr":"*der Student → diesen Studenten*."},{"de":"Wir haben den Kunden ausführlich beraten.","fr":"*der Kunde → den Kunden*."},{"de":"Der Beruf des Architekten ist anspruchsvoll.","fr":"*der Architekt → des Architekten* (Genitiv)."},{"de":"Sie hat einem Touristen den Weg erklärt.","fr":"*der Tourist → einem Touristen* (Dativ)."}],
     coursDE: [
       "Die **n-Deklination** betrifft eine Gruppe von **maskulinen Nomen**, die in fast allen Fällen ein **-n** oder **-en** bekommen – außer im Nominativ Singular. Auf B2 solltest du diese Endung automatisch setzen.",
       "Zur Gruppe gehören vor allem **Personen**: *der Kollege, der Student, der Kunde, der Junge, der Nachbar, der Mensch, der Herr, der Experte, der Kandidat*. Viele enden im Nominativ auf **-e** oder bezeichnen Personen.",
@@ -172,6 +179,7 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     id: "b2g08", titre: "Causes et conséquences", titreDE: "Kausal- und Konsekutivsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
     objectifs: ["Exprimer la cause (weil, da, denn)", "Exprimer la conséquence (so … dass, deshalb)"],
     grammairePoints: ["weil, denn, deshalb", "so … dass, solch … dass"],
+    exemplesPlus: [{"de":"Ich konnte nicht schlafen, weil der Lärm zu laut war.","fr":"*weil*: der Grund, Verb am Ende."},{"de":"Es war so kalt, dass der See zufror.","fr":"*so … dass*: die Folge."},{"de":"Sie hatte solchen Hunger, dass sie alles aß.","fr":"*solch … dass*: starke Ursache und Folge."},{"de":"Der Zug fiel aus, deshalb kam ich zu spät.","fr":"*deshalb*: die Folge im Hauptsatz."},{"de":"Wir gehen nach Hause, denn es wird schon dunkel.","fr":"*denn*: der Grund, normale Wortstellung."}],
     coursDE: [
       "Auf B2-Niveau drückst du **Gründe** (Kausalsätze) und **Folgen** (Konsekutivsätze) differenziert aus und variierst deine Verbindungswörter, um nicht immer nur *weil* zu benutzen.",
       "Für den **Grund** hast du mehrere Mittel: **weil** und **da** (Verb am Ende), **denn** (Verb auf Position 2) und das Adverb **deshalb/deswegen**. *da* benutzt man oft, wenn der Grund schon bekannt ist: « *Da es regnet, bleiben wir zu Hause* ».",
