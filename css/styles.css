@@ -705,3 +705,49 @@ a.stats-lecon:hover { border-color: var(--blue); transform: translateX(2px); }
 
 /* Barre de progression du niveau courant */
 .niveau-prog { margin-top: 10px; }
+
+/* ===== Peaufinage design : cours pédagogiques (v2) ===== */
+.lesson-section.cours { padding: 26px 24px; }
+.cours-titre { display: flex; align-items: baseline; gap: 8px; padding-bottom: 8px; border-bottom: 2px solid var(--line); }
+
+/* Encadrés : coins plus doux, ombre légère, tag en pastille */
+.cours-regle, .cours-astuce, .cours-attention, .cours-exemples, .zika-conseil {
+  border-radius: 14px; box-shadow: 0 1px 2px rgba(15,23,42,.04); position: relative;
+}
+.cours-tag {
+  display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px;
+  background: rgba(255,255,255,.65); box-shadow: 0 1px 2px rgba(15,23,42,.06);
+}
+[data-tg-scheme="dark"] .cours-tag { background: rgba(0,0,0,.25); }
+
+/* Exemples numérotés, présentés comme des mini-cartes */
+.cours-ex-row { align-items: flex-start; gap: 10px; padding: 9px 0; }
+.cours-ex-num {
+  flex: none; min-width: 24px; height: 24px; border-radius: 7px; display: inline-flex;
+  align-items: center; justify-content: center; font-size: 12px; font-weight: 800;
+  background: #7c3aed; color: #fff;
+}
+.cours-ex-body { flex: 1; min-width: 0; }
+.cours-ex-de { font-size: 15.5px; }
+.cours-ex-de .btn-audio { transform: translateY(1px); }
+
+/* Tableaux de cours : en-tête coloré + lignes alternées */
+.cours .table-wrap { box-shadow: 0 1px 2px rgba(15,23,42,.05); }
+.cours table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.cours thead th { background: var(--mod-color, #2563eb); color: #fff; font-weight: 700; }
+.cours tbody tr:nth-child(even) { background: rgba(37,99,235,.05); }
+[data-tg-scheme="dark"] .cours tbody tr:nth-child(even) { background: rgba(255,255,255,.04); }
+.cours td, .cours th { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+
+/* Cartes de vocabulaire : survol + petite pastille de genre */
+.voc-card { transition: transform .12s, box-shadow .12s; }
+.voc-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(15,23,42,.08); }
+.voc-de { font-size: 16px; }
+.genre-legende .art { padding: 1px 8px; border-radius: 999px; background: rgba(37,99,235,.08); }
+.genre-legende .art-die { background: rgba(219,39,119,.08); }
+.genre-legende .art-das { background: rgba(5,150,105,.08); }
+
+/* Section « À toi de jouer » : accent ambré */
+.lesson-section.cours h2 { scroll-margin-top: 70px; }
+.production-input { width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 12px; font: inherit; resize: vertical; }
+.production-input:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.12); }

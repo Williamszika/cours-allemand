@@ -29,7 +29,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Exprimer la possession", "Reconnaître le génitif et « von + datif »"],
     grammairePoints: ["Genitiv (des/der)", "von + datif"],
     grammaire: [
-      { regle: "Le **génitif** exprime l'**appartenance** : masc./neutre **des** + nom **-(e)s** ; fém./pluriel **der**.", attention: "À l'oral, on remplace souvent le génitif par **von + datif** : *das Auto **von** meinem Vater*.", titre: "Dire « de qui » / « de quoi »", intro: "À l'écrit : génitif. À l'oral : souvent « von + datif ».",
+      { exemples: [{"de":"Das ist das Haus meiner Eltern.","fr":"C'est la maison de mes parents."},{"de":"Wegen des Regens bleiben wir zu Hause.","fr":"À cause de la pluie, nous restons à la maison."}], regle: "Le **génitif** exprime l'**appartenance** : masc./neutre **des** + nom **-(e)s** ; fém./pluriel **der**.", attention: "À l'oral, on remplace souvent le génitif par **von + datif** : *das Auto **von** meinem Vater*.", titre: "Dire « de qui » / « de quoi »", intro: "À l'écrit : génitif. À l'oral : souvent « von + datif ».",
         tableau: { entetes: ["Forme", "Exemple", "Sens"], lignes: [["Genitiv (m/n)", "das Auto des Mannes", "la voiture de l'homme"], ["Genitiv (f/pl)", "die Tasche der Frau", "le sac de la femme"], ["von + datif (oral)", "das Auto von meinem Bruder", "la voiture de mon frère"]] },
         note: "Au génitif, les noms masculins/neutres prennent souvent un -s (des Mannes, des Kindes)." }
     ],
@@ -63,7 +63,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Distinguer séparables et inséparables", "Placer la particule"],
     grammairePoints: ["trennbar / untrennbar", "Préfixes"],
     grammaire: [
-      { regle: "**Séparables** (*auf-, an-, ein-, mit-, vor-, zu-*) : le préfixe **part à la fin**. **Inséparables** (*be-, er-, ent-, ver-, zer-, miss-*) : restent collés.", attention: "Au participe, l'inséparable n'a **pas** de *ge-* (*verstanden, bekommen*) ; le séparable l'insère (*aufgestanden*).", titre: "Séparable ou inséparable ?", intro: "La particule séparable part à la fin ; l'inséparable reste collée.",
+      { exemples: [{"de":"Ich rufe dich morgen an.","fr":"Je t'appelle demain."},{"de":"Ich habe den Text nicht verstanden.","fr":"Je n'ai pas compris le texte."}], regle: "**Séparables** (*auf-, an-, ein-, mit-, vor-, zu-*) : le préfixe **part à la fin**. **Inséparables** (*be-, er-, ent-, ver-, zer-, miss-*) : restent collés.", attention: "Au participe, l'inséparable n'a **pas** de *ge-* (*verstanden, bekommen*) ; le séparable l'insère (*aufgestanden*).", titre: "Séparable ou inséparable ?", intro: "La particule séparable part à la fin ; l'inséparable reste collée.",
         tableau: { entetes: ["Type", "Préfixes", "Exemple"], lignes: [["séparable", "auf-, ein-, an-, mit-, zu-, aus-", "Ich stehe um 7 auf."], ["inséparable", "be-, ge-, er-, ver-, ent-, emp-, zer-", "Ich verstehe das."]] },
         note: "Au Perfekt : séparable → aufgestanden (ge- au milieu) ; inséparable → verstanden (PAS de ge-)." }
     ],
@@ -80,7 +80,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Choisir le bon temps du passé", "À l'oral vs à l'écrit"],
     grammairePoints: ["Perfekt (oral)", "Präteritum (écrit, sein/haben/modaux)"],
     grammaire: [
-      { regle: "**Perfekt** = oral, lettres, conversation. **Präteritum** = récit écrit, presse, contes. Même passé, **registre** différent.", attention: "*sein, haben* et les **modaux** vont au **Präteritum** même à l'oral (*Ich **war** müde*).", titre: "Quel passé utiliser ?", intro: "Même sens, contextes différents.",
+      { exemples: [{"de":"Gestern habe ich Fußball gespielt.","fr":"Hier, j'ai joué au football."},{"de":"Es war kalt und ich hatte keine Jacke.","fr":"Il faisait froid et je n'avais pas de veste."}], regle: "**Perfekt** = oral, lettres, conversation. **Präteritum** = récit écrit, presse, contes. Même passé, **registre** différent.", attention: "*sein, haben* et les **modaux** vont au **Präteritum** même à l'oral (*Ich **war** müde*).", titre: "Quel passé utiliser ?", intro: "Même sens, contextes différents.",
         tableau: { entetes: ["Contexte", "Temps", "Exemple"], lignes: [["conversation", "Perfekt", "Ich habe gegessen."], ["récit écrit / presse", "Präteritum", "Er ging nach Hause."], ["sein / haben / modaux (oral)", "Präteritum", "Ich war / hatte / musste"]] },
         note: "Règle pratique : à l'oral, Perfekt partout — sauf war, hatte, et les modaux (konnte, musste…)." }
     ],
@@ -97,7 +97,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Connaître les verbes à préposition fixe", "Choisir le bon cas"],
     grammairePoints: ["warten auf, denken an…", "Préposition fixe"],
     grammaire: [
-      { regle: "Beaucoup de verbes imposent une **préposition fixe** (et son cas) : *warten **auf** + Akk.*, *denken **an** + Akk.*, *sich freuen **über/auf***.", attention: "*sich freuen **auf*** = se réjouir d'avance (futur) ; *sich freuen **über*** = être content de (présent/passé).", titre: "Verbes à préposition fixe", intro: "La préposition fait partie du verbe et impose son cas.",
+      { exemples: [{"de":"Ich warte auf den Bus.","fr":"J'attends le bus."},{"de":"Sie denkt oft an ihre Familie.","fr":"Elle pense souvent à sa famille."}], regle: "Beaucoup de verbes imposent une **préposition fixe** (et son cas) : *warten **auf** + Akk.*, *denken **an** + Akk.*, *sich freuen **über/auf***.", attention: "*sich freuen **auf*** = se réjouir d'avance (futur) ; *sich freuen **über*** = être content de (présent/passé).", titre: "Verbes à préposition fixe", intro: "La préposition fait partie du verbe et impose son cas.",
         tableau: { entetes: ["Verbe + prép.", "Cas", "Exemple"], lignes: [["warten auf", "accusatif", "Ich warte auf den Bus."], ["denken an", "accusatif", "Ich denke an dich."], ["sich interessieren für", "accusatif", "Ich interessiere mich für Musik."], ["sprechen mit", "datif", "Ich spreche mit dem Lehrer."], ["helfen bei", "datif", "Er hilft mir bei der Arbeit."]] },
         note: "À apprendre par cœur (verbe + préposition + cas). Question : « auf wen/was wartest du? »." }
     ],
@@ -131,7 +131,7 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     objectifs: ["Maîtriser les prépositions mixtes", "Choisir accusatif (Wohin) ou datif (Wo)"],
     grammairePoints: ["Wechselpräpositionen", "temporelles"],
     grammaire: [
-      { regle: "Chaque préposition impose un **cas** : *mit, zu, bei* (+ datif), *für, ohne* (+ accusatif), *in, an, auf* (datif **ou** accusatif).", attention: "Les **prépositions mixtes** : **datif** si position (Wo?), **accusatif** si mouvement (Wohin?).", titre: "Prépositions mixtes (lieu)", intro: "an, auf, in, über, unter, vor, hinter, neben, zwischen : datif (Wo?) ou accusatif (Wohin?).",
+      { exemples: [{"de":"Das Buch liegt auf dem Tisch.","fr":"Le livre est sur la table (position)."},{"de":"Ich lege das Buch auf den Tisch.","fr":"Je pose le livre sur la table (direction)."}], regle: "Chaque préposition impose un **cas** : *mit, zu, bei* (+ datif), *für, ohne* (+ accusatif), *in, an, auf* (datif **ou** accusatif).", attention: "Les **prépositions mixtes** : **datif** si position (Wo?), **accusatif** si mouvement (Wohin?).", titre: "Prépositions mixtes (lieu)", intro: "an, auf, in, über, unter, vor, hinter, neben, zwischen : datif (Wo?) ou accusatif (Wohin?).",
         tableau: { entetes: ["Question", "Cas", "Exemple"], lignes: [["Wo? (position)", "datif", "Das Bild hängt an der Wand."], ["Wohin? (direction)", "accusatif", "Ich hänge das Bild an die Wand."], ["temps : am/im/um", "—", "am Montag, im Mai, um 8"], ["temps : seit/vor", "datif", "seit zwei Jahren, vor einer Woche"]] },
         schemas: [
           { legende: "Wohin? → accusatif.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "lege", r: "verbe (2)", c: "verbe" }, { m: "das Buch", r: "COD", c: "objet" }, { m: "auf den Tisch", r: "direction (acc.)", c: "fin" }] },

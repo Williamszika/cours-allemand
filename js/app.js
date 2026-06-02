@@ -130,13 +130,16 @@
   function buildExemples(arr) {
     const box = el("div", "cours-exemples");
     box.appendChild(el("div", "cours-tag", "✅ Exemples"));
-    arr.forEach((e) => {
+    arr.forEach((e, i) => {
       const row = el("div", "cours-ex-row");
+      row.appendChild(el("span", "cours-ex-num", i + 1 + "."));
+      const body = el("div", "cours-ex-body");
       const de = el("div", "cours-ex-de");
       de.appendChild(el("span", "", e.de));
       de.appendChild(speakButton(e.de));
-      row.appendChild(de);
-      if (e.fr) row.appendChild(el("div", "cours-ex-fr", e.fr));
+      body.appendChild(de);
+      if (e.fr) body.appendChild(el("div", "cours-ex-fr", e.fr));
+      row.appendChild(body);
       box.appendChild(row);
     });
     return box;
@@ -148,17 +151,31 @@
     if (idx < 0) return null;
     const out = [];
     tableau.lignes.forEach((row) => { const de = row[idx]; if (de && /\s/.test(de)) out.push({ de: de, fr: "" }); });
-    return out.length ? out.slice(0, 6) : null;
+    return out.length ? out : null;
+  }
+  // Réunit les exemples rédigés (traduits) ET ceux du tableau, sans doublon.
+  function mergeExemples(g) {
+    const out = [], seen = {};
+    (g.exemples || []).forEach((e) => { if (e && e.de && !seen[e.de]) { seen[e.de] = 1; out.push(e); } });
+    (deriveExemples(g.tableau) || []).forEach((e) => { if (e && e.de && !seen[e.de]) { seen[e.de] = 1; out.push(e); } });
+    return out.slice(0, 6);
   }
   function renderGrammarBlock(g) {
     const block = el("div", "gram-block cours-block");
     block.appendChild(el("h3", "cours-titre", g.titre + (g.titreDE ? " · " + g.titreDE : "")));
-    if (g.regle) { const r = el("div", "cours-regle"); r.innerHTML = '<span class="cours-tag">📘 La règle</span><div>' + mdLite(g.regle) + "</div>"; block.appendChild(r); }
-    if (g.intro) { const p = el("p", "cours-text"); p.innerHTML = mdLite(g.intro); block.appendChild(p); }
+    if (g.regle) {
+      const r = el("div", "cours-regle"); r.innerHTML = '<span class="cours-tag">📘 La règle</span><div>' + mdLite(g.regle) + "</div>"; block.appendChild(r);
+      if (g.intro) { const p = el("p", "cours-text"); p.innerHTML = mdLite(g.intro); block.appendChild(p); }
+    } else if (g.intro && g.tableau) {
+      // bloc de grammaire d'une leçon thématique (sans « regle ») : on met l'explication en avant
+      const r = el("div", "cours-regle"); r.innerHTML = '<span class="cours-tag">📘 L\'essentiel</span><div>' + mdLite(g.intro) + "</div>"; block.appendChild(r);
+    } else if (g.intro) {
+      const p = el("p", "cours-text"); p.innerHTML = mdLite(g.intro); block.appendChild(p);
+    }
     if (g.points && g.points.length) { const ul = el("ul", "cours-points"); g.points.forEach((pt) => { const li = el("li", ""); li.innerHTML = mdLite(pt); ul.appendChild(li); }); block.appendChild(ul); }
     if (g.tableau) block.appendChild(buildTable(g.tableau));
     if (g.schemas) block.appendChild(buildSchemas(g.schemas));
-    const exs = g.exemples || deriveExemples(g.tableau);
+    const exs = mergeExemples(g);
     if (exs && exs.length) block.appendChild(buildExemples(exs));
     if (g.note) { const n = el("div", "cours-astuce"); n.innerHTML = '<span class="cours-tag">💡 Bon à savoir</span><div>' + mdLite(g.note) + "</div>"; block.appendChild(n); }
     if (g.attention) { const a = el("div", "cours-attention"); a.innerHTML = '<span class="cours-tag">⚠️ Attention</span><div>' + mdLite(g.attention) + "</div>"; block.appendChild(a); }
@@ -680,6 +697,20 @@
     refresh();
     frag.appendChild(exo);
 
+    /* --- Mini-défi : pratique libre (production écrite auto-évaluée) --- */
+    let modele = "";
+    const gb0 = (l.grammaire || [])[0];
+    if (gb0) { const me = mergeExemples(gb0); if (me && me.length) modele = me[0].de; }
+    if (!modele && l.dialogue && l.dialogue.lignes && l.dialogue.lignes[0]) modele = l.dialogue.lignes[0].de;
+    if (!modele && l.vocabulaire && l.vocabulaire[0] && l.vocabulaire[0].ex) modele = l.vocabulaire[0].ex;
+    if (!modele) modele = "Ich lerne Deutsch.";
+    const prat = el("section", "lesson-section cours");
+    prat.appendChild(el("h2", "", "🎯 À toi de jouer"));
+    prat.appendChild(el("p", "exo-group-sub", "Réutilise ce que tu viens d'apprendre : écris tes propres phrases, vérifie, puis compare avec le modèle (auto-évaluation)."));
+    const practiceEx = { type: "production", prompt: "Écris 2 ou 3 phrases en allemand en réutilisant « " + l.titre + " ».", attendus: [], modele: modele };
+    prat.appendChild(window.Exercises.render(practiceEx, 0, null, {}));
+    frag.appendChild(prat);
+
     /* --- Navigation préc / suiv --- */
     const nav = el("div", "lesson-nav");
     if (idx > 0) {
@@ -1190,7 +1221,7 @@
     if (window.Speech && window.Speech.isSupported()) {
       const ecouteZika = el("button", "btn btn-ghost small", "🔊 Écouter Zika");
       ecouteZika.type = "button";
-      ecouteZika.addEventListener("click", () => window.Speech.speak(salutDE));
+      ecouteZika.addEventListener("click", () => window.Speech.speak(salutDE, { rate: 1, pitch: 0.95 }));
       hero.appendChild(ecouteZika);
     }
     frag.appendChild(hero);
@@ -1222,7 +1253,7 @@
     app.appendChild(frag);
     if (window.TG) window.TG.setMainButton("🎯 Évaluer mon niveau", () => { location.hash = "#/placement"; });
     // Zika salue à voix haute (si autorisé par le navigateur)
-    if (window.Speech && window.Speech.isSupported()) { try { setTimeout(() => window.Speech.speak(salutDE), 400); } catch (e) {} }
+    if (window.Speech && window.Speech.isSupported()) { try { setTimeout(() => window.Speech.speak(salutDE, { rate: 1, pitch: 0.95 }), 400); } catch (e) {} }
     window.scrollTo(0, 0);
   }
 

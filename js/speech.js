@@ -7,14 +7,30 @@ window.Speech = (function () {
   let germanVoice = null;
   let voicesLoaded = false;
 
+  // Pas d'attribut « genre » dans l'API : on devine via le nom de la voix.
+  // On privilégie une voix ALLEMANDE, MASCULINE et NATURELLE (neural/online).
+  const MALE_HINTS = ["conrad", "stefan", "bernd", "christoph", "killian", "klaus", "ralf", "markus", "yannick", "hans", "daniel", "viktor", "wolfgang", "florian", "jan", "male", "mann", "männl"];
+  const NATURAL_HINTS = ["neural", "natural", "online", "premium", "wavenet", "enhanced", "google"];
+  const FEMALE_HINTS = ["anna", "petra", "katja", "vicki", "amala", "marlene", "hedda", "female", "frau", "weibl"];
+
+  function scoreVoice(v) {
+    const n = (v.name || "").toLowerCase();
+    let s = 0;
+    if (MALE_HINTS.some((k) => n.indexOf(k) >= 0)) s += 5;
+    if (FEMALE_HINTS.some((k) => n.indexOf(k) >= 0)) s -= 3;
+    if (NATURAL_HINTS.some((k) => n.indexOf(k) >= 0)) s += 2;
+    if (v.lang === "de-DE") s += 1;
+    return s;
+  }
+
   function pickGermanVoice() {
     if (!("speechSynthesis" in window)) return;
     const voices = window.speechSynthesis.getVoices();
     if (!voices || voices.length === 0) return;
-    germanVoice =
-      voices.find((v) => v.lang === "de-DE") ||
-      voices.find((v) => v.lang && v.lang.toLowerCase().startsWith("de")) ||
-      null;
+    const de = voices.filter((v) => v.lang && v.lang.toLowerCase().indexOf("de") === 0);
+    if (!de.length) { germanVoice = null; voicesLoaded = true; return; }
+    de.sort((a, b) => scoreVoice(b) - scoreVoice(a));
+    germanVoice = de[0]; // meilleure voix allemande masculine/naturelle disponible
     voicesLoaded = true;
   }
 
