@@ -15027,7 +15027,13 @@ Object.assign(window.ILLUSTRATIONS, {
   "pb2-3": { kw: "bandage,wound,care" },
   "pb2-4": { kw: "doctor,nurse,hospital" },
   "pb2-5": { kw: "home,care,nurse" },
-  "pb2-6": { kw: "conversation,elderly,care" }
+  "pb2-6": { kw: "conversation,elderly,care" },
+  "pc1-1": { kw: "palliative,care,hand" },
+  "pc1-2": { kw: "nurse,clipboard,planning" },
+  "pc1-3": { kw: "training,teaching,nurse" },
+  "pc1-4": { kw: "document,signature,ethics" },
+  "pc1-5": { kw: "diversity,care,people" },
+  "pc1-6": { kw: "gloves,hygiene,disinfect" }
 });
 
 </script>
@@ -16098,12 +16104,306 @@ window.PFLEGE = {
         ] } }
     ]},
     { code: "C1", titre: "Soins complexes et responsabilité", lecons: [
-      { id: "pc1-1", dom: "kh", titreDE: "Krankheitsbilder II", titre: "Tableaux cliniques II", desc: "Soins palliatifs, oncologie, BPCO." },
-      { id: "pc1-2", dom: "grund", titreDE: "Pflegeprozess und Pflegeplanung", titre: "Processus et planification de soins", desc: "Le raisonnement clinique, en allemand." },
-      { id: "pc1-3", dom: "grund", titreDE: "Beratung und Anleitung", titre: "Conseil et accompagnement", desc: "Conseiller patients, proches et stagiaires." },
-      { id: "pc1-4", dom: "grund", titreDE: "Ethik und Recht in der Pflege", titre: "Éthique et droit du soin", desc: "Directives anticipées, secret professionnel." },
-      { id: "pc1-5", dom: "heim", titreDE: "Interkulturelle Pflege", titre: "Soins interculturels", desc: "Tenir compte des cultures et des croyances." },
-      { id: "pc1-6", dom: "grund", titreDE: "Hygiene und Qualitätsmanagement", titre: "Hygiène et qualité", desc: "Normes d'hygiène et prévention des infections." }
+      { id: "pc1-1", dom: "kh", titreDE: "Krankheitsbilder II", titre: "Tableaux cliniques II", desc: "Soins palliatifs, oncologie, BPCO.",
+        vocCoursDE: [
+          "Auf dieser Stufe begegnest du schweren **Krankheitsbildern**: der **Palliativpflege** (wenn keine Heilung mehr möglich ist), der **Onkologie** (der Bereich der Krebserkrankungen) und der **COPD**, einer chronischen Lungenkrankheit mit **Atemnot**.",
+          "In der Palliativpflege steht die **Lebensqualität** im Vordergrund: Schmerzen **lindern**, die **Würde** wahren und für den Menschen da sein. Sprich offen, aber **behutsam**."
+        ],
+        vocabulaire: [
+          { de: "die Palliativpflege", fr: "les soins palliatifs", ex: "In der Palliativpflege geht es um Lebensqualität." },
+          { de: "die Onkologie", fr: "l'oncologie", ex: "Sie arbeitet in der Onkologie." },
+          { de: "die Atemnot", fr: "la dyspnée / détresse respiratoire", ex: "Der Patient hat starke Atemnot." },
+          { de: "chronisch", fr: "chronique", ex: "COPD ist eine chronische Erkrankung." },
+          { de: "lindern", fr: "soulager", ex: "Wir lindern die Schmerzen mit Medikamenten." },
+          { de: "die Lebensqualität", fr: "la qualité de vie", ex: "Die Lebensqualität ist jetzt das wichtigste Ziel." },
+          { de: "die Würde", fr: "la dignité", ex: "Wir wahren die Würde des Patienten." },
+          { de: "behutsam", fr: "avec délicatesse", ex: "Sprechen Sie behutsam mit der Familie." },
+          { de: "die Verschlechterung", fr: "l'aggravation", ex: "Wir beobachten eine Verschlechterung des Zustands." },
+          { de: "begleiten", fr: "accompagner", ex: "Wir begleiten den Patienten in dieser schweren Zeit." }
+        ],
+        grammaire: [
+          { titre: "Exprimer la concession (obwohl / trotzdem)", titreDE: "obwohl, trotzdem",
+            regle: "Pour nuancer une situation difficile, on utilise obwohl (bien que, + verbe à la fin) ou trotzdem (malgré tout, en tête → inversion). Ex. : « Obwohl es keine Heilung gibt, können wir die Lebensqualität verbessern. »",
+            points: [ "« Obwohl er Schmerzen hat, bleibt er ruhig. »", "« Die Prognose ist schlecht. Trotzdem geben wir Hoffnung. »", "obwohl → verbe à la fin ; trotzdem → inversion." ],
+            exemples: [
+              { de: "Obwohl keine Heilung möglich ist, lindern wir die Schmerzen.", fr: "*obwohl* + Verb am Satzende." },
+              { de: "Er ist sehr schwach. Trotzdem möchte er aufstehen.", fr: "*trotzdem* mit Inversion." },
+              { de: "Wir wahren seine Würde bis zum Schluss.", fr: "zentrale Haltung der Palliativpflege." }
+            ],
+            note: "En soins palliatifs : l'écoute et la présence comptent souvent autant que les soins techniques." }
+        ],
+        dialogue: { titre: "Ein Gespräch in der Palliativpflege", lieu: "Im Patientenzimmer", lignes: [
+          { loc: "Le soignant accompagne un patient gravement malade", de: "Wie fühlen Sie sich heute, Herr Wagner?", fr: "Comment vous sentez-vous aujourd'hui, M. Wagner ?" },
+          { de: "Müde. Und ich habe Angst vor dem, was kommt.", fr: "Fatigué. Et j'ai peur de ce qui vient." },
+          { de: "Das ist verständlich. Ich bin für Sie da.", fr: "C'est compréhensible. Je suis là pour vous." },
+          { de: "Die Schmerzen sind manchmal stark.", fr: "Les douleurs sont parfois fortes." },
+          { de: "Wir können sie lindern. Sagen Sie mir, wann es schlimmer wird.", fr: "Nous pouvons les soulager. Dites-moi quand ça empire." },
+          { de: "Danke, dass Sie sich Zeit nehmen.", fr: "Merci de prendre le temps." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Was steht im Vordergrund?", options: ["Die Heilung um jeden Preis", "Schmerzen lindern und da sein", "Schnell entlassen"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "die Palliativpflege", droite: "les soins palliatifs" }, { gauche: "die Atemnot", droite: "la dyspnée" }, { gauche: "die Würde", droite: "la dignité" }, { gauche: "lindern", droite: "soulager" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète avec la concession.", texte: "{0} keine Heilung möglich ist, lindern wir die Schmerzen.", accepte: [["Obwohl"]], indice: "« bien que » → verbe à la fin." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la bonne attitude.", question: "Un patient palliatif a peur. Que dis-tu ?", options: ["Da kann man nichts machen.", "Das ist verständlich. Ich bin für Sie da.", "Denken Sie nicht daran."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase avec « trotzdem ».", mots: ["Er", "ist", "schwach", "trotzdem", "möchte", "er", "aufstehen"], correct: "Er ist schwach trotzdem möchte er aufstehen", traduction: "Il est faible, malgré tout il veut se lever." },
+          { type: "production", cat: "prod", prompt: "Rassure un patient anxieux et propose de soulager ses douleurs.", modele: "Das ist verständlich. Ich bin für Sie da, und wir können die Schmerzen lindern." }
+        ],
+        documentation: { task: "Note en soins palliatifs : M. Wagner anxieux et fatigué, douleurs parfois fortes, entretien d'accompagnement mené, antalgiques adaptés.", modele: "Herr Wagner ängstlich und müde, zeitweise starke Schmerzen, begleitendes Gespräch geführt, Schmerztherapie angepasst." },
+        rp: { scene: "Zika spielt einen schwerkranken Patienten in der Palliativpflege. Du begleitest ihn.", intro: "Hör zu, zeig Empathie, sprich behutsam und biete Linderung an.", fin: "Sehr gut! Empathisch, würdevoll und professionell begleitet.", tours: [
+          { de: "Ich weiß, dass ich nicht mehr gesund werde.", options: [ { de: "Ich bin für Sie da, und wir tun alles für Ihr Wohlbefinden.", ok: true }, { de: "Sagen Sie so etwas nicht.", ok: false }, { de: "Das stimmt, da kann man nichts machen.", ok: false } ] },
+          { de: "Die Schmerzen machen mir Angst.", options: [ { de: "Wir können die Schmerzen gut lindern. Sagen Sie mir, wann sie kommen.", ok: true }, { de: "Schmerzen gehören eben dazu.", ok: false } ] },
+          { de: "Bleiben Sie noch einen Moment?", options: [ { de: "Natürlich, ich nehme mir die Zeit für Sie.", ok: true }, { de: "Nein, ich habe andere Patienten.", ok: false } ] }
+        ] } },
+      { id: "pc1-2", dom: "grund", titreDE: "Pflegeprozess und Pflegeplanung", titre: "Processus et planification de soins", desc: "Le raisonnement clinique, en allemand.",
+        vocCoursDE: [
+          "Der **Pflegeprozess** ist ein Kreislauf: Informationen sammeln, das **Pflegeproblem** erkennen, ein **Pflegeziel** festlegen, **Maßnahmen** planen und am Ende den Erfolg **überprüfen** (Evaluation).",
+          "Eine gute **Pflegeplanung** ist **individuell**: Sie nutzt die **Ressourcen** des Patienten — also das, was er noch selbst kann."
+        ],
+        vocabulaire: [
+          { de: "der Pflegeprozess", fr: "le processus de soins", ex: "Der Pflegeprozess hat mehrere Schritte." },
+          { de: "die Pflegeplanung", fr: "la planification des soins", ex: "Die Pflegeplanung wird regelmäßig angepasst." },
+          { de: "das Pflegeproblem", fr: "le problème de soins", ex: "Das Pflegeproblem ist die eingeschränkte Mobilität." },
+          { de: "das Pflegeziel", fr: "l'objectif de soins", ex: "Das Pflegeziel ist mehr Selbstständigkeit." },
+          { de: "die Maßnahme", fr: "la mesure / l'action", ex: "Welche Maßnahmen planen wir?" },
+          { de: "die Evaluation", fr: "l'évaluation", ex: "Bei der Evaluation prüfen wir das Ergebnis." },
+          { de: "die Ressource", fr: "la ressource", ex: "Wir nutzen die Ressourcen des Patienten." },
+          { de: "individuell", fr: "individualisé", ex: "Jede Planung ist individuell." },
+          { de: "festlegen", fr: "définir / fixer", ex: "Wir legen ein realistisches Ziel fest." },
+          { de: "überprüfen", fr: "vérifier / réévaluer", ex: "Wir überprüfen das Ziel nach einer Woche." }
+        ],
+        grammaire: [
+          { titre: "Exprimer le but (um … zu / damit)", titreDE: "Finalsätze: um…zu, damit",
+            regle: "Pour exprimer le but d'une mesure, on utilise um … zu + infinitif (même sujet) ou damit + proposition (sujets différents). Ex. : « Wir mobilisieren ihn, um die Selbstständigkeit zu fördern. »",
+            points: [ "« …, um Komplikationen zu vermeiden. »", "« …, damit der Patient wieder allein essen kann. »", "um…zu : même sujet ; damit : sujets différents." ],
+            exemples: [
+              { de: "Wir lagern den Patienten, um einen Dekubitus zu vermeiden.", fr: "Zweck mit *um…zu*." },
+              { de: "Wir erklären alles, damit die Familie sich sicher fühlt.", fr: "Zweck mit *damit* (anderer Subjekt)." },
+              { de: "Das Ziel ist, die Mobilität schrittweise zu verbessern.", fr: "realistisches, individuelles Ziel." }
+            ],
+            note: "Un bon objectif de soins est réaliste, mesurable et formulé avec le patient." }
+        ],
+        dialogue: { titre: "Die Pflegeplanung im Team", lieu: "Im Stationszimmer", lignes: [
+          { loc: "Discussion de plan de soins avec une collègue", de: "Was ist bei Frau Adam das Hauptproblem?", fr: "Quel est le problème principal chez Mme Adam ?" },
+          { de: "Sie kann nach dem Sturz schlecht gehen.", fr: "Elle marche mal depuis la chute." },
+          { de: "Gut. Welches Ziel legen wir fest?", fr: "Bien. Quel objectif fixons-nous ?" },
+          { de: "Sie soll in zwei Wochen wieder allein zur Toilette gehen.", fr: "Elle devrait pouvoir aller seule aux toilettes dans deux semaines." },
+          { de: "Und welche Maßnahmen planen wir dafür?", fr: "Et quelles mesures planifions-nous pour ça ?" },
+          { de: "Tägliche Mobilisation, um die Muskeln zu stärken.", fr: "Une mobilisation quotidienne, pour renforcer les muscles." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Was ist das Pflegeziel von Frau Adam?", options: ["Wieder allein zur Toilette gehen", "Schneller essen", "Mehr schlafen"], correct: 0 },
+          { type: "association", cat: "comp", consigne: "Associe l'étape à sa traduction.", paires: [ { gauche: "das Pflegeproblem", droite: "le problème de soins" }, { gauche: "das Pflegeziel", droite: "l'objectif" }, { gauche: "die Maßnahme", droite: "la mesure" }, { gauche: "die Evaluation", droite: "l'évaluation" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète l'expression du but.", texte: "Wir mobilisieren den Patienten, {0} die Muskeln zu stärken.", accepte: [["um"]], indice: "um … zu + infinitif." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la phrase avec « damit ».", question: "Quelle phrase est correcte ?", options: ["Wir erklären alles, damit fühlt sich die Familie sicher.", "Wir erklären alles, damit die Familie sich sicher fühlt.", "Wir erklären alles, um die Familie sich sicher fühlt."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets le but dans l'ordre.", mots: ["Wir", "lagern", "ihn", "um", "einen", "Dekubitus", "zu", "vermeiden"], correct: "Wir lagern ihn um einen Dekubitus zu vermeiden", traduction: "Nous le repositionnons pour éviter une escarre." },
+          { type: "production", cat: "prod", prompt: "Formule un objectif et son but : mobiliser chaque jour pour renforcer les muscles.", modele: "Wir mobilisieren täglich, um die Muskeln zu stärken." }
+        ],
+        documentation: { task: "Note la planification : problème — mobilité réduite après chute ; objectif — toilettes en autonomie sous 2 semaines ; mesure — mobilisation quotidienne.", modele: "Pflegeproblem: eingeschränkte Mobilität nach Sturz. Ziel: in 2 Wochen selbstständiger Toilettengang. Maßnahme: tägliche Mobilisation." },
+        rp: { scene: "Zika spielt deine Kollegin. Ihr erstellt zusammen eine Pflegeplanung.", intro: "Benenne das Problem, leg ein realistisches Ziel fest und plane Maßnahmen.", fin: "Sehr gut! Eine klare, individuelle und zielorientierte Planung.", tours: [
+          { de: "Bei Herrn Veit — was ist das Hauptproblem?", options: [ { de: "Er kann sich nach dem Schlaganfall nicht allein anziehen.", ok: true }, { de: "Er ist einfach unmotiviert.", ok: false }, { de: "Keine Ahnung.", ok: false } ] },
+          { de: "Welches Ziel setzen wir?", options: [ { de: "Er soll sich in drei Wochen das Hemd allein anziehen.", ok: true }, { de: "Er soll bald gesund sein.", ok: false } ] },
+          { de: "Und die Maßnahme dazu?", options: [ { de: "Tägliches Üben, um die Bewegung zu fördern. Ich dokumentiere den Plan.", ok: true }, { de: "Wir machen einfach alles für ihn.", ok: false } ] }
+        ] } },
+      { id: "pc1-3", dom: "grund", titreDE: "Beratung und Anleitung", titre: "Conseil et accompagnement", desc: "Conseiller patients, proches et stagiaires.",
+        vocCoursDE: [
+          "Als erfahrene Pflegekraft **berätst** du Patienten und Angehörige und **leitest** **Auszubildende** **an**. Gute Anleitung ist **schrittweise**: erklären, **demonstrieren**, selbst machen lassen.",
+          "Gib am Ende ein klares **Feedback** und ermutige zu **Rückfragen**. So lernt der Azubi, **selbstständig** und sicher zu arbeiten."
+        ],
+        vocabulaire: [
+          { de: "die Beratung", fr: "le conseil", ex: "Die Beratung der Angehörigen ist wichtig." },
+          { de: "anleiten", fr: "encadrer / former", ex: "Ich leite heute den Auszubildenden an." },
+          { de: "der Auszubildende (Azubi)", fr: "l'apprenti", ex: "Der Azubi ist im ersten Lehrjahr." },
+          { de: "demonstrieren", fr: "montrer / démontrer", ex: "Ich demonstriere den Verbandwechsel." },
+          { de: "schrittweise", fr: "étape par étape", ex: "Wir gehen schrittweise vor." },
+          { de: "das Feedback", fr: "le retour / feedback", ex: "Ich gebe dir gleich ein Feedback." },
+          { de: "die Rückfrage", fr: "la question de clarification", ex: "Gibt es noch Rückfragen?" },
+          { de: "selbstständig", fr: "de façon autonome", ex: "Bald arbeitest du selbstständig." },
+          { de: "unterstützen", fr: "soutenir", ex: "Ich unterstütze dich beim ersten Mal." },
+          { de: "ermutigen", fr: "encourager", ex: "Ich ermutige dich, es selbst zu versuchen." }
+        ],
+        grammaire: [
+          { titre: "Donner des instructions claires (Achten Sie darauf, dass…)", titreDE: "Anleiten: erst…, dann…, achten Sie darauf, dass…",
+            regle: "Pour guider quelqu'un, on structure : Zuerst…, dann…, zum Schluss… Et on attire l'attention : « Achten Sie darauf, dass die Hände desinfiziert sind. » (Veillez à ce que…). La subordonnée en dass a le verbe à la fin.",
+            points: [ "« Zuerst bereitest du das Material vor. »", "« Achte darauf, dass alles steril ist. »", "« Versuch es jetzt selbst, ich helfe dir. »" ],
+            exemples: [
+              { de: "Achten Sie darauf, dass die Hände desinfiziert sind.", fr: "Hinweis mit *dass*-Satz." },
+              { de: "Zuerst erkläre ich es, dann machst du es selbst.", fr: "schrittweise Anleitung." },
+              { de: "Hast du noch eine Rückfrage?", fr: "zu Fragen ermutigen." }
+            ],
+            note: "Bonne pédagogie : expliquer → montrer → faire faire → donner un feedback bienveillant." }
+        ],
+        dialogue: { titre: "Anleitung eines Azubis", lieu: "Im Pflegezimmer", lignes: [
+          { loc: "Tu encadres un apprenti pour un soin", de: "Heute machst du den Verbandwechsel. Ich leite dich an.", fr: "Aujourd'hui tu fais le changement de pansement. Je t'encadre." },
+          { de: "Okay, aber ich bin etwas unsicher.", fr: "D'accord, mais je suis un peu hésitant." },
+          { de: "Kein Problem. Zuerst — was machst du als Erstes?", fr: "Pas de problème. D'abord — que fais-tu en premier ?" },
+          { de: "Die Hände desinfizieren?", fr: "Me désinfecter les mains ?" },
+          { de: "Genau. Achte darauf, dass alles steril bleibt.", fr: "Exactement. Veille à ce que tout reste stérile." },
+          { de: "Und wenn ich einen Fehler mache?", fr: "Et si je fais une erreur ?" }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Was soll der Azubi als Erstes tun?", options: ["Den Verband anlegen", "Die Hände desinfizieren", "Den Arzt rufen"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "anleiten", droite: "encadrer" }, { gauche: "der Azubi", droite: "l'apprenti" }, { gauche: "das Feedback", droite: "le retour" }, { gauche: "selbstständig", droite: "autonome" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète l'instruction (subordonnée dass).", texte: "Achte darauf, {0} alles steril bleibt.", accepte: [["dass"]], indice: "« veille à ce QUE » → verbe à la fin." },
+          { type: "qcm", cat: "appro", consigne: "Choisis l'encouragement.", question: "L'apprenti est hésitant. Que dis-tu ?", options: ["Lass es lieber, das kann ich.", "Versuch es selbst, ich helfe dir.", "Du schaffst das sowieso nicht."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets l'instruction dans l'ordre.", mots: ["Zuerst", "erkläre", "ich", "es", "dann", "machst", "du", "es"], correct: "Zuerst erkläre ich es dann machst du es", traduction: "D'abord je l'explique, ensuite tu le fais." },
+          { type: "production", cat: "prod", prompt: "Encadre un apprenti : explique d'abord, puis laisse-le faire lui-même.", modele: "Zuerst zeige ich es dir, dann machst du es selbst." }
+        ],
+        documentation: { task: "Note l'encadrement : changement de pansement réalisé par l'apprenti sous supervision, déroulement stérile correct, feedback donné.", modele: "Verbandwechsel vom Azubi unter Anleitung durchgeführt, steriles Vorgehen korrekt, Feedback gegeben." },
+        rp: { scene: "Zika spielt einen unsicheren Auszubildenden. Du leitest ihn bei einem Soin an.", intro: "Erkläre Schritt für Schritt, achte auf Sicherheit und ermutige ihn.", fin: "Sehr gut! Geduldig, klar strukturiert und ermutigend angeleitet.", tours: [
+          { de: "Ich habe das noch nie gemacht. Was soll ich tun?", options: [ { de: "Keine Sorge, wir gehen Schritt für Schritt vor. Zuerst die Hände desinfizieren.", ok: true }, { de: "Mach einfach, ich schaue Fernsehen.", ok: false }, { de: "Das solltest du längst können.", ok: false } ] },
+          { de: "Und jetzt der Verband — so richtig?", options: [ { de: "Fast. Achte darauf, dass alles steril bleibt.", ok: true }, { de: "Egal, Hauptsache fertig.", ok: false } ] },
+          { de: "Hab ich es gut gemacht?", options: [ { de: "Ja, sehr ordentlich! Beim nächsten Mal schaffst du es allein.", ok: true }, { de: "Nein, das war schlecht.", ok: false } ] }
+        ] } },
+      { id: "pc1-4", dom: "grund", titreDE: "Ethik und Recht in der Pflege", titre: "Éthique et droit du soin", desc: "Directives anticipées, secret professionnel.",
+        vocCoursDE: [
+          "In der Pflege gelten **Ethik** und **Recht**. Du **wahrst** die **Schweigepflicht** — du darfst Informationen nicht einfach weitergeben. Und du achtest die **Selbstbestimmung** des Patienten.",
+          "Hat der Patient eine **Patientenverfügung**, ist sein **Wille** verbindlich. Im Zweifel hältst du **Rücksprache** mit dem Arzt und übernimmst **Verantwortung**."
+        ],
+        vocabulaire: [
+          { de: "die Ethik", fr: "l'éthique", ex: "Ethik ist ein wichtiger Teil der Pflege." },
+          { de: "die Patientenverfügung", fr: "la directive anticipée", ex: "Der Patient hat eine Patientenverfügung." },
+          { de: "die Schweigepflicht", fr: "le secret professionnel", ex: "Die Schweigepflicht gilt immer." },
+          { de: "die Selbstbestimmung", fr: "l'autodétermination", ex: "Wir achten die Selbstbestimmung des Patienten." },
+          { de: "der Wille", fr: "la volonté", ex: "Der Wille des Patienten ist verbindlich." },
+          { de: "vertraulich", fr: "confidentiel", ex: "Diese Information ist vertraulich." },
+          { de: "die Verantwortung", fr: "la responsabilité", ex: "Du trägst Verantwortung für deine Handlung." },
+          { de: "einwilligen", fr: "consentir", ex: "Der Patient muss in die Behandlung einwilligen." },
+          { de: "wahren", fr: "préserver / respecter", ex: "Wir wahren die Würde und die Rechte." },
+          { de: "das Recht", fr: "le droit", ex: "Der Patient hat ein Recht auf Information." }
+        ],
+        grammaire: [
+          { titre: "Droits et interdits (dürfen / dürfen nicht)", titreDE: "dürfen, nicht dürfen, müssen",
+            regle: "Pour exprimer ce qui est permis ou interdit, on utilise dürfen : « Ich darf keine Informationen weitergeben. » (Je n'ai pas le droit de…). Pour une obligation : müssen ; pour une absence d'obligation : nicht müssen.",
+            points: [ "« Sie dürfen die Behandlung ablehnen. »", "« Ich darf das nicht ohne Einwilligung tun. »", "« Wir müssen den Willen des Patienten respektieren. »" ],
+            exemples: [
+              { de: "Ich darf vertrauliche Daten nicht weitergeben.", fr: "Verbot mit *dürfen nicht*." },
+              { de: "Der Patient darf jede Behandlung ablehnen.", fr: "Recht mit *dürfen*." },
+              { de: "Wir müssen die Patientenverfügung beachten.", fr: "Pflicht mit *müssen*." }
+            ],
+            note: "Le patient capable de discernement a toujours le droit de refuser un soin — même si nous ne sommes pas d'accord." }
+        ],
+        dialogue: { titre: "Rücksprache mit dem Arzt", lieu: "Auf der Station", lignes: [
+          { loc: "Tu consultes le médecin sur une question éthique", de: "Herr Doktor, Herr Meier lehnt die Infusion ab.", fr: "Docteur, M. Meier refuse la perfusion." },
+          { de: "Ist er bei klarem Verstand?", fr: "Est-il en pleine possession de ses moyens ?" },
+          { de: "Ja. Und er hat eine Patientenverfügung.", fr: "Oui. Et il a une directive anticipée." },
+          { de: "Dann müssen wir seinen Willen respektieren.", fr: "Alors nous devons respecter sa volonté." },
+          { de: "Ich darf ihn also nicht zwingen?", fr: "Je n'ai donc pas le droit de le forcer ?" },
+          { de: "Nein. Dokumentieren Sie die Ablehnung sorgfältig.", fr: "Non. Documentez le refus avec soin." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Was muss das Team tun?", options: ["Den Patienten zwingen", "Den Willen des Patienten respektieren", "Die Verfügung ignorieren"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "die Schweigepflicht", droite: "le secret professionnel" }, { gauche: "die Patientenverfügung", droite: "la directive anticipée" }, { gauche: "die Selbstbestimmung", droite: "l'autodétermination" }, { gauche: "vertraulich", droite: "confidentiel" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète l'interdit (modal).", texte: "Ich {0} vertrauliche Daten nicht weitergeben.", accepte: [["darf"]], indice: "« ne pas avoir le droit » → dürfen nicht." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la phrase correcte.", question: "Un patient lucide refuse un soin. Que vaut son refus ?", options: ["Er muss trotzdem behandelt werden.", "Er darf die Behandlung ablehnen.", "Nur der Arzt entscheidet."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase dans l'ordre.", mots: ["Wir", "müssen", "den", "Willen", "des", "Patienten", "respektieren"], correct: "Wir müssen den Willen des Patienten respektieren", traduction: "Nous devons respecter la volonté du patient." },
+          { type: "production", cat: "prod", prompt: "Explique à un proche que tu ne peux pas donner d'informations confidentielles.", modele: "Es tut mir leid, aber ich darf vertrauliche Informationen nicht weitergeben." }
+        ],
+        documentation: { task: "Note la situation : M. Meier, lucide, refuse la perfusion, directive anticipée présente, médecin informé, volonté respectée.", modele: "Herr Meier, orientiert, lehnt Infusion ab; Patientenverfügung vorhanden; Arzt informiert; Wille respektiert und dokumentiert." },
+        rp: { scene: "Zika spielt den Arzt. Du hältst Rücksprache wegen einer Behandlungsablehnung.", intro: "Schildere die Lage sachlich und frag, wie ihr den Patientenwillen wahrt.", fin: "Ausgezeichnet! Du hast ethisch korrekt gehandelt und alles dokumentiert.", tours: [
+          { de: "Sie wollten mich sprechen — worum geht es?", options: [ { de: "Herr Meier lehnt die Infusion ab und hat eine Patientenverfügung.", ok: true }, { de: "Ach, eigentlich nichts Wichtiges.", ok: false }, { de: "Ich habe ihn schon zur Infusion gezwungen.", ok: false } ] },
+          { de: "Ist der Patient denn entscheidungsfähig?", options: [ { de: "Ja, er ist klar und orientiert.", ok: true }, { de: "Das spielt doch keine Rolle.", ok: false } ] },
+          { de: "Wie gehen wir vor?", options: [ { de: "Wir respektieren seinen Willen und ich dokumentiere die Ablehnung.", ok: true }, { de: "Wir behandeln ihn einfach trotzdem.", ok: false } ] }
+        ] } },
+      { id: "pc1-5", dom: "heim", titreDE: "Interkulturelle Pflege", titre: "Soins interculturels", desc: "Tenir compte des cultures et des croyances.",
+        vocCoursDE: [
+          "**Interkulturelle Pflege** bedeutet, die **Kultur**, die **Religion** und die **Gewohnheiten** des Patienten zu **respektieren** — zum Beispiel beim Essen, beim Waschen oder beim Gebet.",
+          "Frag offen nach den Wünschen und vermeide **Vorurteile**. Bei Sprachproblemen hilft ein **Dolmetscher**. So vermeidest du **Missverständnisse**."
+        ],
+        vocabulaire: [
+          { de: "die Kultur", fr: "la culture", ex: "Wir respektieren jede Kultur." },
+          { de: "die Religion", fr: "la religion", ex: "Die Religion ist dem Patienten wichtig." },
+          { de: "das Vorurteil", fr: "le préjugé", ex: "Wir arbeiten ohne Vorurteile." },
+          { de: "respektieren", fr: "respecter", ex: "Ich respektiere Ihre Gewohnheiten." },
+          { de: "die Gewohnheit", fr: "l'habitude / coutume", ex: "Jeder hat andere Gewohnheiten." },
+          { de: "der Dolmetscher", fr: "l'interprète", ex: "Wir rufen einen Dolmetscher." },
+          { de: "rücksichtsvoll", fr: "prévenant / respectueux", ex: "Bitte seien Sie rücksichtsvoll." },
+          { de: "das Missverständnis", fr: "le malentendu", ex: "So vermeiden wir ein Missverständnis." },
+          { de: "die Verständigung", fr: "la communication / l'entente", ex: "Die Verständigung ist manchmal schwierig." },
+          { de: "berücksichtigen", fr: "prendre en compte", ex: "Wir berücksichtigen Ihre Wünsche." }
+        ],
+        grammaire: [
+          { titre: "Demander poliment avec une interrogative indirecte (ob)", titreDE: "Indirekte Fragen: ob, wie, welche",
+            regle: "Pour demander des préférences avec tact, on utilise une interrogative indirecte : « Ich möchte wissen, ob Sie bestimmte Wünsche haben. » Le verbe va à la fin. Avec ob pour une question oui/non, sinon wie, welche, wann…",
+            points: [ "« Ich frage, ob Sie Schweinefleisch essen. »", "« Sagen Sie mir, welche Gewohnheiten wichtig sind. »", "Verbe à la fin de la subordonnée." ],
+            exemples: [
+              { de: "Ich möchte wissen, ob Sie besondere Wünsche haben.", fr: "indirekte Ja/Nein-Frage mit *ob*." },
+              { de: "Sagen Sie mir bitte, welche Speisen Sie nicht essen.", fr: "indirekte Frage mit *welche*." },
+              { de: "Wir berücksichtigen Ihre religiösen Gewohnheiten.", fr: "Respekt zeigen." }
+            ],
+            note: "Ne pas supposer : demander ouvertement les préférences est plus respectueux que de « deviner » selon l'origine." }
+        ],
+        dialogue: { titre: "Kulturelle Wünsche", lieu: "Im Pflegeheim, Gespräch mit dem Sohn", lignes: [
+          { loc: "Le fils d'un résident exprime des besoins culturels", de: "Mein Vater isst aus religiösen Gründen kein Schweinefleisch.", fr: "Mon père ne mange pas de porc pour des raisons religieuses." },
+          { de: "Danke für die Information. Das berücksichtigen wir natürlich.", fr: "Merci pour l'information. Nous en tenons compte, bien sûr." },
+          { de: "Und er betet fünfmal am Tag.", fr: "Et il prie cinq fois par jour." },
+          { de: "Gut zu wissen. Ich möchte wissen, ob er dafür Ruhe braucht.", fr: "Bon à savoir. J'aimerais savoir s'il a besoin de calme pour cela." },
+          { de: "Ja, ein ruhiger Moment wäre ideal.", fr: "Oui, un moment calme serait idéal." },
+          { de: "Wir richten das ein. Sagen Sie uns einfach Ihre Wünsche.", fr: "Nous l'organisons. Dites-nous simplement vos souhaits." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Was berücksichtigt die Pflegekraft?", options: ["Nichts", "Die religiösen Gewohnheiten (Essen, Gebet)", "Nur das Essen"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "die Kultur", droite: "la culture" }, { gauche: "das Vorurteil", droite: "le préjugé" }, { gauche: "der Dolmetscher", droite: "l'interprète" }, { gauche: "das Missverständnis", droite: "le malentendu" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète l'interrogative indirecte.", texte: "Ich möchte wissen, {0} Sie besondere Wünsche haben.", accepte: [["ob"]], indice: "question oui/non indirecte." },
+          { type: "qcm", cat: "appro", consigne: "Choisis l'attitude respectueuse.", question: "Comment connaître les besoins culturels ?", options: ["Ich rate nach der Herkunft.", "Ich frage offen nach den Wünschen.", "Ich ignoriere das."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets l'interrogative indirecte dans l'ordre.", mots: ["Sagen", "Sie", "mir", "welche", "Speisen", "Sie", "nicht", "essen"], correct: "Sagen Sie mir welche Speisen Sie nicht essen", traduction: "Dites-moi quels aliments vous ne mangez pas." },
+          { type: "production", cat: "prod", prompt: "Demande poliment à un proche s'il y a des besoins religieux ou alimentaires.", modele: "Ich möchte wissen, ob es religiöse oder besondere Essenswünsche gibt." }
+        ],
+        documentation: { task: "Note les besoins : M. X ne mange pas de porc (raison religieuse), prie 5 fois/jour, besoin d'un moment calme — pris en compte.", modele: "Herr X: kein Schweinefleisch (religiös), betet 5-mal täglich, benötigt ruhigen Moment — wird berücksichtigt." },
+        rp: { scene: "Zika spielt den Angehörigen eines Bewohners mit kulturellen Wünschen. Du gehst respektvoll darauf ein.", intro: "Frag offen nach den Wünschen, zeig Respekt und sichere die Berücksichtigung zu.", fin: "Sehr gut! Offen, respektvoll und ohne Vorurteile — echte interkulturelle Pflege.", tours: [
+          { de: "Meine Mutter darf aus religiösen Gründen bestimmte Speisen nicht essen.", options: [ { de: "Danke, dass Sie das sagen. Welche Speisen sind das genau?", ok: true }, { de: "Hier essen alle das Gleiche.", ok: false }, { de: "Das ist übertrieben.", ok: false } ] },
+          { de: "Sie braucht auch einen ruhigen Ort zum Beten.", options: [ { de: "Das richten wir gern ein. Ich möchte wissen, wann sie betet.", ok: true }, { de: "Dafür haben wir keinen Platz.", ok: false } ] },
+          { de: "Ist das wirklich kein Problem für Sie?", options: [ { de: "Überhaupt nicht. Wir berücksichtigen Ihre Wünsche und dokumentieren sie.", ok: true }, { de: "Ein bisschen schon, ehrlich gesagt.", ok: false } ] }
+        ] } },
+      { id: "pc1-6", dom: "grund", titreDE: "Hygiene und Qualitätsmanagement", titre: "Hygiène et qualité", desc: "Normes d'hygiène et prévention des infections.",
+        vocCoursDE: [
+          "**Hygiene** schützt Patienten und Personal. Die wichtigste Maßnahme ist die **Händedesinfektion**. Bei Bedarf trägst du **Schutzkleidung**, um eine **Infektion** zu **vermeiden**.",
+          "Im **Qualitätsmanagement** gibt es klare **Standards** und **Richtlinien**, die alle **einhalten** müssen. Regelmäßige **Kontrollen** sichern die **Qualität** der Pflege."
+        ],
+        vocabulaire: [
+          { de: "die Hygiene", fr: "l'hygiène", ex: "Hygiene hat oberste Priorität." },
+          { de: "die Händedesinfektion", fr: "la désinfection des mains", ex: "Die Händedesinfektion ist Pflicht." },
+          { de: "die Infektion", fr: "l'infection", ex: "Wir wollen jede Infektion vermeiden." },
+          { de: "die Schutzkleidung", fr: "la tenue de protection", ex: "Bei diesem Patienten tragen wir Schutzkleidung." },
+          { de: "der Standard", fr: "le standard / la norme", ex: "Wir arbeiten nach festen Standards." },
+          { de: "die Richtlinie", fr: "la directive / le protocole", ex: "Die Richtlinie schreibt das vor." },
+          { de: "einhalten", fr: "respecter (une règle)", ex: "Alle müssen die Regeln einhalten." },
+          { de: "vermeiden", fr: "éviter", ex: "So vermeiden wir Fehler." },
+          { de: "die Qualität", fr: "la qualité", ex: "Die Qualität der Pflege wird kontrolliert." },
+          { de: "die Kontrolle", fr: "le contrôle", ex: "Es gibt regelmäßige Kontrollen." }
+        ],
+        grammaire: [
+          { titre: "Le passif avec un modal (muss … werden)", titreDE: "Modal + Passiv: muss eingehalten werden",
+            regle: "Pour exprimer une obligation impersonnelle, on combine modal + passif : müssen + participe passé + werden. Ex. : « Die Hygienestandards müssen eingehalten werden. » (Les normes d'hygiène doivent être respectées.)",
+            points: [ "« Die Hände müssen desinfiziert werden. »", "« Schutzkleidung muss getragen werden. »", "Structure : … muss + Partizip + werden." ],
+            exemples: [
+              { de: "Die Hygienestandards müssen eingehalten werden.", fr: "Modal + Passiv: *müssen … werden*." },
+              { de: "Vor jedem Kontakt müssen die Hände desinfiziert werden.", fr: "Pflicht unpersönlich ausgedrückt." },
+              { de: "Fehler müssen offen gemeldet werden.", fr: "Qualitätskultur: Fehler melden." }
+            ],
+            note: "Culture qualité : signaler une erreur ou un manquement n'est pas une faute, c'est une protection pour le patient." }
+        ],
+        dialogue: { titre: "Hygiene im Alltag", lieu: "Auf dem Flur der Station", lignes: [
+          { loc: "Tu rappelles gentiment une règle d'hygiène à un collègue", de: "Du, kurz — hast du dir vor dem Zimmer die Hände desinfiziert?", fr: "Dis, vite — tu t'es désinfecté les mains avant la chambre ?" },
+          { de: "Oh, ich glaube, ich habe es vergessen.", fr: "Oh, je crois que j'ai oublié." },
+          { de: "Kein Problem, aber es muss vor jedem Kontakt sein.", fr: "Pas de souci, mais ça doit être avant chaque contact." },
+          { de: "Stimmt, das ist der Standard. Danke fürs Erinnern.", fr: "C'est vrai, c'est la norme. Merci de me le rappeler." },
+          { de: "Gern. Bei Herrn Behr brauchen wir auch Schutzkleidung.", fr: "Avec plaisir. Chez M. Behr, il faut aussi une tenue de protection." },
+          { de: "Gut zu wissen. Ich ziehe sie gleich an.", fr: "Bon à savoir. Je la mets tout de suite." }
+        ]},
+        exercices: [
+          { type: "qcm", cat: "comp", consigne: "Compréhension du dialogue.", question: "Wann muss man die Hände desinfizieren?", options: ["Einmal am Tag", "Vor jedem Kontakt", "Nur nach der Pause"], correct: 1 },
+          { type: "association", cat: "comp", consigne: "Associe le mot à sa traduction.", paires: [ { gauche: "die Hygiene", droite: "l'hygiène" }, { gauche: "die Infektion", droite: "l'infection" }, { gauche: "die Schutzkleidung", droite: "la tenue de protection" }, { gauche: "einhalten", droite: "respecter" } ] },
+          { type: "trou", cat: "appro", consigne: "Complète le passif avec modal.", texte: "Die Hygienestandards müssen {0} werden.", accepte: [["eingehalten"]], indice: "participe passé de einhalten." },
+          { type: "qcm", cat: "appro", consigne: "Choisis la bonne culture qualité.", question: "Tu as fait une erreur. Que fais-tu ?", options: ["Ich verstecke sie.", "Ich melde sie offen.", "Ich gebe einem Kollegen die Schuld."], correct: 1 },
+          { type: "ordre", cat: "appro", consigne: "Remets la phrase au passif.", mots: ["Schutzkleidung", "muss", "getragen", "werden"], correct: "Schutzkleidung muss getragen werden", traduction: "Une tenue de protection doit être portée." },
+          { type: "production", cat: "prod", prompt: "Rappelle (au passif) qu'il faut se désinfecter les mains avant chaque contact.", modele: "Vor jedem Kontakt müssen die Hände desinfiziert werden." }
+        ],
+        documentation: { task: "Note dans le contrôle qualité : règle d'hygiène rappelée à l'équipe, tenue de protection requise chez M. Behr (risque infectieux), standards respectés.", modele: "Hygieneregel im Team erinnert; bei Herrn Behr Schutzkleidung erforderlich (Infektionsrisiko); Standards eingehalten." },
+        rp: { scene: "Zika spielt deine Kollegin, die die Händedesinfektion vergessen hat. Du erinnerst freundlich daran.", intro: "Sprich es sachlich und freundlich an, erkläre den Standard, biete Hilfe an.", fin: "Sehr gut! Sachlich, kollegial und korrekt — so funktioniert Qualitätssicherung.", tours: [
+          { de: "Ich gehe schnell zu Herrn Behr ins Zimmer.", options: [ { de: "Hast du dir die Hände desinfiziert? Bei ihm brauchen wir auch Schutzkleidung.", ok: true }, { de: "Egal, geh einfach rein.", ok: false }, { de: "Mach was du willst.", ok: false } ] },
+          { de: "Oh, das habe ich vergessen. Ist das so wichtig?", options: [ { de: "Ja, vor jedem Kontakt müssen die Hände desinfiziert werden.", ok: true }, { de: "Eigentlich nicht, aber egal.", ok: false } ] },
+          { de: "Okay, danke. Ich mache es sofort.", options: [ { de: "Gern. So vermeiden wir Infektionen und halten den Standard ein.", ok: true }, { de: "Na endlich.", ok: false } ] }
+        ] } }
     ]},
     { code: "C2", titre: "Expertise et encadrement", lecons: [
       { id: "pc2-1", dom: "kh", titreDE: "Fachgespräche mit Ärzten", titre: "Échanges spécialisés avec les médecins", desc: "Argumenter, alerter, proposer." },

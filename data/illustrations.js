@@ -276,5 +276,11 @@ Object.assign(window.ILLUSTRATIONS, {
   "pb2-3": { kw: "bandage,wound,care" },
   "pb2-4": { kw: "doctor,nurse,hospital" },
   "pb2-5": { kw: "home,care,nurse" },
-  "pb2-6": { kw: "conversation,elderly,care" }
+  "pb2-6": { kw: "conversation,elderly,care" },
+  "pc1-1": { kw: "palliative,care,hand" },
+  "pc1-2": { kw: "nurse,clipboard,planning" },
+  "pc1-3": { kw: "training,teaching,nurse" },
+  "pc1-4": { kw: "document,signature,ethics" },
+  "pc1-5": { kw: "diversity,care,people" },
+  "pc1-6": { kw: "gloves,hygiene,disinfect" }
 });
