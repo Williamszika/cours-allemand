@@ -16,6 +16,12 @@ window.MODULE_A11 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l01",
+      vocCours: [
+        "Ce premier champ lexical réunit les **formules de salutation** et les mots pour **se présenter** — la base de tout premier contact. Distingue les salutations selon le **moment** : *Guten Morgen* (le matin), *Guten Tag* (la journée), *Guten Abend* (le soir), et le passe-partout familier *Hallo*.",
+        "Fais surtout attention au **registre**. *Tschüss* et *Hallo* sont **familiers** : on les emploie avec des amis, des collègues proches, des jeunes. *Auf Wiedersehen* et *Guten Tag* sont **polis** et conviennent partout (commerce, administration, inconnus). En cas de doute, choisis la forme polie : elle est toujours correcte.",
+        "Quelques verbes clés structurent la présentation : *heißen* (s'appeler), *kommen aus* (venir de), *wohnen in* (habiter à), *sein* (être). Mémorise-les avec leur **petite construction** : *kommen* va avec *aus* (« *Ich komme **aus** Frankreich* »), *wohnen* avec *in* (« *Ich wohne **in** Berlin* »).",
+        "Astuce : apprends ces mots **par paires de dialogue** (question → réponse), car c'est ainsi qu'ils fonctionnent : « *Wie heißt du? – Ich heiße…* », « *Woher kommst du? – Ich komme aus…* ». Répète-les à voix haute : ce sont les premières phrases que tu utiliseras vraiment."
+      ],
       numero: 1,
       titre: "Se présenter",
       titreDE: "Sich vorstellen",
@@ -161,6 +167,12 @@ window.MODULE_A11 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l02",
+      vocCours: [
+        "Ce vocabulaire couvre l'**alphabet** et les **nombres**, indispensables pour épeler son nom, donner un numéro ou un prix. L'alphabet ressemble au français, mais certaines lettres se prononcent très différemment : *e* se dit « é », *i* comme « ie », *j* « yot », *v* « fau », *w* « vé » et *z* « tsett ».",
+        "N'oublie pas les caractères propres à l'allemand : les **Umlaute** *ä, ö, ü* et le **ß** (*Eszett*, prononcé comme « ss »). Pour épeler *ä*, on peut dire « *a-Umlaut* ».",
+        "Pour les **nombres**, une particularité déroute les francophones : à partir de 21, on dit l'**unité avant la dizaine**, reliées par *und* : *einundzwanzig* = « un-et-vingt » (21), *dreiundvierzig* (43). On lit donc le nombre « à l'envers ».",
+        "Conseil : entraîne-toi avec des **données réelles** — ton numéro de téléphone, ton code postal, des prix. Compter à voix haute de 0 à 20 chaque jour ancre les bases ; ensuite les dizaines (*zwanzig, dreißig, vierzig…*) se combinent facilement."
+      ],
       numero: 2,
       titre: "L'alphabet et les chiffres",
       titreDE: "Das Alphabet und die Zahlen",
@@ -295,6 +307,12 @@ window.MODULE_A11 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l03",
+      vocCours: [
+        "Ce champ lexical relie **pays**, **nationalités** et **langues**. Bonne nouvelle : le nom de beaucoup de langues est identique à l'adjectif de nationalité au neutre : *Deutsch*, *Französisch*, *Englisch*, *Spanisch*.",
+        "Maîtrise deux questions essentielles : **Woher?** (d'où ?) appelle *aus* (« *Ich komme **aus** Italien* »), tandis que **Wo?** (où ?) appelle *in* (« *Ich wohne **in** Italien* »). C'est la base pour parler de ses origines et de son lieu de vie.",
+        "Attention au **genre des pays** : la plupart sont neutres et s'emploient **sans article** (*Deutschland, Frankreich, Italien*), mais certains prennent l'article : *die Schweiz*, *die Türkei*, *die USA* (pluriel). Avec ceux-là : *in **der** Schweiz*, *in **die** Türkei*.",
+        "Pour le verbe *sprechen* (parler), souviens-toi qu'il change de voyelle (*du sprichst*, *er spricht*). Mémorise d'abord les langues qui te concernent, et associe chaque pays à un fait personnel — plus facile à retenir qu'une liste abstraite."
+      ],
       numero: 3,
       titre: "Langues et pays",
       titreDE: "Sprachen und Länder",
@@ -426,6 +444,12 @@ window.MODULE_A11 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l04",
+      vocCours: [
+        "Ce vocabulaire permet de parler des **personnes de ton entourage** et de tes **loisirs**. Ici apparaît un petit mot très utile : **gern**, qui exprime le **goût** après un verbe : « *Ich spiele **gern** Fußball* », « *Ich lese **gern*** ».",
+        "Pour nuancer, retiens l'échelle : *nicht gern* (ne pas aimer) < *gern* (aimer) < *sehr gern* (beaucoup aimer) < *am liebsten* (préférer par-dessus tout). Avec *gern*, tu exprimes déjà tes préférences sans connaître le verbe « aimer ».",
+        "Les noms de loisirs sont souvent des **emprunts internationaux** (*das Hobby*, *der Sport*, *die Musik*), faciles à mémoriser. Apprends-les avec un verbe d'action : *Musik **hören***, *Sport **machen***, *Freunde **treffen*** (retrouver des amis).",
+        "Astuce : construis **deux ou trois phrases sur toi-même** (« *In meiner Freizeit…* »). Le vocabulaire qu'on relie à sa propre vie se retient bien mieux que des mots isolés."
+      ],
       numero: 4,
       titre: "Personnes et loisirs",
       titreDE: "Personen und Hobbys",
@@ -551,6 +575,12 @@ window.MODULE_A11 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l05",
+      vocCours: [
+        "Ce champ lexical porte sur le **travail** et les **professions**. Point important : les métiers ont une forme masculine et une forme féminine, cette dernière en ajoutant le plus souvent **-in** : *der Lehrer → die Lehrer**in***, *der Arzt → die Ärzt**in***.",
+        "Pour dire son métier, l'allemand n'utilise **pas d'article** : « *Ich bin Lehrer* » (et non « ~~ein Lehrer~~ »). C'est une nette différence avec le français. La question est « *Was sind Sie von Beruf?* ».",
+        "Tu rencontreras l'**article indéfini** *ein/eine* et les **possessifs** *mein/dein*, utiles pour parler de « mon travail », « mon bureau », « mon collègue ». Apprends *der Kollege* (collègue) et *der Chef* (patron) : ils reviennent sans cesse.",
+        "Conseil : regroupe le vocabulaire par **lieu** (*das Büro*, *die Firma*, *die Fabrik*) et par **activité**. Associe ton propre métier (réel ou souhaité) à ce champ lexical pour le rendre concret et mémorable."
+      ],
       numero: 5,
       titre: "Le travail, le lieu de travail",
       titreDE: "Arbeit und Arbeitsplatz",
@@ -671,6 +701,12 @@ window.MODULE_A11 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l06",
+      vocCours: [
+        "Ce vocabulaire combine les **loisirs** et l'expression de l'**heure**. Pour l'heure courante, l'allemand compte souvent par rapport à la demie : *halb drei* signifie « deux heures et demie » (littéralement « la moitié vers trois »), ce qui surprend les francophones.",
+        "Tu verras ici des **verbes à particule séparable** (*aufstehen* se lever, *fernsehen* regarder la télé, *einkaufen* faire les courses). Retiens que la particule **se détache** : « *Ich sehe abends **fern*** ». C'est une famille de mots très productive.",
+        "Distingue *die Zeit* (le temps qui passe), *die Freizeit* (le temps libre) et *die Uhrzeit* (l'heure). Pour demander l'heure : « *Wie spät ist es?* » ou « *Wie viel Uhr ist es?* ».",
+        "Astuce : associe chaque activité à un **moment** (*am Morgen, am Abend, am Wochenende*). Décrire ta propre journée type avec ces mots crée un récit personnel qui fixe durablement le vocabulaire."
+      ],
       numero: 6,
       titre: "Le temps libre",
       titreDE: "Die Freizeit",
@@ -797,6 +833,12 @@ window.MODULE_A11 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l07",
+      vocCours: [
+        "Ce champ lexical est **fonctionnel** : il te prépare à **réserver et séjourner à l'hôtel**. Le mot central est *das Zimmer* (la chambre), décliné en *das Einzelzimmer* (chambre simple) et *das Doppelzimmer* (chambre double) — de beaux **noms composés** où le dernier élément (*Zimmer*) donne le sens et le genre.",
+        "Deux outils de langue dominent. D'abord *es gibt* (il y a) + accusatif, pour dire ce que propose l'hôtel : « *Es gibt **einen** Pool* ». Ensuite le verbe poli *möchten* (j'aimerais) : « *Ich **möchte** ein Zimmer reservieren* ».",
+        "Mémorise les **équipements** (*das Frühstück* petit-déjeuner, *das Bad* salle de bain, *der Schlüssel* clé, *die Rezeption* réception) et des verbes utiles : *reservieren, buchen* (réserver), *bezahlen* (payer).",
+        "Conseil : entraîne-toi en jouant **le dialogue à la réception** dans les deux rôles. Ce vocabulaire très concret devient immédiatement utilisable en voyage dès qu'on le met en scène."
+      ],
       numero: 7,
       titre: "À l'hôtel",
       titreDE: "Im Hotel",
@@ -924,6 +966,12 @@ window.MODULE_A11 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l08",
+      vocCours: [
+        "Ce vocabulaire permet de **t'orienter en ville** et de **demander ton chemin**. Au cœur du thème : les noms de bâtiments (*die Bank*, *die Post*, *der Bahnhof* la gare, *die Apotheke* la pharmacie, *das Rathaus* la mairie) et les prépositions de lieu.",
+        "Apprends les **directions** comme un bloc : *links* (à gauche), *rechts* (à droite), *geradeaus* (tout droit), *die erste Straße* (la première rue). Les deux questions clés : « *Wo ist…?* » et « *Wie komme ich zu…?* ».",
+        "Attention au **faux-ami** *das Rathaus* : rien à voir avec un rat ! C'est la **mairie** (de *Rat*, le conseil). De même, *das Gymnasium* est un **lycée**, pas un gymnase. Repérer ces faux-amis évite des contresens.",
+        "Astuce : visualise un **plan mental** de ta propre ville et nomme chaque lieu en allemand. Décrire un trajet réel (« tout droit, puis à gauche… ») ancre vocabulaire et prépositions de mouvement."
+      ],
       numero: 8,
       titre: "Le plan de la ville",
       titreDE: "Der Stadtplan",
@@ -1050,6 +1098,12 @@ window.MODULE_A11 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l09",
+      vocCours: [
+        "Ce champ lexical, très utile, couvre la **nourriture**, les **boissons** et la **commande au restaurant**. Tu apprendras les repas (*das Frühstück*, *das Mittagessen* déjeuner, *das Abendessen* dîner) et des aliments à mémoriser **avec leur article**, car le genre est imprévisible : *der Kaffee*, *das Brot*, *die Suppe*.",
+        "Deux mécanismes sont centraux : l'**accusatif** après *nehmen* (prendre), *möchten* et *bestellen* (commander) — « *Ich nehme **einen** Salat* » — et la **négation** *kein* pour « pas de » : « *Ich trinke **keinen** Alkohol* ».",
+        "Soigne le **registre poli** : *möchten* (« *Ich möchte bestellen* »), *die Speisekarte* (la carte), *die Rechnung* (l'addition), et *Zahlen, bitte!*. Ces expressions toutes faites sont à connaître par cœur.",
+        "Astuce : classe le vocabulaire par **catégories** (boissons, entrées, plats, desserts), comme une vraie carte. Imagine-toi commander ton repas préféré : le vocabulaire utile à *toi* est celui qui restera."
+      ],
       numero: 9,
       titre: "Nourriture, boisson et restaurant",
       titreDE: "Essen und Trinken / Im Restaurant",

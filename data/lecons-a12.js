@@ -16,6 +16,12 @@ window.MODULE_A12 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l10",
+      vocCours: [
+        "Ce vocabulaire décrit la **journée type** : se lever, travailler, manger, se coucher. Beaucoup de ces verbes sont **séparables et/ou réfléchis** : *aufstehen* (se lever), *aufwachen* (se réveiller), *sich anziehen* (s'habiller), *frühstücken*.",
+        "Pour **structurer un récit**, retiens les enchaîneurs : *zuerst* (d'abord), *dann* (ensuite), *danach* (après cela), *schließlich* (enfin). Ils transforment une liste de verbes en une vraie description de journée.",
+        "Associe chaque action à un **moment** avec *am* : *am Morgen, am Mittag, am Abend*, et à une **heure**. Le vocabulaire des moments de la journée se combine naturellement avec celui de la routine.",
+        "Astuce : rédige **ta** journée du matin au soir (« *Ich stehe um 7 Uhr auf, dann…* »). Ce texte personnel, répété, devient un réservoir de phrases prêtes à l'emploi."
+      ],
       numero: 10,
       titre: "La routine quotidienne",
       titreDE: "Der Tagesablauf",
@@ -132,6 +138,12 @@ window.MODULE_A12 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l11",
+      vocCours: [
+        "Ce champ lexical aborde le **travail** sous l'angle des **tâches** et du **stress**. Tu y trouveras des verbes professionnels (*organisieren, telefonieren, eine E-Mail schreiben, einen Termin machen*) et des expressions comme *viel zu tun haben* ou *unter Stress stehen*.",
+        "Le thème met en avant les **verbes de modalité** (*müssen, können, wollen, sollen*), parfaits pour parler d'obligations : « *Ich **muss** noch einen Bericht schreiben* », « *Ich **kann** heute nicht* ».",
+        "Attention au **faux-ami** *der Chef* : c'est le **patron**, pas le cuisinier (*der Koch*). De même, *bekommen* signifie **recevoir** (et non « devenir », faux-ami de l'anglais *become*). Deux pièges classiques.",
+        "Astuce : regroupe le vocabulaire en **verbes d'action** + **objets de bureau** (*der Computer, der Drucker, die Besprechung* la réunion). Décris une journée chargée avec les modaux : vocabulaire et grammaire en même temps."
+      ],
       numero: 11,
       titre: "Le stress au bureau",
       titreDE: "Stress im Büro",
@@ -260,6 +272,12 @@ window.MODULE_A12 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l12",
+      vocCours: [
+        "Ce vocabulaire, très **international**, concerne l'**informatique**. Bonne nouvelle : beaucoup de mots ressemblent à l'anglais ou au français (*der Computer, das Internet, die E-Mail, die Maus, der Bildschirm* l'écran, *die Datei* le fichier).",
+        "Le thème s'appuie sur l'**impératif** pour les instructions : *Klick auf…!*, *Öffne die Datei!* (ouvre le fichier), *Speichere das Dokument!*. Apprends ces verbes à l'impératif, c'est ainsi qu'ils apparaissent dans les modes d'emploi.",
+        "Mémorise les **verbes-actions** du numérique : *speichern* (enregistrer), *löschen* (supprimer), *herunterladen* (télécharger), *drucken* (imprimer), *anklicken* (cliquer). Beaucoup sont **séparables** (*ich lade … herunter*).",
+        "Astuce : nomme en allemand les éléments de **ton propre écran** pendant que tu travailles. Associer chaque mot à un geste (cliquer, enregistrer) crée une mémoire « gestuelle » très efficace."
+      ],
       numero: 12,
       titre: "L'ordinateur",
       titreDE: "Der Computer",
@@ -383,6 +401,12 @@ window.MODULE_A12 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l13",
+      vocCours: [
+        "Ce champ lexical te prépare à **prendre rendez-vous** par téléphone. Vocabulaire central : *der Termin* (le rendez-vous), *die Sprechstunde* (heures de consultation), *frei sein* (être libre), *passen* (convenir : « *Passt Ihnen Montag?* »).",
+        "Le thème met en jeu les **prépositions de temps** (*am* + jour, *um* + heure : « *am Montag um 10 Uhr* ») et la **demande polie** avec *können* : « ***Könnte** ich einen Termin haben?* ».",
+        "Soigne les **formules téléphoniques** : *Guten Tag, hier spricht…*, *Ich hätte gern einen Termin*, *Vielen Dank, auf Wiederhören* (au revoir au téléphone — noter *Wiederhören*, pas *Wiedersehen* !).",
+        "Astuce : apprends ce vocabulaire **en dialogue complet** (appeler, proposer un jour, confirmer). Très ritualisé, il suffit de mémoriser quelques phrases-clés pour gérer la plupart des appels."
+      ],
       numero: 13,
       titre: "Prendre un rendez-vous",
       titreDE: "Einen Termin vereinbaren",
@@ -507,6 +531,12 @@ window.MODULE_A12 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l14",
+      vocCours: [
+        "Ce vocabulaire couvre les **saisons**, les **mois** et la **météo**. Les quatre saisons — *der Frühling*, *der Sommer*, *der Herbst*, *der Winter* — sont toutes **masculines** (facile !) et s'emploient avec *im* : *im Sommer*.",
+        "Pour le temps, l'allemand utilise le **« es » impersonnel** : *Es regnet* (il pleut), *Es schneit* (il neige), *Es ist kalt/warm/sonnig*. Apprends ces phrases comme des blocs : elles n'ont pas de vrai sujet, comme « il pleut » en français.",
+        "Distingue *das Wetter* (le temps qu'il fait) de *die Zeit* (le temps qui passe) — deux sens du mot « temps », bien séparés en allemand. Mémorise *der Regen* (pluie), *der Schnee* (neige), *die Sonne*, *der Wind*.",
+        "Le thème introduit les **conjonctions** *und, oder, aber, denn* : relie deux observations météo (« *Es ist kalt, **aber** die Sonne scheint* »). Astuce : commente la météo réelle de ta journée, chaque jour, en allemand."
+      ],
       numero: 14,
       titre: "Les saisons et le temps",
       titreDE: "Jahreszeiten und Wetter",
@@ -631,6 +661,12 @@ window.MODULE_A12 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l15",
+      vocCours: [
+        "Ce champ lexical prépare un **voyage** : destinations, bagages, préparatifs. Vocabulaire clé : *die Reise* (le voyage), *der Urlaub* (vacances/congés), *der Koffer* (valise), *packen* (faire ses bagages), *buchen* (réserver), *die Fahrkarte* (le billet).",
+        "C'est ici qu'apparaît le **passé composé (Perfekt)**, car on raconte souvent un voyage **après coup** : « *Ich **bin** nach Spanien **gefahren*** ». Note l'auxiliaire *sein* avec les verbes de déplacement, très fréquents dans ce thème.",
+        "Attention au **faux-ami** *bekommen* (recevoir, non « devenir »). Distingue aussi *die Reise* (voyage) et *die Fahrt* (trajet), ainsi que *fahren* (en véhicule) et *fliegen* (en avion).",
+        "Astuce : raconte un **vrai voyage** que tu as fait, au Perfekt, avec ce vocabulaire. Relier les mots à un souvenir concret est l'une des techniques de mémorisation les plus puissantes."
+      ],
       numero: 15,
       titre: "Destinations et préparation de voyage",
       titreDE: "Reiseziele und Reisevorbereitung",
@@ -757,6 +793,12 @@ window.MODULE_A12 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l16",
+      vocCours: [
+        "Ce vocabulaire couvre les **moyens de transport** : *der Bus*, *der Zug / die Bahn* (le train), *die U-Bahn* (métro), *die Straßenbahn* (tram), *das Flugzeug* (avion), *das Fahrrad* (vélo), *das Auto*.",
+        "La structure clé est **mit + datif** pour dire avec quel moyen on se déplace : « *Ich fahre **mit dem** Bus / **mit der** Bahn* ». Apprends donc chaque transport **avec son article au datif**.",
+        "Distingue les verbes : *fahren* (rouler — bus, train, voiture, vélo) et *fliegen* (voler — avion) ; à pied, on dit *zu Fuß gehen*. N'oublie pas les directions : *nach* (villes/pays), *zu* (lieux/personnes).",
+        "Faux-ami : *das Gymnasium* (lycée), pas une salle de sport. Astuce : décris **ton trajet quotidien** (« *Ich fahre mit der U-Bahn zur Arbeit* »). Le vocabulaire de ta propre mobilité est celui que tu réutiliseras le plus."
+      ],
       numero: 16,
       titre: "Les moyens de transport",
       titreDE: "Verkehrsmittel",
@@ -882,6 +924,12 @@ window.MODULE_A12 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l17",
+      vocCours: [
+        "Ce champ lexical décrit le **logement** et l'**ameublement**. Distingue *das Haus* (la maison), *die Wohnung* (l'appartement) et les pièces : *die Küche* (cuisine), *das Bad* (salle de bain), *das Schlafzimmer* (chambre), *das Wohnzimmer* (salon).",
+        "Le thème met en jeu les **prépositions mixtes** (*in, an, auf, neben, unter, über…*) pour **situer** les meubles, avec le **datif** sans mouvement (*Wo?*) : « *Das Sofa steht **im** Wohnzimmer* », « *Die Lampe hängt **über dem** Tisch* ».",
+        "Mémorise les **meubles** avec leur article : *der Tisch*, *der Stuhl* (chaise), *das Bett*, *der Schrank* (armoire), *das Sofa*. Et les verbes de position *stehen, liegen, hängen*, qui vont avec le datif.",
+        "Astuce : fais le **tour de ta maison** en nommant chaque pièce et chaque meuble en allemand, et en disant où il se trouve. Cet exercice relie vocabulaire, genres et prépositions dans un contexte familier."
+      ],
       numero: 17,
       titre: "Le logement et l'ameublement",
       titreDE: "Wohnen und Möbel",
@@ -1007,6 +1055,12 @@ window.MODULE_A12 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l18",
+      vocCours: [
+        "Ce vocabulaire concerne le **corps**, la **santé** et la **visite chez le médecin**. Apprends les parties du corps avec leur article (*der Kopf* tête, *der Bauch* ventre, *der Hals* gorge, *das Bein* jambe, *der Arm*) et les maux courants (*die Erkältung* rhume, *das Fieber* fièvre).",
+        "Deux structures expriment la **douleur** : *wehtun* (« *Mein Kopf **tut weh*** ») et *Schmerzen haben* (« *Ich **habe** Kopf**schmerzen*** »). Remarque le **nom composé** *Kopfschmerzen* (mal de tête), *Bauchschmerzen*, *Halsschmerzen* — très productif.",
+        "Le modal *sollen* sert aux **conseils** du médecin : « *Sie **sollen** viel trinken und sich ausruhen* ». Mémorise *krank* (malade) ≠ *gesund* (en bonne santé), *die Apotheke* (pharmacie), *das Medikament*.",
+        "Astuce : associe chaque partie du corps à un **geste** en la nommant, et apprends les douleurs par **Kopf/Bauch/Hals + schmerzen**. En voyage, priorise les mots qui te permettent de décrire un problème de santé."
+      ],
       numero: 18,
       titre: "La santé",
       titreDE: "Die Gesundheit",
@@ -1134,6 +1188,12 @@ window.MODULE_A12 = {
     /* ---------------------------------------------------------------- */
     {
       id: "l19",
+      vocCours: [
+        "Ce champ lexical, social et très utile, sert à **s'excuser** et à **se justifier**. Formules clés : *Entschuldigung* / *Entschuldigen Sie* (excusez-moi), *Es tut mir leid* (je suis désolé), *Verzeihung* (pardon, soutenu), *Kein Problem* / *Macht nichts* (pas de souci).",
+        "Pour **se justifier**, le thème introduit *weil* (parce que), qui envoie le verbe **à la fin** : « *Ich komme zu spät, **weil** der Bus Verspätung **hatte*** ». L'occasion de relier vocabulaire des excuses et expression de la cause.",
+        "Distingue les **niveaux** : *Entschuldigung* est passe-partout, *Es tut mir leid* exprime un regret plus personnel ; pour répondre, on dit *Macht nichts* ou *Kein Problem*. Choisir le bon registre montre ta finesse sociale.",
+        "Astuce : mémorise ces formules **par paires** (excuse → réponse), car elles fonctionnent en interaction. Comme ce sont des expressions figées, quelques-unes bien apprises te tireront d'affaire dans la plupart des situations délicates."
+      ],
       numero: 19,
       titre: "Les excuses",
       titreDE: "Entschuldigungen",

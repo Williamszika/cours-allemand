@@ -642,6 +642,18 @@
     leg.innerHTML = '<span class="art art-der">der</span> masculin&nbsp;&nbsp;·&nbsp;&nbsp;<span class="art art-die">die</span> féminin&nbsp;&nbsp;·&nbsp;&nbsp;<span class="art art-das">das</span> neutre';
     voc.appendChild(leg);
 
+    /* Cours de vocabulaire long-format (mémorisation, faux-amis, registres,
+       champs lexicaux…). Immersion : A1/A2 dans la langue de l'apprenant,
+       B1+ en allemand gradué (vocCoursDE) rendu tel quel. */
+    const vEx = window.I18N ? window.I18N.explication(l.niveau) : { lang: "fr", de: false };
+    const vNatifDE = vEx.de && l.vocCoursDE && l.vocCoursDE.length;
+    const vArr = vNatifDE ? l.vocCoursDE : l.vocCours;
+    if (vArr && vArr.length) {
+      const vart = el("article", "cours-article voc-article");
+      vArr.forEach((p) => { const pe = el("p", "cours-art-p"); if (vNatifDE) pe.innerHTML = mdLite(p); else localizeInto(pe, p, vEx); vart.appendChild(pe); });
+      voc.appendChild(vart);
+    }
+
     const vocGrid = el("div", "voc-grid");
     l.vocabulaire.forEach((v) => {
       const c = el("div", "voc-card");
