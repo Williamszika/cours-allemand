@@ -139,7 +139,8 @@ window.Exercises = (function () {
     } else if (ex.type === "production") {
       buildProduction(ex, body, actions, feedback, onResult);
     } else if (ex.type === "oral") {
-      buildOral(ex, body, actions, feedback, onResult);
+      // l'oral est noté (reconnaissance vocale ou auto-évaluation) → card._grade
+      card._grade = buildOral(ex, body, actions, feedback, onResult);
     } else {
       body.appendChild(el("p", "", "Type d'exercice inconnu : " + ex.type));
     }
@@ -486,6 +487,7 @@ window.Exercises = (function () {
 
   /* ---------- Production orale ---------- */
   function buildOral(ex, body, actions, feedback, onResult) {
+    let lastOk = null; // résultat noté (reconnaissance vocale ou auto-évaluation)
     body.appendChild(el("p", "exo-question", ex.prompt));
     const transcript = el("div", "oral-transcript hidden");
     body.appendChild(transcript);
@@ -516,11 +518,13 @@ window.Exercises = (function () {
             transcript.innerHTML = '<span class="oral-label">Vous avez dit :</span> « ' + best + " »";
             const attendus = ex.attendus || [];
             const found = attendus.filter((a) => alts.some((alt) => contains(alt, a)));
-            const ok = attendus.length === 0 ? best.trim().length > 0 : found.length >= 1;
+            const besoin = attendus.length === 0 ? 0 : Math.max(1, Math.ceil(attendus.length * 0.5));
+            const ok = attendus.length === 0 ? best.trim().split(/\s+/).length >= 3 : found.length >= besoin;
+            lastOk = ok;
             modele.classList.remove("hidden");
             feedback.className = "exo-feedback show " + (ok ? "juste" : "faux");
             feedback.innerHTML =
-              (ok ? "✓ Bien ! On a reconnu votre production. " : "✗ Reconnaissance partielle. ") +
+              (ok ? "✓ Bien dit ! Zika a reconnu votre production. " : "✗ Reconnaissance partielle. ") +
               (attendus.length ? "Mots clés repérés : " + found.length + "/" + attendus.length + ". " : "") +
               "<div class='exo-explication'>👉 Comparez avec le modèle et réessayez pour vous améliorer.</div>";
             if (onResult) onResult(ok);
@@ -565,12 +569,14 @@ window.Exercises = (function () {
     const koBtn = el("button", "btn-self ko", "🔁 À retravailler");
     koBtn.type = "button";
     okBtn.addEventListener("click", () => {
+      lastOk = true;
       modele.classList.remove("hidden");
       feedback.className = "exo-feedback show juste";
       feedback.innerHTML = "✓ Super ! Continuez à pratiquer à voix haute.";
       if (onResult) onResult(true);
     });
     koBtn.addEventListener("click", () => {
+      lastOk = false;
       modele.classList.remove("hidden");
       feedback.className = "exo-feedback show neutre";
       feedback.innerHTML = "🔁 Pas de souci — écoutez le modèle et répétez plusieurs fois.";
@@ -579,6 +585,11 @@ window.Exercises = (function () {
     selfWrap.appendChild(okBtn);
     selfWrap.appendChild(koBtn);
     actions.appendChild(selfWrap);
+
+    // Correction notée : reconnaissance vocale (ou auto-évaluation) → ok/null
+    return function () {
+      return { ok: lastOk, detail: lastOk === null ? "🎤 Parlez (ou auto-évaluez-vous) pour être noté." : "" };
+    };
   }
 
   return { render, normalize, eq, matchesAny, contains, shuffle, GRADABLE };

@@ -650,6 +650,19 @@ a.stats-lecon:hover { border-color: var(--blue); transform: translateX(2px); }
 .niveau-btn strong { font-size: 22px; color: var(--blue); }
 .niveau-btn span { font-size: 12.5px; color: var(--muted); }
 
+/* ===== Badge « niveau actuel » (en-tête) & nom du coach ===== */
+.niveau-actuel {
+  display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin: 0 auto 14px; padding: 7px 14px; border-radius: 999px;
+  background: var(--blue-light, #eef2ff); border: 1px solid var(--line);
+  font-size: 13.5px; color: var(--text);
+}
+.niveau-actuel strong { color: var(--blue); font-size: 15px; }
+.niveau-actuel span { color: var(--muted); }
+.niveau-actuel-link { margin-left: 4px; font-size: 12.5px; font-weight: 600; color: var(--blue); text-decoration: none; white-space: nowrap; }
+.niveau-actuel-link:hover { text-decoration: underline; }
+.coach-nom { margin: 0 0 2px; font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--blue); }
+
 </style>
     <link
       rel="icon"
@@ -10347,7 +10360,8 @@ window.Exercises = (function () {
     } else if (ex.type === "production") {
       buildProduction(ex, body, actions, feedback, onResult);
     } else if (ex.type === "oral") {
-      buildOral(ex, body, actions, feedback, onResult);
+      // l'oral est noté (reconnaissance vocale ou auto-évaluation) → card._grade
+      card._grade = buildOral(ex, body, actions, feedback, onResult);
     } else {
       body.appendChild(el("p", "", "Type d'exercice inconnu : " + ex.type));
     }
@@ -10694,6 +10708,7 @@ window.Exercises = (function () {
 
   /* ---------- Production orale ---------- */
   function buildOral(ex, body, actions, feedback, onResult) {
+    let lastOk = null; // résultat noté (reconnaissance vocale ou auto-évaluation)
     body.appendChild(el("p", "exo-question", ex.prompt));
     const transcript = el("div", "oral-transcript hidden");
     body.appendChild(transcript);
@@ -10724,11 +10739,13 @@ window.Exercises = (function () {
             transcript.innerHTML = '<span class="oral-label">Vous avez dit :</span> « ' + best + " »";
             const attendus = ex.attendus || [];
             const found = attendus.filter((a) => alts.some((alt) => contains(alt, a)));
-            const ok = attendus.length === 0 ? best.trim().length > 0 : found.length >= 1;
+            const besoin = attendus.length === 0 ? 0 : Math.max(1, Math.ceil(attendus.length * 0.5));
+            const ok = attendus.length === 0 ? best.trim().split(/\s+/).length >= 3 : found.length >= besoin;
+            lastOk = ok;
             modele.classList.remove("hidden");
             feedback.className = "exo-feedback show " + (ok ? "juste" : "faux");
             feedback.innerHTML =
-              (ok ? "✓ Bien ! On a reconnu votre production. " : "✗ Reconnaissance partielle. ") +
+              (ok ? "✓ Bien dit ! Zika a reconnu votre production. " : "✗ Reconnaissance partielle. ") +
               (attendus.length ? "Mots clés repérés : " + found.length + "/" + attendus.length + ". " : "") +
               "<div class='exo-explication'>👉 Comparez avec le modèle et réessayez pour vous améliorer.</div>";
             if (onResult) onResult(ok);
@@ -10773,12 +10790,14 @@ window.Exercises = (function () {
     const koBtn = el("button", "btn-self ko", "🔁 À retravailler");
     koBtn.type = "button";
     okBtn.addEventListener("click", () => {
+      lastOk = true;
       modele.classList.remove("hidden");
       feedback.className = "exo-feedback show juste";
       feedback.innerHTML = "✓ Super ! Continuez à pratiquer à voix haute.";
       if (onResult) onResult(true);
     });
     koBtn.addEventListener("click", () => {
+      lastOk = false;
       modele.classList.remove("hidden");
       feedback.className = "exo-feedback show neutre";
       feedback.innerHTML = "🔁 Pas de souci — écoutez le modèle et répétez plusieurs fois.";
@@ -10787,6 +10806,11 @@ window.Exercises = (function () {
     selfWrap.appendChild(okBtn);
     selfWrap.appendChild(koBtn);
     actions.appendChild(selfWrap);
+
+    // Correction notée : reconnaissance vocale (ou auto-évaluation) → ok/null
+    return function () {
+      return { ok: lastOk, detail: lastOk === null ? "🎤 Parlez (ou auto-évaluez-vous) pour être noté." : "" };
+    };
   }
 
   return { render, normalize, eq, matchesAny, contains, shuffle, GRADABLE };
@@ -10865,6 +10889,7 @@ window.Exercises = (function () {
   /* Placement : ouvre le parcours jusqu'au niveau choisi/déterminé, en
      marquant les niveaux antérieurs comme acquis (leçons + examens-verrous). */
   const ORDRE_NIVEAUX = ["A1", "A2", "B1", "B2", "C1", "C2"];
+  const NIVEAU_LABELS = { A1: "Débutant", A2: "Élémentaire", B1: "Intermédiaire", B2: "Avancé", C1: "Autonome", C2: "Maîtrise" };
   const EXAMENS_AVANT = {
     A1: [], A2: ["a1"], B1: ["a1", "a2", "final"], B2: ["a1", "a2", "final", "b1"],
     C1: ["a1", "a2", "final", "b1", "b2", "finalb"], C2: ["a1", "a2", "final", "b1", "b2", "finalb", "c1"]
@@ -10918,9 +10943,14 @@ window.Exercises = (function () {
     const frag = document.createDocumentFragment();
 
     /* --- Hero --- */
+    const niveauActuel = window.Progress.getNiveau();
+    const badge = niveauActuel
+      ? '<div class="niveau-actuel">🎯 Ton niveau actuel : <strong>' + niveauActuel + "</strong> <span>" + (NIVEAU_LABELS[niveauActuel] || "") + '</span><a class="niveau-actuel-link" href="#/start">↺ changer</a></div>'
+      : "";
     const hero = el("header", "hero");
     hero.innerHTML =
       '<div class="hero-flag" aria-hidden="true"><span></span><span></span><span></span></div>' +
+      badge +
       '<p class="hero-eyebrow">' + COURS.cadre + "</p>" +
       "<h1>" + COURS.titre + "</h1>" +
       '<p class="hero-slogan">' + COURS.slogan + "</p>" +
@@ -11883,21 +11913,22 @@ window.Exercises = (function () {
      ACCUEIL DU COACH — choix / test de niveau
      ==================================================================== */
   function renderOnboarding() {
-    const labels = { A1: "Débutant", A2: "Élémentaire", B1: "Intermédiaire", B2: "Avancé", C1: "Autonome", C2: "Maîtrise" };
+    const labels = NIVEAU_LABELS;
     const frag = document.createDocumentFragment();
 
     const hero = el("section", "section onboarding");
     hero.innerHTML =
       '<div class="coach-avatar">🧑‍🏫</div>' +
-      "<h1>Willkommen! Ich bin dein Coach.</h1>" +
+      '<p class="coach-nom">Coach Zika</p>' +
+      "<h1>Hallo, ich bin Zika — dein Deutsch-Coach!</h1>" +
       '<p class="onboarding-intro">Pour te proposer les bonnes leçons, dis-moi où tu en es en allemand. ' +
-      "Choisis ton niveau — ou laisse-moi l'évaluer avec un petit test (grammaire, écoute et écrit, comme à l'examen).</p>";
+      "Choisis ton niveau — ou laisse Zika l'évaluer avec un petit test (grammaire, écoute, écrit et oral, comme à l'examen).</p>";
     frag.appendChild(hero);
 
     const testSec = el("section", "section");
     const testCard = el("div", "examen-final unlocked");
-    testCard.innerHTML = '<div class="examen-ic">🎯</div><h2>Tester mon niveau</h2>' +
-      "<p>Le coach te pose des questions à partir de A1 et monte tant que tu réussis ; dès que ça devient difficile, il détermine ton niveau actuel.</p>";
+    testCard.innerHTML = '<div class="examen-ic">🎯</div><h2>Tester mon niveau avec Zika</h2>' +
+      "<p>Zika te pose des questions à partir de A1 et monte tant que tu réussis ; dès que ça devient difficile, il détermine ton niveau actuel.</p>";
     const testBtn = el("a", "btn btn-primary big", "🎯 Évaluer mon niveau");
     testBtn.href = "#/placement";
     testCard.appendChild(testBtn);
@@ -11938,7 +11969,7 @@ window.Exercises = (function () {
     const head = el("header", "test-head");
     head.style.setProperty("--mod-color", "#0d9488");
     head.innerHTML = '<div class="lesson-num">Étape ' + (state.i + 1) + " / " + blocks.length + "</div><h1>" + block.titre + "</h1>" +
-      "<p>Réponds du mieux possible. Le coach détermine ton niveau dès que cela devient trop difficile.</p>";
+      "<p>Réponds du mieux possible. Zika détermine ton niveau dès que cela devient trop difficile.</p>";
     frag.appendChild(head);
 
     const list = el("div", "test-list");
@@ -11990,12 +12021,12 @@ window.Exercises = (function () {
 
   function placementResultat(code) {
     placerAuNiveau(code);
-    const labels = { A1: "Débutant", A2: "Élémentaire", B1: "Intermédiaire", B2: "Avancé", C1: "Autonome", C2: "Maîtrise" };
+    const labels = NIVEAU_LABELS;
     const frag = document.createDocumentFragment();
     const sec = el("section", "section");
     const card = el("div", "examen-final unlocked reussi");
     card.innerHTML = '<div class="examen-ic">🎓</div><h2>Ton niveau : ' + code + " — " + (labels[code] || "") + "</h2>" +
-      "<p>D'après tes réponses (grammaire, écoute et écrit), le coach te place au <strong>niveau " + code + "</strong>. " +
+      "<p>D'après tes réponses (grammaire, écoute, écrit et oral), Zika te place au <strong>niveau " + code + "</strong>. " +
       "Tu commences ici ; les niveaux précédents restent débloqués si tu veux les revoir.</p>";
     const go = el("a", "btn btn-primary big", "🚀 Commencer au niveau " + code);
     go.href = prochaineEtape();

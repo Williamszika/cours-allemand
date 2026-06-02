@@ -69,6 +69,7 @@
   /* Placement : ouvre le parcours jusqu'au niveau choisi/déterminé, en
      marquant les niveaux antérieurs comme acquis (leçons + examens-verrous). */
   const ORDRE_NIVEAUX = ["A1", "A2", "B1", "B2", "C1", "C2"];
+  const NIVEAU_LABELS = { A1: "Débutant", A2: "Élémentaire", B1: "Intermédiaire", B2: "Avancé", C1: "Autonome", C2: "Maîtrise" };
   const EXAMENS_AVANT = {
     A1: [], A2: ["a1"], B1: ["a1", "a2", "final"], B2: ["a1", "a2", "final", "b1"],
     C1: ["a1", "a2", "final", "b1", "b2", "finalb"], C2: ["a1", "a2", "final", "b1", "b2", "finalb", "c1"]
@@ -122,9 +123,14 @@
     const frag = document.createDocumentFragment();
 
     /* --- Hero --- */
+    const niveauActuel = window.Progress.getNiveau();
+    const badge = niveauActuel
+      ? '<div class="niveau-actuel">🎯 Ton niveau actuel : <strong>' + niveauActuel + "</strong> <span>" + (NIVEAU_LABELS[niveauActuel] || "") + '</span><a class="niveau-actuel-link" href="#/start">↺ changer</a></div>'
+      : "";
     const hero = el("header", "hero");
     hero.innerHTML =
       '<div class="hero-flag" aria-hidden="true"><span></span><span></span><span></span></div>' +
+      badge +
       '<p class="hero-eyebrow">' + COURS.cadre + "</p>" +
       "<h1>" + COURS.titre + "</h1>" +
       '<p class="hero-slogan">' + COURS.slogan + "</p>" +
@@ -1087,21 +1093,22 @@
      ACCUEIL DU COACH — choix / test de niveau
      ==================================================================== */
   function renderOnboarding() {
-    const labels = { A1: "Débutant", A2: "Élémentaire", B1: "Intermédiaire", B2: "Avancé", C1: "Autonome", C2: "Maîtrise" };
+    const labels = NIVEAU_LABELS;
     const frag = document.createDocumentFragment();
 
     const hero = el("section", "section onboarding");
     hero.innerHTML =
       '<div class="coach-avatar">🧑‍🏫</div>' +
-      "<h1>Willkommen! Ich bin dein Coach.</h1>" +
+      '<p class="coach-nom">Coach Zika</p>' +
+      "<h1>Hallo, ich bin Zika — dein Deutsch-Coach!</h1>" +
       '<p class="onboarding-intro">Pour te proposer les bonnes leçons, dis-moi où tu en es en allemand. ' +
-      "Choisis ton niveau — ou laisse-moi l'évaluer avec un petit test (grammaire, écoute et écrit, comme à l'examen).</p>";
+      "Choisis ton niveau — ou laisse Zika l'évaluer avec un petit test (grammaire, écoute, écrit et oral, comme à l'examen).</p>";
     frag.appendChild(hero);
 
     const testSec = el("section", "section");
     const testCard = el("div", "examen-final unlocked");
-    testCard.innerHTML = '<div class="examen-ic">🎯</div><h2>Tester mon niveau</h2>' +
-      "<p>Le coach te pose des questions à partir de A1 et monte tant que tu réussis ; dès que ça devient difficile, il détermine ton niveau actuel.</p>";
+    testCard.innerHTML = '<div class="examen-ic">🎯</div><h2>Tester mon niveau avec Zika</h2>' +
+      "<p>Zika te pose des questions à partir de A1 et monte tant que tu réussis ; dès que ça devient difficile, il détermine ton niveau actuel.</p>";
     const testBtn = el("a", "btn btn-primary big", "🎯 Évaluer mon niveau");
     testBtn.href = "#/placement";
     testCard.appendChild(testBtn);
@@ -1142,7 +1149,7 @@
     const head = el("header", "test-head");
     head.style.setProperty("--mod-color", "#0d9488");
     head.innerHTML = '<div class="lesson-num">Étape ' + (state.i + 1) + " / " + blocks.length + "</div><h1>" + block.titre + "</h1>" +
-      "<p>Réponds du mieux possible. Le coach détermine ton niveau dès que cela devient trop difficile.</p>";
+      "<p>Réponds du mieux possible. Zika détermine ton niveau dès que cela devient trop difficile.</p>";
     frag.appendChild(head);
 
     const list = el("div", "test-list");
@@ -1194,12 +1201,12 @@
 
   function placementResultat(code) {
     placerAuNiveau(code);
-    const labels = { A1: "Débutant", A2: "Élémentaire", B1: "Intermédiaire", B2: "Avancé", C1: "Autonome", C2: "Maîtrise" };
+    const labels = NIVEAU_LABELS;
     const frag = document.createDocumentFragment();
     const sec = el("section", "section");
     const card = el("div", "examen-final unlocked reussi");
     card.innerHTML = '<div class="examen-ic">🎓</div><h2>Ton niveau : ' + code + " — " + (labels[code] || "") + "</h2>" +
-      "<p>D'après tes réponses (grammaire, écoute et écrit), le coach te place au <strong>niveau " + code + "</strong>. " +
+      "<p>D'après tes réponses (grammaire, écoute, écrit et oral), Zika te place au <strong>niveau " + code + "</strong>. " +
       "Tu commences ici ; les niveaux précédents restent débloqués si tu veux les revoir.</p>";
     const go = el("a", "btn btn-primary big", "🚀 Commencer au niveau " + code);
     go.href = prochaineEtape();
