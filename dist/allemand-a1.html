@@ -932,6 +932,13 @@ html.can-install .install-btn { display: inline-flex; }
 .menu-hero .coach-avatar { font-size: 2.4rem; }
 .menu-hero h1 { font-size: 1.5rem; margin: 8px 0 6px; }
 .menu-sub { color: var(--muted); margin: 0; }
+.menu-langbar { display: flex; align-items: center; gap: 14px; margin: 16px 0 2px; padding: 14px 16px; background: var(--blue-light); border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; color: var(--ink); transition: border-color .15s, transform .12s; }
+.menu-langbar:hover { border-color: var(--blue); transform: translateY(-2px); }
+.menu-langbar-ic { font-size: 1.6rem; flex: 0 0 auto; }
+.menu-langbar-txt { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.menu-langbar-txt strong { font-size: 1rem; }
+.menu-langbar-txt span { color: var(--muted); font-size: .84rem; margin-top: 2px; }
+[data-tg-scheme="dark"] .menu-langbar { background: #15263f; }
 .menu-grid { display: grid; gap: 14px; margin-top: 18px; }
 .menu-card {
   display: flex; align-items: center; gap: 16px;
@@ -20622,7 +20629,7 @@ window.Exercises = (function () {
      réussi. Affiche le programme A2 → C2 (le contenu interactif des
      leçons sera ajouté ensuite). Données : window.PFLEGE (data/pflege.js).
      ==================================================================== */
-  function pflegeDebloque() { return examPasse("a2") || examPasse("final"); }
+  function pflegeDebloque() { return examPasse("final"); }
   function renderPflege() {
     const P = window.PFLEGE;
     const frag = document.createDocumentFragment();
@@ -20637,11 +20644,11 @@ window.Exercises = (function () {
       const lock = el("section", "lesson-section locked-notice");
       lock.innerHTML =
         '<div class="comp-emoji">🔒</div><h2>Cours réservé</h2>' +
-        "<p>Le parcours <strong>« Allemand pour les soignants »</strong> démarre au niveau A2. " +
-        "Réussis d'abord l'<strong>examen A2</strong> du cours d'allemand pour y accéder.</p>";
-      const go = el("a", "btn btn-primary", "🎓 Passer l'examen A2"); go.href = "#/examen/a2";
+        "<p>Pour suivre les <strong>cours de soins infirmiers</strong>, tu dois d'abord faire le <strong>cours d'allemand général</strong> et réussir l'<strong>examen A1 + A2</strong>.</p>" +
+        "<p>Sans cet examen, ce parcours reste verrouillé.</p>";
+      const go = el("a", "btn btn-primary", "→ Continuer le cours d'allemand"); go.href = prochaineEtape();
       lock.appendChild(go);
-      const go2 = el("a", "btn btn-ghost small", "← Aller au cours d'allemand"); go2.href = "#/"; go2.style.marginTop = "10px";
+      const go2 = el("a", "btn btn-ghost small", "🏠 Menu"); go2.href = "#/menu"; go2.style.marginTop = "10px";
       lock.appendChild(go2);
       frag.appendChild(lock);
       app.innerHTML = ""; app.appendChild(frag);
@@ -21072,6 +21079,15 @@ window.Exercises = (function () {
       '<p class="menu-sub">Choisis une option pour commencer.</p>';
     frag.appendChild(hero);
 
+    // Barre langue bien visible : l'utilisateur peut (re)définir sa langue.
+    if (I) {
+      const li = I.info();
+      const langBar = el("a", "menu-langbar");
+      langBar.href = "#/langue";
+      langBar.innerHTML = '<span class="menu-langbar-ic">🌐</span><span class="menu-langbar-txt"><strong>Ta langue : ' + li.f + " " + li.n + "</strong><span>Le coach t'explique dans ta langue (niveaux A1 et A2) · changer</span></span><span class=\"menu-go\">→</span>";
+      frag.appendChild(langBar);
+    }
+
     // Les « apps » du menu (extensible — voir le commentaire ci-dessus).
     const APPS = [
       {
@@ -21108,7 +21124,7 @@ window.Exercises = (function () {
           "<small>" + r.faites + "/" + r.total + " · " + r.pourcent + "%</small>";
         body.appendChild(pr);
       }
-      if (a.verrou) body.appendChild(el("p", "menu-lockhint", "🔒 Réussis l'examen A2 pour débloquer"));
+      if (a.verrou) body.appendChild(el("p", "menu-lockhint", "🔒 Réussis l'examen A1 + A2 du cours général pour débloquer"));
       card.appendChild(body);
       if (a.actif) card.appendChild(el("span", "menu-go", a.verrou ? "🔒" : "→"));
       else card.appendChild(el("span", "menu-badge", "Bientôt disponible"));
