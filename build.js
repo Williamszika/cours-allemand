@@ -47,6 +47,7 @@ const scripts = [
   "data/cours.js",
   "data/illustrations.js",
   "data/placement.js",
+  "js/i18n.js",
   "js/speech.js",
   "js/progress.js",
   "js/revision.js",

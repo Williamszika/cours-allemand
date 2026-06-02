@@ -840,3 +840,41 @@ html.can-install .install-btn { display: inline-flex; }
   background: var(--ink); color: var(--bg); padding: 12px 18px; border-radius: 999px; font-size: 14px; font-weight: 600;
   box-shadow: var(--shadow-lg); opacity: 0; pointer-events: none; transition: .25s; z-index: 9999; max-width: 90vw; text-align: center; }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ===================== Multilingue & immersion ===================== */
+.lang-picker .section-title { margin-bottom: 6px; }
+.lang-cur { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 10px 0; font-size: 14.5px; }
+.lang-cur-lab { color: var(--muted, #64748b); }
+.lang-cur-val { font-weight: 700; }
+.lang-search { width: 100%; padding: 11px 14px; border: 1px solid var(--border, #e2e8f0); border-radius: 12px; font-size: 15px; margin: 8px 0 12px; background: var(--card, #fff); color: inherit; }
+.lang-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; max-height: 348px; overflow: auto; padding: 2px; }
+.lang-opt { display: flex; align-items: center; gap: 9px; padding: 11px 12px; border: 1.5px solid var(--border, #e2e8f0); border-radius: 12px; background: var(--card, #fff); cursor: pointer; font-size: 14.5px; text-align: left; color: inherit; transition: border-color .15s, transform .08s; }
+.lang-opt:hover { border-color: var(--blue, #2563eb); }
+.lang-opt:active { transform: scale(.98); }
+.lang-opt.on { border-color: var(--blue, #2563eb); background: #eef4ff; font-weight: 700; }
+[data-tg-scheme="dark"] .lang-opt.on { background: #11203f; }
+.lang-flag { font-size: 20px; line-height: 1; }
+.lang-name { flex: 1; }
+.lang-badge { color: #059669; font-weight: 800; }
+
+.immersion-banner { background: linear-gradient(135deg, #fff7ed, #fef3c7); border: 1px solid #fcd34d; border-radius: 12px; padding: 12px 14px; margin: 12px 0; font-size: 14px; line-height: 1.6; }
+[data-tg-scheme="dark"] .immersion-banner { background: #2a2410; border-color: #7c5e00; color: #fde68a; }
+
+.cours-article { background: var(--card, #fff); border: 1px solid var(--border, #eef0f4); border-radius: 14px; padding: 16px 18px; margin: 14px 0 18px; }
+.cours-art-titre { font-size: 16px; margin: 0 0 10px; color: var(--blue, #2563eb); }
+.cours-art-p { font-size: 15.5px; line-height: 1.78; margin: 0 0 13px; }
+.cours-art-p:last-child { margin-bottom: 0; }
+.cours-art-p strong { color: var(--blue, #2563eb); }
+.cours-art-p em, .cours-text em, .cours-tag-body em { font-style: italic; }
+.cours-tag-body { font-size: 14.5px; line-height: 1.65; }
+
+.xl-tag { display: inline-block; margin-left: 8px; font-size: 11px; color: var(--muted, #64748b); background: rgba(100, 116, 139, .12); border-radius: 6px; padding: 1px 7px; vertical-align: middle; }
+.xl-google { display: inline-block; margin-top: 6px; font-size: 12.5px; color: var(--blue, #2563eb); text-decoration: underline; }
+
+.dash-home { margin-left: auto; }
+.lesson-nav-3 { flex-wrap: wrap; }
+
+/* Sens d'écriture droite→gauche (arabe, persan, ourdou…) */
+[dir="rtl"] .lang-opt, [dir="rtl"] .cours-art-p, [dir="rtl"] .cours-tag-body, [dir="rtl"] .onboarding-intro { text-align: right; }
+[dir="rtl"] .cours-regle, [dir="rtl"] .cours-astuce, [dir="rtl"] .cours-attention, [dir="rtl"] .cours-exemples, [dir="rtl"] .zika-conseil { border-left: none; border-right: 5px solid var(--blue); }
+[dir="rtl"] .xl-tag { margin-left: 0; margin-right: 8px; }

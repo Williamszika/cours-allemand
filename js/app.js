@@ -119,20 +119,46 @@
   function mdLite(s) {
     let t = escapeHtml(s);
     t = t.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    t = t.replace(/\*([^*\n]+?)\*/g, "<em>$1</em>");
     t = t.replace(/«\s*([^»]+?)\s*»/g, '<span class="hl-de">«&nbsp;$1&nbsp;»</span>');
     return t;
   }
+  function stripMd(s) { return String(s).replace(/\*\*(.+?)\*\*/g, "$1").replace(/\*([^*\n]+?)\*/g, "$1"); }
+  /* Rend un texte (rédigé en français) dans la langue d'explication `ex`
+     (immersion : voir I18N.explication). fr → tel quel ; sinon traduction
+     automatique du navigateur si dispo, repli « Traduire avec Google ». */
+  function localizeInto(node, text, ex) {
+    node.innerHTML = mdLite(text);
+    if (!text || !window.I18N) return node;
+    const target = ex.lang;
+    if (target === "fr") return node;
+    node.classList.add("xl");
+    const plain = stripMd(text);
+    // Lien de repli « Traduire avec Google » toujours disponible…
+    const a = el("a", "xl-google", "🌐 " + window.I18N.t("translate_google"));
+    a.href = window.I18N.googleUrl(plain, target, "fr"); a.target = "_blank"; a.rel = "noopener";
+    node.appendChild(a);
+    // …remplacé par la traduction automatique du navigateur si elle aboutit.
+    window.I18N.translate(plain, target, "fr").then((out) => {
+      if (out && out !== plain) {
+        node.innerHTML = mdLite(out);
+        node.appendChild(el("span", "xl-tag", "🌐 " + window.I18N.t("auto_translated")));
+      }
+    });
+    return node;
+  }
+  function exLabel(ex, key, vars) { return ex && ex.de ? window.I18N.tIn("de", key, vars) : window.I18N.t(key, vars); }
   function vocDeHtml(de) {
     const m = String(de).match(/^(der|die|das)\s+(.+)$/);
     if (m) return '<span class="art art-' + m[1] + '">' + m[1] + '</span> <strong class="voc-nom">' + escapeHtml(m[2]) + "</strong>";
     return '<strong class="voc-nom">' + escapeHtml(de) + "</strong>";
   }
-  function buildExemples(arr) {
+  function buildExemples(arr, ex) {
     const box = el("div", "cours-exemples");
     const head = el("div", "cours-ex-head");
-    head.appendChild(el("span", "cours-tag", "✅ Exemples"));
+    head.appendChild(el("span", "cours-tag", "✅ " + exLabel(ex, "examples")));
     if (window.Speech && window.Speech.isSupported()) {
-      const playAll = el("button", "btn-audio small", "🔊 Tout écouter");
+      const playAll = el("button", "btn-audio small", "🔊 " + exLabel(ex, "listen_all"));
       playAll.type = "button";
       playAll.addEventListener("click", () => playSequence(arr.map((e) => e.de)));
       head.appendChild(playAll);
@@ -168,25 +194,34 @@
     (deriveExemples(g.tableau) || []).forEach((e) => { if (e && e.de && !seen[e.de]) { seen[e.de] = 1; out.push(e); } });
     return out.slice(0, 6);
   }
-  function renderGrammarBlock(g) {
+  function renderGrammarBlock(g, niveau) {
+    const ex = window.I18N ? window.I18N.explication(niveau || "A1") : { lang: "fr", de: false };
+    function callout(cls, icon, key, text) {
+      const box = el("div", cls);
+      box.appendChild(el("span", "cours-tag", icon + " " + exLabel(ex, key)));
+      const d = el("div", "cours-tag-body");
+      localizeInto(d, text, ex);
+      box.appendChild(d);
+      return box;
+    }
     const block = el("div", "gram-block cours-block");
     block.appendChild(el("h3", "cours-titre", g.titre + (g.titreDE ? " · " + g.titreDE : "")));
     if (g.regle) {
-      const r = el("div", "cours-regle"); r.innerHTML = '<span class="cours-tag">📘 La règle</span><div>' + mdLite(g.regle) + "</div>"; block.appendChild(r);
-      if (g.intro) { const p = el("p", "cours-text"); p.innerHTML = mdLite(g.intro); block.appendChild(p); }
+      block.appendChild(callout("cours-regle", "📘", "the_rule", g.regle));
+      if (g.intro) { const p = el("p", "cours-text"); localizeInto(p, g.intro, ex); block.appendChild(p); }
     } else if (g.intro && g.tableau) {
       // bloc de grammaire d'une leçon thématique (sans « regle ») : on met l'explication en avant
-      const r = el("div", "cours-regle"); r.innerHTML = '<span class="cours-tag">📘 L\'essentiel</span><div>' + mdLite(g.intro) + "</div>"; block.appendChild(r);
+      block.appendChild(callout("cours-regle", "📘", "the_essential", g.intro));
     } else if (g.intro) {
-      const p = el("p", "cours-text"); p.innerHTML = mdLite(g.intro); block.appendChild(p);
+      const p = el("p", "cours-text"); localizeInto(p, g.intro, ex); block.appendChild(p);
     }
-    if (g.points && g.points.length) { const ul = el("ul", "cours-points"); g.points.forEach((pt) => { const li = el("li", ""); li.innerHTML = mdLite(pt); ul.appendChild(li); }); block.appendChild(ul); }
+    if (g.points && g.points.length) { const ul = el("ul", "cours-points"); g.points.forEach((pt) => { const li = el("li", ""); localizeInto(li, pt, ex); ul.appendChild(li); }); block.appendChild(ul); }
     if (g.tableau) block.appendChild(buildTable(g.tableau));
     if (g.schemas) block.appendChild(buildSchemas(g.schemas));
     const exs = mergeExemples(g);
-    if (exs && exs.length) block.appendChild(buildExemples(exs));
-    if (g.note) { const n = el("div", "cours-astuce"); n.innerHTML = '<span class="cours-tag">💡 Bon à savoir</span><div>' + mdLite(g.note) + "</div>"; block.appendChild(n); }
-    if (g.attention) { const a = el("div", "cours-attention"); a.innerHTML = '<span class="cours-tag">⚠️ Attention</span><div>' + mdLite(g.attention) + "</div>"; block.appendChild(a); }
+    if (exs && exs.length) block.appendChild(buildExemples(exs, ex));
+    if (g.note) block.appendChild(callout("cours-astuce", "💡", "good_to_know", g.note));
+    if (g.attention) block.appendChild(callout("cours-attention", "⚠️", "attention", g.attention));
     return block;
   }
 
@@ -629,11 +664,25 @@
     }
 
     /* --- Grammaire (cours pédagogique) --- */
+    const gEx = window.I18N ? window.I18N.explication(l.niveau) : { lang: "fr", de: false, niveau: null };
     const gram = el("section", "lesson-section cours");
     gram.id = "gram";
-    gram.appendChild(el("h2", "", "📐 Cours de grammaire"));
+    gram.appendChild(el("h2", "", "📐 " + exLabel(gEx, "course")));
     gram.appendChild(el("p", "exo-group-sub", "Lis l'explication et observe les exemples colorés avant de passer aux exercices."));
-    l.grammaire.forEach((g) => gram.appendChild(renderGrammarBlock(g)));
+    /* Immersion : à partir de B1, Zika explique en allemand du niveau précédent */
+    if (gEx.de && window.I18N) {
+      const imm = el("div", "immersion-banner");
+      imm.innerHTML = "🇩🇪 <strong>" + window.I18N.tIn("de", "immersion_on") + "</strong> — " + window.I18N.t("immersion_notice", { lvl: gEx.niveau });
+      gram.appendChild(imm);
+    }
+    /* Cours long-format (texte détaillé) : nouvelle pédagogie « vrai cours » */
+    if (l.cours && l.cours.length) {
+      const art = el("article", "cours-article");
+      art.appendChild(el("h3", "cours-art-titre", "📖 " + exLabel(gEx, "course")));
+      l.cours.forEach((p) => { const pe = el("p", "cours-art-p"); localizeInto(pe, p, gEx); art.appendChild(pe); });
+      gram.appendChild(art);
+    }
+    l.grammaire.forEach((g) => gram.appendChild(renderGrammarBlock(g, l.niveau)));
     frag.appendChild(gram);
 
     /* --- Dialogue (absent pour les leçons de grammaire) --- */
@@ -933,7 +982,7 @@
   function renderDashboard() {
     const frag = document.createDocumentFragment();
     const top = el("div", "lesson-top");
-    top.innerHTML = '<a class="btn-link" href="#/">← Aperçu du programme</a><span class="lesson-top-mod">📊 Mes statistiques</span>';
+    top.innerHTML = '<a class="btn-link" href="#/">← Aperçu du programme</a><span class="lesson-top-mod">📊 Mes statistiques</span><a class="btn btn-ghost small dash-home" href="#/">🏠 Accueil</a>';
     frag.appendChild(top);
 
     const res = window.Progress.resumeGlobal(COURS);
@@ -1157,6 +1206,18 @@
     objCtrl.appendChild(objInput);
     objRow.appendChild(objCtrl);
     secR.appendChild(objRow);
+    if (window.I18N) {
+      const langRow = el("div", "setting-row");
+      langRow.appendChild(el("span", "setting-label", "🌐 " + window.I18N.t("language")));
+      const langCtrl = el("div", "setting-ctrl");
+      const li = window.I18N.info();
+      const langBtn = el("button", "btn btn-ghost small", li.f + " " + li.n);
+      langBtn.type = "button";
+      langBtn.addEventListener("click", () => { location.hash = "#/langue"; });
+      langCtrl.appendChild(langBtn);
+      langRow.appendChild(langCtrl);
+      secR.appendChild(langRow);
+    }
     const themeRow = el("div", "setting-row");
     themeRow.appendChild(el("span", "setting-label", "🎨 Thème de l'application"));
     const themeSel = el("button", "btn btn-ghost small", Theme.label());
@@ -1186,7 +1247,10 @@
       : "Les notifications ne sont pas disponibles sur ce navigateur."));
     frag.appendChild(secR);
 
-    const nav = el("div", "lesson-nav");
+    const nav = el("div", "lesson-nav lesson-nav-3");
+    const aHome = el("a", "btn btn-ghost", "🏠 Accueil");
+    aHome.href = "#/";
+    nav.appendChild(aHome);
     const a1 = el("a", "btn btn-ghost", "🔁 Réviser le vocabulaire");
     a1.href = "#/revision";
     nav.appendChild(a1);
@@ -1437,11 +1501,76 @@
   }
 
   /* ====================================================================
+     SÉLECTEUR DE LANGUE (multilingue + immersion)
+     ==================================================================== */
+  function buildLanguagePicker(opts) {
+    opts = opts || {};
+    const I = window.I18N;
+    const wrap = el("section", "section lang-picker");
+    wrap.appendChild(el("h2", "section-title", "🌐 " + I.t("choose_lang")));
+    wrap.appendChild(el("p", "onboarding-intro", I.t("choose_lang_sub")));
+    const curRow = el("div", "lang-cur");
+    const ci = I.info(I.lang());
+    curRow.innerHTML = '<span class="lang-cur-lab">' + I.t("detected") + ' :</span> <span class="lang-cur-val">' + ci.f + " " + ci.n + "</span>";
+    const geoBtn = el("button", "btn btn-ghost small", I.t("use_location"));
+    geoBtn.type = "button";
+    geoBtn.addEventListener("click", () => {
+      geoBtn.disabled = true; geoBtn.textContent = I.t("locating");
+      I.detectGeo((code) => pick(code));
+    });
+    curRow.appendChild(geoBtn);
+    wrap.appendChild(curRow);
+    const search = el("input", "lang-search");
+    search.type = "search"; search.setAttribute("placeholder", I.t("search_lang"));
+    wrap.appendChild(search);
+    const grid = el("div", "lang-grid");
+    function renderGrid(q) {
+      grid.innerHTML = "";
+      q = (q || "").toLowerCase().trim();
+      I.all().forEach((l) => {
+        if (q && l.n.toLowerCase().indexOf(q) < 0 && l.c.indexOf(q) < 0) return;
+        const b = el("button", "lang-opt" + (l.c === I.lang() ? " on" : ""));
+        b.type = "button";
+        b.innerHTML = '<span class="lang-flag">' + l.f + '</span><span class="lang-name">' + l.n + "</span>" + (l.curated ? '<span class="lang-badge" title="Interface soignée">✓</span>' : "");
+        b.addEventListener("click", () => pick(l.c));
+        grid.appendChild(b);
+      });
+    }
+    search.addEventListener("input", () => renderGrid(search.value));
+    renderGrid("");
+    wrap.appendChild(grid);
+    function pick(code) { I.setLang(code); if (opts.onPick) opts.onPick(code); else route(); }
+    return wrap;
+  }
+
+  function renderLanguagePage() {
+    const I = window.I18N;
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/">← Accueil</a><span class="lesson-top-mod">🌐 ' + (I ? I.t("language") : "Langue") + "</span>";
+    frag.appendChild(top);
+    if (I) frag.appendChild(buildLanguagePicker({ onPick: () => renderLanguagePage() }));
+    const nav = el("div", "lesson-nav");
+    nav.appendChild(el("span", ""));
+    const cont = el("a", "btn btn-primary", (I ? I.t("continue") : "Continuer") + " →");
+    cont.href = "#/";
+    nav.appendChild(cont);
+    frag.appendChild(nav);
+    app.innerHTML = "";
+    app.appendChild(frag);
+    if (window.TG) { window.TG.showBackButton(() => { location.hash = "#/"; }); window.TG.hideMainButton(); }
+    window.scrollTo(0, 0);
+  }
+
+  /* ====================================================================
      ACCUEIL DU COACH — choix / test de niveau
      ==================================================================== */
   function renderOnboarding() {
     const labels = NIVEAU_LABELS;
     const frag = document.createDocumentFragment();
+
+    /* D'abord : quelle langue parles-tu ? (cours A1/A2 dans cette langue) */
+    if (window.I18N) frag.appendChild(buildLanguagePicker({ onPick: () => renderOnboarding() }));
 
     const salutDE = "Hallo! Ich bin Zika, dein Deutsch-Coach. Lass uns gemeinsam dein Niveau finden!";
     const hero = el("section", "section onboarding");
@@ -1786,6 +1915,7 @@
     else if ((m = hash.match(/^#\/examen\/(a1|a2|finalb|finalc|final|b1|b2|c1|c2)/))) renderTest(m[1]);
     else if (hash.match(/^#\/examen/)) renderTest("a1");
     else if (hash.match(/^#\/revision/)) renderRevision();
+    else if (hash.match(/^#\/langue/)) renderLanguagePage();
     else if (hash.match(/^#\/stats/)) renderDashboard();
     else if (besoinOnboarding()) renderOnboarding();
     else renderHome();
@@ -1804,6 +1934,7 @@
   function boot() {
     if (window.TG) window.TG.init();
     Theme.apply(); // applique le thème choisi (après l'init Telegram)
+    if (window.I18N) window.I18N.applyDir(); // sens d'écriture (RTL) + lang du document
     route(); // rendu immédiat avec les données locales
     // Fusion avec la progression cloud (Telegram) puis re-rendu si besoin
     if (window.Sync) window.Sync.load(function (changed) { if (changed) route(); });
