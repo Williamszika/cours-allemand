@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Tuteur d'allemand</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="/data/sujets-parole.js"></script>
 <style>
 :root{--bg:#0f1115;--card:#1a1d24;--me:#2563eb;--bot:#262a33;--tx:#e8eaed;--mut:#9aa0aa;--bd:#2c303a}
 *{box-sizing:border-box}
@@ -77,6 +78,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
     return order[Math.max(di,byExam,0)];
   }
   function langueAuto(){var p=prog(); return (p.reglages&&p.reglages.langue)||(navigator.language||"fr").slice(0,2);}
+  function pickSujet(niv){try{var S=window.SUJETS_PAROLE;var o=["A1","A2","B1","B2","C1","C2"];var i=o.indexOf(niv);if(i<0)i=0;if(S){for(var k=i;k>=0;k--){var a=S[o[k]];if(a&&a.length)return a[Math.floor(Math.random()*a.length)];}}return "parle un peu de toi et de ta journee";}catch(e){return "parle un peu de toi";}}
 
   var NIV=niveauAuto(), LG=langueAuto();
   if(!NIV){
@@ -156,7 +158,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
   }
   mic.onclick=toggleMic;
   mode.onchange=function(){ var mv=mode.value;
-    if(mv==='expression'){ if(!A1A2){ bubble('assistant','🔒 L\'entrainement a l\'expression se debloque apres l\'examen A1 + A2. Termine-les dans le cours general, puis reviens !'); mode.value='general'; return; } sendUser("Je veux m'entrainer a parler et gagner en confiance. Commence par un petit defi tres facile a mon niveau, puis monte progressivement.",true); }
+    if(mv==='expression'){ if(!A1A2){ bubble('assistant','🔒 L\'entrainement a l\'expression se debloque apres l\'examen A1 + A2. Termine-les dans le cours general, puis reviens !'); mode.value='general'; return; } var suj=pickSujet(NIV); sendUser("Entrainons mon expression orale. Fais-moi parler sur: « "+suj+" ». Commence facile a mon niveau, puis monte progressivement.",true); }
     else if(mv==='grammaire'){ sendUser("Je veux travailler la grammaire. Propose-moi un point adapte a mon niveau (ou demande-moi lequel) et commence le drill.",false); }
   };
   txt.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();ask();}});
