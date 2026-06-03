@@ -44,6 +44,8 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
       <option value="general" selected>Général</option>
       <option value="pflege">Pflege (soins)</option>
       <option value="prononciation">🗣️ Prononciation</option>
+      <option value="grammaire">📝 Grammaire</option>
+      <option value="expression">🎤 Prise de parole</option>
     </select>
   </div>
 </header>
@@ -152,7 +154,11 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
     }catch(e){ bubble('assistant','🎤 Micro refuse ou indisponible. Autorise le micro pour parler.'); }
   }
   mic.onclick=toggleMic;
-  mode.onchange=function(){ if(mode.value==='prononciation'){ sendUser("Donne-moi une premiere phrase courte a lire a voix haute pour travailler ma prononciation.",true); } };
+  mode.onchange=function(){ var mv=mode.value;
+    if(mv==='prononciation'){ sendUser("Donne-moi une premiere phrase courte a lire a voix haute pour travailler ma prononciation.",true); }
+    else if(mv==='grammaire'){ sendUser("Je veux travailler la grammaire. Propose-moi un point adapte a mon niveau (ou demande-moi lequel) et commence le drill.",false); }
+    else if(mv==='expression'){ sendUser("Je veux m'entrainer a parler et gagner en confiance. Commence par un petit defi tres facile, puis monte progressivement.",true); }
+  };
   txt.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();ask();}});
   txt.addEventListener('input',function(){txt.style.height='auto';txt.style.height=Math.min(txt.scrollHeight,120)+'px';});
   bubble('assistant',"Hallo! Ich bin dein Deutsch-Tutor. 🇩🇪 (Niveau "+NIV+")\nÉcris-moi, ou appuie sur 🎤 pour PARLER : je t'écoute, je te corrige et je t'aide à t'exprimer sans stress. Los geht's!");
