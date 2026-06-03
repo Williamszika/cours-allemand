@@ -1600,6 +1600,32 @@
   /* ====================================================================
      TEST DE FIN DE MODULE (noté)
      ==================================================================== */
+  function pickExamCoverage(poolE, N, niveaux) {
+    var sh = window.Exercises.shuffle;
+    var allEx = poolE.map(function (p) { return p.ex; });
+    if (!window.COMPETENCES || !poolE.length) return sh(allEx).slice(0, N);
+    var byComp = {};
+    poolE.forEach(function (p) { (p.comps || []).forEach(function (c) { (byComp[c] = byComp[c] || []).push(p.ex); }); });
+    var comps = Object.keys(byComp);
+    if (!comps.length) return sh(allEx).slice(0, N);
+    comps.sort(function (a, b) {
+      var pa = niveaux.indexOf(window.COMPETENCES.niveau(a)) >= 0 ? 0 : 1;
+      var pb = niveaux.indexOf(window.COMPETENCES.niveau(b)) >= 0 ? 0 : 1;
+      if (pa !== pb) return pa - pb;
+      return byComp[b].length - byComp[a].length;
+    });
+    var quota = Math.min(comps.length, Math.floor(N / 2));
+    var chosen = [], used = [];
+    function isUsed(ex) { return used.indexOf(ex) >= 0; }
+    for (var i = 0; i < comps.length && chosen.length < quota; i++) {
+      var cand = sh(byComp[comps[i]]);
+      for (var k = 0; k < cand.length; k++) { if (!isUsed(cand[k])) { chosen.push(cand[k]); used.push(cand[k]); break; } }
+    }
+    var rest = sh(allEx);
+    for (var j = 0; j < rest.length && chosen.length < N; j++) { if (!isUsed(rest[j])) { chosen.push(rest[j]); used.push(rest[j]); } }
+    return sh(chosen).slice(0, N);
+  }
+
   function renderTest(key) {
     // key ∈ a1 | a2 | final | b1 | b2 | finalb | c1 | c2 | finalc — examens du parcours
     const POOLS = { a1: ["A1"], a2: ["A2"], final: ["A1", "A2"], b1: ["B1"], b2: ["B2"], finalb: ["B1", "B2"], c1: ["C1"], c2: ["C2"], finalc: ["C1", "C2"] };
@@ -1623,10 +1649,10 @@
     const titre = TITRE[key];
     const couleur = COULEUR[key];
 
-    const pool = [];
-    lecons.forEach((l) => l.exercices.forEach((ex) => { if (window.Exercises.GRADABLE.indexOf(ex.type) >= 0) pool.push(ex); }));
-    const N = Math.min(key === "a1" || key === "a2" ? 20 : key === "b1" ? 25 : 30, pool.length);
-    const chosen = window.Exercises.shuffle(pool).slice(0, N);
+    const poolE = [];
+    lecons.forEach((l) => { const comps = ((window.COMPETENCES && (l.competences && l.competences.length ? l.competences : window.COMPETENCES.of(l.id))) || []).filter((c) => c !== "lexique" && c !== "gram_divers"); l.exercices.forEach((ex) => { if (window.Exercises.GRADABLE.indexOf(ex.type) >= 0) poolE.push({ ex: ex, comps: comps }); }); });
+    const N = Math.min(key === "a1" || key === "a2" ? 20 : key === "b1" ? 25 : 30, poolE.length);
+    const chosen = pickExamCoverage(poolE, N, niveaux);
 
     const frag = document.createDocumentFragment();
     const top = el("div", "lesson-top");
