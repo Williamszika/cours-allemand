@@ -64,39 +64,40 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
 <script>
 (function(){
   var tg=window.Telegram&&window.Telegram.WebApp; if(tg){try{tg.ready();tg.expand();}catch(e){}}
+  var INITDATA=(tg&&tg.initData)?tg.initData:null;
   var PKEY="cours-allemand-a1-progress-v1";
+  var ORDER=["A1","A2","B1","B2","C1","C2"];
   function prog(){try{return JSON.parse(localStorage.getItem(PKEY))||{};}catch(e){return {};}}
   function passe(p,id){return !!(p.tests&&p.tests[id]&&p.tests[id].reussi);}
-  function niveauAuto(){
-    var p=prog();
-    var order=["A1","A2","B1","B2","C1","C2"], byExam=0;
+  function niveauAuto(p){
+    p=p||prog();
+    var byExam=0;
     if(passe(p,"a1"))byExam=1; if(passe(p,"final"))byExam=2; if(passe(p,"b1"))byExam=3;
     if(passe(p,"finalb"))byExam=4; if(passe(p,"c1"))byExam=5;
     var nbLecons=p.lecons?Object.keys(p.lecons).length:0;
     if(!p.niveau && byExam===0 && nbLecons===0) return null;
-    var di=p.niveau?order.indexOf(p.niveau):-1;
-    return order[Math.max(di,byExam,0)];
+    var di=p.niveau?ORDER.indexOf(p.niveau):-1;
+    return ORDER[Math.max(di,byExam,0)];
   }
-  function langueAuto(){var p=prog(); return (p.reglages&&p.reglages.langue)||(navigator.language||"fr").slice(0,2);}
-  function pickSujet(niv){try{var S=window.SUJETS_PAROLE;var o=["A1","A2","B1","B2","C1","C2"];var i=o.indexOf(niv);if(i<0)i=0;if(S){for(var k=i;k>=0;k--){var a=S[o[k]];if(a&&a.length)return a[Math.floor(Math.random()*a.length)];}}return "parle un peu de toi et de ta journee";}catch(e){return "parle un peu de toi";}}
-
-  var NIV=niveauAuto(), LG=langueAuto();
-  if(!NIV){
-    document.getElementById('gate').style.display='flex';
-    document.getElementById('log').style.display='none';
-    document.getElementById('foot').style.display='none';
-    document.getElementById('bar').style.display='none';
-    return;
+  function langueAuto(p){p=p||prog(); return (p.reglages&&p.reglages.langue)||(navigator.language||"fr").slice(0,2);}
+  function pickSujet(niv){try{var S=window.SUJETS_PAROLE;var o=ORDER;var i=o.indexOf(niv);if(i<0)i=0;if(S){for(var k=i;k>=0;k--){var a=S[o[k]];if(a&&a.length)return a[Math.floor(Math.random()*a.length)];}}return "parle un peu de toi et de ta journee";}catch(e){return "parle un peu de toi";}}
+  // Fusionne la progression locale et celle du serveur (pour detecter le niveau meme sur un nouvel appareil).
+  function mergeP(local,server){
+    if(!server) return local||{};
+    local=local||{};
+    var out={};
+    var i=Math.max(ORDER.indexOf(local.niveau),ORDER.indexOf(server.niveau));
+    out.niveau=i>=0?ORDER[i]:(server.niveau||local.niveau||null);
+    out.tests={}; var lt=local.tests||{},st=server.tests||{};
+    Object.keys(lt).concat(Object.keys(st)).forEach(function(k){out.tests[k]={reussi:!!((lt[k]&&lt[k].reussi)||(st[k]&&st[k].reussi))};});
+    out.lecons=Object.assign({},local.lecons||{},server.lecons||{});
+    out.reglages=Object.assign({},local.reglages||{},server.reglages||{});
+    return out;
   }
-  var ORDER=["A1","A2","B1","B2","C1","C2"];
-  var pi=ORDER.indexOf(NIV); if(pi<0)pi=0;
-  var NIVPARLE=ORDER[pi>=2?pi-1:pi];
-  document.getElementById('niv').textContent='Niveau : '+NIV+(NIVPARLE!==NIV?' · le tuteur parle '+NIVPARLE:' · auto');
 
   var log=document.getElementById('log'),txt=document.getElementById('txt'),send=document.getElementById('send'),mode=document.getElementById('mode'),mic=document.getElementById('mic');
-  var A1A2=(function(){var p=prog(); return (passe(p,"a1")&&passe(p,"a2"))||passe(p,"final");})();
-  var exOpt=mode.querySelector('option[value="expression"]'); if(exOpt&&!A1A2) exOpt.textContent="🎤 Expression 🔒";
-  var history=[],audio;
+  var history=[],audio,NIV,LG,NIVPARLE,A1A2=false;
+
   function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
   function speak(t){
     try{if(audio)audio.pause();}catch(e){}
@@ -117,7 +118,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
     var typing=document.createElement('div'); typing.className='msg bot typing'; typing.textContent='…';
     log.appendChild(typing); log.scrollTop=log.scrollHeight;
     try{
-      var res=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({messages:history,niveau:NIV,niveauParle:NIVPARLE,langue:LG,mode:mode.value,oral:!!oral,unclear:(unclear&&unclear.length)?unclear:undefined})});
+      var res=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({messages:history,niveau:NIV,niveauParle:NIVPARLE,langue:LG,mode:mode.value,oral:!!oral,unclear:(unclear&&unclear.length)?unclear:undefined,initData:INITDATA||undefined})});
       typing.remove();
       if(!res.ok){bubble('assistant','⚠️ Erreur '+res.status+'. Réessaie dans un instant.'); busy(false); return;}
       var j=await res.json(); var reply=j.reply||'(réponse vide)';
@@ -163,8 +164,44 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
   };
   txt.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();ask();}});
   txt.addEventListener('input',function(){txt.style.height='auto';txt.style.height=Math.min(txt.scrollHeight,120)+'px';});
-  bubble('assistant',"Hallo! Ich bin dein Deutsch-Tutor. 🇩🇪 (Niveau "+NIV+")\nÉcris-moi, ou appuie sur 🎤 pour PARLER : je t'écoute, je te corrige et je t'aide à t'exprimer sans stress. Los geht's!");
-  txt.focus();
+
+  function showGate(){
+    document.getElementById('gate').style.display='flex';
+    log.style.display='none'; document.getElementById('foot').style.display='none'; document.getElementById('bar').style.display='none';
+  }
+
+  // Demarre le tuteur avec la progression (locale + serveur) et la memoire de conversation.
+  function startTutor(serverProgress, conv, first){
+    var p=mergeP(prog(), serverProgress);
+    NIV=niveauAuto(p); LG=langueAuto(p);
+    if(!NIV){ showGate(); return; }
+    var pi=ORDER.indexOf(NIV); if(pi<0)pi=0;
+    NIVPARLE=ORDER[pi>=2?pi-1:pi];
+    document.getElementById('niv').textContent='Niveau : '+NIV+(NIVPARLE!==NIV?' · le tuteur parle '+NIVPARLE:' · auto');
+    A1A2=((passe(p,"a1")&&passe(p,"a2"))||passe(p,"final"));
+    var exOpt=mode.querySelector('option[value="expression"]'); if(exOpt&&!A1A2) exOpt.textContent="🎤 Expression 🔒";
+    var msgs=(conv&&conv.messages)?conv.messages:[];
+    if(msgs.length){
+      history=msgs.slice(-12).map(function(m){return {role:(m.role==='assistant'?'assistant':'user'),content:String(m.content||'')};});
+      msgs.slice(-6).forEach(function(m){ bubble(m.role==='assistant'?'assistant':'user', String(m.content||'')); });
+      bubble('assistant',"👋 Re-bonjour"+(first?" "+first:"")+" ! Content de te revoir. On reprend où on s'était arrêtés, ou dis-moi ce que tu veux travailler aujourd'hui. 🇩🇪");
+    } else {
+      bubble('assistant',"Hallo"+(first?" "+first:"")+"! Ich bin dein Deutsch-Tutor. 🇩🇪 (Niveau "+NIV+")\nÉcris-moi, ou appuie sur 🎤 pour PARLER : je t'écoute, je te corrige et je t'aide à t'exprimer sans stress. Los geht's!");
+    }
+    try{txt.focus();}catch(e){}
+  }
+
+  // On privilegie la memoire serveur (le tuteur se souvient) ; repli local si hors-ligne / hors Telegram.
+  if(INITDATA){
+    var done=false;
+    var to=setTimeout(function(){ if(done)return; done=true; startTutor(null,null,""); },2500);
+    fetch('/api/state',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({initData:INITDATA})})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(j){ if(done)return; done=true; clearTimeout(to); startTutor(j&&j.progress,j&&j.conv,(j&&j.first)||""); })
+      .catch(function(){ if(done)return; done=true; clearTimeout(to); startTutor(null,null,""); });
+  } else {
+    startTutor(null,null,"");
+  }
 })();
 </script>
 </body>
