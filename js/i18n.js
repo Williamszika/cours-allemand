@@ -293,7 +293,10 @@ window.I18N = (function () {
   var ORDRE = ["A1", "A2", "B1", "B2", "C1", "C2"];
   /* A1/A2 → langue de l'utilisateur ; B1→de(A2), B2→de(B1), C1→de(B2), C2→de(C1). */
   function niveauUser() { try { return (window.Progress && window.Progress.getNiveau && window.Progress.getNiveau()) || null; } catch (e) { return null; } }
-  function immersif() { var n = niveauUser(); return !!n && ORDRE.indexOf(String(n).toUpperCase()) >= ORDRE.indexOf("B1"); }
+  var IMM_CTX = null;
+  function setImmersionCtx(n) { IMM_CTX = n || null; }
+  function atLeastB1(x) { return !!x && ORDRE.indexOf(String(x).toUpperCase()) >= ORDRE.indexOf("B1"); }
+  function immersif() { return atLeastB1(niveauUser()) || atLeastB1(IMM_CTX); }
   function uiLang() { return immersif() ? "de" : lang(); }
   function explication(niveau) {
     var n = (niveau || "A1").toUpperCase();
@@ -405,7 +408,7 @@ window.I18N = (function () {
   return {
     LANGS: LANGS, all: all, lang: lang, setLang: setLang, isChosen: isChosen, info: info,
     isCurated: isCurated, isRTL: isRTL, detect: detect, detectGeo: detectGeo,
-    explication: explication, uiLang: uiLang, immersif: immersif, t: t, tIn: tIn, translate: translate, canAutoTranslate: canAutoTranslate,
+    explication: explication, uiLang: uiLang, immersif: immersif, setImmersionCtx: setImmersionCtx, t: t, tIn: tIn, translate: translate, canAutoTranslate: canAutoTranslate,
     googleUrl: googleUrl, applyDir: applyDir
   };
 })();

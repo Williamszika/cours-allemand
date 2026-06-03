@@ -702,6 +702,7 @@
     const idx = leconIndex(id);
     if (idx < 0) return renderHome();
     const { module: mod, lecon: l } = flat[idx];
+    if (window.I18N && window.I18N.setImmersionCtx) window.I18N.setImmersionCtx(l.niveau);
 
     /* Garde séquentielle : leçon verrouillée tant que la précédente n'est pas terminée */
     if (!isUnlocked(idx)) {
@@ -3144,6 +3145,7 @@
      ROUTAGE
      ==================================================================== */
   function route() {
+    if (window.I18N && window.I18N.setImmersionCtx) window.I18N.setImmersionCtx(null);
     const rawHash = location.hash;
     const hash = rawHash || "#/";
     let m;
