@@ -1130,6 +1130,63 @@
   /* ====================================================================
      TABLEAU DE BORD — statistiques par compétence
      ==================================================================== */
+  function profilCompetences() {
+    const K = window.COMPETENCES; if (!K || !window.Progress) return [];
+    const agg = {};
+    (flat || []).forEach(function (f) {
+      const lec = f.lecon; if (!lec) return;
+      const codesLec = (lec.competences && lec.competences.length) ? lec.competences : K.of(lec.id);
+      if (!codesLec || !codesLec.length) return;
+      const lp = window.Progress.getLecon(lec.id);
+      (lec.exercices || []).forEach(function (ex, i) {
+        if (!(lp.exercices && i in lp.exercices)) return;
+        const ok = !!lp.exercices[i];
+        var codes = K.forExercice(ex, lec.id); if (!codes || !codes.length) codes = codesLec;
+        codes.forEach(function (c) {
+          if (c === "lexique" || c === "gram_divers") return;
+          agg[c] = agg[c] || { seen: 0, ok: 0 };
+          agg[c].seen++; if (ok) agg[c].ok++;
+        });
+      });
+    });
+    return Object.keys(agg).map(function (c) {
+      const x = agg[c], info = K.info(c);
+      return { code: c, seen: x.seen, ok: x.ok, score: x.seen ? x.ok / x.seen : 0, label: info.label, cat: info.cat, niveau: info.niveau };
+    }).sort(function (p, q) { return p.score - q.score; });
+  }
+  function competencesSection() {
+    const prof = profilCompetences().filter(function (p) { return p.seen >= 1; });
+    if (!prof.length) return null;
+    const maitrisees = prof.filter(function (p) { return p.seen >= 3 && p.score >= 0.8; }).length;
+    const enCours = prof.filter(function (p) { return p.score >= 0.5 && p.score < 0.8; }).length;
+    const aRevoir = prof.filter(function (p) { return p.seen >= 2 && p.score < 0.5; });
+    const sec = el("section", "lesson-section");
+    sec.appendChild(el("h2", "", "🧩 Mes compétences"));
+    const row = el("div", "stats-row");
+    [["✅", maitrisees, "maîtrisées"], ["📈", enCours, "en cours"], ["⚠️", aRevoir.length, "à revoir"]].forEach(function (t) {
+      const c = el("div", "stat");
+      c.innerHTML = '<span class="stat-ic">' + t[0] + '</span><span class="stat-n">' + t[1] + '</span><span class="stat-l">' + t[2] + '</span>';
+      row.appendChild(c);
+    });
+    sec.appendChild(row);
+    const show = (aRevoir.length ? prof.filter(function (p) { return p.seen >= 2; }) : prof).slice(0, 8);
+    show.forEach(function (p) {
+      const pct = Math.round(p.score * 100);
+      const col = p.score >= 0.8 ? "#16a34a" : (p.score >= 0.5 ? "#d97706" : "#dc2626");
+      const line = el("div", "comp-line");
+      line.style.cssText = "display:flex;align-items:center;gap:8px;margin:6px 0;font-size:14px";
+      line.innerHTML = '<span style="flex:1">' + String(p.label).replace(/&/g, "&amp;") + ' <span style="opacity:.55;font-size:12px">(' + p.niveau + ')</span></span>' +
+        '<span style="flex:0 0 90px;height:8px;background:rgba(127,127,127,.2);border-radius:5px;overflow:hidden"><span style="display:block;height:100%;width:' + pct + '%;background:' + col + '"></span></span>' +
+        '<span style="flex:0 0 36px;text-align:right;font-weight:700">' + pct + '%</span>';
+      sec.appendChild(line);
+    });
+    sec.appendChild(el("p", "exo-group-sub", aRevoir.length ? "Travaille en priorité les compétences en rouge/orange." : "Continue : plus tu fais d'exercices, plus ton profil s'affine."));
+    const rev = el("a", "btn btn-ghost small", "🔁 Réviser");
+    rev.href = "#/revision"; rev.style.marginTop = "8px";
+    sec.appendChild(rev);
+    return sec;
+  }
+
   function renderDashboard() {
     const frag = document.createDocumentFragment();
     const top = el("div", "lesson-top");
@@ -1178,6 +1235,7 @@
     sec1.appendChild(el("h2", "", "🌍 Vue d'ensemble"));
     sec1.appendChild(cards);
     frag.appendChild(sec1);
+    var __cs = competencesSection(); if (__cs) frag.appendChild(__cs);
 
     // Temps d'étude (aujourd'hui / semaine / total + 7 derniers jours)
     const st = window.Progress.statsTemps();
