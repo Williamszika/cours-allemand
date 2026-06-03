@@ -4,7 +4,11 @@
    ===================================================================== */
 window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
   a2g01: {
-    id: "a2g01", titre: "Les verbes au prétérit", titreDE: "Das Präteritum", theme: "Grammaire", type: "grammaire", duree: 35,
+    id: "a2g01",
+    einstieg: {"intro":"Observe ces verbes au passé. Comment se forme le prétérit ?","exemples":[{"de":"Ich war gestern krank.","fr":"J'étais malade hier."},{"de":"Er hatte keine Zeit.","fr":"Il n'avait pas le temps."},{"de":"Wir gingen ins Kino.","fr":"Nous allions au cinéma."}],"question":"Comment se forme le prétérit des verbes réguliers et irréguliers ?"},
+    merke: ["Prétérit régulier : radical + *-te* (*machen* → *machte*).","Verbes forts : changement de voyelle, sans *-te* (*gehen* → *ging*, *sein* → *war*).","À l'oral on préfère le *Perfekt* ; le prétérit domine à l'*écrit* et avec *sein/haben/modaux*."],
+    achtung: [{"erreur":"Ich gehte ins Kino.","correct":"Ich **ging** ins Kino.","explication":"*gehen* est un verbe fort : prétérit *ging*, pas *gehte*."},{"erreur":"Ich habte ein Auto.","correct":"Ich **hatte** ein Auto.","explication":"*haben* → *hatte* (irrégulier)."}],
+    kontrast: {"titre":"Le prétérit : allemand vs français","similitudes":["Comme l'imparfait/passé simple, le prétérit raconte le passé."],"differences":["Un seul prétérit allemand couvre imparfait ET passé simple.","À l'oral on dit plutôt le *Perfekt*, sauf *war/hatte* et les modaux.","Les verbes forts changent de voyelle (*ging, kam, fand*)."]}, titre: "Les verbes au prétérit", titreDE: "Das Präteritum", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Former le prétérit (récit écrit)", "Connaître le prétérit des modaux"],
     grammairePoints: ["Präteritum", "konnte, musste…"],
     exemplesPlus: [{"de":"Als Kind war ich oft krank.","fr":"Enfant, j'étais souvent malade."},{"de":"Wir hatten kein Auto.","fr":"Nous n'avions pas de voiture."},{"de":"Er ging jeden Tag zur Schule.","fr":"Il allait à l'école tous les jours."},{"de":"Ich konnte gestern nicht kommen.","fr":"Je n'ai pas pu venir hier."},{"de":"Sie sprach langsam und deutlich.","fr":"Elle parlait lentement et distinctement."}],
@@ -29,7 +33,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g02: {
-    id: "a2g02", titre: "Le passé composé (approfondi)", titreDE: "Das Perfekt", theme: "Grammaire", type: "grammaire", duree: 35,
+    id: "a2g02",
+    einstieg: {"intro":"Regarde l'auxiliaire du passé composé.","exemples":[{"de":"Ich habe gegessen.","fr":"J'ai mangé."},{"de":"Sie ist gekommen.","fr":"Elle est venue."},{"de":"Ich habe eingekauft.","fr":"J'ai fait les courses."}],"question":"Quand utilise-t-on *haben* et quand *sein* ?"},
+    merke: ["Perfekt = *haben/sein* + *participe II* en fin de phrase.","*sein* avec les verbes de *mouvement* (gehen, kommen, fahren) et de *changement d'état* (werden).","Participe : *ge-…-t* (régulier), *ge-…-en* (fort) ; séparables : *ein**ge**kauft*."],
+    achtung: [{"erreur":"Ich habe gegangen.","correct":"Ich **bin** gegangen.","explication":"*gehen* (mouvement) prend *sein*."},{"erreur":"Ich habe getelefoniert.","correct":"Ich habe **telefoniert**.","explication":"Les verbes en *-ieren* n'ont *pas* de *ge-*."}],
+    kontrast: {"titre":"Le passé composé : allemand vs français","similitudes":["Auxiliaire + participe, comme « avoir/être » + participe."],"differences":["L'allemand met le participe en *fin de phrase*.","Le choix *haben/sein* suit d'autres règles (mouvement → sein).","Pas de *ge-* pour les verbes en *-ieren* ni les inséparables (*be-, ver-*)."]}, titre: "Le passé composé (approfondi)", titreDE: "Das Perfekt", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Former le Perfekt", "Choisir haben ou sein", "Participes irréguliers"],
     grammairePoints: ["haben/sein + participe", "Partizip II"],
     exemplesPlus: [{"de":"Ich habe einen Film gesehen.","fr":"J'ai vu un film."},{"de":"Wir sind nach Berlin gefahren.","fr":"Nous sommes allés à Berlin."},{"de":"Hast du schon gegessen?","fr":"As-tu déjà mangé ?"},{"de":"Er hat das Fenster geöffnet.","fr":"Il a ouvert la fenêtre."},{"de":"Sie ist früh aufgestanden.","fr":"Elle s'est levée tôt."}],
@@ -54,7 +62,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g03: {
-    id: "a2g03", titre: "Le groupe de noms (déclinaison)", titreDE: "Die Nomengruppe", theme: "Grammaire", type: "grammaire", duree: 35,
+    id: "a2g03",
+    einstieg: {"intro":"Observe comment l'article change selon la fonction du nom.","exemples":[{"de":"Der Mann gibt dem Kind den Ball.","fr":"L'homme donne le ballon à l'enfant."},{"de":"Ich sehe die Frau.","fr":"Je vois la femme."},{"de":"Ich fahre mit dem Auto.","fr":"Je vais en voiture."}],"question":"Comment l'article change-t-il selon la fonction (sujet, COD, COI) ?"},
+    merke: ["Nominatif (sujet) : der/die/das. Accusatif (COD) : *den*/die/das.","Datif (COI, « à qui ») : *dem/der/dem*, pluriel *den* + nom en *-n*.","Seul le masculin change à l'accusatif (der → den)."],
+    achtung: [{"erreur":"Ich gebe der Mann das Buch.","correct":"Ich gebe **dem** Mann das Buch.","explication":"Le destinataire est au *datif* : dem Mann."},{"erreur":"Ich sehe der Mann.","correct":"Ich sehe **den** Mann.","explication":"Le COD masculin est à l'accusatif : den Mann."}],
+    kontrast: {"titre":"La déclinaison : allemand vs français","similitudes":["Sujet, COD et « à qqn » existent dans les deux langues."],"differences":["L'allemand marque les cas sur l'*article* (der/den/dem).","Le datif remplace « à + article ».","Connaître le *genre* est indispensable pour décliner."]}, titre: "Le groupe de noms (déclinaison)", titreDE: "Die Nomengruppe", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Décliner l'article selon le cas", "Reconnaître nominatif / accusatif / datif"],
     grammairePoints: ["Déclinaison de l'article", "Nom./Acc./Dat."],
     exemplesPlus: [{"de":"Ich kenne den neuen Lehrer.","fr":"Je connais le nouveau professeur."},{"de":"Das ist das Auto meines Bruders.","fr":"C'est la voiture de mon frère."},{"de":"Wir helfen den Kindern.","fr":"Nous aidons les enfants."},{"de":"Sie gibt der Frau das Buch.","fr":"Elle donne le livre à la femme."},{"de":"Der Hund des Nachbarn bellt laut.","fr":"Le chien du voisin aboie fort."}],
@@ -79,7 +91,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g04: {
-    id: "a2g04", titre: "La négation (approfondie)", titreDE: "Die Verneinung", theme: "Grammaire", type: "grammaire", duree: 30,
+    id: "a2g04",
+    einstieg: {"intro":"Observe les différentes négations.","exemples":[{"de":"Ich kenne ihn nicht.","fr":"Je ne le connais pas."},{"de":"Ich habe nichts gesehen.","fr":"Je n'ai rien vu."},{"de":"Niemand ist gekommen.","fr":"Personne n'est venu."}],"question":"Où se place *nicht*, et quels autres mots négatifs existe-t-il ?"},
+    merke: ["*nicht* se place avant l'élément nié, ou en *fin* s'il nie tout le verbe.","Mots négatifs : *nichts* (rien), *niemand* (personne), *nie* (jamais), *kein* (aucun).","Une seule négation suffit."],
+    achtung: [{"erreur":"Ich habe nicht nichts.","correct":"Ich habe **nichts**.","explication":"Pas de double négation : *nichts* seul suffit."},{"erreur":"Ich habe nicht ein Auto.","correct":"Ich habe **kein** Auto.","explication":"Devant un nom : *kein*, pas *nicht ein*."}],
+    kontrast: {"titre":"La négation (approfondie) : allemand vs français","similitudes":["Mots équivalents : rien/nichts, personne/niemand."],"differences":["L'allemand n'a *pas* de double négation (≠ « ne… personne »).","La place de *nicht* dépend de ce qu'on nie.","*kein* (nom) vs *nicht* (le reste)."]}, titre: "La négation (approfondie)", titreDE: "Die Verneinung", theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Placer nicht correctement", "Utiliser kein, nichts, niemand, nie"],
     grammairePoints: ["nicht / kein", "nichts, niemand, nie"],
     exemplesPlus: [{"de":"Ich habe niemanden gesehen.","fr":"Je n'ai vu personne."},{"de":"Er sagt nie die Wahrheit.","fr":"Il ne dit jamais la vérité."},{"de":"Wir haben kein Geld mehr.","fr":"Nous n'avons plus d'argent."},{"de":"Das interessiert mich gar nicht.","fr":"Ça ne m'intéresse pas du tout."},{"de":"— Hast du nichts gehört? — Doch!","fr":"— Tu n'as rien entendu ? — Si !"}],
@@ -104,7 +120,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g05: {
-    id: "a2g05", titre: "Principales et subordonnées", titreDE: "Haupt- und Nebensätze", theme: "Grammaire", type: "grammaire", duree: 40,
+    id: "a2g05",
+    einstieg: {"intro":"Observe la place du verbe dans la 2e proposition.","exemples":[{"de":"Ich bleibe zu Hause, weil es regnet.","fr":"Je reste à la maison parce qu'il pleut."},{"de":"Wenn ich Zeit habe, lese ich.","fr":"Quand j'ai le temps, je lis."},{"de":"Ich weiß, dass du kommst.","fr":"Je sais que tu viens."}],"question":"Où va le verbe dans la subordonnée, et si elle est en tête ?"},
+    merke: ["Dans une *subordonnée* (weil, dass, wenn, ob…), le verbe conjugué va à la *fin*.","Subordonnée en *tête* → la principale commence par son *verbe* : *Wenn…, **lese** ich*.","Virgule obligatoire entre les deux propositions."],
+    achtung: [{"erreur":"…, weil ich habe keine Zeit.","correct":"…, weil ich keine Zeit **habe**.","explication":"Verbe conjugué en *fin* de subordonnée."},{"erreur":"Wenn ich Zeit habe, ich lese.","correct":"Wenn ich Zeit habe, **lese ich**.","explication":"Après une subordonnée en tête, la principale commence par le verbe."}],
+    kontrast: {"titre":"Subordonnées : allemand vs français","similitudes":["Conjonctions équivalentes (parce que/weil, que/dass)."],"differences":["Le verbe part en *fin* de subordonnée allemande.","La subordonnée en tête provoque l'*inversion* sujet-verbe.","La virgule est obligatoire devant la subordonnée."]}, titre: "Principales et subordonnées", titreDE: "Haupt- und Nebensätze", theme: "Grammaire", type: "grammaire", duree: 40,
     objectifs: ["Distinguer principale et subordonnée", "Placer le verbe (2e position vs fin)"],
     grammairePoints: ["weil, dass, wenn, obwohl", "Ordre des mots"],
     exemplesPlus: [{"de":"Ich glaube, dass er recht hat.","fr":"Je crois qu'il a raison."},{"de":"Wir bleiben hier, obwohl es regnet.","fr":"Nous restons ici bien qu'il pleuve."},{"de":"Wenn ich Zeit habe, helfe ich dir.","fr":"Si j'ai le temps, je t'aide."},{"de":"Sie weiß nicht, ob er kommt.","fr":"Elle ne sait pas s'il vient."},{"de":"Weil ich müde war, bin ich früh ins Bett gegangen.","fr":"Comme j'étais fatigué, je me suis couché tôt."}],
@@ -133,7 +153,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g06: {
-    id: "a2g06", titre: "Verbes avec datif et accusatif", titreDE: "Verben mit Dativ und Akkusativ", theme: "Grammaire", type: "grammaire", duree: 40,
+    id: "a2g06",
+    einstieg: {"intro":"Ces verbes ont deux objets. Observe leur ordre.","exemples":[{"de":"Ich gebe dir das Buch.","fr":"Je te donne le livre."},{"de":"Er schenkt seiner Mutter Blumen.","fr":"Il offre des fleurs à sa mère."},{"de":"Ich zeige dem Kind das Bild.","fr":"Je montre l'image à l'enfant."}],"question":"Dans quel ordre se placent le datif (à qui) et l'accusatif (quoi) ?"},
+    merke: ["Verbes à deux objets : datif (à qui) + accusatif (quoi) : *geben, schenken, zeigen, bringen*.","Ordre par défaut : *datif puis accusatif*.","Si l'accusatif est un *pronom*, il passe devant : *Ich gebe es dem Kind*."],
+    achtung: [{"erreur":"Er schenkt seine Mutter Blumen.","correct":"Er schenkt **seiner** Mutter Blumen.","explication":"Le destinataire est au datif : seiner Mutter."},{"erreur":"Ich gebe das Buch dir.","correct":"Ich gebe **dir das Buch**.","explication":"Datif (dir) avant accusatif, sauf pronom accusatif."}],
+    kontrast: {"titre":"Double complément : allemand vs français","similitudes":["« donner qqch à qqn » existe dans les deux langues."],"differences":["L'allemand marque le datif sur le déterminant (dem, seiner).","Ordre datif → accusatif.","Un pronom accusatif passe devant le datif."]}, titre: "Verbes avec datif et accusatif", titreDE: "Verben mit Dativ und Akkusativ", theme: "Grammaire", type: "grammaire", duree: 40,
     objectifs: ["Reconnaître les verbes à datif", "Construire « donner qqch à qqn »"],
     grammairePoints: ["helfen, danken (datif)", "geben jdm etwas"],
     exemplesPlus: [{"de":"Ich schenke meiner Mutter Blumen.","fr":"J'offre des fleurs à ma mère."},{"de":"Er zeigt dem Touristen den Weg.","fr":"Il montre le chemin au touriste."},{"de":"Kannst du mir das Salz geben?","fr":"Peux-tu me passer le sel ?"},{"de":"Sie erklärt den Schülern die Regel.","fr":"Elle explique la règle aux élèves."},{"de":"Ich bringe dir einen Kaffee.","fr":"Je t'apporte un café."}],
@@ -161,7 +185,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g07: {
-    id: "a2g07", titre: "Le subjonctif II (conditionnel)", titreDE: "Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 40,
+    id: "a2g07",
+    einstieg: {"intro":"Comment être poli et exprimer une hypothèse ?","exemples":[{"de":"Ich hätte gern einen Kaffee.","fr":"Je voudrais un café."},{"de":"Wenn ich Zeit hätte, würde ich kommen.","fr":"Si j'avais le temps, je viendrais."},{"de":"Könnten Sie mir helfen?","fr":"Pourriez-vous m'aider ?"}],"question":"Quelles formes expriment la politesse et l'irréel ?"},
+    merke: ["Konjunktiv II = *politesse, souhait, hypothèse irréelle*.","Formes clés : *wäre*, *hätte*, *würde + infinitif*, *könnte/möchte*.","Hypothèse : *wenn… + Konjunktiv II* dans les deux propositions."],
+    achtung: [{"erreur":"Ich will einen Kaffee.","correct":"Ich **hätte gern** einen Kaffee.","explication":"Pour être poli, on évite *ich will* ; on dit *ich hätte gern* / *möchte*."},{"erreur":"Wenn ich Zeit habe, würde ich kommen.","correct":"Wenn ich Zeit **hätte**, würde ich kommen.","explication":"L'hypothèse irréelle exige le Konjunktiv II aussi dans le *wenn*."}],
+    kontrast: {"titre":"Le conditionnel : allemand vs français","similitudes":["Exprime souhait, politesse, hypothèse."],"differences":["L'allemand utilise souvent *würde + infinitif* (≈ « -rais »).","*möchte* (voudrais) n'a pas d'équivalent simple.","Dans *wenn* (si), on met le Konjunktiv II, pas l'imparfait."]}, titre: "Le subjonctif II (conditionnel)", titreDE: "Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 40,
     objectifs: ["Exprimer l'irréel et le souhait", "Faire une demande polie"],
     grammairePoints: ["würde + Inf.", "wäre, hätte, könnte"],
     exemplesPlus: [{"de":"Ich hätte gern einen Tee.","fr":"Je voudrais un thé."},{"de":"Könnten Sie mir helfen?","fr":"Pourriez-vous m'aider ?"},{"de":"Wenn ich reich wäre, würde ich reisen.","fr":"Si j'étais riche, je voyagerais."},{"de":"Du solltest mehr schlafen.","fr":"Tu devrais dormir plus."},{"de":"Das wäre wirklich schön.","fr":"Ce serait vraiment bien."}],
@@ -186,7 +214,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g08: {
-    id: "a2g08", titre: "Les indicateurs de temps", titreDE: "Temporale Angaben", theme: "Grammaire", type: "grammaire", duree: 30,
+    id: "a2g08",
+    einstieg: {"intro":"Observe comment on situe une action dans le temps.","exemples":[{"de":"Ich wohne seit drei Jahren hier.","fr":"J'habite ici depuis trois ans."},{"de":"Vor einer Woche war ich krank.","fr":"Il y a une semaine, j'étais malade."},{"de":"In zwei Tagen komme ich.","fr":"Dans deux jours, je viens."}],"question":"Comment dit-on « depuis », « il y a », « dans » ?"},
+    merke: ["*seit* + datif = depuis (action qui continue).","*vor* + datif = il y a (passé).","*in* + datif = dans (futur)."],
+    achtung: [{"erreur":"Ich wohne hier für drei Jahre.","correct":"Ich wohne hier **seit** drei Jahren.","explication":"« depuis » (durée en cours) = *seit* + datif, pas *für*."},{"erreur":"vor eine Woche","correct":"vor **einer** Woche","explication":"*vor* régit le datif."}],
+    kontrast: {"titre":"Indicateurs de temps : allemand vs français","similitudes":["« depuis / il y a / dans » ont des équivalents."],"differences":["*seit* régit le *datif* et marque une durée en cours.","*vor* = « il y a » (passé), *in* = « dans » (futur).","Ces prépositions imposent le datif."]}, titre: "Les indicateurs de temps", titreDE: "Temporale Angaben", theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Situer dans le temps", "Choisir la bonne préposition / le bon cas"],
     grammairePoints: ["am, im, um, seit, vor", "jeden Tag (accusatif)"],
     exemplesPlus: [{"de":"Jeden Tag stehe ich um sieben auf.","fr":"Chaque jour, je me lève à sept heures."},{"de":"Letzte Woche war ich krank.","fr":"La semaine dernière, j'étais malade."},{"de":"Nächstes Jahr fahren wir nach Japan.","fr":"L'année prochaine, nous allons au Japon."},{"de":"Vor drei Tagen habe ich ihn gesehen.","fr":"Il y a trois jours, je l'ai vu."},{"de":"Wir treffen uns am Abend.","fr":"Nous nous retrouvons le soir."}],
@@ -211,7 +243,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g09: {
-    id: "a2g09", titre: "Les cas (vue d'ensemble)", titreDE: "Die Fälle", theme: "Grammaire", type: "grammaire", duree: 35,
+    id: "a2g09",
+    einstieg: {"intro":"Chaque cas a une fonction. Observe.","exemples":[{"de":"Der Hund beißt den Mann.","fr":"Le chien mord l'homme."},{"de":"Ich helfe dem Mann.","fr":"J'aide l'homme."},{"de":"das Auto des Mannes","fr":"la voiture de l'homme"}],"question":"À quoi sert chaque cas (N / A / D / G) ?"},
+    merke: ["*Nominatif* = sujet ; *Accusatif* = COD.","*Datif* = « à qui » ; *Génitif* = « de qui » (possession).","Le cas se lit sur l'article (et parfois le nom : datif pl. -n, génitif -s)."],
+    achtung: [{"erreur":"Ich helfe den Mann.","correct":"Ich helfe **dem** Mann.","explication":"*helfen* → datif (dem Mann)."},{"erreur":"das Auto der Mann","correct":"das Auto **des Mannes**","explication":"Génitif masculin : *des* + nom en *-s/-es*."}],
+    kontrast: {"titre":"Les quatre cas : allemand vs français","similitudes":["Sujet, COD, « à/de qqn » existent dans les deux."],"differences":["L'allemand a *quatre cas* visibles sur l'article.","Le génitif (des/der) = « de ».","Le cas dépend du verbe, de la préposition ou de la fonction."]}, titre: "Les cas (vue d'ensemble)", titreDE: "Die Fälle", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Comprendre à quoi sert chaque cas", "Poser la bonne question (wer/wen/wem)"],
     grammairePoints: ["Nominatif/Accusatif/Datif", "wer? wen? wem?"],
     exemplesPlus: [{"de":"Der Lehrer erklärt den Schülern die Grammatik.","fr":"Le professeur explique la grammaire aux élèves."},{"de":"Wer hat das gesagt?","fr":"Qui a dit ça ?"},{"de":"Wen hast du eingeladen?","fr":"Qui as-tu invité ?"},{"de":"Wem gehört diese Tasche?","fr":"À qui appartient ce sac ?"},{"de":"Ich danke dir für deine Hilfe.","fr":"Je te remercie pour ton aide."}],

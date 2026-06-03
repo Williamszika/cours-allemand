@@ -4,7 +4,11 @@
    ===================================================================== */
 window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
   a2g10: {
-    id: "a2g10", titre: "Les indicateurs de lieu", titreDE: "Ortsangaben", theme: "Grammaire", type: "grammaire", duree: 35,
+    id: "a2g10",
+    einstieg: {"intro":"Même préposition, deux cas. Observe pourquoi.","exemples":[{"de":"Das Buch liegt auf dem Tisch.","fr":"Le livre est sur la table."},{"de":"Ich lege das Buch auf den Tisch.","fr":"Je pose le livre sur la table."},{"de":"Geh nach links!","fr":"Va à gauche !"}],"question":"Pourquoi *dem Tisch* puis *den Tisch* avec la même préposition ?"},
+    merke: ["Prépositions mixtes (*in, auf, an, über*…) : *Wo?* → datif, *Wohin?* → accusatif.","Verbe de position (*liegen, stehen*) → datif ; de déplacement (*legen, stellen*) → accusatif.","*links/rechts/geradeaus* pour indiquer une direction."],
+    achtung: [{"erreur":"Ich lege das Buch auf dem Tisch.","correct":"Ich lege das Buch auf **den** Tisch.","explication":"Mouvement (Wohin?) → accusatif."},{"erreur":"Das Buch liegt auf den Tisch.","correct":"Das Buch liegt auf **dem** Tisch.","explication":"Position (Wo?) → datif."}],
+    kontrast: {"titre":"Lieu et direction : allemand vs français","similitudes":["On distingue être quelque part / aller quelque part."],"differences":["La même préposition change de *cas* selon Wo? (datif) ou Wohin? (accusatif).","Paires position/déplacement (liegen/legen, stehen/stellen).","Le français ne marque pas cette différence par le cas."]}, titre: "Les indicateurs de lieu", titreDE: "Ortsangaben", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Distinguer Wo / Wohin / Woher", "Indiquer une direction"],
     grammairePoints: ["Wo? Wohin? Woher?", "hier, dort, links…"],
     exemplesPlus: [{"de":"Wo wohnst du? — In Köln.","fr":"Où habites-tu ? — À Cologne."},{"de":"Wohin gehst du? — Nach Hause.","fr":"Où vas-tu ? — À la maison."},{"de":"Woher kommst du? — Aus Spanien.","fr":"D'où viens-tu ? — D'Espagne."},{"de":"Das Kino ist gleich um die Ecke.","fr":"Le cinéma est juste au coin."},{"de":"Wir treffen uns vor dem Bahnhof.","fr":"On se retrouve devant la gare."}],
@@ -33,7 +37,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g11: {
-    id: "a2g11", titre: "La possession (génitif)", titreDE: "Der Genitiv / Besitz", theme: "Grammaire", type: "grammaire", duree: 35,
+    id: "a2g11",
+    einstieg: {"intro":"Comment marque-t-on « de qui » (la possession) ?","exemples":[{"de":"das Auto meines Vaters","fr":"la voiture de mon père"},{"de":"die Farbe des Hauses","fr":"la couleur de la maison"},{"de":"Annas Handy","fr":"le portable d'Anna"}],"question":"Quelle forme pour la possession à l'écrit et à l'oral ?"},
+    merke: ["Génitif : *des* (masc./neutre, + nom en -s/-es), *der* (fém./pluriel).","À l'oral, on remplace souvent par *von* + datif (*von Anna*).","Les noms propres prennent un *-s* (*Annas Auto*)."],
+    achtung: [{"erreur":"die Farbe des Haus","correct":"die Farbe des **Hauses**","explication":"Génitif masc./neutre : le nom prend *-s/-es*."},{"erreur":"das Auto von mein Vater","correct":"das Auto von **meinem** Vater","explication":"*von* régit le datif : meinem Vater."}],
+    kontrast: {"titre":"La possession : allemand vs français","similitudes":["« la voiture de mon père » se dit dans les deux."],"differences":["L'allemand a un *cas* dédié (génitif : des/der).","À l'oral, *von* + datif remplace le génitif.","Le nom masc./neutre au génitif gagne un *-s*."]}, titre: "La possession (génitif)", titreDE: "Der Genitiv / Besitz", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Exprimer la possession", "Reconnaître le génitif et « von + datif »"],
     grammairePoints: ["Genitiv (des/der)", "von + datif"],
     exemplesPlus: [{"de":"Das ist das Haus meiner Eltern.","fr":"C'est la maison de mes parents."},{"de":"Wegen des Wetters bleiben wir zu Hause.","fr":"À cause du temps, nous restons à la maison."},{"de":"Annas Auto ist neu.","fr":"La voiture d'Anna est neuve."},{"de":"Trotz der Kälte gehen wir spazieren.","fr":"Malgré le froid, nous nous promenons."},{"de":"Während des Films habe ich geschlafen.","fr":"Pendant le film, j'ai dormi."}],
@@ -58,7 +66,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g12: {
-    id: "a2g12", titre: "Les adjectifs (déclinaison)", titreDE: "Adjektivdeklination", theme: "Grammaire", type: "grammaire", duree: 40,
+    id: "a2g12",
+    einstieg: {"intro":"Le même adjectif, trois terminaisons. Observe l'article.","exemples":[{"de":"der gute Wein","fr":"le bon vin"},{"de":"ein guter Wein","fr":"un bon vin"},{"de":"guter Wein","fr":"du bon vin"}],"question":"Pourquoi *gute*, *guter*, *guter* avec le même adjectif ?"},
+    merke: ["La terminaison dépend de l'*article* qui précède.","Après *der/die/das* : terminaisons faibles (*-e / -en*).","Après *ein/kein/mein* : l'adjectif porte la marque du genre (*ein guter Mann*)."],
+    achtung: [{"erreur":"ein gut Wein","correct":"ein **guter** Wein","explication":"Après *ein* (sans marque), l'adjectif prend *-er* (masculin)."},{"erreur":"der guter Wein","correct":"der **gute** Wein","explication":"Après *der*, l'adjectif est faible : *gute*."}],
+    kontrast: {"titre":"L'accord de l'adjectif : allemand vs français","similitudes":["L'adjectif épithète s'accorde avec le nom."],"differences":["La terminaison dépend de l'*article* (faible/fort/mixte).","Trois séries de terminaisons selon der / ein / Ø.","Système plus systématique qu'en français."]}, titre: "Les adjectifs (déclinaison)", titreDE: "Adjektivdeklination", theme: "Grammaire", type: "grammaire", duree: 40,
     objectifs: ["Accorder l'adjectif devant un nom", "Cas simples (nominatif/accusatif)"],
     grammairePoints: ["Terminaisons -e / -en", "après der / ein"],
     exemplesPlus: [{"de":"Ich trinke einen heißen Kaffee.","fr":"Je bois un café chaud."},{"de":"Das ist eine gute Idee.","fr":"C'est une bonne idée."},{"de":"Wir wohnen in einem kleinen Dorf.","fr":"Nous habitons dans un petit village."},{"de":"Sie trägt ein rotes Kleid.","fr":"Elle porte une robe rouge."},{"de":"Der alte Mann liest viele interessante Bücher.","fr":"Le vieil homme lit beaucoup de livres intéressants."}],
@@ -83,7 +95,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g13: {
-    id: "a2g13", titre: "Verbes à particule", titreDE: "Trennbare und untrennbare Verben", theme: "Grammaire", type: "grammaire", duree: 35,
+    id: "a2g13",
+    einstieg: {"intro":"Certaines particules se détachent, d'autres non. Observe.","exemples":[{"de":"Ich stehe um 7 auf.","fr":"Je me lève à 7h."},{"de":"Ich verstehe dich.","fr":"Je te comprends."},{"de":"Ich kaufe ein.","fr":"Je fais les courses."}],"question":"Quelles particules se détachent et lesquelles non ?"},
+    merke: ["Séparables (*auf-, an-, ein-, mit-, ab-*…) : accentuées, se détachent.","Inséparables (*be-, ge-, er-, ver-, ent-, zer-*) : non accentuées, jamais détachées.","Perfekt : séparable *ein**ge**kauft* ; inséparable *verstanden* (sans ge-)."],
+    achtung: [{"erreur":"Ich aufstehe um 7.","correct":"Ich **stehe** um 7 **auf**.","explication":"*aufstehen* est séparable : *auf* part à la fin."},{"erreur":"Ich habe geverstanden.","correct":"Ich habe **verstanden**.","explication":"*verstehen* est inséparable : participe sans *ge-*."}],
+    kontrast: {"titre":"Verbes à particule : allemand vs français","similitudes":["Des préfixes verbaux existent aussi en français (comprendre)."],"differences":["Les séparables se *coupent en deux* (ich stehe… auf).","L'accent indique si la particule est séparable.","Pas de *ge-* au participe des inséparables."]}, titre: "Verbes à particule", titreDE: "Trennbare und untrennbare Verben", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Distinguer séparables et inséparables", "Placer la particule"],
     grammairePoints: ["trennbar / untrennbar", "Préfixes"],
     exemplesPlus: [{"de":"Ich stehe um sechs Uhr auf.","fr":"Je me lève à six heures."},{"de":"Er kauft jeden Samstag ein.","fr":"Il fait les courses chaque samedi."},{"de":"Wann kommt der Zug an?","fr":"Quand le train arrive-t-il ?"},{"de":"Ich verstehe dich gut.","fr":"Je te comprends bien."},{"de":"Sie ruft mich später an.","fr":"Elle m'appelle plus tard."}],
@@ -108,7 +124,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g14: {
-    id: "a2g14", titre: "Perfekt ou prétérit ?", titreDE: "Perfekt oder Präteritum?", theme: "Grammaire", type: "grammaire", duree: 30,
+    id: "a2g14",
+    einstieg: {"intro":"Quand choisir le Perfekt, quand le prétérit ?","exemples":[{"de":"Ich habe gestern gearbeitet.","fr":"J'ai travaillé hier. (oral)"},{"de":"Gestern war ich krank.","fr":"Hier j'étais malade."},{"de":"Es war einmal ein König.","fr":"Il était une fois un roi. (récit)"}],"question":"Le choix dépend-il de l'oral ou de l'écrit ?"},
+    merke: ["À l'*oral* : on préfère le *Perfekt* (ich habe gemacht).","À l'*écrit* (récits, presse) : on préfère le *Präteritum*.","*sein, haben, modaux* : prétérit même à l'oral (*war, hatte, konnte*)."],
+    achtung: [{"erreur":"Ich habe gestern krank gewesen.","correct":"Ich **war** gestern krank.","explication":"Avec *sein*, on utilise le prétérit *war* même à l'oral."},{"erreur":"Ich machte gestern viel. (conversation)","correct":"Ich **habe** gestern viel **gemacht**.","explication":"À l'oral, le Perfekt est plus naturel pour les verbes ordinaires."}],
+    kontrast: {"titre":"Perfekt vs prétérit : allemand vs français","similitudes":["Deux passés coexistent (comme passé composé/imparfait)."],"differences":["Le choix dépend surtout du *registre* (oral/écrit).","*war/hatte/konnte* restent au prétérit à l'oral.","Le français choisit selon l'aspect, l'allemand selon le canal."]}, titre: "Perfekt ou prétérit ?", titreDE: "Perfekt oder Präteritum?", theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Choisir le bon temps du passé", "À l'oral vs à l'écrit"],
     grammairePoints: ["Perfekt (oral)", "Präteritum (écrit, sein/haben/modaux)"],
     exemplesPlus: [{"de":"Gestern habe ich lange geschlafen.","fr":"Hier, j'ai dormi longtemps."},{"de":"Er war sehr müde.","fr":"Il était très fatigué."},{"de":"Wir haben den ganzen Tag gearbeitet.","fr":"Nous avons travaillé toute la journée."},{"de":"Ich hatte keine Zeit.","fr":"Je n'avais pas le temps."},{"de":"Plötzlich klingelte das Telefon.","fr":"Soudain, le téléphone sonna."}],
@@ -133,7 +153,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g15: {
-    id: "a2g15", titre: "Verbes + prépositions", titreDE: "Verben mit Präpositionen", theme: "Grammaire", type: "grammaire", duree: 35,
+    id: "a2g15",
+    einstieg: {"intro":"La préposition du verbe ne se devine pas. Observe.","exemples":[{"de":"Ich warte auf den Bus.","fr":"J'attends le bus."},{"de":"Ich denke an dich.","fr":"Je pense à toi."},{"de":"Ich freue mich auf die Ferien.","fr":"J'ai hâte des vacances."}],"question":"La préposition correspond-elle à celle du français ?"},
+    merke: ["Beaucoup de verbes ont une *préposition fixe* : *warten auf*, *denken an*, *sich freuen auf/über*.","La préposition impose son *cas* (*warten auf* + accusatif).","On apprend le verbe AVEC sa préposition et son cas."],
+    achtung: [{"erreur":"Ich warte den Bus.","correct":"Ich warte **auf** den Bus.","explication":"*warten* exige *auf* + accusatif."},{"erreur":"Ich denke an dir.","correct":"Ich denke an **dich**.","explication":"*denken an* régit l'*accusatif*."}],
+    kontrast: {"titre":"Verbes à préposition : allemand vs français","similitudes":["« penser à », « attendre » ont aussi des constructions fixes."],"differences":["La préposition allemande ne correspond *pas* à la française.","La préposition fixe le *cas* du complément.","À mémoriser verbe par verbe."]}, titre: "Verbes + prépositions", titreDE: "Verben mit Präpositionen", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Connaître les verbes à préposition fixe", "Choisir le bon cas"],
     grammairePoints: ["warten auf, denken an…", "Préposition fixe"],
     exemplesPlus: [{"de":"Ich warte auf den Bus.","fr":"J'attends le bus."},{"de":"Wir denken oft an dich.","fr":"Nous pensons souvent à toi."},{"de":"Sie interessiert sich für Kunst.","fr":"Elle s'intéresse à l'art."},{"de":"Ich freue mich auf das Wochenende.","fr":"J'attends le week-end avec impatience."},{"de":"Er hat Angst vor Hunden.","fr":"Il a peur des chiens."}],
@@ -158,7 +182,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g16: {
-    id: "a2g16", titre: "Les substantifs (noms)", titreDE: "Die Substantive", theme: "Grammaire", type: "grammaire", duree: 35,
+    id: "a2g16",
+    einstieg: {"intro":"Observe l'orthographe et le pluriel des noms.","exemples":[{"de":"das Kind → die Kinder","fr":"l'enfant → les enfants"},{"de":"der Apfel → die Äpfel","fr":"la pomme → les pommes"},{"de":"die Haustür","fr":"la porte d'entrée (Haus + Tür)"}],"question":"Le pluriel allemand est-il régulier ?"},
+    merke: ["Tous les *noms* prennent une *majuscule*.","Le pluriel est *imprévisible* (*-e, -er, -(e)n, -s*, Umlaut) : à apprendre avec le mot.","Un *nom composé* prend le genre du *dernier* élément (die Tür → die Haustür)."],
+    achtung: [{"erreur":"die hausaufgabe","correct":"die **Hausaufgabe**","explication":"Tous les noms s'écrivent avec une majuscule."},{"erreur":"das Haustür","correct":"**die** Haustür","explication":"Le composé prend le genre du dernier élément (die Tür)."}],
+    kontrast: {"titre":"Les noms : allemand vs français","similitudes":["Les noms ont un genre et un pluriel."],"differences":["Tous les noms allemands ont une *majuscule*.","Le pluriel est *varié* et à mémoriser (≠ -s régulier).","Les composés forment un seul mot, genre du dernier élément."]}, titre: "Les substantifs (noms)", titreDE: "Die Substantive", theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Former le pluriel", "Comprendre les noms composés"],
     grammairePoints: ["Pluriels", "Komposita", "suffixes"],
     exemplesPlus: [{"de":"Die Kinder spielen im Park.","fr":"Les enfants jouent dans le parc."},{"de":"Ich brauche eine neue Brille.","fr":"J'ai besoin de nouvelles lunettes."},{"de":"Der Apfelsaft schmeckt gut.","fr":"Le jus de pomme est bon."},{"de":"Wir kaufen drei Flaschen Wasser.","fr":"Nous achetons trois bouteilles d'eau."},{"de":"Die Häuser hier sind sehr alt.","fr":"Les maisons ici sont très vieilles."}],
@@ -183,7 +211,11 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     ]
   },
   a2g17: {
-    id: "a2g17", titre: "Prépositions de lieu et de temps", titreDE: "Präpositionen: Ort und Zeit", theme: "Grammaire", type: "grammaire", duree: 40,
+    id: "a2g17",
+    einstieg: {"intro":"Une préposition peut servir au temps ET au lieu. Observe.","exemples":[{"de":"am Montag / an der Wand","fr":"lundi / au mur"},{"de":"im Mai / im Haus","fr":"en mai / dans la maison"},{"de":"um 8 Uhr","fr":"à 8 heures"}],"question":"Comment distinguer l'emploi temporel et l'emploi spatial ?"},
+    merke: ["Mêmes prépositions pour le temps et le lieu : *an, in, vor, nach, zu*.","Temps : *am* (jour), *um* (heure), *im* (mois). Lieu : *an* (à/contre), *in* (dans), *auf* (sur).","Le *cas* dépend de l'emploi (souvent datif pour situer)."],
+    achtung: [{"erreur":"in Montag","correct":"**am** Montag","explication":"Temps : les jours prennent *am*."},{"erreur":"Ich bin in die Stadt.","correct":"Ich bin in **der** Stadt.","explication":"Situer (Wo?) → datif : in der Stadt."}],
+    kontrast: {"titre":"Prépositions (récap) : allemand vs français","similitudes":["Les prépositions situent dans le temps et l'espace."],"differences":["Une même préposition sert au temps et au lieu, avec des cas variables.","L'allemand est systématique : *am/um/im* pour le temps.","Le cas (datif/accusatif) change le sens (position vs direction)."]}, titre: "Prépositions de lieu et de temps", titreDE: "Präpositionen: Ort und Zeit", theme: "Grammaire", type: "grammaire", duree: 40,
     objectifs: ["Maîtriser les prépositions mixtes", "Choisir accusatif (Wohin) ou datif (Wo)"],
     grammairePoints: ["Wechselpräpositionen", "temporelles"],
     exemplesPlus: [{"de":"Ich gehe durch den Park.","fr":"Je traverse le parc."},{"de":"Das Geschenk ist für dich.","fr":"Le cadeau est pour toi."},{"de":"Wir fahren mit dem Zug nach Hamburg.","fr":"Nous allons à Hambourg en train."},{"de":"Nach der Arbeit treffe ich Freunde.","fr":"Après le travail, je retrouve des amis."},{"de":"Seit einem Monat lerne ich Klavier.","fr":"Depuis un mois, j'apprends le piano."}],
