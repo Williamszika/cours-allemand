@@ -4,7 +4,7 @@
    cache-first (instantané et hors-ligne) avec mise à jour en arrière-plan.
    Les photos LoremFlickr sont mises en cache au fil de la navigation.
    ===================================================================== */
-var VERSION = "v1.5.24";
+var VERSION = "v1.5.25";
 var CACHE = "deutsch-a1c2-" + VERSION;
 
 var SHELL = [
