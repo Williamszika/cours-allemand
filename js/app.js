@@ -2829,6 +2829,22 @@
         - actif:true  → tuile cliquable (href = route ou URL).
         - actif:false → tuile « Bientôt disponible » (placeholder).
      ==================================================================== */
+  function inviteAmi() {
+    const tg = window.Telegram && window.Telegram.WebApp;
+    let id = "";
+    try { id = (tg && tg.initDataUnsafe && tg.initDataUnsafe.user && tg.initDataUnsafe.user.id) || ""; } catch (e) {}
+    const go = function (bot) {
+      const link = "https://t.me/" + (bot || "Allemanda1bot") + "?startapp=" + (id ? "ref_" + id : "");
+      const text = "Apprends l'allemand avec moi sur Sprachakademie 🇩🇪 - cours A1 a C2, tuteur IA et coach de prononciation. Viens t'entrainer avec moi !";
+      const share = "https://t.me/share/url?url=" + encodeURIComponent(link) + "&text=" + encodeURIComponent(text);
+      try { if (window.TG) window.TG.haptic && window.TG.haptic("light"); } catch (e) {}
+      try { if (tg && tg.openTelegramLink) { tg.openTelegramLink(share); return; } } catch (e) {}
+      try { window.open(share, "_blank"); } catch (e) {}
+    };
+    try { fetch("/api/botinfo").then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { go(j && j.username); }).catch(function () { go(); }); }
+    catch (e) { go(); }
+  }
+
   function renderMenu() {
     const I = window.I18N;
     const frag = document.createDocumentFragment();
@@ -2913,6 +2929,12 @@
       grid.appendChild(card);
     });
     frag.appendChild(grid);
+    const inv = el("button", "menu-invite");
+    inv.type = "button";
+    inv.style.cssText = "display:flex;align-items:center;gap:12px;width:100%;margin:14px 0 4px;padding:14px 16px;border:0;border-radius:16px;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;cursor:pointer;font:inherit;text-align:left;box-shadow:0 6px 16px rgba(37,99,235,.28)";
+    inv.innerHTML = '<span style="font-size:26px">📣</span><span style="flex:1"><strong style="display:block;font-size:16px;margin-bottom:2px">Inviter un ami</strong><span style="font-size:13px;opacity:.92">Partage Sprachakademie et apprenez l\'allemand ensemble 🇩🇪</span></span><span style="font-size:20px">→</span>';
+    inv.addEventListener("click", inviteAmi);
+    frag.appendChild(inv);
 
     app.innerHTML = "";
     app.appendChild(frag);
