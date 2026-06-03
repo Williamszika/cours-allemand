@@ -43,9 +43,8 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
     <select id="mode" title="Mode">
       <option value="general" selected>Général</option>
       <option value="pflege">Pflege (soins)</option>
-      <option value="prononciation">🗣️ Prononciation</option>
       <option value="grammaire">📝 Grammaire</option>
-      <option value="expression">🎤 Prise de parole</option>
+      <option value="expression">🎤 Expression</option>
     </select>
   </div>
 </header>
@@ -93,6 +92,8 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
   document.getElementById('niv').textContent='Niveau : '+NIV+(NIVPARLE!==NIV?' · le tuteur parle '+NIVPARLE:' · auto');
 
   var log=document.getElementById('log'),txt=document.getElementById('txt'),send=document.getElementById('send'),mode=document.getElementById('mode'),mic=document.getElementById('mic');
+  var A1A2=(function(){var p=prog(); return (passe(p,"a1")&&passe(p,"a2"))||passe(p,"final");})();
+  var exOpt=mode.querySelector('option[value="expression"]'); if(exOpt&&!A1A2) exOpt.textContent="🎤 Expression 🔒";
   var history=[],audio;
   function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
   function speak(t){
@@ -138,7 +139,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
       var j=await r.json(); var t=(j.text||'').trim();
       if(!t){bubble('assistant','Je n\'ai rien entendu — parle un peu plus fort et reessaie. 🙂'); busy(false); return;}
       var unclear=null;
-      if(mode.value==='prononciation'&&Array.isArray(j.words)){unclear=j.words.filter(function(w){return w&&typeof w.lp==='number'&&w.lp<-0.5;}).map(function(w){return w.w;}).slice(0,6);}
+      if(mode.value==='expression'&&Array.isArray(j.words)){unclear=j.words.filter(function(w){return w&&typeof w.lp==='number'&&w.lp<-0.5;}).map(function(w){return w.w;}).slice(0,6);}
       busy(false); sendUser(t,true,unclear);
     }catch(e){ try{typing.remove();}catch(_){} bubble('assistant','⚠️ Transcription impossible.'); busy(false); }
   }
@@ -155,9 +156,8 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
   }
   mic.onclick=toggleMic;
   mode.onchange=function(){ var mv=mode.value;
-    if(mv==='prononciation'){ sendUser("Donne-moi une premiere phrase courte a lire a voix haute pour travailler ma prononciation.",true); }
+    if(mv==='expression'){ if(!A1A2){ bubble('assistant','🔒 L\'entrainement a l\'expression se debloque apres l\'examen A1 + A2. Termine-les dans le cours general, puis reviens !'); mode.value='general'; return; } sendUser("Je veux m'entrainer a parler et gagner en confiance. Commence par un petit defi tres facile a mon niveau, puis monte progressivement.",true); }
     else if(mv==='grammaire'){ sendUser("Je veux travailler la grammaire. Propose-moi un point adapte a mon niveau (ou demande-moi lequel) et commence le drill.",false); }
-    else if(mv==='expression'){ sendUser("Je veux m'entrainer a parler et gagner en confiance. Commence par un petit defi tres facile, puis monte progressivement.",true); }
   };
   txt.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();ask();}});
   txt.addEventListener('input',function(){txt.style.height='auto';txt.style.height=Math.min(txt.scrollHeight,120)+'px';});
