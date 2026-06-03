@@ -1394,7 +1394,7 @@
     remRow.appendChild(ctrl);
     secR.appendChild(remRow);
     secR.appendChild(el("p", "exo-group-sub", Reminders.supported()
-      ? "Zika te rappellera d'étudier à l'heure choisie si tu ne l'as pas encore fait (app ouverte ou installée)."
+      ? "Zika t'enverra un rappel chaque jour à l'heure choisie (par le bot Telegram, ou en notification si tu as installé l'app). Tu peux le désactiver quand tu veux."
       : "Les notifications ne sont pas disponibles sur ce navigateur."));
     frag.appendChild(secR);
 
@@ -2111,16 +2111,19 @@
 
   /* Rappels quotidiens : notification en-app + periodicSync (PWA installée) */
   const Reminders = (function () {
-    function supported() { return "Notification" in window; }
+    function tgInfo() { try { var w = window.Telegram && window.Telegram.WebApp; if (w && w.initData && w.initDataUnsafe && w.initDataUnsafe.user && w.initDataUnsafe.user.id) return w.initData; } catch (e) {} return null; }
+    function notifyServer(action) { var d = tgInfo(); if (!d) return Promise.resolve(false); var r = window.Progress.getReglages(); return fetch("/api/notify", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: action, initData: d, heure: r.rappelHeure || "19:00" }) }).then(function (x) { return x.ok; }).catch(function () { return false; }); }
+    function supported() { return ("Notification" in window) || !!tgInfo(); }
     function syncState() {
-      if (!("caches" in window)) return;
       const r = window.Progress.getReglages();
+      if (r.rappel && tgInfo()) notifyServer("on");
+      if (!("caches" in window)) return;
       const payload = JSON.stringify({ rappel: !!r.rappel, heure: r.rappelHeure || "19:00", last: window.Progress.getLastStudy(), notified: window.Progress.getLastNotified() });
       caches.open("deutsch-state").then((c) => c.put("/__study", new Response(payload, { headers: { "Content-Type": "application/json" } }))).catch(function () {});
     }
     function check() {
       const r = window.Progress.getReglages();
-      if (!r.rappel || !supported() || Notification.permission !== "granted") return;
+      if (!r.rappel || !("Notification" in window) || Notification.permission !== "granted") return;
       const now = new Date(), hhmm = (r.rappelHeure || "19:00").split(":");
       const due = now.getHours() * 60 + now.getMinutes() >= (parseInt(hhmm[0], 10) * 60 + parseInt(hhmm[1] || "0", 10));
       const today = new Date().toISOString().slice(0, 10);
@@ -2132,7 +2135,14 @@
       }
     }
     async function enable() {
-      if (!supported()) return false;
+      if (tgInfo()) {
+        window.Progress.setReglages({ rappel: true });
+        const ok = await notifyServer("on");
+        if (!ok) { window.Progress.setReglages({ rappel: false }); return false; }
+        syncState();
+        return true;
+      }
+      if (!("Notification" in window)) return false;
       let perm = Notification.permission;
       if (perm === "default") { try { perm = await Notification.requestPermission(); } catch (e) {} }
       if (perm !== "granted") { window.Progress.setReglages({ rappel: false }); return false; }
@@ -2148,7 +2158,7 @@
       check();
       return true;
     }
-    function disable() { window.Progress.setReglages({ rappel: false }); syncState(); }
+    function disable() { window.Progress.setReglages({ rappel: false }); notifyServer("off"); syncState(); }
     function start() { syncState(); check(); setInterval(check, 60000); }
     return { supported, enable, disable, check, start, syncState };
   })();
