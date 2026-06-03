@@ -8,7 +8,11 @@
 window.GRAMMAIRE = {
   /* ---------------- Module A1.1 ---------------- */
   g01: {
-    id: "g01", titre: "Pronoms personnels & présent", titreDE: "Personalpronomen & Präsens",
+    id: "g01",
+    einstieg: {"intro":"Observe le verbe *sein* (être). Que remarques-tu d'une personne à l'autre ?","exemples":[{"de":"ich bin müde","fr":"je suis fatigué"},{"de":"du bist nett","fr":"tu es gentil"},{"de":"er ist groß","fr":"il est grand"},{"de":"wir sind hier","fr":"nous sommes ici"}],"question":"Peux-tu deviner les formes de *sein*, ou faut-il les apprendre par cœur ?"},
+    merke: ["*sein* (être) et *haben* (avoir) sont irréguliers : à apprendre par cœur.","Présent régulier : radical + *-e, -st, -t, -en, -t, -en* (ich komme, du kommst…).","Le verbe conjugué est toujours en *position 2* dans la phrase affirmative.","Le pronom de politesse *Sie* (vous) prend toujours une majuscule."],
+    achtung: [{"erreur":"ich habe 20 Jahre","correct":"ich **bin** 20 Jahre alt","explication":"Pour l'âge, l'allemand utilise *sein* (être) + *alt*, pas *haben*. Littéralement « je suis 20 ans vieux »."},{"erreur":"du bis nett","correct":"du **bist** nett","explication":"*sein* à *du* = *bist* (avec -t). Forme à mémoriser."},{"erreur":"Heute ich gehe","correct":"Heute **gehe ich**","explication":"Si la phrase commence par un complément (*heute*), le verbe reste en position 2 et le sujet passe après."}],
+    kontrast: {"titre":"Le présent : allemand vs français","similitudes":["Les deux langues ont des verbes irréguliers très fréquents (*sein/haben*, être/avoir)."],"differences":["L'allemand n'a qu'UN présent : *ich gehe* = « je vais » ET « je suis en train d'aller ».","Le verbe est en *position 2*, même après un complément (*Morgen komme ich* = littéralement « demain viens je »).","La politesse se dit *Sie* (avec majuscule), pas *du*."]}, titre: "Pronoms personnels & présent", titreDE: "Personalpronomen & Präsens",
     theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Reconnaître les pronoms personnels", "Conjuguer un verbe régulier au présent", "Maîtriser le verbe « sein »"],
     grammairePoints: ["Personalpronomen", "Présent"],
@@ -127,7 +131,11 @@ window.GRAMMAIRE = {
     ]
   },
   g03: {
-    id: "g03", titre: "Le groupe de noms : der/die/das", titreDE: "Artikel: der/die/das",
+    id: "g03",
+    einstieg: {"intro":"Regarde l'article devant chaque nom. Correspond-il au sexe ?","exemples":[{"de":"der Mann","fr":"l'homme"},{"de":"die Frau","fr":"la femme"},{"de":"das Kind","fr":"l'enfant"},{"de":"das Mädchen","fr":"la jeune fille (!)"}],"question":"Pourquoi *Mädchen* (fille) est-il neutre (*das*) ?"},
+    merke: ["Trois genres : *der* (masculin), *die* (féminin), *das* (neutre).","Le genre est souvent *imprévisible* : apprends toujours le mot AVEC son article.","Au pluriel, l'article défini est *die* pour tous les genres."],
+    achtung: [{"erreur":"die Mädchen (une fille)","correct":"**das** Mädchen","explication":"Les diminutifs en *-chen* sont toujours neutres (*das*), quel que soit le sens."},{"erreur":"das Sonne","correct":"**die** Sonne","explication":"*Sonne* (soleil) est féminin en allemand. Le genre français ne se transpose pas."},{"erreur":"Das Auto ist rot, er ist schnell.","correct":"…**es** ist schnell.","explication":"*Auto* est neutre → on le reprend par *es*, pas *er*."}],
+    kontrast: {"titre":"Le genre : allemand vs français","similitudes":["Les deux langues attribuent un genre grammatical aux noms."],"differences":["L'allemand a *trois* genres (der/die/das), le français deux.","Le genre ne correspond pas : *die Sonne* (f.) = le soleil (m.), *der Mond* (m.) = la lune (f.).","Il faut mémoriser l'article avec chaque nom : pas de règle fiable."]}, titre: "Le groupe de noms : der/die/das", titreDE: "Artikel: der/die/das",
     theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Reconnaître le genre des noms", "Utiliser l'article défini et indéfini"],
     grammairePoints: ["der/die/das", "ein/eine"],
@@ -161,7 +169,11 @@ window.GRAMMAIRE = {
     ]
   },
   g04: {
-    id: "g04", titre: "La négation : nicht / kein", titreDE: "Verneinung: nicht / kein",
+    id: "g04",
+    einstieg: {"intro":"Compare les deux façons de dire « ne… pas ».","exemples":[{"de":"Ich habe kein Auto.","fr":"Je n'ai pas de voiture."},{"de":"Das ist nicht gut.","fr":"Ce n'est pas bon."},{"de":"Ich komme nicht.","fr":"Je ne viens pas."}],"question":"Quand utilise-t-on *kein* et quand *nicht* ?"},
+    merke: ["Pour nier un *nom*, on utilise *kein* : *Ich habe kein Auto*.","Pour nier un *verbe*, un *adjectif* ou un complément, on utilise *nicht* : *Ich komme nicht*.","*kein* s'accorde comme l'article *ein* (keinen, keine, kein, keine)."],
+    achtung: [{"erreur":"Ich habe nicht ein Auto.","correct":"Ich habe **kein** Auto.","explication":"Devant un nom avec *ein*, on utilise *kein*, jamais *nicht ein*."},{"erreur":"Ich habe keine Zeit nicht.","correct":"Ich habe **keine** Zeit.","explication":"Pas de double négation en allemand : *kein* suffit."},{"erreur":"Ich nicht komme.","correct":"Ich komme **nicht**.","explication":"*nicht* se place après le verbe conjugué (souvent en fin de phrase)."}],
+    kontrast: {"titre":"La négation : allemand vs français","similitudes":["Les deux langues nient autour du verbe."],"differences":["Le français a deux mots (*ne… pas*) ; l'allemand un seul (*nicht* ou *kein*).","L'allemand choisit *kein* (nom) ou *nicht* (le reste) - distinction absente en français.","Pas de double négation : « je n'ai rien » = *ich habe nichts*."]}, titre: "La négation : nicht / kein", titreDE: "Verneinung: nicht / kein",
     theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Choisir entre nicht et kein", "Décliner kein"],
     grammairePoints: ["nicht", "kein"],
@@ -196,7 +208,11 @@ window.GRAMMAIRE = {
     ]
   },
   g05: {
-    id: "g05", titre: "Prépositions de lieu", titreDE: "Lokale Präpositionen",
+    id: "g05",
+    einstieg: {"intro":"Observe les prépositions qui situent un objet dans l'espace.","exemples":[{"de":"Das Buch ist auf dem Tisch.","fr":"Le livre est sur la table."},{"de":"Ich bin in der Schule.","fr":"Je suis à l'école."},{"de":"Die Lampe ist an der Wand.","fr":"La lampe est au mur."}],"question":"Quelle différence entre *auf*, *in* et *an* ?"},
+    merke: ["*in* (dans), *auf* (sur, surface horizontale), *an* (à/contre, surface verticale).","Pour dire OÙ l'on est (*Wo?*), ces prépositions sont suivies du *datif* (dem/der).","*an* + mur/eau, *auf* + table/sol, *in* + espace fermé."],
+    achtung: [{"erreur":"Ich bin in die Schule.","correct":"Ich bin in **der** Schule.","explication":"Lieu où l'on est (*Wo?*) → *datif* (der), pas accusatif."},{"erreur":"Das Bild ist auf der Wand.","correct":"Das Bild ist **an** der Wand.","explication":"Sur un mur (surface verticale) = *an*, pas *auf*."}],
+    kontrast: {"titre":"Prépositions de lieu : allemand vs français","similitudes":["Les deux situent les objets dans l'espace."],"differences":["L'allemand distingue *auf* (sur, horizontal) et *an* (à/contre, vertical).","La préposition impose un *cas* au nom (datif pour *Wo?*).","Le français n'a pas de variation de cas après la préposition."]}, titre: "Prépositions de lieu", titreDE: "Lokale Präpositionen",
     theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Situer un objet (Wo?)", "Employer les prépositions de lieu + datif"],
     grammairePoints: ["in, auf, neben…", "Wo? + datif"],
@@ -230,7 +246,11 @@ window.GRAMMAIRE = {
     ]
   },
   g06: {
-    id: "g06", titre: "L'accusatif", titreDE: "Der Akkusativ",
+    id: "g06",
+    einstieg: {"intro":"Compare l'article du sujet et celui de l'objet (le COD).","exemples":[{"de":"Der Mann ist hier. Ich sehe den Mann.","fr":"L'homme est là. Je vois l'homme."},{"de":"Ich habe einen Hund.","fr":"J'ai un chien."},{"de":"Ich kaufe die Zeitung.","fr":"J'achète le journal."}],"question":"Quel genre change à l'accusatif (compare *der* → *den*) ?"},
+    merke: ["L'accusatif marque le *COD* (l'objet direct de l'action).","Seul le *masculin* change : *der → den*, *ein → einen*.","Féminin (*die*), neutre (*das*) et pluriel ne changent pas à l'accusatif."],
+    achtung: [{"erreur":"Ich sehe der Mann.","correct":"Ich sehe **den** Mann.","explication":"COD masculin → accusatif *den*, pas *der*."},{"erreur":"Ich habe ein Hund.","correct":"Ich habe **einen** Hund.","explication":"*ein* masculin à l'accusatif devient *einen*."}],
+    kontrast: {"titre":"L'accusatif : allemand vs français","similitudes":["Les deux ont un complément d'objet direct (COD)."],"differences":["En allemand, le COD masculin change l'article (*den*, *einen*) ; en français, non.","Beaucoup de prépositions imposent l'accusatif (*für*, *ohne*, *durch*, *gegen*).","L'accusatif se *voit* sur l'article ; en français, le COD se repère à la place."]}, titre: "L'accusatif", titreDE: "Der Akkusativ",
     theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Former l'accusatif (COD)", "Utiliser les pronoms à l'accusatif"],
     grammairePoints: ["den/einen", "mich/dich/ihn…"],
@@ -269,7 +289,11 @@ window.GRAMMAIRE = {
   },
   /* ---------------- Module A1.2 ---------------- */
   g07: {
-    id: "g07", titre: "Les verbes : modaux, séparables, passé", titreDE: "Modalverben, trennbare Verben, Perfekt",
+    id: "g07",
+    einstieg: {"intro":"Où va le 2e élément du verbe (en gras à l'oral) ?","exemples":[{"de":"Ich kann gut schwimmen.","fr":"Je sais bien nager."},{"de":"Ich stehe um 7 Uhr auf.","fr":"Je me lève à 7h."},{"de":"Ich habe Pizza gegessen.","fr":"J'ai mangé une pizza."}],"question":"Où se placent *schwimmen*, *auf* et *gegessen* dans la phrase ?"},
+    merke: ["Verbe modal (*können, müssen…*) : le verbe principal va à l'*infinitif en fin de phrase*.","Verbe séparable : la *particule* (*auf-, an-, ein-*) se détache et part à la *fin*.","Passé composé : *haben/sein* + *participe* (*ge…t / ge…en*) en fin de phrase."],
+    achtung: [{"erreur":"Ich kann schwimmen gut.","correct":"Ich kann gut **schwimmen**.","explication":"Avec un modal, l'infinitif va tout à la *fin* de la phrase."},{"erreur":"Ich aufstehe um 7.","correct":"Ich **stehe** um 7 **auf**.","explication":"Verbe séparable : la particule *auf* se détache et part à la fin."},{"erreur":"Ich bin Pizza gegessen.","correct":"Ich **habe** Pizza gegessen.","explication":"*essen* forme son passé avec *haben*, pas *sein*."}],
+    kontrast: {"titre":"Verbes composés : allemand vs français","similitudes":["Les deux ont des verbes à plusieurs éléments et un passé composé."],"differences":["L'allemand rejette l'infinitif ou le participe en *fin de phrase*.","Les verbes séparables coupent en deux (*aufstehen* → *ich stehe… auf*) - inexistant en français.","Le choix *haben/sein* dépend du verbe (mouvement/changement d'état → *sein*)."]}, titre: "Les verbes : modaux, séparables, passé", titreDE: "Modalverben, trennbare Verben, Perfekt",
     theme: "Grammaire", type: "grammaire", duree: 40,
     objectifs: ["Employer les verbes de modalité", "Reconnaître les verbes séparables", "Former le passé composé"],
     grammairePoints: ["müssen/können/wollen", "trennbare Verben", "Perfekt"],
@@ -319,7 +343,11 @@ window.GRAMMAIRE = {
     ]
   },
   g08: {
-    id: "g08", titre: "Prépositions de temps", titreDE: "Temporale Präpositionen",
+    id: "g08",
+    einstieg: {"intro":"Observe la préposition selon qu'il s'agit d'un jour, d'une heure ou d'un mois.","exemples":[{"de":"am Montag","fr":"lundi"},{"de":"um 8 Uhr","fr":"à 8 heures"},{"de":"im Januar","fr":"en janvier"}],"question":"Quelle préposition pour un jour, une heure, un mois ?"},
+    merke: ["*am* + jour ou partie de journée (*am Montag*, *am Morgen*).","*um* + heure précise (*um 8 Uhr*).","*im* + mois ou saison (*im Mai*, *im Sommer*)."],
+    achtung: [{"erreur":"in Montag","correct":"**am** Montag","explication":"Les jours prennent *am* (= an dem), pas *in*."},{"erreur":"am 8 Uhr","correct":"**um** 8 Uhr","explication":"L'heure précise prend *um*."},{"erreur":"am Januar","correct":"**im** Januar","explication":"Les mois prennent *im* (= in dem)."}],
+    kontrast: {"titre":"Le temps : allemand vs français","similitudes":["Les deux utilisent des prépositions pour situer dans le temps."],"differences":["Là où le français dit « le lundi / à 8h / en janvier », l'allemand distingue *am / um / im*.","Pas de préposition devant l'année : *2024* (et non *im 2024*).","*um* = heure, *am* = jour, *im* = mois - à mémoriser."]}, titre: "Prépositions de temps", titreDE: "Temporale Präpositionen",
     theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Choisir la bonne préposition de temps"],
     grammairePoints: ["am, um, im, von…bis"],
@@ -353,7 +381,11 @@ window.GRAMMAIRE = {
     ]
   },
   g09: {
-    id: "g09", titre: "Les conjonctions", titreDE: "Konjunktionen",
+    id: "g09",
+    einstieg: {"intro":"Compare la place du verbe après ces petits mots de liaison.","exemples":[{"de":"Ich bleibe zu Hause, denn es regnet.","fr":"Je reste à la maison, car il pleut."},{"de":"Ich weiß, dass er kommt.","fr":"Je sais qu'il vient."},{"de":"Ich lese, weil ich Zeit habe.","fr":"Je lis parce que j'ai le temps."}],"question":"Où se place le verbe après *weil* / *dass* ?"},
+    merke: ["Coordination (*und, oder, aber, denn*) : *ne change pas* l'ordre des mots.","Subordination (*weil, dass, wenn, ob*) : *rejette le verbe conjugué à la fin*.","Virgule obligatoire devant *dass, weil, wenn*…"],
+    achtung: [{"erreur":"…, weil ich habe Zeit.","correct":"…, weil ich Zeit **habe**.","explication":"Après *weil*, le verbe conjugué part en *fin* de subordonnée."},{"erreur":"Ich bleibe, denn habe ich Zeit.","correct":"…, denn ich **habe** Zeit.","explication":"*denn* ne change pas l'ordre : sujet puis verbe en position 2."}],
+    kontrast: {"titre":"Les conjonctions : allemand vs français","similitudes":["*denn/weil* ≈ car/parce que ; *aber* ≈ mais ; *und* ≈ et."],"differences":["Après une subordination (*weil, dass*), l'allemand met le verbe à la *fin* - pas le français.","*denn* (coordination) et *weil* (subordination) traduisent « car » mais changent l'ordre différemment.","La virgule est grammaticale (obligatoire) en allemand devant la subordonnée."]}, titre: "Les conjonctions", titreDE: "Konjunktionen",
     theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Relier deux phrases", "Distinguer und/aber/denn et weil (verbe à la fin)"],
     grammairePoints: ["und, oder, aber, denn", "weil"],
@@ -393,7 +425,11 @@ window.GRAMMAIRE = {
     ]
   },
   g10: {
-    id: "g10", titre: "Le groupe de noms au datif", titreDE: "Der Dativ",
+    id: "g10",
+    einstieg: {"intro":"À qui donne-t-on ? Observe l'article du destinataire.","exemples":[{"de":"Ich gebe dem Mann das Buch.","fr":"Je donne le livre à l'homme."},{"de":"Ich helfe der Frau.","fr":"J'aide la femme."},{"de":"Das Auto gehört dem Kind.","fr":"La voiture appartient à l'enfant."}],"question":"Comment changent *der/die/das* au datif ?"},
+    merke: ["Le datif marque souvent le *destinataire* (à qui ?).","Articles au datif : *der→dem*, *die→der*, *das→dem*, pluriel *die→den* (+ -n au nom).","Certains verbes exigent le datif : *helfen, danken, gehören, gefallen*."],
+    achtung: [{"erreur":"Ich helfe die Frau.","correct":"Ich helfe **der** Frau.","explication":"*helfen* exige le *datif* : der Frau, pas die Frau."},{"erreur":"mit der Auto","correct":"mit **dem** Auto","explication":"*Auto* est neutre → datif *dem*."},{"erreur":"mit die Kindern","correct":"mit **den** Kindern","explication":"Datif pluriel : article *den* + nom en *-n*."}],
+    kontrast: {"titre":"Le datif : allemand vs français","similitudes":["Le datif ≈ le complément d'attribution (« à quelqu'un »)."],"differences":["L'allemand *marque* le datif sur l'article (dem/der) ; le français utilise « à ».","Des verbes comme *helfen, danken* prennent le datif sans préposition (≠ « aider quelqu'un »).","Au datif pluriel, le nom prend un *-n* (den Kindern, den Männern)."]}, titre: "Le groupe de noms au datif", titreDE: "Der Dativ",
     theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Former le datif", "Employer les prépositions + datif (mit, zu, bei…)"],
     grammairePoints: ["dem/der/dem", "mit, zu, bei, von…"],
@@ -427,7 +463,11 @@ window.GRAMMAIRE = {
     ]
   },
   g11: {
-    id: "g11", titre: "Indicateurs de lieu", titreDE: "Ortsangaben",
+    id: "g11",
+    einstieg: {"intro":"Aller quelque part, venir de quelque part : observe les prépositions.","exemples":[{"de":"Ich gehe nach Hause.","fr":"Je rentre à la maison."},{"de":"Ich fahre in die Stadt.","fr":"Je vais en ville."},{"de":"Ich komme aus Frankreich.","fr":"Je viens de France."}],"question":"Quelle préposition pour aller (*wohin?*) et pour venir (*woher?*) ?"},
+    merke: ["*Wohin?* (direction) : *in* + *accusatif* (*in die Stadt*), *nach* + ville/pays, *zu* + personne.","*Woher?* (origine) : *aus* (*aus Frankreich*), *von*.","*nach Hause* (rentrer) / *zu Hause* (être à la maison) : expressions figées."],
+    achtung: [{"erreur":"Ich gehe zu Hause.","correct":"Ich gehe **nach** Hause.","explication":"Aller à la maison = *nach Hause* ; être à la maison = *zu Hause*."},{"erreur":"Ich fahre in der Stadt.","correct":"Ich fahre in **die** Stadt.","explication":"Direction (*wohin?*) → *accusatif* (die Stadt), pas datif."},{"erreur":"Ich komme von Frankreich.","correct":"Ich komme **aus** Frankreich.","explication":"Venir d'un pays/d'une ville = *aus*, pas *von*."}],
+    kontrast: {"titre":"Direction et origine : allemand vs français","similitudes":["Les deux distinguent aller et venir."],"differences":["L'allemand oppose *wohin?* (accusatif) et *wo?* (datif) - même préposition, cas différent.","*nach* (villes/pays sans article) vs *in* (avec article) pour la direction.","*aus* (sortir de) ≠ *von* - distinction absente en français."]}, titre: "Indicateurs de lieu", titreDE: "Ortsangaben",
     theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Dire où (Wo?) et où aller (Wohin?)", "Choisir nach / zu / in"],
     grammairePoints: ["nach, zu, in", "Wo? / Wohin?"],
@@ -461,7 +501,11 @@ window.GRAMMAIRE = {
     ]
   },
   g12: {
-    id: "g12", titre: "Les adjectifs", titreDE: "Die Adjektive",
+    id: "g12",
+    einstieg: {"intro":"L'adjectif change-t-il selon sa place (avant le nom ou après *sein*) ?","exemples":[{"de":"Das Haus ist schön.","fr":"La maison est belle."},{"de":"ein schönes Haus","fr":"une belle maison"},{"de":"der große Mann","fr":"le grand homme"}],"question":"Quand l'adjectif prend-il une terminaison ?"},
+    merke: ["Adjectif *attribut* (après *sein*) : *invariable* - *Das Haus ist schön*.","Adjectif *épithète* (devant le nom) : il prend une *terminaison* - *ein schönes Haus*.","La terminaison dépend du genre, du cas et de l'article."],
+    achtung: [{"erreur":"ein schön Haus","correct":"ein **schönes** Haus","explication":"Devant un nom, l'adjectif prend une terminaison (*-es* au neutre)."},{"erreur":"Das Haus ist schönes.","correct":"Das Haus ist **schön**.","explication":"Après *sein*, l'adjectif reste *invariable* (sans terminaison)."}],
+    kontrast: {"titre":"Les adjectifs : allemand vs français","similitudes":["L'adjectif qualifie le nom dans les deux langues."],"differences":["L'épithète se place *avant* le nom (*ein schönes Haus*) et se *décline*.","L'adjectif *attribut* (après être) est *invariable* en allemand (≠ « belle » en français).","La terminaison varie selon genre/cas/article - système absent en français."]}, titre: "Les adjectifs", titreDE: "Die Adjektive",
     theme: "Grammaire", type: "grammaire", duree: 30,
     objectifs: ["Utiliser l'adjectif attribut", "Former un comparatif simple"],
     grammairePoints: ["sein + adjectif", "comparatif"],
