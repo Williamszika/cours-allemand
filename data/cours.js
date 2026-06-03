@@ -135,6 +135,7 @@ window.COURS.modules.forEach((m) =>
   m.lecons.forEach((l) => {
     if (window.COMPREHENSION && window.COMPREHENSION[l.id]) l.exercices = l.exercices.concat(window.COMPREHENSION[l.id]);
     if (window.PRODUCTION && window.PRODUCTION[l.id]) l.exercices = l.exercices.concat(window.PRODUCTION[l.id]);
+    if (window.ECOUTE && window.ECOUTE[l.id]) l.exercices = l.exercices.concat(window.ECOUTE[l.id]);
   })
 );
 
