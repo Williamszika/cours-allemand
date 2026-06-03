@@ -665,6 +665,37 @@
   /* ====================================================================
      RENDU D'UNE LEÇON
      ==================================================================== */
+  function revisionExpress(max) {
+    if (!window.Revision || !window.Revision.getDue || !window.COURS) return null;
+    var cards = window.Revision.getDue(window.COURS, max || 5);
+    if (!cards.length) return null;
+    var box = el("section", "lesson-section");
+    box.appendChild(el("h2", "", "🔁 Révision express (" + cards.length + ")"));
+    box.appendChild(el("p", "exo-group-sub", "Rafraîchis ces mots vus avant, puis attaque la leçon."));
+    var holder = el("div", ""); box.appendChild(holder);
+    var i = 0, known = 0, unknown = 0;
+    function done() { holder.innerHTML = ""; holder.appendChild(el("p", "exo-group-sub", "✅ Révision faite - " + known + " su(s), " + unknown + " à revoir. Bonne leçon !")); }
+    function show() {
+      if (i >= cards.length) return done();
+      var c = cards[i]; holder.innerHTML = "";
+      holder.appendChild(el("div", "exo-group-sub", "Carte " + (i + 1) + " / " + cards.length));
+      var fc = el("div", "flashcard");
+      var deRow = el("div", "fc-de"); deRow.appendChild(el("span", "", c.de)); deRow.appendChild(speakButton(c.de)); fc.appendChild(deRow);
+      var back = el("div", "fc-back hidden"); back.appendChild(el("div", "fc-fr", c.fr)); if (c.ex) back.appendChild(el("p", "fc-ex", "« " + c.ex + " »")); fc.appendChild(back);
+      holder.appendChild(fc);
+      var rateRow = el("div", "rev-rate");
+      var flip = el("button", "btn btn-ghost small", "🔄 Réponse"); flip.type = "button";
+      var ok = el("button", "btn-self ok", "✅ Su"); ok.type = "button"; ok.style.display = "none";
+      var ko = el("button", "btn-self ko", "❌ À revoir"); ko.type = "button"; ko.style.display = "none";
+      flip.addEventListener("click", function () { back.classList.remove("hidden"); flip.style.display = "none"; ok.style.display = ""; ko.style.display = ""; if (window.TG) window.TG.haptic("selection"); });
+      ok.addEventListener("click", function () { window.Revision.rate(c.id, true); if (window.TG) window.TG.haptic("success"); known++; i++; show(); });
+      ko.addEventListener("click", function () { window.Revision.rate(c.id, false); if (window.TG) window.TG.haptic("light"); unknown++; i++; show(); });
+      rateRow.appendChild(flip); rateRow.appendChild(ok); rateRow.appendChild(ko); holder.appendChild(rateRow);
+    }
+    show();
+    return box;
+  }
+
   function renderLecon(id) {
     const idx = leconIndex(id);
     if (idx < 0) return renderHome();
@@ -722,6 +753,7 @@
     frag.appendChild(head);
 
     /* Navigation par onglets (ancres) */
+    var __rx = revisionExpress(5); if (__rx) frag.appendChild(__rx);
     const tabs = el("nav", "lesson-tabs");
     tabs.innerHTML =
       (hasVoc ? '<a href="#voc">🗂️ Vocabulaire</a>' : "") +
