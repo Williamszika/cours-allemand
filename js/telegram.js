@@ -55,8 +55,8 @@ window.TG = (function () {
     try {
       mb.setText(text);
       // Libellé du bouton principal dans la langue choisie (si ≠ français)
-      if (window.I18N && window.I18N.lang && window.I18N.lang() !== "fr") {
-        window.I18N.translate(text, window.I18N.lang(), "fr").then(function (out) { if (out && out !== text) { try { mb.setText(out); } catch (e) {} } });
+      if (window.I18N && window.I18N.lang && (window.I18N.uiLang ? window.I18N.uiLang() : window.I18N.lang()) !== "fr") {
+        window.I18N.translate(text, (window.I18N.uiLang ? window.I18N.uiLang() : window.I18N.lang()), "fr").then(function (out) { if (out && out !== text) { try { mb.setText(out); } catch (e) {} } });
       }
       mb.onClick(mainHandler);
       mb.show();

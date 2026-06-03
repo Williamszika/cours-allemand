@@ -399,7 +399,7 @@ window.Exercises = (function () {
   function fmtCorr(t) { return String(t == null ? "" : t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\n/g, "<br>"); }
   function aiCorrige(consigne, texte, box) {
     var niveau = (window.Progress && window.Progress.getNiveau && window.Progress.getNiveau()) || "A1";
-    var langue = (window.I18N && window.I18N.lang && window.I18N.lang()) || "fr";
+    var langue = (window.I18N && window.I18N.lang && (window.I18N.uiLang ? window.I18N.uiLang() : window.I18N.lang())) || "fr";
     box.className = "exo-feedback show neutre"; box.innerHTML = "✨ Correction en cours…";
     var msg = "Consigne: « " + consigne + " ». Production de l'apprenant: « " + texte + " ». Corrige selon les consignes.";
     fetch("/api/chat", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ messages: [{ role: "user", content: msg }], niveau: niveau, niveauParle: niveau, langue: langue, mode: "correction", initData: tgInitDataEx() || undefined }) })

@@ -292,9 +292,12 @@ window.I18N = (function () {
   /* ---- Immersion : langue d'explication selon le niveau du cours ---- */
   var ORDRE = ["A1", "A2", "B1", "B2", "C1", "C2"];
   /* A1/A2 → langue de l'utilisateur ; B1→de(A2), B2→de(B1), C1→de(B2), C2→de(C1). */
+  function niveauUser() { try { return (window.Progress && window.Progress.getNiveau && window.Progress.getNiveau()) || null; } catch (e) { return null; } }
+  function immersif() { var n = niveauUser(); return !!n && ORDRE.indexOf(String(n).toUpperCase()) >= ORDRE.indexOf("B1"); }
+  function uiLang() { return immersif() ? "de" : lang(); }
   function explication(niveau) {
     var n = (niveau || "A1").toUpperCase();
-    if (n === "A1" || n === "A2") return { lang: lang(), de: false, niveau: null };
+    if ((n === "A1" || n === "A2") && !immersif()) return { lang: lang(), de: false, niveau: null };
     var idx = ORDRE.indexOf(n);
     var prev = ORDRE[Math.max(0, idx - 1)]; // B1→A2, B2→B1, C1→B2, C2→C1
     return { lang: "de", de: true, niveau: prev };
@@ -302,7 +305,7 @@ window.I18N = (function () {
 
   /* ---- Traduction de l'interface ---- */
   function t(key, vars) {
-    var l = lang();
+    var l = uiLang();
     var s = (UI[l] && UI[l][key]) || (UI.en && UI.en[key]) || (UI.fr && UI.fr[key]) || key;
     if (vars) for (var k in vars) s = s.replace("{" + k + "}", vars[k]);
     return s;
@@ -396,13 +399,13 @@ window.I18N = (function () {
   }
 
   function applyDir() {
-    try { document.documentElement.setAttribute("dir", isRTL() ? "rtl" : "ltr"); document.documentElement.setAttribute("lang", lang()); } catch (e) {}
+    try { document.documentElement.setAttribute("dir", isRTL(uiLang()) ? "rtl" : "ltr"); document.documentElement.setAttribute("lang", uiLang()); } catch (e) {}
   }
 
   return {
     LANGS: LANGS, all: all, lang: lang, setLang: setLang, isChosen: isChosen, info: info,
     isCurated: isCurated, isRTL: isRTL, detect: detect, detectGeo: detectGeo,
-    explication: explication, t: t, tIn: tIn, translate: translate, canAutoTranslate: canAutoTranslate,
+    explication: explication, uiLang: uiLang, immersif: immersif, t: t, tIn: tIn, translate: translate, canAutoTranslate: canAutoTranslate,
     googleUrl: googleUrl, applyDir: applyDir
   };
 })();

@@ -182,7 +182,7 @@
   const _l10nDone = (typeof WeakSet !== "undefined") ? new WeakSet() : null;
   function localizeUI(root) {
     if (!root || !window.I18N) return;
-    const lang = window.I18N.lang();
+    const lang = window.I18N.uiLang ? window.I18N.uiLang() : window.I18N.lang();
     if (lang === "fr") return;
     let walker;
     try { walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null); } catch (e) { return; }
@@ -447,7 +447,7 @@
       const tc = el("div", "zika-conseil");
       tc.appendChild(el("span", "cours-tag", "💡 Le conseil de Zika"));
       const msg = el("div", "zika-conseil-msg");
-      localizeInto(msg, "D'après ton test, travaille en priorité : " + faibles.map((f) => "**" + f + "**").join(", ") + ".", { lang: window.I18N ? window.I18N.lang() : "fr", de: false });
+      localizeInto(msg, "D'après ton test, travaille en priorité : " + faibles.map((f) => "**" + f + "**").join(", ") + ".", { lang: window.I18N ? (window.I18N.uiLang ? window.I18N.uiLang() : window.I18N.lang()) : "fr", de: false });
       tc.appendChild(msg);
       const rev = el("a", "btn btn-ghost small", "🔁 Réviser maintenant");
       rev.href = "#/revision"; rev.style.marginTop = "10px";
