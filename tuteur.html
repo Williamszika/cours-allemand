@@ -24,7 +24,10 @@ select{background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-ra
 footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);background:var(--card)}
 #txt{flex:1;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:20px;padding:10px 14px;font-size:15px;resize:none;max-height:120px;font-family:inherit}
 #send{background:var(--me);color:#fff;border:0;border-radius:50%;width:44px;height:44px;font-size:18px;cursor:pointer;flex:0 0 auto}
-#send:disabled{opacity:.5}
+#send:disabled,#mic:disabled{opacity:.5}
+#mic{background:var(--bot);color:#fff;border:1px solid var(--bd);border-radius:50%;width:44px;height:44px;font-size:18px;cursor:pointer;flex:0 0 auto}
+#mic.rec{background:#dc2626;border-color:#dc2626;animation:pulse 1s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(220,38,38,.6)}70%{box-shadow:0 0 0 9px rgba(220,38,38,0)}100%{box-shadow:0 0 0 0 rgba(220,38,38,0)}}
 .gate{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;gap:10px}
 .gate .ic{font-size:46px}
 .gate h2{margin:4px 0;font-size:19px}
@@ -45,7 +48,8 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
 </header>
 <div id="log"></div>
 <footer id="foot">
-  <textarea id="txt" rows="1" placeholder="Écris en allemand (ou pose une question)…"></textarea>
+  <button id="mic" title="Parler">🎤</button>
+  <textarea id="txt" rows="1" placeholder="Écris, ou appuie sur 🎤 pour parler…"></textarea>
   <button id="send" title="Envoyer">➤</button>
 </footer>
 <div id="gate" class="gate" style="display:none">
@@ -85,7 +89,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
   var NIVPARLE=ORDER[pi>=2?pi-1:pi];
   document.getElementById('niv').textContent='Niveau : '+NIV+(NIVPARLE!==NIV?' · le tuteur parle '+NIVPARLE:' · auto');
 
-  var log=document.getElementById('log'),txt=document.getElementById('txt'),send=document.getElementById('send'),mode=document.getElementById('mode');
+  var log=document.getElementById('log'),txt=document.getElementById('txt'),send=document.getElementById('send'),mode=document.getElementById('mode'),mic=document.getElementById('mic');
   var history=[],audio;
   function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
   function speak(t){
@@ -99,27 +103,55 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
     if(role==='assistant'){var s=document.createElement('div');s.className='spk';s.textContent='🔊 Écouter';s.onclick=function(){speak(text);};d.appendChild(s);}
     log.appendChild(d); log.scrollTop=log.scrollHeight; return d;
   }
-  function busy(b){send.disabled=b;}
-  async function ask(){
-    var t=txt.value.trim(); if(!t)return;
-    txt.value=''; txt.style.height='auto';
+  function busy(b){send.disabled=b;mic.disabled=b;}
+  async function sendUser(t,oral){
+    if(!t)return;
     bubble('user',t); history.push({role:'user',content:t}); if(history.length>20)history=history.slice(-20);
     busy(true);
     var typing=document.createElement('div'); typing.className='msg bot typing'; typing.textContent='…';
     log.appendChild(typing); log.scrollTop=log.scrollHeight;
     try{
-      var res=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({messages:history,niveau:NIV,niveauParle:NIVPARLE,langue:LG,mode:mode.value})});
+      var res=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({messages:history,niveau:NIV,niveauParle:NIVPARLE,langue:LG,mode:mode.value,oral:!!oral})});
       typing.remove();
       if(!res.ok){bubble('assistant','⚠️ Erreur '+res.status+'. Réessaie dans un instant.'); busy(false); return;}
       var j=await res.json(); var reply=j.reply||'(réponse vide)';
       history.push({role:'assistant',content:reply}); bubble('assistant',reply);
+      if(oral) speak(reply);
     }catch(e){ try{typing.remove();}catch(_){} bubble('assistant','⚠️ Connexion impossible.'); }
-    busy(false); txt.focus();
+    busy(false);
   }
+  function ask(){var t=txt.value.trim(); if(!t)return; txt.value=''; txt.style.height='auto'; sendUser(t,false); txt.focus();}
   send.onclick=ask;
+
+  var mediaRec=null,recChunks=[],recording=false;
+  async function transcribe(blob){
+    busy(true);
+    var typing=document.createElement('div'); typing.className='msg bot typing'; typing.textContent='🎧 transcription…';
+    log.appendChild(typing); log.scrollTop=log.scrollHeight;
+    try{
+      var r=await fetch('/api/stt',{method:'POST',headers:{'content-type':blob.type||'audio/webm'},body:blob});
+      typing.remove();
+      if(!r.ok){bubble('assistant','⚠️ Transcription indisponible ('+r.status+').'); busy(false); return;}
+      var j=await r.json(); var t=(j.text||'').trim();
+      if(!t){bubble('assistant','Je n\'ai rien entendu — parle un peu plus fort et reessaie. 🙂'); busy(false); return;}
+      busy(false); sendUser(t,true);
+    }catch(e){ try{typing.remove();}catch(_){} bubble('assistant','⚠️ Transcription impossible.'); busy(false); }
+  }
+  async function toggleMic(){
+    if(recording){ try{mediaRec.stop();}catch(e){} return; }
+    if(!navigator.mediaDevices||!window.MediaRecorder){ bubble('assistant','🎤 Enregistrement non supporte ici. Ouvre la page dans Safari/Chrome.'); return; }
+    try{
+      var stream=await navigator.mediaDevices.getUserMedia({audio:true});
+      recChunks=[]; mediaRec=new MediaRecorder(stream);
+      mediaRec.ondataavailable=function(e){if(e.data&&e.data.size)recChunks.push(e.data);};
+      mediaRec.onstop=function(){ try{stream.getTracks().forEach(function(x){x.stop();});}catch(e){} recording=false; mic.textContent='🎤'; mic.classList.remove('rec'); var blob=new Blob(recChunks,{type:(mediaRec&&mediaRec.mimeType)||'audio/webm'}); if(blob.size>1200){transcribe(blob);} };
+      mediaRec.start(); recording=true; mic.textContent='⏹'; mic.classList.add('rec');
+    }catch(e){ bubble('assistant','🎤 Micro refuse ou indisponible. Autorise le micro pour parler.'); }
+  }
+  mic.onclick=toggleMic;
   txt.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();ask();}});
   txt.addEventListener('input',function(){txt.style.height='auto';txt.style.height=Math.min(txt.scrollHeight,120)+'px';});
-  bubble('assistant',"Hallo! Ich bin dein Deutsch-Tutor. 🇩🇪 (Niveau "+NIV+")\nÉcris-moi en allemand, même avec des fautes, ou pose-moi une question. Los geht's!");
+  bubble('assistant',"Hallo! Ich bin dein Deutsch-Tutor. 🇩🇪 (Niveau "+NIV+")\nÉcris-moi, ou appuie sur 🎤 pour PARLER : je t'écoute, je te corrige et je t'aide à t'exprimer sans stress. Los geht's!");
   txt.focus();
 })();
 </script>
