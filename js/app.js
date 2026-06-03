@@ -1344,6 +1344,32 @@
     });
     sec2.appendChild(el("p", "exo-group-sub", "Calculé à partir de vos réponses aux exercices. Refaites une leçon pour améliorer un score."));
     frag.appendChild(sec2);
+    /* 3.5 Suivi visible : maitrise par competence fine (Adaptatif.competenceScores) */
+    if (window.Adaptatif && window.COMPETENCES && window.Adaptatif.competenceScores) {
+      var __cs = window.Adaptatif.competenceScores(COURS);
+      var __codes = Object.keys(__cs).filter(function (c) { return __cs[c].a > 0; });
+      if (__codes.length) {
+        var __nM = 0, __nC = 0, __nR = 0;
+        __codes.forEach(function (c) { var r = __cs[c].rate; if (r >= 0.85) __nM++; else if (r >= 0.67) __nC++; else __nR++; });
+        var secCF = el("section", "lesson-section");
+        secCF.appendChild(el("h2", "", "🧩 Compétences détaillées"));
+        secCF.appendChild(el("p", "exo-group-sub", "<b>" + __nM + "</b> maîtrisées · <b>" + __nC + "</b> en cours · <b>" + __nR + "</b> à revoir"));
+        var __cats = {};
+        __codes.forEach(function (c) { var cat = window.COMPETENCES.info(c).cat || "Autre"; (__cats[cat] = __cats[cat] || []).push(c); });
+        Object.keys(__cats).sort().forEach(function (cat) {
+          secCF.appendChild(el("div", "stats-niv-sep", cat));
+          __cats[cat].sort(function (a, b) { return __cs[a].rate - __cs[b].rate; }).forEach(function (c) {
+            var s = __cs[c], p = Math.round(s.rate * 100);
+            var col = s.rate >= 0.85 ? "#16a34a" : (s.rate >= 0.67 ? "#f59e0b" : "#dc2626");
+            var row = el("div", "stat-bar");
+            row.innerHTML = '<div class="stat-bar-head"><span>' + escapeHtml(window.COMPETENCES.label(c)) + '</span><span>' + p + "% (" + s.ok + "/" + s.a + ")</span></div>" + '<div class="bar"><div class="bar-fill" style="width:' + p + "%;background:" + col + '"></div></div>';
+            secCF.appendChild(row);
+          });
+        });
+        secCF.appendChild(el("p", "exo-group-sub", "Maîtrise calculée à partir de tes réponses (vert ≥ 85 %, orange ≥ 67 %, rouge à revoir). Refais une leçon pour progresser."));
+        frag.appendChild(secCF);
+      }
+    }
 
     // Examens du parcours
     const secE = el("section", "lesson-section");
