@@ -395,6 +395,19 @@ window.Exercises = (function () {
   }
 
   /* ---------- Production écrite ---------- */
+  function tgInitDataEx() { try { var w = window.Telegram && window.Telegram.WebApp; return (w && w.initData) ? w.initData : null; } catch (e) { return null; } }
+  function fmtCorr(t) { return String(t == null ? "" : t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\n/g, "<br>"); }
+  function aiCorrige(consigne, texte, box) {
+    var niveau = (window.Progress && window.Progress.getNiveau && window.Progress.getNiveau()) || "A1";
+    var langue = (window.I18N && window.I18N.lang && window.I18N.lang()) || "fr";
+    box.className = "exo-feedback show neutre"; box.innerHTML = "✨ Correction en cours…";
+    var msg = "Consigne: « " + consigne + " ». Production de l'apprenant: « " + texte + " ». Corrige selon les consignes.";
+    fetch("/api/chat", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ messages: [{ role: "user", content: msg }], niveau: niveau, niveauParle: niveau, langue: langue, mode: "correction", initData: tgInitDataEx() || undefined }) })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { if (!j || !j.reply) { box.className = "exo-feedback show faux"; box.innerHTML = "⚠️ Correction indisponible, réessaie dans un instant."; return; } box.className = "exo-feedback show juste"; box.innerHTML = '<div class="ia-corr">' + fmtCorr(j.reply) + '</div>'; })
+      .catch(function () { box.className = "exo-feedback show faux"; box.innerHTML = "⚠️ Connexion impossible."; });
+  }
+
   function buildProduction(ex, body, actions, feedback, onResult) {
     body.appendChild(el("p", "exo-question", ex.prompt));
     const ta = el("textarea", "production-input");
@@ -483,6 +496,10 @@ window.Exercises = (function () {
       if (onResult) onResult(ok);
     });
 
+    const iaBox = el("div", "ia-box"); body.appendChild(iaBox);
+    const iaBtn = el("button", "btn btn-ghost small", "✨ Correction IA"); iaBtn.type = "button";
+    iaBtn.addEventListener("click", function () { const t = ta.value.trim(); if (!t) { iaBox.className = "exo-feedback show neutre"; iaBox.innerHTML = "👉 Écris d'abord ta réponse."; return; } aiCorrige(ex.prompt || ex.consigne || "", t, iaBox); });
+    actions.appendChild(iaBtn);
     actions.appendChild(verifier);
     actions.appendChild(ecouter);
     actions.appendChild(voir);
