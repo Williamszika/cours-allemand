@@ -5,7 +5,11 @@
    ===================================================================== */
 window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
   b2g01: {
-    id: "b2g01", titre: "Les verbes modaux", titreDE: "Die Modalverben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
+    id: "b2g01",
+    einstieg: {"intro":"Ces modaux n'expriment pas l'obligation. Observe.","exemples":[{"de":"Er muss krank sein.","fr":"Il doit être malade. (probabilité)"},{"de":"Sie soll sehr reich sein.","fr":"On dit qu'elle est très riche."},{"de":"Das kann nicht stimmen.","fr":"Ça ne peut pas être vrai."}],"question":"Les modaux n'expriment-ils que l'obligation et la capacité ?"},
+    merke: ["Emploi *subjectif* des modaux : supposition / rumeur.","*müssen* = forte probabilité (*er muss krank sein* = il est sûrement malade).","*sollen* = on dit que (rumeur) ; *dürfte* = probablement ; *könnte* = il se peut."],
+    achtung: [{"erreur":"Er ist sicher krank.","correct":"Er **muss** krank sein.","explication":"Pour une déduction logique, l'allemand utilise *müssen* (sens subjectif)."},{"erreur":"Man sagt, sie ist reich.","correct":"Sie **soll** reich sein.","explication":"*sollen* exprime la rumeur (« on dit que »)."}],
+    kontrast: {"titre":"Modaux subjectifs : allemand vs français","similitudes":["« il doit être malade » a un sens de probabilité dans les deux."],"differences":["L'allemand systématise : *müssen* (déduction), *sollen* (rumeur), *dürfte* (probable).","Même modal, deux sens (objectif/subjectif) selon le contexte.","Le français passe par « sûrement », « on dit que »."]}, titre: "Les verbes modaux", titreDE: "Die Modalverben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Distinguer sens objectif et subjectif des modaux", "Exprimer la supposition (müssen/können/dürfte)"],
     grammairePoints: ["sens objectif vs subjectif", "Vermutung : müsste, könnte, dürfte"],
     exemplesPlus: [{"de":"Du musst den Bericht bis Freitag abgeben.","fr":"Objektiv: eine echte Notwendigkeit."},{"de":"Er müsste eigentlich schon zu Hause sein.","fr":"Subjektiv: eine ziemlich sichere Vermutung."},{"de":"Sie könnte im Stau stehen.","fr":"Subjektiv: eine von mehreren Möglichkeiten."},{"de":"Das dürfte die richtige Lösung sein.","fr":"Subjektiv: wahrscheinlich richtig."},{"de":"Du darfst das Gebäude nicht ohne Ausweis betreten.","fr":"Objektiv: ein klares Verbot."}],
@@ -29,7 +33,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g02: {
-    id: "b2g02", titre: "Les temps du passé", titreDE: "Perfekt, Präteritum, Plusquamperfekt", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
+    id: "b2g02",
+    einstieg: {"intro":"Observe la chronologie de deux actions passées.","exemples":[{"de":"Nachdem er gegessen hatte, ging er.","fr":"Après avoir mangé, il partit."},{"de":"Ich hatte ihn schon gewarnt.","fr":"Je l'avais déjà prévenu."},{"de":"Damals lebte sie in Berlin.","fr":"À l'époque, elle vivait à Berlin."}],"question":"Comment marquer qu'une action précède une autre dans le passé ?"},
+    merke: ["*Plusquamperfekt* (*hatte/war* + participe) = action *antérieure* à un autre passé.","Récit/écrit : *Präteritum* domine ; oral : *Perfekt*.","Concordance : *nachdem* + Plusquamperfekt, principale au Präteritum."],
+    achtung: [{"erreur":"Nachdem er aß, ging er.","correct":"Nachdem er gegessen **hatte**, ging er.","explication":"*nachdem* exige le Plusquamperfekt (antériorité)."},{"erreur":"Ich habe ihn schon gewarnt gehabt.","correct":"Ich **hatte** ihn schon gewarnt.","explication":"L'antériorité se dit au Plusquamperfekt."}],
+    kontrast: {"titre":"Les temps du passé (B2) : allemand vs français","similitudes":["Plus-que-parfait pour l'antériorité."],"differences":["La concordance *nachdem* + Plusquamperfekt est stricte.","Le choix Perfekt/Präteritum dépend du registre.","Un seul Präteritum = imparfait + passé simple."]}, titre: "Les temps du passé", titreDE: "Perfekt, Präteritum, Plusquamperfekt", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Choisir le temps selon le registre", "Marquer l'antériorité dans un texte"],
     grammairePoints: ["Perfekt / Präteritum", "Plusquamperfekt + nachdem"],
     exemplesPlus: [{"de":"Gestern habe ich meine alten Freunde getroffen.","fr":"Perfekt: im Gespräch über die Vergangenheit."},{"de":"Der Schriftsteller lebte lange im Ausland und schrieb dort seine Romane.","fr":"Präteritum: typisch für geschriebene Texte."},{"de":"Nachdem sie die Prüfung bestanden hatte, feierte sie mit Freunden.","fr":"Plusquamperfekt + *nachdem*: das war vorher."},{"de":"Als ich klein war, verbrachten wir jeden Sommer am Meer.","fr":"*als* + Präteritum für die Vergangenheit."},{"de":"Er hatte den Schlüssel vergessen, deshalb konnte er nicht ins Haus.","fr":"Plusquamperfekt für die frühere Ursache."}],
@@ -54,7 +62,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g03: {
-    id: "b2g03", titre: "La déclinaison des adjectifs", titreDE: "Die Adjektivdeklination", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
+    id: "b2g03",
+    einstieg: {"intro":"La terminaison de l'adjectif change selon l'article. Observe.","exemples":[{"de":"ein guter Wein","fr":"un bon vin"},{"de":"mit gutem Wein","fr":"avec du bon vin"},{"de":"die guten Weine","fr":"les bons vins"}],"question":"De quoi dépend la terminaison de l'adjectif épithète ?"},
+    merke: ["Déclinaison *faible* (après der/die/das) : -e / -en.","Déclinaison *mixte* (après ein/kein/mein) : l'adjectif marque le genre.","Déclinaison *forte* (sans article) : l'adjectif prend les terminaisons de l'article (gutem, guter)."],
+    achtung: [{"erreur":"ein gutes Wein","correct":"ein **guter** Wein","explication":"*Wein* est masculin : ein gut**er** Wein."},{"erreur":"mit dem guter Wein","correct":"mit dem **guten** Wein","explication":"Après *dem* (article), déclinaison faible : guten."}],
+    kontrast: {"titre":"Déclinaison de l'adjectif : allemand vs français","similitudes":["L'adjectif s'accorde avec le nom."],"differences":["Trois déclinaisons (faible/mixte/forte) selon l'article.","La terminaison encode genre + cas + nombre.","Système absent en français."]}, titre: "La déclinaison des adjectifs", titreDE: "Die Adjektivdeklination", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
     objectifs: ["Maîtriser les trois déclinaisons de l'adjectif", "Décliner sans article"],
     grammairePoints: ["après der / ein / ø", "terminaisons -e / -en / forte"],
     exemplesPlus: [{"de":"Der neue Kollege ist sehr freundlich.","fr":"Nach *der*: schwache Endung *-e*."},{"de":"Ich habe einen interessanten Artikel gelesen.","fr":"Nach *ein*: gemischte Endung *-en*."},{"de":"Sie trinkt gern heißen Tee mit Zitrone.","fr":"Ohne Artikel: starke Endung."},{"de":"Die Meinung der jungen Leute ist wichtig.","fr":"Nach *der* (Genitiv Plural): *-en*."},{"de":"Mit freundlichen Grüßen schließe ich den Brief.","fr":"Nach Präposition ohne Artikel: starke Endung."}],
@@ -78,7 +90,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g04: {
-    id: "b2g04", titre: "Prépositions de lieu à deux cas", titreDE: "Wechselpräpositionen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
+    id: "b2g04",
+    einstieg: {"intro":"Même préposition, deux cas selon le verbe. Observe.","exemples":[{"de":"Ich hänge das Bild an die Wand.","fr":"J'accroche le tableau au mur."},{"de":"Das Bild hängt an der Wand.","fr":"Le tableau est accroché au mur."},{"de":"Ich gehe in die Schule.","fr":"Je vais à l'école."}],"question":"Comment la même préposition choisit-elle son cas ?"},
+    merke: ["Prépositions à deux cas : *in, an, auf, über, unter, vor, hinter, neben, zwischen*.","*Wohin?* (direction, mouvement) → *accusatif*.","*Wo?* (position) → *datif*."],
+    achtung: [{"erreur":"Ich hänge das Bild an der Wand.","correct":"Ich hänge das Bild an **die** Wand.","explication":"Mouvement (Wohin?) → accusatif."},{"erreur":"Das Bild hängt an die Wand.","correct":"Das Bild hängt an **der** Wand.","explication":"Position (Wo?) → datif."}],
+    kontrast: {"titre":"Prépositions à deux cas : allemand vs français","similitudes":["On distingue être / aller quelque part."],"differences":["La même préposition change de *cas* selon direction (acc.) ou position (dat.).","Le verbe (hängen/stellen) signale le sens.","Le français ne marque pas par le cas."]}, titre: "Prépositions de lieu à deux cas", titreDE: "Wechselpräpositionen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Choisir datif ou accusatif", "Distinguer position et direction"],
     grammairePoints: ["Wo? + Dat. / Wohin? + Akk.", "an, auf, in, über…"],
     exemplesPlus: [{"de":"Die Lampe hängt über dem Tisch.","fr":"*Wo?* + Dativ: Position, keine Bewegung."},{"de":"Häng das Bild bitte über das Sofa.","fr":"*Wohin?* + Akkusativ: Bewegung zum Ziel."},{"de":"Der Hund liegt zwischen den beiden Stühlen.","fr":"*Wo?* + Dativ: *zwischen den Stühlen*."},{"de":"Ich stelle die Flasche in den Kühlschrank.","fr":"*Wohin?* + Akkusativ: *in den Kühlschrank*."},{"de":"Wir treffen uns vor dem Theater.","fr":"*Wo?* + Dativ: *vor dem Theater*."}],
@@ -103,7 +119,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g05: {
-    id: "b2g05", titre: "Le passif", titreDE: "Das Passiv", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
+    id: "b2g05",
+    einstieg: {"intro":"Compare le passif de processus et d'état.","exemples":[{"de":"Die Tür wird geöffnet.","fr":"La porte est ouverte (on l'ouvre)."},{"de":"Die Tür ist geöffnet.","fr":"La porte est ouverte (état)."},{"de":"Hier darf nicht geraucht werden.","fr":"Il est interdit de fumer ici."}],"question":"Quelle différence entre *wird geöffnet* et *ist geöffnet* ?"},
+    merke: ["Passif-*processus* : *werden* + participe (*wird gebaut*).","Passif-*état* : *sein* + participe (*ist gebaut* = c'est déjà fait).","Passif impersonnel : *Es wird getanzt* / *Hier wird gearbeitet*."],
+    achtung: [{"erreur":"Die Tür ist geöffnet. (= on l'ouvre)","correct":"Die Tür **wird** geöffnet.","explication":"Processus en cours = *werden* ; *sein* donnerait l'état."},{"erreur":"Hier wird nicht rauchen.","correct":"Hier darf nicht **geraucht werden**.","explication":"Passif avec modal : participe + *werden* à la fin."}],
+    kontrast: {"titre":"Le passif (B2) : allemand vs français","similitudes":["Passif de processus et d'état existent."],"differences":["L'allemand oppose *werden* (processus) et *sein* (état).","Passif impersonnel possible (*es wird getanzt*).","Agent : *von* (acteur) / *durch* (moyen)."]}, titre: "Le passif", titreDE: "Das Passiv", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
     objectifs: ["Former le passif à tous les temps", "Employer le passif avec modal et le passif d'état"],
     grammairePoints: ["werden + participe II", "Passiv mit Modalverb, Zustandspassiv"],
     exemplesPlus: [{"de":"Die Brücke wird zurzeit gebaut.","fr":"Vorgangspassiv im Präsens: die Handlung läuft."},{"de":"Das Problem muss schnell gelöst werden.","fr":"Passiv mit Modalverb: *werden* am Ende."},{"de":"Der Vertrag wurde letzte Woche unterschrieben.","fr":"Passiv im Präteritum: *wurde* + Partizip."},{"de":"Die Tür ist bereits abgeschlossen.","fr":"Zustandspassiv: *sein* + Partizip (Ergebnis)."},{"de":"In dieser Fabrik werden Maschinen hergestellt.","fr":"Passiv ohne Handelnden: wichtig ist die Handlung."}],
@@ -128,7 +148,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g06: {
-    id: "b2g06", titre: "Verbes à cas prépositionnel", titreDE: "Verben mit präpositionalem Kasus", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
+    id: "b2g06",
+    einstieg: {"intro":"Observe comment annoncer une subordonnée après ces verbes.","exemples":[{"de":"Ich verlasse mich auf dich.","fr":"Je compte sur toi."},{"de":"Es hängt davon ab.","fr":"Ça en dépend."},{"de":"Ich freue mich darüber, dass du kommst.","fr":"Je me réjouis que tu viennes."}],"question":"Comment annoncer une subordonnée après un verbe à préposition ?"},
+    merke: ["Verbe + préposition fixe (*sich verlassen auf*, *abhängen von*, *sich freuen über*).","Devant *dass*, on annonce par *da(r)+prép* : *Ich freue mich **darüber**, dass…*","Question (chose) : *wo(r)+prép* ; reprise : *da(r)+prép*."],
+    achtung: [{"erreur":"Ich freue mich über, dass du kommst.","correct":"Ich freue mich **darüber**, dass du kommst.","explication":"On annonce la subordonnée par *darüber* (da + über)."},{"erreur":"Es hängt von das ab.","correct":"Es hängt **davon** ab.","explication":"Pour une chose : *davon*, pas *von das*."}],
+    kontrast: {"titre":"Verbes à préposition (B2) : allemand vs français","similitudes":["« compter sur », « dépendre de » sont fixes."],"differences":["*da(r)-/wo(r)-* annoncent ou reprennent (darüber, wovon).","La préposition diffère du français.","Devant *dass*, le *da(r)-* est souvent obligatoire."]}, titre: "Verbes à cas prépositionnel", titreDE: "Verben mit präpositionalem Kasus", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Mémoriser les verbes à préposition fixe", "Reprendre avec da(r)- et interroger avec wo(r)-"],
     grammairePoints: ["sich bewerben um, bestehen aus", "darauf, worauf"],
     exemplesPlus: [{"de":"Ich bewerbe mich um eine Stelle als Ingenieur.","fr":"*sich bewerben um* + Akkusativ."},{"de":"Das Team besteht aus fünf Personen.","fr":"*bestehen aus* + Dativ."},{"de":"Worauf legst du beim Essen besonderen Wert?","fr":"Frage nach der Sache: *worauf*."},{"de":"Ich verlasse mich völlig darauf, dass du kommst.","fr":"*darauf* kündigt den *dass*-Satz an."},{"de":"Sie beschäftigt sich seit Jahren mit diesem Thema.","fr":"*sich beschäftigen mit* + Dativ."}],
@@ -152,7 +176,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g07: {
-    id: "b2g07", titre: "La n-déclinaison", titreDE: "Die n-Deklination", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B2",
+    id: "b2g07",
+    einstieg: {"intro":"Observe ces noms masculins hors nominatif.","exemples":[{"de":"der Name des Kollegen","fr":"le nom du collègue"},{"de":"Ich helfe dem Praktikanten.","fr":"J'aide le stagiaire."},{"de":"Wir suchen einen Experten.","fr":"Nous cherchons un expert."}],"question":"Quels masculins prennent *-(e)n* hors nominatif ?"},
+    merke: ["Masculins faibles : *-(e)n* à tous les cas sauf nominatif singulier.","Souvent en *-e* (Kollege, Junge) ou personnes (Student, Praktikant, Experte).","*Name, Herz* : faibles + *-s* au génitif (des Namens)."],
+    achtung: [{"erreur":"Ich helfe dem Praktikant.","correct":"Ich helfe dem **Praktikanten**.","explication":"Nom faible au datif : -en."},{"erreur":"der Name des Kollege","correct":"der Name des **Kollegen**","explication":"Nom faible au génitif : -en."}],
+    kontrast: {"titre":"Noms faibles (B2) : allemand vs français","similitudes":["Les noms varient en nombre."],"differences":["*-(e)n* au *singulier* (hors nominatif) - sans équivalent.","Surtout des masculins désignant des personnes.","À mémoriser ; l'oubli sonne fautif."]}, titre: "La n-déclinaison", titreDE: "Die n-Deklination", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B2",
     objectifs: ["Identifier les noms en -n", "Ajouter -(e)n hors du nominatif"],
     grammairePoints: ["der Kollege → den Kollegen", "Herr, Student, Kunde, Mensch"],
     exemplesPlus: [{"de":"Ich habe gestern mit einem Kollegen gesprochen.","fr":"*der Kollege → einem Kollegen* (n-Deklination)."},{"de":"Kennst du diesen Studenten aus dem Seminar?","fr":"*der Student → diesen Studenten*."},{"de":"Wir haben den Kunden ausführlich beraten.","fr":"*der Kunde → den Kunden*."},{"de":"Der Beruf des Architekten ist anspruchsvoll.","fr":"*der Architekt → des Architekten* (Genitiv)."},{"de":"Sie hat einem Touristen den Weg erklärt.","fr":"*der Tourist → einem Touristen* (Dativ)."}],
@@ -176,7 +204,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g08: {
-    id: "b2g08", titre: "Causes et conséquences", titreDE: "Kausal- und Konsekutivsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
+    id: "b2g08",
+    einstieg: {"intro":"Observe les façons soutenues d'exprimer la cause.","exemples":[{"de":"Wegen des Regens bleibe ich zu Hause.","fr":"À cause de la pluie, je reste."},{"de":"Aufgrund der Krise sinken die Preise.","fr":"En raison de la crise, les prix baissent."},{"de":"Es regnet, folglich bleibe ich.","fr":"Il pleut, par conséquent je reste."}],"question":"Comment exprimer la cause de façon nominale (soutenue) ?"},
+    merke: ["Cause nominale (+ génitif) : *wegen*, *aufgrund*, *infolge*.","Cause (subordonnée) : *weil/da* → verbe à la fin.","Conséquence (connecteur) : *folglich, daher, somit* → inversion."],
+    achtung: [{"erreur":"Wegen dem Regen (soutenu)","correct":"Wegen **des** Regens","explication":"*wegen* + génitif à l'écrit soutenu."},{"erreur":"Es regnet, folglich ich bleibe.","correct":"…, folglich **bleibe ich**.","explication":"*folglich* (position 1) → inversion."}],
+    kontrast: {"titre":"Cause/conséquence (B2) : allemand vs français","similitudes":["à cause de/wegen, par conséquent/folglich."],"differences":["Cause nominale + *génitif* (wegen des…) au registre soutenu.","Subordination (weil) → verbe en fin ; connecteur → inversion.","Plusieurs registres (oral *weil* vs écrit *aufgrund*)."]}, titre: "Causes et conséquences", titreDE: "Kausal- und Konsekutivsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
     objectifs: ["Exprimer la cause (weil, da, denn)", "Exprimer la conséquence (so … dass, deshalb)"],
     grammairePoints: ["weil, denn, deshalb", "so … dass, solch … dass"],
     exemplesPlus: [{"de":"Ich konnte nicht schlafen, weil der Lärm zu laut war.","fr":"*weil*: der Grund, Verb am Ende."},{"de":"Es war so kalt, dass der See zufror.","fr":"*so … dass*: die Folge."},{"de":"Sie hatte solchen Hunger, dass sie alles aß.","fr":"*solch … dass*: starke Ursache und Folge."},{"de":"Der Zug fiel aus, deshalb kam ich zu spät.","fr":"*deshalb*: die Folge im Hauptsatz."},{"de":"Wir gehen nach Hause, denn es wird schon dunkel.","fr":"*denn*: der Grund, normale Wortstellung."}],

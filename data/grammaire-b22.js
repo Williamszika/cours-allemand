@@ -7,7 +7,11 @@
    ===================================================================== */
 window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
   b2g09: {
-    id: "b2g09", titre: "Le subjonctif II", titreDE: "Der Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
+    id: "b2g09",
+    einstieg: {"intro":"Observe l'irréel du passé.","exemples":[{"de":"Ich hätte das nicht gemacht.","fr":"Je n'aurais pas fait ça."},{"de":"Wärst du gekommen, hätten wir gefeiert.","fr":"Si tu étais venu, on aurait fêté."},{"de":"Könnten Sie mir bitte helfen?","fr":"Pourriez-vous m'aider ?"}],"question":"Comment exprimer un irréel *du passé* ?"},
+    merke: ["Konjunktiv II *présent* : *würde + inf*, *wäre/hätte/könnte*.","Konjunktiv II *passé* : *hätte/wäre + participe* (*ich hätte gemacht*).","Politesse : *könnten/würden/hätten Sie…*"],
+    achtung: [{"erreur":"Wenn du gekommen wärst, würden wir gefeiert haben.","correct":"…, **hätten wir gefeiert**.","explication":"Irréel du passé : *hätte/wäre + participe*."},{"erreur":"Ich würde das nicht gemacht haben.","correct":"Ich **hätte** das nicht **gemacht**.","explication":"Au passé, on préfère *hätte + participe*."}],
+    kontrast: {"titre":"Konjunktiv II (B2) : allemand vs français","similitudes":["Conditionnel passé (« j'aurais fait »)."],"differences":["Irréel du passé = *hätte/wäre + participe* (un seul bloc).","*würde* surtout au présent ; au passé on prend *hätte/wäre*.","Politesse très idiomatique (könnten, hätten Sie)."]}, titre: "Le subjonctif II", titreDE: "Der Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
     objectifs: ["Former le Konjunktiv II présent et passé", "Exprimer politesse, souhait et irréel"],
     grammairePoints: ["würde, hätte, wäre, könnte", "hätte/wäre + participe (passé)"],
     exemplesPlus: [{"de":"An deiner Stelle würde ich mit dem Chef sprechen.","fr":"Höflicher Rat mit *würde*."},{"de":"Wenn ich mehr Zeit hätte, würde ich ein Instrument lernen.","fr":"Irreale Bedingung: es ist gerade nicht möglich."},{"de":"Könnten Sie mir bitte kurz weiterhelfen?","fr":"Sehr höfliche Bitte mit *könnten*."},{"de":"Wenn ich das früher gewusst hätte, hätte ich anders gehandelt.","fr":"Konjunktiv II der Vergangenheit."},{"de":"Beinahe wäre ich zu spät gekommen.","fr":"*beinahe* + Konjunktiv II: es ist fast passiert."}],
@@ -32,7 +36,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g10: {
-    id: "b2g10", titre: "L'accord du verbe", titreDE: "Die Verbkongruenz", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B2",
+    id: "b2g10",
+    einstieg: {"intro":"Le verbe s'accorde avec quoi exactement ? Observe.","exemples":[{"de":"Die Mehrheit der Studenten ist dafür.","fr":"La majorité des étudiants est pour."},{"de":"Sowohl er als auch sie kommen.","fr":"Lui et elle viennent tous les deux."},{"de":"Eine Million Menschen lebt hier.","fr":"Un million de personnes vit ici."}],"question":"Le verbe s'accorde-t-il avec le sujet apparent ou réel ?"},
+    merke: ["Le verbe s'accorde avec le *noyau* du sujet (sing./plur.).","*sowohl … als auch* / *weder … noch* → souvent *pluriel*.","Quantités (*eine Million, ein Drittel*) → singulier."],
+    achtung: [{"erreur":"Die Mehrheit der Studenten sind dafür.","correct":"Die Mehrheit … **ist** dafür.","explication":"Le noyau *die Mehrheit* est singulier."},{"erreur":"Weder er noch sie kommt.","correct":"Weder er noch sie **kommen**.","explication":"Avec deux sujets, le pluriel est usuel."}],
+    kontrast: {"titre":"L'accord du verbe : allemand vs français","similitudes":["Le verbe s'accorde avec le sujet."],"differences":["L'accord suit le *noyau* (Mehrheit ist), pas le complément.","*sowohl…als auch* favorise le pluriel.","Règles proches mais à surveiller."]}, titre: "L'accord du verbe", titreDE: "Die Verbkongruenz", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B2",
     objectifs: ["Accorder le verbe avec le sujet", "Gérer les sujets collectifs et coordonnés"],
     grammairePoints: ["singulier / pluriel", "sowohl…als auch, eine Reihe von"],
     exemplesPlus: [{"de":"Sowohl der Lehrer als auch die Schüler waren zufrieden.","fr":"Zwei Subjekte: das Verb steht im Plural."},{"de":"Eine Reihe von Problemen wurde diskutiert.","fr":"*eine Reihe von*: meistens Singular."},{"de":"Die Mehrheit der Studenten ist dafür.","fr":"*die Mehrheit*: Verb im Singular."},{"de":"Weder er noch seine Freunde kommen zur Party.","fr":"Bei *weder … noch* richtet sich das Verb meist nach dem Letzten."},{"de":"Ein Drittel der Mitglieder hat abgestimmt.","fr":"Bruchzahl als Subjekt: Singular."}],
@@ -56,7 +64,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g11: {
-    id: "b2g11", titre: "L'ordre des mots", titreDE: "Die Wortstellung", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
+    id: "b2g11",
+    einstieg: {"intro":"Observe l'ordre des compléments au milieu de la phrase.","exemples":[{"de":"Ich fahre morgen mit dem Zug nach Berlin.","fr":"Je vais demain en train à Berlin."},{"de":"Er hat es ihr gestern gegeben.","fr":"Il le lui a donné hier."}],"question":"Dans quel ordre se placent les compléments au milieu de la phrase ?"},
+    merke: ["Ordre du milieu : *Te-Ka-Mo-Lo* = Temps – Cause – Manière – Lieu.","Pronoms d'abord (accusatif avant datif), puis les groupes nominaux.","Verbe conjugué en position 2 ; élément verbal lourd à la fin."],
+    achtung: [{"erreur":"Ich fahre nach Berlin morgen.","correct":"Ich fahre **morgen** … **nach Berlin**.","explication":"Temps avant lieu (Te…Lo)."},{"erreur":"Er hat ihr es gegeben.","correct":"Er hat **es ihr** gegeben.","explication":"Deux pronoms : accusatif (es) avant datif (ihr)."}],
+    kontrast: {"titre":"L'ordre des mots : allemand vs français","similitudes":["Les compléments ont un ordre préférentiel."],"differences":["Règle *TeKaMoLo* (temps-cause-manière-lieu).","Parenthèse verbale : éléments verbaux en fin.","Les pronoms se placent tôt (acc. avant dat.)."]}, titre: "L'ordre des mots", titreDE: "Die Wortstellung", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
     objectifs: ["Ordonner les compléments (TeKaMoLo)", "Placer correctement « nicht »"],
     grammairePoints: ["Te-Ka-Mo-Lo", "parenthèse verbale, position de nicht"],
     exemplesPlus: [{"de":"Ich fahre morgen mit dem Auto zur Arbeit.","fr":"Reihenfolge: temporal – modal – lokal (Te-Ka-Mo-Lo)."},{"de":"Er hat gestern in der Stadt ein Geschenk gekauft.","fr":"Satzklammer: *hat … gekauft* umschließt den Satz."},{"de":"Sie ruft heute Abend ihre Mutter an.","fr":"Trennbares Verb: *an* steht am Ende."},{"de":"Ich habe den Film nicht gesehen.","fr":"*nicht* steht vor dem Partizip."},{"de":"Wir fahren nicht nach Berlin, sondern nach Dresden.","fr":"*nicht* vor dem Teil, der verneint wird."}],
@@ -81,7 +93,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g12: {
-    id: "b2g12", titre: "Les indicateurs de temps", titreDE: "Temporalangaben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
+    id: "b2g12",
+    einstieg: {"intro":"Observe les prépositions temporelles soutenues.","exemples":[{"de":"innerhalb einer Woche","fr":"en l'espace d'une semaine"},{"de":"außerhalb der Öffnungszeiten","fr":"en dehors des heures d'ouverture"},{"de":"bis zum nächsten Montag","fr":"jusqu'à lundi prochain"}],"question":"Quelles prépositions temporelles régissent le génitif ?"},
+    merke: ["+ génitif : *innerhalb, außerhalb, während* (*innerhalb einer Woche*).","+ datif : *seit, ab, bis zu, von … an*.","*bis* seul + accusatif (*bis nächsten Montag*)."],
+    achtung: [{"erreur":"innerhalb eine Woche","correct":"innerhalb **einer** Woche","explication":"*innerhalb* + génitif."},{"erreur":"ab nächsten Montag","correct":"ab **nächstem** Montag","explication":"*ab* régit le datif."}],
+    kontrast: {"titre":"Indicateurs de temps (B2) : allemand vs français","similitudes":["« pendant / jusqu'à / à partir de » ont des équivalents."],"differences":["Certaines prépositions temporelles régissent le *génitif*.","*ab/bis zu* + datif ; *bis* seul + accusatif.","Le cas est imposé par la préposition."]}, titre: "Les indicateurs de temps", titreDE: "Temporalangaben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Relier des actions dans le temps", "Choisir conjonction, préposition ou adverbe"],
     grammairePoints: ["als, während, nachdem, seitdem", "vor/seit/bis, danach", "ab, gegen, über, innerhalb/außerhalb"],
     exemplesPlus: [{"de":"Als ich gestern aufwachte, schien die Sonne.","fr":"*als*: einmal in der Vergangenheit."},{"de":"Während ich arbeitete, hörte ich Musik.","fr":"*während*: zwei Dinge gleichzeitig."},{"de":"Seitdem er umgezogen ist, sehen wir uns selten.","fr":"*seitdem*: ab einem Zeitpunkt bis jetzt."},{"de":"Nachdem das Spiel zu Ende war, gingen alle nach Hause.","fr":"*nachdem*: das eine nach dem anderen."},{"de":"Seit drei Wochen habe ich nichts von ihr gehört.","fr":"*seit* + Dativ: Dauer bis zur Gegenwart."}],
@@ -116,7 +132,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g13: {
-    id: "b2g13", titre: "L'emploi du conditionnel", titreDE: "Gebrauch des Konjunktivs II", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
+    id: "b2g13",
+    einstieg: {"intro":"Quand préférer *würde* et quand la forme simple ? Observe.","exemples":[{"de":"Ich würde gern kommen.","fr":"J'aimerais venir."},{"de":"Wenn ich Zeit hätte, käme ich.","fr":"Si j'avais le temps, je viendrais."},{"de":"Das täte ich nie.","fr":"Je ne ferais jamais ça."}],"question":"Quand utiliser *würde + infinitif* et quand la forme simple ?"},
+    merke: ["*würde + infinitif* : forme passe-partout du conditionnel.","Verbes courants : forme *simple* (*käme, ginge, wäre, hätte, könnte*).","*sein/haben/modaux* : presque toujours la forme simple."],
+    achtung: [{"erreur":"Ich würde haben gern Zeit.","correct":"Ich **hätte** gern Zeit.","explication":"Avec *haben*, on dit *hätte*, pas *würde haben*."},{"erreur":"Wenn ich Zeit haben würde, …","correct":"Wenn ich Zeit **hätte**, …","explication":"Dans le *wenn*, on préfère la forme simple."}],
+    kontrast: {"titre":"Le conditionnel (emploi) : allemand vs français","similitudes":["Conditionnel pour souhait/hypothèse."],"differences":["*würde + infinitif* (général) vs forme simple (verbes fréquents).","Dans *wenn*, on évite *würde*.","Le français a une seule forme (-rais)."]}, titre: "L'emploi du conditionnel", titreDE: "Gebrauch des Konjunktivs II", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Exprimer souhait irréel et comparaison irréelle", "Employer « als ob »"],
     grammairePoints: ["wenn … doch nur", "als ob / als wenn + Konjunktiv II"],
     exemplesPlus: [{"de":"Wenn er doch nur pünktlicher wäre!","fr":"Irrealer Wunsch mit *doch nur*."},{"de":"Hätte ich doch mehr gelernt!","fr":"Wunsch über die Vergangenheit."},{"de":"Er tut so, als ob er alles wüsste.","fr":"*als ob* + Konjunktiv II: es ist nicht wirklich so."},{"de":"Sie sieht aus, als wäre sie krank.","fr":"*als* + Konjunktiv II (ohne *ob*, Verb folgt direkt)."},{"de":"Wenn ich nur früher davon erfahren hätte!","fr":"Bedauern über die Vergangenheit."}],
@@ -141,7 +161,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g14: {
-    id: "b2g14", titre: "Le discours indirect (Konjunktiv I)", titreDE: "Indirekte Rede: Konjunktiv I", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
+    id: "b2g14",
+    einstieg: {"intro":"Observe le mode du discours rapporté (presse).","exemples":[{"de":"Er sagt, er sei krank.","fr":"Il dit qu'il est malade."},{"de":"Sie meint, sie habe keine Zeit.","fr":"Elle dit qu'elle n'a pas le temps."},{"de":"Der Minister erklärte, man werde handeln.","fr":"Le ministre a déclaré qu'on agirait."}],"question":"Quel mode pour rapporter des propos en style soutenu ?"},
+    merke: ["Discours indirect (presse) : *Konjunktiv I* (*sei, habe, werde, könne*).","Formation : radical de l'infinitif + -e (er habe, er komme).","Si KI = indicatif, on bascule au *Konjunktiv II* (sie hätten)."],
+    achtung: [{"erreur":"Er sagt, er ist krank. (rapport soutenu)","correct":"Er sagt, er **sei** krank.","explication":"Le discours rapporté soutenu utilise le Konjunktiv I."},{"erreur":"Sie sagen, sie haben keine Zeit.","correct":"Sie sagen, sie **hätten** keine Zeit.","explication":"« sie haben » = indicatif → Konjunktiv II (hätten)."}],
+    kontrast: {"titre":"Discours indirect : allemand vs français","similitudes":["On rapporte des propos (« il dit que… »)."],"differences":["L'allemand utilise le *Konjunktiv I* (sei, habe) pour marquer la distance.","Bascule au Konjunktiv II si la forme = indicatif.","Le français n'a pas de mode dédié."]}, titre: "Le discours indirect (Konjunktiv I)", titreDE: "Indirekte Rede: Konjunktiv I", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B2",
     objectifs: ["Former le Konjunktiv I", "Rapporter des propos (presse)"],
     grammairePoints: ["sei, habe, könne, werde", "rapport neutre"],
     exemplesPlus: [{"de":"Er sagt, er sei sehr beschäftigt.","fr":"Indirekte Rede mit Konjunktiv I: *sei*."},{"de":"Sie meint, sie habe keine Zeit.","fr":"Konjunktiv I: *habe*."},{"de":"Der Minister erklärte, man werde die Steuern senken.","fr":"Konjunktiv I: *werde* für die Zukunft."},{"de":"Im Bericht heißt es, das Projekt könne bald beginnen.","fr":"Konjunktiv I: *könne*."},{"de":"Sie fragte, ob er am Montag komme.","fr":"Indirekte Frage mit *ob*."}],
@@ -165,7 +189,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g15: {
-    id: "b2g15", titre: "Konjunktiv I : formes de substitution", titreDE: "Ersatzformen des Konjunktivs I", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
+    id: "b2g15",
+    einstieg: {"intro":"Que faire quand le Konjunktiv I ressemble à l'indicatif ? Observe.","exemples":[{"de":"Sie sagen, sie hätten Recht.","fr":"Ils disent qu'ils ont raison."},{"de":"Er meint, die Leute würden zu viel arbeiten.","fr":"Il pense que les gens travaillent trop."}],"question":"Comment garder une forme distincte de l'indicatif ?"},
+    merke: ["Si le KI = indicatif (souvent au pluriel : *sie haben*), on prend le *Konjunktiv II* (*sie hätten*).","Si le KII = indicatif aussi, on utilise *würde + infinitif*.","Le KI distinct (*sei, habe, könne*) reste prioritaire."],
+    achtung: [{"erreur":"Sie sagen, sie haben Recht.","correct":"Sie sagen, sie **hätten** Recht.","explication":"KI = indicatif (haben) → KII (hätten)."},{"erreur":"Er meint, die Leute arbeiten zu viel.","correct":"…, die Leute **würden** zu viel **arbeiten**.","explication":"KI et KII = indicatif → *würde + infinitif*."}],
+    kontrast: {"titre":"Substituts du Konjunktiv I : allemand vs français","similitudes":["Marquer la parole rapportée."],"differences":["Système KI → KII → würde, propre à l'allemand.","Vise une forme *distincte* de l'indicatif.","Sans équivalent en français."]}, titre: "Konjunktiv I : formes de substitution", titreDE: "Ersatzformen des Konjunktivs I", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Savoir quand remplacer le Konjunktiv I", "Utiliser le Konjunktiv II / würde à la place"],
     grammairePoints: ["KI = indicatif → KII", "würde + infinitif"],
     exemplesPlus: [{"de":"Sie sagen, sie hätten keine Zeit.","fr":"Klingt Konjunktiv I wie der Indikativ, nimmt man Konjunktiv II: *hätten*."},{"de":"Er behauptet, sie würden bald heiraten.","fr":"Ersatzform: *würde* + Infinitiv."},{"de":"Die Kinder sagen, sie wären schon fertig.","fr":"Konjunktiv II *wären* statt *seien*."},{"de":"Man berichtet, die Preise würden weiter steigen.","fr":"*würde* + Infinitiv für die indirekte Rede."},{"de":"Sie meinten, sie könnten uns nicht helfen.","fr":"Konjunktiv II *könnten*."}],
@@ -189,7 +217,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g16: {
-    id: "b2g16", titre: "Locutions verbo-nominales", titreDE: "Nomen-Verb-Verbindungen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
+    id: "b2g16",
+    einstieg: {"intro":"Pourquoi un verbe + nom plutôt qu'un verbe simple ? Observe.","exemples":[{"de":"eine Entscheidung treffen","fr":"prendre une décision"},{"de":"in Frage stellen","fr":"remettre en question"},{"de":"zur Verfügung stehen","fr":"être à disposition"}],"question":"Pourquoi *eine Entscheidung treffen* et non *entscheiden* ?"},
+    merke: ["Locutions verbo-nominales = *verbe support* + *nom*.","Le verbe (treffen, stellen, stehen) perd son sens propre.","Registre soutenu/administratif : *Kritik üben*, *Bezug nehmen auf*."],
+    achtung: [{"erreur":"eine Entscheidung machen","correct":"eine Entscheidung **treffen**","explication":"La collocation fixe est *eine Entscheidung treffen*."},{"erreur":"in Frage setzen","correct":"in Frage **stellen**","explication":"L'expression figée est *in Frage stellen*."}],
+    kontrast: {"titre":"Locutions verbo-nominales : allemand vs français","similitudes":["« prendre une décision » est aussi une locution."],"differences":["Le verbe support est *fixe* (treffen, üben, nehmen).","Registre souvent administratif/écrit.","La traduction littérale échoue souvent."]}, titre: "Locutions verbo-nominales", titreDE: "Nomen-Verb-Verbindungen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Employer des locutions figées nom + verbe", "Reformuler avec un verbe simple"],
     grammairePoints: ["in Frage stellen, zur Verfügung stehen", "Bezug nehmen auf"],
     exemplesPlus: [{"de":"Niemand stellt deine Kompetenz in Frage.","fr":"*in Frage stellen* = bezweifeln."},{"de":"Ich stehe Ihnen gern zur Verfügung.","fr":"*zur Verfügung stehen* = bereit sein zu helfen."},{"de":"Wir möchten Bezug auf Ihr Schreiben nehmen.","fr":"*Bezug nehmen auf* = sich beziehen auf."},{"de":"Die Regierung hat eine Entscheidung getroffen.","fr":"*eine Entscheidung treffen* = entscheiden."},{"de":"Dieses Thema spielt eine wichtige Rolle.","fr":"*eine Rolle spielen* = wichtig sein."}],
@@ -213,7 +245,11 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     ]
   },
   b2g17: {
-    id: "b2g17", titre: "Les prépositions (génitif)", titreDE: "Präpositionen mit Genitiv", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
+    id: "b2g17",
+    einstieg: {"intro":"Observe les prépositions qui régissent le génitif.","exemples":[{"de":"trotz des schlechten Wetters","fr":"malgré le mauvais temps"},{"de":"während der Sitzung","fr":"pendant la réunion"},{"de":"anstatt eines Geschenks","fr":"au lieu d'un cadeau"}],"question":"Quelles prépositions exigent le génitif ?"},
+    merke: ["+ génitif : *trotz, während, wegen, statt/anstatt, innerhalb, außerhalb, aufgrund*.","L'article et le nom passent au génitif (*des/der* + *-s* masc./neutre).","À l'oral, *trotz/wegen* + datif s'entendent (familier)."],
+    achtung: [{"erreur":"trotz dem schlechten Wetter (écrit)","correct":"trotz **des** schlechten Wetter**s**","explication":"*trotz* + génitif à l'écrit soigné."},{"erreur":"während die Sitzung","correct":"während **der** Sitzung","explication":"*während* + génitif (der Sitzung)."}],
+    kontrast: {"titre":"Prépositions + génitif : allemand vs français","similitudes":["« malgré / pendant / au lieu de » ont des équivalents."],"differences":["Tout un groupe de prépositions régit le *génitif*.","Le nom masc./neutre prend *-s* (des Wetters).","À l'oral, le datif apparaît (familier)."]}, titre: "Les prépositions (génitif)", titreDE: "Präpositionen mit Genitiv", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B2",
     objectifs: ["Employer les prépositions à génitif", "Exprimer cause, opposition, lieu, moyen"],
     grammairePoints: ["wegen, trotz, während", "aufgrund, innerhalb, statt"],
     exemplesPlus: [{"de":"Wegen des Streiks fielen viele Züge aus.","fr":"*wegen* + Genitiv: der Grund."},{"de":"Trotz des Regens fand das Konzert statt.","fr":"*trotz* + Genitiv."},{"de":"Während der Sitzung wurden viele Fragen geklärt.","fr":"*während* + Genitiv: in dieser Zeit."},{"de":"Aufgrund eines Fehlers verzögert sich die Lieferung.","fr":"*aufgrund* + Genitiv: die Ursache."},{"de":"Statt eines Briefes schickte sie eine E-Mail.","fr":"*statt* + Genitiv: an Stelle von."}],
