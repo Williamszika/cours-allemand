@@ -47,6 +47,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
       <option value="grammaire">📝 Grammaire</option>
       <option value="expression">🎤 Expression</option>
       <option value="conversation">💬 Conversation</option>
+      <option value="immersion">🎭 Immersion</option>
     </select>
   </div>
 </header>
@@ -159,7 +160,10 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
     }catch(e){ bubble('assistant','🎤 Micro refuse ou indisponible. Autorise le micro pour parler.'); }
   }
   mic.onclick=toggleMic;
+  var IMMERSION=[{"e":"🍽️","t":"Au restaurant","p":"Nous sommes dans un restaurant en Allemagne. Tu es le serveur (ou la serveuse). Accueille-moi, propose la carte, prends ma commande, conseille un plat, puis apporte l'addition."},{"e":"🚉","t":"A la gare","p":"Je suis a la gare en Allemagne. Tu es l'agent au guichet. Aide-moi a acheter un billet pour Berlin, indique le quai et l'heure du train."},{"e":"🏨","t":"A l'hotel","p":"J'arrive a la reception d'un hotel. Tu es le receptionniste. Gere mon arrivee (check-in), la chambre, le petit-dejeuner et une demande speciale."},{"e":"🩺","t":"Chez le medecin","p":"Je suis chez le medecin. Tu es le medecin. Demande mes symptomes, pose des questions, donne un diagnostic simple et des conseils."},{"e":"🛒","t":"Faire les courses","p":"Je suis au supermarche ou au marche. Tu es le vendeur. Aide-moi a trouver des produits, donne les prix et gere le paiement."},{"e":"🧭","t":"Demander son chemin","p":"Je suis perdu dans une ville allemande. Tu es un passant. Indique-moi le chemin vers la gare avec des directions claires."},{"e":"💼","t":"Entretien d'embauche","p":"Je passe un entretien d'embauche. Tu es le recruteur. Pose des questions classiques (parcours, motivations, qualites) et reagis a mes reponses."},{"e":"📞","t":"Prendre un rendez-vous","p":"J'appelle pour prendre un rendez-vous (coiffeur, administration, medecin). Tu es la personne au telephone. Propose des creneaux et confirme."}];
+  function renderImmersionPicker(){var d=document.createElement('div'); d.className='msg bot';d.innerHTML='\uD83C\uDFAD <b>Immersion</b> - choisis une scene a jouer :';var w=document.createElement('div'); w.style.marginTop='8px'; w.style.display='flex'; w.style.flexWrap='wrap'; w.style.gap='6px';IMMERSION.forEach(function(s){var b=document.createElement('button'); b.type='button'; b.textContent=s.e+' '+s.t;b.style.cssText='padding:8px 10px;border-radius:10px;border:1px solid var(--bord,#ccc);background:var(--card,#fff);color:inherit;font-size:14px;cursor:pointer';b.onclick=function(){ sendUser('Jouons une immersion en allemand. '+s.p+' Guide-moi etape par etape, donne-moi une amorce si je bloque, et corrige mes fautes en douceur.',false); };w.appendChild(b);});d.appendChild(w); log.appendChild(d); log.scrollTop=log.scrollHeight;}
   mode.onchange=function(){ var mv=mode.value;
+    if(mv==='immersion'){ renderImmersionPicker(); return; }
     if(mv==='conversation'){ sendUser("Commencons une conversation libre en allemand. Propose un theme du quotidien adapte a mon niveau et pose-moi la premiere question. Corrige mes fautes en douceur au fil de la discussion.",false); }
     if(mv==='expression'){ if(!A1A2){ bubble('assistant','🔒 L\'entrainement a l\'expression se debloque apres l\'examen A1 + A2. Termine-les dans le cours general, puis reviens !'); mode.value='general'; return; } var suj=pickSujet(NIV); sendUser("Entrainons mon expression orale. Fais-moi parler sur: « "+suj+" ». Commence facile a mon niveau, puis monte progressivement.",true); }
     else if(mv==='grammaire'){ sendUser("Je veux travailler la grammaire. Propose-moi un point adapte a mon niveau (ou demande-moi lequel) et commence le drill.",false); }
