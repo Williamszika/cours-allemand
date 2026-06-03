@@ -51,6 +51,39 @@ window.GRAMMAIRE = {
     id: "g02", titre: "Les verbes (présent)", titreDE: "Die Verben im Präsens",
     theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Distinguer verbes réguliers et irréguliers", "Gérer les verbes à changement de voyelle"],
+    einstieg: {
+      intro: "Compare la voyelle du radical entre *ich* et *du* / *er*. Que remarques-tu ?",
+      exemples: [
+        { de: "ich fahre → du fährst", fr: "je vais (roule) → tu vas" },
+        { de: "ich spreche → er spricht", fr: "je parle → il parle" },
+        { de: "ich sehe → sie sieht", fr: "je vois → elle voit" },
+        { de: "ich gebe → er gibt", fr: "je donne → il donne" }
+      ],
+      question: "À quelles personnes la voyelle du radical change-t-elle, et comment ?"
+    },
+    merke: [
+      "La voyelle du radical change *seulement* à *du* et *er/sie/es*.",
+      "Trois changements : *a* → *ä* (*fahren* → du fährst), *e* → *i* (*sprechen* → er spricht), *e* → *ie* (*lesen* → sie liest).",
+      "Aux autres personnes (*ich*, *wir*, *ihr*, *sie* pluriel), on garde la voyelle de l'infinitif.",
+      "Les terminaisons, elles, ne changent jamais : -e, -st, -t, -en, -t, -en."
+    ],
+    achtung: [
+      { erreur: "du fahrst", correct: "du **fährst**", explication: "À *du* et *er*, le *a* devient *ä* (Umlaut). Oublier l'Umlaut est l'erreur la plus fréquente des francophones." },
+      { erreur: "ich spriche", correct: "ich **spreche**", explication: "Le changement ne concerne PAS *ich* : on garde la voyelle de l'infinitif (*ich spreche*, *ich fahre*)." },
+      { erreur: "wir spricht", correct: "wir **sprechen**", explication: "*wir* prend toujours la forme de base en *-en*, sans changement de voyelle." },
+      { erreur: "du nehmst", correct: "du **nimmst**", explication: "*nehmen* est doublement irrégulier : *e* → *i* ET la consonne change (du nimmst, er nimmt). À mémoriser à part." }
+    ],
+    kontrast: {
+      titre: "Le changement de voyelle : allemand vs français",
+      similitudes: [
+        "Les deux langues ont des verbes irréguliers très courants au présent."
+      ],
+      differences: [
+        "En allemand, seule la *voyelle du radical* change (*a* → *ä*, *e* → *i*) ; le verbe reste reconnaissable.",
+        "Le changement touche *uniquement* *du* et *er/sie/es* - jamais *ich*, *wir*, *ihr*.",
+        "En français, l'irrégularité est souvent globale (« je vais, nous allons ») ; en allemand, *fahren* reste *fahren* partout, seule la voyelle change au singulier."
+      ]
+    },
     grammairePoints: ["Verbes irréguliers", "e→i, e→ie, a→ä"],
     exemplesPlus: [{"de":"Er fährt mit dem Auto zur Arbeit.","fr":"Il va au travail en voiture."},{"de":"Du sprichst sehr gut Deutsch.","fr":"Tu parles très bien allemand."},{"de":"Sie liest gern Romane.","fr":"Elle aime lire des romans."},{"de":"Das Kind schläft schon.","fr":"L'enfant dort déjà."},{"de":"Nimmst du auch einen Kaffee?","fr":"Tu prends aussi un café ?"}],
     cours: [
@@ -78,7 +111,19 @@ window.GRAMMAIRE = {
       { type: "qcm", consigne: "Choisissez.", question: "Du ___ Auto. (fahren)", options: ["fährst", "fahrst", "fährt", "fahren"], correct: 0, explication: "fahren : a→ä → du fährst." },
       { type: "conjugaison", consigne: "Conjuguez « sprechen ».", verbe: "sprechen", items: [{ pronom: "ich", reponse: "spreche" }, { pronom: "du", reponse: "sprichst" }, { pronom: "er/sie/es", reponse: "spricht" }, { pronom: "wir", reponse: "sprechen" }, { pronom: "ihr", reponse: "sprecht" }, { pronom: "sie/Sie", reponse: "sprechen" }] },
       { type: "trou", consigne: "Complétez (lesen).", texte: "Sie {0} ein Buch. (elle)", accepte: [["liest"]], indice: "e → ie" },
-      { type: "association", consigne: "Associez.", paires: [{ gauche: "ich nehme", droite: "du nimmst" }, { gauche: "ich gebe", droite: "du gibst" }, { gauche: "ich esse", droite: "du isst" }] }
+      { type: "association", consigne: "Associez.", paires: [{ gauche: "ich nehme", droite: "du nimmst" }, { gauche: "ich gebe", droite: "du gibst" }, { gauche: "ich esse", droite: "du isst" }] },
+      { type: "production", cat: "prod", competence: "conj_present",
+        consigne: "Production écrite - les verbes à changement de voyelle.",
+        prompt: "Écris 4 phrases avec des verbes à changement de voyelle (fahren, sprechen, sehen, lesen, geben, nehmen…). Utilise au moins une fois *du* et une fois *er/sie/es* pour bien montrer le changement.",
+        attendus: ["fährst", "fährt", "sprichst", "spricht", "siehst", "sieht", "liest", "gibst", "gibt", "nimmst", "nimmt"],
+        minMots: 12,
+        checklist: [
+          "J'ai utilisé au moins 3 verbes à changement de voyelle",
+          "J'ai mis le changement à du et er/sie/es (du fährst, er spricht)",
+          "Je n'ai PAS changé la voyelle à ich, wir, ihr (ich fahre, wir fahren)",
+          "Le verbe est en position 2 dans chaque phrase"
+        ],
+        modele: "Mein Bruder fährt jeden Tag nach Berlin. Du sprichst sehr gut Deutsch! Sie liest gern Romane. Er gibt mir ein Buch." }
     ]
   },
   g03: {

@@ -163,7 +163,7 @@
   const NOLOC = [
     ".voc-de", ".voc-nom", ".art", ".voc-ex", ".cours-ex-de", ".cours-ex-gl-de", ".hl-de", ".conv-de", ".conv-loc",
     ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag", ".pflege-de", ".dictee-ref",
-    ".loc-keep", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points",
+    ".loc-keep", ".peda-de", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points",
     ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
     ".trou-input", ".trou-phrase", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript",
     ".xl", ".rp-fr", ".rp-bubble", ".rp-scene", ".rp-intro", ".gp-pts", ".stat-n", ".goal-num", ".nc-code", ".lang-name", ".lang-flag", ".voice-select", ".badge-ic", ".comp-score",
@@ -829,6 +829,14 @@
        En immersion (B1+), on privilégie une version rédigée en allemand
        gradué (coursDE) rendue telle quelle ; sinon le cours (français) est
        affiché dans la langue de l'utilisateur (traduction si besoin). */
+    if (l.einstieg) {
+      var __eb = el("div", "cours-block peda-block peda-einstieg");
+      __eb.appendChild(el("span", "cours-tag", "🎯 Découverte"));
+      if (l.einstieg.intro) { var __ei = el("p", "cours-art-p"); localizeInto(__ei, l.einstieg.intro, gEx); __eb.appendChild(__ei); }
+      if (l.einstieg.exemples && l.einstieg.exemples.length) __eb.appendChild(buildExemples(l.einstieg.exemples, gEx));
+      if (l.einstieg.question) { var __eq = el("p", "peda-question"); localizeInto(__eq, l.einstieg.question, gEx); __eb.appendChild(__eq); }
+      gram.appendChild(__eb);
+    }
     const coursNatifDE = gEx.de && l.coursDE && l.coursDE.length;
     const coursArr = coursNatifDE ? l.coursDE : l.cours;
     if (coursArr && coursArr.length) {
@@ -842,6 +850,39 @@
       gram.appendChild(art);
     }
     l.grammaire.forEach((g) => gram.appendChild(renderGrammarBlock(g, l.niveau)));
+    if (l.merke && l.merke.length) {
+      var __mb = el("div", "cours-block peda-block peda-merke");
+      __mb.appendChild(el("span", "cours-tag", "🧠 À retenir"));
+      var __mul = el("ul", "peda-list");
+      l.merke.forEach(function (pt) { var __li = el("li", ""); localizeInto(__li, pt, gEx); __mul.appendChild(__li); });
+      __mb.appendChild(__mul);
+      gram.appendChild(__mb);
+    }
+    if (l.achtung && l.achtung.length) {
+      var __ab = el("div", "cours-block peda-block peda-achtung");
+      __ab.appendChild(el("span", "cours-tag", "⚠️ Pièges fréquents"));
+      l.achtung.forEach(function (a) {
+        var __it = el("div", "peda-achtung-item");
+        if (a.erreur) { var __er = el("div", "peda-err peda-de"); __er.innerHTML = "❌ " + mdLite(a.erreur); __it.appendChild(__er); }
+        if (a.correct) { var __co = el("div", "peda-ok peda-de"); __co.innerHTML = "✅ " + mdLite(a.correct); __it.appendChild(__co); }
+        if (a.explication) { var __ax = el("p", "peda-expl"); localizeInto(__ax, a.explication, gEx); __it.appendChild(__ax); }
+        __ab.appendChild(__it);
+      });
+      gram.appendChild(__ab);
+    }
+    if (l.kontrast) {
+      var __kb = el("div", "cours-block peda-block peda-kontrast");
+      __kb.appendChild(el("span", "cours-tag", "🔗 " + (l.kontrast.titre || "Contraste FR / DE")));
+      if (l.kontrast.similitudes && l.kontrast.similitudes.length) {
+        var __ks = el("div", "peda-kontrast-grp"); __ks.appendChild(el("h4", "peda-kontrast-h", "✓ Points communs"));
+        var __ksu = el("ul", "peda-list"); l.kontrast.similitudes.forEach(function (s) { var __li = el("li", ""); localizeInto(__li, s, gEx); __ksu.appendChild(__li); }); __ks.appendChild(__ksu); __kb.appendChild(__ks);
+      }
+      if (l.kontrast.differences && l.kontrast.differences.length) {
+        var __kd = el("div", "peda-kontrast-grp"); __kd.appendChild(el("h4", "peda-kontrast-h", "≠ Différences clés"));
+        var __kdu = el("ul", "peda-list"); l.kontrast.differences.forEach(function (d) { var __li = el("li", ""); localizeInto(__li, d, gEx); __kdu.appendChild(__li); }); __kd.appendChild(__kdu); __kb.appendChild(__kd);
+      }
+      gram.appendChild(__kb);
+    }
     /* Bloc « plus d'exemples en contexte » (enrichissement) */
     if (l.exemplesPlus && l.exemplesPlus.length) {
       const ep = el("div", "gram-block cours-block exemples-plus");
