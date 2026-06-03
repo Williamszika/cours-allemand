@@ -437,6 +437,7 @@
     cta.appendChild(audioInfo);
     hero.appendChild(cta);
     frag.appendChild(hero);
+    if (window.Objectif && window.Objectif.panel) { try { var __opan = window.Objectif.panel(COURS); if (__opan) frag.appendChild(__opan); } catch (e) {} }
     if (window.Adaptatif && window.Adaptatif.panel) { try { var __apan = window.Adaptatif.panel(COURS, { nextHref: prochaineEtape(), due: (window.Revision ? window.Revision.stats(COURS).due : 0) }); if (__apan) frag.appendChild(__apan); } catch (e) {} }
 
     /* --- Conseil de Zika (points faibles repérés au test) --- */
@@ -3125,6 +3126,7 @@
     else if (hash.match(/^#\/revision/)) renderRevision();
     else if (hash.match(/^#\/langue/)) renderLanguagePage();
     else if (hash.match(/^#\/stats/)) renderDashboard();
+    else if (hash.match(/^#\/objectif/)) { app.innerHTML = ""; if (window.Objectif && window.Objectif.page) app.appendChild(window.Objectif.page(COURS)); window.scrollTo(0, 0); if (window.TG) { try { window.TG.showBackButton(function () { location.hash = "#/"; }); if (window.TG.hideMainButton) window.TG.hideMainButton(); } catch (e) {} } }
     else if (rawHash === "#/") { if (besoinOnboarding()) renderOnboarding(); else renderHome(); } // aperçu du cours (lien explicite)
     else renderMenu(); // ouverture de l'app : hash vide OU « #tgWebAppData… » injecté par Telegram → le hub
     try { localizeUI(app); } catch (e) {} // traduit l'interface dans la langue choisie
