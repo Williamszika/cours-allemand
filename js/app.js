@@ -163,7 +163,7 @@
   const NOLOC = [
     ".voc-de", ".voc-nom", ".art", ".voc-ex", ".cours-ex-de", ".cours-ex-gl-de", ".hl-de", ".conv-de", ".conv-loc",
     ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag", ".pflege-de", ".dictee-ref",
-    ".cours-tag", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points",
+    ".loc-keep", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points",
     ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
     ".trou-input", ".trou-phrase", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript",
     ".xl", ".rp-fr", ".rp-bubble", ".rp-scene", ".rp-intro", ".gp-pts", ".stat-n", ".goal-num", ".nc-code", ".lang-name", ".lang-flag", ".voice-select", ".badge-ic", ".comp-score",
@@ -229,7 +229,7 @@
   function buildExemples(arr, ex) {
     const box = el("div", "cours-exemples");
     const head = el("div", "cours-ex-head");
-    head.appendChild(el("span", "cours-tag", "✅ " + exLabel(ex, "examples")));
+    head.appendChild(el("span", "cours-tag loc-keep", "✅ " + exLabel(ex, "examples")));
     if (window.Speech && window.Speech.isSupported()) {
       const playAll = el("button", "btn-audio small", "🔊 " + exLabel(ex, "listen_all"));
       playAll.type = "button";
@@ -280,7 +280,7 @@
     const ex = window.I18N ? window.I18N.explication(niveau || "A1") : { lang: "fr", de: false };
     function callout(cls, icon, key, text) {
       const box = el("div", cls);
-      box.appendChild(el("span", "cours-tag", icon + " " + exLabel(ex, key)));
+      box.appendChild(el("span", "cours-tag loc-keep", icon + " " + exLabel(ex, key)));
       const d = el("div", "cours-tag-body");
       localizeInto(d, text, ex);
       box.appendChild(d);

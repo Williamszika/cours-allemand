@@ -63,6 +63,8 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
   <p>Pour t'aider vraiment, le tuteur s'appuie sur ton niveau d'allemand. Commence d'abord le <b>cours général</b> : tu obtiens un niveau (débutant A1, ou via l'examen de placement), puis le tuteur se débloque automatiquement.</p>
   <a href="/">Aller au cours →</a>
 </div>
+<script src="js/progress.js"></script>
+<script src="js/i18n.js"></script>
 <script>
 (function(){
   var tg=window.Telegram&&window.Telegram.WebApp; if(tg){try{tg.ready();tg.expand();}catch(e){}}
@@ -106,8 +108,8 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
     var c=String(t).replace(/\*\*/g,'').replace(/[#_>]/g,'').slice(0,900);
     audio=new Audio('/api/tts?text='+encodeURIComponent(c)); audio.play().catch(function(){});
   }
-  function bubble(role,text){
-    var d=document.createElement('div'); d.className='msg '+(role==='user'?'me':'bot');
+  function bubble(role,text,keep){
+    var d=document.createElement('div'); d.className='msg '+(role==='user'?'me':'bot'); if(keep)d.classList.add('ai-reply');
     d.innerHTML=esc(text).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
     if(role==='assistant'){var s=document.createElement('div');s.className='spk';s.textContent='🔊 Écouter';s.onclick=function(){speak(text);};d.appendChild(s);}
     log.appendChild(d); log.scrollTop=log.scrollHeight; return d;
@@ -115,7 +117,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
   function busy(b){send.disabled=b;mic.disabled=b;}
   async function sendUser(t,oral,unclear){
     if(!t)return;
-    bubble('user',t); history.push({role:'user',content:t}); if(history.length>20)history=history.slice(-20);
+    bubble('user',t,true); history.push({role:'user',content:t}); if(history.length>20)history=history.slice(-20);
     busy(true);
     var typing=document.createElement('div'); typing.className='msg bot typing'; typing.textContent='…';
     log.appendChild(typing); log.scrollTop=log.scrollHeight;
@@ -124,7 +126,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
       typing.remove();
       if(!res.ok){bubble('assistant','⚠️ Erreur '+res.status+'. Réessaie dans un instant.'); busy(false); return;}
       var j=await res.json(); var reply=j.reply||'(réponse vide)';
-      history.push({role:'assistant',content:reply}); bubble('assistant',reply);
+      history.push({role:'assistant',content:reply}); bubble('assistant',reply,true);
       if(oral) speak(reply);
     }catch(e){ try{typing.remove();}catch(_){} bubble('assistant','⚠️ Connexion impossible.'); }
     busy(false);
@@ -189,7 +191,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
     var msgs=(conv&&conv.messages)?conv.messages:[];
     if(msgs.length){
       history=msgs.slice(-12).map(function(m){return {role:(m.role==='assistant'?'assistant':'user'),content:String(m.content||'')};});
-      msgs.slice(-6).forEach(function(m){ bubble(m.role==='assistant'?'assistant':'user', String(m.content||'')); });
+      msgs.slice(-6).forEach(function(m){ bubble(m.role==='assistant'?'assistant':'user', String(m.content||''), true); });
       bubble('assistant',"👋 Re-bonjour"+(first?" "+first:"")+" ! Content de te revoir. On reprend où on s'était arrêtés, ou dis-moi ce que tu veux travailler aujourd'hui. 🇩🇪");
     } else {
       bubble('assistant',"Hallo"+(first?" "+first:"")+"! Ich bin dein Deutsch-Tutor. 🇩🇪 (Niveau "+NIV+")\nÉcris-moi, ou appuie sur 🎤 pour PARLER : je t'écoute, je te corrige et je t'aide à t'exprimer sans stress. Los geht's!");
@@ -208,6 +210,21 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
   } else {
     startTutor(null,null,"");
   }
+
+  /* === Localisation de l'interface du tuteur dans la langue de l'utilisateur ===
+     Traduit le texte francais de l'UI (en-tete, modes, placeholder, gate,
+     accueil, scenarios d'immersion) via le meme moteur que l'app. On NE traduit
+     PAS le chat IA (.ai-reply : reponses en allemand / langue cible) ni les
+     champs de saisie. Support RTL via applyDir(). */
+  function localizeTutor(root){
+    if(!window.I18N) return; var lang=window.I18N.lang(); if(lang==='fr') return;
+    root=root||document.body; var walker; try{walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null);}catch(e){return;}
+    var groups={},n; while((n=walker.nextNode())){ var raw=n.nodeValue; if(!raw||!/[A-Za-zÀ-ÿ]/.test(raw)) continue; if(n.__loc) continue; var p=n.parentElement; if(!p||(p.closest&&p.closest('.ai-reply,input,textarea,[contenteditable]'))) continue; n.__loc=1; var k=raw.trim(); (groups[k]=groups[k]||[]).push(n); }
+    Object.keys(groups).forEach(function(k){ window.I18N.translate(k,lang,'fr').then(function(out){ if(out&&out!==k) groups[k].forEach(function(nd){ nd.nodeValue=nd.nodeValue.replace(k,function(){return out;}); }); }); });
+    try{ Array.prototype.forEach.call(root.querySelectorAll('[placeholder]'),function(e){ var v=e.getAttribute('placeholder'); if(!v||e.__locp) return; e.__locp=1; var tt=v.trim(); window.I18N.translate(tt,lang,'fr').then(function(out){ if(out&&out!==tt) e.setAttribute('placeholder', v.replace(tt,function(){return out;})); }); }); }catch(e){}
+  }
+  if(window.I18N){ try{window.I18N.applyDir();}catch(e){} var _lt; function scheduleLoc(){ clearTimeout(_lt); _lt=setTimeout(function(){ try{localizeTutor(document.body);}catch(e){} },80); } scheduleLoc(); try{ var _mo=new MutationObserver(function(){scheduleLoc();}); _mo.observe(log,{childList:true,subtree:true}); }catch(e){} }
+
 })();
 </script>
 </body>
