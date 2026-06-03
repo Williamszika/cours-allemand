@@ -1155,22 +1155,25 @@
     }).sort(function (p, q) { return p.score - q.score; });
   }
   function competencesSection() {
-    const prof = profilCompetences().filter(function (p) { return p.seen >= 1; });
-    if (!prof.length) return null;
-    const maitrisees = prof.filter(function (p) { return p.seen >= 3 && p.score >= 0.8; }).length;
-    const enCours = prof.filter(function (p) { return p.score >= 0.5 && p.score < 0.8; }).length;
-    const aRevoir = prof.filter(function (p) { return p.seen >= 2 && p.score < 0.5; });
     const sec = el("section", "lesson-section");
     sec.appendChild(el("h2", "", "🧩 Mes compétences"));
+    const prof = (typeof profilCompetences === "function") ? profilCompetences().filter(function (p) { return p.seen >= 1; }) : [];
+    if (!prof.length) {
+      sec.appendChild(el("p", "exo-group-sub", "Fais quelques exercices de grammaire et tes points forts / points faibles apparaîtront ici. 🧩"));
+      const go = el("a", "btn btn-ghost small", "▶️ Commencer des exercices"); go.href = "#/"; go.style.marginTop = "8px"; sec.appendChild(go);
+      return sec;
+    }
+    const maitrisees = prof.filter(function (p) { return p.seen >= 3 && p.score >= 0.8; });
+    const enCours = prof.filter(function (p) { return p.score >= 0.5 && p.score < 0.8; }).length;
+    const aRevoir = prof.filter(function (p) { return p.seen >= 2 && p.score < 0.5; });
     const row = el("div", "stats-row");
-    [["✅", maitrisees, "maîtrisées"], ["📈", enCours, "en cours"], ["⚠️", aRevoir.length, "à revoir"]].forEach(function (t) {
+    [["✅", maitrisees.length, "maîtrisées"], ["📈", enCours, "en cours"], ["⚠️", aRevoir.length, "à revoir"]].forEach(function (t) {
       const c = el("div", "stat");
       c.innerHTML = '<span class="stat-ic">' + t[0] + '</span><span class="stat-n">' + t[1] + '</span><span class="stat-l">' + t[2] + '</span>';
       row.appendChild(c);
     });
     sec.appendChild(row);
-    const show = (aRevoir.length ? prof.filter(function (p) { return p.seen >= 2; }) : prof).slice(0, 8);
-    show.forEach(function (p) {
+    function bar(p) {
       const pct = Math.round(p.score * 100);
       const col = p.score >= 0.8 ? "#16a34a" : (p.score >= 0.5 ? "#d97706" : "#dc2626");
       const line = el("div", "comp-line");
@@ -1178,12 +1181,18 @@
       line.innerHTML = '<span style="flex:1">' + String(p.label).replace(/&/g, "&amp;") + ' <span style="opacity:.55;font-size:12px">(' + p.niveau + ')</span></span>' +
         '<span style="flex:0 0 90px;height:8px;background:rgba(127,127,127,.2);border-radius:5px;overflow:hidden"><span style="display:block;height:100%;width:' + pct + '%;background:' + col + '"></span></span>' +
         '<span style="flex:0 0 36px;text-align:right;font-weight:700">' + pct + '%</span>';
-      sec.appendChild(line);
-    });
-    sec.appendChild(el("p", "exo-group-sub", aRevoir.length ? "Travaille en priorité les compétences en rouge/orange." : "Continue : plus tu fais d'exercices, plus ton profil s'affine."));
-    const rev = el("a", "btn btn-ghost small", "🔁 Réviser");
-    rev.href = "#/revision"; rev.style.marginTop = "8px";
-    sec.appendChild(rev);
+      return line;
+    }
+    function subhead(t) { const d = el("div", "", "<strong>" + t + "</strong>"); d.style.cssText = "margin:12px 0 2px;font-size:13px;opacity:.8"; return d; }
+    const faibles = (aRevoir.length ? prof.filter(function (p) { return p.seen >= 2; }) : prof).slice(0, 8);
+    sec.appendChild(subhead("À renforcer"));
+    faibles.forEach(function (p) { sec.appendChild(bar(p)); });
+    if (maitrisees.length) {
+      sec.appendChild(subhead("Points forts"));
+      maitrisees.slice().reverse().slice(0, 5).forEach(function (p) { sec.appendChild(bar(p)); });
+    }
+    sec.appendChild(el("p", "exo-group-sub", aRevoir.length ? "Travaille en priorité les compétences en rouge/orange." : "Beau travail ! Continue pour consolider."));
+    const rev = el("a", "btn btn-ghost small", "🔁 Réviser"); rev.href = "#/revision"; rev.style.marginTop = "8px"; sec.appendChild(rev);
     return sec;
   }
 

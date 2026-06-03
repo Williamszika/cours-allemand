@@ -15,6 +15,8 @@ const ADMIN_ID=(process.env.ADMIN_ID||"").trim();
 const ADMIN_TOKEN=(process.env.ADMIN_TOKEN||"").trim();
 let BOT_USERNAME=(process.env.BOT_USERNAME||"").trim();
 const ORDER=["A1","A2","B1","B2","C1","C2"];
+const COMP_FILE=(process.env.COMP_FILE||path.join(__dirname,"..","data","competences.js")).trim();
+function loadComp(){try{var stub={};new Function("window",fs.readFileSync(COMP_FILE,"utf8"))(stub);return stub.COMPETENCES||null;}catch(e){return null;}}
 try{fs.mkdirSync(CACHE_DIR,{recursive:true});}catch(e){console.warn("[tts] cache:",e.message);}
 try{fs.mkdirSync(USERS_DIR,{recursive:true});}catch(e){console.warn("[data]",e.message);}
 const FREE=["JBFqnCBsd6RMkjVDRZzb","EXAVITQu4vr4xnSDxMaL","FGY2WhTYpPnrIDTdsKH5","nPczCjzI2devNBz1zQrb","XB0fDUnXU5powFXDhCwa","onwK4e9ZLuTAKqWW03F9"];
@@ -46,6 +48,19 @@ function tgName(v){return v&&v.user?(((v.user.first_name||"")+" "+(v.user.last_n
 function tgSend(chat,text){var body=JSON.stringify({chat_id:chat,text:text});return call({hostname:"api.telegram.org",path:"/bot"+BOT_TOKEN+"/sendMessage",method:"POST",headers:{"content-type":"application/json","content-length":Buffer.byteLength(body)}},body);}
 function touchUser(v,extra){if(!v||!v.user||!v.user.id)return;var id=String(v.user.id);var now=new Date().toISOString();var u=loadUser(id)||{id:id,createdAt:now,progress:{},conv:{messages:[]},referredBy:null};u.name=tgName(v)||u.name||"";u.username=v.user.username||u.username||"";u.tgLang=v.user.language_code||u.tgLang||"";u.lastSeen=now;if(extra)extra(u);saveUser(id,u);return u;}
 function sendReminders(){if(!BOT_TOKEN)return;var subs=loadSubs();var now=new Date();var mins=now.getHours()*60+now.getMinutes();var today=now.toISOString().slice(0,10);var changed=false;Object.keys(subs).forEach(function(id){var sb=subs[id];if(!sb||sb.last===today)return;var t=String(sb.heure||"19:00").split(":");var due=parseInt(t[0],10)*60+parseInt(t[1]||"0",10);if(mins>=due&&mins<due+90){tgSend(id,"⏰ Coach Zika: 5 minutes d'allemand aujourd'hui pour garder ta serie ! https://sprachakademie.app").catch(function(){});sb.last=today;changed=true;}});if(changed)saveSubs(subs);}
+function compStats(users){
+  var COMP=loadComp(); if(!COMP||!COMP.parLecon)return [];
+  var glob={};
+  (users||[]).forEach(function(u){
+    var p=u.progress||{}, lec=p.lecons||{}, per={};
+    Object.keys(lec).forEach(function(id){
+      var codes=COMP.parLecon[id]||[]; var ex=(lec[id]&&lec[id].exercices)||{};
+      Object.keys(ex).forEach(function(k){ var ok=!!ex[k]; codes.forEach(function(c){ if(c==="lexique"||c==="gram_divers")return; per[c]=per[c]||{seen:0,ok:0}; per[c].seen++; if(ok)per[c].ok++; }); });
+    });
+    Object.keys(per).forEach(function(c){ var d=per[c]; glob[c]=glob[c]||{seen:0,ok:0,weak:0,users:0}; glob[c].seen+=d.seen; glob[c].ok+=d.ok; glob[c].users++; if(d.seen>=2&&d.ok/d.seen<0.5)glob[c].weak++; });
+  });
+  return Object.keys(glob).map(function(c){ var g=glob[c]; var info=(COMP.info&&COMP.info(c))||{}; return {code:c,label:info.label||c,niveau:info.niveau||"",cat:info.cat||"",users:g.users,score:g.seen?Math.round(g.ok/g.seen*100):0,weak:g.weak}; }).filter(function(r){return r.users>0;}).sort(function(a,b){return a.score-b.score;});
+}
 const H={"Content-Type":"audio/mpeg","Cache-Control":"public, max-age=31536000, immutable"};
 http.createServer(async(rq,rs)=>{try{
   const u=new URL(rq.url,"http://localhost");
@@ -132,7 +147,7 @@ http.createServer(async(rq,rs)=>{try{
       rows.sort(function(a,b){return (Date.parse(b.lastSeen||"")||0)-(Date.parse(a.lastSeen||"")||0);});
       const topRef=Object.keys(refCount).map(function(k){return {id:k,name:(byId[k]&&byId[k].name)||"",count:refCount[k]};}).sort(function(a,b){return b.count-a.count;}).slice(0,10);
       rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"});
-      return rs.end(JSON.stringify({ok:true,stats:{total:total,new7:new7,active7:act7,messages:msgs,byLevel:byLevel,byLang:byLang,topReferrers:topRef},users:rows}));
+      return rs.end(JSON.stringify({ok:true,stats:{total:total,new7:new7,active7:act7,messages:msgs,byLevel:byLevel,byLang:byLang,topReferrers:topRef,competences:compStats(users)},users:rows}));
     }catch(e){console.error("[admin]",e&&e.message);rs.writeHead(500);rs.end("admin error");}});
     return;
   }

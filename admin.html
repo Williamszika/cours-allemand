@@ -61,6 +61,15 @@ button.ghost{background:#262a33;border:1px solid var(--bd)}
     h+='<div class="grid">'+card(s.total||0,'Utilisateurs')+card(s.new7||0,'Nouveaux (7j)')+card(s.active7||0,'Actifs (7j)')+card(s.messages||0,'Messages tuteur')+'</div>';
     h+='<div class="card"><h2>Niveaux</h2>'+bars(s.byLevel||{},["A1","A2","B1","B2","C1","C2"])+'</div>';
     h+='<div class="card"><h2>Langues</h2>'+kvlist(s.byLang||{})+'</div>';
+    if ((s.competences || []).length) {
+      var cw = s.competences.filter(function (r) { return r.users >= 1; }).slice(0, 14);
+      h += '<div class="card"><h2>Compétences les plus faibles (global)</h2>';
+      cw.forEach(function (r) {
+        var col = r.score >= 80 ? "#16a34a" : (r.score >= 50 ? "#d97706" : "#dc2626");
+        h += '<div class="kv"><span class="k" style="min-width:auto;flex:1">' + esc(r.label) + ' <span class="mut" style="font-size:12px">(' + esc(r.niveau) + ' · ' + r.users + ' app.' + (r.weak ? ', ' + r.weak + ' en diff.' : '') + ')</span></span><span class="barwrap"><span class="bar" style="width:' + r.score + '%;background:' + col + '"></span></span><span class="b">' + r.score + '%</span></div>';
+      });
+      h += '</div>';
+    }
     if((s.topReferrers||[]).length){ h+='<div class="card"><h2>Top parrains</h2>'+s.topReferrers.map(function(r){return '<div class="kv"><span class="k" style="min-width:auto;flex:1">'+esc(r.name||('id '+r.id))+'</span><span class="b">'+r.count+'</span></div>';}).join('')+'</div>'; }
     var rows=users.slice(0,400).map(function(u){
       var nm=esc(u.name||('id '+u.id)); if(u.username)nm+=' <span class="mut">@'+esc(u.username)+'</span>';
