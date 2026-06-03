@@ -2871,6 +2871,13 @@
         actif: true,
         verrou: !pflegeDebloque()
       },
+      {
+        icon: "\u{1F916}",
+        titre: "Tuteur IA",
+        desc: "Discute en allemand avec un tuteur qui s'adapte a ton niveau, corrige tes fautes et joue des jeux de role (general ou Pflege).",
+        href: "/tuteur.html",
+        actif: true
+      },
       { icon: "➕", titre: "Et plus encore", desc: "D'autres options arriveront bientôt ici.", actif: false }
     ];
 
