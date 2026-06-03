@@ -82,6 +82,7 @@ window.COURS.examens = [
     (m) => m && m.lecons.forEach((l) => (byId[l.id] = l))
   );
   Object.assign(byId, window.GRAMMAIRE || {}, window.GRAMMAIRE_A2 || {}, window.GRAMMAIRE_B1 || {}, window.GRAMMAIRE_B2 || {}, window.GRAMMAIRE_C1 || {}, window.GRAMMAIRE_C2 || {});
+  Object.assign(byId, (window.C2DIFF && window.C2DIFF.lecons) || {});
   const L = (id) => byId[id];
   const ordreA11 = ["l01", "g01", "l02", "l03", "g02", "l04", "l05", "g03", "l06", "l07", "g06", "l08", "g05", "l09", "g04"];
   const ordreA12 = ["l10", "l11", "g07", "l12", "l13", "g08", "l14", "g09", "l15", "l16", "g10", "g11", "l17", "l18", "g12", "l19"];
@@ -95,6 +96,7 @@ window.COURS.examens = [
   const ordreC12 = ["c1t08", "c1g10", "c1t09", "c1g19", "c1t10", "c1g18", "c1g13", "c1t11", "c1g11", "c1g12", "c1t12", "c1g16", "c1t13", "c1g14", "c1g17", "c1t14", "c1g15"];
   const ordreC21 = ["c2t01", "c2g01", "c2g08", "c2t02", "c2g02", "c2g04", "c2t03", "c2g03", "c2g10", "c2t04", "c2g05", "c2g11", "c2g09", "c2t05", "c2g06", "c2g07"];
   const ordreC22 = ["c2t06", "c2g12", "c2t07", "c2g13", "c2t08", "c2g14", "c2t09", "c2g16", "c2t10", "c2g15", "c2t11", "c2g18", "c2t12", "c2g17", "c2t13", "c2g19", "c2t14"];
+  if (window.C2DIFF && window.C2DIFF.ordre) Array.prototype.push.apply(ordreC22, window.C2DIFF.ordre);
   window.MODULE_A11.lecons = ordreA11.map(L).filter(Boolean);
   window.MODULE_A12.lecons = ordreA12.map(L).filter(Boolean);
   if (window.MODULE_A21) window.MODULE_A21.lecons = ordreA21.map(L).filter(Boolean);
