@@ -437,6 +437,7 @@
     cta.appendChild(audioInfo);
     hero.appendChild(cta);
     frag.appendChild(hero);
+    if (window.Adaptatif && window.Adaptatif.panel) { try { var __apan = window.Adaptatif.panel(COURS, { nextHref: prochaineEtape(), due: (window.Revision ? window.Revision.stats(COURS).due : 0) }); if (__apan) frag.appendChild(__apan); } catch (e) {} }
 
     /* --- Conseil de Zika (points faibles repérés au test) --- */
     const faibles = window.Progress.getFaiblesses();
