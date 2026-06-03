@@ -7,7 +7,11 @@
    ===================================================================== */
 window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
   c2g12: {
-    id: "c2g12", titre: "Le passif", titreDE: "Das Passiv", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
+    id: "c2g12",
+    einstieg: {"intro":"Observe les formes du passif.","exemples":[{"de":"Das Haus wird gebaut.","fr":"La maison est (en train d'être) construite."},{"de":"Das Haus ist gebaut.","fr":"La maison est construite (état)."},{"de":"Das Problem muss gelöst werden.","fr":"Le problème doit être résolu."}],"question":"Comment couvrir tout le système du passif ?"},
+    merke: ["Passif-processus : *werden + participe* ; passif-état : *sein + participe*.","Avec modal : *modal + participe + werden* (*muss gelöst werden*).","Impersonnel : *Es wird getanzt* ; agent : *von* (acteur) / *durch* (moyen)."],
+    achtung: [{"erreur":"Das Haus ist gebaut. (action en cours)","correct":"Das Haus **wird** gebaut.","explication":"Processus → *werden* ; *sein* donnerait l'état."},{"erreur":"Das muss gelöst sein werden.","correct":"Das muss **gelöst werden**.","explication":"Passif + modal : *participe + werden* à la fin."}],
+    kontrast: {"titre":"Le passif (C2) : allemand vs français","similitudes":["Passif de processus et d'état existent."],"differences":["Opposition *werden* (processus) / *sein* (état).","Passif impersonnel (*es wird getanzt*).","Agent : *von* / *durch*."]}, titre: "Le passif", titreDE: "Das Passiv", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Maîtriser le passif à tous les temps", "Employer le passif avec modal"],
     grammairePoints: ["werden + participe (tous temps)", "sein-Passiv, modal + werden"],
     exemplesPlus: [{"de":"Die Verhandlungen waren bereits abgeschlossen worden, als die Presse eintraf.","fr":"Plusquamperfekt Passiv: *waren … worden*."},{"de":"Derartige Eingriffe müssen sorgfältig abgewogen werden.","fr":"Passiv mit Modalverb."},{"de":"Die Frist ist um zwei Wochen verlängert worden.","fr":"Perfekt Passiv: *ist … worden*."},{"de":"Sämtliche Einwände wurden im Protokoll festgehalten.","fr":"Vorgangspassiv im Präteritum."},{"de":"Das Verfahren wird voraussichtlich neu aufgerollt werden.","fr":"Futur Passiv: *wird … werden*."}],
@@ -32,7 +36,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g13: {
-    id: "c2g13", titre: "Substituts du passif", titreDE: "Passiversatzformen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
+    id: "c2g13",
+    einstieg: {"intro":"Observe comment éviter le passif.","exemples":[{"de":"Das ist leicht zu reparieren.","fr":"C'est facile à réparer."},{"de":"Das lässt sich machen.","fr":"Ça peut se faire."},{"de":"Diese Tür öffnet sich automatisch.","fr":"Cette porte s'ouvre automatiquement."}],"question":"Comment éviter le passif tout en gardant son sens ?"},
+    merke: ["*sein + zu + inf* = devoir/pouvoir être … (*ist zu lösen*).","*sich lassen + inf* = peut être … ; *man* + actif ; réfléchi (*öffnet sich*).","Suffixe *-bar* (*lösbar, machbar*) = « -able »."],
+    achtung: [{"erreur":"Das kann gemacht werden. (plus concis)","correct":"Das **lässt sich** machen.","explication":"*sich lassen + inf* = passif de possibilité, plus léger."},{"erreur":"Das ist zu reparieren leicht.","correct":"Das ist leicht **zu reparieren**.","explication":"*sein + zu + inf* : l'infinitif avec *zu* à la fin."}],
+    kontrast: {"titre":"Substituts du passif (C2) : allemand vs français","similitudes":["Le passif et « on » existent."],"differences":["*sein + zu + inf*, *sich lassen + inf* remplacent le passif modal.","*man* (= on) évite le passif.","*-bar* exprime « -able »."]}, titre: "Substituts du passif", titreDE: "Passiversatzformen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Remplacer le passif élégamment", "Employer man, sich lassen, sein+zu+Inf., -bar"],
     grammairePoints: ["man, sich lassen", "sein + zu + Inf., adjectifs en -bar"],
     exemplesPlus: [{"de":"Der Aufwand lässt sich kaum rechtfertigen.","fr":"*sich lassen* = kann kaum gerechtfertigt werden."},{"de":"Die Konsequenzen sind nur schwer abzusehen.","fr":"*sein + zu + Infinitiv* als Passiversatz."},{"de":"Solche Fehler sind durchaus vermeidbar.","fr":"Adjektiv auf *-bar*: lässt sich vermeiden."},{"de":"Man neigt dazu, derartige Risiken zu unterschätzen.","fr":"*man* als unpersönlicher Passiversatz."},{"de":"Diese Behauptung ist kaum haltbar.","fr":"Adjektiv auf *-bar*: lässt sich kaum halten."}],
@@ -57,7 +65,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g14: {
-    id: "c2g14", titre: "Les verbes modaux", titreDE: "Die Modalverben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
+    id: "c2g14",
+    einstieg: {"intro":"Observe les emplois des modaux.","exemples":[{"de":"Ich habe arbeiten müssen.","fr":"J'ai dû travailler."},{"de":"Er soll sehr reich sein.","fr":"On dit qu'il est très riche."},{"de":"Das muss ein Fehler sein.","fr":"Ça doit être une erreur."}],"question":"Comment maîtriser tous les emplois des modaux ?"},
+    merke: ["Objectif : capacité/obligation (*können, müssen*) ; subjectif : supposition/rumeur (*müssen* = sûrement, *sollen* = on dit que).","Parfait avec infinitif : *double infinitif* (*hat kommen müssen*).","Passif + modal : *muss gemacht werden*."],
+    achtung: [{"erreur":"Ich habe arbeiten gemusst.","correct":"Ich habe arbeiten **müssen**.","explication":"Modal + infinitif au parfait → *double infinitif* (müssen)."},{"erreur":"Man sagt, er ist reich.","correct":"Er **soll** reich sein.","explication":"*sollen* = rumeur (« on dit que »)."}],
+    kontrast: {"titre":"Les modaux (C2) : allemand vs français","similitudes":["« devoir, pouvoir » ont des sens variés."],"differences":["Emploi *subjectif* systématisé (müssen, sollen, dürfte).","*Double infinitif* au parfait (hat kommen müssen).","Se combine au passif (muss … werden)."]}, titre: "Les verbes modaux", titreDE: "Die Modalverben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Maîtriser le sens subjectif des modaux", "Combiner modal, temps et passif"],
     grammairePoints: ["müsste, dürfte, soll, will (subjectif)", "hätte … müssen"],
     exemplesPlus: [{"de":"Der Politiker soll Gelder veruntreut haben.","fr":"*sollen*: gibt ein Gerücht / eine fremde Behauptung wieder."},{"de":"Sie will von der Absprache nichts gewusst haben.","fr":"*wollen*: eine eigene, oft zweifelhafte Behauptung."},{"de":"Die Maßnahme dürfte kaum ausreichen.","fr":"*dürfte*: eine vorsichtige Vermutung."},{"de":"Man hätte die Warnungen ernster nehmen müssen.","fr":"*hätte … müssen*: eine versäumte Pflicht."},{"de":"Das müsste sich eigentlich überprüfen lassen.","fr":"*müsste*: starke Annahme, mit Passiversatz."}],
@@ -81,7 +93,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g15: {
-    id: "c2g15", titre: "Adjectifs : déclinaison et comparaison", titreDE: "Adjektive: Deklination und Komparation", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
+    id: "c2g15",
+    einstieg: {"intro":"Observe la déclinaison et les degrés.","exemples":[{"de":"ein guter Wein, der bessere Wein, der beste Wein","fr":"un bon vin, le meilleur vin (compar.), le meilleur (superl.)"},{"de":"Er läuft schneller als ich.","fr":"Il court plus vite que moi."},{"de":"so schnell wie möglich","fr":"aussi vite que possible"}],"question":"Comment décliner et comparer les adjectifs ?"},
+    merke: ["Trois déclinaisons (faible/mixte/forte) selon l'article.","Comparatif : *-er + als* (*schneller als*) ; superlatif : *am …-sten / der …-ste*.","Irréguliers : *gut → besser → am besten*, *viel → mehr*, *hoch → höher*."],
+    achtung: [{"erreur":"Er ist mehr schnell als ich.","correct":"Er ist **schneller** als ich.","explication":"Comparatif synthétique : *-er + als* (pas *mehr*)."},{"erreur":"der gut Wein","correct":"der **gute** Wein","explication":"Après *der*, déclinaison faible : gute."}],
+    kontrast: {"titre":"Déclinaison et comparaison : allemand vs français","similitudes":["Comparatif et superlatif existent."],"differences":["Comparatif *synthétique* (-er), pas « plus + adj ».","L'adjectif épithète se *décline* (gute, guten).","Superlatif *am …-sten* / der …-ste."]}, titre: "Adjectifs : déclinaison et comparaison", titreDE: "Adjektive: Deklination und Komparation", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Décliner sans faute", "Maîtriser comparatif et superlatif (y compris irréguliers)"],
     grammairePoints: ["faible/mixte/forte", "-er / am -sten, irréguliers"],
     exemplesPlus: [{"de":"Bei näherer Betrachtung erweist sich die These als haltlos.","fr":"Komparativ attributiv (*näher*)."},{"de":"Die wenigsten waren sich der Tragweite bewusst.","fr":"Superlativ als Nomen (*die wenigsten*)."},{"de":"Je komplexer das System, desto höher die Fehleranfälligkeit.","fr":"*je … desto* + Komparativ."},{"de":"Mit größtmöglicher Sorgfalt wurde vorgegangen.","fr":"Superlativ in einem zusammengesetzten Adjektiv."},{"de":"Das ist bei Weitem die eleganteste Lösung.","fr":"Superlativ mit Verstärkung (*bei Weitem*)."}],
@@ -105,7 +121,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g16: {
-    id: "c2g16", titre: "Adjectifs et leurs compléments", titreDE: "Adjektive mit Ergänzungen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
+    id: "c2g16",
+    einstieg: {"intro":"Observe le complément de ces adjectifs.","exemples":[{"de":"Ich bin stolz auf dich.","fr":"Je suis fier de toi."},{"de":"Er ist mir treu.","fr":"Il m'est fidèle."},{"de":"Sie ist sich ihrer Sache sicher.","fr":"Elle est sûre de son fait."}],"question":"Quel complément chaque adjectif demande-t-il ?"},
+    merke: ["Adjectif + préposition fixe : *stolz auf, böse auf, interessiert an, reich an, fähig zu*.","Adjectif + datif : *treu, ähnlich, dankbar, bekannt, fremd*.","Adjectif + génitif (soutenu) : *sicher, bewusst, würdig, verdächtig*."],
+    achtung: [{"erreur":"Ich bin stolz über dich.","correct":"Ich bin stolz **auf** dich.","explication":"*stolz* se construit avec *auf* + accusatif."},{"erreur":"Er ist mich treu.","correct":"Er ist **mir** treu.","explication":"*treu* régit le datif (mir)."}],
+    kontrast: {"titre":"La rection des adjectifs : allemand vs français","similitudes":["« fier de », « fidèle à » sont fixes."],"differences":["Adjectif + *datif* (treu, ähnlich).","Adjectif + *génitif* (sicher, bewusst).","La préposition diffère du français (stolz auf)."]}, titre: "Adjectifs et leurs compléments", titreDE: "Adjektive mit Ergänzungen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Employer adjectifs à datif/génitif", "Maîtriser adjectifs à préposition"],
     grammairePoints: ["+ datif (treu, ähnlich)", "+ génitif, + préposition"],
     exemplesPlus: [{"de":"Er ist sich seiner Verantwortung durchaus bewusst.","fr":"Adjektiv + Genitiv: *sich bewusst* + Genitiv."},{"de":"Das Ergebnis ist dem Aufwand kaum angemessen.","fr":"Adjektiv + Dativ: *angemessen* + Dativ."},{"de":"Sie blieb ihren Prinzipien stets treu.","fr":"*treu* + Dativ."},{"de":"Die Studie ist für die Praxis von großer Relevanz.","fr":"Adjektivische Wendung + Präposition."},{"de":"Solche Pauschalurteile sind der Sache nicht dienlich.","fr":"*dienlich* + Dativ."}],
@@ -129,7 +149,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g17: {
-    id: "c2g17", titre: "Formation des adjectifs", titreDE: "Wortbildung: Adjektive", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
+    id: "c2g17",
+    einstieg: {"intro":"Observe les suffixes qui forment des adjectifs.","exemples":[{"de":"essbar, lesbar","fr":"comestible, lisible"},{"de":"kindlich vs kindisch","fr":"enfantin vs puéril (péjoratif)"},{"de":"hoffnungslos, arbeitslos","fr":"sans espoir, sans travail"}],"question":"Quels suffixes forment les adjectifs et quel sens portent-ils ?"},
+    merke: ["*-bar* = « -able » (*machbar*) ; *-los* = « sans » (*arbeitslos*) ; *-voll* = « plein de ».","*-lich / -ig* : relation, qualité (*freundlich, sonnig*).","*-isch* parfois péjoratif (*kindisch* vs *kindlich*)."],
+    achtung: [{"erreur":"Er ist sehr kindlich. (= puéril, péjoratif)","correct":"Er ist sehr **kindisch**.","explication":"*kindisch* = puéril (péjoratif) ; *kindlich* = enfantin (neutre)."},{"erreur":"Das ist nicht mach-möglich.","correct":"Das ist nicht **machbar**.","explication":"« faisable » = *machbar* (suffixe -bar)."}],
+    kontrast: {"titre":"Formation des adjectifs : allemand vs français","similitudes":["Des suffixes forment des adjectifs (-able, -eux)."],"differences":["*-bar* (-able), *-los* (sans), *-voll* (plein de) très productifs.","*-isch* parfois péjoratif (kindisch).","Composition adjectivale fréquente (hellblau)."]}, titre: "Formation des adjectifs", titreDE: "Wortbildung: Adjektive", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Reconnaître les suffixes adjectivaux", "Former des adjectifs à partir de noms/verbes"],
     grammairePoints: ["-bar, -los, -haft, -ig", "-lich, -sam, -voll"],
     exemplesPlus: [{"de":"Der Vorwurf erwies sich als haltlos.","fr":"*-los*: ohne, ein Mangel."},{"de":"Sein Verhalten war ausgesprochen rücksichtsvoll.","fr":"*-voll*: voll von einer Eigenschaft."},{"de":"Die Ergebnisse sind kaum nachvollziehbar.","fr":"*-bar*: etwas ist möglich."},{"de":"Eine derart leichtfertige Entscheidung verbietet sich.","fr":"*-fertig*: drückt eine Haltung aus."},{"de":"Ihr Vorgehen war äußerst bedachtsam.","fr":"*-sam*: nennt eine Art und Weise."}],
@@ -153,7 +177,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g18: {
-    id: "c2g18", titre: "Le style nominal", titreDE: "Der Nominalstil", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
+    id: "c2g18",
+    einstieg: {"intro":"Observe le passage du verbe au nom.","exemples":[{"de":"nach Prüfung der Unterlagen","fr":"après examen des documents"},{"de":"wegen Nichtbeachtung der Vorschriften","fr":"pour non-respect des consignes"},{"de":"zur Verbesserung der Lage","fr":"en vue d'améliorer la situation"}],"question":"Comment passer d'un style verbal à un style nominal écrit ?"},
+    merke: ["Style nominal : subordonnée → *groupe nominal* + génitif (*nach der Prüfung der Unterlagen*).","Suffixes nominalisants : *-ung, -nahme, -gabe, -tion*.","Registre administratif/scientifique ; concis mais dense."],
+    achtung: [{"erreur":"nachdem man die Unterlagen geprüft hat (écrit concis)","correct":"**nach Prüfung** der Unterlagen","explication":"Style nominal : *Prüfung* + génitif condense la subordonnée."},{"erreur":"wegen man die Vorschriften nicht beachtet","correct":"wegen **Nichtbeachtung** der Vorschriften","explication":"Nominalisation : *Nichtbeachtung* + génitif."}],
+    kontrast: {"titre":"Le style nominal (C2) : allemand vs français","similitudes":["On nominalise (« après examen »)."],"differences":["L'allemand condense des subordonnées en *groupes nominaux* + génitif.","Typique de l'écrit administratif/scientifique.","Suffixes très productifs (-ung, -nahme)."]}, titre: "Le style nominal", titreDE: "Der Nominalstil", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Transformer le verbal en nominal", "Reconnaître le style écrit soutenu"],
     grammairePoints: ["Nominalstil ↔ Verbalstil", "prépositions + nominalisation"],
     exemplesPlus: [{"de":"Nach Abschluss der Untersuchung werden die Ergebnisse veröffentlicht.","fr":"Nominalstil: *nachdem … abgeschlossen ist* wird zu *nach Abschluss*."},{"de":"Aufgrund mangelnder Beweise wurde das Verfahren eingestellt.","fr":"Nominalstil kausal (*aufgrund* + Nomen)."},{"de":"Bei Nichteinhaltung der Frist verfällt der Anspruch.","fr":"Typisch für die Amts- und Rechtssprache."},{"de":"Zur Vermeidung von Missverständnissen folgt eine Erläuterung.","fr":"*zur* + Nominalisierung drückt den Zweck aus."},{"de":"Trotz wiederholter Aufforderung blieb eine Reaktion aus.","fr":"Nominalstil konzessiv (*trotz* + Nomen)."}],
@@ -178,7 +206,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g19: {
-    id: "c2g19", titre: "Prépositions de la langue écrite", titreDE: "Präpositionen der Schriftsprache", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
+    id: "c2g19",
+    einstieg: {"intro":"Observe ces prépositions de la langue écrite.","exemples":[{"de":"mittels eines Schlüssels","fr":"au moyen d'une clé"},{"de":"ungeachtet aller Warnungen","fr":"en dépit de tous les avertissements"},{"de":"zugunsten der Kinder","fr":"en faveur des enfants"}],"question":"Quelles prépositions à génitif relèvent de l'écrit ?"},
+    merke: ["+ génitif (écrit) : *mittels, kraft, zwecks, ungeachtet, zugunsten, anlässlich, hinsichtlich, bezüglich, infolge, seitens*.","Sens : moyen (*mittels*), concession (*ungeachtet*), faveur (*zugunsten*), à propos de (*hinsichtlich*).","Registre nettement administratif/juridique."],
+    achtung: [{"erreur":"mittels einem Schlüssel","correct":"mittels **eines Schlüssels**","explication":"*mittels* + génitif (eines Schlüssels)."},{"erreur":"ungeachtet alle Warnungen","correct":"ungeachtet **aller** Warnungen","explication":"*ungeachtet* + génitif (aller Warnungen)."}],
+    kontrast: {"titre":"Prépositions à génitif (C2) : allemand vs français","similitudes":["« au moyen de / en dépit de / en faveur de » ont des équivalents."],"differences":["Un large jeu de prépositions *écrites* régit le génitif.","Registre administratif/juridique (mittels, ungeachtet).","Le cas est imposé par la préposition."]}, titre: "Prépositions de la langue écrite", titreDE: "Präpositionen der Schriftsprache", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Employer les prépositions soutenues à génitif", "Choisir la nuance exacte"],
     grammairePoints: ["mittels, anhand, infolge", "angesichts, seitens, zwecks"],
     exemplesPlus: [{"de":"Mittels eines speziellen Verfahrens lassen sich die Daten rekonstruieren.","fr":"*mittels* + Genitiv: mit Hilfe von."},{"de":"Anhand konkreter Beispiele wurde die Theorie veranschaulicht.","fr":"*anhand* + Genitiv: auf der Grundlage von."},{"de":"Infolge der Finanzkrise brach der Markt ein.","fr":"*infolge* + Genitiv: als Folge von."},{"de":"Seitens der Behörde gab es keine Stellungnahme.","fr":"*seitens* + Genitiv: vonseiten."},{"de":"Zwecks besserer Übersicht wurden Tabellen eingefügt.","fr":"*zwecks* + Genitiv: zu dem Zweck."}],

@@ -5,7 +5,11 @@
    ===================================================================== */
 window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
   c2g01: {
-    id: "c2g01", titre: "Les temps des verbes", titreDE: "Die Tempora", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
+    id: "c2g01",
+    einstieg: {"intro":"Observe l'ensemble du système temporel.","exemples":[{"de":"Bis morgen wird er die Arbeit beendet haben.","fr":"D'ici demain, il aura terminé le travail."},{"de":"Früher las man mehr Zeitungen.","fr":"Autrefois, on lisait plus de journaux."},{"de":"Sie wird wohl schon gegangen sein.","fr":"Elle est probablement déjà partie."}],"question":"Comment s'articule tout le système des temps ?"},
+    merke: ["Six temps : *Präsens, Perfekt, Präteritum, Plusquamperfekt, Futur I, Futur II*.","Le *Präsens* peut exprimer le futur (*Morgen fahre ich*).","*Futur II* = action accomplie dans le futur OU supposition sur le passé."],
+    achtung: [{"erreur":"Morgen ich werde anrufen.","correct":"Morgen **rufe ich an**.","explication":"Le présent suffit souvent pour le futur (Morgen rufe ich an)."},{"erreur":"Bis morgen wird er es beenden.","correct":"Bis morgen **wird er es beendet haben**.","explication":"Action achevée dans le futur → *Futur II*."}],
+    kontrast: {"titre":"Le système des temps : allemand vs français","similitudes":["Présent, passé, futur et antériorité existent."],"differences":["Le *Präsens* couvre souvent le futur.","Un seul *Präteritum* = passé simple + imparfait.","*Futur II* sert aussi à la supposition sur le passé."]}, titre: "Les temps des verbes", titreDE: "Die Tempora", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Maîtriser les six temps", "Employer le futur II (supposition sur le passé)"],
     grammairePoints: ["Präsens, Perfekt, Präteritum, Plusquamperfekt", "Futur I / Futur II"],
     exemplesPlus: [{"de":"Bis zum Jahresende wird das Unternehmen die Umstrukturierung abgeschlossen haben.","fr":"Futur II: eine Handlung, die in der Zukunft bereits vollendet sein wird."},{"de":"Man wird die Ergebnisse wohl erst im nächsten Quartal veröffentlichen.","fr":"Futur I mit *wohl*: drückt eine Vermutung aus."},{"de":"Kaum hatte sich die Lage beruhigt, brach eine neue Krise aus.","fr":"Plusquamperfekt: markiert die Vorzeitigkeit."},{"de":"Seit Jahrzehnten prägt diese Theorie die wissenschaftliche Debatte.","fr":"Präsens mit Dauerwirkung bis in die Gegenwart."},{"de":"Damals galt die Annahme als unumstößlich.","fr":"Präteritum für einen vergangenen Zustand."}],
@@ -29,7 +33,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g02: {
-    id: "c2g02", titre: "Verbes à préfixes", titreDE: "Verben mit Vorsilben", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
+    id: "c2g02",
+    einstieg: {"intro":"Observe le comportement de ces préfixes.","exemples":[{"de":"Ich rufe dich morgen an.","fr":"Je t'appelle demain."},{"de":"Er versteht die Aufgabe.","fr":"Il comprend l'exercice."},{"de":"Die Fähre setzt über.","fr":"Le ferry traverse."}],"question":"Quels préfixes se détachent du verbe ?"},
+    merke: ["Séparables (accentués) : *an-, auf-, aus-, ein-, mit-, vor-, zu-* → rejetés à la fin.","Inséparables (atones) : *be-, ge-, er-, ver-, zer-, ent-, emp-, miss-* → collés, pas de *ge-* au participe.","Mixtes (*durch-, über-, um-, unter-*) : séparables ou non selon le sens."],
+    achtung: [{"erreur":"Ich anrufe dich.","correct":"Ich **rufe** dich **an**.","explication":"Verbe séparable → préfixe à la fin."},{"erreur":"Er hat die Aufgabe geverstanden.","correct":"Er hat die Aufgabe **verstanden**.","explication":"Préfixe inséparable → participe sans *ge-*."}],
+    kontrast: {"titre":"Verbes à préfixes : allemand vs français","similitudes":["Des préfixes modifient le sens (com-, dé-…)."],"differences":["Le préfixe séparable se *détache* et part à la fin.","Inséparables : participe sans *ge-* (verstanden).","Mixtes : l'accent décide du sens (*übersetzen*)."]}, titre: "Verbes à préfixes", titreDE: "Verben mit Vorsilben", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Distinguer préfixes séparables et inséparables", "Gérer les préfixes à double valeur"],
     grammairePoints: ["be-, er-, ver- (inséparables)", "um-, durch-, über- (mixtes)"],
     exemplesPlus: [{"de":"Der Roman behandelt die Folgen des Krieges eindringlich.","fr":"*be-*: untrennbares Präfix, kein *ge-* im Partizip."},{"de":"Es gelang ihr, das Publikum vollständig zu überzeugen.","fr":"*über-* hier untrennbar (übertragene Bedeutung)."},{"de":"Wir mussten den gesamten Plan noch einmal überdenken.","fr":"*überdenken*: untrennbar, abstrakt."},{"de":"Der Fährmann setzte die Passagiere ans andere Ufer über.","fr":"*übersetzen* trennbar in der wörtlichen Bedeutung."},{"de":"Das Unternehmen hat die Krise erstaunlich gut überstanden.","fr":"*überstehen*: untrennbar."}],
@@ -54,7 +62,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g03: {
-    id: "c2g03", titre: "Le subjonctif II", titreDE: "Der Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
+    id: "c2g03",
+    einstieg: {"intro":"Observe tous les emplois de l'irréel.","exemples":[{"de":"An deiner Stelle würde ich kündigen.","fr":"À ta place, je démissionnerais."},{"de":"Hätte ich nur mehr Zeit gehabt!","fr":"Si seulement j'avais eu plus de temps !"},{"de":"Es wäre schön, wenn du kämst.","fr":"Ce serait bien que tu viennes."}],"question":"Comment couvrir tous les emplois de l'irréel ?"},
+    merke: ["Présent : *würde + inf* ou forme simple (*wäre, hätte, käme, ginge*).","Passé : *hätte/wäre + participe* (*ich hätte gewusst*).","Emplois : irréel, souhait (*wenn … nur*), politesse, conseil (*an deiner Stelle*)."],
+    achtung: [{"erreur":"Wenn ich reich wäre, würde ich glücklich sein.","correct":"Wenn ich reich wäre, **wäre ich** glücklich.","explication":"Avec *sein*, on préfère la forme simple (wäre) à *würde sein*."},{"erreur":"Hätte ich das gewusst, würde ich nicht gekommen sein.","correct":"…, **wäre ich** nicht **gekommen**.","explication":"Irréel du passé : *hätte/wäre + participe*."}],
+    kontrast: {"titre":"Le Konjunktiv II (C2) : allemand vs français","similitudes":["Le conditionnel présent et passé existe."],"differences":["Deux registres : forme simple (käme) vs *würde + inf*.","Irréel du passé en un bloc (*hätte gemacht*).","Sert aussi au souhait et à la politesse."]}, titre: "Le subjonctif II", titreDE: "Der Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Maîtriser présent, passé et modaux", "Exprimer l'irréel complexe"],
     grammairePoints: ["würde, hätte, wäre", "hätte … können (passé + modal)"],
     exemplesPlus: [{"de":"Ohne diesen glücklichen Zufall hätte das Experiment scheitern können.","fr":"Konjunktiv II der Vergangenheit mit Modalverb: *hätte … können*."},{"de":"Man hätte die Katastrophe durchaus verhindern können.","fr":"Drückt eine versäumte Möglichkeit aus."},{"de":"Es wäre verfehlt, die Bedeutung dieser Entwicklung zu unterschätzen.","fr":"Vorsichtige, distanzierte Bewertung."},{"de":"Selbst mit größerem Aufwand wäre das Ziel kaum erreichbar gewesen.","fr":"Irreale Aussage über die Vergangenheit."},{"de":"Hätte man rechtzeitig eingegriffen, ließen sich die Schäden begrenzen.","fr":"Bedingungssatz ohne *wenn* (Verberststellung)."}],
@@ -79,7 +91,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g04: {
-    id: "c2g04", titre: "Le subjonctif I", titreDE: "Der Konjunktiv I", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
+    id: "c2g04",
+    einstieg: {"intro":"Observe le mode du discours rapporté soigné.","exemples":[{"de":"Der Sprecher sagte, die Regierung werde reagieren.","fr":"Le porte-parole a dit que le gouvernement réagirait."},{"de":"Sie behauptete, sie sei nie dort gewesen.","fr":"Elle affirma qu'elle n'y avait jamais été."},{"de":"Man teilte mit, die Preise seien gestiegen.","fr":"On annonça que les prix avaient augmenté."}],"question":"Comment rapporter des propos de façon neutre et soignée ?"},
+    merke: ["Konjunktiv I présent : *sei, habe, werde, könne* ; passé : *habe/sei + participe*.","Si la forme = indicatif → on passe au *Konjunktiv II* (sie hätten).","Registre : presse, comptes rendus, rapports officiels."],
+    achtung: [{"erreur":"Sie sagte, sie ist krank gewesen.","correct":"Sie sagte, sie **sei** krank **gewesen**.","explication":"Discours indirect passé → *sei/habe + participe*."},{"erreur":"Sie sagten, sie kommen später.","correct":"Sie sagten, sie **kämen** später.","explication":"*kommen* (KI = indicatif) → Konjunktiv II *kämen*."}],
+    kontrast: {"titre":"Le Konjunktiv I (C2) : allemand vs français","similitudes":["On rapporte des propos (« il dit que »)."],"differences":["Mode dédié (sei, habe) marquant la distance.","Bascule réglée KI → KII → würde.","Passé du discours indirect : *sei/habe + participe*."]}, titre: "Le subjonctif I", titreDE: "Der Konjunktiv I", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Former le Konjunktiv I", "Rapporter affirmations, questions et ordres"],
     grammairePoints: ["sei, habe, könne, werde", "Ersatzformen (→ KII)"],
     exemplesPlus: [{"de":"Der Sprecher versicherte, die Vorwürfe entbehrten jeder Grundlage.","fr":"Indirekte Rede; bei Gleichheit mit dem Indikativ tritt der Konjunktiv II ein."},{"de":"Sie führte aus, das Modell sei in mehrfacher Hinsicht überholt.","fr":"Konjunktiv I: *sei*."},{"de":"In der Studie heißt es, die Datenlage lasse keine eindeutigen Schlüsse zu.","fr":"Konjunktiv I: *lasse*."},{"de":"Er betonte, man werde an den Vereinbarungen festhalten.","fr":"Konjunktiv I: *werde* für die Zukunft."},{"de":"Die Zeugin gab an, sie habe nichts Verdächtiges bemerkt.","fr":"Konjunktiv I: *habe*."}],
@@ -103,7 +119,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g05: {
-    id: "c2g05", titre: "Les subordonnées circonstancielles", titreDE: "Adverbialsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
+    id: "c2g05",
+    einstieg: {"intro":"Observe la variété des subordonnées.","exemples":[{"de":"Während er schlief, arbeitete sie.","fr":"Pendant qu'il dormait, elle travaillait."},{"de":"Damit du es verstehst, erkläre ich es.","fr":"Pour que tu comprennes, je l'explique."},{"de":"Sooft ich ihn sehe, lächelt er.","fr":"Chaque fois que je le vois, il sourit."}],"question":"Comment classer toutes les circonstancielles ?"},
+    merke: ["Temps : *als, wenn, während, nachdem, bevor, sobald, solange, sooft*.","But : *damit, um … zu* ; cause : *weil, da* ; concession : *obwohl* ; condition : *wenn, falls*.","Toutes sont des subordonnées → verbe conjugué à la *fin*."],
+    achtung: [{"erreur":"Damit ich verstehe es besser, lese ich noch mal.","correct":"Damit ich es besser **verstehe**, …","explication":"Subordonnée → verbe à la fin (verstehe)."},{"erreur":"Als ich jung bin, spielte ich Fußball.","correct":"**Als** ich jung **war**, spielte ich Fußball.","explication":"Passé ponctuel unique → *als* (pas *wenn*)."}],
+    kontrast: {"titre":"Les circonstancielles : allemand vs français","similitudes":["Temps, cause, but, condition, concession existent."],"differences":["Verbe rejeté en *fin* de subordonnée.","*als* (passé unique) vs *wenn* (répétition/présent).","Conjonctions spécifiques (*damit, nachdem, sobald*)."]}, titre: "Les subordonnées circonstancielles", titreDE: "Adverbialsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Reconnaître les types de circonstancielles", "Choisir la bonne conjonction"],
     grammairePoints: ["temporal, kausal, konzessiv", "final, konditional, modal"],
     exemplesPlus: [{"de":"Sooft die Frage aufkam, wich er einer klaren Antwort aus.","fr":"Temporal (*sooft*): jedes Mal, wenn."},{"de":"Zumal die Mittel knapp waren, verzichtete man auf den Ausbau.","fr":"Kausal (*zumal*): ein zusätzlicher, gewichtiger Grund."},{"de":"So überzeugend die Argumente auch klingen mögen, sie bleiben unbewiesen.","fr":"Konzessiv (*so … auch*): trotz allem."},{"de":"Indem man die Prozesse automatisierte, senkte man die Kosten erheblich.","fr":"Modal (*indem*): nennt das Mittel."},{"de":"Sofern keine Einwände erhoben werden, gilt der Antrag als angenommen.","fr":"Konditional (*sofern*): unter dieser Bedingung."}],
@@ -127,7 +147,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g06: {
-    id: "c2g06", titre: "Les compléments des verbes", titreDE: "Verbergänzungen und Kasus", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
+    id: "c2g06",
+    einstieg: {"intro":"Observe le cas imposé par chaque verbe.","exemples":[{"de":"Ich danke dir für die Hilfe.","fr":"Je te remercie pour l'aide."},{"de":"Er erinnert sich an seinen Urlaub.","fr":"Il se souvient de ses vacances."},{"de":"Wir bedürfen deiner Hilfe.","fr":"Nous avons besoin de ton aide."}],"question":"Quel cas chaque verbe impose-t-il ?"},
+    merke: ["Datif : *helfen, danken, gratulieren, begegnen, gefallen, folgen*.","Verbe + préposition fixe : *warten auf, denken an, sich freuen über/auf*.","Quelques verbes + génitif (soutenu) : *bedürfen, gedenken, sich rühmen*."],
+    achtung: [{"erreur":"Ich helfe dich.","correct":"Ich helfe **dir**.","explication":"*helfen* régit le datif (dir)."},{"erreur":"Er erinnert sich seinen Urlaub.","correct":"Er erinnert sich **an** seinen Urlaub.","explication":"*sich erinnern an* + accusatif."}],
+    kontrast: {"titre":"La rection des verbes : allemand vs français","similitudes":["Les verbes ont des constructions fixes."],"differences":["Beaucoup de verbes régissent le *datif* (helfen, danken).","Préposition + cas fixés (*warten auf* + acc).","Quelques verbes + génitif (registre soutenu)."]}, titre: "Les compléments des verbes", titreDE: "Verbergänzungen und Kasus", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Maîtriser la rection des verbes", "Employer les verbes à génitif"],
     grammairePoints: ["verbes à datif/accusatif", "verbes à génitif (bedürfen, gedenken)"],
     exemplesPlus: [{"de":"Diese Angelegenheit bedarf einer gründlichen Prüfung.","fr":"*bedürfen* + Genitiv (gehoben)."},{"de":"Wir gedenken der Opfer dieser Tragödie.","fr":"*gedenken* + Genitiv."},{"de":"Man beschuldigte ihn des Betruges.","fr":"*beschuldigen* + Genitiv."},{"de":"Der Vorfall entzog sich jeder Kontrolle.","fr":"*sich entziehen* + Dativ."},{"de":"Solche Aussagen entbehren jeder sachlichen Grundlage.","fr":"*entbehren* + Genitiv."}],
@@ -151,7 +175,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g07: {
-    id: "c2g07", titre: "Locutions verbo-nominales", titreDE: "Nomen-Verb-Verbindungen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
+    id: "c2g07",
+    einstieg: {"intro":"Observe ces tournures du registre formel.","exemples":[{"de":"Die Regierung trifft Maßnahmen.","fr":"Le gouvernement prend des mesures."},{"de":"Das stellt eine Gefahr dar.","fr":"Cela représente un danger."},{"de":"Wir nehmen Bezug auf Ihr Schreiben.","fr":"Nous nous référons à votre courrier."}],"question":"Pourquoi *Maßnahmen treffen* plutôt qu'un simple verbe ?"},
+    merke: ["Locutions à verbe support (*Funktionsverbgefüge*) : nom + verbe semi-vide.","Verbes supports fréquents : *treffen, stellen, nehmen, bringen, kommen, setzen*.","Registre administratif/écrit : *in Frage stellen, zur Verfügung stellen, in Betracht ziehen*."],
+    achtung: [{"erreur":"Die Regierung macht Maßnahmen.","correct":"Die Regierung **trifft** Maßnahmen.","explication":"Collocation fixe : *Maßnahmen treffen*."},{"erreur":"etwas in Betracht nehmen","correct":"etwas in Betracht **ziehen**","explication":"L'expression figée est *in Betracht ziehen*."}],
+    kontrast: {"titre":"Locutions verbo-nominales (C2) : allemand vs français","similitudes":["« prendre des mesures » est aussi une locution."],"differences":["Verbe support *fixe* et semi-vide (treffen, ziehen).","Très productif à l'écrit administratif.","La traduction mot à mot échoue souvent."]}, titre: "Locutions verbo-nominales", titreDE: "Nomen-Verb-Verbindungen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Employer des Funktionsverbgefüge soutenues", "Reformuler avec un verbe simple"],
     grammairePoints: ["in Anspruch nehmen, in Betracht ziehen", "zur Sprache bringen"],
     exemplesPlus: [{"de":"Das Verfahren nimmt erhebliche Ressourcen in Anspruch.","fr":"*in Anspruch nehmen* = beanspruchen."},{"de":"Auch alternative Lösungen sollten in Betracht gezogen werden.","fr":"*in Betracht ziehen* = erwägen."},{"de":"Sie brachte das heikle Thema diplomatisch zur Sprache.","fr":"*zur Sprache bringen* = ansprechen."},{"de":"Die Reform stellt die bisherige Praxis grundlegend in Frage.","fr":"*in Frage stellen* = grundsätzlich anzweifeln."},{"de":"Der Vorschlag stieß auf breite Zustimmung.","fr":"*auf Zustimmung stoßen* = angenommen werden."}],
@@ -175,7 +203,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g08: {
-    id: "c2g08", titre: "Formation des noms", titreDE: "Wortbildung: Nomen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
+    id: "c2g08",
+    einstieg: {"intro":"Observe comment se fabriquent les noms.","exemples":[{"de":"die Freiheit, die Möglichkeit","fr":"la liberté, la possibilité"},{"de":"die Haustür","fr":"la porte d'entrée"},{"de":"das Lesen","fr":"la lecture (le fait de lire)"}],"question":"Comment se fabriquent les noms en allemand ?"},
+    merke: ["Suffixes → genre fixe : *-ung, -heit, -keit, -schaft, -ion* (fém.) ; *-chen, -lein, -tum* (neutre) ; *-er, -ling* (masc.).","Mots composés : le *dernier* élément donne genre et pluriel (*die Haustür*).","Infinitif nominalisé : neutre (*das Lesen, das Schwimmen*)."],
+    achtung: [{"erreur":"der Freiheit","correct":"**die** Freiheit","explication":"Suffixe *-heit* → toujours féminin."},{"erreur":"das Haustür","correct":"**die** Haustür","explication":"Le dernier élément (*Tür*, fém.) donne le genre."}],
+    kontrast: {"titre":"La formation des noms : allemand vs français","similitudes":["Suffixes et composition existent."],"differences":["Le suffixe *fixe le genre* (-ung → fém.).","Composés soudés en un mot (Haustür) ; le dernier élément commande.","Infinitif nominalisé courant (das Lesen)."]}, titre: "Formation des noms", titreDE: "Wortbildung: Nomen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Reconnaître les suffixes nominaux", "Former des noms et des composés"],
     grammairePoints: ["-ung, -heit, -keit, -schaft", "Komposita"],
     exemplesPlus: [{"de":"Die Umsetzung der Reform stößt auf Widerstand.","fr":"*-ung*: bezeichnet einen Vorgang oder dessen Ergebnis."},{"de":"Seine Hilfsbereitschaft beeindruckte alle.","fr":"*-schaft*: eine Eigenschaft oder ein Kollektiv."},{"de":"Die Nachhaltigkeit spielt eine immer größere Rolle.","fr":"*-keit*: bildet abstrakte Begriffe."},{"de":"Die Geschwindigkeitsbegrenzung wurde verschärft.","fr":"Kompositum: mehrere Nomen werden verbunden."},{"de":"Die Vergänglichkeit alles Irdischen ist ein altes Motiv.","fr":"*-keit* aus einem Adjektiv (*vergänglich*)."}],
@@ -199,7 +231,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g09: {
-    id: "c2g09", titre: "Participes comme adjectifs", titreDE: "Partizipien als Adjektive", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
+    id: "c2g09",
+    einstieg: {"intro":"Observe le participe employé comme épithète.","exemples":[{"de":"ein schlafendes Kind","fr":"un enfant qui dort"},{"de":"die geöffnete Tür","fr":"la porte ouverte"},{"de":"die im letzten Jahr gebaute Brücke","fr":"le pont construit l'an dernier"}],"question":"Comment un participe qualifie-t-il un nom ?"},
+    merke: ["Participe I (*-end*) : sens *actif*, action en cours (*ein lachendes Kind*).","Participe II : sens *passif/accompli* (*die geöffnete Tür*).","Épithète étendu : compléments *avant* le participe (*die … gebaute Brücke*)."],
+    achtung: [{"erreur":"ein schlafend Kind","correct":"ein **schlafendes** Kind","explication":"Participe épithète → se décline (schlafendes)."},{"erreur":"die gebaute im letzten Jahr Brücke","correct":"die **im letzten Jahr gebaute** Brücke","explication":"Les compléments se placent AVANT le participe."}],
+    kontrast: {"titre":"Participe épithète : allemand vs français","similitudes":["Le participe présent/passé qualifie le nom."],"differences":["L'épithète étendu insère un groupe *avant* le nom.","Participe I actif (-end), participe II passif.","Le français déplie en relative."]}, titre: "Participes comme adjectifs", titreDE: "Partizipien als Adjektive", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Employer le participe attribut", "Construire un attribut participial étendu"],
     grammairePoints: ["Partizip I (actif)", "Partizip II (passif/accompli)"],
     exemplesPlus: [{"de":"Die wachsende Ungleichheit beschäftigt die Forschung.","fr":"Partizip I (*wachsend*): aktiv und andauernd."},{"de":"Die von der Kommission verabschiedeten Richtlinien treten bald in Kraft.","fr":"Erweitertes Partizip II als Attribut."},{"de":"Ein alles entscheidender Moment stand bevor.","fr":"Partizip I mit Objekt (*alles entscheidend*)."},{"de":"Die längst überfällige Reform wurde endlich beschlossen.","fr":"Partizip II als Adjektiv mit Steigerungswort."},{"de":"Das zugrunde liegende Prinzip bleibt umstritten.","fr":"Partizip I in einer festen Wendung."}],
@@ -224,7 +260,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g10: {
-    id: "c2g10", titre: "Adjectifs et participes nominalisés", titreDE: "Nominalisierte Adjektive und Partizipien", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
+    id: "c2g10",
+    einstieg: {"intro":"Observe ces adjectifs/participes devenus noms.","exemples":[{"de":"der Angestellte / ein Angestellter","fr":"l'employé / un employé"},{"de":"der Vorsitzende","fr":"le président (de séance)"},{"de":"nichts Wichtiges","fr":"rien d'important"}],"question":"Comment un participe devient-il un nom décliné ?"},
+    merke: ["Adjectif/participe nominalisé : majuscule + garde la *déclinaison de l'adjectif* (*der Angestellte, ein Angestellter*).","Personnes : *der/die Reisende, der Vorsitzende, der Deutsche*.","Après *etwas/nichts/viel/wenig* → neutre fort en *-es* (*etwas Wichtiges*)."],
+    achtung: [{"erreur":"ein Angestellte","correct":"ein **Angestellter**","explication":"Nominalisé masculin après *ein* → -er."},{"erreur":"nichts Wichtige","correct":"nichts **Wichtiges**","explication":"Après *nichts*, neutre fort en -es."}],
+    kontrast: {"titre":"Nominalisation (C2) : allemand vs français","similitudes":["On nominalise des adjectifs (« l'employé »)."],"differences":["Le nom garde la *déclinaison* de l'adjectif (ein Angestellter).","Varie selon l'article (der/ein Angestellte(r)).","Après etwas/nichts → -es."]}, titre: "Adjectifs et participes nominalisés", titreDE: "Nominalisierte Adjektive und Partizipien", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C2",
     objectifs: ["Nominaliser adjectifs et participes", "Décliner ces noms"],
     grammairePoints: ["der Reisende, der Angestellte", "das Wesentliche, etwas Neues"],
     exemplesPlus: [{"de":"Das Wesentliche lässt sich in einem Satz zusammenfassen.","fr":"*das Wesentliche*: nominalisiertes Adjektiv."},{"de":"Die Verantwortlichen wurden zur Rechenschaft gezogen.","fr":"*die Verantwortlichen*: nominalisiert, Plural."},{"de":"Sie suchte nach etwas grundlegend Anderem.","fr":"*etwas Anderes*: nach *etwas* großgeschrieben."},{"de":"Den Vorsitzenden traf keine Schuld.","fr":"*der Vorsitzende → den Vorsitzenden* (Akkusativ)."},{"de":"Im Folgenden werden die Ergebnisse erläutert.","fr":"*im Folgenden*: feste nominalisierte Wendung."}],
@@ -248,7 +288,11 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     ]
   },
   c2g11: {
-    id: "c2g11", titre: "Les propositions relatives", titreDE: "Relativsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
+    id: "c2g11",
+    einstieg: {"intro":"Observe les relatives, même explicatives.","exemples":[{"de":"die Frau, mit der ich sprach","fr":"la femme avec qui j'ai parlé"},{"de":"das Haus, dessen Dach rot ist","fr":"la maison dont le toit est rouge"},{"de":"Er kam zu spät, was mich ärgerte.","fr":"Il arriva trop tard, ce qui m'agaça."}],"question":"Comment relier toutes les relatives, même explicatives ?"},
+    merke: ["Relatif décliné selon sa fonction (*der/den/dem/dessen* …).","Génitif relatif : *dessen* (masc./neutre), *deren* (fém./pluriel) = « dont ».","Relative à toute la phrase : *was* (*…, was mich freut*) ; lieu : *wo*."],
+    achtung: [{"erreur":"die Frau, mit die ich sprach","correct":"die Frau, mit **der** ich sprach","explication":"*mit* + datif → relatif *der*."},{"erreur":"Er kam zu spät, das mich ärgerte.","correct":"Er kam zu spät, **was** mich ärgerte.","explication":"Relative renvoyant à toute la phrase → *was*."}],
+    kontrast: {"titre":"Les relatives (C2) : allemand vs français","similitudes":["« qui / que / dont / où » existent."],"differences":["Le relatif se *décline* selon sa fonction (den/dem/dessen).","« dont » = *dessen/deren*.","*was* renvoie à une phrase entière."]}, titre: "Les propositions relatives", titreDE: "Relativsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C2",
     objectifs: ["Maîtriser tous les relatifs", "Employer les relatives explicatives (weiterführend)"],
     grammairePoints: ["dessen/deren, was, wo", "relative explicative (, was …)"],
     exemplesPlus: [{"de":"Der Wissenschaftler, dessen Thesen lange umstritten waren, erhielt nun den Preis.","fr":"*dessen*: Relativpronomen im Genitiv."},{"de":"Sie schwieg, was die Lage zusätzlich verschärfte.","fr":"*, was*: bezieht sich auf den ganzen Hauptsatz."},{"de":"Alles, was glänzt, ist nicht Gold.","fr":"*was* als Relativpronomen nach *alles*."},{"de":"Die Region, aus der er stammt, ist wirtschaftlich schwach.","fr":"Präposition + Relativpronomen: *aus der*."},{"de":"Es gibt Momente, in denen Schweigen beredter ist als Worte.","fr":"Relativsatz mit Präposition im Plural."}],
