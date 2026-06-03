@@ -5,7 +5,11 @@
    ===================================================================== */
 window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
   b1g15: {
-    id: "b1g15", titre: "Indicateurs de conditionnel", titreDE: "Irreale Bedingungen (wenn)", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
+    id: "b1g15",
+    einstieg: {"intro":"Observe les façons d'exprimer une condition.","exemples":[{"de":"Wenn es regnet, bleibe ich zu Hause.","fr":"S'il pleut, je reste à la maison."},{"de":"Falls du Zeit hast, ruf an.","fr":"Au cas où tu aurais le temps, appelle."},{"de":"Beeil dich, sonst kommen wir zu spät.","fr":"Dépêche-toi, sinon on sera en retard."}],"question":"Quelle différence entre *wenn*, *falls* et *sonst* ?"},
+    merke: ["*wenn* = si/quand (condition réelle ou répétée).","*falls* = au cas où (condition incertaine).","*sonst* = sinon (conséquence négative)."],
+    achtung: [{"erreur":"Wenn ich Zeit hätte, ich komme.","correct":"Wenn ich Zeit hätte, **würde ich kommen**.","explication":"Condition irréelle → Konjunktiv II."},{"erreur":"Wenn es regnet, ich bleibe zu Hause.","correct":"Wenn es regnet, **bleibe ich** zu Hause.","explication":"Subordonnée en tête → inversion."}],
+    kontrast: {"titre":"La condition : allemand vs français","similitudes":["« si » introduit la condition."],"differences":["*wenn* (réel) vs *falls* (éventuel) - nuance absente en français.","Condition irréelle → Konjunktiv II.","*sonst* (sinon) annonce la conséquence négative."]}, titre: "Indicateurs de conditionnel", titreDE: "Irreale Bedingungen (wenn)", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Exprimer une hypothèse irréelle", "Relier condition et conséquence (wenn … würde)"],
     grammairePoints: ["wenn + Konjunktiv II", "sonst, andernfalls"],
     exemplesPlus: [{"de":"Wenn ich reich wäre, würde ich um die Welt reisen.","fr":"Irreale Bedingung: es ist gerade nicht so."},{"de":"Wenn du mehr lernen würdest, hättest du bessere Noten.","fr":"*würde* im Nebensatz, Folge im Konjunktiv II."},{"de":"Beeil dich, sonst verpassen wir den Zug!","fr":"*sonst*: die andere, schlechte Folge."},{"de":"Wenn es nicht regnen würde, könnten wir grillen.","fr":"Bedingung + Möglichkeit (*könnten*)."},{"de":"Hätte ich das gewusst, wäre ich früher gekommen.","fr":"Ohne *wenn*: das Verb steht am Anfang."}],
@@ -30,7 +34,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g16: {
-    id: "b1g16", titre: "Les propositions finales", titreDE: "Finalsätze: um … zu / damit", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
+    id: "b1g16",
+    einstieg: {"intro":"Observe les deux façons d'exprimer le but.","exemples":[{"de":"Ich lerne, um die Prüfung zu bestehen.","fr":"J'étudie pour réussir l'examen."},{"de":"Ich gebe dir Geld, damit du einkaufen kannst.","fr":"Je te donne de l'argent pour que tu fasses les courses."}],"question":"Quand utiliser *um…zu* et quand *damit* ?"},
+    merke: ["But, *même sujet* : *um … zu* + infinitif.","But, *sujets différents* : *damit* + subordonnée (verbe à la fin).","*damit* obligatoire si le verbe ne peut pas être à l'infinitif."],
+    achtung: [{"erreur":"Ich lerne, damit ich bestehe. (même sujet)","correct":"Ich lerne, **um** zu **bestehen**.","explication":"Même sujet → *um…zu*."},{"erreur":"Ich gebe dir Geld, um du einzukaufen.","correct":"…, **damit** du einkaufst.","explication":"Sujets différents → *damit*."}],
+    kontrast: {"titre":"Le but : allemand vs français","similitudes":["« pour / pour que » expriment le but."],"differences":["*um…zu* (même sujet) vs *damit* (sujets différents).","*um…zu* place *zu + infinitif* à la fin.","« pour que » + subjonctif ; *damit* + indicatif."]}, titre: "Les propositions finales", titreDE: "Finalsätze: um … zu / damit", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Exprimer un but", "Choisir um … zu (même sujet) ou damit (sujet différent)"],
     grammairePoints: ["um … zu + Infinitiv", "damit + Nebensatz"],
     exemplesPlus: [{"de":"Ich lerne Deutsch, um in Wien zu studieren.","fr":"*um … zu*: das Ziel, gleiches Subjekt."},{"de":"Sie spart Geld, um ein Auto zu kaufen.","fr":"*um … zu* + Infinitiv am Ende."},{"de":"Ich erkläre es noch einmal, damit alle es verstehen.","fr":"*damit*: das Ziel, anderes Subjekt."},{"de":"Er ruft an, damit wir uns keine Sorgen machen.","fr":"*damit* + Nebensatz (Verb am Ende)."},{"de":"Wir nehmen ein Taxi, um pünktlich zu sein.","fr":"*um … zu*: warum wir das tun."}],
@@ -55,7 +63,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g17: {
-    id: "b1g17", titre: "Noms, verbes & connecteurs", titreDE: "Nomen-Verb-Verbindungen & Konnektoren", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
+    id: "b1g17",
+    einstieg: {"intro":"Observe les connecteurs et la transformation d'un verbe en nom.","exemples":[{"de":"Es regnet, deshalb bleibe ich zu Hause.","fr":"Il pleut, c'est pourquoi je reste."},{"de":"Trotzdem gehe ich.","fr":"Malgré tout, j'y vais."},{"de":"Das Lesen ist wichtig.","fr":"La lecture est importante."}],"question":"Comment relier deux idées et nominaliser un verbe ?"},
+    merke: ["Connecteurs *deshalb, trotzdem, außerdem* → la principale fait l'*inversion*.","Nominalisation : l'infinitif devient un nom *neutre* (*das Lesen*).","Distinguer connecteur (position 1, inversion) et subordonnant (verbe en fin)."],
+    achtung: [{"erreur":"Es regnet, deshalb ich bleibe zu Hause.","correct":"…, deshalb **bleibe ich** zu Hause.","explication":"*deshalb* (position 1) → inversion sujet-verbe."},{"erreur":"das lesen ist wichtig","correct":"**das Lesen** ist wichtig","explication":"L'infinitif nominalisé prend une majuscule et *das*."}],
+    kontrast: {"titre":"Connecteurs et nominalisation : allemand vs français","similitudes":["« c'est pourquoi », « la lecture » existent dans les deux."],"differences":["*deshalb/trotzdem* déclenchent l'inversion.","L'infinitif se nominalise en un mot neutre.","Distinguer connecteur (inversion) et subordonnant (verbe en fin)."]}, titre: "Noms, verbes & connecteurs", titreDE: "Nomen-Verb-Verbindungen & Konnektoren", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Utiliser des locutions nom + verbe", "Relier ses idées avec des connecteurs"],
     grammairePoints: ["eine Entscheidung treffen", "trotzdem, außerdem, deswegen"],
     exemplesPlus: [{"de":"Wir müssen heute eine Entscheidung treffen.","fr":"Feste Verbindung: *eine Entscheidung treffen*."},{"de":"Ich stelle dir eine Frage.","fr":"Feste Verbindung: *eine Frage stellen*."},{"de":"Es war kalt; trotzdem sind wir schwimmen gegangen.","fr":"*trotzdem*: trotz des Problems."},{"de":"Das Hotel war schön. Außerdem war es billig.","fr":"*außerdem*: noch ein Punkt dazu."},{"de":"Ich war krank, deswegen bin ich zu Hause geblieben.","fr":"*deswegen*: die Folge."}],
@@ -79,7 +91,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g18: {
-    id: "b1g18", titre: "Les temps du passé (récit)", titreDE: "Vergangenheit im Text", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
+    id: "b1g18",
+    einstieg: {"intro":"Observe le temps du récit écrit.","exemples":[{"de":"Es war einmal ein König.","fr":"Il était une fois un roi."},{"de":"Er stand auf und ging hinaus.","fr":"Il se leva et sortit."},{"de":"Sie hatte alles vergessen.","fr":"Elle avait tout oublié."}],"question":"Quel temps domine dans un récit écrit ?"},
+    merke: ["Récit écrit (conte, roman) : *Präteritum*.","Verbes forts au prétérit : *ging, kam, sah, nahm, fand…*","Le Plusquamperfekt marque ce qui s'est passé *avant* le récit."],
+    achtung: [{"erreur":"Es ist einmal ein König gewesen.","correct":"Es **war** einmal ein König.","explication":"Le récit écrit privilégie le prétérit (war)."},{"erreur":"Er stehte auf.","correct":"Er **stand** auf.","explication":"*stehen* est fort : prétérit *stand*."}],
+    kontrast: {"titre":"Le récit au passé : allemand vs français","similitudes":["Le récit a son temps de base (passé simple/Präteritum)."],"differences":["Le Präteritum est le temps du *récit écrit*.","Beaucoup de verbes forts à mémoriser.","À l'oral on repasserait au Perfekt."]}, titre: "Les temps du passé (récit)", titreDE: "Vergangenheit im Text", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Choisir le bon temps dans un récit", "Combiner Präteritum et Plusquamperfekt"],
     grammairePoints: ["Präteritum (récit écrit)", "Plusquamperfekt (antériorité)"],
     exemplesPlus: [{"de":"Es war einmal ein König, der drei Töchter hatte.","fr":"*Präteritum*: typisch für Märchen und Geschichten."},{"de":"Sie öffnete die Tür und trat ins Zimmer.","fr":"Mehrere Handlungen im Präteritum."},{"de":"Nachdem er gegessen hatte, las er ein Buch.","fr":"*Plusquamperfekt*: das war vorher passiert."},{"de":"Der Zug war schon abgefahren, als wir ankamen.","fr":"Vorher (Plusquamperfekt) und danach (Präteritum)."},{"de":"Plötzlich klingelte das Telefon laut.","fr":"*Präteritum* in der Erzählung."}],
@@ -103,7 +119,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g19: {
-    id: "b1g19", titre: "Propositions temporelles", titreDE: "Temporalsätze: Gleichzeitigkeit & Vorzeitigkeit", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
+    id: "b1g19",
+    einstieg: {"intro":"Observe les trois traductions de « quand ».","exemples":[{"de":"Als ich klein war, …","fr":"Quand j'étais petit, …"},{"de":"Wenn ich Zeit habe, lese ich.","fr":"Quand j'ai le temps, je lis."},{"de":"Ich weiß nicht, wann er kommt.","fr":"Je ne sais pas quand il vient."}],"question":"Quand dit-on *als*, *wenn* ou *wann* ?"},
+    merke: ["*als* = quand (*fait unique* au passé).","*wenn* = quand (présent/futur ou *répétition*).","*wann* = quand ? (question, même indirecte)."],
+    achtung: [{"erreur":"Wenn ich gestern ankam, regnete es.","correct":"**Als** ich gestern ankam, regnete es.","explication":"Fait unique au passé = *als*."},{"erreur":"Ich weiß nicht, wenn er kommt.","correct":"Ich weiß nicht, **wann** er kommt.","explication":"Interrogative indirecte = *wann*."}],
+    kontrast: {"titre":"Quand : allemand vs français","similitudes":["« quand » couvre temps et question en français."],"differences":["*als* (fait passé unique), *wenn* (répétition/présent), *wann* (question).","Un seul « quand » français → trois mots allemands.","À ne pas confondre avec *ob* (si oui/non)."]}, titre: "Propositions temporelles", titreDE: "Temporalsätze: Gleichzeitigkeit & Vorzeitigkeit", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Exprimer la simultanéité (während, solange)", "Exprimer la non-simultanéité (bevor, nachdem, sobald)"],
     grammairePoints: ["während, solange", "bevor, nachdem, sobald"],
     exemplesPlus: [{"de":"Während ich koche, deckst du den Tisch.","fr":"*während*: zwei Dinge gleichzeitig."},{"de":"Solange es regnet, bleiben wir drinnen.","fr":"*solange*: die ganze Zeit über."},{"de":"Bevor ich schlafe, lese ich noch etwas.","fr":"*bevor*: davor."},{"de":"Nachdem wir gegessen hatten, gingen wir spazieren.","fr":"*nachdem* + Plusquamperfekt: danach."},{"de":"Sobald ich ankomme, rufe ich dich an.","fr":"*sobald*: sofort danach."}],
@@ -128,7 +148,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g20: {
-    id: "b1g20", titre: "Les prépositions", titreDE: "Wechselpräpositionen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
+    id: "b1g20",
+    einstieg: {"intro":"Observe le cas exigé par chaque préposition.","exemples":[{"de":"mit dem Bus","fr":"en bus (datif)"},{"de":"für dich","fr":"pour toi (accusatif)"},{"de":"während des Tages","fr":"pendant la journée (génitif)"}],"question":"Comment savoir quel cas suit une préposition ?"},
+    merke: ["+ accusatif : *für, ohne, gegen, um, durch*.","+ datif : *mit, nach, aus, bei, von, zu, seit*.","Mixtes (*in, an, auf*…) : accusatif (direction) ou datif (position)."],
+    achtung: [{"erreur":"für dir","correct":"für **dich**","explication":"*für* régit l'accusatif."},{"erreur":"mit dich","correct":"mit **dir**","explication":"*mit* régit le datif."}],
+    kontrast: {"titre":"Les prépositions : allemand vs français","similitudes":["Les prépositions relient les mots."],"differences":["Chaque préposition impose un *cas* (à apprendre par groupes).","Les mixtes changent de cas selon le sens.","Le français n'a pas cette variation."]}, titre: "Les prépositions", titreDE: "Wechselpräpositionen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Choisir le cas après une préposition mixte", "Distinguer lieu (Dat.) et direction (Akk.)"],
     grammairePoints: ["an, auf, in, über…", "Wo? + Dat. / Wohin? + Akk."],
     exemplesPlus: [{"de":"Das Buch liegt auf dem Tisch.","fr":"*Wo?* + Dativ (Ort, keine Bewegung)."},{"de":"Ich lege das Buch auf den Tisch.","fr":"*Wohin?* + Akkusativ (Bewegung zum Ziel)."},{"de":"Die Katze sitzt unter dem Stuhl.","fr":"*Wo?* + Dativ: *unter dem Stuhl*."},{"de":"Wir gehen heute Abend ins Kino.","fr":"*Wohin?* + Akkusativ: *ins Kino*."},{"de":"Das Bild hängt an der Wand.","fr":"*Wo?* + Dativ: *an der Wand*."}],
@@ -153,7 +177,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g21: {
-    id: "b1g21", titre: "Adjectifs avec prépositions", titreDE: "Adjektive mit Präpositionen", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
+    id: "b1g21",
+    einstieg: {"intro":"Observe la préposition fixe de chaque adjectif.","exemples":[{"de":"Ich bin stolz auf dich.","fr":"Je suis fier de toi."},{"de":"Sie ist zufrieden mit dem Ergebnis.","fr":"Elle est satisfaite du résultat."},{"de":"Er ist böse auf mich.","fr":"Il est fâché contre moi."}],"question":"La préposition se devine-t-elle d'après le français ?"},
+    merke: ["Adjectifs à *préposition fixe* : *stolz auf*, *zufrieden mit*, *böse auf*, *interessiert an*.","La préposition fixe le *cas* (*stolz auf* + accusatif).","À apprendre adjectif + préposition + cas ensemble."],
+    achtung: [{"erreur":"Ich bin stolz von dir.","correct":"Ich bin stolz **auf** dich.","explication":"« fier de » = *stolz auf* + accusatif."},{"erreur":"zufrieden mit das Ergebnis","correct":"zufrieden mit **dem** Ergebnis","explication":"*mit* régit le datif."}],
+    kontrast: {"titre":"Adjectifs à préposition : allemand vs français","similitudes":["« fier de », « satisfait de » sont fixes."],"differences":["La préposition diffère du français (stolz *auf* = fier *de*).","Elle impose un *cas* au complément.","À mémoriser adjectif par adjectif."]}, titre: "Adjectifs avec prépositions", titreDE: "Adjektive mit Präpositionen", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
     objectifs: ["Mémoriser les adjectifs à préposition fixe", "Appliquer le cas imposé"],
     grammairePoints: ["stolz auf, zufrieden mit", "böse auf, bereit zu"],
     exemplesPlus: [{"de":"Ich bin sehr stolz auf dich.","fr":"*stolz auf* + Akkusativ."},{"de":"Bist du mit deiner Arbeit zufrieden?","fr":"*zufrieden mit* + Dativ."},{"de":"Sie ist böse auf ihren Bruder.","fr":"*böse auf* + Akkusativ."},{"de":"Ich bin bereit zu einem Kompromiss.","fr":"*bereit zu* + Dativ."},{"de":"Er ist bekannt für seine guten Ideen.","fr":"*bekannt für* + Akkusativ."}],
@@ -177,7 +205,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g22: {
-    id: "b1g22", titre: "Les énumérations", titreDE: "Doppelkonnektoren", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
+    id: "b1g22",
+    einstieg: {"intro":"Observe ces couples de mots de liaison.","exemples":[{"de":"Sowohl Anna als auch Tom kommen.","fr":"Anna et Tom viennent tous les deux."},{"de":"Weder er noch sie war da.","fr":"Ni lui ni elle n'était là."},{"de":"Entweder du oder ich.","fr":"Soit toi, soit moi."}],"question":"Comment relier deux éléments avec ces couples ?"},
+    merke: ["*sowohl … als auch* = aussi bien… que.","*weder … noch* = ni… ni (déjà négatif).","*entweder … oder* = soit… soit."],
+    achtung: [{"erreur":"Weder er nicht noch sie war da.","correct":"**Weder** er **noch** sie war da.","explication":"*weder…noch* est déjà négatif : pas de *nicht* en plus."},{"erreur":"sowohl Anna als Tom","correct":"sowohl Anna **als auch** Tom","explication":"La locution complète est *sowohl … als auch*."}],
+    kontrast: {"titre":"Les énumérations : allemand vs français","similitudes":["« ni… ni », « soit… soit » existent dans les deux."],"differences":["*weder…noch* jamais avec *nicht*.","*sowohl…als auch* est figé en deux parties.","Pas de double négation."]}, titre: "Les énumérations", titreDE: "Doppelkonnektoren", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
     objectifs: ["Relier deux éléments avec des connecteurs doubles", "Nuancer (et… et, ni… ni, soit… soit)"],
     grammairePoints: ["sowohl … als auch", "weder … noch, entweder … oder, nicht nur … sondern auch"],
     exemplesPlus: [{"de":"Ich spreche sowohl Englisch als auch Spanisch.","fr":"*sowohl … als auch*: beides zusammen."},{"de":"Er trinkt weder Kaffee noch Tee.","fr":"*weder … noch*: keins von beiden."},{"de":"Entweder du kommst mit, oder du bleibst hier.","fr":"*entweder … oder*: eine von zwei Möglichkeiten."},{"de":"Sie ist nicht nur klug, sondern auch fleißig.","fr":"*nicht nur … sondern auch*: noch mehr dazu."},{"de":"Wir fahren entweder nach Italien oder nach Spanien.","fr":"*entweder … oder*: zwei Optionen."}],
@@ -201,7 +233,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g23: {
-    id: "b1g23", titre: "Causes et conséquences", titreDE: "Grund und Folge", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
+    id: "b1g23",
+    einstieg: {"intro":"Observe comment relier cause et conséquence.","exemples":[{"de":"Ich bleibe zu Hause, weil ich krank bin.","fr":"Je reste à la maison parce que je suis malade."},{"de":"Ich bin krank, deshalb bleibe ich zu Hause.","fr":"Je suis malade, c'est pourquoi je reste."},{"de":"Da es regnet, nehme ich den Schirm.","fr":"Comme il pleut, je prends le parapluie."}],"question":"Cause en subordonnée ou conséquence par connecteur ?"},
+    merke: ["Cause (subordonnée) : *weil / da* → verbe à la *fin*.","Cause (coordination) : *denn* → pas d'inversion (verbe en position 2).","Conséquence (connecteur) : *deshalb, deswegen, daher* → *inversion*."],
+    achtung: [{"erreur":"…, weil ich bin krank.","correct":"…, weil ich krank **bin**.","explication":"Après *weil*, le verbe va à la fin."},{"erreur":"Ich bin krank, deshalb ich bleibe zu Hause.","correct":"…, deshalb **bleibe ich** zu Hause.","explication":"*deshalb* (position 1) → inversion."}],
+    kontrast: {"titre":"Cause et conséquence : allemand vs français","similitudes":["parce que/weil, c'est pourquoi/deshalb."],"differences":["*weil/da* (subordination) → verbe à la fin ; *denn* (coordination) → pas d'inversion.","*deshalb/deswegen* déclenchent l'inversion.","Trois constructions là où le français est plus souple."]}, titre: "Causes et conséquences", titreDE: "Grund und Folge", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Exprimer la cause (weil, da, denn)", "Exprimer la conséquence (deshalb, deswegen, daher)"],
     grammairePoints: ["weil, da, denn", "deshalb, deswegen, daher, darum"],
     exemplesPlus: [{"de":"Ich bleibe zu Hause, weil ich krank bin.","fr":"*weil*: der Grund, Verb am Ende."},{"de":"Da es regnet, nehmen wir den Bus.","fr":"*da*: bekannter Grund, oft am Anfang."},{"de":"Ich gehe schlafen, denn ich bin müde.","fr":"*denn*: der Grund, normale Wortstellung."},{"de":"Es war spät, deshalb sind wir gegangen.","fr":"*deshalb*: die Folge."},{"de":"Ich habe verschlafen, deswegen komme ich zu spät.","fr":"*deswegen*: die Folge."}],

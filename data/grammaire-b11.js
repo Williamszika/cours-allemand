@@ -6,7 +6,11 @@
    ===================================================================== */
 window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
   b1g01: {
-    id: "b1g01", titre: "Les temps du passé", titreDE: "Perfekt, Präteritum, Plusquamperfekt", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B1",
+    id: "b1g01",
+    einstieg: {"intro":"Observe les différents passés.","exemples":[{"de":"Ich habe gestern gearbeitet.","fr":"J'ai travaillé hier. (oral)"},{"de":"Er war müde.","fr":"Il était fatigué."},{"de":"Ich hatte gegessen, bevor er kam.","fr":"J'avais mangé avant qu'il arrive."}],"question":"Comment exprimer une action antérieure à une autre dans le passé ?"},
+    merke: ["*Perfekt* (haben/sein + participe) : oral et conversation.","*Präteritum* : écrit/récit ; *sein/haben/modaux* aussi à l'oral.","*Plusquamperfekt* (*hatte/war* + participe) : action *antérieure* à un autre passé."],
+    achtung: [{"erreur":"Bevor er kam, habe ich gegessen.","correct":"Bevor er kam, **hatte** ich gegessen.","explication":"L'action antérieure se met au *Plusquamperfekt* (hatte gegessen)."},{"erreur":"Ich bin gestern gearbeitet.","correct":"Ich **habe** gestern gearbeitet.","explication":"*arbeiten* prend *haben*."}],
+    kontrast: {"titre":"Les temps du passé : allemand vs français","similitudes":["Plusieurs temps du passé (imparfait/PC/plus-que-parfait)."],"differences":["Le choix Perfekt/Präteritum dépend du *registre* (oral/écrit).","Le Plusquamperfekt = plus-que-parfait (antériorité).","Un seul Präteritum couvre imparfait et passé simple."]}, titre: "Les temps du passé", titreDE: "Perfekt, Präteritum, Plusquamperfekt", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B1",
     objectifs: ["Distinguer Perfekt, Präteritum et Plusquamperfekt", "Choisir le bon temps selon l'oral/l'écrit et la chronologie"],
     grammairePoints: ["Perfekt (oral)", "Präteritum (récit écrit)", "Plusquamperfekt (antériorité)"],
     exemplesPlus: [{"de":"Ich habe gestern einen guten Film gesehen.","fr":"*Perfekt* (haben/sein + Partizip): die Vergangenheit zum Sprechen."},{"de":"Wir sind am Wochenende nach Hamburg gefahren.","fr":"*Perfekt* mit *sein*, weil es eine Bewegung ist."},{"de":"Früher wohnte meine Familie in einem kleinen Dorf.","fr":"*Präteritum*: oft beim Schreiben und Erzählen."},{"de":"Nachdem ich gegessen hatte, ging ich spazieren.","fr":"*Plusquamperfekt* (hatte + Partizip): das passiert davor."},{"de":"Als der Film zu Ende war, gingen alle nach Hause.","fr":"*als* + Präteritum für eine Situation in der Vergangenheit."}],
@@ -32,7 +36,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g02: {
-    id: "b1g02", titre: "Verbes avec prépositions", titreDE: "Verben mit Präpositionen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
+    id: "b1g02",
+    einstieg: {"intro":"Observe comment on reprend ou questionne un complément prépositionnel.","exemples":[{"de":"Ich interessiere mich für Musik.","fr":"Je m'intéresse à la musique."},{"de":"Worauf wartest du?","fr":"Qu'attends-tu ?"},{"de":"Ich denke daran.","fr":"J'y pense."}],"question":"Comment poser une question ou reprendre un complément de chose ?"},
+    merke: ["Verbe + préposition fixe (*sich interessieren für*, *warten auf*).","Chose : *wo(r)+prép* en question (*worauf?*), *da(r)+prép* en reprise (*daran*).","Personne : préposition + pronom (*auf wen? - auf dich*)."],
+    achtung: [{"erreur":"Für was interessierst du dich?","correct":"**Wofür** interessierst du dich?","explication":"Pour une chose, on fusionne : *wofür*, pas *für was*."},{"erreur":"Ich denke an es.","correct":"Ich denke **daran**.","explication":"Pour une chose : *daran*, pas *an es*."}],
+    kontrast: {"titre":"Verbes à préposition : allemand vs français","similitudes":["« penser à », « s'intéresser à » sont fixes dans les deux."],"differences":["Les formes *wo(r)-/da(r)-* (wofür, dafür) n'ont pas d'équivalent simple.","La préposition allemande diffère souvent de la française.","On distingue chose (da-/wo-) et personne (prép + pronom)."]}, titre: "Verbes avec prépositions", titreDE: "Verben mit Präpositionen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Mémoriser les verbes à préposition fixe", "Appliquer le cas imposé par la préposition"],
     grammairePoints: ["warten auf, denken an", "sich freuen über/auf"],
     exemplesPlus: [{"de":"Ich warte schon lange auf den Bus.","fr":"*warten auf* + Akkusativ. Die Präposition gehört fest zum Verb."},{"de":"Denkst du oft an deine Familie?","fr":"*denken an* + Akkusativ."},{"de":"Wir freuen uns sehr auf die Ferien.","fr":"*sich freuen auf*: man freut sich auf etwas in der Zukunft."},{"de":"Sie freut sich über das schöne Geschenk.","fr":"*sich freuen über*: über etwas jetzt oder in der Vergangenheit."},{"de":"Ich interessiere mich für moderne Kunst.","fr":"*sich interessieren für* + Akkusativ."}],
@@ -56,7 +64,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g03: {
-    id: "b1g03", titre: "Particules d'interrogation", titreDE: "Frage- und Pronominaladverbien", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
+    id: "b1g03",
+    einstieg: {"intro":"Observe la place du verbe dans une question indirecte.","exemples":[{"de":"Wann kommst du?","fr":"Quand viens-tu ?"},{"de":"Weißt du, wann er kommt?","fr":"Sais-tu quand il vient ?"},{"de":"Ich frage, ob es regnet.","fr":"Je demande s'il pleut."}],"question":"Où va le verbe dans une question indirecte ?"},
+    merke: ["Question directe : verbe en *position 2* (W-Frage) ou *position 1* (oui/non).","Question *indirecte* = subordonnée → verbe à la *fin*.","Oui/non indirecte : introduite par *ob* (si)."],
+    achtung: [{"erreur":"Weißt du, wann kommt er?","correct":"Weißt du, wann er **kommt**?","explication":"Question indirecte = subordonnée : verbe à la fin."},{"erreur":"Ich frage, wenn es regnet.","correct":"Ich frage, **ob** es regnet.","explication":"« si » (oui/non) = *ob*, pas *wenn*."}],
+    kontrast: {"titre":"Les questions : allemand vs français","similitudes":["Mots interrogatifs équivalents (wann/quand, warum/pourquoi)."],"differences":["La question indirecte rejette le verbe à la *fin*.","*ob* (si interrogatif) ≠ *wenn* (si conditionnel).","Pas de tournure « est-ce que »."]}, titre: "Particules d'interrogation", titreDE: "Frage- und Pronominaladverbien", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
     objectifs: ["Poser une question avec wo(r)- + préposition", "Reprendre avec da(r)- + préposition"],
     grammairePoints: ["Wofür? Worauf? Woran?", "dafür, darauf, daran"],
     exemplesPlus: [{"de":"Worauf wartest du? — Auf den Bus.","fr":"Frage nach einer Sache: *wo(r)- + Präposition*."},{"de":"Worüber sprecht ihr? — Über den Film.","fr":"*worüber* fragt nach dem Thema."},{"de":"Ich interessiere mich dafür.","fr":"*da(r)- + Präposition* ersetzt eine Sache."},{"de":"Wofür brauchst du das Geld?","fr":"*wofür* = für welche Sache?"},{"de":"Auf wen wartest du? — Auf meinen Bruder.","fr":"Bei Personen: *Präposition + wen/wem*."}],
@@ -80,7 +92,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g04: {
-    id: "b1g04", titre: "Verbes modaux & brauchen + zu", titreDE: "Modalverben, brauchen … zu", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
+    id: "b1g04",
+    einstieg: {"intro":"Compare ces deux négations de l'obligation.","exemples":[{"de":"Du musst nicht kommen.","fr":"Tu n'es pas obligé de venir."},{"de":"Du darfst nicht rauchen.","fr":"Tu n'as pas le droit de fumer."},{"de":"Ich kann schwimmen.","fr":"Je sais nager."}],"question":"Quelle différence entre *nicht müssen* et *nicht dürfen* ?"},
+    merke: ["Modaux : *können, müssen, dürfen, sollen, wollen, mögen* + infinitif en fin.","*nicht müssen* = pas obligé ≠ *nicht dürfen* = interdit !","*brauchen + zu* (négatif) = ne pas avoir besoin de (*du brauchst nicht zu warten*)."],
+    achtung: [{"erreur":"Du darfst nicht kommen. (= pas obligé)","correct":"Du **musst** nicht kommen.","explication":"*nicht müssen* = pas obligé ; *nicht dürfen* = interdit."},{"erreur":"Du brauchst nicht kommen.","correct":"Du brauchst nicht **zu** kommen.","explication":"*brauchen* se construit avec *zu* + infinitif."}],
+    kontrast: {"titre":"Verbes modaux : allemand vs français","similitudes":["Pouvoir/devoir/vouloir ont des équivalents."],"differences":["*müssen* nié = « pas obligé », pas « ne pas devoir » - piège majeur.","*dürfen* = avoir la permission (≠ können = pouvoir/savoir).","L'infinitif va en *fin de phrase*."]}, titre: "Verbes modaux & brauchen + zu", titreDE: "Modalverben, brauchen … zu", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Nuancer avec les modaux", "Remplacer müssen (négatif) par brauchen … zu"],
     grammairePoints: ["müssen, dürfen, sollen…", "nicht brauchen + zu + Infinitiv"],
     exemplesPlus: [{"de":"Ich muss heute noch viel arbeiten.","fr":"*müssen*: etwas ist nötig."},{"de":"Du darfst hier nicht rauchen.","fr":"*dürfen*: Erlaubnis oder Verbot."},{"de":"Wir sollen pünktlich sein.","fr":"*sollen*: ein Auftrag von einer anderen Person."},{"de":"Du brauchst nicht zu kommen, wenn du müde bist.","fr":"*nicht brauchen + zu*: es ist nicht nötig."},{"de":"Können Sie mir bitte helfen?","fr":"*können*: Möglichkeit oder höfliche Frage."}],
@@ -105,7 +121,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g05: {
-    id: "b1g05", titre: "Le subjonctif II (conditionnel)", titreDE: "Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B1",
+    id: "b1g05",
+    einstieg: {"intro":"Observe comment on exprime l'irréel et le souhait.","exemples":[{"de":"An deiner Stelle würde ich bleiben.","fr":"À ta place, je resterais."},{"de":"Wenn ich reich wäre, würde ich reisen.","fr":"Si j'étais riche, je voyagerais."},{"de":"Ich hätte gern Hilfe.","fr":"J'aimerais de l'aide."}],"question":"Comment exprimer une hypothèse irréelle et un conseil ?"},
+    merke: ["Konjunktiv II = irréel, souhait, conseil poli.","Forme usuelle : *würde + infinitif* ; courants : *wäre, hätte, könnte, müsste*.","Conseil : *an deiner Stelle würde ich…* / *Du solltest…*"],
+    achtung: [{"erreur":"Wenn ich reich bin, würde ich reisen.","correct":"Wenn ich reich **wäre**, würde ich reisen.","explication":"Irréel : Konjunktiv II dans le *wenn* (wäre)."},{"erreur":"Ich würde sein glücklich.","correct":"Ich **wäre** glücklich.","explication":"Avec *sein*, on utilise *wäre*, pas *würde sein*."}],
+    kontrast: {"titre":"Le conditionnel (irréel) : allemand vs français","similitudes":["Hypothèse irréelle (« si j'étais… »)."],"differences":["*würde + infinitif* ≈ conditionnel français.","Dans *wenn* (si), l'allemand met le Konjunktiv II.","*wäre/hätte/könnte* remplacent souvent *würde sein/haben/können*."]}, titre: "Le subjonctif II (conditionnel)", titreDE: "Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B1",
     objectifs: ["Formuler demandes polies et souhaits", "Exprimer l'irréel au présent et au passé"],
     grammairePoints: ["würde, könnte, hätte, wäre", "hätte/wäre + participe (passé)"],
     exemplesPlus: [{"de":"Wenn ich Zeit hätte, würde ich dir helfen.","fr":"Irreale Bedingung: *hätte* + *würde*. Es ist gerade nicht so."},{"de":"An deiner Stelle wäre ich vorsichtiger.","fr":"*wäre*: ein höflicher Rat."},{"de":"Könntest du mir bitte das Salz geben?","fr":"*könnte*: eine höfliche Bitte."},{"de":"Ich hätte gern noch einen Kaffee.","fr":"*hätte gern*: ein höflicher Wunsch."},{"de":"Wenn er früher gekommen wäre, hätte er den Zug nicht verpasst.","fr":"Vergangenheit: *wäre/hätte* + Partizip."}],
@@ -130,7 +150,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g06: {
-    id: "b1g06", titre: "Verbes avec datif et accusatif", titreDE: "Verben mit Dativ und Akkusativ", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
+    id: "b1g06",
+    einstieg: {"intro":"Observe l'ordre quand il y a deux pronoms.","exemples":[{"de":"Ich gebe es ihm.","fr":"Je le lui donne."},{"de":"Er erklärt mir die Regel.","fr":"Il m'explique la règle."},{"de":"Ich schicke dir das Paket.","fr":"Je t'envoie le colis."}],"question":"Quand le pronom accusatif passe-t-il avant le datif ?"},
+    merke: ["Datif (à qui) + accusatif (quoi) : ordre par défaut *datif puis accusatif*.","Deux *pronoms* → ordre inversé : *accusatif puis datif* (*es ihm*).","Verbes typiques : *geben, erklären, schicken, zeigen, empfehlen*."],
+    achtung: [{"erreur":"Ich gebe ihm es.","correct":"Ich gebe **es ihm**.","explication":"Deux pronoms : accusatif (es) AVANT datif (ihm)."},{"erreur":"Er erklärt mich die Regel.","correct":"Er erklärt **mir** die Regel.","explication":"« à moi » = datif (mir), pas mich."}],
+    kontrast: {"titre":"Datif + accusatif : allemand vs français","similitudes":["« le lui donner » existe dans les deux."],"differences":["Ordre des pronoms : accusatif avant datif (l'inverse du nom).","Le datif est marqué (mir/dir/ihm).","Certains verbes (helfen, danken) n'ont QUE le datif."]}, titre: "Verbes avec datif et accusatif", titreDE: "Verben mit Dativ und Akkusativ", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Reconnaître les verbes à datif", "Construire « donner qqch à qqn »"],
     grammairePoints: ["geben, schenken, zeigen", "datif (personne) + accusatif (chose)"],
     exemplesPlus: [{"de":"Ich gebe meinem Bruder das Buch.","fr":"Person im *Dativ*, Sache im *Akkusativ*."},{"de":"Sie schenkt ihrer Freundin eine Kette.","fr":"*schenken*: jemandem (Dativ) etwas (Akkusativ)."},{"de":"Kannst du mir bitte den Weg zeigen?","fr":"*zeigen*: mir (Dativ) den Weg (Akkusativ)."},{"de":"Der Lehrer erklärt den Schülern die Regel.","fr":"*erklären*: den Schülern (Dativ) die Regel (Akkusativ)."},{"de":"Ich bringe dir morgen die Fotos mit.","fr":"*mitbringen*: dir (Dativ) die Fotos (Akkusativ)."}],
@@ -155,7 +179,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g07: {
-    id: "b1g07", titre: "La déclinaison en -n (N-Deklination)", titreDE: "Die N-Deklination", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
+    id: "b1g07",
+    einstieg: {"intro":"Observe ce qui arrive à certains noms masculins hors nominatif.","exemples":[{"de":"Der Student lernt.","fr":"L'étudiant apprend."},{"de":"Ich kenne den Studenten.","fr":"Je connais l'étudiant."},{"de":"mit dem Kollegen","fr":"avec le collègue"}],"question":"Pourquoi *Student* devient-il *Studenten* ?"},
+    merke: ["Certains noms *masculins* prennent *-(e)n* à TOUS les cas sauf le nominatif singulier.","Typiques : *Student, Kollege, Junge, Mensch, Herr, Name, Kunde, Nachbar*.","Ex. : der Student → den/dem/des Student**en**."],
+    achtung: [{"erreur":"Ich sehe den Student.","correct":"Ich sehe den **Studenten**.","explication":"Nom faible : -en à l'accusatif."},{"erreur":"mit dem Kollege","correct":"mit dem **Kollegen**","explication":"Nom faible au datif : -n."}],
+    kontrast: {"titre":"Noms faibles : allemand vs français","similitudes":["Les noms varient au pluriel dans les deux."],"differences":["Ces masculins prennent *-(e)n* même au *singulier* (hors nominatif).","Phénomène propre à l'allemand, à mémoriser par liste.","Sans le -n, la phrase est fautive."]}, titre: "La déclinaison en -n (N-Deklination)", titreDE: "Die N-Deklination", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
     objectifs: ["Reconnaître les noms de la N-Deklination", "Ajouter -n / -en hors nominatif"],
     grammairePoints: ["der Junge → den Jungen", "Herr, Kollege, Student, Mensch"],
     exemplesPlus: [{"de":"Ich kenne den Jungen aus meiner Klasse.","fr":"*der Junge → den Jungen*: diese Nomen bekommen ein *-n*."},{"de":"Wir helfen dem Studenten bei den Hausaufgaben.","fr":"*der Student → dem Studenten*."},{"de":"Kennst du diesen netten Kollegen?","fr":"*der Kollege → den Kollegen*."},{"de":"Der Name des Kunden steht auf der Liste.","fr":"*der Kunde → des Kunden* (Genitiv)."},{"de":"Ich habe mit einem Polizisten gesprochen.","fr":"*der Polizist → einem Polizisten*."}],
@@ -179,7 +207,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g08: {
-    id: "b1g08", titre: "Indicateurs de temps", titreDE: "Temporale Präpositionen", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
+    id: "b1g08",
+    einstieg: {"intro":"Observe les conjonctions qui situent dans le temps.","exemples":[{"de":"Während ich koche, höre ich Musik.","fr":"Pendant que je cuisine, j'écoute de la musique."},{"de":"Nachdem ich gegessen hatte, ging ich.","fr":"Après avoir mangé, je suis parti."},{"de":"Bevor du gehst, ruf mich an.","fr":"Avant que tu partes, appelle-moi."}],"question":"Quel rapport de temps exige *nachdem* ?"},
+    merke: ["Conjonctions temporelles : *während*, *bevor*, *nachdem*, *seit(dem)*.","Ce sont des *subordonnées* → verbe à la fin.","Après *nachdem* : temps *antérieur* (Plusquamperfekt / Perfekt)."],
+    achtung: [{"erreur":"Nachdem ich esse, gehe ich.","correct":"Nachdem ich gegessen **habe**, gehe ich.","explication":"*nachdem* exige l'antériorité (Perfekt/Plusquamperfekt)."},{"erreur":"Während ich koche höre ich Musik.","correct":"Während ich koche**,** höre ich Musik.","explication":"Virgule obligatoire + inversion dans la principale."}],
+    kontrast: {"titre":"Conjonctions temporelles : allemand vs français","similitudes":["pendant que/während, avant que/bevor, après que/nachdem."],"differences":["Le verbe va en *fin* de subordonnée.","*nachdem* impose un décalage de temps (antériorité).","*bevor/nachdem* + indicatif (pas de subjonctif)."]}, titre: "Indicateurs de temps", titreDE: "Temporale Präpositionen", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
     objectifs: ["Situer une action dans le temps", "Choisir la préposition et le cas corrects"],
     grammairePoints: ["vor, seit, bis, ab", "über, innerhalb (+ Gen.)"],
     exemplesPlus: [{"de":"Vor drei Jahren bin ich nach Berlin gezogen.","fr":"*vor* + Dativ: ein Punkt in der Vergangenheit."},{"de":"Ich lerne seit zwei Monaten Deutsch.","fr":"*seit* + Dativ: es hat angefangen und geht bis jetzt."},{"de":"Wir bleiben bis Freitag hier.","fr":"*bis*: der Endpunkt einer Zeit."},{"de":"Ab nächster Woche habe ich mehr Zeit.","fr":"*ab*: der Startpunkt."},{"de":"Innerhalb einer Woche musst du antworten.","fr":"*innerhalb* + Genitiv: in diesem Zeitraum."}],
@@ -203,7 +235,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g09: {
-    id: "b1g09", titre: "Adverbes de temps", titreDE: "Temporaladverbien", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
+    id: "b1g09",
+    einstieg: {"intro":"Observe la nuance de ces petits mots.","exemples":[{"de":"Ich habe schon gegessen.","fr":"J'ai déjà mangé."},{"de":"Er ist noch nicht da.","fr":"Il n'est pas encore là."},{"de":"Sie kommt erst um 8.","fr":"Elle ne vient qu'à 8h."}],"question":"Quelle nuance apportent *schon*, *noch*, *erst* ?"},
+    merke: ["*schon* = déjà ; *noch* = encore ; *noch nicht* = pas encore.","*erst* = seulement / pas avant (temps) : *erst um 8*.","*gerade* = juste maintenant (*ich esse gerade*)."],
+    achtung: [{"erreur":"Sie kommt nur um 8. (temps)","correct":"Sie kommt **erst** um 8.","explication":"« ne… que » dans le temps = *erst*, pas *nur*."},{"erreur":"Er ist nicht noch da.","correct":"Er ist **noch nicht** da.","explication":"L'ordre figé est *noch nicht* (pas encore)."}],
+    kontrast: {"titre":"Adverbes de temps : allemand vs français","similitudes":["déjà/schon, encore/noch ont des équivalents."],"differences":["*erst* (temps) = « ne… que / pas avant » - distinct de *nur* (quantité).","*noch nicht* (pas encore) est figé.","Ces nuances changent fortement le sens."]}, titre: "Adverbes de temps", titreDE: "Temporaladverbien", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "B1",
     objectifs: ["Enrichir un récit avec des adverbes temporels", "Ordonner les étapes (d'abord, ensuite, enfin)"],
     grammairePoints: ["damals, früher, neulich", "zuerst, dann, schließlich"],
     exemplesPlus: [{"de":"Damals gab es noch keine Handys.","fr":"*damals*: vor langer Zeit."},{"de":"Früher habe ich viel Sport gemacht.","fr":"*früher*: in der Vergangenheit, nicht mehr heute."},{"de":"Neulich habe ich einen alten Freund getroffen.","fr":"*neulich*: vor Kurzem."},{"de":"Zuerst frühstücke ich, dann gehe ich zur Arbeit.","fr":"*zuerst … dann*: die Reihenfolge."},{"de":"Schließlich sind wir doch noch angekommen.","fr":"*schließlich*: am Ende."}],
@@ -228,7 +264,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g10: {
-    id: "b1g10", titre: "Les verbes réfléchis", titreDE: "Reflexive Verben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
+    id: "b1g10",
+    einstieg: {"intro":"Observe le pronom réfléchi.","exemples":[{"de":"Ich freue mich.","fr":"Je me réjouis."},{"de":"Ich wasche mir die Hände.","fr":"Je me lave les mains."},{"de":"Er erinnert sich an den Tag.","fr":"Il se souvient du jour."}],"question":"Le pronom réfléchi est-il toujours à l'accusatif ?"},
+    merke: ["Réfléchi : *mich/dich/sich…* (accusatif) ou *mir/dir/sich* (datif).","Datif réfléchi quand il y a *déjà un COD* (*ich wasche mir die Hände*).","Beaucoup ont une préposition : *sich freuen auf/über*, *sich erinnern an*."],
+    achtung: [{"erreur":"Ich wasche mich die Hände.","correct":"Ich wasche **mir** die Hände.","explication":"Avec un COD (die Hände), le réfléchi passe au datif (mir)."},{"erreur":"Er erinnert sich den Tag.","correct":"Er erinnert sich **an** den Tag.","explication":"*sich erinnern* exige *an* + accusatif."}],
+    kontrast: {"titre":"Verbes pronominaux : allemand vs français","similitudes":["« se laver », « se souvenir » existent dans les deux."],"differences":["Le réfléchi peut être à l'*accusatif* OU au *datif*.","À la 3e personne, toujours *sich* (sing. et plur.).","Beaucoup demandent une préposition fixe."]}, titre: "Les verbes réfléchis", titreDE: "Reflexive Verben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Conjuguer un verbe réfléchi", "Placer le pronom réfléchi (accusatif/datif)"],
     grammairePoints: ["sich freuen, sich interessieren", "mich/mir, dich/dir…"],
     exemplesPlus: [{"de":"Ich freue mich auf das Wochenende.","fr":"Reflexivpronomen im Akkusativ: *mich*."},{"de":"Wäschst du dir die Hände?","fr":"Mit einem Objekt steht der Dativ: *dir*."},{"de":"Wir treffen uns um acht vor dem Kino.","fr":"*sich treffen*: wir treffen uns (Akkusativ *uns*)."},{"de":"Sie interessiert sich für Politik.","fr":"*sich interessieren für* + Akkusativ."},{"de":"Setz dich bitte!","fr":"Imperativ mit Reflexivpronomen: *dich*."}],
@@ -253,7 +293,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g11: {
-    id: "b1g11", titre: "Le passif", titreDE: "Das Passiv", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
+    id: "b1g11",
+    einstieg: {"intro":"Observe l'auxiliaire du passif.","exemples":[{"de":"Das Haus wird gebaut.","fr":"La maison est construite."},{"de":"Der Brief wurde geschrieben.","fr":"La lettre a été écrite."},{"de":"Das Auto muss repariert werden.","fr":"La voiture doit être réparée."}],"question":"Quel verbe sert d'auxiliaire au passif ?"},
+    merke: ["Passif (processus) : *werden* + *participe II* (*wird gebaut*).","Passé : *wurde* + participe ; avec modal : *…repariert **werden***.","L'agent : *von* + datif (*von einem Architekten*)."],
+    achtung: [{"erreur":"Das Haus ist gebaut. (= en cours)","correct":"Das Haus **wird** gebaut.","explication":"Passif-processus = *werden*, pas *sein* (état)."},{"erreur":"Der Brief wurde von der Chef geschrieben.","correct":"…**von dem** Chef geschrieben.","explication":"L'agent : *von* + datif (dem Chef)."}],
+    kontrast: {"titre":"Le passif : allemand vs français","similitudes":["Le passif existe dans les deux (« est construit »)."],"differences":["L'allemand utilise *werden* (≠ « être ») pour le passif-processus.","*sein* + participe = état, pas processus.","L'agent se dit *von* + datif (≈ « par »)."]}, titre: "Le passif", titreDE: "Das Passiv", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Former le passif au présent", "Mettre l'accent sur l'action plutôt que l'agent"],
     grammairePoints: ["werden + participe II", "von + datif (agent)"],
     exemplesPlus: [{"de":"Das Haus wird gerade renoviert.","fr":"Passiv: *werden* + Partizip II. Wichtig ist die Handlung."},{"de":"Der Brief wurde gestern geschrieben.","fr":"Passiv im Präteritum: *wurde* + Partizip."},{"de":"Das Auto wird von einem Mechaniker repariert.","fr":"Wer es macht, steht mit *von* + Dativ."},{"de":"Hier werden viele Autos produziert.","fr":"Passiv ohne Person: wichtig ist nur die Handlung."},{"de":"Das Fenster ist schon geöffnet.","fr":"Zustandspassiv: *sein* + Partizip (das Ergebnis)."}],
@@ -278,7 +322,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g12: {
-    id: "b1g12", titre: "Adjectifs : comparatif et superlatif", titreDE: "Komparativ und Superlativ", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
+    id: "b1g12",
+    einstieg: {"intro":"Observe la formation du comparatif et du superlatif.","exemples":[{"de":"schnell – schneller – am schnellsten","fr":"rapide – plus rapide – le plus rapide"},{"de":"Er ist größer als ich.","fr":"Il est plus grand que moi."},{"de":"Das ist das beste Buch.","fr":"C'est le meilleur livre."}],"question":"Comment forme-t-on le comparatif et le superlatif ?"},
+    merke: ["Comparatif : adjectif + *-er* (souvent + Umlaut) : *größer, älter*.","« que » (inégalité) = *als* (jamais *wie*).","Superlatif : *am …-sten* ou *der/die/das …-ste*."],
+    achtung: [{"erreur":"Er ist größer wie ich.","correct":"Er ist größer **als** ich.","explication":"Après un comparatif : *als*, pas *wie*."},{"erreur":"das gutste Buch","correct":"das **beste** Buch","explication":"*gut* est irrégulier : besser – am besten."}],
+    kontrast: {"titre":"Comparatif/superlatif : allemand vs français","similitudes":["Comparatif et superlatif existent dans les deux."],"differences":["Comparatif par *-er* (pas « plus + adjectif »).","« que » = *als* (inégalité) ≠ *wie* (égalité).","Umlaut fréquent (alt → älter), irréguliers (gut → besser)."]}, titre: "Adjectifs : comparatif et superlatif", titreDE: "Komparativ und Superlativ", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Former le comparatif et le superlatif", "Employer l'adjectif comparatif devant le nom"],
     grammairePoints: ["-er / am -sten", "der/die/das + -ste"],
     exemplesPlus: [{"de":"Anna ist größer als ihr Bruder.","fr":"Komparativ: *-er* + *als*."},{"de":"Heute ist es kälter als gestern.","fr":"*kalt → kälter*: oft mit Umlaut."},{"de":"Das ist das schönste Bild im Museum.","fr":"Superlativ: *der/die/das + -ste*."},{"de":"Im Sommer sind die Tage am längsten.","fr":"*am -sten*: Superlativ als Adverb."},{"de":"Mein Auto ist gut, aber deins ist besser.","fr":"Unregelmäßig: *gut → besser → am besten*."}],
@@ -302,7 +350,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g13: {
-    id: "b1g13", titre: "Le génitif", titreDE: "Der Genitiv", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
+    id: "b1g13",
+    einstieg: {"intro":"Observe la marque de la possession et certaines prépositions.","exemples":[{"de":"das Auto meines Bruders","fr":"la voiture de mon frère"},{"de":"während des Sommers","fr":"pendant l'été"},{"de":"trotz des Regens","fr":"malgré la pluie"}],"question":"Quelles prépositions exigent le génitif ?"},
+    merke: ["Génitif : possession (*des Bruders*, *der Frau*).","Prépositions + génitif : *während, wegen, trotz, statt*.","Masc./neutre : *des* + nom en *-s/-es* ; fém./pluriel : *der*."],
+    achtung: [{"erreur":"wegen dem Regen (soigné)","correct":"wegen **des** Regens","explication":"*wegen* régit le génitif à l'écrit."},{"erreur":"das Auto meines Bruder","correct":"das Auto meines **Bruders**","explication":"Génitif masculin : le nom prend *-s*."}],
+    kontrast: {"titre":"Le génitif : allemand vs français","similitudes":["« de » marque la possession dans les deux."],"differences":["Cas dédié (des/der) + *-s* au nom masc./neutre.","Des prépositions régissent le génitif (während, trotz, wegen).","À l'oral, *von* + datif remplace souvent le génitif."]}, titre: "Le génitif", titreDE: "Der Genitiv", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "B1",
     objectifs: ["Exprimer l'appartenance avec le génitif", "Employer les prépositions à génitif"],
     grammairePoints: ["des Mannes, der Frau", "wegen, trotz, während (+ Gen.)"],
     exemplesPlus: [{"de":"Das ist das Auto meines Vaters.","fr":"Genitiv: *des Vaters* zeigt, wem etwas gehört."},{"de":"Die Farbe der Wand gefällt mir.","fr":"*der Wand*: Genitiv feminin."},{"de":"Wegen des schlechten Wetters bleiben wir zu Hause.","fr":"*wegen* + Genitiv: der Grund."},{"de":"Trotz der Kälte gehen wir spazieren.","fr":"*trotz* + Genitiv."},{"de":"Während des Films habe ich geschlafen.","fr":"*während* + Genitiv: in dieser Zeit."}],
@@ -326,7 +378,11 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     ]
   },
   b1g14: {
-    id: "b1g14", titre: "Les propositions relatives", titreDE: "Relativsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B1",
+    id: "b1g14",
+    einstieg: {"intro":"Observe le pronom qui relie les deux propositions.","exemples":[{"de":"Der Mann, der dort steht, ist mein Vater.","fr":"L'homme qui est là est mon père."},{"de":"Das Buch, das ich lese, ist gut.","fr":"Le livre que je lis est bon."},{"de":"die Frau, mit der ich spreche","fr":"la femme avec qui je parle"}],"question":"Comment choisir le pronom relatif et son cas ?"},
+    merke: ["Relatif = *der/die/das* (pluriel *die*), accordé en *genre/nombre* avec l'antécédent.","Son *cas* dépend de sa fonction *dans la relative*.","Relative = subordonnée → verbe à la *fin*, virgules obligatoires."],
+    achtung: [{"erreur":"Das Buch, das ich lese ist gut.","correct":"Das Buch, das ich lese**,** ist gut.","explication":"La relative est encadrée de virgules ; verbe à la fin."},{"erreur":"Die Frau, mit die ich spreche","correct":"Die Frau, mit **der** ich spreche","explication":"Après *mit* (datif), le relatif féminin est *der*."}],
+    kontrast: {"titre":"Les relatives : allemand vs français","similitudes":["« qui/que/dont » introduisent une relative."],"differences":["Le relatif allemand se *décline* (der/den/dem/dessen).","Son cas vient de sa fonction dans la relative.","Verbe en fin + virgules obligatoires."]}, titre: "Les propositions relatives", titreDE: "Relativsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "B1",
     objectifs: ["Relier deux phrases avec un pronom relatif", "Choisir le pronom (nominatif/accusatif/datif, avec préposition)"],
     grammairePoints: ["der/die/das relatifs", "préposition + pronom relatif"],
     exemplesPlus: [{"de":"Das ist der Mann, der nebenan wohnt.","fr":"Relativpronomen *der* im Nominativ."},{"de":"Die Frau, die ich gestern traf, ist Lehrerin.","fr":"*die* im Akkusativ (Objekt)."},{"de":"Das Kind, dem ich geholfen habe, lacht wieder.","fr":"*dem* im Dativ (helfen + Dativ)."},{"de":"Der Freund, mit dem ich reise, kommt aus Wien.","fr":"Präposition + Relativpronomen: *mit dem*."},{"de":"Das ist das Buch, das mir am besten gefällt.","fr":"*das*: Nominativ neutrum."}],
