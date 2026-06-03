@@ -46,6 +46,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
       <option value="pflege">Pflege (soins)</option>
       <option value="grammaire">📝 Grammaire</option>
       <option value="expression">🎤 Expression</option>
+      <option value="conversation">💬 Conversation</option>
     </select>
   </div>
 </header>
@@ -159,6 +160,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
   }
   mic.onclick=toggleMic;
   mode.onchange=function(){ var mv=mode.value;
+    if(mv==='conversation'){ sendUser("Commencons une conversation libre en allemand. Propose un theme du quotidien adapte a mon niveau et pose-moi la premiere question. Corrige mes fautes en douceur au fil de la discussion.",false); }
     if(mv==='expression'){ if(!A1A2){ bubble('assistant','🔒 L\'entrainement a l\'expression se debloque apres l\'examen A1 + A2. Termine-les dans le cours general, puis reviens !'); mode.value='general'; return; } var suj=pickSujet(NIV); sendUser("Entrainons mon expression orale. Fais-moi parler sur: « "+suj+" ». Commence facile a mon niveau, puis monte progressivement.",true); }
     else if(mv==='grammaire'){ sendUser("Je veux travailler la grammaire. Propose-moi un point adapte a mon niveau (ou demande-moi lequel) et commence le drill.",false); }
   };
