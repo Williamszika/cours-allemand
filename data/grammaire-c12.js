@@ -7,7 +7,11 @@
    ===================================================================== */
 window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
   c1g10: {
-    id: "c1g10", titre: "Exprimer des hypothèses", titreDE: "Vermutungen ausdrücken", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
+    id: "c1g10",
+    einstieg: {"intro":"Observe les nuances de probabilité.","exemples":[{"de":"Das dürfte stimmen.","fr":"Cela doit être vrai (probablement)."},{"de":"Es könnte sein, dass er kommt.","fr":"Il se pourrait qu'il vienne."},{"de":"Angenommen, du hättest recht, …","fr":"En supposant que tu aies raison, …"}],"question":"Comment graduer la probabilité d'une hypothèse ?"},
+    merke: ["Probabilité forte : *dürfte* ; moyenne : *könnte / würde wohl*.","Hypothèse : *angenommen / gesetzt den Fall, …* + Konjunktiv II.","*es sei denn, …* = à moins que."],
+    achtung: [{"erreur":"Das muss stimmen. (probabilité nuancée)","correct":"Das **dürfte** stimmen.","explication":"*dürfte* exprime une probabilité prudente."},{"erreur":"Angenommen, du hast recht, …","correct":"Angenommen, du **hättest** recht, …","explication":"L'hypothèse prend le Konjunktiv II."}],
+    kontrast: {"titre":"Les hypothèses (C1) : allemand vs français","similitudes":["On gradue la probabilité."],"differences":["*dürfte* = probabilité prudente - sans équivalent simple.","*angenommen / gesetzt den Fall* + Konjunktiv II.","Les modaux nuancent (könnte, dürfte, müsste)."]}, titre: "Exprimer des hypothèses", titreDE: "Vermutungen ausdrücken", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Graduer la probabilité", "Employer modaux subjectifs et adverbes"],
     grammairePoints: ["dürfte, müsste, könnte", "wohl, vermutlich, offenbar"],
     exemplesPlus: [{"de":"Er ist offenbar bereits informiert worden.","fr":"*offenbar*: deutlich erkennbar."},{"de":"Die Ergebnisse dürften erst nächste Woche vorliegen.","fr":"*dürften*: eine wahrscheinliche Annahme."},{"de":"Vermutlich liegt das Problem an der Software.","fr":"*vermutlich*: eine begründete Vermutung."},{"de":"Sie müsste eigentlich längst zu Hause sein.","fr":"*müsste*: eine starke Annahme."},{"de":"Das wird wohl niemand bestreiten.","fr":"*wohl*: vorsichtige Sicherheit."}],
@@ -31,7 +35,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g11: {
-    id: "c1g11", titre: "Les propositions relatives", titreDE: "Relativsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
+    id: "c1g11",
+    einstieg: {"intro":"Observe ces relatifs particuliers.","exemples":[{"de":"Alles, was er sagt, stimmt.","fr":"Tout ce qu'il dit est vrai."},{"de":"der Mann, dessen Auto gestohlen wurde","fr":"l'homme dont la voiture a été volée"},{"de":"die Stadt, in der ich wohne","fr":"la ville où j'habite"}],"question":"Quel relatif après *alles*, et pour dire « dont » ?"},
+    merke: ["Génitif relatif : *dessen* (masc./neutre), *deren* (fém./pluriel) = « dont ».","Après *alles, etwas, nichts, das* → relatif *was*.","Préposition + relatif : *in der*, *mit dem*, *worüber* (chose)."],
+    achtung: [{"erreur":"der Mann, sein Auto gestohlen wurde","correct":"der Mann, **dessen** Auto gestohlen wurde","explication":"« dont » = génitif relatif *dessen*."},{"erreur":"Alles, das er sagt, …","correct":"Alles, **was** er sagt, …","explication":"Après *alles*, le relatif est *was*."}],
+    kontrast: {"titre":"Relatives (C1) : allemand vs français","similitudes":["« dont / ce que / où » existent."],"differences":["« dont » = *dessen/deren* (génitif relatif décliné).","Après *alles/etwas/nichts* → *was*.","Préposition + relatif décliné (worüber)."]}, titre: "Les propositions relatives", titreDE: "Relativsätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
     objectifs: ["Maîtriser tous les pronoms relatifs", "Employer dessen/deren, was, wo"],
     grammairePoints: ["der/die/das + cas", "dessen/deren, was, wo"],
     exemplesPlus: [{"de":"Der Autor, dessen Roman ich gerade lese, lebt in Wien.","fr":"*dessen*: Relativpronomen im Genitiv (maskulin)."},{"de":"Die Kollegin, deren Vorschlag angenommen wurde, ist sehr erfahren.","fr":"*deren*: Genitiv feminin."},{"de":"Das Einzige, was mich stört, ist der Lärm.","fr":"*was* nach *das Einzige*."},{"de":"Wir besuchten die Stadt, wo meine Großeltern geboren wurden.","fr":"*wo* als Relativadverb für den Ort."},{"de":"Er hat die Prüfung bestanden, was ihn sehr freute.","fr":"*, was*: bezieht sich auf den ganzen Satz."}],
@@ -56,7 +64,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g12: {
-    id: "c1g12", titre: "Les attributs participiaux", titreDE: "Partizipialattribute", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
+    id: "c1g12",
+    einstieg: {"intro":"Observe comment condenser une relative.","exemples":[{"de":"das gestern gekaufte Buch","fr":"le livre acheté hier"},{"de":"die lachenden Kinder","fr":"les enfants qui rient"},{"de":"der vom Sturm beschädigte Baum","fr":"l'arbre endommagé par la tempête"}],"question":"Comment condenser une relative en un seul groupe ?"},
+    merke: ["Participe I (*-end*) = action en cours, sens *actif* (*die lachenden Kinder*).","Participe II = sens *passif/accompli* (*das gekaufte Buch*).","L'attribut participial *étendu* condense une relative."],
+    achtung: [{"erreur":"das gekaufte gestern Buch","correct":"das **gestern gekaufte** Buch","explication":"Les compléments se placent AVANT le participe, qui précède le nom."},{"erreur":"die lachende Kinder","correct":"die **lachenden** Kinder","explication":"Le participe employé en adjectif se décline."}],
+    kontrast: {"titre":"Attributs participiaux : allemand vs français","similitudes":["Participe présent/passé qualifie le nom."],"differences":["L'allemand insère un groupe *avant* le nom (das gestern gekaufte Buch).","Condense une relative entière - écrit soutenu.","Le français déplie en relative."]}, titre: "Les attributs participiaux", titreDE: "Partizipialattribute", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
     objectifs: ["Construire un participe attribut", "Transformer une relative en participe"],
     grammairePoints: ["Partizip I (actif)", "Partizip II (passif/accompli)"],
     exemplesPlus: [{"de":"Die steigende Nachfrage bereitet den Herstellern Probleme.","fr":"Partizip I (*steigend*): aktiv und gleichzeitig."},{"de":"Das gerade renovierte Gebäude wirkt sehr modern.","fr":"Partizip II (*renoviert*): passiv und abgeschlossen."},{"de":"Der lachende Junge erinnerte mich an meinen Sohn.","fr":"Partizip I als Adjektiv vor dem Nomen."},{"de":"Die von Experten geprüften Daten sind zuverlässig.","fr":"Erweitertes Partizip: *von Experten geprüft*."},{"de":"Ein vielversprechendes Konzept wurde vorgestellt.","fr":"Partizip I in einem zusammengesetzten Adjektiv."}],
@@ -81,7 +93,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g13: {
-    id: "c1g13", titre: "La déclinaison des adjectifs", titreDE: "Adjektivdeklination", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
+    id: "c1g13",
+    einstieg: {"intro":"Observe l'adjectif sans article (déclinaison forte).","exemples":[{"de":"mit großem Interesse","fr":"avec grand intérêt"},{"de":"trotz schlechten Wetters","fr":"malgré le mauvais temps"},{"de":"viele junge Leute","fr":"beaucoup de jeunes gens"}],"question":"Comment se décline l'adjectif sans article ?"},
+    merke: ["Sans article (forte) : l'adjectif prend la terminaison de l'article (*großem, schlechten*).","Génitif masc./neutre fort → *-en* (trotz schlechten Wetters).","Après *viele, einige, mehrere* → pluriel fort."],
+    achtung: [{"erreur":"mit großes Interesse","correct":"mit **großem** Interesse","explication":"Datif neutre sans article → forte : großem."},{"erreur":"trotz schlechtes Wetters","correct":"trotz **schlechten** Wetters","explication":"Génitif masc./neutre fort → -en."}],
+    kontrast: {"titre":"Déclinaison forte : allemand vs français","similitudes":["L'adjectif s'accorde."],"differences":["Sans article, l'adjectif *porte* les marques de l'article.","Cas particulier au génitif (-en).","Système plus complexe qu'en français."]}, titre: "La déclinaison des adjectifs", titreDE: "Adjektivdeklination", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Décliner après der/ein/ø", "Gérer les cas particuliers (etwas/viel)"],
     grammairePoints: ["faible / mixte / forte", "etwas Gutes, viele nette"],
     exemplesPlus: [{"de":"Ich habe etwas Interessantes gehört.","fr":"Nach *etwas*: großgeschrieben und mit *-es*."},{"de":"Es gibt nichts Besseres als einen freien Tag.","fr":"Nach *nichts*: nominalisiertes Adjektiv."},{"de":"Viele engagierte Freiwillige halfen bei der Aktion.","fr":"Starke Endung im Plural ohne Artikel."},{"de":"Trotz des schlechten Wetters kamen alle.","fr":"Gemischte Endung nach *des* (Genitiv)."},{"de":"Wir suchen einen erfahrenen, zuverlässigen Mitarbeiter.","fr":"Zwei Adjektive mit gleicher Endung."}],
@@ -105,7 +121,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g14: {
-    id: "c1g14", titre: "Les connecteurs fixes", titreDE: "Feste Konnektoren", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
+    id: "c1g14",
+    einstieg: {"intro":"Observe ces locutions de liaison.","exemples":[{"de":"Einerseits will ich, andererseits habe ich Angst.","fr":"D'un côté je veux, de l'autre j'ai peur."},{"de":"Er kann kaum laufen, geschweige denn rennen.","fr":"Il peut à peine marcher, encore moins courir."},{"de":"sei es heute, sei es morgen","fr":"que ce soit aujourd'hui ou demain"}],"question":"Comment opposer ou renforcer avec ces locutions ?"},
+    merke: ["*einerseits … andererseits* : opposition équilibrée.","*geschweige denn* : encore moins (renforcement négatif).","*sei es …, sei es …* : que ce soit… ou…"],
+    achtung: [{"erreur":"Einerseits ich will, andererseits …","correct":"Einerseits **will ich**, andererseits …","explication":"*einerseits* (position 1) → inversion."},{"erreur":"…, geschweige rennen.","correct":"…, geschweige **denn** rennen.","explication":"La locution complète est *geschweige denn*."}],
+    kontrast: {"titre":"Connecteurs fixes : allemand vs français","similitudes":["« d'un côté… de l'autre » existe."],"differences":["*geschweige denn* (encore moins) - idiomatique.","*einerseits* en position 1 → inversion.","Locutions figées à mémoriser en bloc."]}, titre: "Les connecteurs fixes", titreDE: "Feste Konnektoren", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Employer des locutions connectrices", "Structurer un texte argumentatif"],
     grammairePoints: ["im Gegensatz dazu, aus diesem Grund", "in diesem Zusammenhang, im Vergleich dazu"],
     exemplesPlus: [{"de":"Im Gegensatz dazu vertritt sie eine ganz andere Auffassung.","fr":"*im Gegensatz dazu*: drückt einen Gegensatz aus."},{"de":"Aus diesem Grund wurde die Sitzung verschoben.","fr":"*aus diesem Grund*: nennt die Ursache."},{"de":"In diesem Zusammenhang sei auf eine Studie verwiesen.","fr":"*in diesem Zusammenhang*: thematische Verbindung."},{"de":"Im Vergleich dazu ist das alte Modell günstiger.","fr":"*im Vergleich dazu*: ein Vergleich."},{"de":"Vor diesem Hintergrund erscheint die Kritik berechtigt.","fr":"*vor diesem Hintergrund*: angesichts der Lage."}],
@@ -129,7 +149,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g15: {
-    id: "c1g15", titre: "Participes et adjectifs nominalisés", titreDE: "Nominalisierte Partizipien und Adjektive", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
+    id: "c1g15",
+    einstieg: {"intro":"Observe ces adjectifs/participes devenus noms.","exemples":[{"de":"der Reisende","fr":"le voyageur"},{"de":"Das Gute siegt.","fr":"Le bien triomphe."},{"de":"ein Bekannter von mir","fr":"une de mes connaissances"}],"question":"Comment un adjectif/participe devient-il un nom ?"},
+    merke: ["Adjectif/participe nominalisé : majuscule + *se décline comme un adjectif* (*der Reisende, ein Reisender*).","Neutre abstrait : *das Gute, das Schöne, etwas Neues*.","Après *etwas/nichts/viel* : neutre fort en *-es*."],
+    achtung: [{"erreur":"ein Bekannte von mir","correct":"ein **Bekannter** von mir","explication":"Nominalisé masculin après *ein* → -er."},{"erreur":"etwas Gute","correct":"etwas **Gutes**","explication":"Après *etwas*, neutre fort en -es."}],
+    kontrast: {"titre":"Nominalisation de l'adjectif : allemand vs français","similitudes":["On nominalise des adjectifs (« le beau »)."],"differences":["Le nom garde la *déclinaison de l'adjectif*.","Après etwas/nichts → -es (etwas Neues).","Très productif en allemand."]}, titre: "Participes et adjectifs nominalisés", titreDE: "Nominalisierte Partizipien und Adjektive", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Nominaliser un adjectif/participe", "Décliner ces noms correctement"],
     grammairePoints: ["der/die Angestellte, der Reisende", "das Beste, etwas Neues"],
     exemplesPlus: [{"de":"Die Angestellten fordern bessere Arbeitsbedingungen.","fr":"Nominalisiertes Partizip: *der/die Angestellte*."},{"de":"Ein Reisender hatte seinen Koffer vergessen.","fr":"*der Reisende*, hier ohne Artikel: *ein Reisender*."},{"de":"Wir wünschen Ihnen nur das Beste.","fr":"*das Beste*: nominalisierter Superlativ."},{"de":"Sie hat etwas völlig Neues ausprobiert.","fr":"*etwas Neues*: nominalisiertes Adjektiv."},{"de":"Der Vorsitzende eröffnete die Versammlung.","fr":"*der Vorsitzende*: nominalisiertes Partizip."}],
@@ -153,7 +177,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g16: {
-    id: "c1g16", titre: "Le subjonctif I", titreDE: "Der Konjunktiv I", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
+    id: "c1g16",
+    einstieg: {"intro":"Observe le mode du discours rapporté soutenu.","exemples":[{"de":"Er sagte, er sei beschäftigt.","fr":"Il a dit qu'il était occupé."},{"de":"Man behauptet, das Projekt werde verschoben.","fr":"On affirme que le projet sera reporté."},{"de":"Sie betonte, sie habe nichts gewusst.","fr":"Elle a souligné qu'elle n'avait rien su."}],"question":"Quelles formes du Konjunktiv I sont les plus fréquentes ?"},
+    merke: ["Konjunktiv I (presse, rapport soutenu) : *sei, habe, werde, könne, müsse*.","Formation : radical de l'infinitif + -e (er gehe, er komme).","Bascule au Konjunktiv II si la forme = indicatif (sie hätten)."],
+    achtung: [{"erreur":"Er sagte, er ist beschäftigt.","correct":"Er sagte, er **sei** beschäftigt.","explication":"Discours rapporté soutenu → Konjunktiv I (sei)."},{"erreur":"Sie sagen, sie haben es gewusst.","correct":"Sie sagen, sie **hätten** es gewusst.","explication":"« sie haben » = indicatif → Konjunktiv II (hätten)."}],
+    kontrast: {"titre":"Konjunktiv I : allemand vs français","similitudes":["Rapporter des propos (« il dit que »)."],"differences":["Mode dédié (sei, habe) pour marquer la distance/neutralité.","Très présent dans la presse écrite.","Le français use de la concordance des temps."]}, titre: "Le subjonctif I", titreDE: "Der Konjunktiv I", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
     objectifs: ["Former le Konjunktiv I", "Rapporter affirmations, questions et ordres"],
     grammairePoints: ["sei, habe, könne, werde", "questions et ordres indirects"],
     exemplesPlus: [{"de":"Der Sprecher betonte, das Unternehmen sei nicht betroffen.","fr":"Konjunktiv I (*sei*) in der indirekten Rede."},{"de":"Sie erklärte, sie habe die Unterlagen bereits eingereicht.","fr":"Konjunktiv I: *habe*."},{"de":"Er fragte, ob das Angebot noch gültig sei.","fr":"Indirekte Frage mit *ob*."},{"de":"Im Gesetz heißt es, jeder Bürger habe dieses Recht.","fr":"Konjunktiv I in einem offiziellen Text."},{"de":"Der Arzt riet, der Patient solle sich schonen.","fr":"Indirekte Aufforderung mit *solle*."}],
@@ -177,7 +205,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g17: {
-    id: "c1g17", titre: "L'impératif", titreDE: "Der Imperativ", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "C1",
+    id: "c1g17",
+    einstieg: {"intro":"Observe l'impératif poli et l'invitation.","exemples":[{"de":"Seien Sie bitte pünktlich!","fr":"Soyez ponctuel, s'il vous plaît !"},{"de":"Lass uns gehen!","fr":"Allons-y !"},{"de":"Man nehme zwei Eier.","fr":"Prendre deux œufs. (recette)"}],"question":"Comment former l'impératif poli et l'invitation « allons » ?"},
+    merke: ["Impératif : *du* (komm!), *ihr* (kommt!), *Sie* (kommen Sie!).","*sein* irrégulier : *sei! seid! seien Sie!*","Invitation : *Lass(t) uns …* ; recette : *man nehme* (Konjunktiv I)."],
+    achtung: [{"erreur":"Sei Sie pünktlich!","correct":"**Seien** Sie pünktlich!","explication":"Impératif de *sein* poli : *seien Sie*."},{"erreur":"Komme! (du)","correct":"**Komm!**","explication":"À *du*, l'impératif n'a pas de -e final."}],
+    kontrast: {"titre":"L'impératif : allemand vs français","similitudes":["Ordre/invitation à la 2e personne."],"differences":["Trois formes (du/ihr/Sie), inversion à la forme polie (kommen Sie).","*Lass uns …* = « allons ».","*man nehme* (Konjunktiv I) dans les recettes."]}, titre: "L'impératif", titreDE: "Der Imperativ", theme: "Grammaire", type: "grammaire", duree: 35, niveau: "C1",
     objectifs: ["Former l'impératif (du/ihr/Sie/wir)", "Connaître les alternatives à l'impératif"],
     grammairePoints: ["Geh! Geht! Gehen Sie!", "Infinitif, sollen, passif"],
     exemplesPlus: [{"de":"Nehmen Sie bitte Platz!","fr":"Höflichkeitsform mit *Sie*."},{"de":"Seid bitte etwas leiser!","fr":"Imperativ der 2. Person Plural."},{"de":"Bitte nicht rauchen!","fr":"Infinitiv als Aufforderung (z. B. auf Schildern)."},{"de":"Du sollst dich ausruhen.","fr":"*sollen* als indirekter Befehl."},{"de":"Vor Gebrauch gut schütteln!","fr":"Unpersönliche Aufforderung (Gebrauchsanweisung)."}],
@@ -201,7 +233,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g18: {
-    id: "c1g18", titre: "La nominalisation", titreDE: "Die Nominalisierung", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
+    id: "c1g18",
+    einstieg: {"intro":"Observe comment condenser une subordonnée en groupe nominal.","exemples":[{"de":"nach der Ankunft des Zuges","fr":"après l'arrivée du train"},{"de":"die Lösung des Problems","fr":"la résolution du problème"},{"de":"bei näherer Betrachtung","fr":"à y regarder de plus près"}],"question":"Comment transformer une subordonnée en groupe nominal ?"},
+    merke: ["Style nominal (écrit soutenu) : subordonnée → *groupe nominal* + génitif.","*nachdem der Zug ankam* → *nach der Ankunft des Zuges*.","Suffixes : *-ung, -heit, -keit, -tion* transforment verbe/adjectif en nom."],
+    achtung: [{"erreur":"nach das Ankommen des Zug","correct":"nach der **Ankunft** des **Zuges**","explication":"Nominalisation : *Ankunft* + génitif (des Zuges)."},{"erreur":"die Lösung das Problem","correct":"die Lösung **des Problems**","explication":"Le complément passe au génitif."}],
+    kontrast: {"titre":"Le style nominal : allemand vs français","similitudes":["On nominalise (« après l'arrivée »)."],"differences":["L'allemand condense des subordonnées en groupes nominaux + génitif.","Style présent à l'écrit administratif/scientifique.","Suffixes productifs (-ung, -heit)."]}, titre: "La nominalisation", titreDE: "Die Nominalisierung", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Passer du style verbal au style nominal", "Employer les prépositions adéquates"],
     grammairePoints: ["weil → wegen, nachdem → nach", "das Lernen, die Prüfung"],
     exemplesPlus: [{"de":"Wegen des starken Schneefalls blieb die Schule geschlossen.","fr":"Nominalstil: *weil* wird zu *wegen* + Nomen."},{"de":"Nach dem Lesen des Berichts war alles klar.","fr":"*nachdem* wird zu *nach* + Nominalisierung."},{"de":"Beim Kochen höre ich gern Musik.","fr":"*während ich koche* wird zu *beim Kochen*."},{"de":"Trotz mangelnder Erfahrung wurde sie eingestellt.","fr":"*obwohl* wird zu *trotz* + Nomen."},{"de":"Durch regelmäßiges Üben verbessert man seine Aussprache.","fr":"*indem* wird zu *durch* + Nominalisierung."}],
@@ -226,7 +262,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g19: {
-    id: "c1g19", titre: "Les formes passives", titreDE: "Passiv und Passiversatz", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
+    id: "c1g19",
+    einstieg: {"intro":"Observe le passif exprimé sans *werden*.","exemples":[{"de":"Das Problem ist zu lösen.","fr":"Le problème doit/peut être résolu."},{"de":"Das lässt sich nicht ändern.","fr":"Cela ne peut pas être changé."},{"de":"Man kann das leicht reparieren.","fr":"On peut facilement réparer ça."}],"question":"Comment exprimer le passif sans *werden* ?"},
+    merke: ["Substituts du passif : *sein + zu + infinitif* (= devoir/pouvoir être …).","*sich lassen + infinitif* (= peut être …) ; *man* + actif.","*-bar* (machbar = réalisable) exprime la possibilité passive."],
+    achtung: [{"erreur":"Das Problem muss gelöst werden. (plus concis)","correct":"Das Problem **ist zu lösen**.","explication":"*sein + zu + inf* = passif d'obligation/possibilité, plus élégant."},{"erreur":"Das lässt nicht sich ändern.","correct":"Das **lässt sich** nicht ändern.","explication":"Ordre : *lässt sich* + infinitif."}],
+    kontrast: {"titre":"Substituts du passif : allemand vs français","similitudes":["Le passif et « on » existent."],"differences":["*sein + zu + inf* et *sich lassen + inf* remplacent le passif modal.","*man* (= on) évite le passif.","*-bar* (lösbar) exprime « -able »."]}, titre: "Les formes passives", titreDE: "Passiv und Passiversatz", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
     objectifs: ["Maîtriser passif de processus et d'état", "Employer les formes de substitution du passif"],
     grammairePoints: ["werden/sein + participe", "man, sich lassen, sein + zu + Inf., -bar"],
     exemplesPlus: [{"de":"Das Problem lässt sich leicht lösen.","fr":"*sich lassen* = kann gelöst werden (Passiversatz)."},{"de":"Diese Frage ist nicht so einfach zu beantworten.","fr":"*sein + zu + Infinitiv*: muss/kann beantwortet werden."},{"de":"Man hat die Entscheidung mehrfach verschoben.","fr":"*man* statt eines Passivs."},{"de":"Der Fehler ist kaum vermeidbar.","fr":"Adjektiv auf *-bar*: kann kaum vermieden werden."},{"de":"Die Akten werden derzeit überprüft.","fr":"Klassisches Vorgangspassiv mit *werden*."}],

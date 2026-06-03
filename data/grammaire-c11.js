@@ -5,7 +5,11 @@
    ===================================================================== */
 window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
   c1g01: {
-    id: "c1g01", titre: "Les temps du passé", titreDE: "Die Vergangenheitstempora", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
+    id: "c1g01",
+    einstieg: {"intro":"Observe ces nuances de temps au passé.","exemples":[{"de":"Kaum war er angekommen, klingelte das Telefon.","fr":"À peine était-il arrivé que le téléphone sonna."},{"de":"Er wird wohl im Stau gestanden haben.","fr":"Il a dû être bloqué dans un bouchon."},{"de":"Damals hatte sich vieles verändert.","fr":"À l'époque, beaucoup de choses avaient changé."}],"question":"Comment exprimer une supposition sur le passé ?"},
+    merke: ["Récit écrit : *Präteritum* ; oral : *Perfekt* ; antériorité : *Plusquamperfekt*.","*Futur II* (*werden + participe + haben/sein*) = supposition sur le passé.","*kaum war …, da/als* : antériorité immédiate."],
+    achtung: [{"erreur":"Er hat wohl im Stau gestanden. (supposition)","correct":"Er **wird** wohl im Stau **gestanden haben**.","explication":"La supposition sur le passé s'exprime au *Futur II*."},{"erreur":"Nachdem er ankam, klingelte es.","correct":"Nachdem er **angekommen war**, klingelte es.","explication":"*nachdem* + Plusquamperfekt (antériorité)."}],
+    kontrast: {"titre":"Les temps du passé (C1) : allemand vs français","similitudes":["Plusieurs temps et l'antériorité existent."],"differences":["Le *Futur II* exprime la supposition sur le passé - sans équivalent direct.","Le registre (écrit/oral) gouverne Perfekt vs Präteritum.","Concordance *nachdem* + Plusquamperfekt stricte."]}, titre: "Les temps du passé", titreDE: "Die Vergangenheitstempora", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
     objectifs: ["Choisir le temps selon le registre et la chronologie", "Combiner les temps dans un texte"],
     grammairePoints: ["Perfekt / Präteritum", "Plusquamperfekt (antériorité)"],
     exemplesPlus: [{"de":"In ihrer Jugend reiste sie durch ganz Asien.","fr":"Präteritum: erzählend und schriftlich."},{"de":"Ich habe ihm bereits mehrmals geschrieben, doch er antwortet nicht.","fr":"Perfekt mit Bezug zur Gegenwart."},{"de":"Nachdem die Verhandlungen gescheitert waren, zog sich der Investor zurück.","fr":"Plusquamperfekt: die Vorzeitigkeit zu einem späteren Ereignis."},{"de":"Kaum hatte er das Haus verlassen, begann es zu regnen.","fr":"*kaum … hatte*: unmittelbar danach geschah etwas."},{"de":"Damals herrschte eine ganz andere politische Stimmung im Land.","fr":"Präteritum für einen Zustand in der Vergangenheit."}],
@@ -30,7 +34,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g02: {
-    id: "c1g02", titre: "Prépositions de lieu et de temps", titreDE: "Lokale und temporale Präpositionen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
+    id: "c1g02",
+    einstieg: {"intro":"Observe ces prépositions soutenues.","exemples":[{"de":"Innerhalb weniger Stunden änderte sich alles.","fr":"En quelques heures, tout changea."},{"de":"Jenseits der Grenze spricht man Deutsch.","fr":"Au-delà de la frontière, on parle allemand."},{"de":"Binnen einer Woche","fr":"en l'espace d'une semaine"}],"question":"Quelles prépositions soutenues régissent le génitif ?"},
+    merke: ["Prépositions soutenues + génitif : *innerhalb, außerhalb, jenseits, diesseits, binnen, längs*.","Temps : *binnen, innerhalb* (génitif) ; *zeit* (zeit meines Lebens).","Registre écrit/administratif."],
+    achtung: [{"erreur":"jenseits die Grenze","correct":"jenseits **der** Grenze","explication":"*jenseits* + génitif (der Grenze)."},{"erreur":"binnen eine Woche","correct":"binnen **einer** Woche","explication":"*binnen* régit le génitif (einer Woche)."}],
+    kontrast: {"titre":"Prépositions soutenues : allemand vs français","similitudes":["« au-delà de / en l'espace de » ont des équivalents."],"differences":["Un grand groupe de prépositions soutenues régit le *génitif*.","Registre nettement écrit (jenseits, binnen).","Le cas est imposé par la préposition."]}, titre: "Prépositions de lieu et de temps", titreDE: "Lokale und temporale Präpositionen", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Choisir la bonne préposition et le bon cas", "Distinguer lieu et temps"],
     grammairePoints: ["an, in, auf, nach, zu", "vor, seit, bis, innerhalb"],
     exemplesPlus: [{"de":"Innerhalb weniger Jahre veränderte sich die Stadt grundlegend.","fr":"*innerhalb* + Genitiv: ein begrenzter Zeitraum."},{"de":"Seit der Einführung des Gesetzes sind die Zahlen gesunken.","fr":"*seit* + Dativ: ab einem Zeitpunkt bis jetzt."},{"de":"Wir fahren im Sommer zum ersten Mal nach Skandinavien.","fr":"*nach* bei Ländern und Regionen ohne Artikel."},{"de":"Auf dem Land lebt es sich ruhiger als in der Großstadt.","fr":"*auf dem Land* als feste Wendung."},{"de":"Vor Beginn der Sitzung wurden die Unterlagen verteilt.","fr":"*vor* + Dativ: zeitlich davor."}],
@@ -54,7 +62,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g03: {
-    id: "c1g03", titre: "Connecteurs : subordonnées", titreDE: "Konnektoren: Nebensätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
+    id: "c1g03",
+    einstieg: {"intro":"Observe la nuance de ces conjonctions.","exemples":[{"de":"Obwohl es regnete, gingen wir spazieren.","fr":"Bien qu'il pleuve, nous sommes allés nous promener."},{"de":"Indem er hart arbeitete, erreichte er sein Ziel.","fr":"En travaillant dur, il atteignit son but."},{"de":"Er sprach leise, sodass niemand ihn hörte.","fr":"Il parla bas, si bien que personne ne l'entendit."}],"question":"Quelle nuance apportent *obwohl*, *indem*, *sodass* ?"},
+    merke: ["*obwohl/obgleich* = concession (bien que) → verbe à la fin.","*indem* = moyen (« en + gérondif ») ; *sodass* = conséquence.","Ce sont des subordonnées → verbe conjugué à la *fin*."],
+    achtung: [{"erreur":"Obwohl es regnete, wir gingen spazieren.","correct":"Obwohl es regnete, **gingen wir** spazieren.","explication":"Subordonnée en tête → inversion."},{"erreur":"Indem er arbeitete hart, …","correct":"Indem er hart **arbeitete**, …","explication":"Verbe conjugué à la fin de la subordonnée."}],
+    kontrast: {"titre":"Connecteurs de subordination : allemand vs français","similitudes":["« bien que / en + gérondif / si bien que » existent."],"differences":["*indem* traduit « en + gérondif » (moyen).","Le verbe va en *fin* de subordonnée.","*obwohl* + indicatif (≠ « bien que » + subjonctif)."]}, titre: "Connecteurs : subordonnées", titreDE: "Konnektoren: Nebensätze", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
     objectifs: ["Relier les idées par subordination", "Placer le verbe à la fin"],
     grammairePoints: ["obwohl, indem, sodass", "während, sofern, falls"],
     exemplesPlus: [{"de":"Obwohl er kaum geübt hatte, bestand er die Prüfung mühelos.","fr":"*obwohl*: ein Gegensatz (konzessiv)."},{"de":"Man verbessert die Aussprache, indem man regelmäßig laut liest.","fr":"*indem*: nennt das Mittel oder die Methode."},{"de":"Der Vortrag war so anschaulich, sodass ihn alle verstanden.","fr":"*sodass*: die Folge."},{"de":"Sofern keine Einwände bestehen, beginnen wir sofort.","fr":"*sofern*: eine Bedingung (= wenn)."},{"de":"Falls es Probleme geben sollte, melde dich bitte.","fr":"*falls*: eine mögliche Bedingung."}],
@@ -79,7 +91,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g04: {
-    id: "c1g04", titre: "Adjectifs à cas prépositionnel", titreDE: "Adjektive mit Präpositionalkasus", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
+    id: "c1g04",
+    einstieg: {"intro":"Observe le complément de ces adjectifs.","exemples":[{"de":"Er ist fähig zu großen Leistungen.","fr":"Il est capable de grandes performances."},{"de":"Sie ist sich der Gefahr bewusst.","fr":"Elle est consciente du danger."},{"de":"Ich bin auf deine Hilfe angewiesen.","fr":"Je dépends de ton aide."}],"question":"Quel cas suit ces adjectifs ?"},
+    merke: ["Adjectifs + préposition fixe : *fähig zu*, *angewiesen auf*, *reich an*.","Adjectifs + *génitif* : *bewusst*, *sicher*, *würdig*, *verdächtig*.","À apprendre adjectif + (préposition + cas / génitif)."],
+    achtung: [{"erreur":"Sie ist sich die Gefahr bewusst.","correct":"Sie ist sich **der** Gefahr bewusst.","explication":"*bewusst* régit le *génitif* (der Gefahr)."},{"erreur":"Ich bin auf deiner Hilfe angewiesen.","correct":"Ich bin auf **deine** Hilfe angewiesen.","explication":"*angewiesen auf* + accusatif."}],
+    kontrast: {"titre":"Adjectifs à complément (C1) : allemand vs français","similitudes":["« capable de », « conscient de » sont fixes."],"differences":["Certains adjectifs régissent le *génitif* (bewusst, sicher).","La préposition (zu, auf, an) diffère du français.","Le cas est imposé par l'adjectif."]}, titre: "Adjectifs à cas prépositionnel", titreDE: "Adjektive mit Präpositionalkasus", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Mémoriser les adjectifs à préposition fixe", "Appliquer le cas imposé"],
     grammairePoints: ["stolz auf, fähig zu", "verantwortlich für, überzeugt von"],
     exemplesPlus: [{"de":"Sie ist zu außergewöhnlichen Leistungen fähig.","fr":"*fähig zu* + Dativ."},{"de":"Er ist für die gesamte Abteilung verantwortlich.","fr":"*verantwortlich für* + Akkusativ."},{"de":"Ich bin fest von ihrer Unschuld überzeugt.","fr":"*überzeugt von* + Dativ."},{"de":"Die Bevölkerung ist auf weitere Reformen angewiesen.","fr":"*angewiesen auf* + Akkusativ: man braucht es dringend."},{"de":"Niemand war sich der Folgen bewusst.","fr":"*sich bewusst* + Genitiv."}],
@@ -103,7 +119,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g05: {
-    id: "c1g05", titre: "Connecteurs en deux parties", titreDE: "Zweiteilige Konnektoren", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
+    id: "c1g05",
+    einstieg: {"intro":"Observe ces couples de connecteurs.","exemples":[{"de":"Je mehr ich lerne, desto besser verstehe ich.","fr":"Plus j'apprends, mieux je comprends."},{"de":"Nicht nur er, sondern auch sie kam.","fr":"Non seulement lui, mais elle aussi est venue."},{"de":"Zwar ist es teuer, aber es lohnt sich.","fr":"Certes c'est cher, mais ça vaut la peine."}],"question":"Comment fonctionne *je … desto* ?"},
+    merke: ["*je + comparatif …, desto/umso + comparatif* : proportion.","Dans la partie *je*, le verbe va à la fin ; après *desto*, inversion.","Autres paires : *nicht nur … sondern auch*, *zwar … aber*."],
+    achtung: [{"erreur":"Je mehr ich lerne, desto ich verstehe besser.","correct":"…, desto besser **verstehe ich**.","explication":"Après *desto + comparatif*, inversion."},{"erreur":"Je mehr ich lerne …, …","correct":"Je mehr ich **lerne**, …","explication":"Dans la partie *je*, le verbe va à la fin."}],
+    kontrast: {"titre":"Connecteurs en deux parties : allemand vs français","similitudes":["« plus… plus », « non seulement… mais » existent."],"differences":["*je … desto* : verbe en fin (je), puis inversion (desto).","Structures figées en deux blocs.","La syntaxe est propre à l'allemand."]}, titre: "Connecteurs en deux parties", titreDE: "Zweiteilige Konnektoren", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Relier deux éléments avec des connecteurs corrélés", "Employer je … desto"],
     grammairePoints: ["sowohl…als auch, weder…noch", "je…desto, zwar…aber"],
     exemplesPlus: [{"de":"Je länger das Projekt dauerte, desto höher wurden die Kosten.","fr":"*je … desto* + Komparativ: zwei Dinge steigen zusammen."},{"de":"Das Konzept überzeugt zwar theoretisch, scheitert aber in der Praxis.","fr":"*zwar … aber*: ein Zugeständnis mit Einschränkung."},{"de":"Weder die Mitarbeiter noch die Kunden wurden befragt.","fr":"*weder … noch*: keiner von beiden."},{"de":"Er ist sowohl als Forscher als auch als Lehrer anerkannt.","fr":"*sowohl … als auch*: beides zugleich."},{"de":"Entweder wir investieren jetzt, oder wir verlieren den Markt.","fr":"*entweder … oder*: nur eine Möglichkeit."}],
@@ -128,7 +148,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g06: {
-    id: "c1g06", titre: "Connecteurs : principales", titreDE: "Verbindungsadverbien", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
+    id: "c1g06",
+    einstieg: {"intro":"Ces connecteurs relient deux principales. Observe.","exemples":[{"de":"Es war teuer; dennoch kaufte er es.","fr":"C'était cher ; néanmoins il l'acheta."},{"de":"Er ist klug, allerdings sehr faul.","fr":"Il est intelligent, cela dit très paresseux."},{"de":"Ich mag Tee; sie hingegen trinkt Kaffee.","fr":"J'aime le thé ; elle, en revanche, boit du café."}],"question":"Ces connecteurs changent-ils l'ordre des mots ?"},
+    merke: ["Adverbes connecteurs (*dennoch, allerdings, hingegen, jedoch, somit*) : position 1 → *inversion*.","Ils relient deux *principales* (pas de subordination).","*jedoch/allerdings* peuvent aussi se glisser après le verbe."],
+    achtung: [{"erreur":"Es war teuer, dennoch er kaufte es.","correct":"…, dennoch **kaufte er** es.","explication":"*dennoch* (position 1) → inversion."},{"erreur":"Sie hingegen sie trinkt Kaffee.","correct":"Sie **hingegen** trinkt Kaffee.","explication":"Un seul sujet ; le verbe reste en position 2."}],
+    kontrast: {"titre":"Adverbes connecteurs : allemand vs français","similitudes":["« néanmoins / en revanche » existent."],"differences":["En position 1, ils déclenchent l'*inversion*.","Ils relient des principales (verbe en position 2).","Plus souples que les subordonnants."]}, titre: "Connecteurs : principales", titreDE: "Verbindungsadverbien", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Relier deux principales par un adverbe connecteur", "Gérer l'inversion (verbe en 2e)"],
     grammairePoints: ["deshalb, trotzdem, dennoch", "folglich, allerdings, jedoch"],
     exemplesPlus: [{"de":"Die Nachfrage stieg stark; folglich mussten die Preise angepasst werden.","fr":"*folglich*: eine logische Konsequenz."},{"de":"Der Plan klingt überzeugend; allerdings fehlen die nötigen Mittel.","fr":"*allerdings*: eine wichtige Einschränkung."},{"de":"Er hatte alle Argumente gehört; dennoch blieb er bei seiner Meinung.","fr":"*dennoch*: ein Gegensatz trotz allem."},{"de":"Die Lage ist ernst, jedoch nicht hoffnungslos.","fr":"*jedoch*: ein Gegensatz (gehobener als *aber*)."},{"de":"Sie war erschöpft; trotzdem arbeitete sie weiter.","fr":"*trotzdem*: trotz des Hindernisses."}],
@@ -153,7 +177,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g07: {
-    id: "c1g07", titre: "Les verbes modaux", titreDE: "Die Modalverben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
+    id: "c1g07",
+    einstieg: {"intro":"Observe ces tournures avec lassen et scheinen.","exemples":[{"de":"Das lässt sich leicht erklären.","fr":"Cela s'explique facilement."},{"de":"Er scheint müde zu sein.","fr":"Il semble fatigué."},{"de":"Ich lasse mir die Haare schneiden.","fr":"Je me fais couper les cheveux."}],"question":"Comment dire « se faire faire » et « il semble » ?"},
+    merke: ["*lassen* = faire faire (*ich lasse das Auto reparieren*) ou laisser.","*sich lassen + infinitif* = peut être … (sens passif : *das lässt sich machen*).","*scheinen … zu + infinitif* : sembler + infinitif."],
+    achtung: [{"erreur":"Das kann leicht erklärt werden.","correct":"Das **lässt sich** leicht erklären.","explication":"*sich lassen + inf* remplace élégamment un passif de possibilité."},{"erreur":"Er scheint müde sein.","correct":"Er scheint müde **zu** sein.","explication":"*scheinen* se construit avec *zu* + infinitif."}],
+    kontrast: {"titre":"lassen / scheinen : allemand vs français","similitudes":["« faire faire », « sembler » existent."],"differences":["*sich lassen + inf* = passif de possibilité (sans équivalent direct).","*lassen* couvre « faire faire » ET « laisser ».","*scheinen … zu* (sembler + infinitif)."]}, titre: "Les verbes modaux", titreDE: "Die Modalverben", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Distinguer sens objectif et subjectif", "Employer le modal au passé et au passif"],
     grammairePoints: ["müsste, dürfte (supposition)", "hätte … müssen, … werden müssen"],
     exemplesPlus: [{"de":"Bei diesem Tempo müsste der Zug längst angekommen sein.","fr":"*müsste*: eine Vermutung mit hoher Sicherheit."},{"de":"Die Sitzung dürfte nicht länger als eine Stunde dauern.","fr":"*dürfte*: eine vorsichtige Vermutung."},{"de":"Du hättest mich früher informieren müssen.","fr":"*hätte … müssen*: eine versäumte Pflicht."},{"de":"Das hätte nicht passieren dürfen.","fr":"Kritik an etwas in der Vergangenheit."},{"de":"Er will angeblich nichts davon gewusst haben.","fr":"*wollen*: eine fremde, zweifelhafte Behauptung."}],
@@ -177,7 +205,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g08: {
-    id: "c1g08", titre: "Le subjonctif II", titreDE: "Der Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
+    id: "c1g08",
+    einstieg: {"intro":"Observe la comparaison irréelle.","exemples":[{"de":"Er tut so, als ob er alles wüsste.","fr":"Il fait comme s'il savait tout."},{"de":"Beinahe wäre ich gefallen.","fr":"J'ai failli tomber."},{"de":"Hätte ich das gewusst!","fr":"Si seulement j'avais su !"}],"question":"Comment exprimer « comme si » ?"},
+    merke: ["*als ob / als wenn* + Konjunktiv II : comparaison irréelle.","Après *als* seul, inversion : *als wüsste er es*.","*beinahe/fast + Konjunktiv II* = avoir failli."],
+    achtung: [{"erreur":"Er tut so, als ob er alles weiß.","correct":"Er tut so, als ob er alles **wüsste**.","explication":"*als ob* exige le Konjunktiv II."},{"erreur":"Beinahe bin ich gefallen.","correct":"Beinahe **wäre** ich gefallen.","explication":"« avoir failli » = *beinahe* + Konjunktiv II."}],
+    kontrast: {"titre":"Konjunktiv II (C1) : allemand vs français","similitudes":["« comme si » + irréel existe."],"differences":["*als ob* + Konjunktiv II (≠ « comme si » + indicatif).","*beinahe wäre* = « avoir failli ».","Après *als* seul : inversion (als wüsste er)."]}, titre: "Le subjonctif II", titreDE: "Der Konjunktiv II", theme: "Grammaire", type: "grammaire", duree: 45, niveau: "C1",
     objectifs: ["Maîtriser présent et passé du Konjunktiv II", "Exprimer politesse, souhait et irréel"],
     grammairePoints: ["würde, hätte, wäre, könnte", "hätte/wäre + participe (passé)"],
     exemplesPlus: [{"de":"Ohne deine Hilfe hätte ich es nie geschafft.","fr":"Irreal, Vergangenheit: es war zum Glück anders."},{"de":"An Ihrer Stelle würde ich das Angebot sorgfältig prüfen.","fr":"Ein höflicher, vorsichtiger Rat."},{"de":"Es wäre ratsam, die Frist zu verlängern.","fr":"*es wäre ratsam*: eine zurückhaltende Empfehlung."},{"de":"Beinahe hätte ich den entscheidenden Termin verpasst.","fr":"*beinahe* + Konjunktiv II: es ist fast geschehen."},{"de":"Könnten Sie sich vorstellen, im Ausland zu arbeiten?","fr":"Höfliche Frage mit *könnten*."}],
@@ -202,7 +234,11 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     ]
   },
   c1g09: {
-    id: "c1g09", titre: "Prépositions avec le génitif", titreDE: "Präpositionen mit Genitiv", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
+    id: "c1g09",
+    einstieg: {"intro":"Observe ces prépositions administratives.","exemples":[{"de":"Angesichts der Lage handeln wir sofort.","fr":"Vu la situation, nous agissons aussitôt."},{"de":"Anhand der Daten lässt sich das beweisen.","fr":"À l'aide des données, on peut le prouver."},{"de":"Zwecks besserer Organisation","fr":"à des fins de meilleure organisation"}],"question":"Ces prépositions régissent-elles le génitif ?"},
+    merke: ["Prépositions soutenues + génitif : *angesichts, anhand, mittels, zwecks, kraft, laut*.","*laut* peut aussi prendre le datif (*laut dem Bericht*).","Registre écrit/officiel."],
+    achtung: [{"erreur":"angesichts die Lage","correct":"angesichts **der** Lage","explication":"*angesichts* + génitif (der Lage)."},{"erreur":"anhand die Daten","correct":"anhand **der** Daten","explication":"*anhand* + génitif (der Daten)."}],
+    kontrast: {"titre":"Prépositions au génitif (C1) : allemand vs français","similitudes":["« vu / à l'aide de / aux fins de » ont des équivalents."],"differences":["Beaucoup de prépositions *administratives* régissent le génitif.","Registre officiel/écrit (angesichts, zwecks).","*laut* hésite entre génitif et datif."]}, titre: "Prépositions avec le génitif", titreDE: "Präpositionen mit Genitiv", theme: "Grammaire", type: "grammaire", duree: 40, niveau: "C1",
     objectifs: ["Employer les prépositions à génitif soutenues", "Exprimer cause, opposition, point de vue"],
     grammairePoints: ["wegen, trotz, während", "angesichts, hinsichtlich, zugunsten"],
     exemplesPlus: [{"de":"Angesichts der aktuellen Lage sind Sparmaßnahmen unvermeidlich.","fr":"*angesichts* + Genitiv: in Anbetracht."},{"de":"Hinsichtlich der Kosten gibt es noch offene Fragen.","fr":"*hinsichtlich* + Genitiv: bezüglich."},{"de":"Zugunsten der Kinder verzichteten sie auf den Urlaub.","fr":"*zugunsten* + Genitiv: zum Vorteil von."},{"de":"Trotz erheblicher Bedenken wurde das Projekt genehmigt.","fr":"*trotz* + Genitiv."},{"de":"Während der gesamten Verhandlung blieb er ruhig.","fr":"*während* + Genitiv: die ganze Zeit über."}],
