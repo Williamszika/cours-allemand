@@ -1,88 +1,41 @@
-/* =====================================================================
-   server/tts-proxy.js — Mini proxy ElevenLabs (voix naturelles), à faire
-   tourner SUR TON SERVEUR (derrière Caddy). Aucune dépendance npm.
-   Node 14+ suffit (utilise le module https intégré).
-
-   La clé reste sur le serveur (variable d'environnement), jamais dans le
-   code ni dans l'app publique :
-     ELEVENLABS_API_KEY   (obligatoire)
-     ELEVENLABS_VOICE_ID  (optionnel — sinon voix par défaut)
-     TTS_PORT             (optionnel — défaut 3001 ; écoute sur 127.0.0.1)
-
-   Caddy renvoie /api/* vers ce service (voir server/TTS-PROXY.md).
-   ===================================================================== */
-const http = require("http");
-const https = require("https");
-
-const PORT = parseInt(process.env.TTS_PORT || "3001", 10);
-const DEFAULT_VOICE = process.env.ELEVENLABS_VOICE_ID || "21m00Tcm4TlvDq8ikWAM"; // « Rachel » (multilingue)
-const KEY = process.env.ELEVENLABS_API_KEY || "";
-
-// Anti-abus simple : limite par IP (le point d'accès est public).
-const HITS = new Map();
-function tooMany(ip) {
-  const now = Date.now(), w = 60000, max = 80;
-  const e = HITS.get(ip) || { n: 0, t: now };
-  if (now - e.t > w) { e.n = 0; e.t = now; }
-  e.n++; HITS.set(ip, e);
-  return e.n > max;
-}
-
-function elevenlabs(voice, text) {
-  return new Promise((resolve, reject) => {
-    const body = JSON.stringify({
-      text: text,
-      model_id: "eleven_multilingual_v2",
-      voice_settings: { stability: 0.5, similarity_boost: 0.75, use_speaker_boost: true }
-    });
-    const req = https.request({
-      hostname: "api.elevenlabs.io",
-      path: "/v1/text-to-speech/" + voice + "?output_format=mp3_44100_128",
-      method: "POST",
-      headers: {
-        "xi-api-key": KEY,
-        "content-type": "application/json",
-        "accept": "audio/mpeg",
-        "content-length": Buffer.byteLength(body)
-      }
-    }, (r) => {
-      const chunks = [];
-      r.on("data", (d) => chunks.push(d));
-      r.on("end", () => resolve({ status: r.statusCode || 500, buf: Buffer.concat(chunks) }));
-    });
-    req.on("error", reject);
-    req.write(body);
-    req.end();
-  });
-}
-
-const server = http.createServer(async (req, res) => {
-  try {
-    if (req.method !== "GET") { res.writeHead(405); return res.end("method"); }
-    const u = new URL(req.url, "http://localhost");
-    if (!/\/tts\/?$/.test(u.pathname)) { res.writeHead(404); return res.end("not found"); } // /api/tts ou /tts
-
-    const text = (u.searchParams.get("text") || "").slice(0, 1000).trim();
-    const voice = (u.searchParams.get("v") || DEFAULT_VOICE).replace(/[^a-zA-Z0-9]/g, "");
-    if (!text) { res.writeHead(400); return res.end("missing text"); }
-    if (!KEY) { res.writeHead(503); return res.end("tts not configured (ELEVENLABS_API_KEY manquante)"); }
-
-    // Origine : on n'accepte que l'app
-    const ref = String(req.headers.origin || req.headers.referer || "");
-    if (ref && ref.indexOf("sprachakademie.app") < 0 && ref.indexOf("localhost") < 0 && ref.indexOf("127.0.0.1") < 0) {
-      res.writeHead(403); return res.end("forbidden");
-    }
-    const ip = (req.headers["x-forwarded-for"] || req.socket.remoteAddress || "?").split(",")[0].trim();
-    if (tooMany(ip)) { res.writeHead(429); return res.end("slow down"); }
-
-    const r = await elevenlabs(voice, text);
-    if (r.status < 200 || r.status >= 300) { res.writeHead(r.status === 401 ? 503 : 502); return res.end("tts upstream " + r.status); }
-
-    res.writeHead(200, { "Content-Type": "audio/mpeg", "Cache-Control": "public, max-age=31536000, immutable" });
-    return res.end(r.buf);
-  } catch (e) {
-    res.writeHead(500); return res.end("error");
-  }
-});
-
-server.listen(PORT, "127.0.0.1", () => console.log("TTS proxy ElevenLabs → http://127.0.0.1:" + PORT + " (clé " + (KEY ? "OK" : "MANQUANTE") + ")"));
+const http=require("http"),https=require("https"),fs=require("fs"),path=require("path"),crypto=require("crypto");
+const PORT=parseInt(process.env.TTS_PORT||"3001",10);
+const CONFIG_VOICE=(process.env.ELEVENLABS_VOICE_ID||"").trim();
+const KEY=(process.env.ELEVENLABS_API_KEY||"").trim();
+const MODEL=(process.env.ELEVENLABS_MODEL||"eleven_multilingual_v2").trim();
+const CACHE_DIR=(process.env.TTS_CACHE_DIR||path.join(__dirname,"tts-cache")).trim();
+try{fs.mkdirSync(CACHE_DIR,{recursive:true});}catch(e){console.warn("[tts] cache:",e.message);}
+const FREE=["JBFqnCBsd6RMkjVDRZzb","EXAVITQu4vr4xnSDxMaL","FGY2WhTYpPnrIDTdsKH5","nPczCjzI2devNBz1zQrb","XB0fDUnXU5powFXDhCwa","onwK4e9ZLuTAKqWW03F9"];
+let goodVoice=CONFIG_VOICE||FREE[0],discovering=null;
+const HITS=new Map();
+function tooMany(ip){const now=Date.now(),w=60000,max=80;const e=HITS.get(ip)||{n:0,t:now};if(now-e.t>w){e.n=0;e.t=now;}e.n++;HITS.set(ip,e);return e.n>max;}
+function ckey(v,t){return crypto.createHash("sha256").update(v+"|"+MODEL+"|"+t).digest("hex");}
+function call(opts,body){return new Promise((res,rej)=>{const r=https.request(opts,x=>{const c=[];x.on("data",d=>c.push(d));x.on("end",()=>res({status:x.statusCode||500,buf:Buffer.concat(c)}));});r.on("error",rej);if(body)r.write(body);r.end();});}
+function tts(v,t){const body=JSON.stringify({text:t,model_id:MODEL,voice_settings:{stability:0.5,similarity_boost:0.75,use_speaker_boost:true}});return call({hostname:"api.elevenlabs.io",path:"/v1/text-to-speech/"+v+"?output_format=mp3_44100_128",method:"POST",headers:{"xi-api-key":KEY,"content-type":"application/json","accept":"audio/mpeg","content-length":Buffer.byteLength(body)}},body);}
+async function listVoices(){try{const r=await call({hostname:"api.elevenlabs.io",path:"/v1/voices",method:"GET",headers:{"xi-api-key":KEY,"accept":"application/json"}});if(r.status<200||r.status>=300)return[];const j=JSON.parse(r.buf.toString());return Array.isArray(j.voices)?j.voices:[];}catch(e){return[];}}
+async function discover(){const acc=(await listVoices()).map(v=>v.voice_id).filter(Boolean);const seen=new Set(),cand=[];for(const id of acc.concat(FREE))if(id&&!seen.has(id)){seen.add(id);cand.push(id);}for(const id of cand){const r=await tts(id,"Hallo");if(r.status>=200&&r.status<300){console.log("[tts] voix OK: "+id+" -> Environment=ELEVENLABS_VOICE_ID="+id);return id;}}return null;}
+async function synth(rv,t){const v=rv||goodVoice;let r=await tts(v,t);if(r.status>=200&&r.status<300){goodVoice=v;return r;}console.warn("[tts] voix "+v+" refusee HTTP "+r.status+" "+(r.buf?r.buf.toString().slice(0,200):""));if(r.status===401)return r;if(!discovering)discovering=discover().finally(()=>{discovering=null;});const g=await discovering;if(g&&g!==v){const r2=await tts(g,t);if(r2.status>=200&&r2.status<300){goodVoice=g;return r2;}}return r;}
+const H={"Content-Type":"audio/mpeg","Cache-Control":"public, max-age=31536000, immutable"};
+http.createServer(async(rq,rs)=>{try{
+  if(rq.method!=="GET"){rs.writeHead(405);return rs.end("method");}
+  const u=new URL(rq.url,"http://localhost");
+  const ref=String(rq.headers.origin||rq.headers.referer||"");
+  const ok=!ref||ref.indexOf("sprachakademie.app")>=0||ref.indexOf("localhost")>=0||ref.indexOf("127.0.0.1")>=0;
+  if(/\/voices\/?$/.test(u.pathname)){if(!KEY){rs.writeHead(503);return rs.end("no key");}if(!ok){rs.writeHead(403);return rs.end("forbidden");}const l=await listVoices();rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8"});return rs.end(JSON.stringify(l.map(v=>({id:v.voice_id,name:v.name,category:v.category})),null,2));}
+  if(/\/cache\/?$/.test(u.pathname)){let n=0,b=0;try{for(const f of fs.readdirSync(CACHE_DIR))if(f.endsWith(".mp3")){n++;b+=fs.statSync(path.join(CACHE_DIR,f)).size;}}catch(e){}rs.writeHead(200,{"Content-Type":"application/json"});return rs.end(JSON.stringify({fichiers:n,megaoctets:+(b/1048576).toFixed(2),dossier:CACHE_DIR},null,2));}
+  if(!/\/tts\/?$/.test(u.pathname)){rs.writeHead(404);return rs.end("not found");}
+  const text=(u.searchParams.get("text")||"").slice(0,1000).trim();
+  const rv=(u.searchParams.get("v")||"").replace(/[^a-zA-Z0-9]/g,"");
+  if(!text){rs.writeHead(400);return rs.end("missing text");}
+  if(!KEY){rs.writeHead(503);return rs.end("no key");}
+  if(!ok){rs.writeHead(403);return rs.end("forbidden");}
+  const v=rv||goodVoice,file=path.join(CACHE_DIR,ckey(v,text)+".mp3");
+  if(fs.existsSync(file)){rs.writeHead(200,Object.assign({"X-TTS-Cache":"HIT"},H));return fs.createReadStream(file).on("error",()=>{try{rs.end();}catch(e){}}).pipe(rs);}
+  const ip=(rq.headers["x-forwarded-for"]||rq.socket.remoteAddress||"?").split(",")[0].trim();
+  if(tooMany(ip)){rs.writeHead(429);return rs.end("slow down");}
+  const r=await synth(v,text);
+  if(r.status<200||r.status>=300){rs.writeHead(r.status===401?503:502);return rs.end("tts upstream "+r.status);}
+  const tmp=file+"."+process.pid+".tmp";
+  fs.writeFile(tmp,r.buf,e=>{if(e){try{fs.unlinkSync(tmp);}catch(_){}return;}fs.rename(tmp,file,()=>{});});
+  rs.writeHead(200,Object.assign({"X-TTS-Cache":"MISS"},H));return rs.end(r.buf);
+}catch(e){console.error("[tts]",e&&e.message);rs.writeHead(500);return rs.end("error");}}).listen(PORT,"127.0.0.1",()=>console.log("TTS proxy + cache -> 127.0.0.1:"+PORT+" (cle "+(KEY?"OK":"MANQUANTE")+", voix "+(CONFIG_VOICE||"auto")+", cache "+CACHE_DIR+")"));
