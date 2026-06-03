@@ -43,6 +43,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
     <select id="mode" title="Mode">
       <option value="general" selected>Général</option>
       <option value="pflege">Pflege (soins)</option>
+      <option value="prononciation">🗣️ Prononciation</option>
     </select>
   </div>
 </header>
@@ -104,14 +105,14 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
     log.appendChild(d); log.scrollTop=log.scrollHeight; return d;
   }
   function busy(b){send.disabled=b;mic.disabled=b;}
-  async function sendUser(t,oral){
+  async function sendUser(t,oral,unclear){
     if(!t)return;
     bubble('user',t); history.push({role:'user',content:t}); if(history.length>20)history=history.slice(-20);
     busy(true);
     var typing=document.createElement('div'); typing.className='msg bot typing'; typing.textContent='…';
     log.appendChild(typing); log.scrollTop=log.scrollHeight;
     try{
-      var res=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({messages:history,niveau:NIV,niveauParle:NIVPARLE,langue:LG,mode:mode.value,oral:!!oral})});
+      var res=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({messages:history,niveau:NIV,niveauParle:NIVPARLE,langue:LG,mode:mode.value,oral:!!oral,unclear:(unclear&&unclear.length)?unclear:undefined})});
       typing.remove();
       if(!res.ok){bubble('assistant','⚠️ Erreur '+res.status+'. Réessaie dans un instant.'); busy(false); return;}
       var j=await res.json(); var reply=j.reply||'(réponse vide)';
@@ -134,7 +135,9 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
       if(!r.ok){bubble('assistant','⚠️ Transcription indisponible ('+r.status+').'); busy(false); return;}
       var j=await r.json(); var t=(j.text||'').trim();
       if(!t){bubble('assistant','Je n\'ai rien entendu — parle un peu plus fort et reessaie. 🙂'); busy(false); return;}
-      busy(false); sendUser(t,true);
+      var unclear=null;
+      if(mode.value==='prononciation'&&Array.isArray(j.words)){unclear=j.words.filter(function(w){return w&&typeof w.lp==='number'&&w.lp<-0.5;}).map(function(w){return w.w;}).slice(0,6);}
+      busy(false); sendUser(t,true,unclear);
     }catch(e){ try{typing.remove();}catch(_){} bubble('assistant','⚠️ Transcription impossible.'); busy(false); }
   }
   async function toggleMic(){
@@ -149,6 +152,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
     }catch(e){ bubble('assistant','🎤 Micro refuse ou indisponible. Autorise le micro pour parler.'); }
   }
   mic.onclick=toggleMic;
+  mode.onchange=function(){ if(mode.value==='prononciation'){ sendUser("Donne-moi une premiere phrase courte a lire a voix haute pour travailler ma prononciation.",true); } };
   txt.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();ask();}});
   txt.addEventListener('input',function(){txt.style.height='auto';txt.style.height=Math.min(txt.scrollHeight,120)+'px';});
   bubble('assistant',"Hallo! Ich bin dein Deutsch-Tutor. 🇩🇪 (Niveau "+NIV+")\nÉcris-moi, ou appuie sur 🎤 pour PARLER : je t'écoute, je te corrige et je t'aide à t'exprimer sans stress. Los geht's!");
