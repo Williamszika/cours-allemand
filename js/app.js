@@ -2933,7 +2933,7 @@
     let m;
     // Étape 0 OBLIGATOIRE — choix de la langue : tant qu'aucune langue n'est
     // choisie, on ne peut RIEN faire d'autre (ni menu, ni cours).
-    if (window.I18N && !window.I18N.isChosen() && !hash.match(/^#\/langue/)) {
+    if (window.I18N && !window.I18N.isChosen() && !window.__SYNC_PENDING && !hash.match(/^#\/langue/)) {
       return renderLanguagePage();
     }
     if (hash.match(/^#\/menu/)) renderMenu();
@@ -2968,11 +2968,12 @@
 
   function boot() {
     if (window.TG) window.TG.init();
+    window.__SYNC_PENDING = !!(window.Sync && window.Sync.serverAvailable && window.Sync.serverAvailable());
     Theme.apply(); // applique le thème choisi (après l'init Telegram)
     if (window.I18N) window.I18N.applyDir(); // sens d'écriture (RTL) + lang du document
     route(); // rendu immédiat avec les données locales
     // Fusion avec la progression cloud (Telegram) puis re-rendu si besoin
-    if (window.Sync) window.Sync.load(function (changed) { if (changed) route(); });
+    if (window.Sync) window.Sync.load(function () { window.__SYNC_PENDING = false; route(); }); else { window.__SYNC_PENDING = false; }
     // Service worker : hors-ligne + installable (hors Telegram, qui gère son propre cache)
     if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
       // Auto-mise à jour : si une nouvelle version du service worker prend la

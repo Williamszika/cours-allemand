@@ -9,7 +9,14 @@ const ANTHKEY=(process.env.ANTHROPIC_API_KEY||"").trim();
 const CHATMODEL=(process.env.ANTHROPIC_MODEL||"claude-haiku-4-5-20251001").trim();
 const BOT_TOKEN=(process.env.TELEGRAM_BOT_TOKEN||"").trim();
 const SUBS=path.join(__dirname,"subscribers.json");
+const DATA_DIR=(process.env.DATA_DIR||path.join(__dirname,"data")).trim();
+const USERS_DIR=path.join(DATA_DIR,"users");
+const ADMIN_ID=(process.env.ADMIN_ID||"").trim();
+const ADMIN_TOKEN=(process.env.ADMIN_TOKEN||"").trim();
+let BOT_USERNAME=(process.env.BOT_USERNAME||"").trim();
+const ORDER=["A1","A2","B1","B2","C1","C2"];
 try{fs.mkdirSync(CACHE_DIR,{recursive:true});}catch(e){console.warn("[tts] cache:",e.message);}
+try{fs.mkdirSync(USERS_DIR,{recursive:true});}catch(e){console.warn("[data]",e.message);}
 const FREE=["JBFqnCBsd6RMkjVDRZzb","EXAVITQu4vr4xnSDxMaL","FGY2WhTYpPnrIDTdsKH5","nPczCjzI2devNBz1zQrb","XB0fDUnXU5powFXDhCwa","onwK4e9ZLuTAKqWW03F9"];
 let goodVoice=CONFIG_VOICE||FREE[0],discovering=null;
 const HITS=new Map();
@@ -26,9 +33,19 @@ function sysPrompt(niveau,niveauParle,langue,mode,oral,unclear){const n=String(n
 function clean(msgs){if(!Array.isArray(msgs))return [];return msgs.slice(-20).map(m=>({role:(m&&m.role==="assistant")?"assistant":"user",content:String((m&&m.content)||"").slice(0,4000)})).filter(m=>m.content);}
 function loadSubs(){try{return JSON.parse(fs.readFileSync(SUBS,"utf8"))||{};}catch(e){return {};}}
 function saveSubs(o){try{fs.writeFileSync(SUBS,JSON.stringify(o));}catch(e){}}
-function tgUserId(initData){try{if(!BOT_TOKEN||!initData)return null;var p=new URLSearchParams(initData);var hash=p.get("hash");p.delete("hash");var a=[];p.forEach(function(v,k){a.push(k+"="+v);});a.sort();var dcs=a.join("\n");var secret=crypto.createHmac("sha256","WebAppData").update(BOT_TOKEN).digest();var calc=crypto.createHmac("sha256",secret).update(dcs).digest("hex");if(calc!==hash)return null;var us=JSON.parse(p.get("user")||"{}");return us.id?String(us.id):null;}catch(e){return null;}}
+function uFile(id){return path.join(USERS_DIR,String(id).replace(/[^0-9]/g,"")+".json");}
+function loadUser(id){try{return JSON.parse(fs.readFileSync(uFile(id),"utf8"));}catch(e){return null;}}
+function saveUser(id,o){try{const f=uFile(id),t=f+"."+process.pid+".tmp";fs.writeFileSync(t,JSON.stringify(o));fs.renameSync(t,f);}catch(e){console.warn("[user]",e.message);}}
+function listUsers(){try{return fs.readdirSync(USERS_DIR).filter(f=>f.endsWith(".json")).map(f=>{try{return JSON.parse(fs.readFileSync(path.join(USERS_DIR,f),"utf8"));}catch(e){return null;}}).filter(Boolean);}catch(e){return [];}}
+function lvlMax(a,b){var i=Math.max(ORDER.indexOf(a),ORDER.indexOf(b));return i>=0?ORDER[i]:(b||a||null);}
+function derivedLevel(p){p=p||{};var t=p.tests||{};function ok(k){return !!(t[k]&&t[k].reussi);}var bo=0;if(ok("a1"))bo=1;if(ok("final"))bo=2;if(ok("b1"))bo=3;if(ok("finalb"))bo=4;if(ok("c1"))bo=5;var di=Math.max(ORDER.indexOf(p.niveau||"A1"),0);return ORDER[Math.max(di,bo)]||"A1";}
+function mergeProg(a,b){a=a||{};b=b||{};var out=Object.assign({},a,b);var al=a.lecons||{},bl=b.lecons||{},L={};Object.keys(al).concat(Object.keys(bl)).forEach(function(id){if(L[id])return;var x=al[id]||{},y=bl[id]||{},ex={};Object.keys(x.exercices||{}).concat(Object.keys(y.exercices||{})).forEach(function(k){ex[k]=!!((x.exercices&&x.exercices[k])||(y.exercices&&y.exercices[k]));});L[id]={exercices:ex,termine:!!(x.termine||y.termine),score:Math.max(x.score||0,y.score||0)};});out.lecons=L;var at=a.tests||{},bt=b.tests||{},T={};Object.keys(at).concat(Object.keys(bt)).forEach(function(id){if(T[id])return;var x=at[id]||{},y=bt[id]||{};T[id]={meilleur:Math.max(x.meilleur||0,y.meilleur||0),reussi:!!(x.reussi||y.reussi),dernier:(y.dernier!=null?y.dernier:x.dernier)};});out.tests=T;var am=a.temps||{},bm=b.temps||{},TM={};Object.keys(am).concat(Object.keys(bm)).forEach(function(d){TM[d]=Math.max(am[d]||0,bm[d]||0);});out.temps=TM;out.niveau=lvlMax(a.niveau,b.niveau);out.reglages=Object.assign({},a.reglages||{},b.reglages||{});if((a.reglages&&a.reglages.langueChoisie)||(b.reglages&&b.reglages.langueChoisie))out.reglages.langueChoisie=true;out.streak=Math.max(a.streak||0,b.streak||0);out.lastStudy=[a.lastStudy,b.lastStudy].filter(Boolean).sort().pop()||null;out.derniereVisite=[a.derniereVisite,b.derniereVisite].filter(Boolean).sort().pop()||null;out.lastNotified=[a.lastNotified,b.lastNotified].filter(Boolean).sort().pop()||null;return out;}
+function tgVerify(initData){try{if(!BOT_TOKEN||!initData)return null;var p=new URLSearchParams(initData);var hash=p.get("hash");p.delete("hash");var a=[];p.forEach(function(v,k){a.push(k+"="+v);});a.sort();var dcs=a.join("\n");var secret=crypto.createHmac("sha256","WebAppData").update(BOT_TOKEN).digest();var calc=crypto.createHmac("sha256",secret).update(dcs).digest("hex");if(calc!==hash)return null;return {user:JSON.parse(p.get("user")||"{}"),start_param:p.get("start_param")||""};}catch(e){return null;}}
+function tgUserId(initData){var v=tgVerify(initData);return (v&&v.user&&v.user.id)?String(v.user.id):null;}
+function tgName(v){return v&&v.user?(((v.user.first_name||"")+" "+(v.user.last_name||"")).trim()):"";}
 function tgSend(chat,text){var body=JSON.stringify({chat_id:chat,text:text});return call({hostname:"api.telegram.org",path:"/bot"+BOT_TOKEN+"/sendMessage",method:"POST",headers:{"content-type":"application/json","content-length":Buffer.byteLength(body)}},body);}
-function sendReminders(){if(!BOT_TOKEN)return;var subs=loadSubs();var now=new Date();var mins=now.getHours()*60+now.getMinutes();var today=now.toISOString().slice(0,10);var changed=false;Object.keys(subs).forEach(function(id){var sb=subs[id];if(!sb||sb.last===today)return;var t=String(sb.heure||"19:00").split(":");var due=parseInt(t[0],10)*60+parseInt(t[1]||"0",10);if(mins>=due&&mins<due+90){tgSend(id,"⏰ Coach Zika: 5 minutes d'allemand aujourd'hui pour garder ta serie ! sprachakademie.app").catch(function(){});sb.last=today;changed=true;}});if(changed)saveSubs(subs);}
+function touchUser(v,extra){if(!v||!v.user||!v.user.id)return;var id=String(v.user.id);var now=new Date().toISOString();var u=loadUser(id)||{id:id,createdAt:now,progress:{},conv:{messages:[]},referredBy:null};u.name=tgName(v)||u.name||"";u.username=v.user.username||u.username||"";u.tgLang=v.user.language_code||u.tgLang||"";u.lastSeen=now;if(extra)extra(u);saveUser(id,u);return u;}
+function sendReminders(){if(!BOT_TOKEN)return;var subs=loadSubs();var now=new Date();var mins=now.getHours()*60+now.getMinutes();var today=now.toISOString().slice(0,10);var changed=false;Object.keys(subs).forEach(function(id){var sb=subs[id];if(!sb||sb.last===today)return;var t=String(sb.heure||"19:00").split(":");var due=parseInt(t[0],10)*60+parseInt(t[1]||"0",10);if(mins>=due&&mins<due+90){tgSend(id,"⏰ Coach Zika: 5 minutes d'allemand aujourd'hui pour garder ta serie ! https://sprachakademie.app").catch(function(){});sb.last=today;changed=true;}});if(changed)saveSubs(subs);}
 const H={"Content-Type":"audio/mpeg","Cache-Control":"public, max-age=31536000, immutable"};
 http.createServer(async(rq,rs)=>{try{
   const u=new URL(rq.url,"http://localhost");
@@ -39,15 +56,37 @@ http.createServer(async(rq,rs)=>{try{
     if(!ANTHKEY){rs.writeHead(503);return rs.end("chat not configured (ANTHROPIC_API_KEY manquante)");}
     if(!ok){rs.writeHead(403);return rs.end("forbidden");}
     if(tooMany(ip)){rs.writeHead(429);return rs.end("slow down");}
-    let data="";rq.on("data",d=>{data+=d;if(data.length>40000)rq.destroy();});
+    let data="";rq.on("data",d=>{data+=d;if(data.length>60000)rq.destroy();});
     rq.on("end",async()=>{try{
       const body=JSON.parse(data||"{}");const msgs=clean(body.messages);
       if(!msgs.length){rs.writeHead(400);return rs.end("no messages");}
-      const r=await anthropic(sysPrompt(body.niveau,body.niveauParle,body.langue,body.mode,body.oral,body.unclear),msgs);
+      const v=tgVerify(body.initData);
+      let sys=sysPrompt(body.niveau,body.niveauParle,body.langue,body.mode,body.oral,body.unclear);
+      if(v&&v.user&&v.user.first_name)sys+="L'apprenant s'appelle "+String(v.user.first_name).slice(0,40)+"; utilise son prenom de temps en temps, chaleureusement. ";
+      const r=await anthropic(sys,msgs);
       if(r.status<200||r.status>=300){console.warn("[chat] upstream "+r.status+" "+r.buf.toString().slice(0,200));rs.writeHead(r.status===401?503:502);return rs.end("chat upstream "+r.status);}
       const j=JSON.parse(r.buf.toString());const reply=(j.content&&j.content[0]&&j.content[0].text)?j.content[0].text:"";
       rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"});rs.end(JSON.stringify({reply:reply}));
+      try{if(v&&v.user&&v.user.id){touchUser(v,function(us){us.conv=us.conv||{messages:[]};var lastU=msgs[msgs.length-1];if(lastU&&lastU.role==="user")us.conv.messages.push({role:"user",content:lastU.content,ts:Date.now()});us.conv.messages.push({role:"assistant",content:String(reply).slice(0,4000),ts:Date.now()});if(us.conv.messages.length>80)us.conv.messages=us.conv.messages.slice(-80);us.conv.updatedAt=new Date().toISOString();if(body.mode)us.lastMode=String(body.mode);});}}catch(e){console.warn("[chat-persist]",e&&e.message);}
     }catch(e){console.error("[chat]",e&&e.message);rs.writeHead(500);rs.end("chat error");}});
+    return;
+  }
+  if(rq.method==="POST"&&/\/state\/?$/.test(u.pathname)){
+    if(!BOT_TOKEN){rs.writeHead(503);return rs.end("state not configured");}
+    if(tooMany(ip)){rs.writeHead(429);return rs.end("slow down");}
+    let data="";rq.on("data",d=>{data+=d;if(data.length>400000)rq.destroy();});
+    rq.on("end",function(){try{
+      const body=JSON.parse(data||"{}");const v=tgVerify(body.initData);
+      if(!v||!v.user||!v.user.id){rs.writeHead(403);return rs.end("bad initData");}
+      const id=String(v.user.id);const before=loadUser(id);const isNew=!before;
+      const usr=touchUser(v,function(us){
+        var ref2=String(body.ref||v.start_param||"").replace(/[^0-9]/g,"");
+        if(isNew&&ref2&&ref2!==id&&!us.referredBy)us.referredBy=ref2;
+        if(body.progress&&typeof body.progress==="object")us.progress=mergeProg(us.progress,body.progress);
+      });
+      rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"});
+      return rs.end(JSON.stringify({ok:true,isNew:isNew,name:usr.name||"",first:(v.user.first_name||""),progress:usr.progress||{},conv:usr.conv||{messages:[]}}));
+    }catch(e){console.error("[state]",e&&e.message);rs.writeHead(500);rs.end("state error");}});
     return;
   }
   if(rq.method==="POST"&&/\/stt\/?$/.test(u.pathname)){
@@ -78,7 +117,30 @@ http.createServer(async(rq,rs)=>{try{
     }catch(e){console.error("[notify]",e&&e.message);rs.writeHead(500);rs.end("notify error");}});
     return;
   }
+  if(rq.method==="POST"&&/\/admin\/?$/.test(u.pathname)){
+    if(tooMany(ip)){rs.writeHead(429);return rs.end("slow down");}
+    let data="";rq.on("data",d=>{data+=d;if(data.length>10000)rq.destroy();});
+    rq.on("end",function(){try{
+      const body=JSON.parse(data||"{}");const id=tgUserId(body.initData);
+      const auth=(ADMIN_TOKEN&&body.key&&body.key===ADMIN_TOKEN)||(ADMIN_ID&&id&&id===ADMIN_ID);
+      if(!auth){rs.writeHead(403,{"Content-Type":"application/json"});return rs.end(JSON.stringify({error:"forbidden",viewerId:id||null,adminConfigured:!!(ADMIN_ID||ADMIN_TOKEN)}));}
+      const users=listUsers();const d7=Date.now()-7*864e5;
+      const byLevel={},byLang={},refCount={};let total=users.length,new7=0,act7=0,msgs=0;
+      const rows=users.map(function(u2){var p=u2.progress||{};var lv=derivedLevel(p);byLevel[lv]=(byLevel[lv]||0)+1;var lg=(p.reglages&&p.reglages.langue)||u2.tgLang||"?";byLang[lg]=(byLang[lg]||0)+1;if(u2.referredBy)refCount[u2.referredBy]=(refCount[u2.referredBy]||0)+1;var c=Date.parse(u2.createdAt||"")||0;if(c>d7)new7++;var s=Date.parse(u2.lastSeen||"")||0;if(s>d7)act7++;var m=(u2.conv&&u2.conv.messages&&u2.conv.messages.length)||0;msgs+=m;return {id:u2.id,name:u2.name||"",username:u2.username||"",lvl:lv,lang:lg,streak:p.streak||0,lastSeen:u2.lastSeen||"",createdAt:u2.createdAt||"",msgs:m,referredBy:u2.referredBy||""};});
+      const byId={};rows.forEach(function(r){byId[r.id]=r;r.invited=0;});
+      Object.keys(refCount).forEach(function(k){if(byId[k])byId[k].invited=refCount[k];});
+      rows.sort(function(a,b){return (Date.parse(b.lastSeen||"")||0)-(Date.parse(a.lastSeen||"")||0);});
+      const topRef=Object.keys(refCount).map(function(k){return {id:k,name:(byId[k]&&byId[k].name)||"",count:refCount[k]};}).sort(function(a,b){return b.count-a.count;}).slice(0,10);
+      rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"});
+      return rs.end(JSON.stringify({ok:true,stats:{total:total,new7:new7,active7:act7,messages:msgs,byLevel:byLevel,byLang:byLang,topReferrers:topRef},users:rows}));
+    }catch(e){console.error("[admin]",e&&e.message);rs.writeHead(500);rs.end("admin error");}});
+    return;
+  }
   if(rq.method!=="GET"){rs.writeHead(405);return rs.end("method");}
+  if(/\/botinfo\/?$/.test(u.pathname)){
+    if(!BOT_USERNAME&&BOT_TOKEN){try{const gm=await call({hostname:"api.telegram.org",path:"/bot"+BOT_TOKEN+"/getMe",method:"GET",headers:{}});const jj=JSON.parse(gm.buf.toString());if(jj&&jj.ok&&jj.result&&jj.result.username)BOT_USERNAME=jj.result.username;}catch(e){}}
+    rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8","Cache-Control":"public, max-age=3600"});return rs.end(JSON.stringify({username:BOT_USERNAME||""}));
+  }
   if(/\/voices\/?$/.test(u.pathname)){if(!KEY){rs.writeHead(503);return rs.end("no key");}if(!ok){rs.writeHead(403);return rs.end("forbidden");}const l=await listVoices();rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8"});return rs.end(JSON.stringify(l.map(v=>({id:v.voice_id,name:v.name,category:v.category})),null,2));}
   if(/\/cache\/?$/.test(u.pathname)){let n=0,b=0;try{for(const f of fs.readdirSync(CACHE_DIR))if(f.endsWith(".mp3")){n++;b+=fs.statSync(path.join(CACHE_DIR,f)).size;}}catch(e){}rs.writeHead(200,{"Content-Type":"application/json"});return rs.end(JSON.stringify({fichiers:n,megaoctets:+(b/1048576).toFixed(2),dossier:CACHE_DIR},null,2));}
   if(!/\/tts\/?$/.test(u.pathname)){rs.writeHead(404);return rs.end("not found");}
@@ -95,5 +157,5 @@ http.createServer(async(rq,rs)=>{try{
   const tmp=file+"."+process.pid+".tmp";
   fs.writeFile(tmp,r.buf,e=>{if(e){try{fs.unlinkSync(tmp);}catch(_){}return;}fs.rename(tmp,file,()=>{});});
   rs.writeHead(200,Object.assign({"X-TTS-Cache":"MISS"},H));return rs.end(r.buf);
-}catch(e){console.error("[srv]",e&&e.message);rs.writeHead(500);return rs.end("error");}}).listen(PORT,"127.0.0.1",()=>console.log("TTS+chat+stt+notify -> 127.0.0.1:"+PORT+" (tts:"+(KEY?"OK":"X")+", chat:"+(ANTHKEY?"OK":"X")+", notify:"+(BOT_TOKEN?"OK":"X")+", voix "+(CONFIG_VOICE||"auto")+")"));
+}catch(e){console.error("[srv]",e&&e.message);rs.writeHead(500);return rs.end("error");}}).listen(PORT,"127.0.0.1",()=>console.log("TTS+chat+stt+notify+state+admin -> 127.0.0.1:"+PORT+" (tts:"+(KEY?"OK":"X")+", chat:"+(ANTHKEY?"OK":"X")+", notify:"+(BOT_TOKEN?"OK":"X")+", admin:"+((ADMIN_ID||ADMIN_TOKEN)?"OK":"X")+", data:"+DATA_DIR+")"));
 setInterval(sendReminders,15*60*1000);

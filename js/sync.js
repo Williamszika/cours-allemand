@@ -1,13 +1,13 @@
 /* =====================================================================
-   sync.js — Synchronisation de la progression via Telegram CloudStorage
-   Sauvegarde la progression (leçons, scores de tests) ET l'état de
-   révision espacée dans le cloud Telegram, partagé entre les appareils
-   de l'utilisateur.
+   sync.js - Synchronisation de la progression
+   1) Telegram CloudStorage : partage entre les appareils de l'utilisateur.
+   2) Serveur (/api/state)  : memoire centrale (le tuteur se souvient, le
+      dashboard admin, et la LANGUE/progression persistent meme si le cache
+      local est vide - donc on ne redemande plus la langue).
 
-   - Fusion « union » (non destructive) : une leçon terminée ou un mot
-     appris sur un appareil le reste partout ; les scores prennent le max.
-   - Découpage en morceaux car chaque valeur CloudStorage est limitée
-     (~4096 caractères).
+   - Fusion " union " non destructive : une lecon terminee, un niveau atteint
+     ou la langue choisie sur un appareil le reste partout ; scores = max.
+   - La fusion preserve TOUS les champs (reglages, niveau, temps, faiblesses...).
    Sans effet hors de Telegram (l'app utilise alors le localStorage seul).
    ===================================================================== */
 window.Sync = (function () {
@@ -16,7 +16,7 @@ window.Sync = (function () {
   const DEBOUNCE = 1500;
   let timer = null;
   let lastCount = 0;
-  let suspend = false; // évite de re-pousser pendant qu'on applique le cloud
+  let suspend = false; // evite de re-pousser pendant qu'on applique le distant
 
   function cs() {
     const tg = window.TG && window.TG.tg;
@@ -26,35 +26,45 @@ window.Sync = (function () {
     const store = cs();
     return !!(window.TG && window.TG.isInside() && store && typeof store.getItem === "function");
   }
+  function tgInitData() {
+    try { const tg = window.TG && window.TG.tg; return (window.TG && window.TG.isInside() && tg && tg.initData) ? tg.initData : null; } catch (e) { return null; }
+  }
+  function serverAvailable() { return !!tgInitData(); }
+  function startParam() {
+    try { const tg = window.TG && window.TG.tg; return (tg && tg.initDataUnsafe && tg.initDataUnsafe.start_param) || ""; } catch (e) { return ""; }
+  }
 
   /* ---------- Fusions non destructives ---------- */
+  const ORDER = ["A1", "A2", "B1", "B2", "C1", "C2"];
+  function lvlMax(a, b) { const i = Math.max(ORDER.indexOf(a), ORDER.indexOf(b)); return i >= 0 ? ORDER[i] : (b || a || null); }
   function mergeProgress(a, b) {
     a = a || {}; b = b || {};
-    const out = { lecons: {}, tests: {}, derniereVisite: null, streak: 0 };
-    const al = a.lecons || {}, bl = b.lecons || {};
+    const out = Object.assign({}, a, b); // conserve tous les champs (niveau, faiblesses, lastNotified, reglages...)
+    const al = a.lecons || {}, bl = b.lecons || {}, L = {};
     new Set(Object.keys(al).concat(Object.keys(bl))).forEach((id) => {
-      const la = al[id] || {}, lb = bl[id] || {};
-      const ex = {};
-      new Set(Object.keys(la.exercices || {}).concat(Object.keys(lb.exercices || {}))).forEach((k) => {
-        ex[k] = !!(la.exercices && la.exercices[k]) || !!(lb.exercices && lb.exercices[k]);
+      const x = al[id] || {}, y = bl[id] || {}, ex = {};
+      new Set(Object.keys(x.exercices || {}).concat(Object.keys(y.exercices || {}))).forEach((k) => {
+        ex[k] = !!((x.exercices && x.exercices[k]) || (y.exercices && y.exercices[k]));
       });
-      out.lecons[id] = {
-        exercices: ex,
-        termine: !!(la.termine || lb.termine),
-        score: Math.max(la.score || 0, lb.score || 0)
-      };
+      L[id] = { exercices: ex, termine: !!(x.termine || y.termine), score: Math.max(x.score || 0, y.score || 0) };
     });
-    const at = a.tests || {}, bt = b.tests || {};
+    out.lecons = L;
+    const at = a.tests || {}, bt = b.tests || {}, T = {};
     new Set(Object.keys(at).concat(Object.keys(bt))).forEach((id) => {
-      const ta = at[id] || {}, tb = bt[id] || {};
-      out.tests[id] = {
-        meilleur: Math.max(ta.meilleur || 0, tb.meilleur || 0),
-        reussi: !!(ta.reussi || tb.reussi),
-        dernier: tb.dernier != null ? tb.dernier : ta.dernier
-      };
+      const x = at[id] || {}, y = bt[id] || {};
+      T[id] = { meilleur: Math.max(x.meilleur || 0, y.meilleur || 0), reussi: !!(x.reussi || y.reussi), dernier: y.dernier != null ? y.dernier : x.dernier };
     });
+    out.tests = T;
+    const am = a.temps || {}, bm = b.temps || {}, TM = {};
+    new Set(Object.keys(am).concat(Object.keys(bm))).forEach((d) => { TM[d] = Math.max(am[d] || 0, bm[d] || 0); });
+    out.temps = TM;
+    out.niveau = lvlMax(a.niveau, b.niveau);
+    out.reglages = Object.assign({}, a.reglages || {}, b.reglages || {});
+    if ((a.reglages && a.reglages.langueChoisie) || (b.reglages && b.reglages.langueChoisie)) out.reglages.langueChoisie = true;
     out.streak = Math.max(a.streak || 0, b.streak || 0);
+    out.lastStudy = [a.lastStudy, b.lastStudy].filter(Boolean).sort().pop() || null;
     out.derniereVisite = [a.derniereVisite, b.derniereVisite].filter(Boolean).sort().pop() || null;
+    out.lastNotified = [a.lastNotified, b.lastNotified].filter(Boolean).sort().pop() || null;
     return out;
   }
   function mergeSrs(a, b) {
@@ -62,11 +72,7 @@ window.Sync = (function () {
     const out = {};
     new Set(Object.keys(a).concat(Object.keys(b))).forEach((id) => {
       const x = a[id] || {}, y = b[id] || {};
-      out[id] = {
-        box: Math.max(x.box || 1, y.box || 1),
-        due: Math.max(x.due || 0, y.due || 0),
-        vu: Math.max(x.vu || 0, y.vu || 0)
-      };
+      out[id] = { box: Math.max(x.box || 1, y.box || 1), due: Math.max(x.due || 0, y.due || 0), vu: Math.max(x.vu || 0, y.vu || 0) };
     });
     return out;
   }
@@ -77,52 +83,98 @@ window.Sync = (function () {
     return arr.length ? arr : [""];
   }
 
-  /* ---------- Écriture vers le cloud (différée) ---------- */
+  /* ---------- Ecriture (differee) ---------- */
   function scheduleSave() {
-    if (suspend || !available()) return;
+    if (suspend || (!available() && !serverAvailable())) return;
     clearTimeout(timer);
     timer = setTimeout(saveNow, DEBOUNCE);
   }
 
   function saveNow() {
-    if (!available()) return;
-    const store = cs();
-    const state = {
-      v: 1,
-      updatedAt: Date.now(),
-      progress: window.Progress ? window.Progress.load() : {},
-      srs: window.Revision ? window.Revision.exportState() : {}
-    };
-    const parts = chunk(JSON.stringify(state));
+    if (available()) {
+      const store = cs();
+      const state = {
+        v: 1,
+        updatedAt: Date.now(),
+        progress: window.Progress ? window.Progress.load() : {},
+        srs: window.Revision ? window.Revision.exportState() : {}
+      };
+      const parts = chunk(JSON.stringify(state));
+      try {
+        store.setItem(PREFIX + "meta", String(parts.length), function () {});
+        parts.forEach((p, i) => store.setItem(PREFIX + i, p, function () {}));
+        for (let i = parts.length; i < lastCount; i++) store.removeItem(PREFIX + i, function () {});
+        lastCount = parts.length;
+      } catch (e) {}
+    }
+    pushServer();
+  }
+
+  function pushServer() {
+    const initData = tgInitData();
+    if (!initData || suspend) return;
     try {
-      store.setItem(PREFIX + "meta", String(parts.length), function () {});
-      parts.forEach((p, i) => store.setItem(PREFIX + i, p, function () {}));
-      // supprime d'éventuels morceaux résiduels d'une sauvegarde plus grande
-      for (let i = parts.length; i < lastCount; i++) store.removeItem(PREFIX + i, function () {});
-      lastCount = parts.length;
+      fetch("/api/state", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ initData: initData, progress: window.Progress ? window.Progress.load() : {} })
+      }).catch(function () {});
     } catch (e) {}
   }
 
-  /* ---------- Lecture + fusion au démarrage ---------- */
+  /* ---------- Lecture + fusion au demarrage ---------- */
   function load(cb) {
     cb = cb || function () {};
-    if (!available()) return cb(false);
-    const store = cs();
-    store.getItem(PREFIX + "meta", function (err, meta) {
-      const n = parseInt(meta || "0", 10);
-      if (err || !n) return cb(false);
-      const keys = [];
-      for (let i = 0; i < n; i++) keys.push(PREFIX + i);
-      store.getItems(keys, function (err2, vals) {
-        if (err2 || !vals) return cb(false);
-        let json = "";
-        for (let i = 0; i < n; i++) json += vals[PREFIX + i] || "";
-        let cloud;
-        try { cloud = JSON.parse(json); } catch (e) { return cb(false); }
-        lastCount = n;
-        cb(applyMerge(cloud));
+    if (available()) {
+      const store = cs();
+      store.getItem(PREFIX + "meta", function (err, meta) {
+        const n = parseInt(meta || "0", 10);
+        if (err || !n) return afterCloud(false);
+        const keys = [];
+        for (let i = 0; i < n; i++) keys.push(PREFIX + i);
+        store.getItems(keys, function (err2, vals) {
+          if (err2 || !vals) return afterCloud(false);
+          let json = "";
+          for (let i = 0; i < n; i++) json += vals[PREFIX + i] || "";
+          let cloud;
+          try { cloud = JSON.parse(json); } catch (e) { return afterCloud(false); }
+          lastCount = n;
+          afterCloud(applyMerge(cloud));
+        });
       });
-    });
+    } else {
+      afterCloud(false);
+    }
+    function afterCloud(changedCloud) {
+      loadServer(function (changedSrv) { cb(!!(changedCloud || changedSrv)); });
+    }
+  }
+
+  // Charge la memoire serveur (memoire centrale), fusionne, et renvoie si ca a change.
+  function loadServer(cb) {
+    cb = cb || function () {};
+    const initData = tgInitData();
+    if (!initData) return cb(false);
+    const body = JSON.stringify({ initData: initData, ref: startParam(), progress: window.Progress ? window.Progress.load() : {} });
+    fetch("/api/state", { method: "POST", headers: { "content-type": "application/json" }, body: body })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        if (!j || !j.progress) return cb(false);
+        let changed = false;
+        suspend = true;
+        try {
+          if (window.Progress) {
+            const before = JSON.stringify(window.Progress.load());
+            const merged = mergeProgress(window.Progress.load(), j.progress);
+            window.Progress.save(merged);
+            if (before !== JSON.stringify(merged)) changed = true;
+          }
+        } catch (e) {}
+        suspend = false;
+        scheduleSave(); // fait converger cloud + serveur vers l'union
+        cb(changed);
+      })
+      .catch(function () { cb(false); });
   }
 
   function applyMerge(cloud) {
@@ -144,8 +196,7 @@ window.Sync = (function () {
       }
     } catch (e) {}
     suspend = false;
-    // pousse l'union fusionnée vers le cloud (les deux appareils convergent)
-    scheduleSave();
+    scheduleSave(); // pousse l'union fusionnee (les appareils convergent)
     return changed;
   }
 
@@ -161,5 +212,5 @@ window.Sync = (function () {
     });
   }
 
-  return { available, load, scheduleSave, saveNow, clear, mergeProgress, mergeSrs };
+  return { available, serverAvailable, load, loadServer, scheduleSave, saveNow, pushServer, clear, mergeProgress, mergeSrs };
 })();
