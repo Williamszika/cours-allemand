@@ -631,7 +631,7 @@
     footer.innerHTML =
       "<p>Cours d'allemand intensif · Niveau A1 · Méthode communicative (CECRL)</p>" +
       (synced ? '<p class="sync-badge">☁️ Progression synchronisée avec votre compte Telegram</p>' : "") +
-      '<button class="btn-link" id="reset-prog">Réinitialiser ma progression</button>';
+      '<p class="footer-legal" style="margin-top:8px;font-size:12px;opacity:.85">' + '<a class="btn-link" href="#/impressum">Impressum</a> | <a class="btn-link" href="#/datenschutz">Datenschutz</a> | <a class="btn-link" href="#/agb">AGB</a> | <a class="btn-link" href="#/widerruf">Widerruf</a>' + '</p>' + '<button class="btn-link" id="reset-prog">Réinitialiser ma progression</button>';
     frag.appendChild(footer);
 
     app.innerHTML = "";
@@ -2606,6 +2606,7 @@
     const top = el("div", "lesson-top");
     top.innerHTML = '<a class="btn-link" href="#/menu">← Menu</a><span class="lesson-top-mod">🩺 Deutsch Pflege</span>';
     frag.appendChild(top);
+    var __pd = el("div", "pflege-dis"); __pd.style.cssText = "margin:8px 0;padding:10px 12px;border-radius:10px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;font-size:13px"; __pd.textContent = "Entraînement linguistique et préparation à l'examen - ceci n'est pas un conseil médical ni de soins."; frag.appendChild(__pd);
 
     if (!P) { app.innerHTML = ""; app.appendChild(frag); return; }
 
@@ -3170,6 +3171,7 @@
     else if (hash.match(/^#\/langue/)) renderLanguagePage();
     else if (hash.match(/^#\/stats/)) renderDashboard();
     else if (hash.match(/^#\/objectif/)) { app.innerHTML = ""; if (window.Objectif && window.Objectif.page) app.appendChild(window.Objectif.page(COURS)); window.scrollTo(0, 0); if (window.TG) { try { window.TG.showBackButton(function () { location.hash = "#/"; }); if (window.TG.hideMainButton) window.TG.hideMainButton(); } catch (e) {} } }
+    else if ((m = hash.match(/^#\/(impressum|datenschutz|agb|widerruf|legal)$/))) { app.innerHTML = ""; if (window.Legal && window.Legal.page) app.appendChild(window.Legal.page(m[1])); window.scrollTo(0, 0); if (window.TG) { try { window.TG.showBackButton(function () { location.hash = "#/menu"; }); if (window.TG.hideMainButton) window.TG.hideMainButton(); } catch (e) {} } }
     else if (rawHash === "#/") { if (besoinOnboarding()) renderOnboarding(); else renderHome(); } // aperçu du cours (lien explicite)
     else renderMenu(); // ouverture de l'app : hash vide OU « #tgWebAppData… » injecté par Telegram → le hub
     try { localizeUI(app); } catch (e) {} // traduit l'interface dans la langue choisie
