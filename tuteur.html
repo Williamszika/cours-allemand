@@ -181,7 +181,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
   // Demarre le tuteur avec la progression (locale + serveur) et la memoire de conversation.
   function startTutor(serverProgress, conv, first){
     var p=mergeP(prog(), serverProgress);
-    NIV=niveauAuto(p); LG=(window.I18N&&window.I18N.uiLang)?window.I18N.uiLang():langueAuto(p);
+    NIV=niveauAuto(p); LG=(ORDER.indexOf(NIV)>=ORDER.indexOf("B2"))?"de":langueAuto(p);
     if(!NIV){ showGate(); return; }
     var pi=ORDER.indexOf(NIV); if(pi<0)pi=0;
     NIVPARLE=ORDER[pi>=2?pi-1:pi];
@@ -217,7 +217,7 @@ footer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--bd);backgrou
      PAS le chat IA (.ai-reply : reponses en allemand / langue cible) ni les
      champs de saisie. Support RTL via applyDir(). */
   function localizeTutor(root){
-    if(!window.I18N) return; var lang=window.I18N.uiLang?window.I18N.uiLang():window.I18N.lang(); if(lang==='fr') return;
+    if(!window.I18N) return; var lang=(ORDER.indexOf(niveauAuto(prog()))>=ORDER.indexOf("B2"))?"de":(window.I18N.lang?window.I18N.lang():"fr"); if(lang==='fr') return;
     root=root||document.body; var walker; try{walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null);}catch(e){return;}
     var groups={},n; while((n=walker.nextNode())){ var raw=n.nodeValue; if(!raw||!/[A-Za-zÀ-ÿ]/.test(raw)) continue; if(n.__loc) continue; var p=n.parentElement; if(!p||(p.closest&&p.closest('.ai-reply,input,textarea,[contenteditable]'))) continue; n.__loc=1; var k=raw.trim(); (groups[k]=groups[k]||[]).push(n); }
     Object.keys(groups).forEach(function(k){ window.I18N.translate(k,lang,'fr').then(function(out){ if(out&&out!==k) groups[k].forEach(function(nd){ nd.nodeValue=nd.nodeValue.replace(k,function(){return out;}); }); }); });
