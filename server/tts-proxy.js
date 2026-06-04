@@ -76,6 +76,7 @@ http.createServer(async(rq,rs)=>{try{
       const body=JSON.parse(data||"{}");const msgs=clean(body.messages);
       if(!msgs.length){rs.writeHead(400);return rs.end("no messages");}
       const v=tgVerify(body.initData);
+      if(v&&v.user&&v.user.id){var __bu=loadUser(String(v.user.id));if(__bu&&__bu.blocked){rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"});return rs.end(JSON.stringify({reply:"Ton acces au tuteur a ete suspendu par l'administration."}));}}
       let sys=sysPrompt(body.niveau,body.niveauParle,body.langue,body.mode,body.oral,body.unclear);
       if(v&&v.user&&v.user.first_name)sys+="L'apprenant s'appelle "+String(v.user.first_name).slice(0,40)+"; utilise son prenom de temps en temps, chaleureusement. ";
       const r=await anthropic(sys,msgs);
@@ -139,9 +140,10 @@ http.createServer(async(rq,rs)=>{try{
       const body=JSON.parse(data||"{}");const id=tgUserId(body.initData);
       const auth=(ADMIN_TOKEN&&body.key&&body.key===ADMIN_TOKEN)||(ADMIN_ID&&id&&id===ADMIN_ID);
       if(!auth){rs.writeHead(403,{"Content-Type":"application/json"});return rs.end(JSON.stringify({error:"forbidden",viewerId:id||null,adminConfigured:!!(ADMIN_ID||ADMIN_TOKEN)}));}
+      if(body.action){var tgt=String(body.target||"").replace(/[^0-9]/g,"");if(!tgt){rs.writeHead(400,{"Content-Type":"application/json"});return rs.end(JSON.stringify({error:"no target"}));}var act=String(body.action);if(act==="delete"){try{fs.unlinkSync(uFile(tgt));}catch(e){}console.log("[admin] delete "+tgt+" par "+(id||"token"));rs.writeHead(200,{"Content-Type":"application/json"});return rs.end(JSON.stringify({ok:true,action:"delete",target:tgt}));}if(act==="block"||act==="unblock"){var tu=loadUser(tgt);if(!tu){rs.writeHead(404,{"Content-Type":"application/json"});return rs.end(JSON.stringify({error:"not found"}));}tu.blocked=(act==="block");saveUser(tgt,tu);console.log("[admin] "+act+" "+tgt+" par "+(id||"token"));rs.writeHead(200,{"Content-Type":"application/json"});return rs.end(JSON.stringify({ok:true,action:act,target:tgt,blocked:tu.blocked}));}rs.writeHead(400,{"Content-Type":"application/json"});return rs.end(JSON.stringify({error:"unknown action"}));}
       const users=listUsers();const d7=Date.now()-7*864e5;
       const byLevel={},byLang={},refCount={};let total=users.length,new7=0,act7=0,msgs=0;
-      const rows=users.map(function(u2){var p=u2.progress||{};var lv=derivedLevel(p);byLevel[lv]=(byLevel[lv]||0)+1;var lg=(p.reglages&&p.reglages.langue)||u2.tgLang||"?";byLang[lg]=(byLang[lg]||0)+1;if(u2.referredBy)refCount[u2.referredBy]=(refCount[u2.referredBy]||0)+1;var c=Date.parse(u2.createdAt||"")||0;if(c>d7)new7++;var s=Date.parse(u2.lastSeen||"")||0;if(s>d7)act7++;var m=(u2.conv&&u2.conv.messages&&u2.conv.messages.length)||0;msgs+=m;return {id:u2.id,name:u2.name||"",username:u2.username||"",lvl:lv,lang:lg,streak:p.streak||0,lastSeen:u2.lastSeen||"",createdAt:u2.createdAt||"",msgs:m,referredBy:u2.referredBy||""};});
+      const rows=users.map(function(u2){var p=u2.progress||{};var lv=derivedLevel(p);byLevel[lv]=(byLevel[lv]||0)+1;var lg=(p.reglages&&p.reglages.langue)||u2.tgLang||"?";byLang[lg]=(byLang[lg]||0)+1;if(u2.referredBy)refCount[u2.referredBy]=(refCount[u2.referredBy]||0)+1;var c=Date.parse(u2.createdAt||"")||0;if(c>d7)new7++;var s=Date.parse(u2.lastSeen||"")||0;if(s>d7)act7++;var m=(u2.conv&&u2.conv.messages&&u2.conv.messages.length)||0;msgs+=m;return {id:u2.id,name:u2.name||"",username:u2.username||"",lvl:lv,lang:lg,streak:p.streak||0,lastSeen:u2.lastSeen||"",createdAt:u2.createdAt||"",msgs:m,referredBy:u2.referredBy||"",blocked:!!u2.blocked};});
       const byId={};rows.forEach(function(r){byId[r.id]=r;r.invited=0;});
       Object.keys(refCount).forEach(function(k){if(byId[k])byId[k].invited=refCount[k];});
       rows.sort(function(a,b){return (Date.parse(b.lastSeen||"")||0)-(Date.parse(a.lastSeen||"")||0);});

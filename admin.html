@@ -50,6 +50,7 @@ button.ghost{background:#262a33;border:1px solid var(--bd)}
     return fetch('/api/admin',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)})
       .then(function(r){return r.text().then(function(t){var j=null;try{j=JSON.parse(t);}catch(e){}return {status:r.status,j:j};});});
   }
+  function authBody(extra){ var k=''; try{k=localStorage.getItem(KEYK)||'';}catch(e){} var b=k?{key:k}:(INITDATA?{initData:INITDATA}:{}); if(extra)for(var p in extra)b[p]=extra[p]; return b; }
   function ago(iso){ if(!iso)return '-'; var d=Date.parse(iso); if(!d)return '-'; var s=(Date.now()-d)/1000; if(s<60)return "a l'instant"; if(s<3600)return Math.floor(s/60)+' min'; if(s<86400)return Math.floor(s/3600)+' h'; return Math.floor(s/86400)+' j'; }
   function card(n,l){return '<div class="stat"><div class="n">'+n+'</div><div class="l">'+esc(l)+'</div></div>';}
   function bars(obj,order){ var max=1; order.forEach(function(k){if((obj[k]||0)>max)max=obj[k];}); return order.map(function(k){var v=obj[k]||0;return '<div class="kv"><span class="k">'+k+'</span><span class="barwrap"><span class="bar" style="width:'+Math.round(v/max*100)+'%"></span></span><span class="b">'+v+'</span></div>';}).join(''); }
@@ -72,12 +73,14 @@ button.ghost{background:#262a33;border:1px solid var(--bd)}
     }
     if((s.topReferrers||[]).length){ h+='<div class="card"><h2>Top parrains</h2>'+s.topReferrers.map(function(r){return '<div class="kv"><span class="k" style="min-width:auto;flex:1">'+esc(r.name||('id '+r.id))+'</span><span class="b">'+r.count+'</span></div>';}).join('')+'</div>'; }
     var rows=users.slice(0,400).map(function(u){
-      var nm=esc(u.name||('id '+u.id)); if(u.username)nm+=' <span class="mut">@'+esc(u.username)+'</span>';
-      return '<tr><td>'+nm+'</td><td>'+esc(u.lvl)+'</td><td>'+esc(u.lang)+'</td><td>'+(u.streak||0)+'</td><td>'+(u.msgs||0)+'</td><td>'+(u.invited||0)+'</td><td class="mut">'+ago(u.lastSeen)+'</td></tr>';
+      var nm=esc(u.name||('id '+u.id)); if(u.username)nm+=' <span class="mut">@'+esc(u.username)+'</span>'; if(u.blocked)nm='<span style="color:#dc2626">(bloque)</span> '+nm;
+      var act=(u.blocked?'<button class="ghost" data-act="unblock" data-id="'+esc(u.id)+'">Debloquer</button>':'<button class="ghost" data-act="block" data-id="'+esc(u.id)+'">Bloquer</button>')+' <button class="ghost" style="color:#dc2626;border-color:#dc2626" data-act="delete" data-id="'+esc(u.id)+'" data-name="'+esc(u.name||u.id)+'">Supprimer</button>';
+      return '<tr'+(u.blocked?' style="opacity:.55"':'')+'><td>'+nm+'</td><td>'+esc(u.lvl)+'</td><td>'+esc(u.lang)+'</td><td>'+(u.streak||0)+'</td><td>'+(u.msgs||0)+'</td><td>'+(u.invited||0)+'</td><td class="mut">'+ago(u.lastSeen)+'</td><td class="act" style="white-space:nowrap">'+act+'</td></tr>';
     }).join('');
-    h+='<div class="card"><h2>Utilisateurs ('+users.length+')</h2><div class="tbl"><table><thead><tr><th>Nom</th><th>Niv</th><th>Lng</th><th>Série</th><th>Msg</th><th>Filleuls</th><th>Vu</th></tr></thead><tbody>'+(rows||'<tr><td colspan="7" class="mut">Aucun utilisateur pour l\'instant.</td></tr>')+'</tbody></table></div></div>';
+    h+='<div class="card"><h2>Utilisateurs ('+users.length+')</h2><div class="tbl"><table><thead><tr><th>Nom</th><th>Niv</th><th>Lng</th><th>Série</th><th>Msg</th><th>Filleuls</th><th>Vu</th><th>Actions</th></tr></thead><tbody>'+(rows||'<tr><td colspan="8" class="mut">Aucun utilisateur pour l\'instant.</td></tr>')+'</tbody></table></div></div>';
     app.innerHTML=h;
     document.getElementById('refresh').onclick=start;
+    var __tb=app.querySelector('table tbody'); if(__tb)__tb.addEventListener('click',function(e){ var b=e.target&&e.target.closest&&e.target.closest('button[data-act]'); if(!b)return; var a=b.getAttribute('data-act'), id=b.getAttribute('data-id'); if(a==='delete'&&!confirm('Supprimer DEFINITIVEMENT le compte '+(b.getAttribute('data-name')||id)+' ? Action irreversible.'))return; if(a==='block'&&!confirm('Bloquer ce compte ? Il ne pourra plus utiliser le tuteur.'))return; b.disabled=true; var old=b.textContent; b.textContent='...'; post(authBody({action:a,target:id})).then(function(res){ if(res.status===200&&res.j&&res.j.ok){ start(); } else { alert('Echec: '+((res.j&&res.j.error)||res.status)); b.disabled=false; b.textContent=old; } }).catch(function(){ alert('Erreur reseau.'); b.disabled=false; b.textContent=old; }); });
   }
 
   function locked(viewerId){
