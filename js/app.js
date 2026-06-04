@@ -3131,6 +3131,7 @@
     inv.innerHTML = '<span style="font-size:26px">📣</span><span style="flex:1"><strong style="display:block;font-size:16px;margin-bottom:2px">Inviter un ami</strong><span style="font-size:13px;opacity:.92">Partage Sprachakademie et apprenez l\'allemand ensemble 🇩🇪</span></span><span style="font-size:20px">→</span>';
     inv.addEventListener("click", inviteAmi);
     frag.appendChild(inv);
+    var __lf = el("footer", "menu-legal"); __lf.style.cssText = "margin-top:18px;text-align:center;font-size:12px;opacity:.8;line-height:2"; __lf.innerHTML = '<a class="btn-link" href="#/impressum">Impressum</a> | <a class="btn-link" href="#/datenschutz">Datenschutz</a> | <a class="btn-link" href="#/agb">AGB</a> | <a class="btn-link" href="#/widerruf">Widerruf</a>'; frag.appendChild(__lf);
 
     app.innerHTML = "";
     app.appendChild(frag);
