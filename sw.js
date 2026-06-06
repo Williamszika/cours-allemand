@@ -4,20 +4,63 @@
    cache-first (instantané et hors-ligne) avec mise à jour en arrière-plan.
    Les photos LoremFlickr sont mises en cache au fil de la navigation.
    ===================================================================== */
-var VERSION = "v1.5.64";
+var VERSION = "v1.5.65";
 var CACHE = "deutsch-a1c2-" + VERSION;
 
 var SHELL = [
-  "./", "./index.html", "./css/styles.css", "./manifest.webmanifest",
-  "./icon-192.png", "./icon-512.png",
-  "./data/lecons-a11.js", "./data/lecons-a12.js", "./data/production.js", "./data/comprehension.js", "./data/grammaire.js",
-  "./data/lecons-a21.js", "./data/lecons-a22.js", "./data/grammaire-a21.js", "./data/grammaire-a22.js",
-  "./data/lecons-b11.js", "./data/lecons-b12.js", "./data/grammaire-b11.js", "./data/grammaire-b12.js",
-  "./data/lecons-b21.js", "./data/lecons-b22.js", "./data/grammaire-b21.js", "./data/grammaire-b22.js",
-  "./data/lecons-c11.js", "./data/lecons-c12.js", "./data/grammaire-c11.js", "./data/grammaire-c12.js",
-  "./data/lecons-c21.js", "./data/lecons-c22.js", "./data/grammaire-c21.js", "./data/grammaire-c22.js",
-  "./data/cours.js", "./data/illustrations.js", "./data/placement.js", "./data/pflege.js", "./data/dictees.js",
-  "./js/i18n.js", "./js/speech.js", "./js/progress.js", "./js/revision.js", "./js/telegram.js", "./js/sync.js", "./js/exercises.js", "./js/legal.js", "./js/app.js"
+  /* @shell:start — liste générée depuis index.html par `node build.js`. Ne pas éditer à la main. */
+  "./",
+  "./index.html",
+  "./icon-512.png",
+  "./css/styles.css",
+  "./manifest.webmanifest",
+  "./icon-192.png",
+  "./data/lecons-a11.js",
+  "./data/lecons-a12.js",
+  "./data/production.js",
+  "./data/ecoute.js",
+  "./data/vocplus.js",
+  "./data/c2diff.js",
+  "./data/comprehension.js",
+  "./data/grammaire.js",
+  "./data/lecons-a21.js",
+  "./data/lecons-a22.js",
+  "./data/grammaire-a21.js",
+  "./data/grammaire-a22.js",
+  "./data/lecons-b11.js",
+  "./data/lecons-b12.js",
+  "./data/grammaire-b11.js",
+  "./data/grammaire-b12.js",
+  "./data/lecons-b21.js",
+  "./data/lecons-b22.js",
+  "./data/grammaire-b21.js",
+  "./data/grammaire-b22.js",
+  "./data/lecons-c11.js",
+  "./data/lecons-c12.js",
+  "./data/grammaire-c11.js",
+  "./data/grammaire-c12.js",
+  "./data/lecons-c21.js",
+  "./data/lecons-c22.js",
+  "./data/grammaire-c21.js",
+  "./data/grammaire-c22.js",
+  "./data/cours.js",
+  "./data/competences.js",
+  "./data/illustrations.js",
+  "./data/placement.js",
+  "./data/pflege.js",
+  "./data/dictees.js",
+  "./js/i18n.js",
+  "./js/speech.js",
+  "./js/progress.js",
+  "./js/revision.js",
+  "./js/telegram.js",
+  "./js/sync.js",
+  "./js/exercises.js",
+  "./js/adaptatif.js",
+  "./js/objectif.js",
+  "./js/legal.js",
+  "./js/app.js"
+  /* @shell:end */
 ];
 
 self.addEventListener("install", function (e) {

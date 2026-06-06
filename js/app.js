@@ -1912,14 +1912,20 @@
       return wrap;
     }
     wrap.appendChild(el("p", "onboarding-intro", "Choisis la voix la plus naturelle de ton appareil (⭐ = voix naturelle/en ligne), puis teste-la."));
-    const cur = S.voice && S.voice();
+    const pref = S.preferredVoice && S.preferredVoice(); // null/"" → automatique
     const sel = el("select", "voice-select");
+    // Option « Automatique » : laisse l'app choisir la meilleure voix (ou ElevenLabs si activé).
+    const optAuto = document.createElement("option");
+    optAuto.value = "";
+    optAuto.textContent = "🔄 Automatique (recommandé)";
+    if (!pref) optAuto.selected = true;
+    sel.appendChild(optAuto);
     list.forEach((v) => {
       const o = document.createElement("option");
       o.value = v.name;
       const naturel = /neural|natural|online|premium|wavenet|enhanced|google|siri/i.test(v.name) || v.localService === false ? " ⭐" : "";
       o.textContent = v.name + naturel;
-      if (cur && v.name === cur.name) o.selected = true;
+      if (pref && v.name === pref) o.selected = true;
       sel.appendChild(o);
     });
     const row = el("div", "voice-row");

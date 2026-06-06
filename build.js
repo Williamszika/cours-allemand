@@ -4,78 +4,80 @@
    d'obtenir un fichier autonome qu'on peut ouvrir d'un double-clic
    (aucun serveur requis).
    Lancer :  node build.js
+
+   La liste des ressources à inliner est DÉDUITE de index.html (et non
+   plus codée en dur) : tout <link rel="stylesheet" href="css/…"> et tout
+   <script src="data/…" | "js/…"> y est repris dans l'ordre du document.
+   Ajouter un script/feuille de style dans index.html suffit donc — le
+   bundle reste automatiquement à jour. Le SDK Telegram (https://…) et les
+   autres ressources externes sont laissés en place.
    ===================================================================== */
 const fs = require("fs");
 const path = require("path");
 
 const dir = __dirname;
 const read = (p) => fs.readFileSync(path.join(dir, p), "utf8");
+const isLocal = (href) => /^(?:data|js|css)\//.test(href); // à inliner
 
 let html = read("index.html");
 
-// 1) Inline du CSS
-const css = read("css/styles.css");
-html = html.split('<link rel="stylesheet" href="css/styles.css" />').join("<style>\n" + css + "\n</style>");
-
-// 2) Inline des scripts (dans l'ordre de chargement)
-const scripts = [
-  "data/lecons-a11.js",
-  "data/lecons-a12.js",
-  "data/production.js",
-  "data/comprehension.js",
-  "data/grammaire.js",
-  "data/lecons-a21.js",
-  "data/lecons-a22.js",
-  "data/grammaire-a21.js",
-  "data/grammaire-a22.js",
-  "data/lecons-b11.js",
-  "data/lecons-b12.js",
-  "data/grammaire-b11.js",
-  "data/grammaire-b12.js",
-  "data/lecons-b21.js",
-  "data/lecons-b22.js",
-  "data/grammaire-b21.js",
-  "data/grammaire-b22.js",
-  "data/lecons-c11.js",
-  "data/lecons-c12.js",
-  "data/grammaire-c11.js",
-  "data/grammaire-c12.js",
-  "data/lecons-c21.js",
-  "data/lecons-c22.js",
-  "data/grammaire-c21.js",
-  "data/grammaire-c22.js",
-  "data/cours.js",
-  "data/illustrations.js",
-  "data/placement.js",
-  "data/pflege.js",
-  "data/dictees.js",
-  "js/i18n.js",
-  "js/speech.js",
-  "js/progress.js",
-  "js/revision.js",
-  "js/telegram.js",
-  "js/sync.js",
-  "js/exercises.js",
-  "js/app.js"
-];
-scripts.forEach((s) => {
-  const code = read(s).replace(/<\/script>/g, "<\\/script>");
-  html = html.split('<script src="' + s + '"></script>').join("<script>\n" + code + "\n</script>");
-});
-
-// 3) Bandeau de version autonome
+// 1) Inline des feuilles de style locales (<link rel="stylesheet" href="css/…">).
 html = html.replace(
-  "<title>Allemand intensif A1 — Cours interactif</title>",
-  "<title>Allemand intensif A1 — Cours interactif (version autonome)</title>"
+  /<link\b[^>]*\brel=["']stylesheet["'][^>]*\bhref=["'](css\/[^"']+)["'][^>]*>/gi,
+  (_tag, href) => "<style>\n" + read(href) + "\n</style>"
+);
+
+// 2) Inline des scripts locaux (data/…, js/…), dans l'ordre du document.
+//    Les scripts externes (ex. SDK Telegram en https://…) sont laissés tels quels.
+html = html.replace(
+  /<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*><\/script>/gi,
+  (tag, src) => {
+    if (!isLocal(src)) return tag;
+    const code = read(src).replace(/<\/script>/g, "<\\/script>");
+    return "<script>\n" + code + "\n</script>";
+  }
+);
+
+// 3) Marque la version autonome dans le titre.
+html = html.replace(
+  /<title>([^<]*)<\/title>/i,
+  (_m, t) => "<title>" + t.trim() + " (version autonome)</title>"
 );
 
 fs.mkdirSync(path.join(dir, "dist"), { recursive: true });
 const out = path.join(dir, "dist/allemand-a1.html");
 fs.writeFileSync(out, html);
 console.log("✅ Bundle écrit : dist/allemand-a1.html (" + Math.round(html.length / 1024) + " KB)");
-// Le SDK Telegram reste volontairement externe (chargé par Telegram).
-if (/<script src="(?:data|js)\//.test(html) || /<link rel="stylesheet" href="css\//.test(html)) {
+
+// Garde-fou : plus aucune référence locale ne doit subsister dans le bundle.
+// (Le SDK Telegram externe, lui, est volontairement laissé en https://.)
+if (
+  /<script\b[^>]*\bsrc=["'](?:data|js|css)\//i.test(html) ||
+  /<link\b[^>]*\brel=["']stylesheet["'][^>]*\bhref=["']css\//i.test(html)
+) {
   console.warn("⚠️ Des références locales subsistent dans le bundle.");
 } else {
   console.log("   (SDK Telegram laissé en externe — normal.)");
+}
+
+// 4) Synchronise la liste de précache du Service Worker (sw.js) avec index.html
+//    — même source de vérité que le bundle, pour éviter toute dérive du mode
+//    hors-ligne. La liste est écrite entre les marqueurs @shell:start/@shell:end.
+const swAssets = [];
+read("index.html").replace(/\b(?:src|href)=["']([^"']+)["']/gi, (m, p) => {
+  if (/^(?:https?:|data:)/i.test(p)) return m; // ressources externes : ignorées
+  if ((/^(?:css|js|data)\//.test(p) || /\.(?:webmanifest|png)$/i.test(p)) && swAssets.indexOf(p) < 0) {
+    swAssets.push(p);
+  }
+  return m;
+});
+const shell = ["./", "./index.html", "./icon-512.png"].concat(swAssets.map((p) => "./" + p));
+const shellLines = shell.map((s) => '  "' + s + '"').join(",\n");
+const SHELL_RE = /(\/\* @shell:start[\s\S]*?\*\/)[\s\S]*?(\/\* @shell:end \*\/)/;
+let sw = read("sw.js");
+if (SHELL_RE.test(sw)) {
+  fs.writeFileSync(path.join(dir, "sw.js"), sw.replace(SHELL_RE, "$1\n" + shellLines + "\n  $2"));
+  console.log("✅ sw.js : précache synchronisé (" + shell.length + " entrées)");
+} else {
+  console.warn("⚠️ sw.js : marqueurs @shell:start/@shell:end introuvables — précache non régénéré.");
 }

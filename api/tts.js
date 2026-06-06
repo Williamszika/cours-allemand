@@ -12,11 +12,13 @@ module.exports = async function handler(req, res) {
     const voice = (u.searchParams.get("v") || DEFAULT_VOICE).replace(/[^a-zA-Z0-9]/g, "");
     if (!text) { res.statusCode = 400; return res.end("missing text"); }
 
-    // Anti-abus simple : on n'accepte que les requêtes venant de l'app.
+    // Anti-abus : on exige une origine connue (Origin/Referer). Une requête SANS
+    // en-tête d'origine est désormais refusée — ferme l'appel direct hors de l'app
+    // (cURL, scripts). Domaine configurable via ALLOW_ORIGIN (défaut sprachakademie.app).
+    const ALLOW = (process.env.ALLOW_ORIGIN || "sprachakademie.app").trim();
     const ref = String(req.headers.origin || req.headers.referer || "");
-    if (ref && ref.indexOf("sprachakademie.app") < 0 && ref.indexOf("localhost") < 0 && ref.indexOf("127.0.0.1") < 0) {
-      res.statusCode = 403; return res.end("forbidden");
-    }
+    const ok = !!ref && (ref.indexOf(ALLOW) >= 0 || ref.indexOf("localhost") >= 0 || ref.indexOf("127.0.0.1") >= 0);
+    if (!ok) { res.statusCode = 403; return res.end("forbidden"); }
 
     const key = process.env.ELEVENLABS_API_KEY;
     if (!key) { res.statusCode = 503; return res.end("tts not configured"); }
