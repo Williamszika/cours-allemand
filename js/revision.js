@@ -9,7 +9,7 @@ window.Revision = (function () {
   const KEY = "cours-allemand-a1-srs-v1";
   const JOUR = 86400000; // ms dans une journée
   // Intervalle (en jours) avant la prochaine révision selon la boîte
-  const INTERVALLES = { 1: 0, 2: 1, 3: 3, 4: 7, 5: 16 };
+  const INTERVALLES = { 1: 0, 2: 1, 3: 3, 4: 7, 5: 16, 6: 35, 7: 90 };
   const SESSION_MAX = 20;
 
   function load() {
@@ -63,7 +63,7 @@ window.Revision = (function () {
   function rate(id, known) {
     const state = load();
     const st = state[id] || { box: 1 };
-    st.box = known ? Math.min(5, (st.box || 1) + 1) : 1;
+    st.box = known ? Math.min(7, (st.box || 1) + 1) : 1;
     st.due = Date.now() + INTERVALLES[st.box] * JOUR;
     st.vu = (st.vu || 0) + 1;
     state[id] = st;

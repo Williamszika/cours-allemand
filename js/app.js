@@ -3077,6 +3077,7 @@
     }
 
     // Les « apps » du menu (extensible — voir le commentaire ci-dessus).
+    if (window.Revision && window.COURS) { try { var __due = window.Revision.stats(window.COURS).due; var __rv = el("a", "menu-revise"); __rv.href = "#/revision"; __rv.style.cssText = "display:flex;align-items:center;gap:12px;width:100%;margin:4px 0 12px;padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,#0ea5e9,#22c55e);color:#fff;text-decoration:none;box-shadow:0 6px 16px rgba(14,165,233,.28)"; var __n = __due > 20 ? "20+" : __due; __rv.innerHTML = '<span style="font-size:26px">\uD83D\uDD01</span><span style="flex:1"><strong style="display:block;font-size:16px;margin-bottom:2px">R\u00e9viser le vocabulaire</strong><span style="font-size:13px;opacity:.92">' + (__due > 0 ? (__n + ' mot' + (__due > 1 ? 's' : '') + ' \u00e0 r\u00e9viser') : 'Tout est \u00e0 jour \uD83C\uDF89') + '</span></span><span style="font-size:20px">\u2192</span>'; frag.appendChild(__rv); } catch (e) {} }
     const APPS = [
       {
         icon: "🇩🇪",
