@@ -14,6 +14,7 @@ const USERS_DIR=path.join(DATA_DIR,"users");
 const ADMIN_ID=(process.env.ADMIN_ID||"").trim();
 const ADMIN_TOKEN=(process.env.ADMIN_TOKEN||"").trim();
 let BOT_USERNAME=(process.env.BOT_USERNAME||"").trim();
+const ALLOW=(process.env.ALLOW_ORIGIN||"sprachakademie.app").trim();
 const ORDER=["A1","A2","B1","B2","C1","C2"];
 const COMP_FILE=(process.env.COMP_FILE||path.join(__dirname,"..","data","competences.js")).trim();
 function loadComp(){try{var stub={};new Function("window",fs.readFileSync(COMP_FILE,"utf8"))(stub);return stub.COMPETENCES||null;}catch(e){return null;}}
@@ -65,11 +66,13 @@ const H={"Content-Type":"audio/mpeg","Cache-Control":"public, max-age=31536000, 
 http.createServer(async(rq,rs)=>{try{
   const u=new URL(rq.url,"http://localhost");
   const ref=String(rq.headers.origin||rq.headers.referer||"");
-  const ok=!ref||ref.indexOf("sprachakademie.app")>=0||ref.indexOf("localhost")>=0||ref.indexOf("127.0.0.1")>=0;
+  const matchRef=ref.indexOf(ALLOW)>=0||ref.indexOf("localhost")>=0||ref.indexOf("127.0.0.1")>=0;
+  const ok=!ref||matchRef;          // tolérant : l'audio /tts garde l'accès même sans Referer (borné par le rate-limit + cache)
+  const okStrict=!!ref&&matchRef;   // strict : exige une origine connue (endpoints fetch coûteux : chat, stt, voices)
   const ip=(rq.headers["x-forwarded-for"]||rq.socket.remoteAddress||"?").split(",")[0].trim();
   if(rq.method==="POST"&&/\/chat\/?$/.test(u.pathname)){
     if(!ANTHKEY){rs.writeHead(503);return rs.end("chat not configured (ANTHROPIC_API_KEY manquante)");}
-    if(!ok){rs.writeHead(403);return rs.end("forbidden");}
+    if(!okStrict){rs.writeHead(403);return rs.end("forbidden");}
     if(tooMany(ip)){rs.writeHead(429);return rs.end("slow down");}
     let data="";rq.on("data",d=>{data+=d;if(data.length>60000)rq.destroy();});
     rq.on("end",async()=>{try{
@@ -107,7 +110,7 @@ http.createServer(async(rq,rs)=>{try{
   }
   if(rq.method==="POST"&&/\/stt\/?$/.test(u.pathname)){
     if(!KEY){rs.writeHead(503);return rs.end("stt not configured");}
-    if(!ok){rs.writeHead(403);return rs.end("forbidden");}
+    if(!okStrict){rs.writeHead(403);return rs.end("forbidden");}
     if(tooMany(ip)){rs.writeHead(429);return rs.end("slow down");}
     const chunks=[];let len=0;rq.on("data",d=>{chunks.push(d);len+=d.length;if(len>9000000)rq.destroy();});
     rq.on("end",async()=>{try{
@@ -158,8 +161,8 @@ http.createServer(async(rq,rs)=>{try{
     if(!BOT_USERNAME&&BOT_TOKEN){try{const gm=await call({hostname:"api.telegram.org",path:"/bot"+BOT_TOKEN+"/getMe",method:"GET",headers:{}});const jj=JSON.parse(gm.buf.toString());if(jj&&jj.ok&&jj.result&&jj.result.username)BOT_USERNAME=jj.result.username;}catch(e){}}
     rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8","Cache-Control":"public, max-age=3600"});return rs.end(JSON.stringify({username:BOT_USERNAME||""}));
   }
-  if(/\/voices\/?$/.test(u.pathname)){if(!KEY){rs.writeHead(503);return rs.end("no key");}if(!ok){rs.writeHead(403);return rs.end("forbidden");}const l=await listVoices();rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8"});return rs.end(JSON.stringify(l.map(v=>({id:v.voice_id,name:v.name,category:v.category})),null,2));}
-  if(/\/cache\/?$/.test(u.pathname)){let n=0,b=0;try{for(const f of fs.readdirSync(CACHE_DIR))if(f.endsWith(".mp3")){n++;b+=fs.statSync(path.join(CACHE_DIR,f)).size;}}catch(e){}rs.writeHead(200,{"Content-Type":"application/json"});return rs.end(JSON.stringify({fichiers:n,megaoctets:+(b/1048576).toFixed(2),dossier:CACHE_DIR},null,2));}
+  if(/\/voices\/?$/.test(u.pathname)){if(!KEY){rs.writeHead(503);return rs.end("no key");}if(!okStrict){rs.writeHead(403);return rs.end("forbidden");}const l=await listVoices();rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8"});return rs.end(JSON.stringify(l.map(v=>({id:v.voice_id,name:v.name,category:v.category})),null,2));}
+  if(/\/cache\/?$/.test(u.pathname)){let n=0,b=0;try{for(const f of fs.readdirSync(CACHE_DIR))if(f.endsWith(".mp3")){n++;b+=fs.statSync(path.join(CACHE_DIR,f)).size;}}catch(e){}rs.writeHead(200,{"Content-Type":"application/json"});return rs.end(JSON.stringify({fichiers:n,megaoctets:+(b/1048576).toFixed(2)},null,2));}
   if(!/\/tts\/?$/.test(u.pathname)){rs.writeHead(404);return rs.end("not found");}
   const text=(u.searchParams.get("text")||"").slice(0,1000).trim();
   const rv=(u.searchParams.get("v")||"").replace(/[^a-zA-Z0-9]/g,"");
