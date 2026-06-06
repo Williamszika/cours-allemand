@@ -72,6 +72,7 @@ button.ghost{background:#262a33;border:1px solid var(--bd)}
       h += '</div>';
     }
     if((s.topReferrers||[]).length){ h+='<div class="card"><h2>Top parrains</h2>'+s.topReferrers.map(function(r){return '<div class="kv"><span class="k" style="min-width:auto;flex:1">'+esc(r.name||('id '+r.id))+'</span><span class="b">'+r.count+'</span></div>';}).join('')+'</div>'; }
+    h+='<div class="card"><h2>📣 Diffusion</h2><p class="mut" style="margin-bottom:8px">Envoie un message Telegram à tous les utilisateurs actifs (hors bloqués).</p><textarea id="bc-msg" placeholder="Ton message…" style="width:100%;box-sizing:border-box;min-height:80px;padding:10px;border-radius:8px;border:1px solid #8884;background:transparent;color:inherit;font:inherit"></textarea><div style="margin-top:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap"><button id="bc-send">Envoyer à tous</button><span id="bc-res" class="mut"></span></div></div>';
     h+='<div class="card"><h2>Utilisateurs ('+users.length+')</h2>'
       +'<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px">'
       +'<input id="u-q" placeholder="\uD83D\uDD0E nom, @user, id" style="flex:1;min-width:150px;padding:8px 10px;border-radius:8px;border:1px solid #8884;background:transparent;color:inherit">'
@@ -127,6 +128,7 @@ button.ghost{background:#262a33;border:1px solid var(--bd)}
       tr.insertAdjacentHTML('afterend',__detail(u));
     });
     __paint();
+    (function(){var b=document.getElementById('bc-send'); if(!b)return; b.addEventListener('click',function(){ var ta=document.getElementById('bc-msg'), res=document.getElementById('bc-res'); var msg=(ta.value||'').trim(); if(!msg){res.textContent='Message vide.';return;} if(!confirm('Envoyer ce message a TOUS les utilisateurs actifs ?'))return; b.disabled=true; res.textContent='Envoi en cours...'; post(authBody({action:'broadcast',message:msg})).then(function(r){ if(r.status===200&&r.j&&r.j.ok){ res.textContent='Diffusion lancee vers '+r.j.count+' utilisateurs.'; ta.value=''; } else { res.textContent='Echec: '+((r.j&&r.j.error)||r.status); } b.disabled=false; }).catch(function(){ res.textContent='Erreur reseau.'; b.disabled=false; }); }); })();
   }
 
   function locked(viewerId){
