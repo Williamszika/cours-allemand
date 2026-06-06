@@ -99,6 +99,8 @@ button.ghost{background:#262a33;border:1px solid var(--bd)}
       d+=__kv('S\u00e9rie',(u.streak||0)+' j');
       d+=__kv('Messages tuteur',(u.msgs||0));
       d+=__kv('Filleuls',(u.invited||0));
+      d+=__kv('Leçons terminées',(u.done||0));
+      d+=__kv('Examens réussis',(u.exams||0));
       d+=__kv('Inscrit',u.createdAt?(new Date(u.createdAt).toLocaleDateString()+' ('+ago(u.createdAt)+')'):'-');
       d+=__kv('Derni\u00e8re activit\u00e9',ago(u.lastSeen));
       d+=__kv('Statut',u.blocked?'<span style="color:#dc2626">bloqu\u00e9</span>':'actif');
