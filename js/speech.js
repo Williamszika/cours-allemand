@@ -12,7 +12,11 @@ window.Speech = (function () {
   const MALE_HINTS = ["conrad", "stefan", "bernd", "christoph", "killian", "klaus", "ralf", "markus", "yannick", "hans", "daniel", "viktor", "wolfgang", "florian", "jan", "male", "mann", "männl"];
   const NATURAL_HINTS = ["neural", "natural", "online", "premium", "wavenet", "enhanced", "google", "siri"];
   const LOWQ_HINTS = ["espeak", "compact", "pico", "embedded"];
-  const FEMALE_HINTS = ["anna", "petra", "katja", "vicki", "amala", "marlene", "hedda", "female", "frau", "weibl"];
+  const FEMALE_HINTS = ["petra", "katja", "vicki", "amala", "marlene", "hedda", "female", "frau", "weibl"];
+  // Voix exclues du sélecteur et du choix automatique : la voix compacte « Anna »
+  // d'Apple (robotique). Le défaut bascule alors sur la meilleure voix / ElevenLabs.
+  const EXCLUDED_VOICES = ["anna"];
+  function allowedVoice(v) { const n = ((v && v.name) || "").toLowerCase().trim(); return !EXCLUDED_VOICES.some((k) => n.indexOf(k) === 0); }
 
   function scoreVoice(v) {
     const n = (v.name || "").toLowerCase();
@@ -27,14 +31,16 @@ window.Speech = (function () {
   }
 
   function preferredVoiceName() { try { return localStorage.getItem("deutsch-voix") || null; } catch (e) { return null; } }
+  // Préférence explicite, en ignorant une voix désormais exclue (ex. « Anna ») → automatique.
+  function preferredVoice() { const p = preferredVoiceName(); return (p && allowedVoice({ name: p })) ? p : null; }
 
   function pickGermanVoice() {
     if (!("speechSynthesis" in window)) return;
     const voices = window.speechSynthesis.getVoices();
     if (!voices || voices.length === 0) return;
-    const de = voices.filter((v) => v.lang && v.lang.toLowerCase().indexOf("de") === 0);
+    const de = voices.filter((v) => v.lang && v.lang.toLowerCase().indexOf("de") === 0 && allowedVoice(v));
     if (!de.length) { germanVoice = null; voicesLoaded = true; return; }
-    const pref = preferredVoiceName();
+    const pref = preferredVoice();
     const chosen = pref ? de.filter((v) => v.name === pref)[0] : null;
     de.sort((a, b) => scoreVoice(b) - scoreVoice(a));
     germanVoice = chosen || de[0]; // voix choisie par l'utilisateur, sinon la plus naturelle
@@ -54,7 +60,7 @@ window.Speech = (function () {
 
   // ---- Voix naturelles en ligne (ElevenLabs via /api/tts) ----
   let cloudAudio = null;
-  function cloudEnabled() { try { return localStorage.getItem("deutsch-tts-cloud") === "1"; } catch (e) { return false; } }
+  function cloudEnabled() { try { var v = localStorage.getItem("deutsch-tts-cloud"); return v === null ? true : v === "1"; } catch (e) { return true; } }
   function setCloud(on) { try { localStorage.setItem("deutsch-tts-cloud", on ? "1" : "0"); } catch (e) {} }
   function stopSpeak() {
     try { if ("speechSynthesis" in window) window.speechSynthesis.cancel(); } catch (e) {}
@@ -116,7 +122,7 @@ window.Speech = (function () {
   function voices() {
     if (!("speechSynthesis" in window)) return [];
     const all = window.speechSynthesis.getVoices() || [];
-    const de = all.filter((v) => v.lang && v.lang.toLowerCase().indexOf("de") === 0);
+    const de = all.filter((v) => v.lang && v.lang.toLowerCase().indexOf("de") === 0 && allowedVoice(v));
     de.sort((a, b) => scoreVoice(b) - scoreVoice(a));
     return de;
   }
@@ -155,5 +161,5 @@ window.Speech = (function () {
     }
   }
 
-  return { speak, isSupported, hasGermanVoice, voice, voices, setVoice, cloudEnabled, setCloud, stopSpeak, recognitionSupported, recognize };
+  return { speak, isSupported, hasGermanVoice, voice, voices, setVoice, preferredVoice, cloudEnabled, setCloud, stopSpeak, recognitionSupported, recognize };
 })();
