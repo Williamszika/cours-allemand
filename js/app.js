@@ -954,8 +954,8 @@
     let completionShown = false;
     let unlockNext = function () {}; // activé quand la leçon est validée (défini plus bas)
     function refresh() {
-      const sc = done.size ? Math.round((success.size / done.size) * 100) : 0;
-      label.textContent = done.size + "/" + total + " faits · " + sc + "% justes (requis " + seuil + "%)";
+      const besoin = Math.ceil(seuil * total / 100);
+      label.textContent = done.size + "/" + total + " faits · " + success.size + "/" + total + " justes · requis " + besoin + "/" + total;
       fill.style.width = total ? (done.size / total) * 100 + "%" : "0%";
       if (done.size === total && total > 0) {
         const score = Math.round((success.size / total) * 100);
@@ -2974,8 +2974,8 @@
       if (l.rp && l.rp.tours && l.rp.tours.length) allEx.push({ type: "rp", scene: l.rp.scene, intro: l.rp.intro, tours: l.rp.tours, fin: l.rp.fin, _niveau: niveau, _rp: true });
       const total = allEx.length; const done = new Set(); const success = new Set(); let shown = false;
       function refresh() {
-        const sc = done.size ? Math.round((success.size / done.size) * 100) : 0;
-        label.textContent = done.size + "/" + total + " faits · " + sc + "% justes (requis " + seuil + "%)";
+        const besoin = Math.ceil(seuil * total / 100);
+        label.textContent = done.size + "/" + total + " faits · " + success.size + "/" + total + " justes · requis " + besoin + "/" + total;
         fill.style.width = total ? (done.size / total) * 100 + "%" : "0%";
         if (done.size === total && total > 0) {
           const score = Math.round((success.size / total) * 100); const passed = score >= seuil;
