@@ -72,15 +72,59 @@ button.ghost{background:#262a33;border:1px solid var(--bd)}
       h += '</div>';
     }
     if((s.topReferrers||[]).length){ h+='<div class="card"><h2>Top parrains</h2>'+s.topReferrers.map(function(r){return '<div class="kv"><span class="k" style="min-width:auto;flex:1">'+esc(r.name||('id '+r.id))+'</span><span class="b">'+r.count+'</span></div>';}).join('')+'</div>'; }
-    var rows=users.slice(0,400).map(function(u){
-      var nm=esc(u.name||('id '+u.id)); if(u.username)nm+=' <span class="mut">@'+esc(u.username)+'</span>'; if(u.blocked)nm='<span style="color:#dc2626">(bloque)</span> '+nm;
-      var act=(u.blocked?'<button class="ghost" data-act="unblock" data-id="'+esc(u.id)+'">Debloquer</button>':'<button class="ghost" data-act="block" data-id="'+esc(u.id)+'">Bloquer</button>')+' <button class="ghost" style="color:#dc2626;border-color:#dc2626" data-act="delete" data-id="'+esc(u.id)+'" data-name="'+esc(u.name||u.id)+'">Supprimer</button>';
-      return '<tr'+(u.blocked?' style="opacity:.55"':'')+'><td>'+nm+'</td><td>'+esc(u.lvl)+'</td><td>'+esc(u.lang)+'</td><td>'+(u.streak||0)+'</td><td>'+(u.msgs||0)+'</td><td>'+(u.invited||0)+'</td><td class="mut">'+ago(u.lastSeen)+'</td><td class="act" style="white-space:nowrap">'+act+'</td></tr>';
-    }).join('');
-    h+='<div class="card"><h2>Utilisateurs ('+users.length+')</h2><div class="tbl"><table><thead><tr><th>Nom</th><th>Niv</th><th>Lng</th><th>Série</th><th>Msg</th><th>Filleuls</th><th>Vu</th><th>Actions</th></tr></thead><tbody>'+(rows||'<tr><td colspan="8" class="mut">Aucun utilisateur pour l\'instant.</td></tr>')+'</tbody></table></div></div>';
+    h+='<div class="card"><h2>Utilisateurs ('+users.length+')</h2>'
+      +'<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px">'
+      +'<input id="u-q" placeholder="\uD83D\uDD0E nom, @user, id" style="flex:1;min-width:150px;padding:8px 10px;border-radius:8px;border:1px solid #8884;background:transparent;color:inherit">'
+      +'<select id="u-lvl" style="padding:8px;border-radius:8px"><option value="">Niveau</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select>'
+      +'<select id="u-lang" style="padding:8px;border-radius:8px"><option value="">Langue</option>'+Object.keys(s.byLang||{}).sort().map(function(x){return "<option>"+esc(x)+"</option>";}).join("")+'</select>'
+      +'<label class="mut" style="display:flex;align-items:center;gap:4px"><input type="checkbox" id="u-blk"> bloqu\u00e9s</label>'
+      +'</div>'
+      +'<div class="tbl"><table><thead><tr>'
+      +'<th data-k="name" style="cursor:pointer">Nom</th><th data-k="lvl" style="cursor:pointer">Niv</th><th data-k="lang" style="cursor:pointer">Lng</th><th data-k="streak" style="cursor:pointer">S\u00e9rie</th><th data-k="msgs" style="cursor:pointer">Msg</th><th data-k="invited" style="cursor:pointer">Fil.</th><th data-k="lastSeen" style="cursor:pointer">Vu</th><th>Actions</th>'
+      +'</tr></thead><tbody id="u-tb"></tbody></table></div><p id="u-n" class="mut" style="margin-top:6px"></p></div>';
     app.innerHTML=h;
     document.getElementById('refresh').onclick=start;
-    var __tb=app.querySelector('table tbody'); if(__tb)__tb.addEventListener('click',function(e){ var b=e.target&&e.target.closest&&e.target.closest('button[data-act]'); if(!b)return; var a=b.getAttribute('data-act'), id=b.getAttribute('data-id'); if(a==='delete'&&!confirm('Supprimer DEFINITIVEMENT le compte '+(b.getAttribute('data-name')||id)+' ? Action irreversible.'))return; if(a==='block'&&!confirm('Bloquer ce compte ? Il ne pourra plus utiliser le tuteur.'))return; b.disabled=true; var old=b.textContent; b.textContent='...'; post(authBody({action:a,target:id})).then(function(res){ if(res.status===200&&res.j&&res.j.ok){ start(); } else { alert('Echec: '+((res.j&&res.j.error)||res.status)); b.disabled=false; b.textContent=old; } }).catch(function(){ alert('Erreur reseau.'); b.disabled=false; b.textContent=old; }); });
+    var __sortK="lastSeen", __sortD=-1;
+    function __row(u){
+      var nm=esc(u.name||('id '+u.id)); if(u.username)nm+=' <span class="mut">@'+esc(u.username)+'</span>'; if(u.blocked)nm='<span style="color:#dc2626">(bloque)</span> '+nm;
+      var act=(u.blocked?'<button class="ghost" data-act="unblock" data-id="'+esc(u.id)+'">Debloquer</button>':'<button class="ghost" data-act="block" data-id="'+esc(u.id)+'">Bloquer</button>')+' <button class="ghost" style="color:#dc2626;border-color:#dc2626" data-act="delete" data-id="'+esc(u.id)+'" data-name="'+esc(u.name||u.id)+'">Supprimer</button>';
+      return '<tr class="u-row" data-id="'+esc(u.id)+'"'+(u.blocked?' style="opacity:.55"':'')+'><td>'+nm+'</td><td>'+esc(u.lvl)+'</td><td>'+esc(u.lang)+'</td><td>'+(u.streak||0)+'</td><td>'+(u.msgs||0)+'</td><td>'+(u.invited||0)+'</td><td class="mut">'+ago(u.lastSeen)+'</td><td class="act" style="white-space:nowrap">'+act+'</td></tr>';
+    }
+    function __kv(k,v){return '<div class="kv"><span class="k" style="min-width:120px">'+k+'</span><span class="b" style="flex:1;text-align:left">'+v+'</span></div>';}
+    function __detail(u){
+      var d='';
+      d+=__kv('ID','<code>'+esc(u.id)+'</code>');
+      d+=__kv('Niveau',esc(u.lvl));
+      d+=__kv('Langue',esc(u.lang));
+      d+=__kv('S\u00e9rie',(u.streak||0)+' j');
+      d+=__kv('Messages tuteur',(u.msgs||0));
+      d+=__kv('Filleuls',(u.invited||0));
+      d+=__kv('Inscrit',u.createdAt?(new Date(u.createdAt).toLocaleDateString()+' ('+ago(u.createdAt)+')'):'-');
+      d+=__kv('Derni\u00e8re activit\u00e9',ago(u.lastSeen));
+      d+=__kv('Statut',u.blocked?'<span style="color:#dc2626">bloqu\u00e9</span>':'actif');
+      return '<tr class="u-det"><td colspan="8" style="background:#8881;padding:10px 12px">'+d+'</td></tr>';
+    }
+    function __paint(){
+      var q=(document.getElementById('u-q').value||'').trim().toLowerCase();
+      var fl=document.getElementById('u-lvl').value, fg=document.getElementById('u-lang').value, fb=document.getElementById('u-blk').checked;
+      var list=users.filter(function(u){ if(fl&&u.lvl!==fl)return false; if(fg&&u.lang!==fg)return false; if(fb&&!u.blocked)return false; if(q){var hay=((u.name||'')+' '+(u.username||'')+' '+(u.id||'')).toLowerCase(); if(hay.indexOf(q)<0)return false;} return true; });
+      list.sort(function(a,b){ var x,y; if(__sortK==='lastSeen'){x=Date.parse(a.lastSeen||0)||0;y=Date.parse(b.lastSeen||0)||0;} else if(__sortK==='name'){x=(a.name||'').toLowerCase();y=(b.name||'').toLowerCase();} else if(__sortK==='lvl'||__sortK==='lang'){x=String(a[__sortK]||'');y=String(b[__sortK]||'');} else {x=a[__sortK]||0;y=b[__sortK]||0;} if(typeof x==='string'&&typeof y==='string')return __sortD*x.localeCompare(y); return __sortD*((x||0)-(y||0)); });
+      var tb=document.getElementById('u-tb'); tb.innerHTML=list.length?list.slice(0,500).map(__row).join(''):'<tr><td colspan="8" class="mut">Aucun r\u00e9sultat.</td></tr>';
+      document.getElementById('u-n').textContent=list.length+' / '+users.length+' affich\u00e9s'+(list.length>500?' (500 max)':'');
+    }
+    ['u-q','u-lvl','u-lang','u-blk'].forEach(function(id){var e=document.getElementById(id); if(e){e.addEventListener('input',__paint); e.addEventListener('change',__paint);}});
+    Array.prototype.forEach.call(app.querySelectorAll('th[data-k]'),function(th){th.addEventListener('click',function(){var k=th.getAttribute('data-k'); if(__sortK===k)__sortD=-__sortD; else {__sortK=k; __sortD=(k==='name'||k==='lvl'||k==='lang')?1:-1;} __paint();});});
+    var __tb=document.getElementById('u-tb');
+    if(__tb)__tb.addEventListener('click',function(e){
+      var b=e.target&&e.target.closest&&e.target.closest('button[data-act]');
+      if(b){ var a=b.getAttribute('data-act'), id=b.getAttribute('data-id'); if(a==='delete'&&!confirm('Supprimer DEFINITIVEMENT le compte '+(b.getAttribute('data-name')||id)+' ? Action irreversible.'))return; if(a==='block'&&!confirm('Bloquer ce compte ? Il ne pourra plus utiliser le tuteur.'))return; b.disabled=true; var old=b.textContent; b.textContent='...'; post(authBody({action:a,target:id})).then(function(res){ if(res.status===200&&res.j&&res.j.ok){ start(); } else { alert('Echec: '+((res.j&&res.j.error)||res.status)); b.disabled=false; b.textContent=old; } }).catch(function(){ alert('Erreur reseau.'); b.disabled=false; b.textContent=old; }); return; }
+      var tr=e.target&&e.target.closest&&e.target.closest('tr.u-row'); if(!tr)return;
+      var nx=tr.nextSibling; if(nx&&nx.className==='u-det'){ nx.parentNode.removeChild(nx); return; }
+      Array.prototype.forEach.call(__tb.querySelectorAll('tr.u-det'),function(x){x.parentNode.removeChild(x);});
+      var id=tr.getAttribute('data-id'); var u=users.filter(function(x){return String(x.id)===String(id);})[0]; if(!u)return;
+      tr.insertAdjacentHTML('afterend',__detail(u));
+    });
+    __paint();
   }
 
   function locked(viewerId){
