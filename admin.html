@@ -58,7 +58,7 @@ button.ghost{background:#262a33;border:1px solid var(--bd)}
 
   function render(data){
     var s=data.stats||{}, users=data.users||[];
-    var h='<div class="top"><h1>📊 Dashboard</h1><button id="refresh" class="ghost">↻ Rafraîchir</button></div>';
+    var h='<div class="top"><h1>📊 Dashboard</h1><div style="display:flex;gap:8px"><button id="csv-exp" class="ghost">⬇ CSV</button><button id="refresh" class="ghost">↻ Rafraîchir</button></div></div>';
     h+='<div class="grid">'+card(s.total||0,'Utilisateurs')+card(s.new7||0,'Nouveaux (7j)')+card(s.active7||0,'Actifs (7j)')+card(s.messages||0,'Messages tuteur')+'</div>';
     h+='<div class="card"><h2>Niveaux</h2>'+bars(s.byLevel||{},["A1","A2","B1","B2","C1","C2"])+'</div>';
     h+='<div class="card"><h2>Langues</h2>'+kvlist(s.byLang||{})+'</div>';
@@ -85,6 +85,7 @@ button.ghost{background:#262a33;border:1px solid var(--bd)}
       +'</tr></thead><tbody id="u-tb"></tbody></table></div><p id="u-n" class="mut" style="margin-top:6px"></p></div>';
     app.innerHTML=h;
     document.getElementById('refresh').onclick=start;
+    (function(){var b=document.getElementById('csv-exp'); if(!b)return; b.onclick=function(){ var cols=['id','name','username','lvl','lang','streak','msgs','invited','done','exams','blocked','createdAt','lastSeen']; function q(v){v=(v==null?'':String(v)); return /[";]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;} var rows=[cols.join(';')].concat(users.map(function(u){return cols.map(function(c){return q(u[c]);}).join(';');})); var blob=new Blob([String.fromCharCode(0xFEFF)+rows.join(String.fromCharCode(10))],{type:'text/csv;charset=utf-8'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='utilisateurs-'+(new Date().toISOString().slice(0,10))+'.csv'; document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(a.href); a.remove();},1000); }; })();
     var __sortK="lastSeen", __sortD=-1;
     function __row(u){
       var nm=esc(u.name||('id '+u.id)); if(u.username)nm+=' <span class="mut">@'+esc(u.username)+'</span>'; if(u.blocked)nm='<span style="color:#dc2626">(bloque)</span> '+nm;
