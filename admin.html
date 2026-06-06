@@ -34,6 +34,26 @@ input{width:100%;background:#0e1117;color:var(--tx);border:1px solid var(--bd);b
 button{background:var(--ac);color:#fff;border:0;border-radius:10px;padding:11px 16px;font-size:15px;cursor:pointer;font-family:inherit}
 button.ghost{background:#262a33;border:1px solid var(--bd)}
 .err{color:#f87171;font-size:13px;min-height:16px}
+
+/* ---- ultra design ---- */
+body{background:radial-gradient(1100px 560px at 50% -8%,#1b2233 0%,#0f1115 58%) fixed}
+.top h1{background:linear-gradient(90deg,#60a5fa,#a78bfa,#34d399);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;font-size:22px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.012));border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.28)}
+.grid{grid-template-columns:repeat(4,1fr)}@media(max-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+.grid .stat{position:relative;overflow:hidden;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.012));border:1px solid rgba(255,255,255,.08)}
+.grid .stat::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:#2563eb}
+.grid .stat:nth-child(1)::before{background:linear-gradient(90deg,#60a5fa,#3b82f6)}
+.grid .stat:nth-child(2)::before{background:linear-gradient(90deg,#34d399,#10b981)}
+.grid .stat:nth-child(3)::before{background:linear-gradient(90deg,#fbbf24,#f59e0b)}
+.grid .stat:nth-child(4)::before{background:linear-gradient(90deg,#f472b6,#ec4899)}
+.grid .stat .n{font-size:30px;background:linear-gradient(180deg,#fff,#c7d2e0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.barwrap{height:10px;background:rgba(255,255,255,.06)}.bar{background:linear-gradient(90deg,#3b82f6,#8b5cf6);transition:width .7s cubic-bezier(.2,.8,.2,1)}
+button{background:linear-gradient(135deg,#2563eb,#7c3aed);box-shadow:0 4px 14px rgba(37,99,235,.35);transition:transform .12s,filter .12s}button:hover{transform:translateY(-1px);filter:brightness(1.06)}button.ghost{background:rgba(255,255,255,.07);box-shadow:none}
+th{position:sticky;top:0;background:#13161c;z-index:1}table tbody tr{transition:background .12s}table tbody tr:hover{background:rgba(255,255,255,.045)}
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:520px){.charts-grid{grid-template-columns:1fr}}
+.donut-card h3{margin:0 0 8px;font-size:13px;color:var(--mut)}.donut-row{display:flex;align-items:center;gap:14px}
+.donut{width:118px;height:118px;flex:none;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}.donut-c{fill:#fff;font-size:26px;font-weight:800}
+.legend{display:flex;flex-direction:column;gap:5px;font-size:13px}.leg{display:flex;align-items:center;gap:7px}.leg .dot{width:11px;height:11px;border-radius:50%;display:inline-block;flex:none}
 </style>
 </head>
 <body>
@@ -55,12 +75,18 @@ button.ghost{background:#262a33;border:1px solid var(--bd)}
   function card(n,l){return '<div class="stat"><div class="n">'+n+'</div><div class="l">'+esc(l)+'</div></div>';}
   function bars(obj,order){ var max=1; order.forEach(function(k){if((obj[k]||0)>max)max=obj[k];}); return order.map(function(k){var v=obj[k]||0;return '<div class="kv"><span class="k">'+k+'</span><span class="barwrap"><span class="bar" style="width:'+Math.round(v/max*100)+'%"></span></span><span class="b">'+v+'</span></div>';}).join(''); }
   function kvlist(obj){ var ks=Object.keys(obj||{}).sort(function(a,b){return obj[b]-obj[a];}); if(!ks.length)return '<p class="mut">-</p>'; return ks.map(function(k){return '<div class="kv"><span class="k" style="min-width:auto;flex:1">'+esc(k)+'</span><span class="b">'+obj[k]+'</span></div>';}).join(''); }
+  var LVLCOL=["#60a5fa","#34d399","#fbbf24","#f59e0b","#f472b6","#a78bfa"];
+  function donut(title,segs){var tot=segs.reduce(function(a,x){return a+x.value;},0);var d=tot||1;var R=52,C=2*Math.PI*R,off=0,arcs="";segs.forEach(function(sg){var len=sg.value/d*C;arcs+='<circle cx="70" cy="70" r="'+R+'" fill="none" stroke="'+sg.color+'" stroke-width="18" stroke-dasharray="'+len+' '+(C-len)+'" stroke-dashoffset="'+(-off)+'" transform="rotate(-90 70 70)"/>';off+=len;});var leg=segs.map(function(sg){return '<div class="leg"><span class="dot" style="background:'+sg.color+'"></span>'+esc(sg.label)+' <b>'+sg.value+'</b></div>';}).join('')||'<span class="mut">Aucune donnée</span>';return '<div class="donut-card"><h3>'+title+'</h3><div class="donut-row"><svg viewBox="0 0 140 140" class="donut">'+arcs+'<text x="70" y="79" text-anchor="middle" class="donut-c">'+tot+'</text></svg><div class="legend">'+leg+'</div></div></div>';}
+
 
   function render(data){
     var s=data.stats||{}, users=data.users||[];
     var h='<div class="top"><h1>📊 Dashboard</h1><div style="display:flex;gap:8px"><button id="csv-exp" class="ghost">⬇ CSV</button><button id="refresh" class="ghost">↻ Rafraîchir</button></div></div>';
     h+='<div class="grid">'+card(s.total||0,'Utilisateurs')+card(s.new7||0,'Nouveaux (7j)')+card(s.active7||0,'Actifs (7j)')+card(s.messages||0,'Messages tuteur')+'</div>';
-    h+='<div class="card"><h2>Niveaux</h2>'+bars(s.byLevel||{},["A1","A2","B1","B2","C1","C2"])+'</div>';
+    var __lvlS=["A1","A2","B1","B2","C1","C2"].map(function(n,i){return {label:n,value:(s.byLevel&&s.byLevel[n])||0,color:LVLCOL[i]};}).filter(function(x){return x.value>0;});
+    var __ac={actif:0,peu:0,inactif:0}; users.forEach(function(u){var t=Date.parse(u.lastSeen||0)||0; var hh=t?(Date.now()-t)/3600000:1e9; __ac[hh<=48?'actif':(hh<=168?'peu':'inactif')]++;});
+    var __acS=[{label:'Actifs',value:__ac.actif,color:'#16a34a'},{label:'Peu actifs',value:__ac.peu,color:'#d97706'},{label:'Inactifs',value:__ac.inactif,color:'#9ca3af'}].filter(function(x){return x.value>0;});
+    h+='<div class="card"><h2>\uD83D\uDCCA R\u00e9partition</h2><div class="charts-grid">'+donut('Niveaux',__lvlS)+donut('Activit\u00e9',__acS)+'</div></div>';
     h+='<div class="card"><h2>Langues</h2>'+kvlist(s.byLang||{})+'</div>';
     if ((s.competences || []).length) {
       var cw = s.competences.filter(function (r) { return r.users >= 1; }).slice(0, 14);
