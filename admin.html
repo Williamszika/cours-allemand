@@ -54,6 +54,7 @@ th{position:sticky;top:0;background:#13161c;z-index:1}table tbody tr{transition:
 .donut-card h3{margin:0 0 8px;font-size:13px;color:var(--mut)}.donut-row{display:flex;align-items:center;gap:14px}
 .donut{width:118px;height:118px;flex:none;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}.donut-c{fill:#fff;font-size:26px;font-weight:800}
 .legend{display:flex;flex-direction:column;gap:5px;font-size:13px}.leg{display:flex;align-items:center;gap:7px}.leg .dot{width:11px;height:11px;border-radius:50%;display:inline-block;flex:none}
+.growth{width:100%;height:120px;display:block;margin-top:4px}.growth-x{display:flex;justify-content:space-between;font-size:11px;color:var(--mut);margin-top:4px}
 </style>
 </head>
 <body>
@@ -76,6 +77,7 @@ th{position:sticky;top:0;background:#13161c;z-index:1}table tbody tr{transition:
   function bars(obj,order){ var max=1; order.forEach(function(k){if((obj[k]||0)>max)max=obj[k];}); return order.map(function(k){var v=obj[k]||0;return '<div class="kv"><span class="k">'+k+'</span><span class="barwrap"><span class="bar" style="width:'+Math.round(v/max*100)+'%"></span></span><span class="b">'+v+'</span></div>';}).join(''); }
   function kvlist(obj){ var ks=Object.keys(obj||{}).sort(function(a,b){return obj[b]-obj[a];}); if(!ks.length)return '<p class="mut">-</p>'; return ks.map(function(k){return '<div class="kv"><span class="k" style="min-width:auto;flex:1">'+esc(k)+'</span><span class="b">'+obj[k]+'</span></div>';}).join(''); }
   var LVLCOL=["#60a5fa","#34d399","#fbbf24","#f59e0b","#f472b6","#a78bfa"];
+  function growthCard(users){ var days=30, now=Date.now(), keys=[], bk={}; for(var i=days-1;i>=0;i--){ var d=new Date(now-i*86400000).toISOString().slice(0,10); keys.push(d); bk[d]=0; } users.forEach(function(u){ var d=(u.createdAt||'').slice(0,10); if(d in bk) bk[d]++; }); var vals=keys.map(function(k){return bk[k];}); var mx=Math.max.apply(null,[1].concat(vals)); var tot=vals.reduce(function(a,b){return a+b;},0); var bw=100/keys.length; var bars=vals.map(function(v,i){ var hh=v/mx*94; return '<rect x="'+(i*bw+bw*0.15).toFixed(2)+'" y="'+(100-hh).toFixed(2)+'" width="'+(bw*0.7).toFixed(2)+'" height="'+hh.toFixed(2)+'" rx="0.5" fill="url(#gG)"><title>'+keys[i]+' : '+v+'</title></rect>'; }).join(''); return '<div class="card"><h2>\uD83D\uDCC8 Inscriptions (30 j) - '+tot+'</h2><svg viewBox="0 0 100 100" preserveAspectRatio="none" class="growth"><defs><linearGradient id="gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs>'+bars+'</svg><div class="growth-x"><span>'+keys[0].slice(5)+'</span><span>'+keys[keys.length-1].slice(5)+'</span></div></div>'; }
   function donut(title,segs){var tot=segs.reduce(function(a,x){return a+x.value;},0);var d=tot||1;var R=52,C=2*Math.PI*R,off=0,arcs="";segs.forEach(function(sg){var len=sg.value/d*C;arcs+='<circle cx="70" cy="70" r="'+R+'" fill="none" stroke="'+sg.color+'" stroke-width="18" stroke-dasharray="'+len+' '+(C-len)+'" stroke-dashoffset="'+(-off)+'" transform="rotate(-90 70 70)"/>';off+=len;});var leg=segs.map(function(sg){return '<div class="leg"><span class="dot" style="background:'+sg.color+'"></span>'+esc(sg.label)+' <b>'+sg.value+'</b></div>';}).join('')||'<span class="mut">Aucune donnée</span>';return '<div class="donut-card"><h3>'+title+'</h3><div class="donut-row"><svg viewBox="0 0 140 140" class="donut">'+arcs+'<text x="70" y="79" text-anchor="middle" class="donut-c">'+tot+'</text></svg><div class="legend">'+leg+'</div></div></div>';}
 
 
@@ -86,8 +88,9 @@ th{position:sticky;top:0;background:#13161c;z-index:1}table tbody tr{transition:
     var __lvlS=["A1","A2","B1","B2","C1","C2"].map(function(n,i){return {label:n,value:(s.byLevel&&s.byLevel[n])||0,color:LVLCOL[i]};}).filter(function(x){return x.value>0;});
     var __ac={actif:0,peu:0,inactif:0}; users.forEach(function(u){var t=Date.parse(u.lastSeen||0)||0; var hh=t?(Date.now()-t)/3600000:1e9; __ac[hh<=48?'actif':(hh<=168?'peu':'inactif')]++;});
     var __acS=[{label:'Actifs',value:__ac.actif,color:'#16a34a'},{label:'Peu actifs',value:__ac.peu,color:'#d97706'},{label:'Inactifs',value:__ac.inactif,color:'#9ca3af'}].filter(function(x){return x.value>0;});
-    h+='<div class="card"><h2>\uD83D\uDCCA R\u00e9partition</h2><div class="charts-grid">'+donut('Niveaux',__lvlS)+donut('Activit\u00e9',__acS)+'</div></div>';
-    h+='<div class="card"><h2>Langues</h2>'+kvlist(s.byLang||{})+'</div>';
+    var __LC=['#60a5fa','#34d399','#fbbf24','#f59e0b','#f472b6','#a78bfa','#22d3ee','#fb7185']; var __lngS=Object.keys(s.byLang||{}).sort(function(a,b){return (s.byLang[b]||0)-(s.byLang[a]||0);}).slice(0,8).map(function(k,i){return {label:k,value:s.byLang[k],color:__LC[i%__LC.length]};});
+    h+='<div class="card"><h2>\uD83D\uDCCA R\u00e9partition</h2><div class="charts-grid">'+donut('Niveaux',__lvlS)+donut('Activit\u00e9',__acS)+donut('Langues',__lngS)+'</div></div>';
+    h+=growthCard(users);
     if ((s.competences || []).length) {
       var cw = s.competences.filter(function (r) { return r.users >= 1; }).slice(0, 14);
       h += '<div class="card"><h2>Compétences les plus faibles (global)</h2>';
