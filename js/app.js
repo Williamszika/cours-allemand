@@ -951,7 +951,8 @@
     const total = allEx.length;
     const done = new Set();
     const success = new Set();
-    let completionShown = false;
+    (function () { var sv = (window.Progress.getLecon(l.id) || {}).exercices || {}; Object.keys(sv).forEach(function (k) { var i = +k; if (i >= 0 && i < total) { done.add(i); if (sv[k]) success.add(i); } }); })();
+    let completionShown = window.Progress.estTermine(l.id);
     let unlockNext = function () {}; // activé quand la leçon est validée (défini plus bas)
     function refresh() {
       const besoin = Math.ceil(seuil * total / 100);
@@ -2972,7 +2973,7 @@
       // Documentation des soins (production guidée) + jeu de rôle (patient/collègue/médecin).
       if (l.documentation) allEx.push({ type: "production", cat: "prod", consigne: "📝 Documentation des soins", prompt: l.documentation.task, modele: l.documentation.modele });
       if (l.rp && l.rp.tours && l.rp.tours.length) allEx.push({ type: "rp", scene: l.rp.scene, intro: l.rp.intro, tours: l.rp.tours, fin: l.rp.fin, _niveau: niveau, _rp: true });
-      const total = allEx.length; const done = new Set(); const success = new Set(); let shown = false;
+      const total = allEx.length; const done = new Set(); const success = new Set(); (function () { var sv = (window.Progress.getLecon(l.id) || {}).exercices || {}; Object.keys(sv).forEach(function (k) { var i = +k; if (i >= 0 && i < total) { done.add(i); if (sv[k]) success.add(i); } }); })(); let shown = window.Progress.estTermine(l.id);
       function refresh() {
         const besoin = Math.ceil(seuil * total / 100);
         label.textContent = done.size + "/" + total + " faits · " + success.size + "/" + total + " justes · requis " + besoin + "/" + total;
