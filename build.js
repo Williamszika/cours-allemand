@@ -16,12 +16,17 @@ let html = read("index.html");
 // 1) Inline du CSS
 const css = read("css/styles.css");
 html = html.split('<link rel="stylesheet" href="css/styles.css" />').join("<style>\n" + css + "\n</style>");
+const premiumCss = read("css/premium.css");
+html = html.split('<link rel="stylesheet" href="css/premium.css" />').join("<style>\n" + premiumCss + "\n</style>");
 
 // 2) Inline des scripts (dans l'ordre de chargement)
 const scripts = [
   "data/lecons-a11.js",
   "data/lecons-a12.js",
   "data/production.js",
+  "data/ecoute.js",
+  "data/vocplus.js",
+  "data/c2diff.js",
   "data/comprehension.js",
   "data/grammaire.js",
   "data/lecons-a21.js",
@@ -45,6 +50,7 @@ const scripts = [
   "data/grammaire-c21.js",
   "data/grammaire-c22.js",
   "data/cours.js",
+  "data/competences.js",
   "data/illustrations.js",
   "data/placement.js",
   "data/pflege.js",
@@ -55,7 +61,12 @@ const scripts = [
   "js/revision.js",
   "js/telegram.js",
   "js/sync.js",
+  "js/premium.js",
+  "js/dashboard.js",
   "js/exercises.js",
+  "js/adaptatif.js",
+  "js/objectif.js",
+  "js/legal.js",
   "js/app.js"
 ];
 scripts.forEach((s) => {

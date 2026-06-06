@@ -1,0 +1,199 @@
+/* =====================================================================
+   premium.css — Styles de l'offre Premium et du tableau de bord
+   Palette accordée au cours (rouge #b91c1c, ambre #f59e0b) ; l'ambre/or
+   évoque les Telegram Stars. Réutilise les classes existantes (.btn…).
+   ===================================================================== */
+
+/* ---------- Carte d'offre (accueil) & mur de paiement ---------- */
+.premium-card,
+.paywall {
+  text-align: center;
+  border-radius: 18px;
+  padding: 28px 22px;
+  background: linear-gradient(160deg, #fffbeb 0%, #fff7ed 100%);
+  border: 1px solid #fcd34d;
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.12);
+}
+.paywall {
+  margin: 8px 0 24px;
+}
+.premium-card.active {
+  background: linear-gradient(160deg, #ecfdf5 0%, #f0fdf4 100%);
+  border-color: #86efac;
+}
+.premium-card.owner {
+  background: linear-gradient(160deg, #eff6ff 0%, #f5f3ff 100%);
+  border-color: #bfdbfe;
+}
+.premium-card .premium-ic,
+.paywall .premium-ic {
+  font-size: 40px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.premium-card h2,
+.paywall h2 {
+  margin: 6px 0 8px;
+  font-size: 1.35rem;
+}
+.premium-card p,
+.paywall p {
+  margin: 0 auto 16px;
+  max-width: 46ch;
+  color: #4b5563;
+}
+.premium-card .btn,
+.paywall .btn {
+  margin: 4px 6px;
+}
+.premium-note {
+  font-size: 0.82rem;
+  color: #92400e;
+  margin-top: 10px !important;
+}
+
+/* ---------- Verrou Premium sur les cartes de leçon ----------
+   Classe dédiée « premium-locked » : NE PAS réutiliser « .locked », déjà
+   employée par le verrou de progression séquentielle (étape précédente à
+   terminer). Sans cette distinction, toutes les leçons verrouillées par
+   progression afficheraient à tort le badge « Premium ». */
+.lecon-card.premium-locked {
+  opacity: 0.92;
+}
+.lecon-card.premium-locked .lock {
+  font-size: 0.9em;
+}
+.lecon-card.premium-locked::after {
+  content: "Premium";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #92400e;
+  background: #fde68a;
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+.lecon-card {
+  position: relative;
+}
+
+/* ---------- Tableau de bord ---------- */
+.dash-head {
+  text-align: center;
+  margin: 8px 0 18px;
+}
+.dash-head h1 {
+  margin: 0 0 4px;
+}
+.dash-head p {
+  margin: 0;
+  color: #6b7280;
+}
+.dash-sum {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.dash-kpi {
+  flex: 1 1 140px;
+  max-width: 220px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+}
+.dash-kpi .k {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #b45309;
+}
+.dash-kpi .l {
+  display: block;
+  font-size: 0.82rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+.dash-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+.dash-table th,
+.dash-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eef2f7;
+}
+.dash-table thead th {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+}
+.dash-table td.amt {
+  font-weight: 700;
+  white-space: nowrap;
+  color: #b45309;
+}
+.dash-table tbody tr:hover {
+  background: #fafafa;
+}
+.dash-msg {
+  text-align: center;
+  padding: 30px 16px;
+  color: #4b5563;
+}
+.dash-msg .comp-emoji {
+  font-size: 42px;
+}
+.dash-msg code {
+  background: #f3f4f6;
+  padding: 1px 6px;
+  border-radius: 6px;
+}
+.dash-loading {
+  text-align: center;
+  color: #6b7280;
+  padding: 24px;
+}
+
+/* ---------- Thème sombre (Telegram) ---------- */
+:root[data-tg-scheme="dark"] .premium-card,
+:root[data-tg-scheme="dark"] .paywall {
+  background: linear-gradient(160deg, #2a2410 0%, #1f1b10 100%);
+  border-color: #6b5417;
+}
+:root[data-tg-scheme="dark"] .premium-card.active {
+  background: linear-gradient(160deg, #11261b 0%, #0f1f17 100%);
+  border-color: #2f6b46;
+}
+:root[data-tg-scheme="dark"] .premium-card.owner {
+  background: linear-gradient(160deg, #131c2e 0%, #161528 100%);
+  border-color: #2b3b63;
+}
+:root[data-tg-scheme="dark"] .premium-card p,
+:root[data-tg-scheme="dark"] .paywall p {
+  color: #cbd5e1;
+}
+:root[data-tg-scheme="dark"] .dash-kpi {
+  background: #11161d;
+  border-color: #243040;
+}
+:root[data-tg-scheme="dark"] .dash-table th,
+:root[data-tg-scheme="dark"] .dash-table td {
+  border-color: #1f2733;
+}
+:root[data-tg-scheme="dark"] .dash-table tbody tr:hover {
+  background: #141a22;
+}
+:root[data-tg-scheme="dark"] .dash-msg code {
+  background: #1f2733;
+}

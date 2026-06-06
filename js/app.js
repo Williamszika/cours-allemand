@@ -437,6 +437,14 @@
     cta.appendChild(audioInfo);
     hero.appendChild(cta);
     frag.appendChild(hero);
+
+    /* --- Offre Premium (rendue uniquement si le backend est configuré ;
+       sinon renderHomeCard() renvoie null et rien ne s'affiche) --- */
+    if (window.Premium) {
+      const premiumCard = window.Premium.renderHomeCard();
+      if (premiumCard) frag.appendChild(premiumCard);
+    }
+
     if (window.Objectif && window.Objectif.panel) { try { var __opan = window.Objectif.panel(COURS); if (__opan) frag.appendChild(__opan); } catch (e) {} }
     if (window.Adaptatif && window.Adaptatif.panel) { try { var __apan = window.Adaptatif.panel(COURS, { nextHref: prochaineEtape(), due: (window.Revision ? window.Revision.stats(COURS).due : 0) }); if (__apan) frag.appendChild(__apan); } catch (e) {} }
 
@@ -487,7 +495,10 @@
         (l.type === "grammaire" ? "📐 grammaire" : "🗂️ " + (l.vocabulaire || []).length + " mots") +
         "</span><span>✍️ " + l.exercices.length + "</span></div></div>";
       let card;
-      if (unlocked) { card = el("a", "lecon-card" + (done ? " done" : "") + (l.type === "grammaire" ? " grammaire" : "")); card.href = "#/lecon/" + l.id; }
+      // Verrou Premium (en plus du verrou de progression). Reste faux tant que
+      // le backend n'est pas configuré ⇒ comportement identique à avant.
+      const premLocked = window.Premium && window.Premium.isLessonLocked(l.id);
+      if (unlocked) { card = el("a", "lecon-card" + (done ? " done" : "") + (premLocked ? " premium-locked" : "") + (l.type === "grammaire" ? " grammaire" : "")); card.href = "#/lecon/" + l.id; }
       else card = el("div", "lecon-card locked" + (l.type === "grammaire" ? " grammaire" : ""));
       card.innerHTML = banner + body;
       return card;
@@ -722,6 +733,28 @@
       if (window.TG) {
         window.TG.showBackButton(() => { location.hash = "#/"; });
         window.TG.setMainButton("→ Leçon " + prev.numero, () => { location.hash = "#/lecon/" + prev.id; });
+      }
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    /* Contenu Premium verrouillé : on affiche l'offre au lieu de la leçon.
+       isLessonLocked() est toujours faux tant que le backend n'est pas
+       configuré → aucune leçon n'est verrouillée par défaut. */
+    if (window.Premium && window.Premium.isLessonLocked(id)) {
+      const fragLock = document.createDocumentFragment();
+      const topLock = el("div", "lesson-top");
+      topLock.innerHTML =
+        '<a class="btn-link" href="#/">← Aperçu du programme</a>' +
+        '<span class="lesson-top-mod">🔒 Premium</span>';
+      fragLock.appendChild(topLock);
+      fragLock.appendChild(window.Premium.renderPaywall(l));
+      app.innerHTML = "";
+      app.appendChild(fragLock);
+      if (window.TG) {
+        window.TG.showBackButton(function () { location.hash = "#/"; });
+        window.TG.hideMainButton();
+        window.TG.closingConfirmation(false);
       }
       window.scrollTo(0, 0);
       return;
@@ -3178,6 +3211,7 @@
     else if (hash.match(/^#\/stats/)) renderDashboard();
     else if (hash.match(/^#\/objectif/)) { app.innerHTML = ""; if (window.Objectif && window.Objectif.page) app.appendChild(window.Objectif.page(COURS)); window.scrollTo(0, 0); if (window.TG) { try { window.TG.showBackButton(function () { location.hash = "#/"; }); if (window.TG.hideMainButton) window.TG.hideMainButton(); } catch (e) {} } }
     else if ((m = hash.match(/^#\/(impressum|datenschutz|agb|widerruf|legal)$/))) { app.innerHTML = ""; if (window.Legal && window.Legal.page) app.appendChild(window.Legal.page(m[1])); window.scrollTo(0, 0); if (window.TG) { try { window.TG.showBackButton(function () { location.hash = "#/menu"; }); if (window.TG.hideMainButton) window.TG.hideMainButton(); } catch (e) {} } }
+    else if (hash.match(/^#\/tableau-de-bord/)) { if (window.Dashboard) window.Dashboard.render(app); else renderHome(); }
     else if (rawHash === "#/") { if (besoinOnboarding()) renderOnboarding(); else renderHome(); } // aperçu du cours (lien explicite)
     else renderMenu(); // ouverture de l'app : hash vide OU « #tgWebAppData… » injecté par Telegram → le hub
     try { localizeUI(app); } catch (e) {} // traduit l'interface dans la langue choisie
@@ -3201,6 +3235,9 @@
     route(); // rendu immédiat avec les données locales
     // Fusion avec la progression cloud (Telegram) puis re-rendu si besoin
     if (window.Sync) window.Sync.load(function () { window.__SYNC_PENDING = false; route(); }); else { window.__SYNC_PENDING = false; }
+    // Statut Premium (backend) : re-rendu une fois l'état connu. Tolérant — si
+    // l'API est absente (hors-ligne / non déployée), Premium reste inerte.
+    if (window.Premium) window.Premium.init(function () { route(); });
     // Service worker : hors-ligne + installable (hors Telegram, qui gère son propre cache)
     if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
       // Auto-mise à jour : si une nouvelle version du service worker prend la
@@ -3222,6 +3259,7 @@
   }
 
   window.addEventListener("hashchange", route);
+  window.addEventListener("premium:changed", route);
   window.addEventListener("DOMContentLoaded", boot);
   // Si déjà chargé
   if (document.readyState !== "loading") boot();
