@@ -162,6 +162,7 @@ window.Exercises = (function () {
       big.addEventListener("click", () => window.Speech && window.Speech.speak(ex.audio));
       player.appendChild(big);
       player.appendChild(el("span", "ecoute-hint", "Cliquez pour écouter, puis choisissez."));
+      var __rev = el("button", "btn-link ecoute-reveal", "Pas de son ? Afficher le texte"); __rev.type = "button"; __rev.addEventListener("click", function () { var __t = el("p", "ecoute-text loc-keep"); __t.style.cssText = "margin:6px 0 0;padding:8px 10px;background:rgba(127,127,127,.12);border-radius:8px;font-style:italic"; __t.textContent = ex.audio; player.appendChild(__t); __rev.style.display = "none"; }); player.appendChild(__rev);
       body.appendChild(player);
     } else if (ex.question) {
       body.appendChild(el("p", "exo-question", ex.question));
