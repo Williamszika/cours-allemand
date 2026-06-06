@@ -1,0 +1,35 @@
+name: build-check
+
+# Garde anti-dérive : index.html est la source de vérité. `node build.js`
+# régénère le bundle autonome (dist/) ET la liste de précache du Service
+# Worker (sw.js). Si l'un des deux n'est pas à jour, ce job échoue.
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Le cours s'assemble sans erreur
+        run: node scripts/check-cours.js
+
+      - name: Régénère le bundle et le précache depuis index.html
+        run: node build.js
+
+      - name: dist/ et sw.js sont à jour (sinon lance `node build.js` et commite)
+        run: git diff --exit-code -- dist/allemand-a1.html sw.js
+
+      - name: Aucune référence locale ne subsiste dans le bundle autonome
+        run: |
+          if grep -Eq '<script[^>]*src="(data|js|css)/|<link[^>]*rel="stylesheet"[^>]*href="css/' dist/allemand-a1.html; then
+            echo "::error::Des références locales subsistent dans dist/allemand-a1.html"
+            exit 1
+          fi

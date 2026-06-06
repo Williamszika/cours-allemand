@@ -59,3 +59,25 @@ if (
 } else {
   console.log("   (SDK Telegram laissé en externe — normal.)");
 }
+
+// 4) Synchronise la liste de précache du Service Worker (sw.js) avec index.html
+//    — même source de vérité que le bundle, pour éviter toute dérive du mode
+//    hors-ligne. La liste est écrite entre les marqueurs @shell:start/@shell:end.
+const swAssets = [];
+read("index.html").replace(/\b(?:src|href)=["']([^"']+)["']/gi, (m, p) => {
+  if (/^(?:https?:|data:)/i.test(p)) return m; // ressources externes : ignorées
+  if ((/^(?:css|js|data)\//.test(p) || /\.(?:webmanifest|png)$/i.test(p)) && swAssets.indexOf(p) < 0) {
+    swAssets.push(p);
+  }
+  return m;
+});
+const shell = ["./", "./index.html", "./icon-512.png"].concat(swAssets.map((p) => "./" + p));
+const shellLines = shell.map((s) => '  "' + s + '"').join(",\n");
+const SHELL_RE = /(\/\* @shell:start[\s\S]*?\*\/)[\s\S]*?(\/\* @shell:end \*\/)/;
+let sw = read("sw.js");
+if (SHELL_RE.test(sw)) {
+  fs.writeFileSync(path.join(dir, "sw.js"), sw.replace(SHELL_RE, "$1\n" + shellLines + "\n  $2"));
+  console.log("✅ sw.js : précache synchronisé (" + shell.length + " entrées)");
+} else {
+  console.warn("⚠️ sw.js : marqueurs @shell:start/@shell:end introuvables — précache non régénéré.");
+}
