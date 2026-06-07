@@ -1075,3 +1075,30 @@ a.dictee-card:hover { background: #cfe0fb; }
 .peda-kontrast-h{margin:6px 0 2px;font-size:.95em;font-weight:700}
 .peda-list{margin:6px 0 0;padding-left:20px}
 .peda-list li{margin:4px 0}
+
+/* =====================================================================
+   Polish ciblé — micro-finitions cohérentes avec l'identité existante.
+   ===================================================================== */
+/* Interactions plus douces */
+.btn { transition: background .15s, color .15s, border-color .15s, transform .12s, box-shadow .15s; }
+.btn:active { transform: translateY(1px); }
+.btn-primary:hover { box-shadow: 0 10px 26px rgba(29, 78, 216, .34); }
+/* Cartes de leçon : léger relief au survol + états plus nets */
+.lecon-card { transition: transform .18s cubic-bezier(.2, .8, .2, 1), box-shadow .18s, border-color .18s; }
+.lecon-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.lecon-card.done { border-color: rgba(22, 163, 74, .40); }
+.lecon-card .check { color: var(--green); }
+.lecon-card.locked { opacity: .96; }
+.lecon-card.locked .lock { opacity: .85; }
+/* Accessibilité : focus clavier visible et cohérent */
+a:focus-visible, button:focus-visible, .btn:focus-visible,
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--blue); outline-offset: 2px;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--blue); }
+.section-title { letter-spacing: -.01em; }
+/* Respecte la préférence système « mouvement réduit » */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  html { scroll-behavior: auto; }
+}

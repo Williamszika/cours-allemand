@@ -4,3 +4,4 @@ node_modules/
 .vercel
 server/tts-cache/
 server/subscribers.json
+server/admins.json
