@@ -82,65 +82,97 @@ function compStats(users){
    selon les descripteurs DELF A2 ; CO et CE sont déjà notées côté client.
    Réussite : total >= 50/100 ET aucune épreuve < 5/25 (sinon éliminatoire). */
 function clampN(x,a,b){x=Math.round(+x||0);return x<a?a:(x>b?b:x);}
-function examGradeSys(kind,langue){
+function examGradeSys(kind,langue,sur,contexte){
   var LN={fr:"français",en:"anglais",de:"allemand",ar:"arabe",tr:"turc",ru:"russe",uk:"ukrainien",fa:"persan",es:"espagnol",it:"italien",pt:"portugais",pl:"polonais",ro:"roumain",nl:"néerlandais"};
-  var lg=LN[String(langue||"fr")]||"français";
-  return "Tu es examinateur officiel du DELF A2 d'allemand (CECRL, niveau A2). Tu evalues la PRODUCTION "+kind+" d'un candidat selon les descripteurs A2 : respect de la consigne, capacite a informer/decrire/raconter/interagir, etendue et correction du vocabulaire et de la grammaire de niveau A2, coherence et connecteurs. Tu notes l'ENSEMBLE de l'epreuve sur 25 points. Sois juste mais bienveillant ; une production vide ou hors sujet recoit une note tres basse. Redige un bilan en "+lg+" : 2 a 4 phrases (points forts, puis 1 a 2 corrections utiles au format 'forme fautive -> forme correcte'). Puis, sur la TOUTE DERNIERE ligne, ecris EXACTEMENT au format : NOTE: X/25 (X = entier de 0 a 25). N'ecris rien apres cette ligne.";
+  var lg=LN[String(langue||"fr")]||"français";sur=sur||25;var ctx=contexte||"DELF A2";var niv=/B1/.test(ctx)?"B1":"A2";
+  return "Tu es examinateur officiel du "+ctx+" d'allemand (CECRL, niveau "+niv+"). Tu evalues la PRODUCTION "+kind+" d'un candidat selon les descripteurs "+niv+" : respect de la consigne, capacite a informer/decrire/raconter/argumenter/interagir, etendue et correction du vocabulaire et de la grammaire de niveau "+niv+", coherence et connecteurs. Tu notes l'ENSEMBLE de l'epreuve sur "+sur+" points. Sois juste mais bienveillant ; une production vide ou hors sujet recoit une note tres basse. Redige un bilan en "+lg+" : 2 a 4 phrases (points forts, puis 1 a 2 corrections utiles au format 'forme fautive -> forme correcte'). Puis, sur la TOUTE DERNIERE ligne, ecris EXACTEMENT au format : NOTE: X/"+sur+" (X = entier de 0 a "+sur+"). N'ecris rien apres cette ligne.";
 }
-function heuristicNote(items){
-  var w=0;(items||[]).forEach(function(t){var s=String(t.production||"").trim();w+=s?s.split(/\s+/).length:0;});
-  if(w===0)return 0;return clampN(Math.min(22,Math.round(w/80*18)+3),0,22);
+function heuristicNote(items,sur){
+  sur=sur||25;var w=0;(items||[]).forEach(function(t){var s=String(t.production||"").trim();w+=s?s.split(/\s+/).length:0;});
+  if(w===0)return 0;return clampN(Math.round(Math.min(0.85,w/120)*sur),0,Math.round(sur*0.9));
 }
-async function aiNote(kind,items,langue){
-  if(!ANTHKEY)return {ok:false};
-  var body=(items||[]).map(function(t,i){return "Tache "+(i+1)+" — Consigne : "+String(t.consigne||"").slice(0,600)+"\nProduction du candidat : «"+(String(t.production||"").trim()||"(rien)").slice(0,2000)+"»";}).join("\n\n");
+async function aiNote(kind,items,langue,sur,contexte){
+  sur=sur||25;if(!ANTHKEY)return {ok:false};
+  var body=(items||[]).map(function(t,i){return "Tache "+(i+1)+" — Consigne : "+String(t.consigne||"").slice(0,800)+"\nProduction du candidat : «"+(String(t.production||"").trim()||"(rien)").slice(0,3000)+"»";}).join("\n\n");
   try{
-    var r=await anthropic(examGradeSys(kind,langue),[{role:"user",content:"Epreuve de production "+kind+" (DELF A2).\n\n"+body}]);
+    var r=await anthropic(examGradeSys(kind,langue,sur,contexte),[{role:"user",content:"Epreuve de production "+kind+" ("+(contexte||"DELF A2")+").\n\n"+body}]);
     if(r.status<200||r.status>=300){console.warn("[exam-ai] upstream "+r.status);return {ok:false};}
     var j=JSON.parse(r.buf.toString());var txt=(j.content&&j.content[0]&&j.content[0].text)?j.content[0].text:"";
     if(!txt)return {ok:false};
-    var m=txt.match(/NOTE\s*:?\s*([0-9]{1,2})(?:[.,][0-9]+)?\s*\/\s*25/i);
-    var note=m?clampN(m[1],0,25):heuristicNote(items);
-    var feedback=txt.replace(/\n?\s*NOTE\s*:?\s*[0-9][^\n]*\/\s*25\s*$/i,"").trim();
+    var m=txt.match(/NOTE\s*:?\s*([0-9]{1,3})(?:[.,][0-9]+)?\s*\/\s*([0-9]{1,3})/i);
+    var note=m?clampN(m[1],0,sur):heuristicNote(items,sur);
+    var feedback=txt.replace(/\n?\s*NOTE\s*:?\s*[0-9][^\n]*\/\s*[0-9]+\s*$/i,"").trim();
     return {ok:true,note:note,feedback:feedback};
   }catch(e){console.warn("[exam-ai]",e&&e.message);return {ok:false};}
 }
-async function gradeExam(id){
-  var u=loadUser(id);if(!u||!u.exam||u.exam.status!=="pending")return "none";
-  var p=u.exam.payload||{},copy=p.copy||{},langue=p.langue||"fr";
+// telc B1 : écrit /225 (Lesen 75 + Sprachbausteine 30 + Hören 75 + Schreiben 45),
+// oral /75. Réussite : >=60% dans CHAQUE partie (135/225 et 45/75), bénéfice gardé.
+const B1_W_MAX=225,B1_W_PASS=135,B1_O_MAX=75,B1_O_PASS=45;
+async function gradeExam(id,key){
+  var u=loadUser(id);var ex=u&&u.exams&&u.exams[key];
+  if(!u||!ex||ex.status!=="pending")return "none";
+  if(key==="a2")return await gradeA2(id,u,ex);
+  if(key.indexOf("b1-")===0)return await gradeB1(id,u,ex,key);
+  return "none";
+}
+async function gradeA2(id,u,ex){
+  var p=ex.payload||{},copy=p.copy||{},langue=p.langue||"fr";
   var co25=clampN(p.co25,0,25),ce25=clampN(p.ce25,0,25);
-  var ee=await aiNote("ecrite",(copy.ee||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue);
+  var ee=await aiNote("ecrite",(copy.ee||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue,25,"DELF A2");
   if(!ee.ok)return "postpone";
-  var eo=await aiNote("orale",(copy.eo||[]).map(function(t){return {consigne:t.consigne,production:t.transcript};}),langue);
+  var eo=await aiNote("orale",(copy.eo||[]).map(function(t){return {consigne:t.consigne,production:t.transcript};}),langue,25,"DELF A2");
   if(!eo.ok)return "postpone";
-  var ee25=ee.note,eo25=eo.note;
-  var total=co25+ce25+ee25+eo25;
-  var minNote=Math.min(co25,ce25,ee25,eo25);
-  var elim=minNote<EXAM_ELIM;
-  var reussi=total>=EXAM_PASS&&!elim;
-  // Met à jour les tests pour débloquer le niveau (synchronisé via /api/state).
+  var total=co25+ce25+ee.note+eo.note,minNote=Math.min(co25,ce25,ee.note,eo.note),elim=minNote<EXAM_ELIM,reussi=total>=EXAM_PASS&&!elim;
   u.progress=u.progress||{};u.progress.tests=u.progress.tests||{};
-  var prev=u.progress.tests[u.exam.exam]||{meilleur:0,reussi:false};
-  u.progress.tests[u.exam.exam]={meilleur:Math.max(prev.meilleur||0,total),reussi:!!(prev.reussi||reussi),dernier:total};
-  u.exam.status="graded";u.exam.gradedAt=new Date().toISOString();
-  u.exam.result={co25:co25,ce25:ce25,ee25:ee25,eo25:eo25,total:total,minNote:minNote,eliminatoire:elim,reussi:reussi,eeFeedback:ee.feedback,eoFeedback:eo.feedback};
+  var prev=u.progress.tests.a2||{meilleur:0,reussi:false};
+  u.progress.tests.a2={meilleur:Math.max(prev.meilleur||0,total),reussi:!!(prev.reussi||reussi),dernier:total};
+  ex.status="graded";ex.gradedAt=new Date().toISOString();
+  ex.result={co25:co25,ce25:ce25,ee25:ee.note,eo25:eo.note,total:total,minNote:minNote,eliminatoire:elim,reussi:reussi,eeFeedback:ee.feedback,eoFeedback:eo.feedback};
   saveUser(id,u);
-  var msg=reussi
-    ? "🎓 Ton résultat DELF A2 est prêt : "+total+"/100 — RÉUSSI ✅\nOuvre l'app pour voir ta copie corrigée et télécharger ton PDF. Glückwunsch!"
-    : (elim
-        ? "📋 Résultat DELF A2 : "+total+"/100. Une épreuve est sous 5/25 (note éliminatoire). Regarde ta copie corrigée dans l'app et retente l'examen — du schaffst das! 💪"
-        : "📋 Résultat DELF A2 : "+total+"/100 (il faut 50/100). Pas encore réussi. Regarde ta copie corrigée dans l'app et retente bientôt ! 💪");
+  var msg=reussi?"🎓 Ton résultat DELF A2 est prêt : "+total+"/100 — RÉUSSI ✅\nOuvre l'app pour ta copie corrigée et ton PDF. Glückwunsch!":(elim?"📋 Résultat DELF A2 : "+total+"/100. Une épreuve est sous 5/25 (éliminatoire). Regarde ta copie dans l'app et retente — du schaffst das! 💪":"📋 Résultat DELF A2 : "+total+"/100 (il faut 50). Pas encore réussi. Regarde ta copie dans l'app et retente bientôt ! 💪");
   if(BOT_TOKEN)tgSend(id,msg).catch(function(){});
-  console.log("[exam] "+id+" corrigé: "+total+"/100 ("+(reussi?"réussi":"échec")+")");
+  console.log("[exam] "+id+" DELF A2 corrigé: "+total+"/100");
+  return "graded";
+}
+async function gradeB1(id,u,ex,key){
+  var p=ex.payload||{},copy=p.copy||{},langue=p.langue||"fr";
+  var part=(key==="b1-muendlich")?"muendlich":"schriftlich";
+  if(part==="schriftlich"){
+    var lesen=clampN(p.lesen,0,75),sb=clampN(p.sprachbausteine,0,30),hoeren=clampN(p.hoeren,0,75);
+    var sch=await aiNote("ecrite (lettre/e-mail formel ou informel)",(copy.schreiben||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue,45,"telc B1");
+    if(!sch.ok)return "postpone";
+    var wt=lesen+sb+hoeren+sch.note;
+    ex.result={part:"schriftlich",lesen:lesen,sprachbausteine:sb,hoeren:hoeren,schreiben:sch.note,total:wt,sur:B1_W_MAX,seuil:B1_W_PASS,passed:wt>=B1_W_PASS,schreibenFeedback:sch.feedback};
+  }else{
+    var oral=await aiNote("orale (3 parties : presentation, discussion d'opinion, planification commune)",(copy.oral||[]).map(function(t){return {consigne:t.consigne,production:t.transcript};}),langue,75,"telc B1");
+    if(!oral.ok)return "postpone";
+    ex.result={part:"muendlich",total:oral.note,sur:B1_O_MAX,seuil:B1_O_PASS,passed:oral.note>=B1_O_PASS,oralFeedback:oral.feedback};
+  }
+  ex.status="graded";ex.gradedAt=new Date().toISOString();
+  // Certificat B1 : réussi seulement si l'écrit ET l'oral sont validés (bénéfice gardé).
+  var sr=(u.exams["b1-schriftlich"]&&u.exams["b1-schriftlich"].result)||null;
+  var mr=(u.exams["b1-muendlich"]&&u.exams["b1-muendlich"].result)||null;
+  var certified=!!(sr&&sr.passed&&mr&&mr.passed);
+  var pct=Math.round(((sr?sr.total:0)+(mr?mr.total:0))/(B1_W_MAX+B1_O_MAX)*100);
+  u.progress=u.progress||{};u.progress.tests=u.progress.tests||{};
+  var prevB=u.progress.tests.b1||{meilleur:0,reussi:false};
+  u.progress.tests.b1={meilleur:Math.max(prevB.meilleur||0,pct),reussi:!!(prevB.reussi||certified),dernier:pct};
+  saveUser(id,u);
+  var r=ex.result,pn=(part==="schriftlich")?"écrite":"orale";
+  var msg=certified?"🏅 telc B1 — CERTIFIÉ ! Tu as réussi l'écrit ET l'oral. Le niveau B2 est débloqué. Ouvre l'app pour ta copie et ton PDF. Glückwunsch!":(r.passed?"✅ telc B1 — partie "+pn+" RÉUSSIE ("+r.total+"/"+r.sur+"). Il te reste "+(part==="schriftlich"?"l'oral":"l'écrit")+" pour le certificat. Ouvre l'app pour ta copie corrigée.":"📋 telc B1 — partie "+pn+" : "+r.total+"/"+r.sur+" (il faut "+r.seuil+"). Pas encore validée. Regarde ta copie corrigée dans l'app et repasse cette partie. 💪");
+  if(BOT_TOKEN)tgSend(id,msg).catch(function(){});
+  console.log("[exam] "+id+" telc B1 "+part+" corrigé: "+r.total+"/"+r.sur+(certified?" (CERTIFIÉ)":""));
   return "graded";
 }
 var examScanning=false;
 async function scanPendingExams(){
   if(examScanning)return;examScanning=true;
   try{var now=Date.now();var users=listUsers();
-    for(var i=0;i<users.length;i++){var u=users[i];try{
-      if(u&&u.id&&u.exam&&u.exam.status==="pending"&&now-(Date.parse(u.exam.submittedAt)||0)>=GRADE_DELAY){await gradeExam(String(u.id));}
-    }catch(e){console.warn("[exam-scan]",e&&e.message);}}
+    for(var i=0;i<users.length;i++){var u=users[i];if(!u||!u.id||!u.exams)continue;var keys=Object.keys(u.exams);
+      for(var k=0;k<keys.length;k++){try{var ex=u.exams[keys[k]];
+        if(ex&&ex.status==="pending"&&now-(Date.parse(ex.submittedAt)||0)>=GRADE_DELAY){await gradeExam(String(u.id),keys[k]);}
+      }catch(e){console.warn("[exam-scan]",e&&e.message);}}
+    }
   }finally{examScanning=false;}
 }
 const H={"Content-Type":"audio/mpeg","Cache-Control":"public, max-age=31536000, immutable"};
@@ -197,20 +229,21 @@ http.createServer(async(rq,rs)=>{try{
       const body=JSON.parse(data||"{}");const v=tgVerify(body.initData);
       if(!v||!v.user||!v.user.id){rs.writeHead(403);return rs.end("bad initData");}
       const id=String(v.user.id);const action=String(body.action||"result");
+      const key=String(body.exam||"a2").replace(/[^a-z0-9-]/g,"").slice(0,24);
       if(action==="submit"){
-        const exam=String(body.exam||"a2").replace(/[^a-z0-9]/g,"").slice(0,12);
         const payload=(body.payload&&typeof body.payload==="object")?body.payload:{};
-        const us=touchUser(v,function(u2){u2.exam={exam:exam,status:"pending",submittedAt:new Date().toISOString(),payload:payload};});
+        const us=touchUser(v,function(u2){u2.exams=u2.exams||{};u2.exams[key]={exam:key,status:"pending",submittedAt:new Date().toISOString(),payload:payload};});
+        const sub=us.exams[key];
         rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"});
-        return rs.end(JSON.stringify({ok:true,status:"pending",submittedAt:us.exam.submittedAt,availableAt:Date.parse(us.exam.submittedAt)+GRADE_DELAY,delayMs:GRADE_DELAY}));
+        return rs.end(JSON.stringify({ok:true,status:"pending",submittedAt:sub.submittedAt,availableAt:Date.parse(sub.submittedAt)+GRADE_DELAY,delayMs:GRADE_DELAY}));
       }
-      // action "result" (par défaut) : renvoie l'état, en déclenchant la correction si l'échéance est atteinte.
-      let ex=(loadUser(id)||{}).exam;
+      // action "result" (par défaut) : renvoie l'état de la copie <key>, en déclenchant la correction si l'échéance est atteinte.
+      let ex=((loadUser(id)||{}).exams||{})[key];
       if(ex&&ex.status==="pending"){
         const due=Date.now()-(Date.parse(ex.submittedAt)||0)>=GRADE_DELAY;
         const force=!!body.force&&isOwner(id,body.key);
-        if(due||force)await gradeExam(id);
-        ex=(loadUser(id)||{}).exam;
+        if(due||force)await gradeExam(id,key);
+        ex=((loadUser(id)||{}).exams||{})[key];
       }
       rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"});
       if(!ex)return rs.end(JSON.stringify({status:"none"}));
