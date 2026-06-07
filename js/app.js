@@ -1900,6 +1900,23 @@
   function delfName(code) { return code === "final" ? "A1 + A2 (combiné)" : String(code).toUpperCase(); }
   function delfLocalGet(code) { try { return JSON.parse(localStorage.getItem("delf_" + code) || "null"); } catch (e) { return null; } }
   function delfLocalSet(code, o) { try { localStorage.setItem("delf_" + code, JSON.stringify(o || {})); } catch (e) {} }
+  /* Brouillon d'examen EN COURS : sauvegardé après chaque épreuve terminée, pour
+     reprise après fermeture/déconnexion. Effacé à la remise de la copie. */
+  function examDraftGet(key) { try { return JSON.parse(localStorage.getItem("draft_" + key) || "null"); } catch (e) { return null; } }
+  function examDraftSet(key, o) { try { localStorage.setItem("draft_" + key, JSON.stringify(o || {})); } catch (e) {} }
+  function examDraftClear(key) { try { localStorage.removeItem("draft_" + key); } catch (e) {} }
+  function examResume(brand, label, onResume, onRestart) {
+    app.innerHTML = ""; const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top"); top.innerHTML = '<a class="btn-link" href="#/">← Aperçu</a><span class="lesson-top-mod">' + brand + "</span>"; frag.appendChild(top);
+    const c = el("div", "completion ok");
+    c.innerHTML = '<div class="comp-emoji">⏸️</div><h2>Reprendre l\'examen ?</h2><p>Vous avez un examen en cours' + (label ? " (" + label + ")" : "") + '. Vous pouvez reprendre là où vous vous êtes arrêté(e), ou tout recommencer. <strong>Vos épreuves déjà terminées sont conservées.</strong></p>';
+    const row = el("div", "rev-actions");
+    const b1 = el("button", "btn btn-primary", "▶️ Reprendre"); b1.type = "button"; b1.addEventListener("click", onResume);
+    const b2 = el("button", "btn btn-ghost", "↺ Recommencer"); b2.type = "button"; b2.addEventListener("click", onRestart);
+    row.appendChild(b1); row.appendChild(b2); c.appendChild(row); frag.appendChild(c); app.appendChild(frag);
+    if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = "#/"; }); window.TG.setMainButton("▶️ Reprendre", onResume); } catch (e) {} }
+    window.scrollTo(0, 0);
+  }
   function delfGuardOK(code) { if (code === "a1") return niveauTermine("A1"); if (code === "a2") return examPasse("a1") && niveauTermine("A2"); if (code === "final") return examPasse("a2"); return false; }
   function delfEsc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
   function delfFmt(s) { return delfEsc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\n/g, "<br>"); }
@@ -2068,7 +2085,7 @@
     card.appendChild(inp);
     if (task.opener) pushExaminer(task.opener);
     else { history.push({ role: "user", content: "[Du bist Pruefer in einer muendlichen Pruefung. Aufgabe: " + (task.consigne || "") + (task.scenario ? " Szenario: " + task.scenario : "") + ". Eroeffne die Pruefung mit EINER kurzen, passenden Frage oder Replik auf Deutsch.]" }); examinerTurn(); }
-    function collect() { return { id: task.id, consigne: task.consigne + (task.scenario ? " (" + task.scenario + ")" : ""), transcript: turns.map(function (h) { return (h.role === "user" ? "Candidat : " : "Examinateur : ") + h.content; }).join("\n") }; }
+    function collect() { return { id: task.id, consigne: task.consigne + (task.scenario ? " (" + task.scenario + ")" : ""), transcript: turns.map(function (h) { return (h.role === "user" ? "Candidat : " : "Examinateur : ") + h.content; }).join("\n"), candidate: turns.filter(function (h) { return h.role === "user"; }).map(function (h) { return h.content; }).join("\n") }; }
     return { el: card, collect: collect };
   }
 
@@ -2133,9 +2150,11 @@
     function score() {
       const ref = norm(dictee.texte).split(" ").filter(Boolean), got = norm(ta.value).split(" ").filter(Boolean);
       if (!ref.length) return 0;
-      const pool = got.slice(); let ok = 0;
-      ref.forEach(function (w) { const k = pool.indexOf(w); if (k >= 0) { ok++; pool.splice(k, 1); } });
-      return Math.round(ok / ref.length * 100);
+      // Plus longue sous-séquence commune (ordre respecté) ; dénominateur = max(réf, saisie)
+      // → pénalise à la fois les omissions, le désordre ET les mots en trop.
+      const n = ref.length, m = got.length, dp = new Array(m + 1).fill(0);
+      for (let i = 1; i <= n; i++) { let prev = 0; for (let j = 1; j <= m; j++) { const tmp = dp[j]; dp[j] = (ref[i - 1] === got[j - 1]) ? prev + 1 : Math.max(dp[j], dp[j - 1]); prev = tmp; } }
+      return Math.round(dp[m] / Math.max(n, m) * 100);
     }
     function collect() { const pct = score(); return { score: pct, points: Math.round(pct * sur / 100), sur: sur, texte: dictee.texte, saisie: ta.value.trim() }; }
     return { el: card, collect: collect };
@@ -2152,16 +2171,16 @@
     const state = { co: null, ce: null, ee: [], eo: [], dictee: null };
     const E = D.epreuves;
 
-    function runCO() { const ep = E.co; const r = delfQCM(ep.documents, "co"); delfScreen(Object.assign({}, SC, { phase: "Épreuve 1 / 4 · collective", icone: ep.icone, titre: ep.titre, intro: ep.intro, body: r.el, timerSeconds: ep.duree, primary: "Terminer l'épreuve →", onPrimary: function () { state.co = r.collect(); runCE(); } })); }
-    function runCE() { const ep = E.ce; const r = delfQCM(ep.documents, "ce"); delfScreen(Object.assign({}, SC, { phase: "Épreuve 2 / 4 · collective", icone: ep.icone, titre: ep.titre, intro: ep.intro, body: r.el, timerSeconds: ep.duree, primary: "Terminer l'épreuve →", onPrimary: function () { state.ce = r.collect(); runEE(); } })); }
-    function runEE() { const ep = E.ee; const r = delfEE(ep.taches); delfScreen(Object.assign({}, SC, { phase: "Épreuve 3 / 4 · collective", icone: ep.icone, titre: ep.titre, intro: ep.intro, body: r.el, timerSeconds: ep.duree, primary: "Terminer l'épreuve →", onPrimary: function () { state.ee = r.collect(); (D.dictee ? runDictee() : runEOPrep()); } })); }
-    function runDictee() { const r = delfDictee(D.dictee); delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · dictée", icone: "✒️", titre: D.dictee.titre || "Dictée", intro: "Niveau " + (D.dictee.niveau || "") + " — écoutez (2× max) et écrivez exactement. Aucune correction ne s'affiche.", body: r.el, timerSeconds: D.dictee.duree || 600, primary: "Terminer la dictée →", onPrimary: function () { state.dictee = r.collect(); runEOPrep(); } })); }
+    function runCO() { const ep = E.co; const r = delfQCM(ep.documents, "co"); delfScreen(Object.assign({}, SC, { phase: "Épreuve 1 / 4 · collective", icone: ep.icone, titre: ep.titre, intro: ep.intro, body: r.el, timerSeconds: ep.duree, primary: "Terminer l'épreuve →", onPrimary: function () { state.co = r.collect(); examDraftSet(code, { state: state, step: "ce" }); runCE(); } })); }
+    function runCE() { const ep = E.ce; const r = delfQCM(ep.documents, "ce"); delfScreen(Object.assign({}, SC, { phase: "Épreuve 2 / 4 · collective", icone: ep.icone, titre: ep.titre, intro: ep.intro, body: r.el, timerSeconds: ep.duree, primary: "Terminer l'épreuve →", onPrimary: function () { state.ce = r.collect(); examDraftSet(code, { state: state, step: "ee" }); runEE(); } })); }
+    function runEE() { const ep = E.ee; const r = delfEE(ep.taches); delfScreen(Object.assign({}, SC, { phase: "Épreuve 3 / 4 · collective", icone: ep.icone, titre: ep.titre, intro: ep.intro, body: r.el, timerSeconds: ep.duree, primary: "Terminer l'épreuve →", onPrimary: function () { state.ee = r.collect(); examDraftSet(code, { state: state, step: D.dictee ? "dictee" : "eoprep" }); (D.dictee ? runDictee() : runEOPrep()); } })); }
+    function runDictee() { const r = delfDictee(D.dictee); delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · dictée", icone: "✒️", titre: D.dictee.titre || "Dictée", intro: "Niveau " + (D.dictee.niveau || "") + " — écoutez (2× max) et écrivez exactement. Aucune correction ne s'affiche.", body: r.el, timerSeconds: D.dictee.duree || 600, primary: "Terminer la dictée →", onPrimary: function () { state.dictee = r.collect(); examDraftSet(code, { state: state, step: "eoprep" }); runEOPrep(); } })); }
     function runEOPrep() {
       const ep = E.eo; const body = el("div", "delf-eo-prep");
       ep.taches.forEach(function (t) { const c = el("div", "delf-doc"); c.appendChild(el("h3", "delf-doc-t", delfEsc(t.titre))); c.appendChild(el("p", "delf-q-t", delfEsc(t.consigne))); if (t.points) { const ul = el("ul", "delf-points"); t.points.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); c.appendChild(ul); } body.appendChild(c); });
       body.appendChild(el("p", "delf-q-t", "📝 Préparez vos parties. L'enregistrement commence ensuite."));
       const note = el("textarea", "production-input"); note.rows = 4; note.setAttribute("placeholder", "Brouillon / vos idées (non noté)…"); body.appendChild(note);
-      delfScreen(Object.assign({}, SC, { phase: "Épreuve 4 / 4 · préparation (" + Math.round(ep.prep / 60) + " min)", icone: ep.icone, titre: ep.titre + " — préparation", intro: "Vous avez " + Math.round(ep.prep / 60) + " minutes pour préparer.", body: body, timerSeconds: ep.prep, primary: "Je suis prêt(e) — parler →", onPrimary: runEO }));
+      delfScreen(Object.assign({}, SC, { phase: "Épreuve 4 / 4 · préparation (" + Math.round(ep.prep / 60) + " min)", icone: ep.icone, titre: ep.titre + " — préparation", intro: "Vous avez " + Math.round(ep.prep / 60) + " minutes pour préparer.", body: body, timerSeconds: ep.prep, primary: "Je suis prêt(e) — parler →", onPrimary: function () { examDraftSet(code, { state: state, step: "eo" }); runEO(); } }));
     }
     function runEO() { const ep = E.eo; const r = delfEO(ep.taches, CODE); delfScreen(Object.assign({}, SC, { phase: "Épreuve 4 / 4 · passation orale", icone: ep.icone, titre: ep.titre, intro: "Parlez au micro avec l'examinateur (ou écrivez). Aucune correction ne s'affiche.", body: r.el, timerSeconds: ep.duree, primary: "Remettre ma copie ✅", onPrimary: function () { state.eo = r.collect(); doSubmit(); } })); }
 
@@ -2178,7 +2197,7 @@
       if (!initData) { showSubmitted(null, "no-server"); return; }
       fetch("/api/exam", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ initData: initData, action: "submit", exam: code, payload: payload }) })
         .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (j) { if (j && j.status === "pending") { delfLocalSet(code, { status: "pending", submittedAt: j.submittedAt, availableAt: j.availableAt }); showSubmitted(j, null); } else showSubmitted(null, "error"); })
+        .then(function (j) { if (j && j.status === "pending") { delfLocalSet(code, { status: "pending", submittedAt: j.submittedAt, availableAt: j.availableAt }); examDraftClear(code); showSubmitted(j, null); } else showSubmitted(null, "error"); })
         .catch(function () { showSubmitted(null, "error"); });
     }
     function showSubmitted(j, err) {
@@ -2197,22 +2216,31 @@
       window.scrollTo(0, 0);
     }
 
-    const dCO = Math.round(E.co.duree / 60), dCE = Math.round(E.ce.duree / 60), dEE = Math.round(E.ee.duree / 60), dEP = Math.round(E.eo.prep / 60), dEO = Math.round(E.eo.duree / 60);
-    const intro = el("div", "delf-intro-body");
-    intro.innerHTML =
-      '<div class="delf-rules">' +
-      "<p>Cet examen blanc reproduit le <strong>DELF " + CODE + "</strong> officiel : 4 épreuves notées chacune sur 25 (<strong>total /100</strong>).</p>" +
-      '<ul class="delf-epreuves">' +
-      "<li>🎧 Compréhension de l'oral — <strong>" + dCO + " min</strong></li>" +
-      "<li>📖 Compréhension des écrits — <strong>" + dCE + " min</strong></li>" +
-      "<li>✍️ Production écrite — <strong>" + dEE + " min</strong></li>" +
-      "<li>🗣️ Production orale — <strong>" + dEP + " min de préparation + " + dEO + " min</strong></li>" +
-      "</ul>" +
-      "<p>⚠️ <strong>Aucune correction</strong> ne s'affiche pendant l'examen : toutes vos réponses sont acceptées. <strong>Votre note, votre copie corrigée et votre PDF arrivent 24 h après la remise</strong>, par notification Telegram.</p>" +
-      "<p>✅ Réussite : <strong>≥ 50/100</strong> et aucune épreuve sous <strong>5/25</strong> (note éliminatoire). Réussir débloque la suite du parcours ; sinon, vous pourrez repasser.</p>" +
-      "<p>⏱️ Chaque épreuve est chronométrée : quand le temps est écoulé, on passe à la suivante.</p>" +
-      "</div>";
-    delfScreen(Object.assign({}, SC, { phase: "Présentation", icone: "🎓", titre: "Examen blanc DELF " + CODE, intro: "", body: intro, primary: "Commencer l'examen →", onPrimary: runCO }));
+    function showIntro() {
+      const dCO = Math.round(E.co.duree / 60), dCE = Math.round(E.ce.duree / 60), dEE = Math.round(E.ee.duree / 60), dEP = Math.round(E.eo.prep / 60), dEO = Math.round(E.eo.duree / 60);
+      const intro = el("div", "delf-intro-body");
+      intro.innerHTML =
+        '<div class="delf-rules">' +
+        "<p>Cet examen blanc reproduit le <strong>DELF " + CODE + "</strong> officiel : 4 épreuves notées chacune sur 25 (<strong>total /100</strong>).</p>" +
+        '<ul class="delf-epreuves">' +
+        "<li>🎧 Compréhension de l'oral — <strong>" + dCO + " min</strong></li>" +
+        "<li>📖 Compréhension des écrits — <strong>" + dCE + " min</strong></li>" +
+        "<li>✍️ Production écrite — <strong>" + dEE + " min</strong></li>" +
+        "<li>🗣️ Production orale — <strong>" + dEP + " min de préparation + " + dEO + " min</strong></li>" +
+        "</ul>" +
+        "<p>⚠️ <strong>Aucune correction</strong> ne s'affiche pendant l'examen : toutes vos réponses sont acceptées. <strong>Votre note, votre copie corrigée et votre PDF arrivent 24 h après la remise</strong>, par notification Telegram.</p>" +
+        "<p>✅ Réussite : <strong>≥ 50/100</strong> et aucune épreuve sous <strong>5/25</strong> (note éliminatoire). Réussir débloque la suite du parcours ; sinon, vous pourrez repasser.</p>" +
+        "<p>⏱️ Chaque épreuve est chronométrée ; un examen interrompu peut être <strong>repris</strong> là où vous l'avez laissé.</p>" +
+        "</div>";
+      delfScreen(Object.assign({}, SC, { phase: "Présentation", icone: "🎓", titre: "Examen blanc DELF " + CODE, intro: "", body: intro, primary: "Commencer l'examen →", onPrimary: runCO }));
+    }
+    const draft = examDraftGet(code);
+    if (draft && draft.state && draft.step && !passed && loc.status !== "pending") {
+      const resumeMap = { co: runCO, ce: runCE, ee: runEE, dictee: runDictee, eoprep: runEOPrep, eo: runEO };
+      const rfn = resumeMap[draft.step];
+      if (rfn) { try { Object.keys(draft.state).forEach(function (k) { state[k] = draft.state[k]; }); } catch (e) {} examResume(SC.brand, "DELF " + CODE, rfn, function () { examDraftClear(code); state.co = null; state.ce = null; state.ee = []; state.eo = []; state.dictee = null; showIntro(); }); return; }
+    }
+    showIntro();
   }
 
   /* ---- Résultat de l'examen DELF (copie corrigée + PDF) ---- */
@@ -2243,7 +2271,7 @@
       return;
     }
     const res = j.result || {}, copy = j.copy || {};
-    if (window.Progress && window.Progress.setTestScore) window.Progress.setTestScore(code, res.total || 0, !!res.reussi);
+    if (window.Progress && window.Progress.setTestScore) window.Progress.setTestScore(code, Math.round((res.total || 0) / (res.sur || 100) * 100), !!res.reussi);
     if (window.Sync && window.Sync.saveNow) { try { window.Sync.saveNow(); } catch (e) {} }
     delfLocalSet(code, { status: "graded", total: res.total, reussi: !!res.reussi });
     box.innerHTML = "";
@@ -2361,7 +2389,7 @@
   function renderTelcHub(code) {
     const T = telcData(code);
     if (!T || !telcGuardOK(code)) { location.hash = "#/"; return; }
-    const base = "#/examen/" + code, CODE = delfName(code);
+    const base = "#/examen/" + code, CODE = telcName(code);
     app.innerHTML = ""; const frag = document.createDocumentFragment();
     const top = el("div", "lesson-top"); top.innerHTML = '<a class="btn-link" href="#/">← Aperçu</a><span class="lesson-top-mod">📜 telc ' + CODE + '</span>'; frag.appendChild(top);
     const head = el("header", "test-head delf-head"); head.innerHTML = '<div class="lesson-num">Examen telc Deutsch ' + CODE + '</div><h1>📜 telc ' + CODE + '</h1><p>Deux parties à réussir séparément (≥ 60 % chacune). Le bénéfice d\'une partie réussie est conservé : vous ne repassez que la partie manquée.</p>'; frag.appendChild(head);
@@ -2399,9 +2427,10 @@
   function renderTelcPart(code, part) {
     const T = telcData(code);
     if (!T || !telcGuardOK(code)) { location.hash = "#/"; return; }
-    const base = "#/examen/" + code, CODE = delfName(code);
+    const base = "#/examen/" + code, CODE = telcName(code);
     const pkey = part === "muendlich" ? "muendlich" : "schriftlich";
     const route = pkey === "muendlich" ? "oral" : "ecrit";
+    const dkey = code + "-" + pkey;
     const loc0 = telcLocalGet(code) || {};
     if (loc0[pkey] && loc0[pkey].status === "pending" && !loc0[pkey].passed) { location.hash = base + "/resultat/" + route; return; }
     const SC = { brand: "📜 telc " + CODE, hashPrefix: base, backHash: base };
@@ -2415,7 +2444,7 @@
       if (!initData) { telcSubmitted(null, "no-server"); return; }
       fetch("/api/exam", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ initData: initData, action: "submit", exam: key, payload: payload }) })
         .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (j) { if (j && j.status === "pending") { const lc = telcLocalGet(code) || {}; lc[pkey] = { status: "pending", submittedAt: j.submittedAt, availableAt: j.availableAt }; telcLocalSet(code, lc); telcSubmitted(j, null); } else telcSubmitted(null, "error"); })
+        .then(function (j) { if (j && j.status === "pending") { const lc = telcLocalGet(code) || {}; lc[pkey] = { status: "pending", submittedAt: j.submittedAt, availableAt: j.availableAt }; telcLocalSet(code, lc); examDraftClear(dkey); telcSubmitted(j, null); } else telcSubmitted(null, "error"); })
         .catch(function () { telcSubmitted(null, "error"); });
     }
     function telcSubmitted(j, err) {
@@ -2453,12 +2482,12 @@
         const c2_3 = function () {
           const Tk = P.schreiben.tache; const u = c2write(Tk, 10, "Schreiben Sie hier Ihren Essay…");
           u.card.appendChild(u.ta); u.card.appendChild(u.meta); u.body.appendChild(u.card);
-          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 3 / 3", icone: "✍️", titre: P.schreiben.titre, intro: Math.round(P.durees.schreiben / 60) + " min — rédigez votre essai à partir des sources.", body: u.body, timerSeconds: P.durees.schreiben, primary: "Remettre la copie écrite ✅", onPrimary: function () { st2.schreiben = [{ id: Tk.id, consigne: Tk.consigne, text: u.ta.value.trim() }]; c2sub(); } }));
+          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 3 / 3", icone: "✍️", titre: P.schreiben.titre, intro: Math.round(P.durees.schreiben / 60) + " min — rédigez votre essai à partir des sources.", body: u.body, timerSeconds: P.durees.schreiben, primary: "Remettre la copie écrite ✅", onPrimary: function () { st2.schreiben = [{ id: Tk.id, consigne: Tk.consigne, text: u.ta.value.trim() }]; examDraftSet(dkey, { state: st2, step: "submit" }); c2sub(); } }));
         };
         const c2pause = function () {
           const body = el("div", "completion");
           body.innerHTML = '<div class="comp-emoji">☕</div><h2>Pause obligatoire — ' + Math.round(P.durees.pause / 60) + ' min</h2><p>Comme à l\'examen officiel telc C2, une pause est prévue avant l\'épreuve de production écrite. Reposez-vous, puis reprenez. Le minuteur passe automatiquement à la suite à la fin de la pause — vous pouvez aussi reprendre dès que vous êtes prêt(e).</p>';
-          delfScreen(Object.assign({}, SC, { phase: "Pause obligatoire", icone: "☕", titre: "Pause", intro: "", body: body, timerSeconds: P.durees.pause, primary: "Reprendre l'examen →", onPrimary: c2_3 }));
+          delfScreen(Object.assign({}, SC, { phase: "Pause obligatoire", icone: "☕", titre: "Pause", intro: "", body: body, timerSeconds: P.durees.pause, primary: "Reprendre l'examen →", onPrimary: function () { examDraftSet(dkey, { state: st2, step: "c2_3" }); c2_3(); } }));
         };
         const c2_2 = function () {
           const HS = P.hoerenSchreiben; const u = c2write(HS.tache, 7, "Ihre Zusammenfassung…");
@@ -2466,22 +2495,30 @@
           HS.audios.forEach(function (a) { let plays = 0; const b = el("button", "btn btn-audio", "🔊 " + a.titre + " (2 max)"); b.type = "button"; b.addEventListener("click", function () { if (plays >= 2) { toast("Vous avez déjà écouté 2 fois."); return; } plays++; if (window.Speech) window.Speech.speak(a.audio, { rate: 0.98 }); const rest = 2 - plays; b.textContent = rest > 0 ? "🔊 Réécouter (" + rest + ")" : "🔇 Écoutes épuisées"; if (plays >= 2) b.disabled = true; }); card.appendChild(b); });
           card.appendChild(el("p", "delf-q-t", delfEsc(HS.tache.consigne))); card.appendChild(u.ta); card.appendChild(u.meta);
           const body = el("div", "delf-ee"); body.appendChild(card);
-          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 2 / 3", icone: HS.icone, titre: HS.titre, intro: Math.round(P.durees.hoerenSchreiben / 60) + " min — écoutez (2× max) puis rédigez votre synthèse.", body: body, timerSeconds: P.durees.hoerenSchreiben, primary: "Terminer cette partie →", onPrimary: function () { st2.hs = [{ id: HS.tache.id, consigne: HS.tache.consigne, text: u.ta.value.trim() }]; (P.durees.pause ? c2pause() : c2_3()); } }));
+          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 2 / 3", icone: HS.icone, titre: HS.titre, intro: Math.round(P.durees.hoerenSchreiben / 60) + " min — écoutez (2× max) puis rédigez votre synthèse.", body: body, timerSeconds: P.durees.hoerenSchreiben, primary: "Terminer cette partie →", onPrimary: function () { st2.hs = [{ id: HS.tache.id, consigne: HS.tache.consigne, text: u.ta.value.trim() }]; examDraftSet(dkey, { state: st2, step: P.durees.pause ? "pause" : "c2_3" }); (P.durees.pause ? c2pause() : c2_3()); } }));
         };
         const c2_1 = function () {
           const lesenR = delfQCM(P.lesen.blocs, "ce");
           const body = el("div", "section-x"); body.appendChild(el("p", "delf-q-t", delfEsc(P.lesen.intro))); body.appendChild(lesenR.el);
-          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 1 / 3", icone: "📖", titre: "Leseverstehen", intro: Math.round(P.durees.lesen / 60) + " min — lisez et répondez ; aucune correction.", body: body, timerSeconds: P.durees.lesen, primary: "Terminer cette partie →", onPrimary: function () { const lc = lesenR.collect(); st2.lesenPts = Math.round(lc.correct / (lc.total || 1) * P.lesen.sur); st2.lesenItems = lc.items; c2_2(); } }));
+          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 1 / 3", icone: "📖", titre: "Leseverstehen", intro: Math.round(P.durees.lesen / 60) + " min — lisez et répondez ; aucune correction.", body: body, timerSeconds: P.durees.lesen, primary: "Terminer cette partie →", onPrimary: function () { const lc = lesenR.collect(); st2.lesenPts = Math.round(lc.correct / (lc.total || 1) * P.lesen.sur); st2.lesenItems = lc.items; examDraftSet(dkey, { state: st2, step: "c2_2" }); c2_2(); } }));
         };
-        const intro2 = el("div", "delf-intro-body");
-        intro2.innerHTML = '<div class="delf-rules"><p>Épreuve écrite telc ' + CODE + ' — <strong>/' + P.sur + '</strong> (réussite ≥ ' + P.seuil + '). Trois temps :</p><ul class="delf-epreuves"><li>📖 Leseverstehen — <strong>' + Math.round(P.durees.lesen / 60) + ' min</strong></li><li>🎧✍️ Hören und Schreiben — <strong>' + Math.round(P.durees.hoerenSchreiben / 60) + ' min</strong></li><li>✍️ Schriftlicher Ausdruck — <strong>' + Math.round(P.durees.schreiben / 60) + ' min</strong></li></ul><p>Aucune correction pendant l\'épreuve ; résultat + copie corrigée + PDF sous 24 h.</p></div>';
-        delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite", icone: "📝", titre: "Schriftliche Prüfung", intro: "", body: intro2, primary: "Commencer l'épreuve écrite →", onPrimary: c2_1 }));
+        const showIntroC2 = function () {
+          const intro2 = el("div", "delf-intro-body");
+          intro2.innerHTML = '<div class="delf-rules"><p>Épreuve écrite telc ' + CODE + ' — <strong>/' + P.sur + '</strong> (réussite ≥ ' + P.seuil + '). Trois temps :</p><ul class="delf-epreuves"><li>📖 Leseverstehen — <strong>' + Math.round(P.durees.lesen / 60) + ' min</strong></li><li>🎧✍️ Hören und Schreiben — <strong>' + Math.round(P.durees.hoerenSchreiben / 60) + ' min</strong></li><li>✍️ Schriftlicher Ausdruck — <strong>' + Math.round(P.durees.schreiben / 60) + ' min</strong></li></ul><p>Aucune correction pendant l\'épreuve ; résultat + copie corrigée + PDF sous 24 h. Un examen interrompu peut être <strong>repris</strong>.</p></div>';
+          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite", icone: "📝", titre: "Schriftliche Prüfung", intro: "", body: intro2, primary: "Commencer l'épreuve écrite →", onPrimary: c2_1 }));
+        };
+        const draftC2 = examDraftGet(dkey);
+        if (draftC2 && draftC2.state && draftC2.step) {
+          const rmap2 = { c2_2: c2_2, pause: c2pause, c2_3: c2_3, submit: c2sub }, rfn2 = rmap2[draftC2.step];
+          if (rfn2) { examResume(SC.brand, "telc " + CODE + " — écrit", function () { try { Object.keys(draftC2.state).forEach(function (k) { st2[k] = draftC2.state[k]; }); } catch (e) {} rfn2(); }, function () { examDraftClear(dkey); showIntroC2(); }); return; }
+        }
+        showIntroC2();
         return;
       }
       const st = { lesenPts: 0, sbPts: 0, hoerenPts: 0, lesenItems: [], sbItems: [], hoerenItems: [], schreiben: [], dictee: null };
       const dLS = Math.round(P.durees.leseSb / 60), dH = Math.round(P.durees.hoeren / 60), dS = Math.round(P.durees.schreiben / 60);
       const doSubmitW = function () { const payload = { langue: telcLang(), lesen: st.lesenPts, sprachbausteine: st.sbPts, hoeren: st.hoerenPts, copy: { lesen: st.lesenItems, sprachbausteine: st.sbItems, hoeren: st.hoerenItems, schreiben: st.schreiben } }; if (st.dictee) { payload.dictee = st.dictee.points; payload.dicteeSur = st.dictee.sur; payload.copy.dictee = { texte: st.dictee.texte, saisie: st.dictee.saisie, score: st.dictee.score, sur: st.dictee.sur }; } submitPart(code + "-schriftlich", payload); };
-      const sDictee = function () { const r = delfDictee(P.dictee); delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · dictée", icone: "✒️", titre: P.dictee.titre || "Dictée", intro: "Niveau " + (P.dictee.niveau || "") + " — écoutez (2× max) et écrivez exactement. Aucune correction.", body: r.el, timerSeconds: P.dictee.duree || 900, primary: "Terminer la dictée →", onPrimary: function () { st.dictee = r.collect(); doSubmitW(); } })); };
+      const sDictee = function () { const r = delfDictee(P.dictee); delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · dictée", icone: "✒️", titre: P.dictee.titre || "Dictée", intro: "Niveau " + (P.dictee.niveau || "") + " — écoutez (2× max) et écrivez exactement. Aucune correction.", body: r.el, timerSeconds: P.dictee.duree || 900, primary: "Terminer la dictée →", onPrimary: function () { st.dictee = r.collect(); examDraftSet(dkey, { state: st, step: "submit" }); doSubmitW(); } })); };
       const s3 = function () {
         const Tk = P.schreiben.tache;
         const body = el("div", "delf-ee"); const card = el("div", "delf-doc");
@@ -2494,13 +2531,13 @@
         card.appendChild(ta); card.appendChild(meta); body.appendChild(card);
         delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 3 / 3", icone: "✍️", titre: "Schriftlicher Ausdruck", intro: dS + " min — rédigez votre texte (la correction viendra plus tard).", body: body, timerSeconds: P.durees.schreiben, primary: "Remettre la copie écrite ✅", onPrimary: function () {
           st.schreiben = [{ id: Tk.id, consigne: Tk.consigne, text: ta.value.trim() }];
-          (P.dictee ? sDictee() : doSubmitW());
+          examDraftSet(dkey, { state: st, step: P.dictee ? "dictee" : "submit" }); (P.dictee ? sDictee() : doSubmitW());
         } }));
       };
       const s2 = function () {
         const hR = delfQCM(P.hoeren.documents, "co");
         const body = el("div", "section-x"); body.appendChild(el("p", "delf-q-t", delfEsc(P.hoeren.intro))); body.appendChild(hR.el);
-        delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 2 / 3", icone: "🎧", titre: "Hörverstehen", intro: dH + " min.", body: body, timerSeconds: P.durees.hoeren, primary: "Terminer cette partie →", onPrimary: function () { const hc = hR.collect(); st.hoerenPts = Math.round(hc.correct / (hc.total || 1) * P.hoeren.sur); st.hoerenItems = hc.items; s3(); } }));
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 2 / 3", icone: "🎧", titre: "Hörverstehen", intro: dH + " min.", body: body, timerSeconds: P.durees.hoeren, primary: "Terminer cette partie →", onPrimary: function () { const hc = hR.collect(); st.hoerenPts = Math.round(hc.correct / (hc.total || 1) * P.hoeren.sur); st.hoerenItems = hc.items; examDraftSet(dkey, { state: st, step: "s3" }); s3(); } }));
       };
       const s1 = function () {
         const lesenR = delfQCM(P.lesen.blocs, "ce");
@@ -2516,12 +2553,20 @@
           const lc = lesenR.collect(), sc = sbR.collect();
           st.lesenPts = Math.round(lc.correct / (lc.total || 1) * P.lesen.sur); st.lesenItems = lc.items;
           st.sbPts = Math.round(sc.correct / (sc.total || 1) * P.sprachbausteine.sur); st.sbItems = sc.items;
-          s2();
+          examDraftSet(dkey, { state: st, step: "s2" }); s2();
         } }));
       };
-      const intro = el("div", "delf-intro-body");
-      intro.innerHTML = '<div class="delf-rules"><p>Épreuve écrite telc ' + CODE + ' — <strong>/' + P.sur + '</strong> (réussite ≥ ' + P.seuil + '). Trois temps enchaînés :</p><ul class="delf-epreuves"><li>📖 Leseverstehen &amp; 🧩 Sprachbausteine — <strong>' + dLS + ' min</strong></li><li>🎧 Hörverstehen — <strong>' + dH + ' min</strong></li><li>✍️ Schriftlicher Ausdruck — <strong>' + dS + ' min</strong></li></ul><p>Aucune correction pendant l\'épreuve ; votre note, votre copie corrigée et votre PDF arrivent sous 24 h.</p></div>';
-      delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite", icone: "📝", titre: "Schriftliche Prüfung", intro: "", body: intro, primary: "Commencer l'épreuve écrite →", onPrimary: s1 }));
+      const showIntroS = function () {
+        const intro = el("div", "delf-intro-body");
+        intro.innerHTML = '<div class="delf-rules"><p>Épreuve écrite telc ' + CODE + ' — <strong>/' + P.sur + '</strong> (réussite ≥ ' + P.seuil + '). Trois temps enchaînés :</p><ul class="delf-epreuves"><li>📖 Leseverstehen &amp; 🧩 Sprachbausteine — <strong>' + dLS + ' min</strong></li><li>🎧 Hörverstehen — <strong>' + dH + ' min</strong></li><li>✍️ Schriftlicher Ausdruck — <strong>' + dS + ' min</strong></li></ul><p>Aucune correction pendant l\'épreuve ; votre note, votre copie corrigée et votre PDF arrivent sous 24 h. Un examen interrompu peut être <strong>repris</strong>.</p></div>';
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite", icone: "📝", titre: "Schriftliche Prüfung", intro: "", body: intro, primary: "Commencer l'épreuve écrite →", onPrimary: s1 }));
+      };
+      const draftS = examDraftGet(dkey);
+      if (draftS && draftS.state && draftS.step) {
+        const rmap = { s2: s2, s3: s3, dictee: sDictee, submit: doSubmitW }, rfn = rmap[draftS.step];
+        if (rfn) { examResume(SC.brand, "telc " + CODE + " — écrit", function () { try { Object.keys(draftS.state).forEach(function (k) { st[k] = draftS.state[k]; }); } catch (e) {} rfn(); }, function () { examDraftClear(dkey); showIntroS(); }); return; }
+      }
+      showIntroS();
     } else {
       const P = T.parts.muendlich;
       const passation = function () {
@@ -2533,9 +2578,11 @@
         P.taches.forEach(function (t) { const c = el("div", "delf-doc"); c.appendChild(el("h3", "delf-doc-t", delfEsc(t.titre))); c.appendChild(el("p", "delf-q-t", delfEsc(t.consigne))); if (t.points) { const ul = el("ul", "delf-points"); t.points.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); c.appendChild(ul); } body.appendChild(c); });
         body.appendChild(el("p", "delf-q-t", "📝 20 minutes de préparation. Notez vos idées, puis enregistrez-vous."));
         const note = el("textarea", "production-input"); note.rows = 4; note.setAttribute("placeholder", "Brouillon (non noté)…"); body.appendChild(note);
-        delfScreen(Object.assign({}, SC, { phase: "Épreuve orale · préparation (20 min)", icone: "🗣️", titre: "Vorbereitung", intro: "Préparez les 3 parties.", body: body, timerSeconds: P.prep, primary: "Je suis prêt(e) — parler →", onPrimary: passation }));
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve orale · préparation (20 min)", icone: "🗣️", titre: "Vorbereitung", intro: "Préparez les 3 parties.", body: body, timerSeconds: P.prep, primary: "Je suis prêt(e) — parler →", onPrimary: function () { examDraftSet(dkey, { state: {}, step: "passation" }); passation(); } }));
       };
-      prep();
+      const draftM = examDraftGet(dkey);
+      if (draftM && draftM.step === "passation") { examResume(SC.brand, "telc " + CODE + " — oral", passation, function () { examDraftClear(dkey); prep(); }); }
+      else prep();
     }
   }
 
