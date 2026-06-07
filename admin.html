@@ -66,6 +66,8 @@ button.adm-rm{color:#f6b35a}button.adm-on{background:linear-gradient(135deg,#f59
 (function(){
   var tg=window.Telegram&&window.Telegram.WebApp; if(tg){try{tg.ready();tg.expand();}catch(e){}}
   var INITDATA=(tg&&tg.initData)?tg.initData:null;
+  // Dans Telegram : bouton retour natif vers le menu de la Mini App.
+  if(tg&&tg.platform&&tg.platform!=='unknown'){try{tg.BackButton.show();tg.BackButton.onClick(function(){location.href='/';});}catch(e){}}
   var app=document.getElementById('app');
   var KEYK='sprach_admin_key';
 
