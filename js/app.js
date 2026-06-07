@@ -3136,6 +3136,16 @@
       grid.appendChild(card);
     });
     frag.appendChild(grid);
+    // Accès réservé au créateur / aux admins (statut renvoyé par le serveur).
+    // Ouvre le tableau de bord en conservant l'identité Telegram → connexion
+    // automatique, sans mot de passe. Invisible pour les autres utilisateurs.
+    if (window.__ME && window.__ME.isAdmin) {
+      const adm = el("a", "menu-admin");
+      adm.href = "/admin.html";
+      adm.style.cssText = "display:flex;align-items:center;gap:12px;width:100%;margin:4px 0 12px;padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,#0f172a,#334155);color:#fff;text-decoration:none;box-shadow:0 6px 16px rgba(15,23,42,.3);border:1px solid rgba(255,255,255,.12)";
+      adm.innerHTML = '<span style="font-size:26px">📊</span><span style="flex:1"><strong style="display:block;font-size:16px;margin-bottom:2px">Tableau de bord' + (window.__ME.isOwner ? ' 👑' : '') + '</strong><span style="font-size:13px;opacity:.92">Statistiques, utilisateurs, diffusion' + (window.__ME.isOwner ? ' et gestion des admins' : '') + '</span></span><span style="font-size:20px">→</span>';
+      frag.appendChild(adm);
+    }
     const inv = el("button", "menu-invite");
     inv.type = "button";
     inv.style.cssText = "display:flex;align-items:center;gap:12px;width:100%;margin:14px 0 4px;padding:14px 16px;border:0;border-radius:16px;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;cursor:pointer;font:inherit;text-align:left;box-shadow:0 6px 16px rgba(37,99,235,.28)";

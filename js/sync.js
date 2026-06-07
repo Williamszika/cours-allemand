@@ -159,6 +159,9 @@ window.Sync = (function () {
     fetch("/api/state", { method: "POST", headers: { "content-type": "application/json" }, body: body })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (j) {
+        // Mémorise le statut admin renvoyé par le serveur : le menu pourra
+        // alors afficher (ou non) l'accès au tableau de bord.
+        if (j) { try { window.__ME = { isAdmin: !!j.isAdmin, isOwner: !!j.isOwner }; } catch (e) {} }
         if (!j || !j.progress) return cb(false);
         let changed = false;
         suspend = true;

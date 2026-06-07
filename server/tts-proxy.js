@@ -110,7 +110,7 @@ http.createServer(async(rq,rs)=>{try{
         if(body.progress&&typeof body.progress==="object")us.progress=mergeProg(us.progress,body.progress);
       });
       rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"});
-      return rs.end(JSON.stringify({ok:true,isNew:isNew,name:usr.name||"",first:(v.user.first_name||""),progress:usr.progress||{},conv:usr.conv||{messages:[]}}));
+      return rs.end(JSON.stringify({ok:true,isNew:isNew,name:usr.name||"",first:(v.user.first_name||""),progress:usr.progress||{},conv:usr.conv||{messages:[]},isAdmin:isAdmin(id),isOwner:isOwner(id)}));
     }catch(e){console.error("[state]",e&&e.message);rs.writeHead(500);rs.end("state error");}});
     return;
   }
