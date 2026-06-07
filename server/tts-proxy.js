@@ -16,6 +16,11 @@ const ADMIN_TOKEN=(process.env.ADMIN_TOKEN||"").trim();
 let BOT_USERNAME=(process.env.BOT_USERNAME||"").trim();
 const ALLOW=(process.env.ALLOW_ORIGIN||"sprachakademie.app").trim();
 const ORDER=["A1","A2","B1","B2","C1","C2"];
+// Examen DELF différé : la copie est corrigée GRADE_DELAY ms après la remise
+// (24 h par défaut, surchargeable pour les tests via EXAM_DELAY_MS).
+const GRADE_DELAY=Math.max(0,parseInt(process.env.EXAM_DELAY_MS||String(24*3600*1000),10)||24*3600*1000);
+const EXAM_PASS=50;   // total minimal /100
+const EXAM_ELIM=5;    // note éliminatoire par épreuve (/25)
 const COMP_FILE=(process.env.COMP_FILE||path.join(__dirname,"..","data","competences.js")).trim();
 function loadComp(){try{var stub={};new Function("window",fs.readFileSync(COMP_FILE,"utf8"))(stub);return stub.COMPETENCES||null;}catch(e){return null;}}
 try{fs.mkdirSync(CACHE_DIR,{recursive:true});}catch(e){console.warn("[tts] cache:",e.message);}
@@ -72,6 +77,72 @@ function compStats(users){
   });
   return Object.keys(glob).map(function(c){ var g=glob[c]; var info=(COMP.info&&COMP.info(c))||{}; return {code:c,label:info.label||c,niveau:info.niveau||"",cat:info.cat||"",users:g.users,score:g.seen?Math.round(g.ok/g.seen*100):0,weak:g.weak}; }).filter(function(r){return r.users>0;}).sort(function(a,b){return a.score-b.score;});
 }
+/* ---------- Examen DELF : correction différée par l'IA ----------------
+   La production écrite (EE) et orale (EO) sont notées sur 25 par l'IA
+   selon les descripteurs DELF A2 ; CO et CE sont déjà notées côté client.
+   Réussite : total >= 50/100 ET aucune épreuve < 5/25 (sinon éliminatoire). */
+function clampN(x,a,b){x=Math.round(+x||0);return x<a?a:(x>b?b:x);}
+function examGradeSys(kind,langue){
+  var LN={fr:"français",en:"anglais",de:"allemand",ar:"arabe",tr:"turc",ru:"russe",uk:"ukrainien",fa:"persan",es:"espagnol",it:"italien",pt:"portugais",pl:"polonais",ro:"roumain",nl:"néerlandais"};
+  var lg=LN[String(langue||"fr")]||"français";
+  return "Tu es examinateur officiel du DELF A2 d'allemand (CECRL, niveau A2). Tu evalues la PRODUCTION "+kind+" d'un candidat selon les descripteurs A2 : respect de la consigne, capacite a informer/decrire/raconter/interagir, etendue et correction du vocabulaire et de la grammaire de niveau A2, coherence et connecteurs. Tu notes l'ENSEMBLE de l'epreuve sur 25 points. Sois juste mais bienveillant ; une production vide ou hors sujet recoit une note tres basse. Redige un bilan en "+lg+" : 2 a 4 phrases (points forts, puis 1 a 2 corrections utiles au format 'forme fautive -> forme correcte'). Puis, sur la TOUTE DERNIERE ligne, ecris EXACTEMENT au format : NOTE: X/25 (X = entier de 0 a 25). N'ecris rien apres cette ligne.";
+}
+function heuristicNote(items){
+  var w=0;(items||[]).forEach(function(t){var s=String(t.production||"").trim();w+=s?s.split(/\s+/).length:0;});
+  if(w===0)return 0;return clampN(Math.min(22,Math.round(w/80*18)+3),0,22);
+}
+async function aiNote(kind,items,langue){
+  if(!ANTHKEY)return {ok:false};
+  var body=(items||[]).map(function(t,i){return "Tache "+(i+1)+" — Consigne : "+String(t.consigne||"").slice(0,600)+"\nProduction du candidat : «"+(String(t.production||"").trim()||"(rien)").slice(0,2000)+"»";}).join("\n\n");
+  try{
+    var r=await anthropic(examGradeSys(kind,langue),[{role:"user",content:"Epreuve de production "+kind+" (DELF A2).\n\n"+body}]);
+    if(r.status<200||r.status>=300){console.warn("[exam-ai] upstream "+r.status);return {ok:false};}
+    var j=JSON.parse(r.buf.toString());var txt=(j.content&&j.content[0]&&j.content[0].text)?j.content[0].text:"";
+    if(!txt)return {ok:false};
+    var m=txt.match(/NOTE\s*:?\s*([0-9]{1,2})(?:[.,][0-9]+)?\s*\/\s*25/i);
+    var note=m?clampN(m[1],0,25):heuristicNote(items);
+    var feedback=txt.replace(/\n?\s*NOTE\s*:?\s*[0-9][^\n]*\/\s*25\s*$/i,"").trim();
+    return {ok:true,note:note,feedback:feedback};
+  }catch(e){console.warn("[exam-ai]",e&&e.message);return {ok:false};}
+}
+async function gradeExam(id){
+  var u=loadUser(id);if(!u||!u.exam||u.exam.status!=="pending")return "none";
+  var p=u.exam.payload||{},copy=p.copy||{},langue=p.langue||"fr";
+  var co25=clampN(p.co25,0,25),ce25=clampN(p.ce25,0,25);
+  var ee=await aiNote("ecrite",(copy.ee||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue);
+  if(!ee.ok)return "postpone";
+  var eo=await aiNote("orale",(copy.eo||[]).map(function(t){return {consigne:t.consigne,production:t.transcript};}),langue);
+  if(!eo.ok)return "postpone";
+  var ee25=ee.note,eo25=eo.note;
+  var total=co25+ce25+ee25+eo25;
+  var minNote=Math.min(co25,ce25,ee25,eo25);
+  var elim=minNote<EXAM_ELIM;
+  var reussi=total>=EXAM_PASS&&!elim;
+  // Met à jour les tests pour débloquer le niveau (synchronisé via /api/state).
+  u.progress=u.progress||{};u.progress.tests=u.progress.tests||{};
+  var prev=u.progress.tests[u.exam.exam]||{meilleur:0,reussi:false};
+  u.progress.tests[u.exam.exam]={meilleur:Math.max(prev.meilleur||0,total),reussi:!!(prev.reussi||reussi),dernier:total};
+  u.exam.status="graded";u.exam.gradedAt=new Date().toISOString();
+  u.exam.result={co25:co25,ce25:ce25,ee25:ee25,eo25:eo25,total:total,minNote:minNote,eliminatoire:elim,reussi:reussi,eeFeedback:ee.feedback,eoFeedback:eo.feedback};
+  saveUser(id,u);
+  var msg=reussi
+    ? "🎓 Ton résultat DELF A2 est prêt : "+total+"/100 — RÉUSSI ✅\nOuvre l'app pour voir ta copie corrigée et télécharger ton PDF. Glückwunsch!"
+    : (elim
+        ? "📋 Résultat DELF A2 : "+total+"/100. Une épreuve est sous 5/25 (note éliminatoire). Regarde ta copie corrigée dans l'app et retente l'examen — du schaffst das! 💪"
+        : "📋 Résultat DELF A2 : "+total+"/100 (il faut 50/100). Pas encore réussi. Regarde ta copie corrigée dans l'app et retente bientôt ! 💪");
+  if(BOT_TOKEN)tgSend(id,msg).catch(function(){});
+  console.log("[exam] "+id+" corrigé: "+total+"/100 ("+(reussi?"réussi":"échec")+")");
+  return "graded";
+}
+var examScanning=false;
+async function scanPendingExams(){
+  if(examScanning)return;examScanning=true;
+  try{var now=Date.now();var users=listUsers();
+    for(var i=0;i<users.length;i++){var u=users[i];try{
+      if(u&&u.id&&u.exam&&u.exam.status==="pending"&&now-(Date.parse(u.exam.submittedAt)||0)>=GRADE_DELAY){await gradeExam(String(u.id));}
+    }catch(e){console.warn("[exam-scan]",e&&e.message);}}
+  }finally{examScanning=false;}
+}
 const H={"Content-Type":"audio/mpeg","Cache-Control":"public, max-age=31536000, immutable"};
 http.createServer(async(rq,rs)=>{try{
   const u=new URL(rq.url,"http://localhost");
@@ -116,6 +187,36 @@ http.createServer(async(rq,rs)=>{try{
       rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"});
       return rs.end(JSON.stringify({ok:true,isNew:isNew,name:usr.name||"",first:(v.user.first_name||""),progress:usr.progress||{},conv:usr.conv||{messages:[]},isAdmin:isAdmin(id),isOwner:isOwner(id)}));
     }catch(e){console.error("[state]",e&&e.message);rs.writeHead(500);rs.end("state error");}});
+    return;
+  }
+  if(rq.method==="POST"&&/\/exam\/?$/.test(u.pathname)){
+    if(!BOT_TOKEN){rs.writeHead(503);return rs.end("exam not configured");}
+    if(tooMany(ip)){rs.writeHead(429);return rs.end("slow down");}
+    let data="";rq.on("data",d=>{data+=d;if(data.length>300000)rq.destroy();});
+    rq.on("end",async()=>{try{
+      const body=JSON.parse(data||"{}");const v=tgVerify(body.initData);
+      if(!v||!v.user||!v.user.id){rs.writeHead(403);return rs.end("bad initData");}
+      const id=String(v.user.id);const action=String(body.action||"result");
+      if(action==="submit"){
+        const exam=String(body.exam||"a2").replace(/[^a-z0-9]/g,"").slice(0,12);
+        const payload=(body.payload&&typeof body.payload==="object")?body.payload:{};
+        const us=touchUser(v,function(u2){u2.exam={exam:exam,status:"pending",submittedAt:new Date().toISOString(),payload:payload};});
+        rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"});
+        return rs.end(JSON.stringify({ok:true,status:"pending",submittedAt:us.exam.submittedAt,availableAt:Date.parse(us.exam.submittedAt)+GRADE_DELAY,delayMs:GRADE_DELAY}));
+      }
+      // action "result" (par défaut) : renvoie l'état, en déclenchant la correction si l'échéance est atteinte.
+      let ex=(loadUser(id)||{}).exam;
+      if(ex&&ex.status==="pending"){
+        const due=Date.now()-(Date.parse(ex.submittedAt)||0)>=GRADE_DELAY;
+        const force=!!body.force&&isOwner(id,body.key);
+        if(due||force)await gradeExam(id);
+        ex=(loadUser(id)||{}).exam;
+      }
+      rs.writeHead(200,{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"});
+      if(!ex)return rs.end(JSON.stringify({status:"none"}));
+      if(ex.status==="graded")return rs.end(JSON.stringify({status:"graded",exam:ex.exam,submittedAt:ex.submittedAt,gradedAt:ex.gradedAt,result:ex.result,copy:(ex.payload&&ex.payload.copy)||null}));
+      return rs.end(JSON.stringify({status:"pending",exam:ex.exam,submittedAt:ex.submittedAt,availableAt:(Date.parse(ex.submittedAt)||Date.now())+GRADE_DELAY,delayMs:GRADE_DELAY}));
+    }catch(e){console.error("[exam]",e&&e.message);rs.writeHead(500);rs.end("exam error");}});
     return;
   }
   if(rq.method==="POST"&&/\/stt\/?$/.test(u.pathname)){
@@ -190,3 +291,6 @@ http.createServer(async(rq,rs)=>{try{
   rs.writeHead(200,Object.assign({"X-TTS-Cache":"MISS"},H));return rs.end(r.buf);
 }catch(e){console.error("[srv]",e&&e.message);rs.writeHead(500);return rs.end("error");}}).listen(PORT,"127.0.0.1",()=>console.log("TTS+chat+stt+notify+state+admin -> 127.0.0.1:"+PORT+" (tts:"+(KEY?"OK":"X")+", chat:"+(ANTHKEY?"OK":"X")+", notify:"+(BOT_TOKEN?"OK":"X")+", admin:"+((ADMIN_ID||ADMIN_TOKEN)?"OK":"X")+", data:"+DATA_DIR+")"));
 setInterval(sendReminders,15*60*1000);
+// Examen DELF : scan régulier des copies en attente → correction à l'échéance (24 h).
+setInterval(function(){scanPendingExams();},15*60*1000);
+setTimeout(function(){scanPendingExams();},30*1000);
