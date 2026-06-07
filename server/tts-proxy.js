@@ -135,7 +135,7 @@ async function gradeDelf(id,u,ex,key){
   var co25=clampN(p.co25,0,25),ce25=clampN(p.ce25,0,25);
   var ee=await aiNote("ecrite",(copy.ee||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue,25,CTX);
   if(!ee.ok)return "postpone";
-  var eo=await aiNote("orale",(copy.eo||[]).map(function(t){return {consigne:t.consigne,production:t.transcript};}),langue,25,CTX);
+  var eo=await aiNote("orale",(copy.eo||[]).map(function(t){return {consigne:t.consigne,production:(t.candidate||t.transcript)};}),langue,25,CTX);
   if(!eo.ok)return "postpone";
   var dicteeSur=cfg.dictee?(clampN(p.dicteeSur,1,100)||25):0,dictee=cfg.dictee?clampN(p.dictee,0,dicteeSur):0;
   var total=co25+ce25+ee.note+eo.note+dictee,minNote=Math.min(co25,ce25,ee.note,eo.note),elim=minNote<EXAM_ELIM,reussi=total>=cfg.seuil&&!elim;
@@ -169,7 +169,7 @@ async function gradeTelc(id,u,ex,key){
     var wt=lesen+sb+hoeren+sch.note+hsNote+dictee;
     ex.result={part:"schriftlich",lesen:lesen,sprachbausteine:sb,hoeren:hoeren,schreiben:sch.note,hs:hsNote,dictee:dictee,lesenMax:cfg.lesenMax,sbMax:cfg.sbMax,hoerenMax:cfg.hoerenMax,schreibenMax:cfg.schreibenSur,hsMax:(cfg.hsSur||0),dicteeMax:(cfg.dicteeSur||0),total:wt,sur:cfg.wMax,seuil:cfg.wPass,passed:wt>=cfg.wPass,schreibenFeedback:sch.feedback,hsFeedback:hsFb};
   }else{
-    var oral=await aiNote("orale (3 parties : presentation, questions de suivi, discussion)",(copy.oral||[]).map(function(t){return {consigne:t.consigne,production:t.transcript};}),langue,cfg.oMax,CTX);
+    var oral=await aiNote("orale (3 parties : presentation, questions de suivi, discussion)",(copy.oral||[]).map(function(t){return {consigne:t.consigne,production:(t.candidate||t.transcript)};}),langue,cfg.oMax,CTX);
     if(!oral.ok)return "postpone";
     ex.result={part:"muendlich",total:oral.note,sur:cfg.oMax,seuil:cfg.oPass,passed:oral.note>=cfg.oPass,oralFeedback:oral.feedback};
   }
