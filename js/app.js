@@ -492,7 +492,49 @@
       card.innerHTML = banner + body;
       return card;
     }
+    /* Carte spéciale des examens DELF (A1, A2…) : à passer / en correction / corrigé. */
+    function carteDelf(code, unlocked, lockText) {
+      const CODE = delfName(code), base = "#/examen/" + code;
+      const ts = window.Progress.getTestScore(code);
+      const local = delfLocalGet(code) || {};
+      const passed = !!(ts && ts.reussi);
+      const pending = local.status === "pending" && !passed;
+      const card = el("div", "examen-final delf-card " + (unlocked ? "unlocked" : "locked") + (passed ? " reussi" : "") + (pending ? " pending" : ""));
+      let inner = '<div class="examen-ic">' + (passed ? "🏅" : pending ? "⏳" : unlocked ? "🎓" : "🔒") + '</div><h2>🎓 Examen DELF ' + CODE + "</h2>";
+      if (!unlocked) { inner += "<p>" + lockText + "</p>"; card.innerHTML = inner; return card; }
+      if (pending) inner += "<p>⏳ <strong>Copie en correction.</strong> Votre note /100, votre copie corrigée et votre PDF arrivent sous 24 h (notification Telegram).</p>";
+      else if (passed) inner += "<p>Examen blanc complet (4 épreuves /100). Meilleur score : <strong>" + (ts.meilleur || 0) + "/100</strong> — réussi ✅</p>";
+      else inner += "<p>Examen blanc DELF " + CODE + " complet : écouter, lire, écrire, parler (/100). Corrigé par l'IA sous 24 h." + (ts ? " Dernier score : <strong>" + (ts.dernier != null ? ts.dernier : ts.meilleur) + "/100</strong>." : "") + "</p>";
+      card.innerHTML = inner;
+      const row = el("div", "examen-actions");
+      if (pending) { const r = el("a", "btn btn-primary big", "Voir l'état de ma copie"); r.href = base + "/resultat"; row.appendChild(r); }
+      else {
+        const b = el("a", "btn btn-primary big", ts ? "Repasser l'examen" : "🎓 Passer l'examen DELF " + CODE); b.href = base; row.appendChild(b);
+        if (ts) { const r = el("a", "btn btn-ghost", "📊 Ma copie / résultat"); r.href = base + "/resultat"; row.appendChild(r); }
+      }
+      card.appendChild(row);
+      return card;
+    }
+    /* Carte spéciale des examens telc (B1, B2…) : deux parties, certificat. */
+    function carteTelc(code, unlocked, lockText) {
+      const CODE = telcName(code);
+      const ts = window.Progress.getTestScore(code);
+      const loc = telcLocalGet(code) || {};
+      const certified = !!(ts && ts.reussi);
+      const card = el("div", "examen-final telc-card " + (unlocked ? "unlocked" : "locked") + (certified ? " reussi" : ""));
+      let inner = '<div class="examen-ic">' + (certified ? "🏅" : unlocked ? "📜" : "🔒") + '</div><h2>📜 Examen telc ' + CODE + "</h2>";
+      if (!unlocked) { inner += "<p>" + lockText + "</p>"; card.innerHTML = inner; return card; }
+      function tag(pkey, label) { const s = loc[pkey] || {}; const p = certified || s.passed; return label + " " + (p ? "✅" : (s.status === "pending" ? "⏳" : "—")); }
+      if (certified) inner += "<p>Certificat " + CODE + " obtenu ✅ — écrit + oral validés. La suite est débloquée.</p>";
+      else inner += "<p>Deux parties à réussir (≥ 60 % chacune). " + tag("schriftlich", "Écrit") + " · " + tag("muendlich", "Oral") + ".</p>";
+      card.innerHTML = inner;
+      const row = el("div", "examen-actions");
+      const b = el("a", "btn btn-primary big", certified ? "Revoir l'examen" : "📜 Ouvrir l'examen telc " + CODE); b.href = "#/examen/" + code; row.appendChild(b);
+      card.appendChild(row); return card;
+    }
     function carteExamen(examId, titre, unlocked, sousTitre, lockText) {
+      if (examId === "a1" || examId === "a2" || examId === "final") return carteDelf(examId, unlocked, lockText);
+      if (examId === "b1" || examId === "b2" || examId === "c1" || examId === "c2" || examId === "finalb" || examId === "finalc") return carteTelc(examId, unlocked, lockText);
       const ts = window.Progress.getTestScore(examId);
       const card = el("div", "examen-final " + (unlocked ? "unlocked" : "locked") + (ts && ts.reussi ? " reussi" : ""));
       card.innerHTML =
@@ -551,9 +593,9 @@
     }
 
     renderNiveau({ code: "A1", exam: "a1", prevExam: null, prevLabel: null,
-      examSous: "20 questions de tout l'A1 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour débloquer le niveau A2 !" });
+      examSous: "Examen blanc DELF A1 (4 épreuves /100), corrigé par l'IA sous 24 h. Réussissez-le pour débloquer le niveau A2 !" });
     renderNiveau({ code: "A2", exam: "a2", prevExam: "a1", prevLabel: "l'examen A1",
-      examSous: "20 questions de tout l'A2 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour débloquer l'examen final." });
+      examSous: "Examen blanc DELF A2 (4 épreuves /100), corrigé par l'IA sous 24 h. Réussissez-le pour débloquer l'examen final." });
 
     /* --- Examen final A1 + A2 (verrou vers le B1) --- */
     const finalSec = el("section", "section");
@@ -564,11 +606,11 @@
 
     /* --- Niveau B1 (débloqué après l'examen final A1 + A2) --- */
     renderNiveau({ code: "B1", exam: "b1", prevExam: "final", prevLabel: "l'examen final A1 + A2",
-      examSous: "25 questions de tout le B1 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour accéder au niveau B2 !" });
+      examSous: "Examen blanc telc B1 (écrit /225 + oral /75), corrigé par l'IA sous 24 h. Réussissez les deux parties pour débloquer le B2 !" });
 
     /* --- Niveau B2 (débloqué après l'examen B1) --- */
     renderNiveau({ code: "B2", exam: "b2", prevExam: "b1", prevLabel: "l'examen B1",
-      examSous: "30 questions de tout le B2 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour débloquer l'examen B1 + B2." });
+      examSous: "Examen blanc telc B2 (écrit /225 + oral /75), corrigé par l'IA sous 24 h. Réussissez les deux parties pour débloquer la suite !" });
 
     /* --- Examen combiné B1 + B2 (verrou vers le C1) --- */
     const finalbSec = el("section", "section");
@@ -579,11 +621,11 @@
 
     /* --- Niveau C1 (débloqué après l'examen B1 + B2) --- */
     renderNiveau({ code: "C1", exam: "c1", prevExam: "finalb", prevLabel: "l'examen B1 + B2",
-      examSous: "30 questions de tout le C1 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour accéder au niveau C2 !" });
+      examSous: "Examen blanc telc C1 (écrit /166 + oral /48), corrigé par l'IA sous 24 h. Réussissez les deux parties pour accéder au niveau C2 !" });
 
     /* --- Niveau C2 (débloqué après l'examen C1) --- */
     renderNiveau({ code: "C2", exam: "c2", prevExam: "c1", prevLabel: "l'examen C1",
-      examSous: "30 questions de tout le C2 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour l'examen final C1 + C2 !" });
+      examSous: "Examen blanc telc C2 (écrit /225 + oral /75), corrigé par l'IA sous 24 h. Le sommet du parcours !" });
 
     /* --- Examen combiné C1 + C2 (consécration finale) --- */
     const finalcSec = el("section", "section");
@@ -1845,6 +1887,770 @@
       window.TG.setMainButton("Terminer l'examen", () => submit.click());
     }
     window.scrollTo(0, 0);
+  }
+
+  /* ====================================================================
+     EXAMEN DELF A2 — simulation officielle, correction différée (24 h)
+     4 épreuves chronométrées et séquencées (CO, CE, EE, EO), notées /25.
+     Aucune correction pendant l'examen ; la copie est remise au serveur,
+     corrigée par l'IA après 24 h, puis le résultat + PDF reviennent ici.
+     ==================================================================== */
+  function delfInitData() { try { return (window.TG && window.TG.tg && window.TG.tg.initData) || ""; } catch (e) { return ""; } }
+  function delfData(code) { return window["DELF_" + String(code).toUpperCase()]; }
+  function delfName(code) { return code === "final" ? "A1 + A2 (combiné)" : String(code).toUpperCase(); }
+  function delfLocalGet(code) { try { return JSON.parse(localStorage.getItem("delf_" + code) || "null"); } catch (e) { return null; } }
+  function delfLocalSet(code, o) { try { localStorage.setItem("delf_" + code, JSON.stringify(o || {})); } catch (e) {} }
+  function delfGuardOK(code) { if (code === "a1") return niveauTermine("A1"); if (code === "a2") return examPasse("a1") && niveauTermine("A2"); if (code === "final") return examPasse("a2"); return false; }
+  function delfEsc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function delfFmt(s) { return delfEsc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\n/g, "<br>"); }
+
+  let delfTimer = null;
+  function makeDelfTimer(seconds, onExpire) {
+    const box = el("div", "delf-timer");
+    let left = seconds, stopped = false, iv = null;
+    function fmt(s) { const m = Math.floor(s / 60), ss = s % 60; return m + ":" + (ss < 10 ? "0" : "") + ss; }
+    function render() { box.textContent = "⏳ " + fmt(Math.max(0, left)); box.classList.toggle("warn", left <= 60); box.classList.toggle("crit", left <= 10); }
+    function stop() { stopped = true; if (iv) { clearInterval(iv); iv = null; } }
+    function tick() { if (stopped) return; left--; render(); if (left <= 0) { stop(); if (onExpire) onExpire(); } }
+    render(); iv = setInterval(tick, 1000);
+    return { el: box, stop: stop };
+  }
+
+  function delfScreen(opts) {
+    if (delfTimer) { delfTimer.stop(); delfTimer = null; }
+    app.innerHTML = "";
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<span class="btn-link" style="visibility:hidden">·</span><span class="lesson-top-mod">' + (opts.brand || "🎓 DELF A2") + "</span>";
+    frag.appendChild(top);
+    const head = el("header", "test-head delf-head");
+    head.innerHTML = '<div class="lesson-num">' + (opts.phase || "DELF A2") + "</div><h1>" + (opts.icone ? opts.icone + " " : "") + opts.titre + "</h1>" + (opts.intro ? "<p>" + opts.intro + "</p>" : "");
+    frag.appendChild(head);
+    const hp = opts.hashPrefix || "#/examen/a2";
+    const backHash = opts.backHash || "#/";
+    let finished = false, btn = null, timer = null;
+    function finish() {
+      if (finished) return;
+      // L'utilisateur a quitté l'examen (back) → ne pas re-rendre par-dessus.
+      if (location.hash.indexOf(hp) !== 0) { if (timer) timer.stop(); return; }
+      finished = true; if (timer) timer.stop(); delfTimer = null; if (btn) btn.disabled = true;
+      if (opts.onPrimary) opts.onPrimary();
+    }
+    if (opts.timerSeconds) { timer = makeDelfTimer(opts.timerSeconds, function () { toast("⏰ Temps écoulé pour cette épreuve."); finish(); }); delfTimer = timer; const tw = el("div", "delf-timer-wrap"); tw.appendChild(timer.el); frag.appendChild(tw); }
+    if (opts.body) frag.appendChild(opts.body);
+    const submitRow = el("div", "test-submit");
+    btn = el("button", "btn btn-primary big", opts.primary || "Continuer →"); btn.type = "button";
+    btn.addEventListener("click", finish);
+    submitRow.appendChild(btn);
+    frag.appendChild(submitRow);
+    app.appendChild(frag);
+    if (window.TG) { try { window.TG.closingConfirmation(true); window.TG.showBackButton(function () { location.hash = backHash; }); window.TG.setMainButton(opts.primary || "Continuer →", finish); } catch (e) {} }
+    window.scrollTo(0, 0);
+  }
+
+  /* Compréhension (CO audio / CE texte) : QCM en capture seule (aucune correction). */
+  function delfQCM(documents, kind) {
+    const wrap = el("div", "delf-docs");
+    const all = [];
+    documents.forEach(function (doc) {
+      const card = el("div", "delf-doc");
+      card.appendChild(el("h3", "delf-doc-t", delfEsc(doc.titre)));
+      if (kind === "co") {
+        let plays = 0;
+        const b = el("button", "btn btn-audio", "🔊 Écouter (2 max)"); b.type = "button";
+        b.addEventListener("click", function () {
+          if (plays >= 2) { toast("Vous avez déjà écouté ce document 2 fois."); return; }
+          plays++; if (window.Speech) window.Speech.speak(doc.audio, { rate: 0.95 });
+          const rest = 2 - plays; b.textContent = rest > 0 ? "🔊 Réécouter (" + rest + " restante" + (rest > 1 ? "s" : "") + ")" : "🔇 Écoutes épuisées";
+          if (plays >= 2) b.disabled = true;
+        });
+        card.appendChild(b);
+      } else {
+        const t = el("div", "delf-text"); t.textContent = doc.texte; card.appendChild(t);
+      }
+      doc.questions.forEach(function (q) {
+        const qc = el("div", "delf-q");
+        qc.appendChild(el("p", "delf-q-t", delfEsc(q.q)));
+        const opts = el("div", "qcm-options"); let sel = -1;
+        q.options.forEach(function (o, i) {
+          const ob = el("button", "qcm-opt", delfEsc(o)); ob.type = "button";
+          ob.addEventListener("click", function () { sel = i; opts.querySelectorAll(".qcm-opt").forEach(function (x) { x.classList.remove("sel"); }); ob.classList.add("sel"); });
+          opts.appendChild(ob);
+        });
+        qc.appendChild(opts); card.appendChild(qc);
+        all.push({ q: q, getSel: function () { return sel; } });
+      });
+      wrap.appendChild(card);
+    });
+    function collect() {
+      const items = all.map(function (a) { return { q: a.q.q, options: a.q.options, correct: a.q.correct, selected: a.getSel() }; });
+      const total = items.length || 1;
+      const correct = items.filter(function (it) { return it.selected === it.correct; }).length;
+      return { score25: Math.round(correct / total * 25), correct: correct, total: items.length, items: items };
+    }
+    return { el: wrap, collect: collect };
+  }
+
+  /* Production écrite : zones de texte (aucune correction pendant l'examen). */
+  function delfEE(taches) {
+    const wrap = el("div", "delf-ee"); const fields = [];
+    taches.forEach(function (t) {
+      const card = el("div", "delf-doc");
+      card.appendChild(el("h3", "delf-doc-t", delfEsc(t.titre)));
+      card.appendChild(el("p", "delf-q-t", delfEsc(t.consigne)));
+      const ta = el("textarea", "production-input"); ta.rows = 5; ta.setAttribute("placeholder", "Schreiben Sie hier auf Deutsch…");
+      const meta = el("div", "production-meta"); const c = el("span", "wordcount", "0 mot"); meta.appendChild(c);
+      if (t.minMots) meta.appendChild(el("span", "wordmin", "objectif : ≥ " + t.minMots + " mots"));
+      ta.addEventListener("input", function () { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; c.textContent = w + (w > 1 ? " mots" : " mot"); c.classList.toggle("ok", !t.minMots || w >= t.minMots); });
+      card.appendChild(ta); card.appendChild(meta); wrap.appendChild(card);
+      fields.push({ t: t, ta: ta });
+    });
+    function collect() { return fields.map(function (f) { return { id: f.t.id, consigne: f.t.consigne, text: f.ta.value.trim() }; }); }
+    return { el: wrap, collect: collect };
+  }
+
+  /* Production orale : enregistrement micro (→ /api/stt) avec repli clavier. */
+  /* Dialogue oral examinateur ↔ candidat (100 % voix). L'examinateur (IA, mode
+     "examinateur") joue son rôle, pose des questions et conteste, mais NE CORRIGE
+     JAMAIS. Le candidat parle (micro → STT) ou écrit. Tout le dialogue est capturé
+     et noté seulement 24 h après. */
+  function delfDialog(task, niveau) {
+    const niv = niveau || "B1";
+    const lang = (window.I18N && window.I18N.lang && window.I18N.lang()) || "fr";
+    const card = el("div", "delf-doc delf-dialog");
+    card.appendChild(el("h3", "delf-doc-t", delfEsc(task.titre)));
+    card.appendChild(el("p", "delf-q-t", delfEsc(task.consigne)));
+    if (task.scenario) card.appendChild(el("p", "delf-q-t", "🎭 " + delfEsc(task.scenario)));
+    if (task.points && task.points.length) { const ul = el("ul", "delf-points"); task.points.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); card.appendChild(ul); }
+    const conv = el("div", "delf-conv"); card.appendChild(conv);
+    const status = el("span", "delf-rec-status", "");
+    const history = [], turns = [];
+    let busy = false;
+    function bubble(role, text) { const b = el("div", "delf-bubble " + (role === "user" ? "me" : "ex")); b.appendChild(el("span", "delf-bubble-who", role === "user" ? "Vous" : "🧑‍🏫 Examinateur")); const tx = el("div", "delf-bubble-t"); tx.textContent = text; b.appendChild(tx); conv.appendChild(b); conv.scrollTop = conv.scrollHeight; }
+    function pushExaminer(text) { history.push({ role: "assistant", content: text }); turns.push({ role: "assistant", content: text }); bubble("assistant", text); if (window.Speech) window.Speech.speak(text, { rate: 0.98 }); }
+    function pushUser(text) { history.push({ role: "user", content: text }); turns.push({ role: "user", content: text }); bubble("user", text); }
+    function examinerTurn() {
+      busy = true; status.textContent = "🧑‍🏫 …";
+      fetch("/api/chat", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ messages: history.slice(-16), mode: "examinateur", niveau: niv, niveauParle: niv, langue: lang, initData: delfInitData() || undefined }) })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) { busy = false; status.textContent = ""; pushExaminer((j && j.reply) || "Bitte, sprechen Sie weiter."); })
+        .catch(function () { busy = false; status.textContent = "⚠️ Connexion impossible."; });
+    }
+    function userSays(text) { text = (text || "").trim(); if (!text || busy) return; pushUser(text); examinerTurn(); }
+    const row = el("div", "delf-rec-row");
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder) {
+      const mic = el("button", "btn btn-mic", "🎤 Parler"); mic.type = "button";
+      let mr = null, chunks = [], recording = false;
+      mic.addEventListener("click", function () {
+        if (busy) return;
+        if (recording) { if (mr) mr.stop(); return; }
+        navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+          chunks = []; try { mr = new MediaRecorder(stream); } catch (e) { status.textContent = "⚠️ Micro non supporté — écrivez."; stream.getTracks().forEach(function (x) { x.stop(); }); return; }
+          mr.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+          mr.onstop = function () {
+            recording = false; mic.classList.remove("listening"); mic.textContent = "🎤 Parler"; stream.getTracks().forEach(function (x) { x.stop(); });
+            const blob = new Blob(chunks, { type: (chunks[0] && chunks[0].type) || "audio/webm" }); status.textContent = "⏳ Transcription…";
+            fetch("/api/stt", { method: "POST", headers: { "content-type": blob.type || "audio/webm" }, body: blob })
+              .then(function (r) { return r.ok ? r.json() : null; })
+              .then(function (j) { status.textContent = ""; if (j && j.text) userSays(j.text); else status.textContent = "⚠️ Rien compris — réessayez ou écrivez."; })
+              .catch(function () { status.textContent = "⚠️ Hors-ligne — écrivez."; });
+          };
+          mr.start(); recording = true; mic.classList.add("listening"); mic.textContent = "⏹️ Arrêter"; status.textContent = "🎙️ Parlez…";
+        }).catch(function () { status.textContent = "⚠️ Micro indisponible — écrivez ci-dessous."; });
+      });
+      row.appendChild(mic);
+    }
+    const replay = el("button", "btn btn-ghost small", "🔁 Réécouter"); replay.type = "button";
+    replay.addEventListener("click", function () { const last = turns.filter(function (h) { return h.role === "assistant"; }).pop(); if (last && window.Speech) window.Speech.speak(last.content, { rate: 0.98 }); });
+    row.appendChild(replay); row.appendChild(status); card.appendChild(row);
+    const inp = el("input", "production-input delf-typed"); inp.type = "text"; inp.setAttribute("placeholder", "…ou écrivez votre réponse, puis Entrée");
+    inp.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); const v = inp.value; inp.value = ""; userSays(v); } });
+    card.appendChild(inp);
+    if (task.opener) pushExaminer(task.opener);
+    else { history.push({ role: "user", content: "[Du bist Pruefer in einer muendlichen Pruefung. Aufgabe: " + (task.consigne || "") + (task.scenario ? " Szenario: " + task.scenario : "") + ". Eroeffne die Pruefung mit EINER kurzen, passenden Frage oder Replik auf Deutsch.]" }); examinerTurn(); }
+    function collect() { return { id: task.id, consigne: task.consigne + (task.scenario ? " (" + task.scenario + ")" : ""), transcript: turns.map(function (h) { return (h.role === "user" ? "Candidat : " : "Examinateur : ") + h.content; }).join("\n") }; }
+    return { el: card, collect: collect };
+  }
+
+  function delfEO(taches, niveau) {
+    const wrap = el("div", "delf-eo"); const fields = [];
+    const DIALOG = ["dialog", "jeuderole", "info", "thema", "planen", "diskussion", "problemloesung", "anschlussfragen"];
+    const recOK = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
+    taches.forEach(function (t) {
+      if (t.mode === "dialog" || DIALOG.indexOf(t.type) >= 0) { const d = delfDialog(t, niveau); wrap.appendChild(d.el); fields.push(d.collect); return; }
+      const card = el("div", "delf-doc");
+      card.appendChild(el("h3", "delf-doc-t", delfEsc(t.titre)));
+      card.appendChild(el("p", "delf-q-t", delfEsc(t.consigne)));
+      if (t.points && t.points.length) { const ul = el("ul", "delf-points"); t.points.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); card.appendChild(ul); }
+      const ta = el("textarea", "production-input"); ta.rows = 4; ta.setAttribute("placeholder", "Was Sie sagen würden (oder Aufnahme oben)…");
+      if (recOK) {
+        const row = el("div", "delf-rec-row");
+        const rec = el("button", "btn btn-mic", "🎤 Enregistrer"); rec.type = "button";
+        const status = el("span", "delf-rec-status", "");
+        let mr = null, chunks = [], recording = false;
+        rec.addEventListener("click", function () {
+          if (recording) { if (mr) mr.stop(); return; }
+          navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+            chunks = []; try { mr = new MediaRecorder(stream); } catch (e) { status.textContent = "⚠️ Enregistrement non supporté — écrivez ci-dessous."; stream.getTracks().forEach(function (x) { x.stop(); }); return; }
+            mr.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+            mr.onstop = function () {
+              recording = false; rec.classList.remove("listening"); rec.textContent = "🎤 Enregistrer"; stream.getTracks().forEach(function (x) { x.stop(); });
+              const blob = new Blob(chunks, { type: (chunks[0] && chunks[0].type) || "audio/webm" });
+              status.textContent = "⏳ Transcription…";
+              fetch("/api/stt", { method: "POST", headers: { "content-type": blob.type || "audio/webm" }, body: blob })
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (j) { if (j && j.text) { ta.value = (ta.value ? ta.value + " " : "") + j.text; status.textContent = "✓ Transcrit — vérifiez et complétez."; } else status.textContent = "⚠️ Transcription indisponible — écrivez ci-dessous."; })
+                .catch(function () { status.textContent = "⚠️ Hors-ligne — écrivez ci-dessous."; });
+            };
+            mr.start(); recording = true; rec.classList.add("listening"); rec.textContent = "⏹️ Arrêter"; status.textContent = "🎙️ Enregistrement…";
+          }).catch(function () { status.textContent = "⚠️ Micro indisponible — écrivez ci-dessous."; });
+        });
+        row.appendChild(rec); row.appendChild(status); card.appendChild(row);
+      }
+      card.appendChild(ta); wrap.appendChild(card);
+      fields.push(function () { return { id: t.id, consigne: t.consigne, transcript: ta.value.trim() }; });
+    });
+    function collect() { return fields.map(function (f) { return f(); }); }
+    return { el: wrap, collect: collect };
+  }
+
+  /* Dictée : audio (synthèse) lu 2× max, saisie libre, score auto mot-à-mot.
+     Composante auto-corrigée de l'écrit (examens combinés). Aucune correction
+     affichée pendant l'épreuve. */
+  function delfDictee(dictee) {
+    const sur = dictee.sur || 25;
+    const card = el("div", "delf-doc delf-dictee");
+    card.appendChild(el("h3", "delf-doc-t", "✒️ " + delfEsc(dictee.titre || "Dictée")));
+    card.appendChild(el("p", "delf-q-t", delfEsc(dictee.intro || "Écoutez (2 fois maximum) et écrivez exactement le texte entendu.")));
+    const segs = (String(dictee.texte || "").match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [dictee.texte || ""]).map(function (s) { return s.trim(); }).filter(Boolean);
+    let plays = 0, speaking = false;
+    function speakSegs(i) { if (i >= segs.length || !window.Speech) { speaking = false; return; } speaking = true; window.Speech.speak(segs[i], { rate: 0.9 }); setTimeout(function () { speakSegs(i + 1); }, Math.max(2600, segs[i].length * 95)); }
+    const b = el("button", "btn btn-audio", "🔊 Écouter la dictée (2 max)"); b.type = "button";
+    b.addEventListener("click", function () { if (speaking) return; if (plays >= 2) { toast("Vous avez déjà écouté 2 fois."); return; } plays++; speakSegs(0); const rest = 2 - plays; b.textContent = rest > 0 ? "🔁 Réécouter (" + rest + ")" : "🔇 Écoutes épuisées"; if (plays >= 2) b.disabled = true; });
+    card.appendChild(b);
+    const ta = el("textarea", "production-input"); ta.rows = 6; ta.setAttribute("placeholder", "Schreiben Sie hier den gehörten Text…"); card.appendChild(ta);
+    function norm(s) { return String(s || "").toLowerCase().replace(/[.,;:!?"«»()\[\]\-–—…]/g, " ").replace(/\s+/g, " ").trim(); }
+    function score() {
+      const ref = norm(dictee.texte).split(" ").filter(Boolean), got = norm(ta.value).split(" ").filter(Boolean);
+      if (!ref.length) return 0;
+      const pool = got.slice(); let ok = 0;
+      ref.forEach(function (w) { const k = pool.indexOf(w); if (k >= 0) { ok++; pool.splice(k, 1); } });
+      return Math.round(ok / ref.length * 100);
+    }
+    function collect() { const pct = score(); return { score: pct, points: Math.round(pct * sur / 100), sur: sur, texte: dictee.texte, saisie: ta.value.trim() }; }
+    return { el: card, collect: collect };
+  }
+
+  function renderDelf(code) {
+    const D = delfData(code);
+    if (!D || !delfGuardOK(code)) { location.hash = "#/"; return; }
+    const base = "#/examen/" + code, CODE = delfName(code);
+    const SC = { brand: "🎓 DELF " + CODE, hashPrefix: base, backHash: "#/" };
+    const passed = !!((window.Progress.getTestScore(code) || {}).reussi);
+    const loc = delfLocalGet(code) || {};
+    if (loc.status === "pending" && !passed) { location.hash = base + "/resultat"; return; }
+    const state = { co: null, ce: null, ee: [], eo: [], dictee: null };
+    const E = D.epreuves;
+
+    function runCO() { const ep = E.co; const r = delfQCM(ep.documents, "co"); delfScreen(Object.assign({}, SC, { phase: "Épreuve 1 / 4 · collective", icone: ep.icone, titre: ep.titre, intro: ep.intro, body: r.el, timerSeconds: ep.duree, primary: "Terminer l'épreuve →", onPrimary: function () { state.co = r.collect(); runCE(); } })); }
+    function runCE() { const ep = E.ce; const r = delfQCM(ep.documents, "ce"); delfScreen(Object.assign({}, SC, { phase: "Épreuve 2 / 4 · collective", icone: ep.icone, titre: ep.titre, intro: ep.intro, body: r.el, timerSeconds: ep.duree, primary: "Terminer l'épreuve →", onPrimary: function () { state.ce = r.collect(); runEE(); } })); }
+    function runEE() { const ep = E.ee; const r = delfEE(ep.taches); delfScreen(Object.assign({}, SC, { phase: "Épreuve 3 / 4 · collective", icone: ep.icone, titre: ep.titre, intro: ep.intro, body: r.el, timerSeconds: ep.duree, primary: "Terminer l'épreuve →", onPrimary: function () { state.ee = r.collect(); (D.dictee ? runDictee() : runEOPrep()); } })); }
+    function runDictee() { const r = delfDictee(D.dictee); delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · dictée", icone: "✒️", titre: D.dictee.titre || "Dictée", intro: "Niveau " + (D.dictee.niveau || "") + " — écoutez (2× max) et écrivez exactement. Aucune correction ne s'affiche.", body: r.el, timerSeconds: D.dictee.duree || 600, primary: "Terminer la dictée →", onPrimary: function () { state.dictee = r.collect(); runEOPrep(); } })); }
+    function runEOPrep() {
+      const ep = E.eo; const body = el("div", "delf-eo-prep");
+      ep.taches.forEach(function (t) { const c = el("div", "delf-doc"); c.appendChild(el("h3", "delf-doc-t", delfEsc(t.titre))); c.appendChild(el("p", "delf-q-t", delfEsc(t.consigne))); if (t.points) { const ul = el("ul", "delf-points"); t.points.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); c.appendChild(ul); } body.appendChild(c); });
+      body.appendChild(el("p", "delf-q-t", "📝 Préparez vos parties. L'enregistrement commence ensuite."));
+      const note = el("textarea", "production-input"); note.rows = 4; note.setAttribute("placeholder", "Brouillon / vos idées (non noté)…"); body.appendChild(note);
+      delfScreen(Object.assign({}, SC, { phase: "Épreuve 4 / 4 · préparation (" + Math.round(ep.prep / 60) + " min)", icone: ep.icone, titre: ep.titre + " — préparation", intro: "Vous avez " + Math.round(ep.prep / 60) + " minutes pour préparer.", body: body, timerSeconds: ep.prep, primary: "Je suis prêt(e) — parler →", onPrimary: runEO }));
+    }
+    function runEO() { const ep = E.eo; const r = delfEO(ep.taches, CODE); delfScreen(Object.assign({}, SC, { phase: "Épreuve 4 / 4 · passation orale", icone: ep.icone, titre: ep.titre, intro: "Parlez au micro avec l'examinateur (ou écrivez). Aucune correction ne s'affiche.", body: r.el, timerSeconds: ep.duree, primary: "Remettre ma copie ✅", onPrimary: function () { state.eo = r.collect(); doSubmit(); } })); }
+
+    function doSubmit() {
+      if (window.TG) { try { window.TG.closingConfirmation(false); } catch (e) {} }
+      const copy = { co: (state.co && state.co.items) || [], ce: (state.ce && state.ce.items) || [], ee: state.ee || [], eo: state.eo || [] };
+      const payload = { langue: (window.I18N && window.I18N.lang && window.I18N.lang()) || "fr", co25: (state.co && state.co.score25) || 0, ce25: (state.ce && state.ce.score25) || 0, copy: copy };
+      if (state.dictee) { copy.dictee = { texte: state.dictee.texte, saisie: state.dictee.saisie, score: state.dictee.score, sur: state.dictee.sur }; payload.dictee = state.dictee.points; payload.dicteeSur = state.dictee.sur; }
+      app.innerHTML = ""; const frag = document.createDocumentFragment();
+      const top = el("div", "lesson-top"); top.innerHTML = '<span class="btn-link" style="visibility:hidden">·</span><span class="lesson-top-mod">🎓 DELF ' + CODE + '</span>'; frag.appendChild(top);
+      const head = el("header", "test-head delf-head"); head.innerHTML = '<div class="lesson-num">Remise de la copie</div><h1>📨 Envoi en cours…</h1>'; frag.appendChild(head);
+      app.appendChild(frag); window.scrollTo(0, 0);
+      const initData = delfInitData();
+      if (!initData) { showSubmitted(null, "no-server"); return; }
+      fetch("/api/exam", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ initData: initData, action: "submit", exam: code, payload: payload }) })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) { if (j && j.status === "pending") { delfLocalSet(code, { status: "pending", submittedAt: j.submittedAt, availableAt: j.availableAt }); showSubmitted(j, null); } else showSubmitted(null, "error"); })
+        .catch(function () { showSubmitted(null, "error"); });
+    }
+    function showSubmitted(j, err) {
+      app.innerHTML = ""; const frag = document.createDocumentFragment();
+      const top = el("div", "lesson-top"); top.innerHTML = '<a class="btn-link" href="#/">← Aperçu</a><span class="lesson-top-mod">🎓 DELF ' + CODE + '</span>'; frag.appendChild(top);
+      const c = el("div", "completion " + (err ? "ko" : "ok") + " delf-submitted");
+      if (err === "no-server") c.innerHTML = '<div class="comp-emoji">📋</div><h2>Examen terminé</h2><p>La remise et la correction par l\'IA nécessitent l\'application dans <strong>Telegram</strong>. Ouvrez le cours depuis le bot pour passer l\'examen officiel et recevoir votre résultat sous 24 h.</p>';
+      else if (err === "error") c.innerHTML = '<div class="comp-emoji">⚠️</div><h2>Remise impossible</h2><p>La connexion a échoué. Vérifiez votre réseau, puis réessayez.</p>';
+      else { const when = (j && j.availableAt) ? new Date(j.availableAt) : null; c.innerHTML = '<div class="comp-emoji">📨</div><h2>Copie remise !</h2><p>Votre examen est enregistré. <strong>Le coach Zika (IA) corrige votre copie</strong> et vous enverra votre <strong>note /100</strong>, votre <strong>copie corrigée</strong> et votre <strong>PDF</strong>' + (when ? " vers le <strong>" + when.toLocaleString() + "</strong>" : " sous 24 h") + ".</p><p>📲 Vous recevrez une <strong>notification Telegram</strong> dès que le résultat est prêt.</p>"; }
+      const actions = el("div", "rev-actions");
+      if (err === "error") { const again = el("button", "btn btn-primary", "Réessayer"); again.type = "button"; again.addEventListener("click", doSubmit); actions.appendChild(again); }
+      const home = el("a", "btn " + (err ? "btn-ghost" : "btn-primary"), "Retour à l'aperçu"); home.href = "#/"; actions.appendChild(home);
+      if (!err) { const stb = el("a", "btn btn-ghost", "Voir l'état de ma copie"); stb.href = base + "/resultat"; actions.appendChild(stb); }
+      c.appendChild(actions); frag.appendChild(c); app.appendChild(frag);
+      if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = "#/"; }); window.TG.setMainButton("Retour à l'aperçu", function () { location.hash = "#/"; }); } catch (e) {} }
+      window.scrollTo(0, 0);
+    }
+
+    const dCO = Math.round(E.co.duree / 60), dCE = Math.round(E.ce.duree / 60), dEE = Math.round(E.ee.duree / 60), dEP = Math.round(E.eo.prep / 60), dEO = Math.round(E.eo.duree / 60);
+    const intro = el("div", "delf-intro-body");
+    intro.innerHTML =
+      '<div class="delf-rules">' +
+      "<p>Cet examen blanc reproduit le <strong>DELF " + CODE + "</strong> officiel : 4 épreuves notées chacune sur 25 (<strong>total /100</strong>).</p>" +
+      '<ul class="delf-epreuves">' +
+      "<li>🎧 Compréhension de l'oral — <strong>" + dCO + " min</strong></li>" +
+      "<li>📖 Compréhension des écrits — <strong>" + dCE + " min</strong></li>" +
+      "<li>✍️ Production écrite — <strong>" + dEE + " min</strong></li>" +
+      "<li>🗣️ Production orale — <strong>" + dEP + " min de préparation + " + dEO + " min</strong></li>" +
+      "</ul>" +
+      "<p>⚠️ <strong>Aucune correction</strong> ne s'affiche pendant l'examen : toutes vos réponses sont acceptées. <strong>Votre note, votre copie corrigée et votre PDF arrivent 24 h après la remise</strong>, par notification Telegram.</p>" +
+      "<p>✅ Réussite : <strong>≥ 50/100</strong> et aucune épreuve sous <strong>5/25</strong> (note éliminatoire). Réussir débloque la suite du parcours ; sinon, vous pourrez repasser.</p>" +
+      "<p>⏱️ Chaque épreuve est chronométrée : quand le temps est écoulé, on passe à la suivante.</p>" +
+      "</div>";
+    delfScreen(Object.assign({}, SC, { phase: "Présentation", icone: "🎓", titre: "Examen blanc DELF " + CODE, intro: "", body: intro, primary: "Commencer l'examen →", onPrimary: runCO }));
+  }
+
+  /* ---- Résultat de l'examen DELF (copie corrigée + PDF) ---- */
+  function renderDelfResult(code) {
+    const base = "#/examen/" + code, CODE = delfName(code);
+    app.innerHTML = ""; const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top"); top.innerHTML = '<a class="btn-link" href="#/">← Aperçu</a><span class="lesson-top-mod">🎓 DELF ' + CODE + '</span>'; frag.appendChild(top);
+    const head = el("header", "test-head delf-head"); head.innerHTML = '<div class="lesson-num">DELF ' + CODE + '</div><h1>📊 Mon résultat</h1>'; frag.appendChild(head);
+    const box = el("div", "delf-result-box"); box.innerHTML = '<p class="delf-loading">Chargement…</p>'; frag.appendChild(box);
+    app.appendChild(frag); window.scrollTo(0, 0);
+    if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = "#/"; }); window.TG.setMainButton("Retour à l'aperçu", function () { location.hash = "#/"; }); } catch (e) {} }
+    const initData = delfInitData();
+    if (!initData) { box.innerHTML = "<p>Votre résultat est disponible dans l'application Telegram.</p>"; return; }
+    fetch("/api/exam", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ initData: initData, action: "result", exam: code }) })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { renderDelfResultInto(box, j, code); })
+      .catch(function () { box.innerHTML = "<p>Connexion impossible. Réessayez plus tard.</p>"; });
+  }
+  function delfGauge(label, n) { const cls = n < 5 ? "elim" : (n >= 15 ? "good" : "mid"); return '<div class="delf-gauge ' + cls + '"><div class="delf-gauge-n">' + n + "<span>/25</span></div><div class=\"delf-gauge-l\">" + label + "</div></div>"; }
+  function renderDelfResultInto(box, j, code) {
+    const base = "#/examen/" + code, CODE = delfName(code);
+    if (!j || j.status === "none") { box.innerHTML = '<div class="completion"><div class="comp-emoji">🎓</div><h2>Aucune copie</h2><p>Vous n\'avez pas encore passé l\'examen DELF ' + CODE + '.</p><div class="rev-actions"><a class="btn btn-primary" href="' + base + '">Passer l\'examen</a></div></div>'; return; }
+    if (j.status === "pending") {
+      const when = j.availableAt ? new Date(j.availableAt) : null;
+      const hleft = j.availableAt ? Math.max(0, Math.ceil((j.availableAt - Date.now()) / 3600000)) : null;
+      delfLocalSet(code, { status: "pending", submittedAt: j.submittedAt, availableAt: j.availableAt });
+      box.innerHTML = '<div class="completion"><div class="comp-emoji">⏳</div><h2>Copie en correction</h2><p>Votre examen est bien remis. L\'IA rend votre résultat ' + (when ? "vers le <strong>" + when.toLocaleString() + "</strong>" + (hleft != null ? " (dans ~" + hleft + " h)" : "") : "sous 24 h") + '.</p><p>📲 Vous recevrez une notification Telegram dès que c\'est prêt. 🎓</p><div class="rev-actions"><a class="btn btn-primary" href="#/">Retour à l\'aperçu</a></div></div>';
+      return;
+    }
+    const res = j.result || {}, copy = j.copy || {};
+    if (window.Progress && window.Progress.setTestScore) window.Progress.setTestScore(code, res.total || 0, !!res.reussi);
+    if (window.Sync && window.Sync.saveNow) { try { window.Sync.saveNow(); } catch (e) {} }
+    delfLocalSet(code, { status: "graded", total: res.total, reussi: !!res.reussi });
+    box.innerHTML = "";
+    const card = el("div", "delf-scorecard");
+    const dsur = res.sur || 100, dseuil = res.seuil || 50, dpct = Math.round(res.total / dsur * 100);
+    const verdict = res.reussi
+      ? '<div class="delf-verdict pass">🎓 Réussi — ' + res.total + "/" + dsur + "</div>"
+      : (res.eliminatoire ? '<div class="delf-verdict fail">❌ Éliminatoire — ' + res.total + "/" + dsur + "<br><small>Une épreuve est sous 5/25.</small></div>" : '<div class="delf-verdict fail">📚 Non réussi — ' + res.total + "/" + dsur + "<br><small>Il faut au moins " + dseuil + "/" + dsur + ".</small></div>");
+    card.innerHTML =
+      '<div class="score-ring ' + (res.reussi ? "pass" : "fail") + '"><span>' + dpct + "%</span></div>" +
+      '<div class="delf-gauges">' + delfGauge("🎧 CO", res.co25) + delfGauge("📖 CE", res.ce25) + delfGauge("✍️ EE", res.ee25) + delfGauge("🗣️ EO", res.eo25) + (res.dictee != null ? telcGauge("✒️ Dictée", res.dictee, res.dicteeSur || 25) : "") + "</div>" +
+      verdict +
+      (res.reussi ? '<p class="delf-next">Bravo ! La suite du parcours est débloquée. 🎉</p>' : '<p class="delf-next">Courage — révisez et repassez l\'examen quand vous voulez. 💪</p>');
+    box.appendChild(card);
+    box.appendChild(buildDelfCopy(copy, res));
+    const row = el("div", "rev-actions delf-pdf-row");
+    const pdf = el("button", "btn btn-primary", "📄 Télécharger le PDF"); pdf.type = "button"; pdf.addEventListener("click", function () { exportDelfPDF(res, copy, pdf, code); }); row.appendChild(pdf);
+    const cont = el("a", "btn btn-ghost", res.reussi ? "Continuer →" : "Retour à l'aperçu"); cont.href = res.reussi ? (prochaineEtape() || "#/") : "#/"; row.appendChild(cont);
+    if (!res.reussi) { const again = el("a", "btn btn-ghost", "🔁 Repasser l'examen"); again.href = base; row.appendChild(again); }
+    box.appendChild(row);
+  }
+  function buildDelfCopy(copy, res) {
+    const w = el("div", "delf-copy");
+    w.appendChild(el("h2", "delf-copy-h", "📝 Ma copie corrigée"));
+    function qcmSec(title, items) {
+      if (!items || !items.length) return;
+      const s = el("div", "delf-copy-sec"); s.appendChild(el("h3", null, title));
+      items.forEach(function (it, i) {
+        const ok = it.selected === it.correct;
+        const yours = it.selected >= 0 ? it.options[it.selected] : "(sans réponse)";
+        const q = el("div", "delf-copy-q " + (ok ? "ok" : "ko"));
+        q.innerHTML = '<p class="dq">' + (i + 1) + ". " + delfEsc(it.q) + '</p><p class="da">' + (ok ? "✓" : "✗") + " Votre réponse : <strong>" + delfEsc(yours) + "</strong>" + (ok ? "" : " — Correct : <strong>" + delfEsc(it.options[it.correct]) + "</strong>") + "</p>";
+        s.appendChild(q);
+      });
+      w.appendChild(s);
+    }
+    qcmSec("🎧 Compréhension de l'oral — " + res.co25 + "/25", copy.co);
+    qcmSec("📖 Compréhension des écrits — " + res.ce25 + "/25", copy.ce);
+    function prodSec(title, arr, fb, getTxt) {
+      if (!arr || !arr.length) return;
+      const s = el("div", "delf-copy-sec"); s.appendChild(el("h3", null, title));
+      arr.forEach(function (t) { const q = el("div", "delf-copy-prod"); q.innerHTML = '<p class="dc">' + delfEsc(t.consigne) + '</p><div class="dp">' + (delfEsc(getTxt(t)) || "<em>(rien)</em>") + "</div>"; s.appendChild(q); });
+      if (fb) { const f = el("div", "delf-copy-fb"); f.innerHTML = "<strong>✨ Correction du coach Zika :</strong><br>" + delfFmt(fb); s.appendChild(f); }
+      w.appendChild(s);
+    }
+    prodSec("✍️ Production écrite — " + res.ee25 + "/25", copy.ee, res.eeFeedback, function (t) { return t.text; });
+    prodSec("🗣️ Production orale — " + res.eo25 + "/25", copy.eo, res.eoFeedback, function (t) { return t.transcript; });
+    if (copy.dictee) {
+      const s = el("div", "delf-copy-sec"); s.appendChild(el("h3", null, "✒️ Dictée — " + res.dictee + "/" + (res.dicteeSur || 25) + (copy.dictee.score != null ? " (" + copy.dictee.score + "% de mots justes)" : "")));
+      const ref = el("div", "delf-copy-prod"); ref.innerHTML = '<p class="dc">Texte attendu :</p><div class="dp">' + delfEsc(copy.dictee.texte) + "</div>";
+      const got = el("div", "delf-copy-prod"); got.innerHTML = '<p class="dc">Votre dictée :</p><div class="dp">' + (delfEsc(copy.dictee.saisie) || "<em>(rien)</em>") + "</div>";
+      s.appendChild(ref); s.appendChild(got); w.appendChild(s);
+    }
+    return w;
+  }
+  function loadJsPDF() {
+    return new Promise(function (resolve, reject) {
+      if (window.jspdf && window.jspdf.jsPDF) return resolve(window.jspdf.jsPDF);
+      const s = document.createElement("script");
+      s.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+      s.onload = function () { if (window.jspdf && window.jspdf.jsPDF) resolve(window.jspdf.jsPDF); else reject(new Error("jsPDF")); };
+      s.onerror = function () { reject(new Error("cdn")); };
+      document.head.appendChild(s);
+    });
+  }
+  function exportDelfPDF(res, copy, btn, code) {
+    const CODE = String(code || "a2").toUpperCase();
+    const old = btn.textContent; btn.disabled = true; btn.textContent = "Préparation…";
+    loadJsPDF().then(function (JsPDF) {
+      try {
+        const doc = new JsPDF({ unit: "pt", format: "a4" }); const M = 40; let y = M; const PW = doc.internal.pageSize.getWidth(), PH = doc.internal.pageSize.getHeight(), W = PW - 2 * M;
+        function line(txt, size, style, color) { doc.setFont("helvetica", style || "normal"); doc.setFontSize(size || 11); doc.setTextColor(color ? color[0] : 25, color ? color[1] : 25, color ? color[2] : 25); doc.splitTextToSize(String(txt == null ? "" : txt), W).forEach(function (l) { if (y > PH - M) { doc.addPage(); y = M; } doc.text(l, M, y); y += (size || 11) + 4; }); }
+        line("Examen DELF " + CODE + " — Allemand", 18, "bold"); y += 2;
+        line("Résultat : " + res.total + "/100 — " + (res.reussi ? "RÉUSSI" : (res.eliminatoire ? "ÉLIMINATOIRE" : "NON RÉUSSI")), 13, "bold", res.reussi ? [21, 128, 61] : [185, 28, 28]);
+        line("CO " + res.co25 + "/25   ·   CE " + res.ce25 + "/25   ·   EE " + res.ee25 + "/25   ·   EO " + res.eo25 + "/25", 11); y += 8;
+        function qcm(title, items) { if (!items || !items.length) return; line(title, 13, "bold"); items.forEach(function (it, i) { const ok = it.selected === it.correct; line((i + 1) + ". " + it.q, 11, "bold"); line("→ Votre réponse : " + (it.selected >= 0 ? it.options[it.selected] : "(sans réponse)") + (ok ? "  [correct]" : "  [faux] · correct : " + it.options[it.correct]), 10, "normal", ok ? [21, 128, 61] : [185, 28, 28]); }); y += 6; }
+        qcm("Comprehension de l'oral (" + res.co25 + "/25)", copy.co);
+        qcm("Comprehension des ecrits (" + res.ce25 + "/25)", copy.ce);
+        function prod(title, arr, fb, key) { if (!arr || !arr.length) return; line(title, 13, "bold"); arr.forEach(function (t) { line("Consigne : " + t.consigne, 10, "italic"); line(t[key] || "(rien)", 11); y += 2; }); if (fb) line("Correction IA : " + String(fb).replace(/\*\*/g, ""), 10, "normal", [70, 70, 70]); y += 6; }
+        prod("Production ecrite (" + res.ee25 + "/25)", copy.ee, res.eeFeedback, "text");
+        prod("Production orale (" + res.eo25 + "/25)", copy.eo, res.eoFeedback, "transcript");
+        if (copy.dictee) { line("Dictee (" + res.dictee + "/" + (res.dicteeSur || 25) + (copy.dictee.score != null ? ", " + copy.dictee.score + "% justes" : "") + ")", 13, "bold"); line("Texte attendu : " + copy.dictee.texte, 10, "italic"); line("Votre dictee : " + (copy.dictee.saisie || "(rien)"), 11); y += 6; }
+        doc.save("DELF_" + CODE + "_resultat.pdf");
+        btn.textContent = "✓ PDF téléchargé";
+      } catch (e) { delfPrintFallback(res, copy, code); btn.textContent = old; }
+      setTimeout(function () { btn.disabled = false; btn.textContent = old; }, 1800);
+    }).catch(function () { delfPrintFallback(res, copy, code); btn.disabled = false; btn.textContent = old; });
+  }
+  function delfPrintFallback(res, copy, code) {
+    const CODE = String(code || "a2").toUpperCase();
+    let h = '<html><head><meta charset="utf-8"><title>DELF ' + CODE + ' — résultat</title><style>body{font-family:sans-serif;max-width:760px;margin:24px auto;padding:0 16px;color:#111}h1{font-size:22px}h3{margin:18px 0 6px}.ko{color:#b91c1c}.ok{color:#15803d}.p{background:#f3f4f6;padding:8px;border-radius:6px;white-space:pre-wrap}</style></head><body>';
+    h += "<h1>Examen DELF " + CODE + " — " + res.total + "/100 — " + (res.reussi ? "RÉUSSI" : (res.eliminatoire ? "ÉLIMINATOIRE" : "NON RÉUSSI")) + "</h1>";
+    h += "<p>CO " + res.co25 + "/25 · CE " + res.ce25 + "/25 · EE " + res.ee25 + "/25 · EO " + res.eo25 + "/25</p>";
+    function qcm(title, items) { if (!items || !items.length) return; h += "<h3>" + title + "</h3>"; items.forEach(function (it, i) { const ok = it.selected === it.correct; h += "<p class='" + (ok ? "ok" : "ko") + "'>" + (i + 1) + ". " + delfEsc(it.q) + "<br>Votre réponse : " + delfEsc(it.selected >= 0 ? it.options[it.selected] : "(sans réponse)") + (ok ? " ✓" : " ✗ — correct : " + delfEsc(it.options[it.correct])) + "</p>"; }); }
+    qcm("Compréhension de l'oral", copy.co); qcm("Compréhension des écrits", copy.ce);
+    function prod(title, arr, fb, key) { if (!arr || !arr.length) return; h += "<h3>" + title + "</h3>"; arr.forEach(function (t) { h += "<p><em>" + delfEsc(t.consigne) + "</em></p><div class='p'>" + delfEsc(t[key] || "(rien)") + "</div>"; }); if (fb) h += "<p><strong>Correction IA :</strong><br>" + delfFmt(fb) + "</p>"; }
+    prod("Production écrite", copy.ee, res.eeFeedback, "text"); prod("Production orale", copy.eo, res.eoFeedback, "transcript");
+    h += "</body></html>";
+    const w = window.open("", "_blank"); if (!w) { toast("Activez les pop-ups pour générer le PDF, ou faites une capture d'écran."); return; }
+    w.document.write(h); w.document.close(); w.focus(); setTimeout(function () { try { w.print(); } catch (e) {} }, 400);
+  }
+
+  /* ====================================================================
+     EXAMEN telc B1 — deux parties indépendantes (écrit /225, oral /75),
+     ≥ 60 % à chacune, bénéfice gardé. Réutilise le moteur DELF (timer,
+     écrans séquencés, QCM/EE/EO, remise différée 24 h, PDF).
+     ==================================================================== */
+  function telcData(code) { return window["TELC_" + String(code).toUpperCase()]; }
+  function telcName(code) { return code === "finalb" ? "B1 + B2 (combiné)" : code === "finalc" ? "C1 + C2 (combiné)" : String(code).toUpperCase(); }
+  function telcLocalGet(code) { try { return JSON.parse(localStorage.getItem("telc_" + code) || "null"); } catch (e) { return null; } }
+  function telcLocalSet(code, o) { try { localStorage.setItem("telc_" + code, JSON.stringify(o || {})); } catch (e) {} }
+  function telcLang() { return (window.I18N && window.I18N.lang && window.I18N.lang()) || "fr"; }
+  function telcGuardOK(code) { const G = { b1: ["final", "B1"], b2: ["b1", "B2"], c1: ["finalb", "C1"], c2: ["c1", "C2"], finalb: ["b2", null], finalc: ["c2", null] }, g = G[code] || G.b1; return examPasse(g[0]) && (g[1] ? niveauTermine(g[1]) : true); }
+
+  function renderTelcHub(code) {
+    const T = telcData(code);
+    if (!T || !telcGuardOK(code)) { location.hash = "#/"; return; }
+    const base = "#/examen/" + code, CODE = delfName(code);
+    app.innerHTML = ""; const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top"); top.innerHTML = '<a class="btn-link" href="#/">← Aperçu</a><span class="lesson-top-mod">📜 telc ' + CODE + '</span>'; frag.appendChild(top);
+    const head = el("header", "test-head delf-head"); head.innerHTML = '<div class="lesson-num">Examen telc Deutsch ' + CODE + '</div><h1>📜 telc ' + CODE + '</h1><p>Deux parties à réussir séparément (≥ 60 % chacune). Le bénéfice d\'une partie réussie est conservé : vous ne repassez que la partie manquée.</p>'; frag.appendChild(head);
+    const loc = telcLocalGet(code) || {};
+    const certified = !!((window.Progress.getTestScore(code) || {}).reussi);
+    function partCard(pkey, label, icone, route, sur, seuil, desc) {
+      const s = loc[pkey] || {}; const passed = certified || !!s.passed; const st = passed ? "passed" : (s.status || "none");
+      const card = el("div", "delf-doc telc-part " + (passed ? "ok" : (st === "pending" ? "pending" : "")));
+      let status;
+      if (passed) status = "✅ Réussie" + (s.total != null ? " — " + s.total + "/" + sur : "");
+      else if (st === "pending") status = "⏳ En correction (résultat sous 24 h)";
+      else if (s.total != null) status = "📚 Non réussie — " + s.total + "/" + sur + " (il faut " + seuil + ")";
+      else status = "À passer";
+      card.innerHTML = '<h3 class="delf-doc-t">' + icone + " " + label + " — /" + sur + '</h3><p class="delf-q-t">' + desc + '</p><p><strong>' + status + "</strong></p>";
+      const row = el("div", "examen-actions");
+      if (st === "pending" && !passed) { const b = el("a", "btn btn-primary", "Voir l'état de ma copie"); b.href = base + "/resultat/" + route; row.appendChild(b); }
+      else {
+        const b = el("a", "btn " + (passed ? "btn-ghost" : "btn-primary"), passed ? "Repasser cette partie" : "🎓 Passer cette partie"); b.href = base + "/" + route; row.appendChild(b);
+        if (s.status === "graded" || passed) { const r = el("a", "btn btn-ghost", "📊 Résultat"); r.href = base + "/resultat/" + route; row.appendChild(r); }
+      }
+      card.appendChild(row); return card;
+    }
+    const P = T.parts; const sec = el("section", "section");
+    sec.appendChild(partCard("schriftlich", "Épreuve écrite", "📝", "ecrit", P.schriftlich.sur, P.schriftlich.seuil, "Compréhension écrite/orale + production(s) écrite(s)."));
+    sec.appendChild(partCard("muendlich", "Épreuve orale", "🗣️", "oral", P.muendlich.sur, P.muendlich.seuil, "3 parties, notées par l'IA (préparation 20 min)."));
+    frag.appendChild(sec);
+    const cert = el("div", "delf-verdict " + (certified ? "pass" : "fail"));
+    cert.innerHTML = certified ? "🏅 Certificat telc " + CODE + " obtenu — la suite du parcours est débloquée !" : "🎓 Réussissez les DEUX parties (≥ 60 % chacune) pour obtenir le certificat " + CODE + ".";
+    const cs = el("section", "section"); cs.appendChild(cert); frag.appendChild(cs);
+    app.appendChild(frag);
+    if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = "#/"; }); window.TG.setMainButton("Retour à l'aperçu", function () { location.hash = "#/"; }); } catch (e) {} }
+    window.scrollTo(0, 0);
+  }
+
+  function renderTelcPart(code, part) {
+    const T = telcData(code);
+    if (!T || !telcGuardOK(code)) { location.hash = "#/"; return; }
+    const base = "#/examen/" + code, CODE = delfName(code);
+    const pkey = part === "muendlich" ? "muendlich" : "schriftlich";
+    const route = pkey === "muendlich" ? "oral" : "ecrit";
+    const loc0 = telcLocalGet(code) || {};
+    if (loc0[pkey] && loc0[pkey].status === "pending" && !loc0[pkey].passed) { location.hash = base + "/resultat/" + route; return; }
+    const SC = { brand: "📜 telc " + CODE, hashPrefix: base, backHash: base };
+
+    function submitPart(key, payload) {
+      if (window.TG) { try { window.TG.closingConfirmation(false); } catch (e) {} }
+      app.innerHTML = ""; const frag = document.createDocumentFragment();
+      const top = el("div", "lesson-top"); top.innerHTML = '<span class="btn-link" style="visibility:hidden">·</span><span class="lesson-top-mod">📜 telc ' + CODE + '</span>'; frag.appendChild(top);
+      const head = el("header", "test-head delf-head"); head.innerHTML = '<div class="lesson-num">Remise de la copie</div><h1>📨 Envoi en cours…</h1>'; frag.appendChild(head); app.appendChild(frag); window.scrollTo(0, 0);
+      const initData = delfInitData();
+      if (!initData) { telcSubmitted(null, "no-server"); return; }
+      fetch("/api/exam", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ initData: initData, action: "submit", exam: key, payload: payload }) })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) { if (j && j.status === "pending") { const lc = telcLocalGet(code) || {}; lc[pkey] = { status: "pending", submittedAt: j.submittedAt, availableAt: j.availableAt }; telcLocalSet(code, lc); telcSubmitted(j, null); } else telcSubmitted(null, "error"); })
+        .catch(function () { telcSubmitted(null, "error"); });
+    }
+    function telcSubmitted(j, err) {
+      app.innerHTML = ""; const frag = document.createDocumentFragment();
+      const top = el("div", "lesson-top"); top.innerHTML = '<a class="btn-link" href="' + base + '">← telc ' + CODE + '</a><span class="lesson-top-mod">📜 telc ' + CODE + '</span>'; frag.appendChild(top);
+      const c = el("div", "completion " + (err ? "ko" : "ok") + " delf-submitted");
+      const pn = pkey === "muendlich" ? "orale" : "écrite";
+      if (err === "no-server") c.innerHTML = '<div class="comp-emoji">📋</div><h2>Partie ' + pn + ' terminée</h2><p>La remise et la correction par l\'IA nécessitent l\'application dans <strong>Telegram</strong>.</p>';
+      else if (err === "error") c.innerHTML = '<div class="comp-emoji">⚠️</div><h2>Remise impossible</h2><p>La connexion a échoué. Vérifiez votre réseau et réessayez.</p>';
+      else { const when = (j && j.availableAt) ? new Date(j.availableAt) : null; c.innerHTML = '<div class="comp-emoji">📨</div><h2>Copie ' + pn + ' remise !</h2><p>Le coach Zika (IA) corrige votre copie et vous enverra le résultat' + (when ? " vers le <strong>" + when.toLocaleString() + "</strong>" : " sous 24 h") + ', par notification Telegram.</p>'; }
+      const actions = el("div", "rev-actions");
+      const hub = el("a", "btn btn-primary", "Retour à telc " + CODE); hub.href = base; actions.appendChild(hub);
+      if (!err) { const stb = el("a", "btn btn-ghost", "Voir l'état de ma copie"); stb.href = base + "/resultat/" + route; actions.appendChild(stb); }
+      c.appendChild(actions); frag.appendChild(c); app.appendChild(frag);
+      if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = base; }); window.TG.setMainButton("Retour à telc " + CODE, function () { location.hash = base; }); } catch (e) {} }
+      window.scrollTo(0, 0);
+    }
+
+    if (pkey === "schriftlich") {
+      const P = T.parts.schriftlich;
+      if (P.format === "c2") {
+        // C2 : Leseverstehen (auto) → Hören und Schreiben (synthèse, IA) → Schriftlicher Ausdruck (IA).
+        const st2 = { lesenPts: 0, lesenItems: [], hs: [], schreiben: [] };
+        const c2sub = function () { submitPart(code + "-schriftlich", { langue: telcLang(), lesen: st2.lesenPts, copy: { lesen: st2.lesenItems, hoerenSchreiben: st2.hs, schreiben: st2.schreiben } }); };
+        const c2write = function (Tk, rows, ph, phase, primary, onDone) {
+          const body = el("div", "delf-ee"); const card = el("div", "delf-doc");
+          card.appendChild(el("h3", "delf-doc-t", delfEsc(Tk.titre || P.schreiben.titre)));
+          card.appendChild(el("p", "delf-q-t", delfEsc(Tk.consigne)));
+          if (Tk.leitpunkte) { const ul = el("ul", "delf-points"); Tk.leitpunkte.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); card.appendChild(ul); }
+          const ta = el("textarea", "production-input"); ta.rows = rows; ta.setAttribute("placeholder", ph);
+          const meta = el("div", "production-meta"); const wc = el("span", "wordcount", "0 mot"); meta.appendChild(wc); meta.appendChild(el("span", "wordmin", "objectif : ≥ " + Tk.minMots + " mots"));
+          ta.addEventListener("input", function () { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; wc.textContent = w + (w > 1 ? " mots" : " mot"); wc.classList.toggle("ok", w >= Tk.minMots); });
+          return { card: card, body: body, ta: ta, meta: meta };
+        };
+        const c2_3 = function () {
+          const Tk = P.schreiben.tache; const u = c2write(Tk, 10, "Schreiben Sie hier Ihren Essay…");
+          u.card.appendChild(u.ta); u.card.appendChild(u.meta); u.body.appendChild(u.card);
+          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 3 / 3", icone: "✍️", titre: P.schreiben.titre, intro: Math.round(P.durees.schreiben / 60) + " min — rédigez votre essai à partir des sources.", body: u.body, timerSeconds: P.durees.schreiben, primary: "Remettre la copie écrite ✅", onPrimary: function () { st2.schreiben = [{ id: Tk.id, consigne: Tk.consigne, text: u.ta.value.trim() }]; c2sub(); } }));
+        };
+        const c2pause = function () {
+          const body = el("div", "completion");
+          body.innerHTML = '<div class="comp-emoji">☕</div><h2>Pause obligatoire — ' + Math.round(P.durees.pause / 60) + ' min</h2><p>Comme à l\'examen officiel telc C2, une pause est prévue avant l\'épreuve de production écrite. Reposez-vous, puis reprenez. Le minuteur passe automatiquement à la suite à la fin de la pause — vous pouvez aussi reprendre dès que vous êtes prêt(e).</p>';
+          delfScreen(Object.assign({}, SC, { phase: "Pause obligatoire", icone: "☕", titre: "Pause", intro: "", body: body, timerSeconds: P.durees.pause, primary: "Reprendre l'examen →", onPrimary: c2_3 }));
+        };
+        const c2_2 = function () {
+          const HS = P.hoerenSchreiben; const u = c2write(HS.tache, 7, "Ihre Zusammenfassung…");
+          const card = el("div", "delf-doc"); card.appendChild(el("h3", "delf-doc-t", delfEsc(HS.titre))); card.appendChild(el("p", "delf-q-t", delfEsc(HS.intro)));
+          HS.audios.forEach(function (a) { let plays = 0; const b = el("button", "btn btn-audio", "🔊 " + a.titre + " (2 max)"); b.type = "button"; b.addEventListener("click", function () { if (plays >= 2) { toast("Vous avez déjà écouté 2 fois."); return; } plays++; if (window.Speech) window.Speech.speak(a.audio, { rate: 0.98 }); const rest = 2 - plays; b.textContent = rest > 0 ? "🔊 Réécouter (" + rest + ")" : "🔇 Écoutes épuisées"; if (plays >= 2) b.disabled = true; }); card.appendChild(b); });
+          card.appendChild(el("p", "delf-q-t", delfEsc(HS.tache.consigne))); card.appendChild(u.ta); card.appendChild(u.meta);
+          const body = el("div", "delf-ee"); body.appendChild(card);
+          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 2 / 3", icone: HS.icone, titre: HS.titre, intro: Math.round(P.durees.hoerenSchreiben / 60) + " min — écoutez (2× max) puis rédigez votre synthèse.", body: body, timerSeconds: P.durees.hoerenSchreiben, primary: "Terminer cette partie →", onPrimary: function () { st2.hs = [{ id: HS.tache.id, consigne: HS.tache.consigne, text: u.ta.value.trim() }]; (P.durees.pause ? c2pause() : c2_3()); } }));
+        };
+        const c2_1 = function () {
+          const lesenR = delfQCM(P.lesen.blocs, "ce");
+          const body = el("div", "section-x"); body.appendChild(el("p", "delf-q-t", delfEsc(P.lesen.intro))); body.appendChild(lesenR.el);
+          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 1 / 3", icone: "📖", titre: "Leseverstehen", intro: Math.round(P.durees.lesen / 60) + " min — lisez et répondez ; aucune correction.", body: body, timerSeconds: P.durees.lesen, primary: "Terminer cette partie →", onPrimary: function () { const lc = lesenR.collect(); st2.lesenPts = Math.round(lc.correct / (lc.total || 1) * P.lesen.sur); st2.lesenItems = lc.items; c2_2(); } }));
+        };
+        const intro2 = el("div", "delf-intro-body");
+        intro2.innerHTML = '<div class="delf-rules"><p>Épreuve écrite telc ' + CODE + ' — <strong>/' + P.sur + '</strong> (réussite ≥ ' + P.seuil + '). Trois temps :</p><ul class="delf-epreuves"><li>📖 Leseverstehen — <strong>' + Math.round(P.durees.lesen / 60) + ' min</strong></li><li>🎧✍️ Hören und Schreiben — <strong>' + Math.round(P.durees.hoerenSchreiben / 60) + ' min</strong></li><li>✍️ Schriftlicher Ausdruck — <strong>' + Math.round(P.durees.schreiben / 60) + ' min</strong></li></ul><p>Aucune correction pendant l\'épreuve ; résultat + copie corrigée + PDF sous 24 h.</p></div>';
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite", icone: "📝", titre: "Schriftliche Prüfung", intro: "", body: intro2, primary: "Commencer l'épreuve écrite →", onPrimary: c2_1 }));
+        return;
+      }
+      const st = { lesenPts: 0, sbPts: 0, hoerenPts: 0, lesenItems: [], sbItems: [], hoerenItems: [], schreiben: [], dictee: null };
+      const dLS = Math.round(P.durees.leseSb / 60), dH = Math.round(P.durees.hoeren / 60), dS = Math.round(P.durees.schreiben / 60);
+      const doSubmitW = function () { const payload = { langue: telcLang(), lesen: st.lesenPts, sprachbausteine: st.sbPts, hoeren: st.hoerenPts, copy: { lesen: st.lesenItems, sprachbausteine: st.sbItems, hoeren: st.hoerenItems, schreiben: st.schreiben } }; if (st.dictee) { payload.dictee = st.dictee.points; payload.dicteeSur = st.dictee.sur; payload.copy.dictee = { texte: st.dictee.texte, saisie: st.dictee.saisie, score: st.dictee.score, sur: st.dictee.sur }; } submitPart(code + "-schriftlich", payload); };
+      const sDictee = function () { const r = delfDictee(P.dictee); delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · dictée", icone: "✒️", titre: P.dictee.titre || "Dictée", intro: "Niveau " + (P.dictee.niveau || "") + " — écoutez (2× max) et écrivez exactement. Aucune correction.", body: r.el, timerSeconds: P.dictee.duree || 900, primary: "Terminer la dictée →", onPrimary: function () { st.dictee = r.collect(); doSubmitW(); } })); };
+      const s3 = function () {
+        const Tk = P.schreiben.tache;
+        const body = el("div", "delf-ee"); const card = el("div", "delf-doc");
+        card.appendChild(el("h3", "delf-doc-t", delfEsc(Tk.titre)));
+        card.appendChild(el("p", "delf-q-t", delfEsc(Tk.consigne)));
+        const ul = el("ul", "delf-points"); Tk.leitpunkte.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); card.appendChild(ul);
+        const ta = el("textarea", "production-input"); ta.rows = 8; ta.setAttribute("placeholder", "Schreiben Sie hier auf Deutsch…");
+        const meta = el("div", "production-meta"); const wc = el("span", "wordcount", "0 mot"); meta.appendChild(wc); meta.appendChild(el("span", "wordmin", "objectif : ≥ " + Tk.minMots + " mots"));
+        ta.addEventListener("input", function () { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; wc.textContent = w + (w > 1 ? " mots" : " mot"); wc.classList.toggle("ok", w >= Tk.minMots); });
+        card.appendChild(ta); card.appendChild(meta); body.appendChild(card);
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 3 / 3", icone: "✍️", titre: "Schriftlicher Ausdruck", intro: dS + " min — rédigez votre texte (la correction viendra plus tard).", body: body, timerSeconds: P.durees.schreiben, primary: "Remettre la copie écrite ✅", onPrimary: function () {
+          st.schreiben = [{ id: Tk.id, consigne: Tk.consigne, text: ta.value.trim() }];
+          (P.dictee ? sDictee() : doSubmitW());
+        } }));
+      };
+      const s2 = function () {
+        const hR = delfQCM(P.hoeren.documents, "co");
+        const body = el("div", "section-x"); body.appendChild(el("p", "delf-q-t", delfEsc(P.hoeren.intro))); body.appendChild(hR.el);
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 2 / 3", icone: "🎧", titre: "Hörverstehen", intro: dH + " min.", body: body, timerSeconds: P.durees.hoeren, primary: "Terminer cette partie →", onPrimary: function () { const hc = hR.collect(); st.hoerenPts = Math.round(hc.correct / (hc.total || 1) * P.hoeren.sur); st.hoerenItems = hc.items; s3(); } }));
+      };
+      const s1 = function () {
+        const lesenR = delfQCM(P.lesen.blocs, "ce");
+        const sbDoc = { titre: P.sprachbausteine.titre, texte: P.sprachbausteine.intro, questions: P.sprachbausteine.questions };
+        const sbR = delfQCM([sbDoc], "ce");
+        const body = el("div", "section-x");
+        body.appendChild(el("h2", "delf-copy-h", "📖 " + P.lesen.titre + " (/" + P.lesen.sur + ")"));
+        body.appendChild(el("p", "delf-q-t", delfEsc(P.lesen.intro)));
+        body.appendChild(lesenR.el);
+        body.appendChild(el("h2", "delf-copy-h", "🧩 " + P.sprachbausteine.titre + " (/" + P.sprachbausteine.sur + ")"));
+        body.appendChild(sbR.el);
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 1 / 3", icone: "📖", titre: "Leseverstehen & Sprachbausteine", intro: dLS + " min — lisez et répondez ; aucune correction ne s'affiche.", body: body, timerSeconds: P.durees.leseSb, primary: "Terminer cette partie →", onPrimary: function () {
+          const lc = lesenR.collect(), sc = sbR.collect();
+          st.lesenPts = Math.round(lc.correct / (lc.total || 1) * P.lesen.sur); st.lesenItems = lc.items;
+          st.sbPts = Math.round(sc.correct / (sc.total || 1) * P.sprachbausteine.sur); st.sbItems = sc.items;
+          s2();
+        } }));
+      };
+      const intro = el("div", "delf-intro-body");
+      intro.innerHTML = '<div class="delf-rules"><p>Épreuve écrite telc ' + CODE + ' — <strong>/' + P.sur + '</strong> (réussite ≥ ' + P.seuil + '). Trois temps enchaînés :</p><ul class="delf-epreuves"><li>📖 Leseverstehen &amp; 🧩 Sprachbausteine — <strong>' + dLS + ' min</strong></li><li>🎧 Hörverstehen — <strong>' + dH + ' min</strong></li><li>✍️ Schriftlicher Ausdruck — <strong>' + dS + ' min</strong></li></ul><p>Aucune correction pendant l\'épreuve ; votre note, votre copie corrigée et votre PDF arrivent sous 24 h.</p></div>';
+      delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite", icone: "📝", titre: "Schriftliche Prüfung", intro: "", body: intro, primary: "Commencer l'épreuve écrite →", onPrimary: s1 }));
+    } else {
+      const P = T.parts.muendlich;
+      const passation = function () {
+        const r = delfEO(P.taches, CODE);
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve orale · passation", icone: "🗣️", titre: "Mündliche Prüfung", intro: "Présentation au micro + discussion en direct avec l'examinateur. Aucune correction pendant l'épreuve.", body: r.el, timerSeconds: P.duree, primary: "Remettre la copie orale ✅", onPrimary: function () { submitPart(code + "-muendlich", { langue: telcLang(), copy: { oral: r.collect() } }); } }));
+      };
+      const prep = function () {
+        const body = el("div", "delf-eo-prep");
+        P.taches.forEach(function (t) { const c = el("div", "delf-doc"); c.appendChild(el("h3", "delf-doc-t", delfEsc(t.titre))); c.appendChild(el("p", "delf-q-t", delfEsc(t.consigne))); if (t.points) { const ul = el("ul", "delf-points"); t.points.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); c.appendChild(ul); } body.appendChild(c); });
+        body.appendChild(el("p", "delf-q-t", "📝 20 minutes de préparation. Notez vos idées, puis enregistrez-vous."));
+        const note = el("textarea", "production-input"); note.rows = 4; note.setAttribute("placeholder", "Brouillon (non noté)…"); body.appendChild(note);
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve orale · préparation (20 min)", icone: "🗣️", titre: "Vorbereitung", intro: "Préparez les 3 parties.", body: body, timerSeconds: P.prep, primary: "Je suis prêt(e) — parler →", onPrimary: passation }));
+      };
+      prep();
+    }
+  }
+
+  function renderTelcResult(code, routePart) {
+    const part = routePart === "oral" ? "muendlich" : "schriftlich";
+    const key = code + "-" + part, base = "#/examen/" + code, CODE = telcName(code);
+    app.innerHTML = ""; const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top"); top.innerHTML = '<a class="btn-link" href="' + base + '">← telc ' + CODE + '</a><span class="lesson-top-mod">📜 telc ' + CODE + '</span>'; frag.appendChild(top);
+    const head = el("header", "test-head delf-head"); head.innerHTML = '<div class="lesson-num">telc ' + CODE + '</div><h1>📊 Résultat — ' + (part === "muendlich" ? "oral" : "écrit") + "</h1>"; frag.appendChild(head);
+    const box = el("div", "delf-result-box"); box.innerHTML = '<p class="delf-loading">Chargement…</p>'; frag.appendChild(box);
+    app.appendChild(frag); window.scrollTo(0, 0);
+    if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = base; }); window.TG.setMainButton("Retour à telc " + CODE, function () { location.hash = base; }); } catch (e) {} }
+    const initData = delfInitData();
+    if (!initData) { box.innerHTML = "<p>Votre résultat est disponible dans l'application Telegram.</p>"; return; }
+    fetch("/api/exam", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ initData: initData, action: "result", exam: key }) })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { renderTelcResultInto(box, j, part, code); })
+      .catch(function () { box.innerHTML = "<p>Connexion impossible. Réessayez plus tard.</p>"; });
+  }
+  function renderTelcResultInto(box, j, part, code) {
+    const route = part === "muendlich" ? "oral" : "ecrit", base = "#/examen/" + code, CODE = telcName(code);
+    if (!j || j.status === "none") { box.innerHTML = '<div class="completion"><div class="comp-emoji">📜</div><h2>Aucune copie</h2><p>Vous n\'avez pas encore passé cette partie.</p><div class="rev-actions"><a class="btn btn-primary" href="' + base + '/' + route + '">Passer cette partie</a></div></div>'; return; }
+    if (j.status === "pending") {
+      const when = j.availableAt ? new Date(j.availableAt) : null;
+      const hleft = j.availableAt ? Math.max(0, Math.ceil((j.availableAt - Date.now()) / 3600000)) : null;
+      const lc = telcLocalGet(code) || {}; lc[part] = { status: "pending", submittedAt: j.submittedAt, availableAt: j.availableAt }; telcLocalSet(code, lc);
+      box.innerHTML = '<div class="completion"><div class="comp-emoji">⏳</div><h2>Copie en correction</h2><p>Résultat ' + (when ? "vers le <strong>" + when.toLocaleString() + "</strong>" + (hleft != null ? " (dans ~" + hleft + " h)" : "") : "sous 24 h") + '.</p><p>📲 Notification Telegram à la clé.</p><div class="rev-actions"><a class="btn btn-primary" href="' + base + '">Retour à telc ' + CODE + '</a></div></div>';
+      return;
+    }
+    const res = j.result || {}, copy = j.copy || {};
+    const lc = telcLocalGet(code) || {}; lc[part] = { status: "graded", total: res.total, passed: !!res.passed }; telcLocalSet(code, lc);
+    if (window.Sync && window.Sync.load) { try { window.Sync.load(function () {}); } catch (e) {} }
+    box.innerHTML = "";
+    box.appendChild(telcScoreCard(res, part));
+    box.appendChild(buildTelcCopy(copy, res, part));
+    const row = el("div", "rev-actions delf-pdf-row");
+    const pdf = el("button", "btn btn-primary", "📄 Télécharger le PDF"); pdf.type = "button"; pdf.addEventListener("click", function () { exportTelcPDF(res, copy, part, pdf, code); }); row.appendChild(pdf);
+    const hub = el("a", "btn btn-ghost", "Retour à telc " + CODE); hub.href = base; row.appendChild(hub);
+    if (!res.passed) { const again = el("a", "btn btn-ghost", "🔁 Repasser cette partie"); again.href = base + "/" + route; row.appendChild(again); }
+    box.appendChild(row);
+  }
+  function telcGauge(label, n, max) { const ratio = max ? n / max : 0; const cls = ratio < 0.5 ? "elim" : (ratio >= 0.7 ? "good" : "mid"); return '<div class="delf-gauge ' + cls + '"><div class="delf-gauge-n">' + n + "<span>/" + max + "</span></div><div class=\"delf-gauge-l\">" + label + "</div></div>"; }
+  function telcScoreCard(res, part) {
+    const c = el("div", "delf-scorecard"); const pct = res.sur ? Math.round(res.total / res.sur * 100) : 0;
+    let inner = '<div class="score-ring ' + (res.passed ? "pass" : "fail") + '"><span>' + res.total + "</span></div>";
+    inner += '<p class="delf-q-t">Total ' + (part === "muendlich" ? "oral" : "écrit") + " : <strong>" + res.total + " / " + res.sur + "</strong> (" + pct + "%) — il faut " + res.seuil + "</p>";
+    if (part !== "muendlich") {
+      const gs = [];
+      if (res.lesenMax) gs.push(telcGauge("📖 Lesen", res.lesen, res.lesenMax));
+      if (res.sbMax) gs.push(telcGauge("🧩 Sprachb.", res.sprachbausteine, res.sbMax));
+      if (res.hoerenMax) gs.push(telcGauge("🎧 Hören", res.hoeren, res.hoerenMax));
+      if (res.hsMax) gs.push(telcGauge("🎧✍️ Hör+Schr", res.hs, res.hsMax));
+      gs.push(telcGauge("✍️ Schreiben", res.schreiben, res.schreibenMax || 45));
+      if (res.dicteeMax) gs.push(telcGauge("✒️ Dictée", res.dictee, res.dicteeMax));
+      inner += '<div class="delf-gauges">' + gs.join("") + "</div>";
+    }
+    inner += '<div class="delf-verdict ' + (res.passed ? "pass" : "fail") + '">' + (res.passed ? "✅ Partie " + (part === "muendlich" ? "orale" : "écrite") + " RÉUSSIE" : "📚 Partie non réussie — repassez-la") + "</div>";
+    c.innerHTML = inner; return c;
+  }
+  function buildTelcCopy(copy, res, part) {
+    const w = el("div", "delf-copy"); w.appendChild(el("h2", "delf-copy-h", "📝 Ma copie corrigée"));
+    function qcmSec(title, items) {
+      if (!items || !items.length) return;
+      const s = el("div", "delf-copy-sec"); s.appendChild(el("h3", null, title));
+      items.forEach(function (it, i) {
+        const ok = it.selected === it.correct; const yours = it.selected >= 0 ? it.options[it.selected] : "(sans réponse)";
+        const q = el("div", "delf-copy-q " + (ok ? "ok" : "ko"));
+        q.innerHTML = '<p class="dq">' + (i + 1) + ". " + delfEsc(it.q) + '</p><p class="da">' + (ok ? "✓" : "✗") + " Votre réponse : <strong>" + delfEsc(yours) + "</strong>" + (ok ? "" : " — Correct : <strong>" + delfEsc(it.options[it.correct]) + "</strong>") + "</p>";
+        s.appendChild(q);
+      });
+      w.appendChild(s);
+    }
+    function prodSec(title, arr, fb, key) {
+      if (!arr || !arr.length) return;
+      const s = el("div", "delf-copy-sec"); s.appendChild(el("h3", null, title));
+      arr.forEach(function (t) { const q = el("div", "delf-copy-prod"); q.innerHTML = '<p class="dc">' + delfEsc(t.consigne) + '</p><div class="dp">' + (delfEsc(t[key]) || "<em>(rien)</em>") + "</div>"; s.appendChild(q); });
+      if (fb) { const f = el("div", "delf-copy-fb"); f.innerHTML = "<strong>✨ Correction du coach Zika :</strong><br>" + delfFmt(fb); s.appendChild(f); }
+      w.appendChild(s);
+    }
+    if (part === "muendlich") prodSec("🗣️ Production orale — " + res.total + "/" + (res.sur || 75), copy.oral, res.oralFeedback, "transcript");
+    else {
+      qcmSec("📖 Leseverstehen — " + res.lesen + "/" + (res.lesenMax || 75), copy.lesen);
+      qcmSec("🧩 Sprachbausteine — " + res.sprachbausteine + "/" + (res.sbMax || 30), copy.sprachbausteine);
+      qcmSec("🎧 Hörverstehen — " + res.hoeren + "/" + (res.hoerenMax || 75), copy.hoeren);
+      prodSec("🎧✍️ Hören und Schreiben — " + res.hs + "/" + res.hsMax, copy.hoerenSchreiben, res.hsFeedback, "text");
+      prodSec("✍️ Schriftlicher Ausdruck — " + res.schreiben + "/" + (res.schreibenMax || 45), copy.schreiben, res.schreibenFeedback, "text");
+      if (copy.dictee) {
+        const s = el("div", "delf-copy-sec"); s.appendChild(el("h3", null, "✒️ Dictée — " + res.dictee + "/" + (res.dicteeMax || 25) + (copy.dictee.score != null ? " (" + copy.dictee.score + "% de mots justes)" : "")));
+        const ref = el("div", "delf-copy-prod"); ref.innerHTML = '<p class="dc">Texte attendu :</p><div class="dp">' + delfEsc(copy.dictee.texte) + "</div>";
+        const got = el("div", "delf-copy-prod"); got.innerHTML = '<p class="dc">Votre dictée :</p><div class="dp">' + (delfEsc(copy.dictee.saisie) || "<em>(rien)</em>") + "</div>";
+        s.appendChild(ref); s.appendChild(got); w.appendChild(s);
+      }
+    }
+    return w;
+  }
+  function exportTelcPDF(res, copy, part, btn, code) {
+    const CODE = String(code || "b1").toUpperCase();
+    const old = btn.textContent; btn.disabled = true; btn.textContent = "Préparation…";
+    loadJsPDF().then(function (JsPDF) {
+      try {
+        const doc = new JsPDF({ unit: "pt", format: "a4" }); const M = 40; let y = M; const PH = doc.internal.pageSize.getHeight(), W = doc.internal.pageSize.getWidth() - 2 * M;
+        function line(txt, size, style, color) { doc.setFont("helvetica", style || "normal"); doc.setFontSize(size || 11); doc.setTextColor(color ? color[0] : 25, color ? color[1] : 25, color ? color[2] : 25); doc.splitTextToSize(String(txt == null ? "" : txt), W).forEach(function (l) { if (y > PH - M) { doc.addPage(); y = M; } doc.text(l, M, y); y += (size || 11) + 4; }); }
+        line("Examen telc " + CODE + " — partie " + (part === "muendlich" ? "orale" : "écrite"), 18, "bold"); y += 2;
+        line("Résultat : " + res.total + "/" + res.sur + " — " + (res.passed ? "RÉUSSIE" : "NON RÉUSSIE"), 13, "bold", res.passed ? [21, 128, 61] : [185, 28, 28]);
+        if (part !== "muendlich") { const pp = []; if (res.lesenMax) pp.push("Lesen " + res.lesen + "/" + res.lesenMax); if (res.sbMax) pp.push("Sprachbausteine " + res.sprachbausteine + "/" + res.sbMax); if (res.hoerenMax) pp.push("Hoeren " + res.hoeren + "/" + res.hoerenMax); if (res.hsMax) pp.push("Hoeren+Schreiben " + res.hs + "/" + res.hsMax); pp.push("Schreiben " + res.schreiben + "/" + (res.schreibenMax || 45)); if (res.dicteeMax) pp.push("Dictee " + res.dictee + "/" + res.dicteeMax); line(pp.join(" · "), 11); }
+        y += 6;
+        function qcm(title, items) { if (!items || !items.length) return; line(title, 13, "bold"); items.forEach(function (it, i) { const ok = it.selected === it.correct; line((i + 1) + ". " + it.q, 11, "bold"); line("→ " + (it.selected >= 0 ? it.options[it.selected] : "(sans réponse)") + (ok ? "  [correct]" : "  [faux] · correct : " + it.options[it.correct]), 10, "normal", ok ? [21, 128, 61] : [185, 28, 28]); }); y += 6; }
+        function prod(title, arr, fb, key) { if (!arr || !arr.length) return; line(title, 13, "bold"); arr.forEach(function (t) { line("Consigne : " + t.consigne, 10, "italic"); line(t[key] || "(rien)", 11); y += 2; }); if (fb) line("Correction IA : " + String(fb).replace(/\*\*/g, ""), 10, "normal", [70, 70, 70]); y += 6; }
+        if (part === "muendlich") prod("Production orale (" + res.total + "/" + (res.sur || 75) + ")", copy.oral, res.oralFeedback, "transcript");
+        else { qcm("Leseverstehen (" + res.lesen + "/" + (res.lesenMax || 75) + ")", copy.lesen); qcm("Sprachbausteine (" + res.sprachbausteine + "/" + (res.sbMax || 30) + ")", copy.sprachbausteine); qcm("Hoerverstehen (" + res.hoeren + "/" + (res.hoerenMax || 75) + ")", copy.hoeren); prod("Hoeren und Schreiben (" + res.hs + "/" + res.hsMax + ")", copy.hoerenSchreiben, res.hsFeedback, "text"); prod("Schriftlicher Ausdruck (" + res.schreiben + "/" + (res.schreibenMax || 45) + ")", copy.schreiben, res.schreibenFeedback, "text"); if (copy.dictee) { line("Dictee (" + res.dictee + "/" + (res.dicteeMax || 25) + ")", 13, "bold"); line("Texte attendu : " + copy.dictee.texte, 10, "italic"); line("Votre dictee : " + (copy.dictee.saisie || "(rien)"), 11); } }
+        doc.save("telc_" + CODE + "_" + (part === "muendlich" ? "oral" : "ecrit") + ".pdf");
+        btn.textContent = "✓ PDF téléchargé";
+      } catch (e) { toast("PDF : erreur de génération."); btn.textContent = old; }
+      setTimeout(function () { btn.disabled = false; btn.textContent = old; }, 1800);
+    }).catch(function () { toast("PDF indisponible (réseau). Faites une capture d'écran."); btn.disabled = false; btn.textContent = old; });
   }
 
   /* ====================================================================
@@ -3186,6 +3992,11 @@
     else if ((m = hash.match(/^#\/placement-niveau\/(A1|A2|B1|B2|C1|C2)/))) renderNiveauTest(m[1]);
     else if (hash.match(/^#\/placement/)) renderPlacement();
     else if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);
+    else if ((m = hash.match(/^#\/examen\/(a1|a2|final)\/resultat/))) renderDelfResult(m[1]);
+    else if ((m = hash.match(/^#\/examen\/(a1|a2|final)(?:$|[\/?#])/))) renderDelf(m[1]);
+    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1|c2|finalb|finalc)\/resultat\/(ecrit|oral)/))) renderTelcResult(m[1], m[2]);
+    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1|c2|finalb|finalc)\/(ecrit|oral)/))) renderTelcPart(m[1], m[2] === "oral" ? "muendlich" : "schriftlich");
+    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1|c2|finalb|finalc)(?:$|[\/?#])/))) renderTelcHub(m[1]);
     else if ((m = hash.match(/^#\/examen\/(a1|a2|finalb|finalc|final|b1|b2|c1|c2)/))) renderTest(m[1]);
     else if (hash.match(/^#\/examen/)) renderTest("a1");
     else if ((m = hash.match(/^#\/dictee\/([a-z0-9-]+)/))) renderDictee(m[1]);

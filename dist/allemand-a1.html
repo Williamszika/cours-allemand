@@ -1116,6 +1116,75 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
   html { scroll-behavior: auto; }
 }
 
+/* =====================================================================
+   Examen DELF A2 — déroulé chronométré, copie corrigée, résultats
+   ===================================================================== */
+.delf-timer-wrap { position: sticky; top: 6px; z-index: 20; display: flex; justify-content: center; margin: 4px 0 12px; }
+.delf-timer { font-variant-numeric: tabular-nums; font-weight: 800; font-size: 1.05rem; letter-spacing: .02em; padding: 6px 16px; border-radius: 999px; background: rgba(37, 99, 235, .12); color: #2563eb; border: 1px solid rgba(37, 99, 235, .3); box-shadow: 0 2px 10px rgba(0, 0, 0, .08); }
+.delf-timer.warn { background: rgba(217, 119, 6, .15); color: #d97706; border-color: rgba(217, 119, 6, .4); }
+.delf-timer.crit { background: rgba(220, 38, 38, .16); color: #dc2626; border-color: rgba(220, 38, 38, .45); animation: delfPulse 1s infinite; }
+@keyframes delfPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+
+.delf-docs, .delf-ee, .delf-eo, .delf-eo-prep { display: flex; flex-direction: column; gap: 14px; }
+.delf-doc { background: rgba(127, 127, 127, .07); border: 1px solid rgba(127, 127, 127, .16); border-radius: 14px; padding: 14px 16px; }
+.delf-doc-t { margin: 0 0 8px; font-size: 1rem; font-weight: 700; }
+.delf-text { white-space: pre-wrap; line-height: 1.55; padding: 10px 12px; background: rgba(127, 127, 127, .08); border-radius: 10px; font-size: .96rem; }
+.delf-q { margin-top: 12px; }
+.delf-q-t { font-weight: 600; margin: 8px 0 6px; }
+.delf-points { margin: 4px 0 0; padding-left: 18px; opacity: .85; font-size: .92rem; }
+.delf-points li { margin: 2px 0; }
+.delf-rec-row { display: flex; align-items: center; gap: 10px; margin: 8px 0; flex-wrap: wrap; }
+.delf-rec-status { font-size: .85rem; opacity: .8; }
+.btn-mic.listening { background: #dc2626; color: #fff; }
+
+.delf-intro-body .delf-rules { line-height: 1.55; }
+.delf-rules p { margin: 10px 0; }
+ul.delf-epreuves { list-style: none; padding: 0; margin: 12px 0; display: flex; flex-direction: column; gap: 6px; }
+ul.delf-epreuves li { background: rgba(127, 127, 127, .08); border-radius: 10px; padding: 8px 12px; }
+
+.delf-scorecard { text-align: center; }
+.delf-gauges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0; }
+.delf-gauge { border-radius: 12px; padding: 10px 4px; border: 1px solid rgba(127, 127, 127, .2); }
+.delf-gauge-n { font-size: 1.4rem; font-weight: 800; line-height: 1; }
+.delf-gauge-n span { font-size: .7rem; font-weight: 600; opacity: .7; }
+.delf-gauge-l { font-size: .78rem; margin-top: 4px; opacity: .85; }
+.delf-gauge.good { background: rgba(22, 163, 74, .12); border-color: rgba(22, 163, 74, .35); color: #16a34a; }
+.delf-gauge.mid { background: rgba(217, 119, 6, .1); border-color: rgba(217, 119, 6, .3); color: #d97706; }
+.delf-gauge.elim { background: rgba(220, 38, 38, .12); border-color: rgba(220, 38, 38, .4); color: #dc2626; }
+.delf-verdict { font-size: 1.15rem; font-weight: 800; padding: 12px; border-radius: 12px; margin: 8px 0; }
+.delf-verdict small { font-weight: 500; opacity: .85; }
+.delf-verdict.pass { background: rgba(22, 163, 74, .14); color: #16a34a; }
+.delf-verdict.fail { background: rgba(220, 38, 38, .12); color: #dc2626; }
+.delf-next { opacity: .9; }
+
+.delf-copy { margin-top: 22px; text-align: left; }
+.delf-copy-h { font-size: 1.1rem; margin: 0 0 10px; }
+.delf-copy-sec { margin: 16px 0; }
+.delf-copy-sec h3 { font-size: .98rem; margin: 0 0 8px; padding-bottom: 4px; border-bottom: 2px solid rgba(127, 127, 127, .2); }
+.delf-copy-q { padding: 8px 10px; border-radius: 10px; margin: 6px 0; border-left: 4px solid transparent; background: rgba(127, 127, 127, .06); }
+.delf-copy-q.ok { border-left-color: #16a34a; }
+.delf-copy-q.ko { border-left-color: #dc2626; }
+.delf-copy-q .dq { font-weight: 600; margin: 0 0 4px; }
+.delf-copy-q .da { margin: 0; font-size: .92rem; }
+.delf-copy-prod { margin: 8px 0; }
+.delf-copy-prod .dc { font-style: italic; opacity: .8; margin: 0 0 4px; font-size: .9rem; }
+.delf-copy-prod .dp { white-space: pre-wrap; background: rgba(127, 127, 127, .08); border-radius: 8px; padding: 8px 10px; }
+.delf-copy-fb { margin-top: 8px; padding: 10px 12px; border-radius: 10px; background: rgba(37, 99, 235, .08); border: 1px solid rgba(37, 99, 235, .2); font-size: .92rem; line-height: 1.5; }
+
+.examen-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 10px; }
+.delf-card.pending { outline: 2px dashed rgba(217, 119, 6, .5); }
+.delf-pdf-row { margin-top: 18px; }
+
+/* Dialogue oral examinateur ↔ candidat (oral 100 % voix) */
+.delf-conv { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; max-height: 44vh; overflow-y: auto; padding: 4px; }
+.delf-bubble { max-width: 85%; padding: 8px 12px; border-radius: 14px; line-height: 1.4; }
+.delf-bubble .delf-bubble-who { display: block; font-size: .72rem; font-weight: 700; opacity: .7; margin-bottom: 2px; }
+.delf-bubble.ex { align-self: flex-start; background: rgba(37, 99, 235, .1); border: 1px solid rgba(37, 99, 235, .2); border-bottom-left-radius: 4px; }
+.delf-bubble.me { align-self: flex-end; background: rgba(22, 163, 74, .12); border: 1px solid rgba(22, 163, 74, .25); border-bottom-right-radius: 4px; }
+.delf-bubble-t { white-space: pre-wrap; }
+.delf-typed { width: 100%; margin-top: 6px; }
+.delf-dialog .delf-rec-row { margin: 6px 0; }
+
 </style>
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="theme-color" content="#1e3a8a" />
@@ -17608,6 +17677,1230 @@ window.DICTEES = {
 };
 
 </script>
+    <script>
+/* =====================================================================
+   delf-a1.js — Examen blanc DELF A1 (allemand), même format que le A2.
+   4 épreuves notées /25 → /100 ; réussite ≥ 50/100, éliminatoire < 5/25 ;
+   correction différée 24 h. Contenu de niveau A1 (très simple).
+   Réponses correctes réparties sur toutes les positions.
+   ===================================================================== */
+(function () {
+  window.DELF_A1 = {
+    exam: "a1", code: "A1", titre: "Examen DELF A1 — Allemand",
+    sousTitre: "Examen blanc complet, format officiel · 4 épreuves /25 → /100",
+    seuil: 50, eliminatoire: 5, ordre: ["co", "ce", "ee", "eo"],
+    epreuves: {
+
+      co: {
+        code: "co", titre: "Compréhension de l'oral", icone: "🎧",
+        duree: 20 * 60, sur: 25, collective: true,
+        intro: "Vous écoutez 3 documents courts (2 écoutes max chacun) puis vous répondez.",
+        documents: [
+          {
+            id: "co1", titre: "Document 1 — Un message",
+            audio: "Hallo, hier ist Anna. Ich komme heute um sechs Uhr zu dir. Bis später! Tschüss!",
+            questions: [
+              { q: "Wer spricht?", options: ["Anna", "Tom", "Lena"], correct: 0 },
+              { q: "Wann kommt Anna?", options: ["Um fünf Uhr", "Um sechs Uhr", "Um sieben Uhr"], correct: 1 }
+            ]
+          },
+          {
+            id: "co2", titre: "Document 2 — Une annonce",
+            audio: "Achtung, liebe Kunden: Der Supermarkt schließt heute um zwanzig Uhr. Vielen Dank für Ihren Einkauf.",
+            questions: [
+              { q: "Worum geht es?", options: ["Um einen Supermarkt", "Um einen Bahnhof", "Um eine Schule"], correct: 0 },
+              { q: "Wann schließt der Supermarkt?", options: ["Um 18 Uhr", "Um 20 Uhr", "Um 22 Uhr"], correct: 1 }
+            ]
+          },
+          {
+            id: "co3", titre: "Document 3 — Au café",
+            audio: "Guten Tag, einen Kaffee bitte. — Das macht zwei Euro fünfzig. — Hier, bitte. — Danke schön!",
+            questions: [
+              { q: "Was bestellt die Person?", options: ["Einen Tee", "Ein Wasser", "Einen Kaffee"], correct: 2 },
+              { q: "Was kostet es?", options: ["Zwei Euro fünfzig", "Drei Euro fünfzig", "Fünf Euro"], correct: 0 }
+            ]
+          }
+        ]
+      },
+
+      ce: {
+        code: "ce", titre: "Compréhension des écrits", icone: "📖",
+        duree: 30 * 60, sur: 25, collective: true,
+        intro: "Vous lisez 3 documents courts puis vous répondez.",
+        documents: [
+          {
+            id: "ce1", titre: "Document 1 — Un SMS",
+            texte: "Hallo Tom! Wir treffen uns morgen um 15 Uhr vor dem Kino. Bis dann! Liebe Grüße, Sarah",
+            questions: [
+              { q: "Wann treffen sie sich?", options: ["Heute", "Morgen", "Am Wochenende"], correct: 1 },
+              { q: "Wo treffen sie sich?", options: ["Vor dem Kino", "Im Café", "Zu Hause"], correct: 0 }
+            ]
+          },
+          {
+            id: "ce2", titre: "Document 2 — Une affiche",
+            texte: "Bäckerei Müller\nÖffnungszeiten:\nMontag bis Freitag: 7–18 Uhr\nSamstag: 7–12 Uhr\nSonntag: geschlossen",
+            questions: [
+              { q: "Wann ist die Bäckerei am Sonntag geöffnet?", options: ["Von 7 bis 18 Uhr", "Von 7 bis 12 Uhr", "Gar nicht (geschlossen)"], correct: 2 },
+              { q: "Wie lange ist samstags geöffnet?", options: ["Bis 12 Uhr", "Bis 18 Uhr", "Bis 20 Uhr"], correct: 0 }
+            ]
+          },
+          {
+            id: "ce3", titre: "Document 3 — Une note",
+            texte: "Liebe Mama,\nich bin im Park mit Felix. Ich komme um 17 Uhr zurück.\nLukas",
+            questions: [
+              { q: "Wo ist Lukas?", options: ["Im Park", "In der Schule", "Zu Hause"], correct: 0 },
+              { q: "Wann kommt er zurück?", options: ["Um 16 Uhr", "Um 17 Uhr", "Um 18 Uhr"], correct: 1 }
+            ]
+          }
+        ]
+      },
+
+      ee: {
+        code: "ee", titre: "Production écrite", icone: "✍️",
+        duree: 30 * 60, sur: 25, collective: true,
+        intro: "Vous écrivez 2 textes très simples en allemand. Corrigés par l'IA après l'examen.",
+        taches: [
+          {
+            id: "ee1", titre: "Exercice 1 — Se présenter", minMots: 20,
+            consigne: "Stellen Sie sich vor (20–30 Wörter): Name, Alter, Land, Sprachen und ein Hobby. Schreiben Sie einfache Sätze.",
+            criteres: ["Name, Alter, Land", "Sprachen et un Hobby", "Phrases simples correctes (ich heiße…, ich bin…, ich wohne…)"]
+          },
+          {
+            id: "ee2", titre: "Exercice 2 — Une invitation (SMS)", minMots: 20,
+            consigne: "Schreiben Sie eine kurze SMS an einen Freund (20–30 Wörter): Laden Sie ihn zu einem Kaffee ein. Sagen Sie wann und wo.",
+            criteres: ["Invitation claire (Komm…, Hast du Zeit?)", "Quand (jour/heure) et où", "Formules simples (Hallo, Liebe Grüße)"]
+          }
+        ]
+      },
+
+      eo: {
+        code: "eo", titre: "Production orale", icone: "🗣️",
+        prep: 10 * 60, duree: 7 * 60, sur: 25, collective: false,
+        intro: "Épreuve individuelle en 3 parties. 10 min de préparation, puis vous parlez (≈ 5–7 min). Enregistrez-vous au micro (ou écrivez ce que vous diriez). L'IA évalue.",
+        taches: [
+          {
+            id: "eo1", type: "entretien", titre: "Partie 1 — Entretien dirigé",
+            consigne: "Présentez-vous : nom, âge, pays, langues, où vous habitez et un loisir.",
+            points: ["Name und Alter", "Land, Wohnort und Sprachen", "Ein Hobby"]
+          },
+          {
+            id: "eo2", type: "info", titre: "Partie 2 — Échange d'informations",
+            consigne: "Posez et répondez à des questions simples à partir de ces mots : Familie? Wohnen? Arbeit / Schule? Essen?",
+            points: ["Einfache Fragen stellen (Wo…? Was…? Wie…?)", "Kurze Antworten geben"]
+          },
+          {
+            id: "eo3", type: "dialog", titre: "Partie 3 — Dialogue simulé (au café)",
+            consigne: "Jouez une scène au café : saluez, commandez une boisson, demandez le prix et payez. L'examinateur joue le serveur.",
+            points: ["Begrüßen und bestellen", "Nach dem Preis fragen", "Bezahlen und sich verabschieden"]
+          }
+        ]
+      }
+    }
+  };
+})();
+
+</script>
+    <script>
+/* =====================================================================
+   delf-a2.js — Examen blanc DELF A2 (allemand), format officiel.
+   4 épreuves notées chacune sur 25 → total /100.
+     • Compréhension de l'oral  (CO) — 25 min — auto-corrigée
+     • Compréhension des écrits (CE) — 30 min — auto-corrigée
+     • Production écrite        (EE) — 45 min — notée par l'IA (coach Zika)
+     • Production orale         (EO) — 10 min de préparation + 8 min — IA
+   Réussite : ≥ 50/100 ET aucune épreuve < 5/25 (note éliminatoire).
+   Pendant l'épreuve : AUCUNE correction n'est montrée. Le résultat (note,
+   copie corrigée, PDF) est rendu 24 h après la remise (cf. serveur).
+
+   NB : les bonnes réponses (correct) sont volontairement RÉPARTIES sur
+   toutes les positions (pas toujours la 1re), contrairement aux QCM des
+   leçons — l'examen ne doit pas être devinable par réflexe.
+   ===================================================================== */
+(function () {
+  window.DELF_A2 = {
+    exam: "a2",
+    code: "A2",
+    titre: "Examen DELF A2 — Allemand",
+    sousTitre: "Examen blanc complet, format officiel · 4 épreuves /25 → /100",
+    seuil: 50,         // total minimal sur 100 pour réussir
+    eliminatoire: 5,   // note < 5/25 dans une épreuve = éliminatoire
+    // Ordre des épreuves (collectives puis individuelle)
+    ordre: ["co", "ce", "ee", "eo"],
+
+    epreuves: {
+      /* ----------------------- COMPRÉHENSION DE L'ORAL ----------------- */
+      co: {
+        code: "co", titre: "Compréhension de l'oral", icone: "🎧",
+        duree: 25 * 60, sur: 25, collective: true,
+        intro: "Vous allez écouter 3 documents. Vous pouvez écouter chaque document 2 fois maximum, puis vous répondez aux questions. Aucune correction ne s'affiche pendant l'épreuve.",
+        documents: [
+          {
+            id: "co1", titre: "Document 1 — Un message sur le répondeur",
+            audio: "Hallo Tom, hier ist Lena. Sag mal, hast du am Samstag Zeit? Es gibt ein Konzert im Stadtpark. Es beginnt um acht Uhr abends und der Eintritt kostet zehn Euro. Wenn du Lust hast, treffen wir uns um halb acht vor dem Eingang. Ruf mich bitte heute Abend zurück. Tschüss!",
+            questions: [
+              { q: "Wann beginnt das Konzert?", options: ["Um halb acht", "Um acht Uhr", "Um zehn Uhr"], correct: 1 },
+              { q: "Was kostet der Eintritt?", options: ["Zehn Euro", "Acht Euro", "Zwanzig Euro"], correct: 0 },
+              { q: "Wo treffen sich Lena und Tom?", options: ["Im Stadtpark", "Bei Lena zu Hause", "Vor dem Eingang"], correct: 2 }
+            ]
+          },
+          {
+            id: "co2", titre: "Document 2 — Une annonce à la gare",
+            audio: "Sehr geehrte Fahrgäste, der Zug nach München, Abfahrt um vierzehn Uhr zwanzig, hat heute etwa zehn Minuten Verspätung. Der Zug fährt heute von Gleis fünf ab, nicht von Gleis drei. Bitte beachten Sie die Anzeigetafeln. Wir wünschen Ihnen eine gute Reise.",
+            questions: [
+              { q: "Wohin fährt der Zug?", options: ["Nach Hamburg", "Nach Berlin", "Nach München"], correct: 2 },
+              { q: "Wie viel Verspätung hat der Zug?", options: ["Etwa zehn Minuten", "Etwa zwanzig Minuten", "Keine Verspätung"], correct: 0 },
+              { q: "Von welchem Gleis fährt der Zug heute ab?", options: ["Von Gleis drei", "Von Gleis fünf", "Von Gleis vierzehn"], correct: 1 }
+            ]
+          },
+          {
+            id: "co3", titre: "Document 3 — Au téléphone avec le cabinet médical",
+            audio: "Praxis Doktor Weber, guten Tag. — Guten Tag, ich möchte einen Termin, bitte. Ich habe seit gestern starke Kopfschmerzen. — Können Sie morgen um elf Uhr kommen? — Ja, das passt gut. — Schön. Wie ist Ihr Name, bitte? — Müller, Sabine Müller. — Alles klar, Frau Müller. Dann bis morgen um elf Uhr.",
+            questions: [
+              { q: "Warum ruft die Frau an?", options: ["Sie braucht einen Termin", "Sie sucht eine Adresse", "Sie ist die Ärztin"], correct: 0 },
+              { q: "Welches Problem hat sie?", options: ["Bauchschmerzen", "Kopfschmerzen", "Husten"], correct: 1 },
+              { q: "Wann ist der Termin?", options: ["Heute um elf Uhr", "Morgen um zwölf Uhr", "Morgen um elf Uhr"], correct: 2 }
+            ]
+          }
+        ]
+      },
+
+      /* ---------------------- COMPRÉHENSION DES ÉCRITS ----------------- */
+      ce: {
+        code: "ce", titre: "Compréhension des écrits", icone: "📖",
+        duree: 30 * 60, sur: 25, collective: true,
+        intro: "Vous lisez 3 documents puis vous répondez aux questions. Aucune correction ne s'affiche pendant l'épreuve.",
+        documents: [
+          {
+            id: "ce1", titre: "Document 1 — Un courriel d'invitation",
+            texte: "Liebe Sofia,\n\nam nächsten Samstag werde ich 30 Jahre alt und ich möchte das mit meinen Freunden feiern. Die Party beginnt um 19 Uhr bei mir zu Hause, in der Gartenstraße 12. Es gibt Essen, Getränke und Musik. Bring bitte kein Geschenk mit, nur gute Laune!\n\nKannst du kommen? Bitte antworte mir bis Donnerstag.\n\nLiebe Grüße,\nMarkus",
+            questions: [
+              { q: "Was feiert Markus?", options: ["Seinen Geburtstag", "Eine neue Wohnung", "Seine Hochzeit"], correct: 0 },
+              { q: "Wann beginnt die Party?", options: ["Um 12 Uhr", "Um 19 Uhr", "Am Donnerstag"], correct: 1 },
+              { q: "Was soll Sofia mitbringen?", options: ["Ein Geschenk", "Etwas zu essen", "Nur gute Laune"], correct: 2 }
+            ]
+          },
+          {
+            id: "ce2", titre: "Document 2 — Une affiche : nouveaux cours",
+            texte: "Volkshochschule — Neue Kurse ab Oktober!\n\n• Yoga für Anfänger: jeden Montag, 18:00–19:00 Uhr\n• Deutsch-Konversation: jeden Mittwoch, 19:00–20:30 Uhr\n• Kochkurs „Italienisch\": jeden Freitag, 17:00–19:00 Uhr\n\nAnmeldung im Büro (Zimmer 4) oder per E-Mail: info@vhs-beispiel.de. Die Kurse beginnen am 5. Oktober.",
+            questions: [
+              { q: "An welchem Tag ist der Deutsch-Konversationskurs?", options: ["Am Montag", "Am Mittwoch", "Am Freitag"], correct: 1 },
+              { q: "Wie lange dauert der Kochkurs?", options: ["Eine Stunde", "Zwei Stunden", "Drei Stunden"], correct: 1 },
+              { q: "Wie kann man sich anmelden?", options: ["Nur telefonisch", "Im Büro oder per E-Mail", "Man muss nicht"], correct: 1 }
+            ]
+          },
+          {
+            id: "ce3", titre: "Document 3 — Un petit article de blog",
+            texte: "Mein neues Leben in Hamburg\n\nSeit drei Monaten wohne ich in Hamburg. Am Anfang war alles schwierig: Ich kannte niemanden und das Wetter war oft schlecht. Aber jetzt gefällt es mir sehr gut. Ich habe nette Kollegen und am Wochenende gehe ich gern an den Hafen. Nur eine Sache fehlt mir: das Essen meiner Mutter! Nächsten Monat besuche ich meine Familie und freue mich schon sehr.",
+            questions: [
+              { q: "Wie lange wohnt die Person schon in Hamburg?", options: ["Seit drei Wochen", "Seit drei Monaten", "Seit drei Jahren"], correct: 1 },
+              { q: "Was macht sie gern am Wochenende?", options: ["An den Hafen gehen", "Zu Hause kochen", "Lange arbeiten"], correct: 0 },
+              { q: "Was fehlt ihr in Hamburg?", options: ["Nette Kollegen", "Gutes Wetter", "Das Essen ihrer Mutter"], correct: 2 }
+            ]
+          }
+        ]
+      },
+
+      /* ------------------------ PRODUCTION ÉCRITE ---------------------- */
+      ee: {
+        code: "ee", titre: "Production écrite", icone: "✍️",
+        duree: 45 * 60, sur: 25, collective: true,
+        intro: "Vous rédigez 2 textes courts en allemand. Soignez la consigne, la grammaire et le vocabulaire. Votre copie sera corrigée par l'IA après l'examen.",
+        taches: [
+          {
+            id: "ee1", titre: "Exercice 1 — Raconter", minMots: 40,
+            consigne: "Vous avez passé un bon week-end. Écrivez un message à un(e) ami(e) allemand(e) (40 à 60 mots) : dites où vous étiez, ce que vous avez fait et avec qui. Racontez au passé (Perfekt).",
+            criteres: ["Respect de la consigne (raconter un week-end passé)", "Emploi du Perfekt", "Vocabulaire des loisirs et du temps", "Connecteurs : zuerst, dann, danach, am Ende"]
+          },
+          {
+            id: "ee2", titre: "Exercice 2 — Écrire un message", minMots: 40,
+            consigne: "Un(e) ami(e) allemand(e) vous a aidé(e) à déménager. Écrivez-lui un message (40 à 60 mots) pour le/la remercier et l'inviter à dîner chez vous. Proposez une date et une heure.",
+            criteres: ["Remerciement clair", "Invitation + proposition de date/heure", "Formules de politesse (Liebe/r…, Liebe Grüße)", "Correction grammaticale de niveau A2"]
+          }
+        ]
+      },
+
+      /* ------------------------ PRODUCTION ORALE ----------------------- */
+      eo: {
+        code: "eo", titre: "Production orale", icone: "🗣️",
+        prep: 10 * 60, duree: 8 * 60, sur: 25, collective: false,
+        intro: "Épreuve individuelle en 3 parties. Vous avez d'abord 10 minutes de préparation, puis vous parlez (6 à 8 minutes). Enregistrez-vous au micro (ou écrivez ce que vous diriez). L'IA évaluera votre production.",
+        taches: [
+          {
+            id: "eo1", type: "entretien", titre: "Partie 1 — Entretien dirigé",
+            consigne: "Présentez-vous : nom, âge, nationalité, lieu d'habitation, travail ou études, langues parlées et loisirs.",
+            points: ["Name, Alter, Herkunft", "Wohnort und Beruf / Studium", "Sprachen und Hobbys"]
+          },
+          {
+            id: "eo2", type: "monologue", titre: "Partie 2 — Monologue suivi",
+            consigne: "Choisissez UN sujet et parlez-en 1 à 2 minutes : « Meine Stadt », « Mein idealer Urlaub » ou « Ein typischer Tag ».",
+            points: ["Beschreiben Sie mit Details", "Geben Sie Ihre Meinung (Ich finde…, Ich mag…)", "Benutzen Sie Konnektoren (und, aber, weil, deshalb)"]
+          },
+          {
+            id: "eo3", type: "jeuderole", titre: "Partie 3 — Jeu de rôle",
+            consigne: "Situation : vous êtes au restaurant. Saluez, commandez à boire et à manger, demandez le prix et payez. L'examinateur joue le serveur.",
+            points: ["Begrüßen und bestellen", "Nach dem Preis fragen", "Höflich bezahlen und sich verabschieden"]
+          }
+        ]
+      }
+    }
+  };
+})();
+
+</script>
+    <script>
+/* =====================================================================
+   telc-b1.js — Examen blanc telc Deutsch B1, format officiel.
+   DEUX grandes parties indépendantes (bénéfice gardé) :
+     • Épreuve écrite (Schriftliche Prüfung) — /225, réussite ≥ 135
+         Leseverstehen (75) + Sprachbausteine (30) + Hörverstehen (75)
+         + Schriftlicher Ausdruck (45, noté par l'IA)
+     • Épreuve orale (Mündliche Prüfung) — /75, réussite ≥ 45 (notée IA)
+   Certificat telc B1 (→ débloque B2) : ≥ 60 % à CHAQUE partie.
+   Correction différée 24 h (cf. serveur). Aucune correction pendant l'épreuve.
+   Réponses correctes RÉPARTIES sur toutes les positions (examen non devinable).
+   ===================================================================== */
+(function () {
+  var RF = ["Richtig (vrai)", "Falsch (faux)"];
+  window.TELC_B1 = {
+    exam: "b1", code: "B1", titre: "Examen telc Deutsch B1",
+    sousTitre: "Examen blanc complet, format officiel · écrit /225 + oral /75",
+    seuilPct: 60,
+    parts: {
+
+      /* =========================== ÉPREUVE ÉCRITE ===================== */
+      schriftlich: {
+        key: "b1-schriftlich", titre: "Épreuve écrite", icone: "📝", sur: 225, seuil: 135,
+        intro: "Épreuve collective d'environ 2 h 30, enchaînée. Aucune correction ne s'affiche : vous composez puis remettez votre copie (corrigée sous 24 h).",
+        durees: { leseSb: 90 * 60, hoeren: 30 * 60, schreiben: 30 * 60 },
+
+        lesen: {
+          sur: 75, titre: "Leseverstehen", icone: "📖",
+          intro: "Lisez les documents et répondez. (Compréhension écrite)",
+          blocs: [
+            {
+              titre: "Teil 1 — Ein Leserbrief",
+              texte: "Homeoffice – Fluch oder Segen?\n\nSeit der Pandemie arbeite ich, wie viele Kollegen, oft von zu Hause. Am Anfang war ich begeistert: kein langer Weg zur Arbeit mehr und mehr Zeit für die Familie. Doch nach einigen Monaten merkte ich auch Nachteile. Mir fehlten die Gespräche mit den Kollegen und manchmal war es schwer, Arbeit und Freizeit zu trennen. Heute arbeite ich nur noch zwei Tage pro Woche zu Hause – für mich ist das die beste Lösung.",
+              questions: [
+                { q: "Wie fand die Person das Homeoffice am Anfang?", options: ["Anstrengend", "Toll", "Langweilig"], correct: 1 },
+                { q: "Welchen Nachteil nennt sie?", options: ["Den langen Arbeitsweg", "Zu wenig Zeit für die Familie", "Den fehlenden Kontakt zu Kollegen"], correct: 2 },
+                { q: "Wie arbeitet die Person heute?", options: ["Nur im Büro", "Teils zu Hause, teils im Büro", "Nur zu Hause"], correct: 1 }
+              ]
+            },
+            {
+              titre: "Teil 2 — Anzeigen zuordnen",
+              texte: "Kleinanzeigen:\nA) Deutschkurs am Abend, zweimal pro Woche, für Berufstätige.\nB) Gebrauchtes Fahrrad, gut gepflegt, günstig abzugeben.\nC) Babysitter für zwei Kinder am Samstag gesucht.\nD) Möblierte Wohnung ab sofort zu vermieten, zentral gelegen.\nE) Gitarrenunterricht für Anfänger, auch online möglich.\nF) Verkaufe Kühlschrank, fast neu, Abholung in Köln.",
+              questions: [
+                { q: "Lena möchte abends nach der Arbeit Deutsch lernen.", options: ["Anzeige A", "Anzeige C", "Anzeige E"], correct: 0 },
+                { q: "Tom sucht eine möblierte Wohnung im Zentrum.", options: ["Anzeige B", "Anzeige D", "Anzeige F"], correct: 1 },
+                { q: "Sara möchte ein Instrument lernen.", options: ["Anzeige A", "Anzeige E", "Anzeige C"], correct: 1 },
+                { q: "Familie Bauer braucht samstags jemanden für die Kinder.", options: ["Anzeige D", "Anzeige B", "Anzeige C"], correct: 2 }
+              ]
+            },
+            {
+              titre: "Teil 3 — Eine Mitteilung",
+              texte: "Stadtbibliothek – Wichtige Information\n\nLiebe Leserinnen und Leser, vom 1. bis 8. August bleibt die Bibliothek wegen Renovierung geschlossen. Bücher, die in dieser Zeit zurückgegeben werden müssen, können Sie ohne Gebühr bis zum 12. August abgeben. Online können Sie wie gewohnt E-Books ausleihen. Ab dem 9. August sind wir wieder für Sie da – mit einem neuen Lesecafé im ersten Stock!",
+              questions: [
+                { q: "Warum ist die Bibliothek geschlossen?", options: ["Wegen der Ferien", "Wegen Renovierung", "Wegen eines Feiertags"], correct: 1 },
+                { q: "Was gilt für Bücher, die man jetzt zurückgeben muss?", options: ["Man zahlt eine Gebühr", "Man kann sie bis 12. August ohne Gebühr abgeben", "Man kann sie nicht abgeben"], correct: 1 },
+                { q: "Was ist ab dem 9. August neu?", options: ["Ein Lesecafé", "Eine neue Öffnungszeit", "Ein Online-Shop"], correct: 0 }
+              ]
+            }
+          ]
+        },
+
+        sprachbausteine: {
+          sur: 30, titre: "Sprachbausteine", icone: "🧩",
+          intro: "Choisissez le mot ou la structure qui complète correctement chaque phrase (grammaire et vocabulaire).",
+          questions: [
+            { q: "Ich schreibe Ihnen, ___ Ihnen einen neuen Termin vorzuschlagen.", options: ["um", "weil", "dass"], correct: 0 },
+            { q: "Ich kann am Montag nicht kommen, ___ ich krank bin.", options: ["trotzdem", "weil", "sondern"], correct: 1 },
+            { q: "___ Sie am Mittwoch um 15 Uhr Zeit?", options: ["Haben", "Sind", "Wissen"], correct: 0 },
+            { q: "Wir treffen uns ___ meinem Büro im ersten Stock.", options: ["ins", "an", "in"], correct: 2 },
+            { q: "Bitte bringen Sie die Dokumente ___.", options: ["mit", "auf", "ab"], correct: 0 },
+            { q: "___ Sie noch Fragen haben, rufen Sie mich gern an.", options: ["Wenn", "Wann", "Als"], correct: 0 },
+            { q: "Ich freue mich schon ___ unser Treffen.", options: ["für", "über", "auf"], correct: 2 },
+            { q: "Ich schicke Ihnen die Information, ___ Sie brauchen.", options: ["der", "die", "das"], correct: 1 },
+            { q: "Mit ___ Grüßen", options: ["freundliche", "freundlichen", "freundlich"], correct: 1 },
+            { q: "Ich wünsche ___ einen schönen Tag.", options: ["Ihnen", "Sie", "Ihr"], correct: 0 }
+          ]
+        },
+
+        hoeren: {
+          sur: 75, titre: "Hörverstehen", icone: "🎧",
+          intro: "Écoutez chaque document (2 fois maximum) et indiquez si l'affirmation est vraie (Richtig) ou fausse (Falsch).",
+          documents: [
+            {
+              titre: "Document 1 — Verkehrs- und Wettermeldung",
+              audio: "Guten Morgen, liebe Hörerinnen und Hörer. Hier die Verkehrsmeldung: Auf der A3 zwischen Frankfurt und Würzburg gibt es einen Stau von etwa fünf Kilometern wegen eines Unfalls. Bitte fahren Sie vorsichtig. Auf den anderen Strecken ist der Verkehr frei. Und nun das Wetter: Heute Nachmittag wird es sonnig und warm, bis zu vierundzwanzig Grad.",
+              questions: [
+                { q: "Auf der A3 gibt es einen Stau.", options: RF, correct: 0 },
+                { q: "Der Stau ist wegen einer Baustelle.", options: RF, correct: 1 },
+                { q: "Am Nachmittag wird es sonnig.", options: RF, correct: 0 }
+              ]
+            },
+            {
+              titre: "Document 2 — An der Bushaltestelle",
+              audio: "Entschuldigung, wann fährt der nächste Bus zum Bahnhof? — Der nächste Bus fährt in zehn Minuten, um Viertel nach drei. — Und was kostet die Fahrt? — Zwei Euro fünfzig. Sie können beim Fahrer bezahlen. — Vielen Dank! — Gern. Die Haltestelle ist dort drüben, vor der Apotheke.",
+              questions: [
+                { q: "Der Bus fährt in zehn Minuten.", options: RF, correct: 0 },
+                { q: "Die Fahrt kostet drei Euro.", options: RF, correct: 1 },
+                { q: "Die Haltestelle ist vor der Apotheke.", options: RF, correct: 0 }
+              ]
+            },
+            {
+              titre: "Document 3 — Eine Nachricht von Julia",
+              audio: "Hallo Markus, hier ist Julia. Du, ich wollte dir sagen: Ich finde deine Idee mit dem Wochenende am See super! Aber ich glaube, Samstag ist besser als Sonntag, weil ich am Sonntag arbeiten muss. Können wir vielleicht auch Lisa fragen? Sie hat ein Auto und wir könnten zusammen fahren. Ruf mich bitte zurück. Tschüss!",
+              questions: [
+                { q: "Julia findet Markus' Idee gut.", options: RF, correct: 0 },
+                { q: "Julia möchte lieber am Sonntag fahren.", options: RF, correct: 1 },
+                { q: "Lisa hat ein Auto.", options: RF, correct: 0 }
+              ]
+            }
+          ]
+        },
+
+        schreiben: {
+          sur: 45, titre: "Schriftlicher Ausdruck", icone: "✍️",
+          intro: "Rédigez une lettre / un e-mail (environ 80–100 mots). Votre texte sera corrigé par l'IA.",
+          tache: {
+            id: "b1-brief", titre: "Eine Beschwerde-E-Mail", minMots: 80,
+            consigne: "Sie haben vor zwei Wochen in einem Online-Shop eine Kaffeemaschine bestellt. Das Gerät funktioniert nicht richtig. Schreiben Sie eine E-Mail an den Kundenservice (ca. 80–100 Wörter) und gehen Sie auf alle vier Leitpunkte ein.",
+            leitpunkte: [
+              "Grund Ihres Schreibens (Ihre Bestellung nennen)",
+              "Welches Problem haben Sie genau?",
+              "Was erwarten Sie? (Reparatur, Umtausch oder Geld zurück)",
+              "Bitten Sie um eine schnelle Antwort (mit Frist)"
+            ]
+          }
+        }
+      },
+
+      /* =========================== ÉPREUVE ORALE ===================== */
+      muendlich: {
+        key: "b1-muendlich", titre: "Épreuve orale", icone: "🗣️", sur: 75, seuil: 45,
+        prep: 20 * 60, duree: 15 * 60,
+        intro: "Au telc B1, l'oral se passe en binôme. Ici, en mode solo : vous disposez de 20 minutes de préparation, puis vous enregistrez (ou écrivez) votre production pour les 3 parties. L'IA évalue le tout sur 75.",
+        taches: [
+          {
+            id: "b1-eo1", type: "kontakt", titre: "Teil 1 — Kontaktaufnahme",
+            consigne: "Présentez-vous : nom, âge, lieu d'habitation, travail ou études, langues, loisirs. Dites aussi pourquoi vous apprenez l'allemand et ce que vous aimez faire le week-end.",
+            points: ["Persönliche Vorstellung (Name, Alter, Wohnort)", "Beruf / Studium und Sprachen", "Hobbys, Wochenende und warum Deutsch"]
+          },
+          {
+            id: "b1-eo2", type: "thema", titre: "Teil 2 — Über ein Thema sprechen",
+            consigne: "Réagissez à cette opinion : « Soziale Medien machen uns einsamer, nicht sozialer. » Donnez votre avis, des arguments et des exemples ; pesez le pour et le contre.",
+            points: ["Ihre Meinung (Ich bin der Meinung…, Ich finde…)", "Argumente und konkrete Beispiele", "Vor- und Nachteile abwägen"]
+          },
+          {
+            id: "b1-eo3", type: "planen", titre: "Teil 3 — Gemeinsam etwas planen",
+            consigne: "Planifiez une fête de départ pour un collègue qui quitte l'entreprise. Faites des propositions et justifiez : lieu, date et heure, repas et boissons, programme/surprise, qui organise quoi.",
+            points: ["Vorschläge machen (Wir könnten…, Ich schlage vor…)", "Begründen und auf Vorschläge reagieren", "Einen gemeinsamen Plan und Kompromiss finden"]
+          }
+        ]
+      }
+    }
+  };
+})();
+
+</script>
+    <script>
+/* =====================================================================
+   telc-b2.js — Examen blanc telc Deutsch B2, format officiel.
+   Même structure que le B1 (deux parties indépendantes, bénéfice gardé),
+   mais exigences B2 : textes plus longs, argumentation, idiomes, précision
+   grammaticale (connecteurs logiques, déclinaisons, prépositions régies).
+     • Épreuve écrite — /225, réussite ≥ 135 (2 h 20)
+         Leseverstehen 75 + Sprachbausteine 30 + Hörverstehen 75
+         + Schriftlicher Ausdruck 45 (texte argumenté, noté IA)
+     • Épreuve orale — /75, réussite ≥ 45 (Präsentation, Diskussion,
+         Problemlösung ; notée IA)
+   Certificat telc B2 (→ débloque la suite) : ≥ 60 % à CHAQUE partie.
+   ===================================================================== */
+(function () {
+  var RF = ["Richtig (vrai)", "Falsch (faux)"];
+  window.TELC_B2 = {
+    exam: "b2", code: "B2", titre: "Examen telc Deutsch B2",
+    sousTitre: "Examen blanc complet, format officiel · écrit /225 + oral /75",
+    seuilPct: 60,
+    parts: {
+
+      /* =========================== ÉPREUVE ÉCRITE ===================== */
+      schriftlich: {
+        key: "b2-schriftlich", titre: "Épreuve écrite", icone: "📝", sur: 225, seuil: 135,
+        intro: "Épreuve collective d'environ 2 h 20, enchaînée. Aucune correction ne s'affiche : vous composez puis remettez votre copie (corrigée sous 24 h).",
+        durees: { leseSb: 90 * 60, hoeren: 20 * 60, schreiben: 30 * 60 },
+
+        lesen: {
+          sur: 75, titre: "Leseverstehen", icone: "📖",
+          intro: "Lisez des textes de presse, d'opinion et professionnels, puis répondez.",
+          blocs: [
+            {
+              titre: "Teil 1 — Ein Meinungstext",
+              texte: "Homeoffice: ein Modell mit Grenzen\n\nViele Unternehmen haben während der Pandemie entdeckt, dass Arbeit von zu Hause durchaus funktioniert. Befürworter betonen die gewonnene Flexibilität und den Wegfall langer Pendelzeiten. Kritiker hingegen warnen vor der Vereinsamung der Mitarbeiter und einer schleichenden Entgrenzung zwischen Beruf und Privatleben. Studien zeigen, dass die Produktivität zwar kurzfristig steigt, langfristig aber die Kreativität leidet, weil der spontane Austausch im Team fehlt. Die meisten Fachleute plädieren deshalb für ein hybrides Modell, das die Vorteile beider Welten verbindet.",
+              questions: [
+                { q: "Was ist das zentrale Argument der Kritiker?", options: ["Die Pendelzeiten sind zu lang", "Mitarbeiter vereinsamen und Beruf und Privatleben vermischen sich", "Die Produktivität sinkt sofort"], correct: 1 },
+                { q: "Was sagen Studien laut Text über die Produktivität?", options: ["Sie sinkt von Anfang an", "Sie steigt kurzfristig, schadet aber langfristig der Kreativität", "Sie bleibt immer gleich"], correct: 1 },
+                { q: "Welche Lösung empfehlen die Fachleute?", options: ["Nur Büroarbeit", "Nur Homeoffice", "Ein hybrides Modell"], correct: 2 }
+              ]
+            },
+            {
+              titre: "Teil 2 — Standpunkte zuordnen",
+              texte: "Leserstimmen zum Thema „Tempolimit auf Autobahnen“:\nA) „Ein Limit würde unzählige Leben retten und die Umwelt schonen.“\nB) „Freie Fahrt gehört zur deutschen Kultur – der Staat soll sich nicht einmischen.“\nC) „Mir ist es ehrlich gesagt egal, ich fahre sowieso selten schneller als 130.“\nD) „Entscheidend ist nicht das Limit, sondern eine bessere Fahrausbildung.“\nE) „Ökonomisch bringt ein Limit kaum etwas, der Spritverbrauch sinkt nur minimal.“",
+              questions: [
+                { q: "Wer argumentiert vor allem mit Sicherheit und Umweltschutz?", options: ["Person A", "Person B", "Person E"], correct: 0 },
+                { q: "Wer lehnt staatliche Eingriffe grundsätzlich ab?", options: ["Person C", "Person B", "Person D"], correct: 1 },
+                { q: "Wer hält die Ausbildung für wichtiger als ein Limit?", options: ["Person E", "Person A", "Person D"], correct: 2 }
+              ]
+            },
+            {
+              titre: "Teil 3 — Ein internes Rundschreiben",
+              texte: "Internes Rundschreiben\n\nSehr geehrte Kolleginnen und Kollegen, ab dem kommenden Quartal führen wir ein neues System zur Erfassung der Arbeitszeit ein. Die Stempeluhr entfällt; stattdessen tragen Sie Ihre Zeiten selbstständig in das Online-Portal ein. Wir bitten Sie, dies täglich und gewissenhaft zu tun, da fehlende Einträge zu Verzögerungen bei der Lohnabrechnung führen können. Eine Schulung findet am 15. des Monats statt; die Teilnahme ist für alle Mitarbeitenden ohne feste Gleitzeit verpflichtend.",
+              questions: [
+                { q: "Was ändert sich für die Mitarbeiter?", options: ["Sie stempeln wie bisher", "Sie erfassen ihre Arbeitszeit selbst online", "Die Arbeitszeit wird abgeschafft"], correct: 1 },
+                { q: "Was kann bei fehlenden Einträgen passieren?", options: ["Nichts", "Die Lohnabrechnung verzögert sich", "Man wird sofort entlassen"], correct: 1 },
+                { q: "Für wen ist die Schulung verpflichtend?", options: ["Für alle ohne feste Gleitzeit", "Für niemanden", "Nur für neue Mitarbeiter"], correct: 0 }
+              ]
+            }
+          ]
+        },
+
+        sprachbausteine: {
+          sur: 30, titre: "Sprachbausteine", icone: "🧩",
+          intro: "Choisissez le connecteur, la déclinaison ou la préposition qui convient (précision grammaticale B2).",
+          questions: [
+            { q: "Er hat hart gearbeitet, ___ wurde er nicht befördert.", options: ["trotzdem", "deshalb", "also"], correct: 0 },
+            { q: "Wir verschieben die Sitzung, ___ alle Teilnehmer anwesend sein können.", options: ["weil", "damit", "obwohl"], correct: 1 },
+            { q: "___ des schlechten Wetters fand das Sommerfest statt.", options: ["Während", "Wegen", "Trotz"], correct: 2 },
+            { q: "Ich freue mich schon ___ die Zusammenarbeit mit Ihnen.", options: ["auf", "über", "an"], correct: 0 },
+            { q: "Der Bericht, ___ Sie gestern erhalten haben, ist streng vertraulich.", options: ["der", "den", "dem"], correct: 1 },
+            { q: "Sie bestand ___ ihrer ursprünglichen Forderung.", options: ["an", "über", "auf"], correct: 2 },
+            { q: "Je mehr er übte, ___ sicherer wurde sein Auftritt.", options: ["desto", "also", "wie"], correct: 0 },
+            { q: "Es ist entscheidend, dass man sich ___ neue Situationen anpasst.", options: ["auf", "an", "über"], correct: 1 },
+            { q: "___ er völlig erschöpft war, hielt er die Frist ein.", options: ["Damit", "Weil", "Obwohl"], correct: 2 },
+            { q: "Die Verhandlungen wurden ___ des wachsenden Drucks abgebrochen.", options: ["wegen", "trotz", "während"], correct: 0 }
+          ]
+        },
+
+        hoeren: {
+          sur: 75, titre: "Hörverstehen", icone: "🎧",
+          intro: "Écoutez chaque document (2 fois maximum) — interviews, débats, conversations rapides — et répondez Richtig / Falsch.",
+          documents: [
+            {
+              titre: "Document 1 — Radiointerview mit einer Expertin",
+              audio: "Und nun zu unserem Studiogast, Frau Doktor Brandt, Ernährungswissenschaftlerin. — Frau Brandt, stimmt es eigentlich, dass Zucker süchtig macht? — Nun, das ist etwas übertrieben. Zucker aktiviert zwar das Belohnungssystem im Gehirn, aber von einer echten Sucht im medizinischen Sinne kann man nicht sprechen. Problematisch ist eher die versteckte Menge in Fertigprodukten. Mein Rat: Lesen Sie die Zutatenliste genau, dann sind Sie auf der sicheren Seite.",
+              questions: [
+                { q: "Frau Brandt ist Ärztin.", options: RF, correct: 1 },
+                { q: "Laut Frau Brandt macht Zucker im medizinischen Sinne süchtig.", options: RF, correct: 1 },
+                { q: "Sie empfiehlt, die Zutatenliste genau zu lesen.", options: RF, correct: 0 }
+              ]
+            },
+            {
+              titre: "Document 2 — Eine Diskussion",
+              audio: "Ich finde, man sollte das Handy in der Schule komplett verbieten. Die Schüler sind doch nur noch abgelenkt. — Das sehe ich völlig anders. Ein generelles Verbot bringt gar nichts; man muss den Schülern beibringen, das Handy sinnvoll zu nutzen. — Aber seien wir ehrlich, in der Praxis funktioniert das doch nie. — Doch, an meiner Schule haben wir mit klaren Regeln sehr gute Erfahrungen gemacht.",
+              questions: [
+                { q: "Die erste Person ist für ein Handyverbot.", options: RF, correct: 0 },
+                { q: "Die zweite Person stimmt dem Verbot zu.", options: RF, correct: 1 },
+                { q: "An der Schule der zweiten Person gibt es gute Erfahrungen mit Regeln.", options: RF, correct: 0 }
+              ]
+            },
+            {
+              titre: "Document 3 — Ein Gespräch unter Kollegen",
+              audio: "Mensch, du siehst ja richtig fertig aus! — Frag lieber nicht. Mein Chef hat mir in letzter Minute noch ein Projekt aufs Auge gedrückt, und das Ganze muss bis morgen fertig sein. — Das ist ja eine Zumutung! Kannst du nicht einfach Nein sagen? — Bei dem? Keine Chance. Da beißt man auf Granit.",
+              questions: [
+                { q: "Die Person hat sehr kurzfristig viel Arbeit bekommen.", options: RF, correct: 0 },
+                { q: "Der Chef lässt mit sich reden.", options: RF, correct: 1 },
+                { q: "Die Aufgabe muss erst nächste Woche fertig sein.", options: RF, correct: 1 }
+              ]
+            }
+          ]
+        },
+
+        schreiben: {
+          sur: 45, titre: "Schriftlicher Ausdruck", icone: "✍️",
+          intro: "Rédigez un texte argumenté (environ 150 mots). Votre texte sera corrigé par l'IA.",
+          tache: {
+            id: "b2-stellungnahme", titre: "Eine Stellungnahme (Leserbrief)", minMots: 130,
+            consigne: "In Ihrer Stadt soll die Innenstadt für Autos komplett gesperrt werden. Schreiben Sie einen Leserbrief an die Lokalzeitung (ca. 150 Wörter). Nehmen Sie klar Stellung (dafür oder dagegen) und gehen Sie auf alle vier Punkte ein.",
+            leitpunkte: [
+              "Nehmen Sie eine klare Position ein (dafür / dagegen)",
+              "Begründen Sie mit mindestens zwei Argumenten",
+              "Gehen Sie auf einen möglichen Gegeneinwand ein",
+              "Achten Sie auf die angemessene Form eines Leserbriefs"
+            ]
+          }
+        }
+      },
+
+      /* =========================== ÉPREUVE ORALE ===================== */
+      muendlich: {
+        key: "b2-muendlich", titre: "Épreuve orale", icone: "🗣️", sur: 75, seuil: 45,
+        prep: 20 * 60, duree: 15 * 60,
+        intro: "Au telc B2, l'oral se passe en binôme. Ici, en mode solo : 20 minutes de préparation, puis vous enregistrez (ou écrivez) votre production pour les 3 parties. L'IA évalue le tout sur 75 (exigences B2 : argumentation structurée, réactivité, précision).",
+        taches: [
+          {
+            id: "b2-eo1", type: "praesentation", titre: "Teil 1 — Präsentation",
+            consigne: "Présentez brièvement un sujet de votre choix (un livre marquant, un voyage important ou une expérience professionnelle). Structurez : introduction, points principaux, conclusion. Soyez prêt à répondre à des questions.",
+            points: ["Thema klar einführen und gliedern", "Hauptpunkte mit Details und Beispielen", "Auf mögliche Nachfragen vorbereitet sein"]
+          },
+          {
+            id: "b2-eo2", type: "diskussion", titre: "Teil 2 — Diskussion",
+            consigne: "Réagissez à cette thèse controversée : « Soziale Netzwerke sollten ab einem bestimmten Alter strenger reguliert werden. » Exprimez votre accord ou désaccord avec des arguments structurés et anticipez les contre-arguments.",
+            points: ["Klar Position beziehen (Ich stimme zu / Ich widerspreche…)", "Argumente strukturieren (erstens, außerdem, schließlich)", "Auf Gegenargumente reagieren"]
+          },
+          {
+            id: "b2-eo3", type: "problemloesung", titre: "Teil 3 — Problemlösung / Planung",
+            consigne: "Planifiez (avec un partenaire) une campagne d'information dans votre entreprise pour promouvoir la mobilité durable. Discutez budget, canaux de communication, calendrier et répartition des tâches ; trouvez des compromis.",
+            points: ["Vorschläge machen und begründen", "Budget, Kanäle und Aufgaben verteilen", "Kompromisse aushandeln und Einigung erzielen"]
+          }
+        ]
+      }
+    }
+  };
+})();
+
+</script>
+    <script>
+/* =====================================================================
+   telc-c1.js — Examen blanc telc Deutsch C1, format officiel.
+   Même moteur telc (deux parties indépendantes, bénéfice gardé, correction
+   différée 24 h), mais BARÈME PROPRE au C1 :
+     • Épreuve écrite — /166, réussite ≥ 99 (≈ 3 h 40)
+         Leseverstehen 48 + Sprachbausteine 22 + Hörverstehen 48
+         + Schriftlicher Ausdruck 48 (texte argumenté ~350 mots, noté IA)
+     • Épreuve orale — /48, réussite ≥ 29 (Präsentation, Anschlussfragen,
+         Diskussion ; notée IA)
+   Niveau C1 : textes longs et abstraits, idiomes, langue académique.
+   Adaptations app : pas de pause forcée (rythme libre) ; Leseverstehen +
+   Sprachbausteine partagent un même minuteur ; questions à choix multiples
+   (auto-corrigées) ; oral en solo.
+   ===================================================================== */
+(function () {
+  var RF = ["Richtig (vrai)", "Falsch (faux)"];
+  window.TELC_C1 = {
+    exam: "c1", code: "C1", titre: "Examen telc Deutsch C1",
+    sousTitre: "Examen blanc complet, format officiel · écrit /166 + oral /48",
+    seuilPct: 60,
+    parts: {
+
+      /* =========================== ÉPREUVE ÉCRITE ===================== */
+      schriftlich: {
+        key: "c1-schriftlich", titre: "Épreuve écrite", icone: "📝", sur: 166, seuil: 99,
+        intro: "Épreuve collective d'environ 3 h 40. Textes longs et abstraits. Aucune correction ne s'affiche : vous composez puis remettez votre copie (corrigée sous 24 h).",
+        durees: { leseSb: (90 + 22) * 60, hoeren: 40 * 60, schreiben: 70 * 60 },
+
+        lesen: {
+          sur: 48, titre: "Leseverstehen", icone: "📖",
+          intro: "Lecture globale, sélective et détaillée de textes complexes, + reconstruction de texte.",
+          blocs: [
+            {
+              titre: "Teil 1 — Ein abstrakter Text",
+              texte: "Die Illusion der ständigen Erreichbarkeit\n\nIn einer Gesellschaft, die Produktivität zum obersten Wert erhoben hat, gilt ständige Erreichbarkeit längst als Selbstverständlichkeit. Wer nicht sofort auf eine Nachricht reagiert, gerät schnell in den Verdacht, nachlässig zu sein. Doch Studien legen nahe, dass gerade diese permanente Verfügbarkeit die Konzentrationsfähigkeit untergräbt und langfristig zu Erschöpfung führt. Paradoxerweise sinkt die tatsächliche Leistung, je mehr wir versuchen, allen Anforderungen gleichzeitig gerecht zu werden. Manche Unternehmen ziehen daraus bereits Konsequenzen und führen bewusst Phasen der Nichterreichbarkeit ein.",
+              questions: [
+                { q: "Was gilt laut Text in der heutigen Gesellschaft als selbstverständlich?", options: ["Dass man sofort erreichbar ist", "Dass man langsam arbeitet", "Dass man oft Pausen macht"], correct: 0 },
+                { q: "Welche paradoxe Folge beschreibt der Text?", options: ["Die Leistung steigt mit mehr Erreichbarkeit", "Die Leistung sinkt, je mehr man allen gerecht werden will", "Erreichbarkeit hat keine Folgen"], correct: 1 },
+                { q: "Wie reagieren manche Unternehmen?", options: ["Sie verlangen mehr Erreichbarkeit", "Sie führen Phasen der Nichterreichbarkeit ein", "Sie entlassen Mitarbeiter"], correct: 1 }
+              ]
+            },
+            {
+              titre: "Teil 2 — Textrekonstruktion (passende Sätze einsetzen)",
+              texte: "Das Ehrenamt im Wandel\n\nFreiwilliges Engagement hat in Deutschland eine lange Tradition. ___[1]___ Heute jedoch verändert sich die Form dieses Engagements grundlegend. Viele Menschen wollen sich nicht mehr langfristig an einen Verein binden. ___[2]___ Stattdessen bevorzugen sie projektbezogene, zeitlich begrenzte Einsätze. ___[3]___ Für die Organisationen bedeutet dies, dass sie flexibler werden müssen.\n\nSätze zur Auswahl:\nA) Diese Entwicklung stellt traditionelle Vereine vor große Herausforderungen.\nB) Schon im 19. Jahrhundert organisierten sich Bürger in Vereinen und Initiativen.\nC) Eine feste wöchentliche Verpflichtung passt oft nicht mehr in ihren Alltag.\nD) Der Staat finanziert das Ehrenamt heute vollständig.",
+              questions: [
+                { q: "Welcher Satz passt in Lücke [1]?", options: ["Satz A", "Satz B", "Satz C"], correct: 1 },
+                { q: "Welcher Satz passt in Lücke [2]?", options: ["Satz C", "Satz A", "Satz D"], correct: 0 },
+                { q: "Welcher Satz passt in Lücke [3]?", options: ["Satz D", "Satz A", "Satz B"], correct: 1 }
+              ]
+            },
+            {
+              titre: "Teil 3 — Ein wissenschaftsjournalistischer Text",
+              texte: "Künstliche Intelligenz in der Medizin\n\nAlgorithmen können heute Röntgenbilder mit einer Genauigkeit auswerten, die der erfahrener Fachärzte ebenbürtig ist. Befürworter sehen darin die Chance, Diagnosen zu beschleunigen und menschliche Fehler zu reduzieren. Kritiker hingegen warnen davor, die Verantwortung an Maschinen zu delegieren, deren Entscheidungswege oft nicht nachvollziehbar sind. Entscheidend wird sein, ob es gelingt, die Stärken beider Seiten – die Präzision der Maschine und das Urteilsvermögen des Menschen – sinnvoll zu verbinden.",
+              questions: [
+                { q: "Was können Algorithmen laut Text bereits leisten?", options: ["Röntgenbilder sehr genau auswerten", "Patienten selbstständig operieren", "Medikamente herstellen"], correct: 0 },
+                { q: "Was kritisieren die Gegner vor allem?", options: ["Die hohe Genauigkeit", "Dass die Entscheidungswege oft nicht nachvollziehbar sind", "Die niedrigen Kosten"], correct: 1 },
+                { q: "Was wird laut Text entscheidend sein?", options: ["Maschinen ganz zu verbieten", "Die Stärken von Mensch und Maschine zu verbinden", "Nur noch Menschen entscheiden zu lassen"], correct: 1 }
+              ]
+            }
+          ]
+        },
+
+        sprachbausteine: {
+          sur: 22, titre: "Sprachbausteine", icone: "🧩",
+          intro: "Structures et lexique avancés : idiomes, prépositions régies, syntaxe complexe.",
+          questions: [
+            { q: "Er ließ sich durch nichts ___ seinem Vorhaben abbringen.", options: ["von", "aus", "über"], correct: 0 },
+            { q: "___ aller Schwierigkeiten hielt sie an ihrem Plan fest.", options: ["Wegen", "Trotz", "Während"], correct: 1 },
+            { q: "Je komplexer das Problem, ___ schwieriger ist die Lösung.", options: ["also", "sowie", "desto"], correct: 2 },
+            { q: "Die geplante Maßnahme stieß ___ heftigen Widerstand.", options: ["auf", "an", "über"], correct: 0 },
+            { q: "___ man auch argumentiert, es gibt stets Gegenstimmen.", options: ["Wobei", "Wie", "Wenngleich"], correct: 1 },
+            { q: "Sie verfügt ___ umfangreiche internationale Erfahrung.", options: ["auf", "an", "über"], correct: 2 },
+            { q: "Das ambitionierte Projekt scheiterte ___ mangelnder Finanzierung.", options: ["an", "auf", "über"], correct: 0 },
+            { q: "Angesichts ___ Lage müssen rasch Entscheidungen fallen.", options: ["die angespannte", "der angespannten", "dem angespannten"], correct: 1 },
+            { q: "Es handelt sich hierbei ___ ein äußerst komplexes Phänomen.", options: ["über", "um", "von"], correct: 1 },
+            { q: "Seine Argumente waren ___ stichhaltig, dass niemand widersprach.", options: ["so", "auch", "kaum"], correct: 0 }
+          ]
+        },
+
+        hoeren: {
+          sur: 48, titre: "Hörverstehen", icone: "🎧",
+          intro: "Conférences, interviews et débats complexes (2 écoutes max). Répondez Richtig / Falsch.",
+          documents: [
+            {
+              titre: "Document 1 — Auszug aus einer Vorlesung",
+              audio: "Meine Damen und Herren, willkommen zur heutigen Vorlesung. Wir beschäftigen uns mit dem Phänomen der sozialen Mobilität. Lange Zeit galt Bildung als der zentrale Schlüssel zum gesellschaftlichen Aufstieg. Neuere Studien zeichnen jedoch ein differenzierteres Bild: Zwar eröffnet Bildung Chancen, doch der soziale Hintergrund der Familie wirkt oft stärker nach, als wir lange angenommen haben.",
+              questions: [
+                { q: "Das Thema der Vorlesung ist die soziale Mobilität.", options: RF, correct: 0 },
+                { q: "Laut neueren Studien ist Bildung der einzige Faktor für den Aufstieg.", options: RF, correct: 1 },
+                { q: "Der familiäre Hintergrund spielt eine geringere Rolle als früher gedacht.", options: RF, correct: 1 }
+              ]
+            },
+            {
+              titre: "Document 2 — Ein Interview",
+              audio: "Frau Professorin, viele behaupten, die Digitalisierung vernichte Arbeitsplätze. Teilen Sie diese Sorge? — Die Frage ist mir zu pauschal gestellt. Sicher fallen bestimmte Tätigkeiten weg, das lässt sich nicht leugnen. Gleichzeitig entstehen aber völlig neue Berufsfelder, die wir uns heute kaum vorstellen können. Entscheidend ist nicht, ob sich der Arbeitsmarkt wandelt, sondern wie wir diesen Wandel gestalten.",
+              questions: [
+                { q: "Die Professorin findet die Frage zu pauschal.", options: RF, correct: 0 },
+                { q: "Sie bestreitet, dass bestimmte Tätigkeiten wegfallen.", options: RF, correct: 1 },
+                { q: "Für sie ist entscheidend, wie man den Wandel gestaltet.", options: RF, correct: 0 }
+              ]
+            },
+            {
+              titre: "Document 3 — Eine kontroverse Debatte",
+              audio: "Ich halte ein bedingungsloses Grundeinkommen für eine Utopie, die wir uns schlicht nicht leisten können. — Das ist ein verbreiteter Einwand, aber er greift zu kurz. Rechnet man bestehende Sozialleistungen gegen, sieht die Bilanz ganz anders aus. — Mag sein, doch Sie unterschätzen die psychologische Wirkung: Wer Geld ohne Gegenleistung erhält, verliert den Anreiz zu arbeiten. — Diese Annahme ist empirisch keineswegs belegt, im Gegenteil.",
+              questions: [
+                { q: "Die erste Person befürwortet das Grundeinkommen.", options: RF, correct: 1 },
+                { q: "Die zweite Person verweist auf bestehende Sozialleistungen.", options: RF, correct: 0 },
+                { q: "Laut der zweiten Person ist der Verlust des Arbeitsanreizes empirisch belegt.", options: RF, correct: 1 }
+              ]
+            }
+          ]
+        },
+
+        schreiben: {
+          sur: 48, titre: "Schriftlicher Ausdruck", icone: "✍️",
+          intro: "Texte argumentatif structuré (~350 mots), au choix. Corrigé par l'IA (rigueur et langue académique attendues).",
+          tache: {
+            id: "c1-argument", titre: "Argumentativer Text (ca. 350 Wörter)", minMots: 300,
+            consigne: "Wählen Sie EIN Thema und verfassen Sie einen strukturierten argumentativen Text (ca. 350 Wörter), in präziser, wissenschaftsnaher Sprache.\n\nThema 1: „Bildung sollte vollständig kostenlos sein – von der Kita bis zur Universität.“ Nehmen Sie begründet Stellung.\n\nThema 2: Statistiken zeigen, dass immer mehr junge Menschen in die Großstädte ziehen. Erörtern Sie Ursachen und Folgen dieser Entwicklung und schlagen Sie Lösungen vor.",
+            leitpunkte: [
+              "Einleitung mit klarer These",
+              "Strukturierte Argumentation (These – Beleg – Beispiel)",
+              "Gegenargumente abwägen und widerlegen",
+              "Begründete Schlussfolgerung",
+              "Präziser, akademischer Stil (Wissenschaftssprache)"
+            ]
+          }
+        }
+      },
+
+      /* =========================== ÉPREUVE ORALE ===================== */
+      muendlich: {
+        key: "c1-muendlich", titre: "Épreuve orale", icone: "🗣️", sur: 48, seuil: 29,
+        prep: 20 * 60, duree: 18 * 60,
+        intro: "Au telc C1, l'oral se passe en binôme (16–20 min) avec 20 min de préparation. Ici, en mode solo : préparez, puis enregistrez (ou écrivez) vos 3 interventions. L'IA évalue le tout sur 48 (exigences C1 : fluidité, structure, nuance, langue soutenue).",
+        taches: [
+          {
+            id: "c1-eo1", type: "praesentation", titre: "Teil 1 — Präsentation (≈ 3 min)",
+            consigne: "Faites un exposé structuré (≈ 3 min) sur le sujet imposé : « Les défis du télétravail pour les individus et les entreprises ». Introduction, 2-3 arguments développés, conclusion.",
+            points: ["Klare Gliederung (Einleitung, Hauptteil, Schluss)", "Differenzierte Argumente mit Beispielen", "Akademischer Wortschatz, flüssiger Vortrag"]
+          },
+          {
+            id: "c1-eo2", type: "anschlussfragen", titre: "Teil 2 — Anschlussfragen",
+            consigne: "Répondez à des questions approfondies sur votre exposé (ex. : « Welche Rolle spielt die Führungskultur? », « Wie lässt sich Vereinsamung im Homeoffice vermeiden? ») et défendez votre point de vue.",
+            points: ["Flexibel auf Nachfragen reagieren", "Standpunkt verteidigen und präzisieren", "Spontan und flüssig formulieren"]
+          },
+          {
+            id: "c1-eo3", type: "diskussion", titre: "Teil 3 — Diskussion",
+            consigne: "Débat contradictoire sur la citation : « Künstliche Intelligenz wird den Menschen in den meisten Berufen ersetzen. » Argumentez, nuancez, concédez et réfutez de façon fluide.",
+            points: ["Argumentieren und differenzieren", "Zugeständnisse machen (Zwar…, aber…)", "Gegenargumente souverän widerlegen"]
+          }
+        ]
+      }
+    }
+  };
+})();
+
+</script>
+    <script>
+/* =====================================================================
+   telc-c2.js — Examen blanc telc Deutsch C2, format officiel.
+   Le C2 bouscule la structure : PAS de Sprachbausteine, et un module
+   combiné « Hören und Schreiben » (écouter puis SYNTHÉTISER par écrit).
+     • Épreuve écrite — /225, réussite ≥ 135 (≈ 4 h 10)
+         Leseverstehen 60 (auto) + Hören und Schreiben 75 (IA, synthèse)
+         + Schriftlicher Ausdruck 90 (IA, dissertation sur sources)
+     • Épreuve orale — /75, réussite ≥ 45 (Präsentation + Diskussion, IA)
+   NB : telc ne publie pas de barème /point unique pour le C2 ; les totaux
+   ci-dessus sont des valeurs par défaut respectant la règle des 60 %
+   (modifiables en une ligne dans TELC_CFG côté serveur).
+   Niveau C2 : textes abstraits/littéraires/scientifiques, langue soignée.
+   ===================================================================== */
+(function () {
+  window.TELC_C2 = {
+    exam: "c2", code: "C2", titre: "Examen telc Deutsch C2",
+    sousTitre: "Examen blanc complet, format officiel · écrit /225 + oral /75",
+    seuilPct: 60,
+    parts: {
+
+      /* =========================== ÉPREUVE ÉCRITE ===================== */
+      schriftlich: {
+        key: "c2-schriftlich", titre: "Épreuve écrite", icone: "📝", sur: 225, seuil: 135,
+        format: "c2",
+        intro: "Épreuve collective d'environ 4 h 10. Textes de niveau universitaire/littéraire. Aucune correction ne s'affiche : vous composez puis remettez votre copie (corrigée sous 24 h).",
+        durees: { lesen: 80 * 60, hoerenSchreiben: 60 * 60, pause: 20 * 60, schreiben: 90 * 60 },
+
+        lesen: {
+          sur: 60, titre: "Leseverstehen", icone: "📖",
+          intro: "Analyse de textes complexes : ordre logique, nuances implicites, décodage d'arguments.",
+          blocs: [
+            {
+              titre: "Teil 1 — Ein essayistischer Text",
+              texte: "Über das Vergessen\n\nMan hält das Gedächtnis gemeinhin für einen Speicher, in dem Erlebtes unversehrt aufbewahrt wird. Doch diese Vorstellung trügt. Erinnern ist kein bloßes Abrufen, sondern ein Rekonstruieren – jedes Mal aufs Neue, gefärbt von der Gegenwart, in der wir uns erinnern. Was wir für ein treues Abbild der Vergangenheit halten, ist in Wahrheit eine Erzählung, die wir uns selbst erzählen. Insofern ist das Vergessen kein bloßer Mangel, sondern die Bedingung dafür, dass wir überhaupt eine kohärente Geschichte unseres Lebens entwerfen können.",
+              questions: [
+                { q: "Welche verbreitete Vorstellung stellt der Text infrage?", options: ["Dass das Gedächtnis ein treuer Speicher ist", "Dass man nichts vergisst", "Dass Erinnerungen unwichtig sind"], correct: 0 },
+                { q: "Wie beschreibt der Autor das Erinnern?", options: ["Als bloßes Abrufen", "Als ein Rekonstruieren, gefärbt von der Gegenwart", "Als reinen Mangel"], correct: 1 },
+                { q: "Welche Rolle spielt das Vergessen laut Text?", options: ["Es ist nur ein Defizit", "Es ist Bedingung für eine kohärente Lebensgeschichte", "Es verhindert jedes Erinnern"], correct: 1 }
+              ]
+            },
+            {
+              titre: "Teil 2 — Logische Reihenfolge",
+              texte: "Bringen Sie die Abschnitte in die logische Reihenfolge:\n\nA) Erst diese Erkenntnis führte zu einem grundlegenden Umdenken in der Stadtplanung.\nB) Lange Zeit galt das Auto als Inbegriff von Fortschritt und Freiheit.\nC) Doch mit wachsendem Verkehr zeigten sich bald die Schattenseiten: Lärm, Abgase, verstopfte Straßen.\nD) Heute setzen viele Städte konsequent auf Fußgänger, Rad und öffentlichen Nahverkehr.",
+              questions: [
+                { q: "Welcher Abschnitt steht am Anfang?", options: ["Abschnitt A", "Abschnitt B", "Abschnitt D"], correct: 1 },
+                { q: "Welche Reihenfolge ist logisch korrekt?", options: ["B – C – A – D", "A – B – C – D", "D – C – B – A"], correct: 0 },
+                { q: "Welcher Abschnitt bildet den Schluss?", options: ["Abschnitt A", "Abschnitt C", "Abschnitt D"], correct: 2 }
+              ]
+            },
+            {
+              titre: "Teil 3 — Argumentation entschlüsseln",
+              texte: "Zur Debatte um das Grundeinkommen\n\nWer gegen ein bedingungsloses Grundeinkommen argumentiert, beruft sich gern auf die menschliche Natur: Ohne Zwang, so die Annahme, werde niemand mehr arbeiten. Diese These klingt plausibel, verkennt aber, dass Menschen Tätigkeit nicht allein des Geldes wegen suchen, sondern auch aus dem Bedürfnis nach Sinn und Anerkennung. Die eigentliche Frage ist mithin nicht, ob Menschen ohne Zwang arbeiten, sondern unter welchen Bedingungen sie es freiwillig und gern tun.",
+              questions: [
+                { q: "Auf welche Annahme berufen sich die Gegner laut Text?", options: ["Dass Menschen ohne Zwang nicht mehr arbeiten", "Dass das Grundeinkommen zu teuer ist", "Dass alle reich werden wollen"], correct: 0 },
+                { q: "Welchen Einwand bringt der Autor vor?", options: ["Menschen arbeiten nur für Geld", "Menschen suchen auch Sinn und Anerkennung", "Arbeit ist grundsätzlich überflüssig"], correct: 1 },
+                { q: "Wie formuliert der Autor die eigentliche Frage um?", options: ["Ob Menschen ohne Zwang arbeiten", "Unter welchen Bedingungen sie freiwillig arbeiten", "Wie viel Geld nötig ist"], correct: 1 }
+              ]
+            }
+          ]
+        },
+
+        hoerenSchreiben: {
+          sur: 75, titre: "Hören und Schreiben", icone: "🎧",
+          intro: "Écoutez la conférence (2 fois maximum), prenez des notes, puis rédigez une synthèse cohérente. Notée par l'IA.",
+          audios: [
+            { titre: "Vortrag — Die Aufmerksamkeitsökonomie", audio: "In meinem heutigen Vortrag möchte ich auf ein oft übersehenes Phänomen eingehen: die sogenannte Aufmerksamkeitsökonomie. Unsere Aufmerksamkeit ist zu einer knappen Ressource geworden, um die zahllose Dienste konkurrieren. Drei Punkte sind dabei zentral. Erstens: Was kostenlos erscheint, bezahlen wir mit unserer Zeit und unseren Daten. Zweitens: Die ständige Ablenkung verändert, wie wir denken – tiefes, konzentriertes Lesen fällt vielen zunehmend schwer. Drittens: Es liegt an uns, bewusste Grenzen zu setzen, denn die Anbieter haben kein Interesse daran, dass wir weniger Zeit mit ihnen verbringen." }
+          ],
+          tache: {
+            id: "c2-hs", consigne: "Fassen Sie die wichtigsten Aussagen des Vortrags in einem zusammenhängenden Text zusammen (ca. 120–150 Wörter). Geben Sie die drei zentralen Punkte präzise und strukturiert wieder.", minMots: 120
+          }
+        },
+
+        schreiben: {
+          sur: 90, titre: "Schriftlicher Ausdruck", icone: "✍️",
+          intro: "Dissertation critique (~350 mots) à partir de plusieurs sources. Style académique exigé. Notée par l'IA.",
+          tache: {
+            id: "c2-essay", titre: "Kritischer Essay (ca. 350 Wörter)", minMots: 300,
+            consigne: "Verfassen Sie einen kritischen, formellen Essay (ca. 350 Wörter) zum Thema „Fortschritt um jeden Preis?“. Beziehen Sie die folgenden Quellen ein und nehmen Sie begründet Stellung:\n\nQuelle 1 (Statistik): 78 % der Befragten halten technischen Fortschritt für unverzichtbar, zugleich fürchten 54 % seine sozialen Folgen.\nQuelle 2 (Zitat): „Nicht alles, was machbar ist, ist auch wünschenswert.“ (Hans Jonas)\nQuelle 3 (These): Manche Ökonomen warnen, ein Verzicht auf Innovation gefährde den Wohlstand.",
+            leitpunkte: [
+              "Einleitung mit Problematisierung",
+              "Quellen kritisch verarbeiten und gewichten",
+              "Eigene These klar entwickeln und begründen",
+              "Gegenpositionen einbeziehen und abwägen",
+              "Formeller, literarisch-akademischer Stil"
+            ]
+          }
+        }
+      },
+
+      /* =========================== ÉPREUVE ORALE ===================== */
+      muendlich: {
+        key: "c2-muendlich", titre: "Épreuve orale", icone: "🗣️", sur: 75, seuil: 45,
+        prep: 20 * 60, duree: 15 * 60,
+        intro: "Au telc C2, l'oral est généralement individuel (15 min) avec 20 min de préparation. Ici, en mode solo : préparez, puis enregistrez (ou écrivez) vos interventions. L'IA évalue sur 75 (exigences C2 : fluidité native, nuance, idiomes, registre).",
+        taches: [
+          {
+            id: "c2-eo1", type: "praesentation", titre: "Teil 1 — Präsentation / Exposé",
+            consigne: "Développez un exposé parfaitement fluide et structuré sur le sujet imposé : « Hat das gedruckte Buch in Zeiten der Digitalisierung noch eine Zukunft? ». Incluez des nuances fines, des contre-arguments et des exemples pertinents.",
+            points: ["Klar strukturierter, flüssiger Vortrag", "Feine Differenzierung und Gegenargumente", "Treffende Beispiele und gehobenes Register"]
+          },
+          {
+            id: "c2-eo2", type: "diskussion", titre: "Teil 2 — Débat et entretien",
+            consigne: "Débat : les examinateurs contredisent vos positions par des questions pointues (ex. : « Ist Nostalgie nicht ein schwaches Argument? », « Übersehen Sie nicht die ökologischen Kosten von Papier? »). Défendez votre point de vue avec répartie, expressions idiomatiques et registre adapté.",
+            points: ["Schlagfertig argumentieren und kontern", "Idiomatische, natürliche Ausdrucksweise", "Register situativ und souverän anpassen"]
+          }
+        ]
+      }
+    }
+  };
+})();
+
+</script>
+    <script>
+/* =====================================================================
+   delf-final.js — Examen final DELF A1 + A2 (combiné), format DELF A2.
+   Contenu croisé A1+A2, plus exigeant. 4 épreuves /25 + DICTÉE /25 (niveau
+   B1, 10 min) → /125. Seuil RELEVÉ : 75/125 (60 %). Éliminatoire < 5/25.
+   Correction différée 24 h. La discussion orale (jeu de rôle) est un
+   dialogue parlé avec l'examinateur. Réponses correctes réparties.
+   ===================================================================== */
+(function () {
+  window.DELF_FINAL = {
+    exam: "final", code: "FINAL", nom: "A1 + A2 (combiné)",
+    titre: "Examen final DELF A1 + A2", sousTitre: "Combiné A1+A2 · 4 épreuves + dictée → /125",
+    seuil: 75, eliminatoire: 5, ordre: ["co", "ce", "ee", "dictee", "eo"],
+    dictee: {
+      titre: "Dictée — niveau B1", niveau: "B1", duree: 10 * 60, sur: 25,
+      intro: "Écoutez (2 fois max) et écrivez exactement le texte. Niveau B1.",
+      texte: "Letzte Woche bin ich mit dem Zug nach Hamburg gefahren. Das Wetter war ziemlich schlecht, aber die Stadt hat mir trotzdem sehr gut gefallen. Am Abend habe ich alte Freunde getroffen und wir sind zusammen essen gegangen."
+    },
+    epreuves: {
+      co: {
+        code: "co", titre: "Compréhension de l'oral", icone: "🎧", duree: 25 * 60, sur: 25, collective: true,
+        intro: "3 documents (A1 et A2), 2 écoutes max chacun.",
+        documents: [
+          {
+            id: "co1", titre: "Document 1 — Annonce en gare",
+            audio: "Sehr geehrte Fahrgäste, der Zug nach Berlin um zehn Uhr fünfzehn fällt heute leider aus. Der nächste Zug nach Berlin fährt um elf Uhr von Gleis sieben. Wir bitten um Ihr Verständnis.",
+            questions: [
+              { q: "Was ist mit dem Zug um 10:15?", options: ["Er fährt pünktlich", "Er fällt aus", "Er hat zehn Minuten Verspätung"], correct: 1 },
+              { q: "Wann fährt der nächste Zug nach Berlin?", options: ["Um 10:15", "Um 11 Uhr", "Um 7 Uhr"], correct: 1 }
+            ]
+          },
+          {
+            id: "co2", titre: "Document 2 — Eine Nachricht",
+            audio: "Hallo Lisa, hier ist Markus. Können wir unser Treffen verschieben? Ich muss heute leider länger arbeiten. Passt dir morgen um achtzehn Uhr? Ruf mich bitte zurück. Danke!",
+            questions: [
+              { q: "Was möchte Markus?", options: ["Das Treffen verschieben", "Das Treffen absagen", "Sich früher treffen"], correct: 0 },
+              { q: "Wann schlägt er vor?", options: ["Heute um 18 Uhr", "Morgen um 18 Uhr", "Morgen um 8 Uhr"], correct: 1 }
+            ]
+          },
+          {
+            id: "co3", titre: "Document 3 — Im Geschäft",
+            audio: "Guten Tag, ich suche ein Geschenk für meine Mutter. — Wie wäre es mit diesem blauen Schal? Er kostet fünfundzwanzig Euro. — Oh, der ist schön. Den nehme ich, vielen Dank.",
+            questions: [
+              { q: "Für wen ist das Geschenk?", options: ["Für die Mutter", "Für den Vater", "Für eine Freundin"], correct: 0 },
+              { q: "Was kostet der Schal?", options: ["Fünfzehn Euro", "Fünfundzwanzig Euro", "Fünfunddreißig Euro"], correct: 1 }
+            ]
+          }
+        ]
+      },
+      ce: {
+        code: "ce", titre: "Compréhension des écrits", icone: "📖", duree: 30 * 60, sur: 25, collective: true,
+        intro: "3 documents (A1 et A2).",
+        documents: [
+          {
+            id: "ce1", titre: "Document 1 — Un courriel professionnel",
+            texte: "Liebe Kolleginnen und Kollegen,\n\nam Freitag fällt unsere Besprechung leider aus. Wir treffen uns stattdessen am Montag um 9 Uhr im großen Konferenzraum. Bitte bringen Sie Ihre Unterlagen mit.\n\nViele Grüße,\nFrau Klein",
+            questions: [
+              { q: "Wann findet die Besprechung jetzt statt?", options: ["Am Freitag", "Am Montag um 9 Uhr", "Gar nicht"], correct: 1 },
+              { q: "Was sollen die Kollegen mitbringen?", options: ["Ihre Unterlagen", "Etwas zu essen", "Nichts"], correct: 0 }
+            ]
+          },
+          {
+            id: "ce2", titre: "Document 2 — Une affiche",
+            texte: "Stadtbibliothek — Neue Öffnungszeiten ab März:\nMontag bis Freitag: 10–19 Uhr\nSamstag: 10–14 Uhr\nSonntag: geschlossen",
+            questions: [
+              { q: "Wie lange ist die Bibliothek samstags geöffnet?", options: ["Bis 14 Uhr", "Bis 19 Uhr", "Bis 10 Uhr"], correct: 0 },
+              { q: "An welchem Tag ist geschlossen?", options: ["Am Samstag", "Am Sonntag", "Am Montag"], correct: 1 }
+            ]
+          },
+          {
+            id: "ce3", titre: "Document 3 — Un petit texte",
+            texte: "Mein Bruder wohnt seit zwei Jahren in München. Er arbeitet als Koch in einem italienischen Restaurant. Am Wochenende fährt er oft in die Berge zum Wandern. Im Sommer besuche ich ihn meistens für eine Woche.",
+            questions: [
+              { q: "Was ist der Bruder von Beruf?", options: ["Koch", "Kellner", "Bergführer"], correct: 0 },
+              { q: "Was macht er am Wochenende oft?", options: ["Wandern in den Bergen", "Im Restaurant essen", "Zu Hause kochen"], correct: 0 }
+            ]
+          }
+        ]
+      },
+      ee: {
+        code: "ee", titre: "Production écrite", icone: "✍️", duree: 45 * 60, sur: 25, collective: true,
+        intro: "2 textes à rédiger (niveau A2). Corrigés par l'IA après l'examen.",
+        taches: [
+          {
+            id: "ee1", titre: "Exercice 1 — Raconter un voyage", minMots: 40,
+            consigne: "Erzählen Sie von einer Reise (40–60 Wörter): Wohin sind Sie gefahren, mit wem, was haben Sie gemacht? Schreiben Sie im Perfekt.",
+            criteres: ["Récit au passé (Perfekt)", "Où / avec qui / quoi", "Connecteurs (zuerst, dann, danach)"]
+          },
+          {
+            id: "ee2", titre: "Exercice 2 — Un e-mail d'excuse et d'invitation", minMots: 40,
+            consigne: "Sie können zu einer Party nicht kommen. Schreiben Sie eine E-Mail (40–60 Wörter): entschuldigen Sie sich, sagen Sie warum, und laden Sie die Person zu einem anderen Treffen ein.",
+            criteres: ["Excuse claire + raison", "Invitation à un autre moment", "Formules de politesse"]
+          }
+        ]
+      },
+      eo: {
+        code: "eo", titre: "Production orale", icone: "🗣️", prep: 10 * 60, duree: 8 * 60, sur: 25, collective: false,
+        intro: "3 parties. 10 min de préparation, puis passation. La 3e partie est un dialogue parlé avec l'examinateur.",
+        taches: [
+          {
+            id: "eo1", type: "entretien", titre: "Partie 1 — Entretien dirigé",
+            consigne: "Présentez-vous en détail : nom, âge, pays, profession ou études, langues, famille et loisirs.",
+            points: ["Présentation complète", "Profession / études et langues", "Famille et loisirs"]
+          },
+          {
+            id: "eo2", type: "monologue", titre: "Partie 2 — Monologue suivi",
+            consigne: "Parlez 1 à 2 minutes de vos dernières vacances ou d'un week-end : où, quand, avec qui, ce que vous avez fait et aimé.",
+            points: ["Récit structuré au passé", "Détails et opinions (Ich fand…, Es war…)", "Connecteurs"]
+          },
+          {
+            id: "eo3", type: "jeuderole", titre: "Partie 3 — Jeu de rôle (au restaurant)",
+            consigne: "Vous êtes au restaurant. Saluez, commandez à boire et à manger, posez une question (carte, prix), puis demandez l'addition et payez. L'examinateur joue le serveur.",
+            scenario: "Im Restaurant: begrüßen, bestellen, eine Frage stellen, bezahlen.",
+            opener: "Guten Abend und herzlich willkommen in unserem Restaurant! Haben Sie schon einen Wunsch, oder darf ich Ihnen zuerst etwas zu trinken bringen?"
+          }
+        ]
+      }
+    }
+  };
+})();
+
+</script>
+    <script>
+/* =====================================================================
+   telc-finalb.js — Examen combiné telc B1 + B2 (croisé, plus difficile).
+   Format telc B2 standard, contenu croisé B1+B2 et plus exigeant.
+   Écrit /250 = Lesen 75 + Sprachbausteine 30 + Hören 75 + Schreiben 45
+   + DICTÉE 25 (niveau C1, 15 min) ; seuil RELEVÉ 163/250 (65 %).
+   Oral /75, seuil 49 (65 %). Correction différée 24 h. Discussions orales
+   = dialogue parlé avec l'examinateur. Réponses correctes réparties.
+   ===================================================================== */
+(function () {
+  var RF = ["Richtig (vrai)", "Falsch (faux)"];
+  window.TELC_FINALB = {
+    exam: "finalb", code: "FINALB", titre: "Examen combiné telc B1 + B2",
+    sousTitre: "Croisé B1+B2 · écrit /250 (dictée C1 incluse) + oral /75",
+    seuilPct: 65,
+    parts: {
+      schriftlich: {
+        key: "finalb-schriftlich", titre: "Épreuve écrite", icone: "📝", sur: 250, seuil: 163,
+        intro: "Examen combiné B1+B2, plus exigeant. Écrit /250 (dictée C1 incluse). Aucune correction pendant l'épreuve.",
+        durees: { leseSb: 90 * 60, hoeren: 30 * 60, schreiben: 30 * 60 },
+        lesen: {
+          sur: 75, titre: "Leseverstehen", icone: "📖", intro: "Textes de niveau B1 et B2.",
+          blocs: [
+            {
+              titre: "Teil 1 — Ein Erfahrungsbericht (B1)",
+              texte: "Ein Jahr im Ausland\n\nNach dem Abitur wollte ich unbedingt eine Fremdsprache richtig lernen. Also ging ich für ein Jahr nach Spanien und arbeitete dort in einem kleinen Hotel. Am Anfang verstand ich fast nichts, und das war manchmal frustrierend. Doch nach ein paar Monaten konnte ich plötzlich Gespräche führen, ohne nachzudenken. Heute weiß ich: Eine Sprache lernt man nicht im Klassenzimmer, sondern im Alltag.",
+              questions: [
+                { q: "Warum ging die Person nach Spanien?", options: ["Um Urlaub zu machen", "Um eine Sprache richtig zu lernen", "Um zu studieren"], correct: 1 },
+                { q: "Wie war es am Anfang?", options: ["Einfach", "Frustrierend, weil sie wenig verstand", "Langweilig"], correct: 1 },
+                { q: "Was ist ihr Fazit?", options: ["Man lernt eine Sprache im Alltag", "Man lernt nur im Klassenzimmer", "Sprachen lernen ist unmöglich"], correct: 0 }
+              ]
+            },
+            {
+              titre: "Teil 2 — Ein Meinungstext (B2)",
+              texte: "Die Vier-Tage-Woche\n\nImmer mehr Unternehmen testen die Vier-Tage-Woche. Befürworter argumentieren, dass ausgeruhte Mitarbeiter produktiver und seltener krank sind. Kritiker hingegen befürchten, dass die gleiche Arbeit in weniger Zeit erledigt werden muss, was den Druck sogar erhöht. Erste Studien deuten darauf hin, dass das Modell vor allem dann funktioniert, wenn auch die Arbeitsabläufe überdacht werden.",
+              questions: [
+                { q: "Was sagen die Befürworter?", options: ["Ausgeruhte Mitarbeiter sind produktiver", "Die Arbeit wird mehr", "Die Löhne sinken"], correct: 0 },
+                { q: "Was befürchten die Kritiker?", options: ["Mehr Urlaub", "Dass der Druck steigt", "Dass niemand mehr arbeitet"], correct: 1 },
+                { q: "Wann funktioniert das Modell laut Studien?", options: ["Immer", "Wenn die Arbeitsabläufe überdacht werden", "Nie"], correct: 1 }
+              ]
+            }
+          ]
+        },
+        sprachbausteine: {
+          sur: 30, titre: "Sprachbausteine", icone: "🧩", intro: "Connecteurs, prépositions et déclinaisons (B1–B2).",
+          questions: [
+            { q: "Ich freue mich, ___ du kommen kannst.", options: ["dass", "ob", "weil"], correct: 0 },
+            { q: "___ des Regens haben wir gegrillt.", options: ["Wegen", "Trotz", "Während"], correct: 1 },
+            { q: "Er interessiert sich sehr ___ Geschichte.", options: ["für", "auf", "an"], correct: 0 },
+            { q: "Das ist der Kollege, ___ ich dir erzählt habe.", options: ["der", "den", "von dem"], correct: 2 },
+            { q: "Je länger ich übe, ___ besser werde ich.", options: ["als", "desto", "wie"], correct: 1 },
+            { q: "Sie hat den Termin verschoben, ___ sie krank war.", options: ["obwohl", "weil", "damit"], correct: 1 },
+            { q: "Wir nehmen den Zug, ___ schneller anzukommen.", options: ["um", "damit", "zu"], correct: 0 },
+            { q: "Mit ___ Kollegen verstehe ich mich gut.", options: ["meine", "meinen", "meinem"], correct: 1 },
+            { q: "Er bestand ___ seiner Meinung.", options: ["auf", "an", "über"], correct: 0 },
+            { q: "___ ich Zeit habe, rufe ich dich an.", options: ["Sobald", "Seitdem", "Bevor"], correct: 0 }
+          ]
+        },
+        hoeren: {
+          sur: 75, titre: "Hörverstehen", icone: "🎧", intro: "Annonces et dialogues (B1–B2), 2 écoutes max. Richtig / Falsch.",
+          documents: [
+            {
+              titre: "Document 1 — Eine Durchsage",
+              audio: "Liebe Kundinnen und Kunden, unser Geschäft schließt heute ausnahmsweise bereits um achtzehn Uhr wegen einer internen Schulung. Ab morgen gelten wieder die normalen Öffnungszeiten bis zwanzig Uhr. Wir danken für Ihr Verständnis.",
+              questions: [
+                { q: "Das Geschäft schließt heute früher.", options: RF, correct: 0 },
+                { q: "Der Grund ist ein Stromausfall.", options: RF, correct: 1 },
+                { q: "Morgen ist bis 20 Uhr geöffnet.", options: RF, correct: 0 }
+              ]
+            },
+            {
+              titre: "Document 2 — Ein Gespräch",
+              audio: "Hast du dir das neue Projekt schon angeschaut? — Ja, aber ehrlich gesagt finde ich den Zeitplan zu eng. — Das sehe ich auch so. Wir sollten mit der Chefin reden und um eine Woche mehr bitten. — Gute Idee, ich schreibe ihr gleich eine Mail.",
+              questions: [
+                { q: "Die zweite Person findet den Zeitplan zu eng.", options: RF, correct: 0 },
+                { q: "Sie wollen mehr Zeit verlangen.", options: RF, correct: 0 },
+                { q: "Sie rufen die Chefin sofort an.", options: RF, correct: 1 }
+              ]
+            }
+          ]
+        },
+        schreiben: {
+          sur: 45, titre: "Schriftlicher Ausdruck", icone: "✍️", intro: "Lettre formelle / prise de position (~150 mots), notée par l'IA.",
+          tache: {
+            id: "finalb-brief", titre: "Eine Beschwerde / Stellungnahme", minMots: 130,
+            consigne: "Ihr Fitnessstudio hat die Preise stark erhöht, ohne die Mitglieder zu informieren. Schreiben Sie eine formelle E-Mail an die Geschäftsleitung (ca. 150 Wörter): beschreiben Sie das Problem, äußern Sie Ihre Kritik mit Argumenten und fordern Sie eine konkrete Lösung.",
+            leitpunkte: ["Grund des Schreibens", "Problem und Kritik mit Argumenten", "Konkrete Forderung", "Höflicher, formeller Stil"]
+          }
+        },
+        dictee: {
+          titre: "Dictée — niveau C1", niveau: "C1", duree: 15 * 60, sur: 25,
+          intro: "Écoutez (2 fois maximum) et écrivez exactement le texte. Niveau C1.",
+          texte: "Obwohl die Digitalisierung zahlreiche Erleichterungen mit sich bringt, warnen Fachleute zunehmend vor ihren Schattenseiten. Wer ständig erreichbar ist, verliert nicht selten die Fähigkeit, sich über längere Zeit zu konzentrieren. Entscheidend ist daher, bewusst Grenzen zu setzen und Pausen nicht als Luxus, sondern als Notwendigkeit zu begreifen."
+        }
+      },
+      muendlich: {
+        key: "finalb-muendlich", titre: "Épreuve orale", icone: "🗣️", sur: 75, seuil: 49,
+        prep: 20 * 60, duree: 15 * 60,
+        intro: "3 parties (présentation, discussion, planification). Les discussions sont un dialogue parlé avec l'examinateur. Aucune correction pendant l'épreuve.",
+        taches: [
+          {
+            id: "finalb-eo1", type: "praesentation", titre: "Teil 1 — Präsentation",
+            consigne: "Présentez en 2 minutes un sujet de votre choix (un projet, un voyage marquant, une expérience). Structurez : introduction, points principaux, conclusion.",
+            points: ["Klare Gliederung", "Details und Beispiele", "Flüssiger Vortrag"]
+          },
+          {
+            id: "finalb-eo2", type: "diskussion", titre: "Teil 2 — Diskussion",
+            consigne: "Débattez avec l'examinateur de cette thèse : « Homeoffice sollte für alle Büroangestellten zur Pflicht werden. » Donnez votre avis, argumentez et réagissez à ses objections.",
+            points: ["Position beziehen", "Argumente und Beispiele", "Auf Gegenargumente reagieren"],
+            opener: "Ich behaupte: Homeoffice sollte für alle Büroangestellten zur Pflicht werden. Wie sehen Sie das?"
+          },
+          {
+            id: "finalb-eo3", type: "planen", titre: "Teil 3 — Gemeinsam planen",
+            consigne: "Planifiez avec l'examinateur une fête d'entreprise : lieu, date, budget, programme, répartition des tâches. Faites des propositions et trouvez des compromis.",
+            points: ["Vorschläge machen und begründen", "Auf Vorschläge reagieren", "Kompromisse finden"],
+            opener: "Gut, planen wir gemeinsam unsere Firmenfeier. Ich schlage vor, wir feiern in einem Restaurant. Was halten Sie davon, und wo sollen wir Ihrer Meinung nach feiern?"
+          }
+        ]
+      }
+    }
+  };
+})();
+
+</script>
+    <script>
+/* =====================================================================
+   telc-finalc.js — Examen combiné telc C1 + C2 (croisé, plus difficile).
+   Format telc C1 standard, contenu croisé C1+C2 et plus exigeant.
+   Écrit /191 = Lesen 48 + Sprachbausteine 22 + Hören 48 + Schreiben 48
+   + DICTÉE 25 (niveau C2, 20 min) ; seuil RELEVÉ 124/191 (65 %).
+   Oral /48, seuil 31 (65 %). Correction différée 24 h. Discussions orales
+   = dialogue parlé avec l'examinateur. Réponses correctes réparties.
+   ===================================================================== */
+(function () {
+  var RF = ["Richtig (vrai)", "Falsch (faux)"];
+  window.TELC_FINALC = {
+    exam: "finalc", code: "FINALC", titre: "Examen combiné telc C1 + C2",
+    sousTitre: "Croisé C1+C2 · écrit /191 (dictée C2 incluse) + oral /48",
+    seuilPct: 65,
+    parts: {
+      schriftlich: {
+        key: "finalc-schriftlich", titre: "Épreuve écrite", icone: "📝", sur: 191, seuil: 124,
+        intro: "Examen combiné C1+C2, le plus exigeant. Écrit /191 (dictée C2 incluse). Aucune correction pendant l'épreuve.",
+        durees: { leseSb: 90 * 60, hoeren: 40 * 60, schreiben: 70 * 60 },
+        lesen: {
+          sur: 48, titre: "Leseverstehen", icone: "📖", intro: "Textes abstraits de niveau C1 et C2.",
+          blocs: [
+            {
+              titre: "Teil 1 — Ein Essay (C1)",
+              texte: "Über die Geduld\n\nIn einer Welt, die auf sofortige Verfügbarkeit ausgerichtet ist, gilt Geduld beinahe als Schwäche. Wer wartet, scheint zu zögern; wer zögert, verliert. Dabei übersehen wir, dass die wertvollsten Dinge – Vertrauen, Können, echte Beziehungen – sich nicht beschleunigen lassen. Geduld ist somit kein passives Hinnehmen, sondern eine aktive Haltung: die Bereitschaft, einem Prozess Zeit zu geben, der sich nicht erzwingen lässt.",
+              questions: [
+                { q: "Wie wird Geduld heute oft wahrgenommen?", options: ["Als Stärke", "Beinahe als Schwäche", "Als Pflicht"], correct: 1 },
+                { q: "Was lässt sich laut Text nicht beschleunigen?", options: ["Vertrauen, Können, echte Beziehungen", "Technik", "Konsum"], correct: 0 },
+                { q: "Wie definiert der Autor Geduld?", options: ["Als passives Hinnehmen", "Als aktive Haltung, einem Prozess Zeit zu geben", "Als Zögern"], correct: 1 }
+              ]
+            },
+            {
+              titre: "Teil 2 — Ein Standpunkt (C2)",
+              texte: "Zur Sprache der Wissenschaft\n\nWissenschaftliche Texte gelten oft als unnötig kompliziert. Tatsächlich aber erfüllt ihre Präzision einen Zweck: Sie soll Missverständnisse ausschließen und Aussagen überprüfbar machen. Problematisch wird es erst, wenn Fachsprache nicht der Genauigkeit, sondern der Abgrenzung dient – wenn sie also weniger erklärt als beeindruckt. Die Kunst besteht darin, exakt zu bleiben, ohne den Leser auszuschließen.",
+              questions: [
+                { q: "Welchen Zweck erfüllt die Präzision wissenschaftlicher Texte?", options: ["Sie soll beeindrucken", "Sie schließt Missverständnisse aus und macht Aussagen überprüfbar", "Sie grenzt Laien aus"], correct: 1 },
+                { q: "Wann wird Fachsprache laut Text problematisch?", options: ["Wenn sie der Abgrenzung statt der Genauigkeit dient", "Wenn sie zu einfach ist", "Immer"], correct: 0 },
+                { q: "Worin besteht die „Kunst“?", options: ["Möglichst kompliziert zu schreiben", "Exakt zu bleiben, ohne den Leser auszuschließen", "Auf Fachbegriffe zu verzichten"], correct: 1 }
+              ]
+            }
+          ]
+        },
+        sprachbausteine: {
+          sur: 22, titre: "Sprachbausteine", icone: "🧩", intro: "Idiomes, syntaxe complexe et prépositions régies (C1–C2).",
+          questions: [
+            { q: "Er ließ sich durch nichts ___ seinem Ziel abbringen.", options: ["von", "aus", "über"], correct: 0 },
+            { q: "___ aller Kritik hielt sie an ihrer Entscheidung fest.", options: ["Während", "Wegen", "Trotz"], correct: 2 },
+            { q: "Es handelt sich hierbei ___ ein komplexes Problem.", options: ["über", "um", "von"], correct: 1 },
+            { q: "Sie verfügt ___ jahrelange Erfahrung.", options: ["auf", "über", "an"], correct: 1 },
+            { q: "Das Projekt scheiterte ___ fehlender Mittel.", options: ["an", "auf", "über"], correct: 0 },
+            { q: "Angesichts ___ Entwicklung ist Vorsicht geboten.", options: ["die rasante", "der rasanten", "dem rasanten"], correct: 1 },
+            { q: "Je differenzierter die Analyse, ___ überzeugender das Ergebnis.", options: ["desto", "also", "wie"], correct: 0 },
+            { q: "Man muss sich ___ veränderte Bedingungen anpassen.", options: ["an", "auf", "über"], correct: 0 },
+            { q: "___ er erschöpft war, hielt er die Frist ein.", options: ["Damit", "Obwohl", "Weil"], correct: 1 },
+            { q: "Seine Argumente waren ___ stichhaltig, dass niemand widersprach.", options: ["so", "auch", "kaum"], correct: 0 }
+          ]
+        },
+        hoeren: {
+          sur: 48, titre: "Hörverstehen", icone: "🎧", intro: "Conférences et débats (C1–C2), 2 écoutes max. Richtig / Falsch.",
+          documents: [
+            {
+              titre: "Document 1 — Auszug aus einem Vortrag",
+              audio: "Lange Zeit galt Multitasking als Schlüsselkompetenz der modernen Arbeitswelt. Die Forschung zeichnet inzwischen ein anderes Bild: Wer mehrere Aufgaben gleichzeitig bearbeitet, verliert messbar an Genauigkeit und Tempo. Das Gehirn wechselt lediglich rasch hin und her, was Energie kostet. Konzentration auf eine Sache ist demnach kein Rückschritt, sondern eine unterschätzte Stärke.",
+              questions: [
+                { q: "Multitasking galt lange als Schlüsselkompetenz.", options: RF, correct: 0 },
+                { q: "Laut Forschung erhöht Multitasking die Genauigkeit.", options: RF, correct: 1 },
+                { q: "Das Gehirn wechselt schnell zwischen Aufgaben hin und her.", options: RF, correct: 0 }
+              ]
+            },
+            {
+              titre: "Document 2 — Eine Debatte",
+              audio: "Ich halte ein generelles Tempolimit für überfällig. — Das ist ein bekanntes Argument, doch der Effekt auf die Umwelt wird meist überschätzt. — Mag sein, aber es geht auch um Sicherheit, nicht nur um Emissionen. — Da haben Sie einen Punkt, allerdings müsste man dann auch in bessere Ausbildung investieren.",
+              questions: [
+                { q: "Die erste Person ist für ein Tempolimit.", options: RF, correct: 0 },
+                { q: "Die zweite Person hält den Umwelteffekt für überschätzt.", options: RF, correct: 0 },
+                { q: "Am Ende lehnt die zweite Person jedes Argument ab.", options: RF, correct: 1 }
+              ]
+            }
+          ]
+        },
+        schreiben: {
+          sur: 48, titre: "Schriftlicher Ausdruck", icone: "✍️", intro: "Essai argumenté (~300 mots), style académique. Noté par l'IA.",
+          tache: {
+            id: "finalc-essay", titre: "Kritischer Essay (ca. 300 Wörter)", minMots: 250,
+            consigne: "Verfassen Sie einen kritischen, formellen Essay (ca. 300 Wörter) zum Thema „Sollte die Arbeitszeit generell verkürzt werden?“. Entwickeln Sie eine klare These, wägen Sie Pro- und Gegenargumente ab und ziehen Sie eine begründete Schlussfolgerung. Achten Sie auf einen präzisen, akademischen Stil.",
+            leitpunkte: ["Einleitung mit klarer These", "Pro- und Gegenargumente abwägen", "Beispiele/Belege einbeziehen", "Begründete Schlussfolgerung", "Akademischer Stil"]
+          }
+        },
+        dictee: {
+          titre: "Dictée — niveau C2", niveau: "C2", duree: 20 * 60, sur: 25,
+          intro: "Écoutez (2 fois maximum) et écrivez exactement le texte. Niveau C2.",
+          texte: "Erinnern ist kein bloßes Abrufen, sondern ein fortwährendes Rekonstruieren, das von der Gegenwart gefärbt wird. Was wir für ein getreues Abbild der Vergangenheit halten, ist in Wahrheit eine Erzählung, die wir uns selbst erzählen. Gerade das Vergessen ermöglicht es uns, aus unzähligen Eindrücken eine kohärente Geschichte unseres Lebens zu formen."
+        }
+      },
+      muendlich: {
+        key: "finalc-muendlich", titre: "Épreuve orale", icone: "🗣️", sur: 48, seuil: 31,
+        prep: 20 * 60, duree: 18 * 60,
+        intro: "3 parties (présentation, questions de suivi, débat). Les échanges sont un dialogue parlé avec l'examinateur. Aucune correction pendant l'épreuve.",
+        taches: [
+          {
+            id: "finalc-eo1", type: "praesentation", titre: "Teil 1 — Präsentation",
+            consigne: "Faites un exposé structuré (≈ 3 min) sur le sujet imposé : « Chancen und Risiken der künstlichen Intelligenz ». Incluez des nuances, des contre-arguments et des exemples.",
+            points: ["Klar gegliederter, flüssiger Vortrag", "Differenzierung und Gegenargumente", "Gehobenes Register"]
+          },
+          {
+            id: "finalc-eo2", type: "anschlussfragen", titre: "Teil 2 — Anschlussfragen",
+            consigne: "Répondez aux questions approfondies de l'examinateur sur votre exposé et défendez votre point de vue avec répartie.",
+            points: ["Flexibel reagieren", "Standpunkt verteidigen", "Spontan und flüssig formulieren"],
+            opener: "Vielen Dank für Ihren Vortrag. Sie sagen, KI biete große Chancen — aber sehen Sie nicht die Gefahr, dass ganze Berufsgruppen verschwinden? Wie würden Sie darauf reagieren?"
+          },
+          {
+            id: "finalc-eo3", type: "diskussion", titre: "Teil 3 — Diskussion",
+            consigne: "Débattez avec l'examinateur de la citation : « Nicht alles, was machbar ist, ist auch wünschenswert. » Argumentez, nuancez, concédez et réfutez.",
+            points: ["Argumentieren und differenzieren", "Zugeständnisse machen", "Souverän widerlegen"],
+            opener: "Ein berühmter Satz lautet: „Nicht alles, was machbar ist, ist auch wünschenswert.“ Ich finde, das ist zu pessimistisch — Fortschritt sollte man nicht bremsen. Was entgegnen Sie mir?"
+          }
+        ]
+      }
+    }
+  };
+})();
+
+</script>
     <!-- Modules applicatifs -->
     <script>
 /* =====================================================================
@@ -20445,7 +21738,49 @@ window.Legal = (function () {
       card.innerHTML = banner + body;
       return card;
     }
+    /* Carte spéciale des examens DELF (A1, A2…) : à passer / en correction / corrigé. */
+    function carteDelf(code, unlocked, lockText) {
+      const CODE = delfName(code), base = "#/examen/" + code;
+      const ts = window.Progress.getTestScore(code);
+      const local = delfLocalGet(code) || {};
+      const passed = !!(ts && ts.reussi);
+      const pending = local.status === "pending" && !passed;
+      const card = el("div", "examen-final delf-card " + (unlocked ? "unlocked" : "locked") + (passed ? " reussi" : "") + (pending ? " pending" : ""));
+      let inner = '<div class="examen-ic">' + (passed ? "🏅" : pending ? "⏳" : unlocked ? "🎓" : "🔒") + '</div><h2>🎓 Examen DELF ' + CODE + "</h2>";
+      if (!unlocked) { inner += "<p>" + lockText + "</p>"; card.innerHTML = inner; return card; }
+      if (pending) inner += "<p>⏳ <strong>Copie en correction.</strong> Votre note /100, votre copie corrigée et votre PDF arrivent sous 24 h (notification Telegram).</p>";
+      else if (passed) inner += "<p>Examen blanc complet (4 épreuves /100). Meilleur score : <strong>" + (ts.meilleur || 0) + "/100</strong> — réussi ✅</p>";
+      else inner += "<p>Examen blanc DELF " + CODE + " complet : écouter, lire, écrire, parler (/100). Corrigé par l'IA sous 24 h." + (ts ? " Dernier score : <strong>" + (ts.dernier != null ? ts.dernier : ts.meilleur) + "/100</strong>." : "") + "</p>";
+      card.innerHTML = inner;
+      const row = el("div", "examen-actions");
+      if (pending) { const r = el("a", "btn btn-primary big", "Voir l'état de ma copie"); r.href = base + "/resultat"; row.appendChild(r); }
+      else {
+        const b = el("a", "btn btn-primary big", ts ? "Repasser l'examen" : "🎓 Passer l'examen DELF " + CODE); b.href = base; row.appendChild(b);
+        if (ts) { const r = el("a", "btn btn-ghost", "📊 Ma copie / résultat"); r.href = base + "/resultat"; row.appendChild(r); }
+      }
+      card.appendChild(row);
+      return card;
+    }
+    /* Carte spéciale des examens telc (B1, B2…) : deux parties, certificat. */
+    function carteTelc(code, unlocked, lockText) {
+      const CODE = telcName(code);
+      const ts = window.Progress.getTestScore(code);
+      const loc = telcLocalGet(code) || {};
+      const certified = !!(ts && ts.reussi);
+      const card = el("div", "examen-final telc-card " + (unlocked ? "unlocked" : "locked") + (certified ? " reussi" : ""));
+      let inner = '<div class="examen-ic">' + (certified ? "🏅" : unlocked ? "📜" : "🔒") + '</div><h2>📜 Examen telc ' + CODE + "</h2>";
+      if (!unlocked) { inner += "<p>" + lockText + "</p>"; card.innerHTML = inner; return card; }
+      function tag(pkey, label) { const s = loc[pkey] || {}; const p = certified || s.passed; return label + " " + (p ? "✅" : (s.status === "pending" ? "⏳" : "—")); }
+      if (certified) inner += "<p>Certificat " + CODE + " obtenu ✅ — écrit + oral validés. La suite est débloquée.</p>";
+      else inner += "<p>Deux parties à réussir (≥ 60 % chacune). " + tag("schriftlich", "Écrit") + " · " + tag("muendlich", "Oral") + ".</p>";
+      card.innerHTML = inner;
+      const row = el("div", "examen-actions");
+      const b = el("a", "btn btn-primary big", certified ? "Revoir l'examen" : "📜 Ouvrir l'examen telc " + CODE); b.href = "#/examen/" + code; row.appendChild(b);
+      card.appendChild(row); return card;
+    }
     function carteExamen(examId, titre, unlocked, sousTitre, lockText) {
+      if (examId === "a1" || examId === "a2" || examId === "final") return carteDelf(examId, unlocked, lockText);
+      if (examId === "b1" || examId === "b2" || examId === "c1" || examId === "c2" || examId === "finalb" || examId === "finalc") return carteTelc(examId, unlocked, lockText);
       const ts = window.Progress.getTestScore(examId);
       const card = el("div", "examen-final " + (unlocked ? "unlocked" : "locked") + (ts && ts.reussi ? " reussi" : ""));
       card.innerHTML =
@@ -20504,9 +21839,9 @@ window.Legal = (function () {
     }
 
     renderNiveau({ code: "A1", exam: "a1", prevExam: null, prevLabel: null,
-      examSous: "20 questions de tout l'A1 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour débloquer le niveau A2 !" });
+      examSous: "Examen blanc DELF A1 (4 épreuves /100), corrigé par l'IA sous 24 h. Réussissez-le pour débloquer le niveau A2 !" });
     renderNiveau({ code: "A2", exam: "a2", prevExam: "a1", prevLabel: "l'examen A1",
-      examSous: "20 questions de tout l'A2 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour débloquer l'examen final." });
+      examSous: "Examen blanc DELF A2 (4 épreuves /100), corrigé par l'IA sous 24 h. Réussissez-le pour débloquer l'examen final." });
 
     /* --- Examen final A1 + A2 (verrou vers le B1) --- */
     const finalSec = el("section", "section");
@@ -20517,11 +21852,11 @@ window.Legal = (function () {
 
     /* --- Niveau B1 (débloqué après l'examen final A1 + A2) --- */
     renderNiveau({ code: "B1", exam: "b1", prevExam: "final", prevLabel: "l'examen final A1 + A2",
-      examSous: "25 questions de tout le B1 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour accéder au niveau B2 !" });
+      examSous: "Examen blanc telc B1 (écrit /225 + oral /75), corrigé par l'IA sous 24 h. Réussissez les deux parties pour débloquer le B2 !" });
 
     /* --- Niveau B2 (débloqué après l'examen B1) --- */
     renderNiveau({ code: "B2", exam: "b2", prevExam: "b1", prevLabel: "l'examen B1",
-      examSous: "30 questions de tout le B2 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour débloquer l'examen B1 + B2." });
+      examSous: "Examen blanc telc B2 (écrit /225 + oral /75), corrigé par l'IA sous 24 h. Réussissez les deux parties pour débloquer la suite !" });
 
     /* --- Examen combiné B1 + B2 (verrou vers le C1) --- */
     const finalbSec = el("section", "section");
@@ -20532,11 +21867,11 @@ window.Legal = (function () {
 
     /* --- Niveau C1 (débloqué après l'examen B1 + B2) --- */
     renderNiveau({ code: "C1", exam: "c1", prevExam: "finalb", prevLabel: "l'examen B1 + B2",
-      examSous: "30 questions de tout le C1 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour accéder au niveau C2 !" });
+      examSous: "Examen blanc telc C1 (écrit /166 + oral /48), corrigé par l'IA sous 24 h. Réussissez les deux parties pour accéder au niveau C2 !" });
 
     /* --- Niveau C2 (débloqué après l'examen C1) --- */
     renderNiveau({ code: "C2", exam: "c2", prevExam: "c1", prevLabel: "l'examen C1",
-      examSous: "30 questions de tout le C2 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour l'examen final C1 + C2 !" });
+      examSous: "Examen blanc telc C2 (écrit /225 + oral /75), corrigé par l'IA sous 24 h. Le sommet du parcours !" });
 
     /* --- Examen combiné C1 + C2 (consécration finale) --- */
     const finalcSec = el("section", "section");
@@ -21798,6 +23133,770 @@ window.Legal = (function () {
       window.TG.setMainButton("Terminer l'examen", () => submit.click());
     }
     window.scrollTo(0, 0);
+  }
+
+  /* ====================================================================
+     EXAMEN DELF A2 — simulation officielle, correction différée (24 h)
+     4 épreuves chronométrées et séquencées (CO, CE, EE, EO), notées /25.
+     Aucune correction pendant l'examen ; la copie est remise au serveur,
+     corrigée par l'IA après 24 h, puis le résultat + PDF reviennent ici.
+     ==================================================================== */
+  function delfInitData() { try { return (window.TG && window.TG.tg && window.TG.tg.initData) || ""; } catch (e) { return ""; } }
+  function delfData(code) { return window["DELF_" + String(code).toUpperCase()]; }
+  function delfName(code) { return code === "final" ? "A1 + A2 (combiné)" : String(code).toUpperCase(); }
+  function delfLocalGet(code) { try { return JSON.parse(localStorage.getItem("delf_" + code) || "null"); } catch (e) { return null; } }
+  function delfLocalSet(code, o) { try { localStorage.setItem("delf_" + code, JSON.stringify(o || {})); } catch (e) {} }
+  function delfGuardOK(code) { if (code === "a1") return niveauTermine("A1"); if (code === "a2") return examPasse("a1") && niveauTermine("A2"); if (code === "final") return examPasse("a2"); return false; }
+  function delfEsc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function delfFmt(s) { return delfEsc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\n/g, "<br>"); }
+
+  let delfTimer = null;
+  function makeDelfTimer(seconds, onExpire) {
+    const box = el("div", "delf-timer");
+    let left = seconds, stopped = false, iv = null;
+    function fmt(s) { const m = Math.floor(s / 60), ss = s % 60; return m + ":" + (ss < 10 ? "0" : "") + ss; }
+    function render() { box.textContent = "⏳ " + fmt(Math.max(0, left)); box.classList.toggle("warn", left <= 60); box.classList.toggle("crit", left <= 10); }
+    function stop() { stopped = true; if (iv) { clearInterval(iv); iv = null; } }
+    function tick() { if (stopped) return; left--; render(); if (left <= 0) { stop(); if (onExpire) onExpire(); } }
+    render(); iv = setInterval(tick, 1000);
+    return { el: box, stop: stop };
+  }
+
+  function delfScreen(opts) {
+    if (delfTimer) { delfTimer.stop(); delfTimer = null; }
+    app.innerHTML = "";
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<span class="btn-link" style="visibility:hidden">·</span><span class="lesson-top-mod">' + (opts.brand || "🎓 DELF A2") + "</span>";
+    frag.appendChild(top);
+    const head = el("header", "test-head delf-head");
+    head.innerHTML = '<div class="lesson-num">' + (opts.phase || "DELF A2") + "</div><h1>" + (opts.icone ? opts.icone + " " : "") + opts.titre + "</h1>" + (opts.intro ? "<p>" + opts.intro + "</p>" : "");
+    frag.appendChild(head);
+    const hp = opts.hashPrefix || "#/examen/a2";
+    const backHash = opts.backHash || "#/";
+    let finished = false, btn = null, timer = null;
+    function finish() {
+      if (finished) return;
+      // L'utilisateur a quitté l'examen (back) → ne pas re-rendre par-dessus.
+      if (location.hash.indexOf(hp) !== 0) { if (timer) timer.stop(); return; }
+      finished = true; if (timer) timer.stop(); delfTimer = null; if (btn) btn.disabled = true;
+      if (opts.onPrimary) opts.onPrimary();
+    }
+    if (opts.timerSeconds) { timer = makeDelfTimer(opts.timerSeconds, function () { toast("⏰ Temps écoulé pour cette épreuve."); finish(); }); delfTimer = timer; const tw = el("div", "delf-timer-wrap"); tw.appendChild(timer.el); frag.appendChild(tw); }
+    if (opts.body) frag.appendChild(opts.body);
+    const submitRow = el("div", "test-submit");
+    btn = el("button", "btn btn-primary big", opts.primary || "Continuer →"); btn.type = "button";
+    btn.addEventListener("click", finish);
+    submitRow.appendChild(btn);
+    frag.appendChild(submitRow);
+    app.appendChild(frag);
+    if (window.TG) { try { window.TG.closingConfirmation(true); window.TG.showBackButton(function () { location.hash = backHash; }); window.TG.setMainButton(opts.primary || "Continuer →", finish); } catch (e) {} }
+    window.scrollTo(0, 0);
+  }
+
+  /* Compréhension (CO audio / CE texte) : QCM en capture seule (aucune correction). */
+  function delfQCM(documents, kind) {
+    const wrap = el("div", "delf-docs");
+    const all = [];
+    documents.forEach(function (doc) {
+      const card = el("div", "delf-doc");
+      card.appendChild(el("h3", "delf-doc-t", delfEsc(doc.titre)));
+      if (kind === "co") {
+        let plays = 0;
+        const b = el("button", "btn btn-audio", "🔊 Écouter (2 max)"); b.type = "button";
+        b.addEventListener("click", function () {
+          if (plays >= 2) { toast("Vous avez déjà écouté ce document 2 fois."); return; }
+          plays++; if (window.Speech) window.Speech.speak(doc.audio, { rate: 0.95 });
+          const rest = 2 - plays; b.textContent = rest > 0 ? "🔊 Réécouter (" + rest + " restante" + (rest > 1 ? "s" : "") + ")" : "🔇 Écoutes épuisées";
+          if (plays >= 2) b.disabled = true;
+        });
+        card.appendChild(b);
+      } else {
+        const t = el("div", "delf-text"); t.textContent = doc.texte; card.appendChild(t);
+      }
+      doc.questions.forEach(function (q) {
+        const qc = el("div", "delf-q");
+        qc.appendChild(el("p", "delf-q-t", delfEsc(q.q)));
+        const opts = el("div", "qcm-options"); let sel = -1;
+        q.options.forEach(function (o, i) {
+          const ob = el("button", "qcm-opt", delfEsc(o)); ob.type = "button";
+          ob.addEventListener("click", function () { sel = i; opts.querySelectorAll(".qcm-opt").forEach(function (x) { x.classList.remove("sel"); }); ob.classList.add("sel"); });
+          opts.appendChild(ob);
+        });
+        qc.appendChild(opts); card.appendChild(qc);
+        all.push({ q: q, getSel: function () { return sel; } });
+      });
+      wrap.appendChild(card);
+    });
+    function collect() {
+      const items = all.map(function (a) { return { q: a.q.q, options: a.q.options, correct: a.q.correct, selected: a.getSel() }; });
+      const total = items.length || 1;
+      const correct = items.filter(function (it) { return it.selected === it.correct; }).length;
+      return { score25: Math.round(correct / total * 25), correct: correct, total: items.length, items: items };
+    }
+    return { el: wrap, collect: collect };
+  }
+
+  /* Production écrite : zones de texte (aucune correction pendant l'examen). */
+  function delfEE(taches) {
+    const wrap = el("div", "delf-ee"); const fields = [];
+    taches.forEach(function (t) {
+      const card = el("div", "delf-doc");
+      card.appendChild(el("h3", "delf-doc-t", delfEsc(t.titre)));
+      card.appendChild(el("p", "delf-q-t", delfEsc(t.consigne)));
+      const ta = el("textarea", "production-input"); ta.rows = 5; ta.setAttribute("placeholder", "Schreiben Sie hier auf Deutsch…");
+      const meta = el("div", "production-meta"); const c = el("span", "wordcount", "0 mot"); meta.appendChild(c);
+      if (t.minMots) meta.appendChild(el("span", "wordmin", "objectif : ≥ " + t.minMots + " mots"));
+      ta.addEventListener("input", function () { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; c.textContent = w + (w > 1 ? " mots" : " mot"); c.classList.toggle("ok", !t.minMots || w >= t.minMots); });
+      card.appendChild(ta); card.appendChild(meta); wrap.appendChild(card);
+      fields.push({ t: t, ta: ta });
+    });
+    function collect() { return fields.map(function (f) { return { id: f.t.id, consigne: f.t.consigne, text: f.ta.value.trim() }; }); }
+    return { el: wrap, collect: collect };
+  }
+
+  /* Production orale : enregistrement micro (→ /api/stt) avec repli clavier. */
+  /* Dialogue oral examinateur ↔ candidat (100 % voix). L'examinateur (IA, mode
+     "examinateur") joue son rôle, pose des questions et conteste, mais NE CORRIGE
+     JAMAIS. Le candidat parle (micro → STT) ou écrit. Tout le dialogue est capturé
+     et noté seulement 24 h après. */
+  function delfDialog(task, niveau) {
+    const niv = niveau || "B1";
+    const lang = (window.I18N && window.I18N.lang && window.I18N.lang()) || "fr";
+    const card = el("div", "delf-doc delf-dialog");
+    card.appendChild(el("h3", "delf-doc-t", delfEsc(task.titre)));
+    card.appendChild(el("p", "delf-q-t", delfEsc(task.consigne)));
+    if (task.scenario) card.appendChild(el("p", "delf-q-t", "🎭 " + delfEsc(task.scenario)));
+    if (task.points && task.points.length) { const ul = el("ul", "delf-points"); task.points.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); card.appendChild(ul); }
+    const conv = el("div", "delf-conv"); card.appendChild(conv);
+    const status = el("span", "delf-rec-status", "");
+    const history = [], turns = [];
+    let busy = false;
+    function bubble(role, text) { const b = el("div", "delf-bubble " + (role === "user" ? "me" : "ex")); b.appendChild(el("span", "delf-bubble-who", role === "user" ? "Vous" : "🧑‍🏫 Examinateur")); const tx = el("div", "delf-bubble-t"); tx.textContent = text; b.appendChild(tx); conv.appendChild(b); conv.scrollTop = conv.scrollHeight; }
+    function pushExaminer(text) { history.push({ role: "assistant", content: text }); turns.push({ role: "assistant", content: text }); bubble("assistant", text); if (window.Speech) window.Speech.speak(text, { rate: 0.98 }); }
+    function pushUser(text) { history.push({ role: "user", content: text }); turns.push({ role: "user", content: text }); bubble("user", text); }
+    function examinerTurn() {
+      busy = true; status.textContent = "🧑‍🏫 …";
+      fetch("/api/chat", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ messages: history.slice(-16), mode: "examinateur", niveau: niv, niveauParle: niv, langue: lang, initData: delfInitData() || undefined }) })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) { busy = false; status.textContent = ""; pushExaminer((j && j.reply) || "Bitte, sprechen Sie weiter."); })
+        .catch(function () { busy = false; status.textContent = "⚠️ Connexion impossible."; });
+    }
+    function userSays(text) { text = (text || "").trim(); if (!text || busy) return; pushUser(text); examinerTurn(); }
+    const row = el("div", "delf-rec-row");
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder) {
+      const mic = el("button", "btn btn-mic", "🎤 Parler"); mic.type = "button";
+      let mr = null, chunks = [], recording = false;
+      mic.addEventListener("click", function () {
+        if (busy) return;
+        if (recording) { if (mr) mr.stop(); return; }
+        navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+          chunks = []; try { mr = new MediaRecorder(stream); } catch (e) { status.textContent = "⚠️ Micro non supporté — écrivez."; stream.getTracks().forEach(function (x) { x.stop(); }); return; }
+          mr.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+          mr.onstop = function () {
+            recording = false; mic.classList.remove("listening"); mic.textContent = "🎤 Parler"; stream.getTracks().forEach(function (x) { x.stop(); });
+            const blob = new Blob(chunks, { type: (chunks[0] && chunks[0].type) || "audio/webm" }); status.textContent = "⏳ Transcription…";
+            fetch("/api/stt", { method: "POST", headers: { "content-type": blob.type || "audio/webm" }, body: blob })
+              .then(function (r) { return r.ok ? r.json() : null; })
+              .then(function (j) { status.textContent = ""; if (j && j.text) userSays(j.text); else status.textContent = "⚠️ Rien compris — réessayez ou écrivez."; })
+              .catch(function () { status.textContent = "⚠️ Hors-ligne — écrivez."; });
+          };
+          mr.start(); recording = true; mic.classList.add("listening"); mic.textContent = "⏹️ Arrêter"; status.textContent = "🎙️ Parlez…";
+        }).catch(function () { status.textContent = "⚠️ Micro indisponible — écrivez ci-dessous."; });
+      });
+      row.appendChild(mic);
+    }
+    const replay = el("button", "btn btn-ghost small", "🔁 Réécouter"); replay.type = "button";
+    replay.addEventListener("click", function () { const last = turns.filter(function (h) { return h.role === "assistant"; }).pop(); if (last && window.Speech) window.Speech.speak(last.content, { rate: 0.98 }); });
+    row.appendChild(replay); row.appendChild(status); card.appendChild(row);
+    const inp = el("input", "production-input delf-typed"); inp.type = "text"; inp.setAttribute("placeholder", "…ou écrivez votre réponse, puis Entrée");
+    inp.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); const v = inp.value; inp.value = ""; userSays(v); } });
+    card.appendChild(inp);
+    if (task.opener) pushExaminer(task.opener);
+    else { history.push({ role: "user", content: "[Du bist Pruefer in einer muendlichen Pruefung. Aufgabe: " + (task.consigne || "") + (task.scenario ? " Szenario: " + task.scenario : "") + ". Eroeffne die Pruefung mit EINER kurzen, passenden Frage oder Replik auf Deutsch.]" }); examinerTurn(); }
+    function collect() { return { id: task.id, consigne: task.consigne + (task.scenario ? " (" + task.scenario + ")" : ""), transcript: turns.map(function (h) { return (h.role === "user" ? "Candidat : " : "Examinateur : ") + h.content; }).join("\n") }; }
+    return { el: card, collect: collect };
+  }
+
+  function delfEO(taches, niveau) {
+    const wrap = el("div", "delf-eo"); const fields = [];
+    const DIALOG = ["dialog", "jeuderole", "info", "thema", "planen", "diskussion", "problemloesung", "anschlussfragen"];
+    const recOK = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
+    taches.forEach(function (t) {
+      if (t.mode === "dialog" || DIALOG.indexOf(t.type) >= 0) { const d = delfDialog(t, niveau); wrap.appendChild(d.el); fields.push(d.collect); return; }
+      const card = el("div", "delf-doc");
+      card.appendChild(el("h3", "delf-doc-t", delfEsc(t.titre)));
+      card.appendChild(el("p", "delf-q-t", delfEsc(t.consigne)));
+      if (t.points && t.points.length) { const ul = el("ul", "delf-points"); t.points.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); card.appendChild(ul); }
+      const ta = el("textarea", "production-input"); ta.rows = 4; ta.setAttribute("placeholder", "Was Sie sagen würden (oder Aufnahme oben)…");
+      if (recOK) {
+        const row = el("div", "delf-rec-row");
+        const rec = el("button", "btn btn-mic", "🎤 Enregistrer"); rec.type = "button";
+        const status = el("span", "delf-rec-status", "");
+        let mr = null, chunks = [], recording = false;
+        rec.addEventListener("click", function () {
+          if (recording) { if (mr) mr.stop(); return; }
+          navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+            chunks = []; try { mr = new MediaRecorder(stream); } catch (e) { status.textContent = "⚠️ Enregistrement non supporté — écrivez ci-dessous."; stream.getTracks().forEach(function (x) { x.stop(); }); return; }
+            mr.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+            mr.onstop = function () {
+              recording = false; rec.classList.remove("listening"); rec.textContent = "🎤 Enregistrer"; stream.getTracks().forEach(function (x) { x.stop(); });
+              const blob = new Blob(chunks, { type: (chunks[0] && chunks[0].type) || "audio/webm" });
+              status.textContent = "⏳ Transcription…";
+              fetch("/api/stt", { method: "POST", headers: { "content-type": blob.type || "audio/webm" }, body: blob })
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (j) { if (j && j.text) { ta.value = (ta.value ? ta.value + " " : "") + j.text; status.textContent = "✓ Transcrit — vérifiez et complétez."; } else status.textContent = "⚠️ Transcription indisponible — écrivez ci-dessous."; })
+                .catch(function () { status.textContent = "⚠️ Hors-ligne — écrivez ci-dessous."; });
+            };
+            mr.start(); recording = true; rec.classList.add("listening"); rec.textContent = "⏹️ Arrêter"; status.textContent = "🎙️ Enregistrement…";
+          }).catch(function () { status.textContent = "⚠️ Micro indisponible — écrivez ci-dessous."; });
+        });
+        row.appendChild(rec); row.appendChild(status); card.appendChild(row);
+      }
+      card.appendChild(ta); wrap.appendChild(card);
+      fields.push(function () { return { id: t.id, consigne: t.consigne, transcript: ta.value.trim() }; });
+    });
+    function collect() { return fields.map(function (f) { return f(); }); }
+    return { el: wrap, collect: collect };
+  }
+
+  /* Dictée : audio (synthèse) lu 2× max, saisie libre, score auto mot-à-mot.
+     Composante auto-corrigée de l'écrit (examens combinés). Aucune correction
+     affichée pendant l'épreuve. */
+  function delfDictee(dictee) {
+    const sur = dictee.sur || 25;
+    const card = el("div", "delf-doc delf-dictee");
+    card.appendChild(el("h3", "delf-doc-t", "✒️ " + delfEsc(dictee.titre || "Dictée")));
+    card.appendChild(el("p", "delf-q-t", delfEsc(dictee.intro || "Écoutez (2 fois maximum) et écrivez exactement le texte entendu.")));
+    const segs = (String(dictee.texte || "").match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [dictee.texte || ""]).map(function (s) { return s.trim(); }).filter(Boolean);
+    let plays = 0, speaking = false;
+    function speakSegs(i) { if (i >= segs.length || !window.Speech) { speaking = false; return; } speaking = true; window.Speech.speak(segs[i], { rate: 0.9 }); setTimeout(function () { speakSegs(i + 1); }, Math.max(2600, segs[i].length * 95)); }
+    const b = el("button", "btn btn-audio", "🔊 Écouter la dictée (2 max)"); b.type = "button";
+    b.addEventListener("click", function () { if (speaking) return; if (plays >= 2) { toast("Vous avez déjà écouté 2 fois."); return; } plays++; speakSegs(0); const rest = 2 - plays; b.textContent = rest > 0 ? "🔁 Réécouter (" + rest + ")" : "🔇 Écoutes épuisées"; if (plays >= 2) b.disabled = true; });
+    card.appendChild(b);
+    const ta = el("textarea", "production-input"); ta.rows = 6; ta.setAttribute("placeholder", "Schreiben Sie hier den gehörten Text…"); card.appendChild(ta);
+    function norm(s) { return String(s || "").toLowerCase().replace(/[.,;:!?"«»()\[\]\-–—…]/g, " ").replace(/\s+/g, " ").trim(); }
+    function score() {
+      const ref = norm(dictee.texte).split(" ").filter(Boolean), got = norm(ta.value).split(" ").filter(Boolean);
+      if (!ref.length) return 0;
+      const pool = got.slice(); let ok = 0;
+      ref.forEach(function (w) { const k = pool.indexOf(w); if (k >= 0) { ok++; pool.splice(k, 1); } });
+      return Math.round(ok / ref.length * 100);
+    }
+    function collect() { const pct = score(); return { score: pct, points: Math.round(pct * sur / 100), sur: sur, texte: dictee.texte, saisie: ta.value.trim() }; }
+    return { el: card, collect: collect };
+  }
+
+  function renderDelf(code) {
+    const D = delfData(code);
+    if (!D || !delfGuardOK(code)) { location.hash = "#/"; return; }
+    const base = "#/examen/" + code, CODE = delfName(code);
+    const SC = { brand: "🎓 DELF " + CODE, hashPrefix: base, backHash: "#/" };
+    const passed = !!((window.Progress.getTestScore(code) || {}).reussi);
+    const loc = delfLocalGet(code) || {};
+    if (loc.status === "pending" && !passed) { location.hash = base + "/resultat"; return; }
+    const state = { co: null, ce: null, ee: [], eo: [], dictee: null };
+    const E = D.epreuves;
+
+    function runCO() { const ep = E.co; const r = delfQCM(ep.documents, "co"); delfScreen(Object.assign({}, SC, { phase: "Épreuve 1 / 4 · collective", icone: ep.icone, titre: ep.titre, intro: ep.intro, body: r.el, timerSeconds: ep.duree, primary: "Terminer l'épreuve →", onPrimary: function () { state.co = r.collect(); runCE(); } })); }
+    function runCE() { const ep = E.ce; const r = delfQCM(ep.documents, "ce"); delfScreen(Object.assign({}, SC, { phase: "Épreuve 2 / 4 · collective", icone: ep.icone, titre: ep.titre, intro: ep.intro, body: r.el, timerSeconds: ep.duree, primary: "Terminer l'épreuve →", onPrimary: function () { state.ce = r.collect(); runEE(); } })); }
+    function runEE() { const ep = E.ee; const r = delfEE(ep.taches); delfScreen(Object.assign({}, SC, { phase: "Épreuve 3 / 4 · collective", icone: ep.icone, titre: ep.titre, intro: ep.intro, body: r.el, timerSeconds: ep.duree, primary: "Terminer l'épreuve →", onPrimary: function () { state.ee = r.collect(); (D.dictee ? runDictee() : runEOPrep()); } })); }
+    function runDictee() { const r = delfDictee(D.dictee); delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · dictée", icone: "✒️", titre: D.dictee.titre || "Dictée", intro: "Niveau " + (D.dictee.niveau || "") + " — écoutez (2× max) et écrivez exactement. Aucune correction ne s'affiche.", body: r.el, timerSeconds: D.dictee.duree || 600, primary: "Terminer la dictée →", onPrimary: function () { state.dictee = r.collect(); runEOPrep(); } })); }
+    function runEOPrep() {
+      const ep = E.eo; const body = el("div", "delf-eo-prep");
+      ep.taches.forEach(function (t) { const c = el("div", "delf-doc"); c.appendChild(el("h3", "delf-doc-t", delfEsc(t.titre))); c.appendChild(el("p", "delf-q-t", delfEsc(t.consigne))); if (t.points) { const ul = el("ul", "delf-points"); t.points.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); c.appendChild(ul); } body.appendChild(c); });
+      body.appendChild(el("p", "delf-q-t", "📝 Préparez vos parties. L'enregistrement commence ensuite."));
+      const note = el("textarea", "production-input"); note.rows = 4; note.setAttribute("placeholder", "Brouillon / vos idées (non noté)…"); body.appendChild(note);
+      delfScreen(Object.assign({}, SC, { phase: "Épreuve 4 / 4 · préparation (" + Math.round(ep.prep / 60) + " min)", icone: ep.icone, titre: ep.titre + " — préparation", intro: "Vous avez " + Math.round(ep.prep / 60) + " minutes pour préparer.", body: body, timerSeconds: ep.prep, primary: "Je suis prêt(e) — parler →", onPrimary: runEO }));
+    }
+    function runEO() { const ep = E.eo; const r = delfEO(ep.taches, CODE); delfScreen(Object.assign({}, SC, { phase: "Épreuve 4 / 4 · passation orale", icone: ep.icone, titre: ep.titre, intro: "Parlez au micro avec l'examinateur (ou écrivez). Aucune correction ne s'affiche.", body: r.el, timerSeconds: ep.duree, primary: "Remettre ma copie ✅", onPrimary: function () { state.eo = r.collect(); doSubmit(); } })); }
+
+    function doSubmit() {
+      if (window.TG) { try { window.TG.closingConfirmation(false); } catch (e) {} }
+      const copy = { co: (state.co && state.co.items) || [], ce: (state.ce && state.ce.items) || [], ee: state.ee || [], eo: state.eo || [] };
+      const payload = { langue: (window.I18N && window.I18N.lang && window.I18N.lang()) || "fr", co25: (state.co && state.co.score25) || 0, ce25: (state.ce && state.ce.score25) || 0, copy: copy };
+      if (state.dictee) { copy.dictee = { texte: state.dictee.texte, saisie: state.dictee.saisie, score: state.dictee.score, sur: state.dictee.sur }; payload.dictee = state.dictee.points; payload.dicteeSur = state.dictee.sur; }
+      app.innerHTML = ""; const frag = document.createDocumentFragment();
+      const top = el("div", "lesson-top"); top.innerHTML = '<span class="btn-link" style="visibility:hidden">·</span><span class="lesson-top-mod">🎓 DELF ' + CODE + '</span>'; frag.appendChild(top);
+      const head = el("header", "test-head delf-head"); head.innerHTML = '<div class="lesson-num">Remise de la copie</div><h1>📨 Envoi en cours…</h1>'; frag.appendChild(head);
+      app.appendChild(frag); window.scrollTo(0, 0);
+      const initData = delfInitData();
+      if (!initData) { showSubmitted(null, "no-server"); return; }
+      fetch("/api/exam", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ initData: initData, action: "submit", exam: code, payload: payload }) })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) { if (j && j.status === "pending") { delfLocalSet(code, { status: "pending", submittedAt: j.submittedAt, availableAt: j.availableAt }); showSubmitted(j, null); } else showSubmitted(null, "error"); })
+        .catch(function () { showSubmitted(null, "error"); });
+    }
+    function showSubmitted(j, err) {
+      app.innerHTML = ""; const frag = document.createDocumentFragment();
+      const top = el("div", "lesson-top"); top.innerHTML = '<a class="btn-link" href="#/">← Aperçu</a><span class="lesson-top-mod">🎓 DELF ' + CODE + '</span>'; frag.appendChild(top);
+      const c = el("div", "completion " + (err ? "ko" : "ok") + " delf-submitted");
+      if (err === "no-server") c.innerHTML = '<div class="comp-emoji">📋</div><h2>Examen terminé</h2><p>La remise et la correction par l\'IA nécessitent l\'application dans <strong>Telegram</strong>. Ouvrez le cours depuis le bot pour passer l\'examen officiel et recevoir votre résultat sous 24 h.</p>';
+      else if (err === "error") c.innerHTML = '<div class="comp-emoji">⚠️</div><h2>Remise impossible</h2><p>La connexion a échoué. Vérifiez votre réseau, puis réessayez.</p>';
+      else { const when = (j && j.availableAt) ? new Date(j.availableAt) : null; c.innerHTML = '<div class="comp-emoji">📨</div><h2>Copie remise !</h2><p>Votre examen est enregistré. <strong>Le coach Zika (IA) corrige votre copie</strong> et vous enverra votre <strong>note /100</strong>, votre <strong>copie corrigée</strong> et votre <strong>PDF</strong>' + (when ? " vers le <strong>" + when.toLocaleString() + "</strong>" : " sous 24 h") + ".</p><p>📲 Vous recevrez une <strong>notification Telegram</strong> dès que le résultat est prêt.</p>"; }
+      const actions = el("div", "rev-actions");
+      if (err === "error") { const again = el("button", "btn btn-primary", "Réessayer"); again.type = "button"; again.addEventListener("click", doSubmit); actions.appendChild(again); }
+      const home = el("a", "btn " + (err ? "btn-ghost" : "btn-primary"), "Retour à l'aperçu"); home.href = "#/"; actions.appendChild(home);
+      if (!err) { const stb = el("a", "btn btn-ghost", "Voir l'état de ma copie"); stb.href = base + "/resultat"; actions.appendChild(stb); }
+      c.appendChild(actions); frag.appendChild(c); app.appendChild(frag);
+      if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = "#/"; }); window.TG.setMainButton("Retour à l'aperçu", function () { location.hash = "#/"; }); } catch (e) {} }
+      window.scrollTo(0, 0);
+    }
+
+    const dCO = Math.round(E.co.duree / 60), dCE = Math.round(E.ce.duree / 60), dEE = Math.round(E.ee.duree / 60), dEP = Math.round(E.eo.prep / 60), dEO = Math.round(E.eo.duree / 60);
+    const intro = el("div", "delf-intro-body");
+    intro.innerHTML =
+      '<div class="delf-rules">' +
+      "<p>Cet examen blanc reproduit le <strong>DELF " + CODE + "</strong> officiel : 4 épreuves notées chacune sur 25 (<strong>total /100</strong>).</p>" +
+      '<ul class="delf-epreuves">' +
+      "<li>🎧 Compréhension de l'oral — <strong>" + dCO + " min</strong></li>" +
+      "<li>📖 Compréhension des écrits — <strong>" + dCE + " min</strong></li>" +
+      "<li>✍️ Production écrite — <strong>" + dEE + " min</strong></li>" +
+      "<li>🗣️ Production orale — <strong>" + dEP + " min de préparation + " + dEO + " min</strong></li>" +
+      "</ul>" +
+      "<p>⚠️ <strong>Aucune correction</strong> ne s'affiche pendant l'examen : toutes vos réponses sont acceptées. <strong>Votre note, votre copie corrigée et votre PDF arrivent 24 h après la remise</strong>, par notification Telegram.</p>" +
+      "<p>✅ Réussite : <strong>≥ 50/100</strong> et aucune épreuve sous <strong>5/25</strong> (note éliminatoire). Réussir débloque la suite du parcours ; sinon, vous pourrez repasser.</p>" +
+      "<p>⏱️ Chaque épreuve est chronométrée : quand le temps est écoulé, on passe à la suivante.</p>" +
+      "</div>";
+    delfScreen(Object.assign({}, SC, { phase: "Présentation", icone: "🎓", titre: "Examen blanc DELF " + CODE, intro: "", body: intro, primary: "Commencer l'examen →", onPrimary: runCO }));
+  }
+
+  /* ---- Résultat de l'examen DELF (copie corrigée + PDF) ---- */
+  function renderDelfResult(code) {
+    const base = "#/examen/" + code, CODE = delfName(code);
+    app.innerHTML = ""; const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top"); top.innerHTML = '<a class="btn-link" href="#/">← Aperçu</a><span class="lesson-top-mod">🎓 DELF ' + CODE + '</span>'; frag.appendChild(top);
+    const head = el("header", "test-head delf-head"); head.innerHTML = '<div class="lesson-num">DELF ' + CODE + '</div><h1>📊 Mon résultat</h1>'; frag.appendChild(head);
+    const box = el("div", "delf-result-box"); box.innerHTML = '<p class="delf-loading">Chargement…</p>'; frag.appendChild(box);
+    app.appendChild(frag); window.scrollTo(0, 0);
+    if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = "#/"; }); window.TG.setMainButton("Retour à l'aperçu", function () { location.hash = "#/"; }); } catch (e) {} }
+    const initData = delfInitData();
+    if (!initData) { box.innerHTML = "<p>Votre résultat est disponible dans l'application Telegram.</p>"; return; }
+    fetch("/api/exam", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ initData: initData, action: "result", exam: code }) })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { renderDelfResultInto(box, j, code); })
+      .catch(function () { box.innerHTML = "<p>Connexion impossible. Réessayez plus tard.</p>"; });
+  }
+  function delfGauge(label, n) { const cls = n < 5 ? "elim" : (n >= 15 ? "good" : "mid"); return '<div class="delf-gauge ' + cls + '"><div class="delf-gauge-n">' + n + "<span>/25</span></div><div class=\"delf-gauge-l\">" + label + "</div></div>"; }
+  function renderDelfResultInto(box, j, code) {
+    const base = "#/examen/" + code, CODE = delfName(code);
+    if (!j || j.status === "none") { box.innerHTML = '<div class="completion"><div class="comp-emoji">🎓</div><h2>Aucune copie</h2><p>Vous n\'avez pas encore passé l\'examen DELF ' + CODE + '.</p><div class="rev-actions"><a class="btn btn-primary" href="' + base + '">Passer l\'examen</a></div></div>'; return; }
+    if (j.status === "pending") {
+      const when = j.availableAt ? new Date(j.availableAt) : null;
+      const hleft = j.availableAt ? Math.max(0, Math.ceil((j.availableAt - Date.now()) / 3600000)) : null;
+      delfLocalSet(code, { status: "pending", submittedAt: j.submittedAt, availableAt: j.availableAt });
+      box.innerHTML = '<div class="completion"><div class="comp-emoji">⏳</div><h2>Copie en correction</h2><p>Votre examen est bien remis. L\'IA rend votre résultat ' + (when ? "vers le <strong>" + when.toLocaleString() + "</strong>" + (hleft != null ? " (dans ~" + hleft + " h)" : "") : "sous 24 h") + '.</p><p>📲 Vous recevrez une notification Telegram dès que c\'est prêt. 🎓</p><div class="rev-actions"><a class="btn btn-primary" href="#/">Retour à l\'aperçu</a></div></div>';
+      return;
+    }
+    const res = j.result || {}, copy = j.copy || {};
+    if (window.Progress && window.Progress.setTestScore) window.Progress.setTestScore(code, res.total || 0, !!res.reussi);
+    if (window.Sync && window.Sync.saveNow) { try { window.Sync.saveNow(); } catch (e) {} }
+    delfLocalSet(code, { status: "graded", total: res.total, reussi: !!res.reussi });
+    box.innerHTML = "";
+    const card = el("div", "delf-scorecard");
+    const dsur = res.sur || 100, dseuil = res.seuil || 50, dpct = Math.round(res.total / dsur * 100);
+    const verdict = res.reussi
+      ? '<div class="delf-verdict pass">🎓 Réussi — ' + res.total + "/" + dsur + "</div>"
+      : (res.eliminatoire ? '<div class="delf-verdict fail">❌ Éliminatoire — ' + res.total + "/" + dsur + "<br><small>Une épreuve est sous 5/25.</small></div>" : '<div class="delf-verdict fail">📚 Non réussi — ' + res.total + "/" + dsur + "<br><small>Il faut au moins " + dseuil + "/" + dsur + ".</small></div>");
+    card.innerHTML =
+      '<div class="score-ring ' + (res.reussi ? "pass" : "fail") + '"><span>' + dpct + "%</span></div>" +
+      '<div class="delf-gauges">' + delfGauge("🎧 CO", res.co25) + delfGauge("📖 CE", res.ce25) + delfGauge("✍️ EE", res.ee25) + delfGauge("🗣️ EO", res.eo25) + (res.dictee != null ? telcGauge("✒️ Dictée", res.dictee, res.dicteeSur || 25) : "") + "</div>" +
+      verdict +
+      (res.reussi ? '<p class="delf-next">Bravo ! La suite du parcours est débloquée. 🎉</p>' : '<p class="delf-next">Courage — révisez et repassez l\'examen quand vous voulez. 💪</p>');
+    box.appendChild(card);
+    box.appendChild(buildDelfCopy(copy, res));
+    const row = el("div", "rev-actions delf-pdf-row");
+    const pdf = el("button", "btn btn-primary", "📄 Télécharger le PDF"); pdf.type = "button"; pdf.addEventListener("click", function () { exportDelfPDF(res, copy, pdf, code); }); row.appendChild(pdf);
+    const cont = el("a", "btn btn-ghost", res.reussi ? "Continuer →" : "Retour à l'aperçu"); cont.href = res.reussi ? (prochaineEtape() || "#/") : "#/"; row.appendChild(cont);
+    if (!res.reussi) { const again = el("a", "btn btn-ghost", "🔁 Repasser l'examen"); again.href = base; row.appendChild(again); }
+    box.appendChild(row);
+  }
+  function buildDelfCopy(copy, res) {
+    const w = el("div", "delf-copy");
+    w.appendChild(el("h2", "delf-copy-h", "📝 Ma copie corrigée"));
+    function qcmSec(title, items) {
+      if (!items || !items.length) return;
+      const s = el("div", "delf-copy-sec"); s.appendChild(el("h3", null, title));
+      items.forEach(function (it, i) {
+        const ok = it.selected === it.correct;
+        const yours = it.selected >= 0 ? it.options[it.selected] : "(sans réponse)";
+        const q = el("div", "delf-copy-q " + (ok ? "ok" : "ko"));
+        q.innerHTML = '<p class="dq">' + (i + 1) + ". " + delfEsc(it.q) + '</p><p class="da">' + (ok ? "✓" : "✗") + " Votre réponse : <strong>" + delfEsc(yours) + "</strong>" + (ok ? "" : " — Correct : <strong>" + delfEsc(it.options[it.correct]) + "</strong>") + "</p>";
+        s.appendChild(q);
+      });
+      w.appendChild(s);
+    }
+    qcmSec("🎧 Compréhension de l'oral — " + res.co25 + "/25", copy.co);
+    qcmSec("📖 Compréhension des écrits — " + res.ce25 + "/25", copy.ce);
+    function prodSec(title, arr, fb, getTxt) {
+      if (!arr || !arr.length) return;
+      const s = el("div", "delf-copy-sec"); s.appendChild(el("h3", null, title));
+      arr.forEach(function (t) { const q = el("div", "delf-copy-prod"); q.innerHTML = '<p class="dc">' + delfEsc(t.consigne) + '</p><div class="dp">' + (delfEsc(getTxt(t)) || "<em>(rien)</em>") + "</div>"; s.appendChild(q); });
+      if (fb) { const f = el("div", "delf-copy-fb"); f.innerHTML = "<strong>✨ Correction du coach Zika :</strong><br>" + delfFmt(fb); s.appendChild(f); }
+      w.appendChild(s);
+    }
+    prodSec("✍️ Production écrite — " + res.ee25 + "/25", copy.ee, res.eeFeedback, function (t) { return t.text; });
+    prodSec("🗣️ Production orale — " + res.eo25 + "/25", copy.eo, res.eoFeedback, function (t) { return t.transcript; });
+    if (copy.dictee) {
+      const s = el("div", "delf-copy-sec"); s.appendChild(el("h3", null, "✒️ Dictée — " + res.dictee + "/" + (res.dicteeSur || 25) + (copy.dictee.score != null ? " (" + copy.dictee.score + "% de mots justes)" : "")));
+      const ref = el("div", "delf-copy-prod"); ref.innerHTML = '<p class="dc">Texte attendu :</p><div class="dp">' + delfEsc(copy.dictee.texte) + "</div>";
+      const got = el("div", "delf-copy-prod"); got.innerHTML = '<p class="dc">Votre dictée :</p><div class="dp">' + (delfEsc(copy.dictee.saisie) || "<em>(rien)</em>") + "</div>";
+      s.appendChild(ref); s.appendChild(got); w.appendChild(s);
+    }
+    return w;
+  }
+  function loadJsPDF() {
+    return new Promise(function (resolve, reject) {
+      if (window.jspdf && window.jspdf.jsPDF) return resolve(window.jspdf.jsPDF);
+      const s = document.createElement("script");
+      s.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+      s.onload = function () { if (window.jspdf && window.jspdf.jsPDF) resolve(window.jspdf.jsPDF); else reject(new Error("jsPDF")); };
+      s.onerror = function () { reject(new Error("cdn")); };
+      document.head.appendChild(s);
+    });
+  }
+  function exportDelfPDF(res, copy, btn, code) {
+    const CODE = String(code || "a2").toUpperCase();
+    const old = btn.textContent; btn.disabled = true; btn.textContent = "Préparation…";
+    loadJsPDF().then(function (JsPDF) {
+      try {
+        const doc = new JsPDF({ unit: "pt", format: "a4" }); const M = 40; let y = M; const PW = doc.internal.pageSize.getWidth(), PH = doc.internal.pageSize.getHeight(), W = PW - 2 * M;
+        function line(txt, size, style, color) { doc.setFont("helvetica", style || "normal"); doc.setFontSize(size || 11); doc.setTextColor(color ? color[0] : 25, color ? color[1] : 25, color ? color[2] : 25); doc.splitTextToSize(String(txt == null ? "" : txt), W).forEach(function (l) { if (y > PH - M) { doc.addPage(); y = M; } doc.text(l, M, y); y += (size || 11) + 4; }); }
+        line("Examen DELF " + CODE + " — Allemand", 18, "bold"); y += 2;
+        line("Résultat : " + res.total + "/100 — " + (res.reussi ? "RÉUSSI" : (res.eliminatoire ? "ÉLIMINATOIRE" : "NON RÉUSSI")), 13, "bold", res.reussi ? [21, 128, 61] : [185, 28, 28]);
+        line("CO " + res.co25 + "/25   ·   CE " + res.ce25 + "/25   ·   EE " + res.ee25 + "/25   ·   EO " + res.eo25 + "/25", 11); y += 8;
+        function qcm(title, items) { if (!items || !items.length) return; line(title, 13, "bold"); items.forEach(function (it, i) { const ok = it.selected === it.correct; line((i + 1) + ". " + it.q, 11, "bold"); line("→ Votre réponse : " + (it.selected >= 0 ? it.options[it.selected] : "(sans réponse)") + (ok ? "  [correct]" : "  [faux] · correct : " + it.options[it.correct]), 10, "normal", ok ? [21, 128, 61] : [185, 28, 28]); }); y += 6; }
+        qcm("Comprehension de l'oral (" + res.co25 + "/25)", copy.co);
+        qcm("Comprehension des ecrits (" + res.ce25 + "/25)", copy.ce);
+        function prod(title, arr, fb, key) { if (!arr || !arr.length) return; line(title, 13, "bold"); arr.forEach(function (t) { line("Consigne : " + t.consigne, 10, "italic"); line(t[key] || "(rien)", 11); y += 2; }); if (fb) line("Correction IA : " + String(fb).replace(/\*\*/g, ""), 10, "normal", [70, 70, 70]); y += 6; }
+        prod("Production ecrite (" + res.ee25 + "/25)", copy.ee, res.eeFeedback, "text");
+        prod("Production orale (" + res.eo25 + "/25)", copy.eo, res.eoFeedback, "transcript");
+        if (copy.dictee) { line("Dictee (" + res.dictee + "/" + (res.dicteeSur || 25) + (copy.dictee.score != null ? ", " + copy.dictee.score + "% justes" : "") + ")", 13, "bold"); line("Texte attendu : " + copy.dictee.texte, 10, "italic"); line("Votre dictee : " + (copy.dictee.saisie || "(rien)"), 11); y += 6; }
+        doc.save("DELF_" + CODE + "_resultat.pdf");
+        btn.textContent = "✓ PDF téléchargé";
+      } catch (e) { delfPrintFallback(res, copy, code); btn.textContent = old; }
+      setTimeout(function () { btn.disabled = false; btn.textContent = old; }, 1800);
+    }).catch(function () { delfPrintFallback(res, copy, code); btn.disabled = false; btn.textContent = old; });
+  }
+  function delfPrintFallback(res, copy, code) {
+    const CODE = String(code || "a2").toUpperCase();
+    let h = '<html><head><meta charset="utf-8"><title>DELF ' + CODE + ' — résultat</title><style>body{font-family:sans-serif;max-width:760px;margin:24px auto;padding:0 16px;color:#111}h1{font-size:22px}h3{margin:18px 0 6px}.ko{color:#b91c1c}.ok{color:#15803d}.p{background:#f3f4f6;padding:8px;border-radius:6px;white-space:pre-wrap}</style></head><body>';
+    h += "<h1>Examen DELF " + CODE + " — " + res.total + "/100 — " + (res.reussi ? "RÉUSSI" : (res.eliminatoire ? "ÉLIMINATOIRE" : "NON RÉUSSI")) + "</h1>";
+    h += "<p>CO " + res.co25 + "/25 · CE " + res.ce25 + "/25 · EE " + res.ee25 + "/25 · EO " + res.eo25 + "/25</p>";
+    function qcm(title, items) { if (!items || !items.length) return; h += "<h3>" + title + "</h3>"; items.forEach(function (it, i) { const ok = it.selected === it.correct; h += "<p class='" + (ok ? "ok" : "ko") + "'>" + (i + 1) + ". " + delfEsc(it.q) + "<br>Votre réponse : " + delfEsc(it.selected >= 0 ? it.options[it.selected] : "(sans réponse)") + (ok ? " ✓" : " ✗ — correct : " + delfEsc(it.options[it.correct])) + "</p>"; }); }
+    qcm("Compréhension de l'oral", copy.co); qcm("Compréhension des écrits", copy.ce);
+    function prod(title, arr, fb, key) { if (!arr || !arr.length) return; h += "<h3>" + title + "</h3>"; arr.forEach(function (t) { h += "<p><em>" + delfEsc(t.consigne) + "</em></p><div class='p'>" + delfEsc(t[key] || "(rien)") + "</div>"; }); if (fb) h += "<p><strong>Correction IA :</strong><br>" + delfFmt(fb) + "</p>"; }
+    prod("Production écrite", copy.ee, res.eeFeedback, "text"); prod("Production orale", copy.eo, res.eoFeedback, "transcript");
+    h += "</body></html>";
+    const w = window.open("", "_blank"); if (!w) { toast("Activez les pop-ups pour générer le PDF, ou faites une capture d'écran."); return; }
+    w.document.write(h); w.document.close(); w.focus(); setTimeout(function () { try { w.print(); } catch (e) {} }, 400);
+  }
+
+  /* ====================================================================
+     EXAMEN telc B1 — deux parties indépendantes (écrit /225, oral /75),
+     ≥ 60 % à chacune, bénéfice gardé. Réutilise le moteur DELF (timer,
+     écrans séquencés, QCM/EE/EO, remise différée 24 h, PDF).
+     ==================================================================== */
+  function telcData(code) { return window["TELC_" + String(code).toUpperCase()]; }
+  function telcName(code) { return code === "finalb" ? "B1 + B2 (combiné)" : code === "finalc" ? "C1 + C2 (combiné)" : String(code).toUpperCase(); }
+  function telcLocalGet(code) { try { return JSON.parse(localStorage.getItem("telc_" + code) || "null"); } catch (e) { return null; } }
+  function telcLocalSet(code, o) { try { localStorage.setItem("telc_" + code, JSON.stringify(o || {})); } catch (e) {} }
+  function telcLang() { return (window.I18N && window.I18N.lang && window.I18N.lang()) || "fr"; }
+  function telcGuardOK(code) { const G = { b1: ["final", "B1"], b2: ["b1", "B2"], c1: ["finalb", "C1"], c2: ["c1", "C2"], finalb: ["b2", null], finalc: ["c2", null] }, g = G[code] || G.b1; return examPasse(g[0]) && (g[1] ? niveauTermine(g[1]) : true); }
+
+  function renderTelcHub(code) {
+    const T = telcData(code);
+    if (!T || !telcGuardOK(code)) { location.hash = "#/"; return; }
+    const base = "#/examen/" + code, CODE = delfName(code);
+    app.innerHTML = ""; const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top"); top.innerHTML = '<a class="btn-link" href="#/">← Aperçu</a><span class="lesson-top-mod">📜 telc ' + CODE + '</span>'; frag.appendChild(top);
+    const head = el("header", "test-head delf-head"); head.innerHTML = '<div class="lesson-num">Examen telc Deutsch ' + CODE + '</div><h1>📜 telc ' + CODE + '</h1><p>Deux parties à réussir séparément (≥ 60 % chacune). Le bénéfice d\'une partie réussie est conservé : vous ne repassez que la partie manquée.</p>'; frag.appendChild(head);
+    const loc = telcLocalGet(code) || {};
+    const certified = !!((window.Progress.getTestScore(code) || {}).reussi);
+    function partCard(pkey, label, icone, route, sur, seuil, desc) {
+      const s = loc[pkey] || {}; const passed = certified || !!s.passed; const st = passed ? "passed" : (s.status || "none");
+      const card = el("div", "delf-doc telc-part " + (passed ? "ok" : (st === "pending" ? "pending" : "")));
+      let status;
+      if (passed) status = "✅ Réussie" + (s.total != null ? " — " + s.total + "/" + sur : "");
+      else if (st === "pending") status = "⏳ En correction (résultat sous 24 h)";
+      else if (s.total != null) status = "📚 Non réussie — " + s.total + "/" + sur + " (il faut " + seuil + ")";
+      else status = "À passer";
+      card.innerHTML = '<h3 class="delf-doc-t">' + icone + " " + label + " — /" + sur + '</h3><p class="delf-q-t">' + desc + '</p><p><strong>' + status + "</strong></p>";
+      const row = el("div", "examen-actions");
+      if (st === "pending" && !passed) { const b = el("a", "btn btn-primary", "Voir l'état de ma copie"); b.href = base + "/resultat/" + route; row.appendChild(b); }
+      else {
+        const b = el("a", "btn " + (passed ? "btn-ghost" : "btn-primary"), passed ? "Repasser cette partie" : "🎓 Passer cette partie"); b.href = base + "/" + route; row.appendChild(b);
+        if (s.status === "graded" || passed) { const r = el("a", "btn btn-ghost", "📊 Résultat"); r.href = base + "/resultat/" + route; row.appendChild(r); }
+      }
+      card.appendChild(row); return card;
+    }
+    const P = T.parts; const sec = el("section", "section");
+    sec.appendChild(partCard("schriftlich", "Épreuve écrite", "📝", "ecrit", P.schriftlich.sur, P.schriftlich.seuil, "Compréhension écrite/orale + production(s) écrite(s)."));
+    sec.appendChild(partCard("muendlich", "Épreuve orale", "🗣️", "oral", P.muendlich.sur, P.muendlich.seuil, "3 parties, notées par l'IA (préparation 20 min)."));
+    frag.appendChild(sec);
+    const cert = el("div", "delf-verdict " + (certified ? "pass" : "fail"));
+    cert.innerHTML = certified ? "🏅 Certificat telc " + CODE + " obtenu — la suite du parcours est débloquée !" : "🎓 Réussissez les DEUX parties (≥ 60 % chacune) pour obtenir le certificat " + CODE + ".";
+    const cs = el("section", "section"); cs.appendChild(cert); frag.appendChild(cs);
+    app.appendChild(frag);
+    if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = "#/"; }); window.TG.setMainButton("Retour à l'aperçu", function () { location.hash = "#/"; }); } catch (e) {} }
+    window.scrollTo(0, 0);
+  }
+
+  function renderTelcPart(code, part) {
+    const T = telcData(code);
+    if (!T || !telcGuardOK(code)) { location.hash = "#/"; return; }
+    const base = "#/examen/" + code, CODE = delfName(code);
+    const pkey = part === "muendlich" ? "muendlich" : "schriftlich";
+    const route = pkey === "muendlich" ? "oral" : "ecrit";
+    const loc0 = telcLocalGet(code) || {};
+    if (loc0[pkey] && loc0[pkey].status === "pending" && !loc0[pkey].passed) { location.hash = base + "/resultat/" + route; return; }
+    const SC = { brand: "📜 telc " + CODE, hashPrefix: base, backHash: base };
+
+    function submitPart(key, payload) {
+      if (window.TG) { try { window.TG.closingConfirmation(false); } catch (e) {} }
+      app.innerHTML = ""; const frag = document.createDocumentFragment();
+      const top = el("div", "lesson-top"); top.innerHTML = '<span class="btn-link" style="visibility:hidden">·</span><span class="lesson-top-mod">📜 telc ' + CODE + '</span>'; frag.appendChild(top);
+      const head = el("header", "test-head delf-head"); head.innerHTML = '<div class="lesson-num">Remise de la copie</div><h1>📨 Envoi en cours…</h1>'; frag.appendChild(head); app.appendChild(frag); window.scrollTo(0, 0);
+      const initData = delfInitData();
+      if (!initData) { telcSubmitted(null, "no-server"); return; }
+      fetch("/api/exam", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ initData: initData, action: "submit", exam: key, payload: payload }) })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) { if (j && j.status === "pending") { const lc = telcLocalGet(code) || {}; lc[pkey] = { status: "pending", submittedAt: j.submittedAt, availableAt: j.availableAt }; telcLocalSet(code, lc); telcSubmitted(j, null); } else telcSubmitted(null, "error"); })
+        .catch(function () { telcSubmitted(null, "error"); });
+    }
+    function telcSubmitted(j, err) {
+      app.innerHTML = ""; const frag = document.createDocumentFragment();
+      const top = el("div", "lesson-top"); top.innerHTML = '<a class="btn-link" href="' + base + '">← telc ' + CODE + '</a><span class="lesson-top-mod">📜 telc ' + CODE + '</span>'; frag.appendChild(top);
+      const c = el("div", "completion " + (err ? "ko" : "ok") + " delf-submitted");
+      const pn = pkey === "muendlich" ? "orale" : "écrite";
+      if (err === "no-server") c.innerHTML = '<div class="comp-emoji">📋</div><h2>Partie ' + pn + ' terminée</h2><p>La remise et la correction par l\'IA nécessitent l\'application dans <strong>Telegram</strong>.</p>';
+      else if (err === "error") c.innerHTML = '<div class="comp-emoji">⚠️</div><h2>Remise impossible</h2><p>La connexion a échoué. Vérifiez votre réseau et réessayez.</p>';
+      else { const when = (j && j.availableAt) ? new Date(j.availableAt) : null; c.innerHTML = '<div class="comp-emoji">📨</div><h2>Copie ' + pn + ' remise !</h2><p>Le coach Zika (IA) corrige votre copie et vous enverra le résultat' + (when ? " vers le <strong>" + when.toLocaleString() + "</strong>" : " sous 24 h") + ', par notification Telegram.</p>'; }
+      const actions = el("div", "rev-actions");
+      const hub = el("a", "btn btn-primary", "Retour à telc " + CODE); hub.href = base; actions.appendChild(hub);
+      if (!err) { const stb = el("a", "btn btn-ghost", "Voir l'état de ma copie"); stb.href = base + "/resultat/" + route; actions.appendChild(stb); }
+      c.appendChild(actions); frag.appendChild(c); app.appendChild(frag);
+      if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = base; }); window.TG.setMainButton("Retour à telc " + CODE, function () { location.hash = base; }); } catch (e) {} }
+      window.scrollTo(0, 0);
+    }
+
+    if (pkey === "schriftlich") {
+      const P = T.parts.schriftlich;
+      if (P.format === "c2") {
+        // C2 : Leseverstehen (auto) → Hören und Schreiben (synthèse, IA) → Schriftlicher Ausdruck (IA).
+        const st2 = { lesenPts: 0, lesenItems: [], hs: [], schreiben: [] };
+        const c2sub = function () { submitPart(code + "-schriftlich", { langue: telcLang(), lesen: st2.lesenPts, copy: { lesen: st2.lesenItems, hoerenSchreiben: st2.hs, schreiben: st2.schreiben } }); };
+        const c2write = function (Tk, rows, ph, phase, primary, onDone) {
+          const body = el("div", "delf-ee"); const card = el("div", "delf-doc");
+          card.appendChild(el("h3", "delf-doc-t", delfEsc(Tk.titre || P.schreiben.titre)));
+          card.appendChild(el("p", "delf-q-t", delfEsc(Tk.consigne)));
+          if (Tk.leitpunkte) { const ul = el("ul", "delf-points"); Tk.leitpunkte.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); card.appendChild(ul); }
+          const ta = el("textarea", "production-input"); ta.rows = rows; ta.setAttribute("placeholder", ph);
+          const meta = el("div", "production-meta"); const wc = el("span", "wordcount", "0 mot"); meta.appendChild(wc); meta.appendChild(el("span", "wordmin", "objectif : ≥ " + Tk.minMots + " mots"));
+          ta.addEventListener("input", function () { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; wc.textContent = w + (w > 1 ? " mots" : " mot"); wc.classList.toggle("ok", w >= Tk.minMots); });
+          return { card: card, body: body, ta: ta, meta: meta };
+        };
+        const c2_3 = function () {
+          const Tk = P.schreiben.tache; const u = c2write(Tk, 10, "Schreiben Sie hier Ihren Essay…");
+          u.card.appendChild(u.ta); u.card.appendChild(u.meta); u.body.appendChild(u.card);
+          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 3 / 3", icone: "✍️", titre: P.schreiben.titre, intro: Math.round(P.durees.schreiben / 60) + " min — rédigez votre essai à partir des sources.", body: u.body, timerSeconds: P.durees.schreiben, primary: "Remettre la copie écrite ✅", onPrimary: function () { st2.schreiben = [{ id: Tk.id, consigne: Tk.consigne, text: u.ta.value.trim() }]; c2sub(); } }));
+        };
+        const c2pause = function () {
+          const body = el("div", "completion");
+          body.innerHTML = '<div class="comp-emoji">☕</div><h2>Pause obligatoire — ' + Math.round(P.durees.pause / 60) + ' min</h2><p>Comme à l\'examen officiel telc C2, une pause est prévue avant l\'épreuve de production écrite. Reposez-vous, puis reprenez. Le minuteur passe automatiquement à la suite à la fin de la pause — vous pouvez aussi reprendre dès que vous êtes prêt(e).</p>';
+          delfScreen(Object.assign({}, SC, { phase: "Pause obligatoire", icone: "☕", titre: "Pause", intro: "", body: body, timerSeconds: P.durees.pause, primary: "Reprendre l'examen →", onPrimary: c2_3 }));
+        };
+        const c2_2 = function () {
+          const HS = P.hoerenSchreiben; const u = c2write(HS.tache, 7, "Ihre Zusammenfassung…");
+          const card = el("div", "delf-doc"); card.appendChild(el("h3", "delf-doc-t", delfEsc(HS.titre))); card.appendChild(el("p", "delf-q-t", delfEsc(HS.intro)));
+          HS.audios.forEach(function (a) { let plays = 0; const b = el("button", "btn btn-audio", "🔊 " + a.titre + " (2 max)"); b.type = "button"; b.addEventListener("click", function () { if (plays >= 2) { toast("Vous avez déjà écouté 2 fois."); return; } plays++; if (window.Speech) window.Speech.speak(a.audio, { rate: 0.98 }); const rest = 2 - plays; b.textContent = rest > 0 ? "🔊 Réécouter (" + rest + ")" : "🔇 Écoutes épuisées"; if (plays >= 2) b.disabled = true; }); card.appendChild(b); });
+          card.appendChild(el("p", "delf-q-t", delfEsc(HS.tache.consigne))); card.appendChild(u.ta); card.appendChild(u.meta);
+          const body = el("div", "delf-ee"); body.appendChild(card);
+          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 2 / 3", icone: HS.icone, titre: HS.titre, intro: Math.round(P.durees.hoerenSchreiben / 60) + " min — écoutez (2× max) puis rédigez votre synthèse.", body: body, timerSeconds: P.durees.hoerenSchreiben, primary: "Terminer cette partie →", onPrimary: function () { st2.hs = [{ id: HS.tache.id, consigne: HS.tache.consigne, text: u.ta.value.trim() }]; (P.durees.pause ? c2pause() : c2_3()); } }));
+        };
+        const c2_1 = function () {
+          const lesenR = delfQCM(P.lesen.blocs, "ce");
+          const body = el("div", "section-x"); body.appendChild(el("p", "delf-q-t", delfEsc(P.lesen.intro))); body.appendChild(lesenR.el);
+          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 1 / 3", icone: "📖", titre: "Leseverstehen", intro: Math.round(P.durees.lesen / 60) + " min — lisez et répondez ; aucune correction.", body: body, timerSeconds: P.durees.lesen, primary: "Terminer cette partie →", onPrimary: function () { const lc = lesenR.collect(); st2.lesenPts = Math.round(lc.correct / (lc.total || 1) * P.lesen.sur); st2.lesenItems = lc.items; c2_2(); } }));
+        };
+        const intro2 = el("div", "delf-intro-body");
+        intro2.innerHTML = '<div class="delf-rules"><p>Épreuve écrite telc ' + CODE + ' — <strong>/' + P.sur + '</strong> (réussite ≥ ' + P.seuil + '). Trois temps :</p><ul class="delf-epreuves"><li>📖 Leseverstehen — <strong>' + Math.round(P.durees.lesen / 60) + ' min</strong></li><li>🎧✍️ Hören und Schreiben — <strong>' + Math.round(P.durees.hoerenSchreiben / 60) + ' min</strong></li><li>✍️ Schriftlicher Ausdruck — <strong>' + Math.round(P.durees.schreiben / 60) + ' min</strong></li></ul><p>Aucune correction pendant l\'épreuve ; résultat + copie corrigée + PDF sous 24 h.</p></div>';
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite", icone: "📝", titre: "Schriftliche Prüfung", intro: "", body: intro2, primary: "Commencer l'épreuve écrite →", onPrimary: c2_1 }));
+        return;
+      }
+      const st = { lesenPts: 0, sbPts: 0, hoerenPts: 0, lesenItems: [], sbItems: [], hoerenItems: [], schreiben: [], dictee: null };
+      const dLS = Math.round(P.durees.leseSb / 60), dH = Math.round(P.durees.hoeren / 60), dS = Math.round(P.durees.schreiben / 60);
+      const doSubmitW = function () { const payload = { langue: telcLang(), lesen: st.lesenPts, sprachbausteine: st.sbPts, hoeren: st.hoerenPts, copy: { lesen: st.lesenItems, sprachbausteine: st.sbItems, hoeren: st.hoerenItems, schreiben: st.schreiben } }; if (st.dictee) { payload.dictee = st.dictee.points; payload.dicteeSur = st.dictee.sur; payload.copy.dictee = { texte: st.dictee.texte, saisie: st.dictee.saisie, score: st.dictee.score, sur: st.dictee.sur }; } submitPart(code + "-schriftlich", payload); };
+      const sDictee = function () { const r = delfDictee(P.dictee); delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · dictée", icone: "✒️", titre: P.dictee.titre || "Dictée", intro: "Niveau " + (P.dictee.niveau || "") + " — écoutez (2× max) et écrivez exactement. Aucune correction.", body: r.el, timerSeconds: P.dictee.duree || 900, primary: "Terminer la dictée →", onPrimary: function () { st.dictee = r.collect(); doSubmitW(); } })); };
+      const s3 = function () {
+        const Tk = P.schreiben.tache;
+        const body = el("div", "delf-ee"); const card = el("div", "delf-doc");
+        card.appendChild(el("h3", "delf-doc-t", delfEsc(Tk.titre)));
+        card.appendChild(el("p", "delf-q-t", delfEsc(Tk.consigne)));
+        const ul = el("ul", "delf-points"); Tk.leitpunkte.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); card.appendChild(ul);
+        const ta = el("textarea", "production-input"); ta.rows = 8; ta.setAttribute("placeholder", "Schreiben Sie hier auf Deutsch…");
+        const meta = el("div", "production-meta"); const wc = el("span", "wordcount", "0 mot"); meta.appendChild(wc); meta.appendChild(el("span", "wordmin", "objectif : ≥ " + Tk.minMots + " mots"));
+        ta.addEventListener("input", function () { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; wc.textContent = w + (w > 1 ? " mots" : " mot"); wc.classList.toggle("ok", w >= Tk.minMots); });
+        card.appendChild(ta); card.appendChild(meta); body.appendChild(card);
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 3 / 3", icone: "✍️", titre: "Schriftlicher Ausdruck", intro: dS + " min — rédigez votre texte (la correction viendra plus tard).", body: body, timerSeconds: P.durees.schreiben, primary: "Remettre la copie écrite ✅", onPrimary: function () {
+          st.schreiben = [{ id: Tk.id, consigne: Tk.consigne, text: ta.value.trim() }];
+          (P.dictee ? sDictee() : doSubmitW());
+        } }));
+      };
+      const s2 = function () {
+        const hR = delfQCM(P.hoeren.documents, "co");
+        const body = el("div", "section-x"); body.appendChild(el("p", "delf-q-t", delfEsc(P.hoeren.intro))); body.appendChild(hR.el);
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 2 / 3", icone: "🎧", titre: "Hörverstehen", intro: dH + " min.", body: body, timerSeconds: P.durees.hoeren, primary: "Terminer cette partie →", onPrimary: function () { const hc = hR.collect(); st.hoerenPts = Math.round(hc.correct / (hc.total || 1) * P.hoeren.sur); st.hoerenItems = hc.items; s3(); } }));
+      };
+      const s1 = function () {
+        const lesenR = delfQCM(P.lesen.blocs, "ce");
+        const sbDoc = { titre: P.sprachbausteine.titre, texte: P.sprachbausteine.intro, questions: P.sprachbausteine.questions };
+        const sbR = delfQCM([sbDoc], "ce");
+        const body = el("div", "section-x");
+        body.appendChild(el("h2", "delf-copy-h", "📖 " + P.lesen.titre + " (/" + P.lesen.sur + ")"));
+        body.appendChild(el("p", "delf-q-t", delfEsc(P.lesen.intro)));
+        body.appendChild(lesenR.el);
+        body.appendChild(el("h2", "delf-copy-h", "🧩 " + P.sprachbausteine.titre + " (/" + P.sprachbausteine.sur + ")"));
+        body.appendChild(sbR.el);
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 1 / 3", icone: "📖", titre: "Leseverstehen & Sprachbausteine", intro: dLS + " min — lisez et répondez ; aucune correction ne s'affiche.", body: body, timerSeconds: P.durees.leseSb, primary: "Terminer cette partie →", onPrimary: function () {
+          const lc = lesenR.collect(), sc = sbR.collect();
+          st.lesenPts = Math.round(lc.correct / (lc.total || 1) * P.lesen.sur); st.lesenItems = lc.items;
+          st.sbPts = Math.round(sc.correct / (sc.total || 1) * P.sprachbausteine.sur); st.sbItems = sc.items;
+          s2();
+        } }));
+      };
+      const intro = el("div", "delf-intro-body");
+      intro.innerHTML = '<div class="delf-rules"><p>Épreuve écrite telc ' + CODE + ' — <strong>/' + P.sur + '</strong> (réussite ≥ ' + P.seuil + '). Trois temps enchaînés :</p><ul class="delf-epreuves"><li>📖 Leseverstehen &amp; 🧩 Sprachbausteine — <strong>' + dLS + ' min</strong></li><li>🎧 Hörverstehen — <strong>' + dH + ' min</strong></li><li>✍️ Schriftlicher Ausdruck — <strong>' + dS + ' min</strong></li></ul><p>Aucune correction pendant l\'épreuve ; votre note, votre copie corrigée et votre PDF arrivent sous 24 h.</p></div>';
+      delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite", icone: "📝", titre: "Schriftliche Prüfung", intro: "", body: intro, primary: "Commencer l'épreuve écrite →", onPrimary: s1 }));
+    } else {
+      const P = T.parts.muendlich;
+      const passation = function () {
+        const r = delfEO(P.taches, CODE);
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve orale · passation", icone: "🗣️", titre: "Mündliche Prüfung", intro: "Présentation au micro + discussion en direct avec l'examinateur. Aucune correction pendant l'épreuve.", body: r.el, timerSeconds: P.duree, primary: "Remettre la copie orale ✅", onPrimary: function () { submitPart(code + "-muendlich", { langue: telcLang(), copy: { oral: r.collect() } }); } }));
+      };
+      const prep = function () {
+        const body = el("div", "delf-eo-prep");
+        P.taches.forEach(function (t) { const c = el("div", "delf-doc"); c.appendChild(el("h3", "delf-doc-t", delfEsc(t.titre))); c.appendChild(el("p", "delf-q-t", delfEsc(t.consigne))); if (t.points) { const ul = el("ul", "delf-points"); t.points.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); c.appendChild(ul); } body.appendChild(c); });
+        body.appendChild(el("p", "delf-q-t", "📝 20 minutes de préparation. Notez vos idées, puis enregistrez-vous."));
+        const note = el("textarea", "production-input"); note.rows = 4; note.setAttribute("placeholder", "Brouillon (non noté)…"); body.appendChild(note);
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve orale · préparation (20 min)", icone: "🗣️", titre: "Vorbereitung", intro: "Préparez les 3 parties.", body: body, timerSeconds: P.prep, primary: "Je suis prêt(e) — parler →", onPrimary: passation }));
+      };
+      prep();
+    }
+  }
+
+  function renderTelcResult(code, routePart) {
+    const part = routePart === "oral" ? "muendlich" : "schriftlich";
+    const key = code + "-" + part, base = "#/examen/" + code, CODE = telcName(code);
+    app.innerHTML = ""; const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top"); top.innerHTML = '<a class="btn-link" href="' + base + '">← telc ' + CODE + '</a><span class="lesson-top-mod">📜 telc ' + CODE + '</span>'; frag.appendChild(top);
+    const head = el("header", "test-head delf-head"); head.innerHTML = '<div class="lesson-num">telc ' + CODE + '</div><h1>📊 Résultat — ' + (part === "muendlich" ? "oral" : "écrit") + "</h1>"; frag.appendChild(head);
+    const box = el("div", "delf-result-box"); box.innerHTML = '<p class="delf-loading">Chargement…</p>'; frag.appendChild(box);
+    app.appendChild(frag); window.scrollTo(0, 0);
+    if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = base; }); window.TG.setMainButton("Retour à telc " + CODE, function () { location.hash = base; }); } catch (e) {} }
+    const initData = delfInitData();
+    if (!initData) { box.innerHTML = "<p>Votre résultat est disponible dans l'application Telegram.</p>"; return; }
+    fetch("/api/exam", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ initData: initData, action: "result", exam: key }) })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { renderTelcResultInto(box, j, part, code); })
+      .catch(function () { box.innerHTML = "<p>Connexion impossible. Réessayez plus tard.</p>"; });
+  }
+  function renderTelcResultInto(box, j, part, code) {
+    const route = part === "muendlich" ? "oral" : "ecrit", base = "#/examen/" + code, CODE = telcName(code);
+    if (!j || j.status === "none") { box.innerHTML = '<div class="completion"><div class="comp-emoji">📜</div><h2>Aucune copie</h2><p>Vous n\'avez pas encore passé cette partie.</p><div class="rev-actions"><a class="btn btn-primary" href="' + base + '/' + route + '">Passer cette partie</a></div></div>'; return; }
+    if (j.status === "pending") {
+      const when = j.availableAt ? new Date(j.availableAt) : null;
+      const hleft = j.availableAt ? Math.max(0, Math.ceil((j.availableAt - Date.now()) / 3600000)) : null;
+      const lc = telcLocalGet(code) || {}; lc[part] = { status: "pending", submittedAt: j.submittedAt, availableAt: j.availableAt }; telcLocalSet(code, lc);
+      box.innerHTML = '<div class="completion"><div class="comp-emoji">⏳</div><h2>Copie en correction</h2><p>Résultat ' + (when ? "vers le <strong>" + when.toLocaleString() + "</strong>" + (hleft != null ? " (dans ~" + hleft + " h)" : "") : "sous 24 h") + '.</p><p>📲 Notification Telegram à la clé.</p><div class="rev-actions"><a class="btn btn-primary" href="' + base + '">Retour à telc ' + CODE + '</a></div></div>';
+      return;
+    }
+    const res = j.result || {}, copy = j.copy || {};
+    const lc = telcLocalGet(code) || {}; lc[part] = { status: "graded", total: res.total, passed: !!res.passed }; telcLocalSet(code, lc);
+    if (window.Sync && window.Sync.load) { try { window.Sync.load(function () {}); } catch (e) {} }
+    box.innerHTML = "";
+    box.appendChild(telcScoreCard(res, part));
+    box.appendChild(buildTelcCopy(copy, res, part));
+    const row = el("div", "rev-actions delf-pdf-row");
+    const pdf = el("button", "btn btn-primary", "📄 Télécharger le PDF"); pdf.type = "button"; pdf.addEventListener("click", function () { exportTelcPDF(res, copy, part, pdf, code); }); row.appendChild(pdf);
+    const hub = el("a", "btn btn-ghost", "Retour à telc " + CODE); hub.href = base; row.appendChild(hub);
+    if (!res.passed) { const again = el("a", "btn btn-ghost", "🔁 Repasser cette partie"); again.href = base + "/" + route; row.appendChild(again); }
+    box.appendChild(row);
+  }
+  function telcGauge(label, n, max) { const ratio = max ? n / max : 0; const cls = ratio < 0.5 ? "elim" : (ratio >= 0.7 ? "good" : "mid"); return '<div class="delf-gauge ' + cls + '"><div class="delf-gauge-n">' + n + "<span>/" + max + "</span></div><div class=\"delf-gauge-l\">" + label + "</div></div>"; }
+  function telcScoreCard(res, part) {
+    const c = el("div", "delf-scorecard"); const pct = res.sur ? Math.round(res.total / res.sur * 100) : 0;
+    let inner = '<div class="score-ring ' + (res.passed ? "pass" : "fail") + '"><span>' + res.total + "</span></div>";
+    inner += '<p class="delf-q-t">Total ' + (part === "muendlich" ? "oral" : "écrit") + " : <strong>" + res.total + " / " + res.sur + "</strong> (" + pct + "%) — il faut " + res.seuil + "</p>";
+    if (part !== "muendlich") {
+      const gs = [];
+      if (res.lesenMax) gs.push(telcGauge("📖 Lesen", res.lesen, res.lesenMax));
+      if (res.sbMax) gs.push(telcGauge("🧩 Sprachb.", res.sprachbausteine, res.sbMax));
+      if (res.hoerenMax) gs.push(telcGauge("🎧 Hören", res.hoeren, res.hoerenMax));
+      if (res.hsMax) gs.push(telcGauge("🎧✍️ Hör+Schr", res.hs, res.hsMax));
+      gs.push(telcGauge("✍️ Schreiben", res.schreiben, res.schreibenMax || 45));
+      if (res.dicteeMax) gs.push(telcGauge("✒️ Dictée", res.dictee, res.dicteeMax));
+      inner += '<div class="delf-gauges">' + gs.join("") + "</div>";
+    }
+    inner += '<div class="delf-verdict ' + (res.passed ? "pass" : "fail") + '">' + (res.passed ? "✅ Partie " + (part === "muendlich" ? "orale" : "écrite") + " RÉUSSIE" : "📚 Partie non réussie — repassez-la") + "</div>";
+    c.innerHTML = inner; return c;
+  }
+  function buildTelcCopy(copy, res, part) {
+    const w = el("div", "delf-copy"); w.appendChild(el("h2", "delf-copy-h", "📝 Ma copie corrigée"));
+    function qcmSec(title, items) {
+      if (!items || !items.length) return;
+      const s = el("div", "delf-copy-sec"); s.appendChild(el("h3", null, title));
+      items.forEach(function (it, i) {
+        const ok = it.selected === it.correct; const yours = it.selected >= 0 ? it.options[it.selected] : "(sans réponse)";
+        const q = el("div", "delf-copy-q " + (ok ? "ok" : "ko"));
+        q.innerHTML = '<p class="dq">' + (i + 1) + ". " + delfEsc(it.q) + '</p><p class="da">' + (ok ? "✓" : "✗") + " Votre réponse : <strong>" + delfEsc(yours) + "</strong>" + (ok ? "" : " — Correct : <strong>" + delfEsc(it.options[it.correct]) + "</strong>") + "</p>";
+        s.appendChild(q);
+      });
+      w.appendChild(s);
+    }
+    function prodSec(title, arr, fb, key) {
+      if (!arr || !arr.length) return;
+      const s = el("div", "delf-copy-sec"); s.appendChild(el("h3", null, title));
+      arr.forEach(function (t) { const q = el("div", "delf-copy-prod"); q.innerHTML = '<p class="dc">' + delfEsc(t.consigne) + '</p><div class="dp">' + (delfEsc(t[key]) || "<em>(rien)</em>") + "</div>"; s.appendChild(q); });
+      if (fb) { const f = el("div", "delf-copy-fb"); f.innerHTML = "<strong>✨ Correction du coach Zika :</strong><br>" + delfFmt(fb); s.appendChild(f); }
+      w.appendChild(s);
+    }
+    if (part === "muendlich") prodSec("🗣️ Production orale — " + res.total + "/" + (res.sur || 75), copy.oral, res.oralFeedback, "transcript");
+    else {
+      qcmSec("📖 Leseverstehen — " + res.lesen + "/" + (res.lesenMax || 75), copy.lesen);
+      qcmSec("🧩 Sprachbausteine — " + res.sprachbausteine + "/" + (res.sbMax || 30), copy.sprachbausteine);
+      qcmSec("🎧 Hörverstehen — " + res.hoeren + "/" + (res.hoerenMax || 75), copy.hoeren);
+      prodSec("🎧✍️ Hören und Schreiben — " + res.hs + "/" + res.hsMax, copy.hoerenSchreiben, res.hsFeedback, "text");
+      prodSec("✍️ Schriftlicher Ausdruck — " + res.schreiben + "/" + (res.schreibenMax || 45), copy.schreiben, res.schreibenFeedback, "text");
+      if (copy.dictee) {
+        const s = el("div", "delf-copy-sec"); s.appendChild(el("h3", null, "✒️ Dictée — " + res.dictee + "/" + (res.dicteeMax || 25) + (copy.dictee.score != null ? " (" + copy.dictee.score + "% de mots justes)" : "")));
+        const ref = el("div", "delf-copy-prod"); ref.innerHTML = '<p class="dc">Texte attendu :</p><div class="dp">' + delfEsc(copy.dictee.texte) + "</div>";
+        const got = el("div", "delf-copy-prod"); got.innerHTML = '<p class="dc">Votre dictée :</p><div class="dp">' + (delfEsc(copy.dictee.saisie) || "<em>(rien)</em>") + "</div>";
+        s.appendChild(ref); s.appendChild(got); w.appendChild(s);
+      }
+    }
+    return w;
+  }
+  function exportTelcPDF(res, copy, part, btn, code) {
+    const CODE = String(code || "b1").toUpperCase();
+    const old = btn.textContent; btn.disabled = true; btn.textContent = "Préparation…";
+    loadJsPDF().then(function (JsPDF) {
+      try {
+        const doc = new JsPDF({ unit: "pt", format: "a4" }); const M = 40; let y = M; const PH = doc.internal.pageSize.getHeight(), W = doc.internal.pageSize.getWidth() - 2 * M;
+        function line(txt, size, style, color) { doc.setFont("helvetica", style || "normal"); doc.setFontSize(size || 11); doc.setTextColor(color ? color[0] : 25, color ? color[1] : 25, color ? color[2] : 25); doc.splitTextToSize(String(txt == null ? "" : txt), W).forEach(function (l) { if (y > PH - M) { doc.addPage(); y = M; } doc.text(l, M, y); y += (size || 11) + 4; }); }
+        line("Examen telc " + CODE + " — partie " + (part === "muendlich" ? "orale" : "écrite"), 18, "bold"); y += 2;
+        line("Résultat : " + res.total + "/" + res.sur + " — " + (res.passed ? "RÉUSSIE" : "NON RÉUSSIE"), 13, "bold", res.passed ? [21, 128, 61] : [185, 28, 28]);
+        if (part !== "muendlich") { const pp = []; if (res.lesenMax) pp.push("Lesen " + res.lesen + "/" + res.lesenMax); if (res.sbMax) pp.push("Sprachbausteine " + res.sprachbausteine + "/" + res.sbMax); if (res.hoerenMax) pp.push("Hoeren " + res.hoeren + "/" + res.hoerenMax); if (res.hsMax) pp.push("Hoeren+Schreiben " + res.hs + "/" + res.hsMax); pp.push("Schreiben " + res.schreiben + "/" + (res.schreibenMax || 45)); if (res.dicteeMax) pp.push("Dictee " + res.dictee + "/" + res.dicteeMax); line(pp.join(" · "), 11); }
+        y += 6;
+        function qcm(title, items) { if (!items || !items.length) return; line(title, 13, "bold"); items.forEach(function (it, i) { const ok = it.selected === it.correct; line((i + 1) + ". " + it.q, 11, "bold"); line("→ " + (it.selected >= 0 ? it.options[it.selected] : "(sans réponse)") + (ok ? "  [correct]" : "  [faux] · correct : " + it.options[it.correct]), 10, "normal", ok ? [21, 128, 61] : [185, 28, 28]); }); y += 6; }
+        function prod(title, arr, fb, key) { if (!arr || !arr.length) return; line(title, 13, "bold"); arr.forEach(function (t) { line("Consigne : " + t.consigne, 10, "italic"); line(t[key] || "(rien)", 11); y += 2; }); if (fb) line("Correction IA : " + String(fb).replace(/\*\*/g, ""), 10, "normal", [70, 70, 70]); y += 6; }
+        if (part === "muendlich") prod("Production orale (" + res.total + "/" + (res.sur || 75) + ")", copy.oral, res.oralFeedback, "transcript");
+        else { qcm("Leseverstehen (" + res.lesen + "/" + (res.lesenMax || 75) + ")", copy.lesen); qcm("Sprachbausteine (" + res.sprachbausteine + "/" + (res.sbMax || 30) + ")", copy.sprachbausteine); qcm("Hoerverstehen (" + res.hoeren + "/" + (res.hoerenMax || 75) + ")", copy.hoeren); prod("Hoeren und Schreiben (" + res.hs + "/" + res.hsMax + ")", copy.hoerenSchreiben, res.hsFeedback, "text"); prod("Schriftlicher Ausdruck (" + res.schreiben + "/" + (res.schreibenMax || 45) + ")", copy.schreiben, res.schreibenFeedback, "text"); if (copy.dictee) { line("Dictee (" + res.dictee + "/" + (res.dicteeMax || 25) + ")", 13, "bold"); line("Texte attendu : " + copy.dictee.texte, 10, "italic"); line("Votre dictee : " + (copy.dictee.saisie || "(rien)"), 11); } }
+        doc.save("telc_" + CODE + "_" + (part === "muendlich" ? "oral" : "ecrit") + ".pdf");
+        btn.textContent = "✓ PDF téléchargé";
+      } catch (e) { toast("PDF : erreur de génération."); btn.textContent = old; }
+      setTimeout(function () { btn.disabled = false; btn.textContent = old; }, 1800);
+    }).catch(function () { toast("PDF indisponible (réseau). Faites une capture d'écran."); btn.disabled = false; btn.textContent = old; });
   }
 
   /* ====================================================================
@@ -23139,6 +25238,11 @@ window.Legal = (function () {
     else if ((m = hash.match(/^#\/placement-niveau\/(A1|A2|B1|B2|C1|C2)/))) renderNiveauTest(m[1]);
     else if (hash.match(/^#\/placement/)) renderPlacement();
     else if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);
+    else if ((m = hash.match(/^#\/examen\/(a1|a2|final)\/resultat/))) renderDelfResult(m[1]);
+    else if ((m = hash.match(/^#\/examen\/(a1|a2|final)(?:$|[\/?#])/))) renderDelf(m[1]);
+    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1|c2|finalb|finalc)\/resultat\/(ecrit|oral)/))) renderTelcResult(m[1], m[2]);
+    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1|c2|finalb|finalc)\/(ecrit|oral)/))) renderTelcPart(m[1], m[2] === "oral" ? "muendlich" : "schriftlich");
+    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1|c2|finalb|finalc)(?:$|[\/?#])/))) renderTelcHub(m[1]);
     else if ((m = hash.match(/^#\/examen\/(a1|a2|finalb|finalc|final|b1|b2|c1|c2)/))) renderTest(m[1]);
     else if (hash.match(/^#\/examen/)) renderTest("a1");
     else if ((m = hash.match(/^#\/dictee\/([a-z0-9-]+)/))) renderDictee(m[1]);
