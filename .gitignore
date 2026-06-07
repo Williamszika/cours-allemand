@@ -5,3 +5,4 @@ node_modules/
 server/tts-cache/
 server/subscribers.json
 server/admins.json
+server/admin-log.json
