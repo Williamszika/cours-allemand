@@ -112,7 +112,7 @@ async function gradeExam(id,key){
   var u=loadUser(id);var ex=u&&u.exams&&u.exams[key];
   if(!u||!ex||ex.status!=="pending")return "none";
   if(key==="a2")return await gradeA2(id,u,ex);
-  if(key.indexOf("b1-")===0)return await gradeB1(id,u,ex,key);
+  if(key.indexOf("b1-")===0||key.indexOf("b2-")===0)return await gradeTelc(id,u,ex,key);
   return "none";
 }
 async function gradeA2(id,u,ex){
@@ -134,34 +134,35 @@ async function gradeA2(id,u,ex){
   console.log("[exam] "+id+" DELF A2 corrigé: "+total+"/100");
   return "graded";
 }
-async function gradeB1(id,u,ex,key){
+async function gradeTelc(id,u,ex,key){
   var p=ex.payload||{},copy=p.copy||{},langue=p.langue||"fr";
-  var part=(key==="b1-muendlich")?"muendlich":"schriftlich";
+  var code=key.slice(0,2),CTX="telc "+code.toUpperCase();
+  var part=(key.indexOf("-muendlich")>=0)?"muendlich":"schriftlich";
   if(part==="schriftlich"){
     var lesen=clampN(p.lesen,0,75),sb=clampN(p.sprachbausteine,0,30),hoeren=clampN(p.hoeren,0,75);
-    var sch=await aiNote("ecrite (lettre/e-mail formel ou informel)",(copy.schreiben||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue,45,"telc B1");
+    var sch=await aiNote("ecrite (texte/lettre/e-mail formel)",(copy.schreiben||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue,45,CTX);
     if(!sch.ok)return "postpone";
     var wt=lesen+sb+hoeren+sch.note;
     ex.result={part:"schriftlich",lesen:lesen,sprachbausteine:sb,hoeren:hoeren,schreiben:sch.note,total:wt,sur:B1_W_MAX,seuil:B1_W_PASS,passed:wt>=B1_W_PASS,schreibenFeedback:sch.feedback};
   }else{
-    var oral=await aiNote("orale (3 parties : presentation, discussion d'opinion, planification commune)",(copy.oral||[]).map(function(t){return {consigne:t.consigne,production:t.transcript};}),langue,75,"telc B1");
+    var oral=await aiNote("orale (3 parties : presentation, discussion d'opinion, planification commune)",(copy.oral||[]).map(function(t){return {consigne:t.consigne,production:t.transcript};}),langue,75,CTX);
     if(!oral.ok)return "postpone";
     ex.result={part:"muendlich",total:oral.note,sur:B1_O_MAX,seuil:B1_O_PASS,passed:oral.note>=B1_O_PASS,oralFeedback:oral.feedback};
   }
   ex.status="graded";ex.gradedAt=new Date().toISOString();
-  // Certificat B1 : réussi seulement si l'écrit ET l'oral sont validés (bénéfice gardé).
-  var sr=(u.exams["b1-schriftlich"]&&u.exams["b1-schriftlich"].result)||null;
-  var mr=(u.exams["b1-muendlich"]&&u.exams["b1-muendlich"].result)||null;
+  // Certificat telc : réussi seulement si l'écrit ET l'oral sont validés (bénéfice gardé).
+  var sr=(u.exams[code+"-schriftlich"]&&u.exams[code+"-schriftlich"].result)||null;
+  var mr=(u.exams[code+"-muendlich"]&&u.exams[code+"-muendlich"].result)||null;
   var certified=!!(sr&&sr.passed&&mr&&mr.passed);
   var pct=Math.round(((sr?sr.total:0)+(mr?mr.total:0))/(B1_W_MAX+B1_O_MAX)*100);
   u.progress=u.progress||{};u.progress.tests=u.progress.tests||{};
-  var prevB=u.progress.tests.b1||{meilleur:0,reussi:false};
-  u.progress.tests.b1={meilleur:Math.max(prevB.meilleur||0,pct),reussi:!!(prevB.reussi||certified),dernier:pct};
+  var prevB=u.progress.tests[code]||{meilleur:0,reussi:false};
+  u.progress.tests[code]={meilleur:Math.max(prevB.meilleur||0,pct),reussi:!!(prevB.reussi||certified),dernier:pct};
   saveUser(id,u);
   var r=ex.result,pn=(part==="schriftlich")?"écrite":"orale";
-  var msg=certified?"🏅 telc B1 — CERTIFIÉ ! Tu as réussi l'écrit ET l'oral. Le niveau B2 est débloqué. Ouvre l'app pour ta copie et ton PDF. Glückwunsch!":(r.passed?"✅ telc B1 — partie "+pn+" RÉUSSIE ("+r.total+"/"+r.sur+"). Il te reste "+(part==="schriftlich"?"l'oral":"l'écrit")+" pour le certificat. Ouvre l'app pour ta copie corrigée.":"📋 telc B1 — partie "+pn+" : "+r.total+"/"+r.sur+" (il faut "+r.seuil+"). Pas encore validée. Regarde ta copie corrigée dans l'app et repasse cette partie. 💪");
+  var msg=certified?("🏅 "+CTX+" — CERTIFIÉ ! Tu as réussi l'écrit ET l'oral. La suite du parcours est débloquée. Ouvre l'app pour ta copie et ton PDF. Glückwunsch!"):(r.passed?("✅ "+CTX+" — partie "+pn+" RÉUSSIE ("+r.total+"/"+r.sur+"). Il te reste "+(part==="schriftlich"?"l'oral":"l'écrit")+" pour le certificat. Ouvre l'app pour ta copie corrigée."):("📋 "+CTX+" — partie "+pn+" : "+r.total+"/"+r.sur+" (il faut "+r.seuil+"). Pas encore validée. Regarde ta copie corrigée dans l'app et repasse cette partie. 💪"));
   if(BOT_TOKEN)tgSend(id,msg).catch(function(){});
-  console.log("[exam] "+id+" telc B1 "+part+" corrigé: "+r.total+"/"+r.sur+(certified?" (CERTIFIÉ)":""));
+  console.log("[exam] "+id+" "+CTX+" "+part+" corrigé: "+r.total+"/"+r.sur+(certified?" (CERTIFIÉ)":""));
   return "graded";
 }
 var examScanning=false;
