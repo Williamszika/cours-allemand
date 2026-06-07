@@ -533,7 +533,7 @@
     }
     function carteExamen(examId, titre, unlocked, sousTitre, lockText) {
       if (examId === "a2") return carteDelfA2(unlocked, lockText);
-      if (examId === "b1" || examId === "b2" || examId === "c1") return carteTelc(examId, unlocked, lockText);
+      if (examId === "b1" || examId === "b2" || examId === "c1" || examId === "c2") return carteTelc(examId, unlocked, lockText);
       const ts = window.Progress.getTestScore(examId);
       const card = el("div", "examen-final " + (unlocked ? "unlocked" : "locked") + (ts && ts.reussi ? " reussi" : ""));
       card.innerHTML =
@@ -624,7 +624,7 @@
 
     /* --- Niveau C2 (débloqué après l'examen C1) --- */
     renderNiveau({ code: "C2", exam: "c2", prevExam: "c1", prevLabel: "l'examen C1",
-      examSous: "30 questions de tout le C2 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour l'examen final C1 + C2 !" });
+      examSous: "Examen blanc telc C2 (écrit /225 + oral /75), corrigé par l'IA sous 24 h. Le sommet du parcours !" });
 
     /* --- Examen combiné C1 + C2 (consécration finale) --- */
     const finalcSec = el("section", "section");
@@ -2242,7 +2242,7 @@
   function telcLocalGet(code) { try { return JSON.parse(localStorage.getItem("telc_" + code) || "null"); } catch (e) { return null; } }
   function telcLocalSet(code, o) { try { localStorage.setItem("telc_" + code, JSON.stringify(o || {})); } catch (e) {} }
   function telcLang() { return (window.I18N && window.I18N.lang && window.I18N.lang()) || "fr"; }
-  function telcGuardOK(code) { const G = { b1: ["final", "B1"], b2: ["b1", "B2"], c1: ["finalb", "C1"] }, g = G[code] || G.b1; return examPasse(g[0]) && niveauTermine(g[1]); }
+  function telcGuardOK(code) { const G = { b1: ["final", "B1"], b2: ["b1", "B2"], c1: ["finalb", "C1"], c2: ["c1", "C2"] }, g = G[code] || G.b1; return examPasse(g[0]) && niveauTermine(g[1]); }
 
   function renderTelcHub(code) {
     const T = telcData(code);
@@ -2271,7 +2271,7 @@
       card.appendChild(row); return card;
     }
     const P = T.parts; const sec = el("section", "section");
-    sec.appendChild(partCard("schriftlich", "Épreuve écrite", "📝", "ecrit", P.schriftlich.sur, P.schriftlich.seuil, "Leseverstehen + Sprachbausteine + Hörverstehen + production écrite."));
+    sec.appendChild(partCard("schriftlich", "Épreuve écrite", "📝", "ecrit", P.schriftlich.sur, P.schriftlich.seuil, "Compréhension écrite/orale + production(s) écrite(s)."));
     sec.appendChild(partCard("muendlich", "Épreuve orale", "🗣️", "oral", P.muendlich.sur, P.muendlich.seuil, "3 parties, notées par l'IA (préparation 20 min)."));
     frag.appendChild(sec);
     const cert = el("div", "delf-verdict " + (certified ? "pass" : "fail"));
@@ -2321,7 +2321,45 @@
     }
 
     if (pkey === "schriftlich") {
-      const P = T.parts.schriftlich; const st = { lesenPts: 0, sbPts: 0, hoerenPts: 0, lesenItems: [], sbItems: [], hoerenItems: [], schreiben: [] };
+      const P = T.parts.schriftlich;
+      if (P.format === "c2") {
+        // C2 : Leseverstehen (auto) → Hören und Schreiben (synthèse, IA) → Schriftlicher Ausdruck (IA).
+        const st2 = { lesenPts: 0, lesenItems: [], hs: [], schreiben: [] };
+        const c2sub = function () { submitPart(code + "-schriftlich", { langue: telcLang(), lesen: st2.lesenPts, copy: { lesen: st2.lesenItems, hoerenSchreiben: st2.hs, schreiben: st2.schreiben } }); };
+        const c2write = function (Tk, rows, ph, phase, primary, onDone) {
+          const body = el("div", "delf-ee"); const card = el("div", "delf-doc");
+          card.appendChild(el("h3", "delf-doc-t", delfEsc(Tk.titre || P.schreiben.titre)));
+          card.appendChild(el("p", "delf-q-t", delfEsc(Tk.consigne)));
+          if (Tk.leitpunkte) { const ul = el("ul", "delf-points"); Tk.leitpunkte.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); card.appendChild(ul); }
+          const ta = el("textarea", "production-input"); ta.rows = rows; ta.setAttribute("placeholder", ph);
+          const meta = el("div", "production-meta"); const wc = el("span", "wordcount", "0 mot"); meta.appendChild(wc); meta.appendChild(el("span", "wordmin", "objectif : ≥ " + Tk.minMots + " mots"));
+          ta.addEventListener("input", function () { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; wc.textContent = w + (w > 1 ? " mots" : " mot"); wc.classList.toggle("ok", w >= Tk.minMots); });
+          return { card: card, body: body, ta: ta, meta: meta };
+        };
+        const c2_3 = function () {
+          const Tk = P.schreiben.tache; const u = c2write(Tk, 10, "Schreiben Sie hier Ihren Essay…");
+          u.card.appendChild(u.ta); u.card.appendChild(u.meta); u.body.appendChild(u.card);
+          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 3 / 3", icone: "✍️", titre: P.schreiben.titre, intro: Math.round(P.durees.schreiben / 60) + " min — rédigez votre essai à partir des sources.", body: u.body, timerSeconds: P.durees.schreiben, primary: "Remettre la copie écrite ✅", onPrimary: function () { st2.schreiben = [{ id: Tk.id, consigne: Tk.consigne, text: u.ta.value.trim() }]; c2sub(); } }));
+        };
+        const c2_2 = function () {
+          const HS = P.hoerenSchreiben; const u = c2write(HS.tache, 7, "Ihre Zusammenfassung…");
+          const card = el("div", "delf-doc"); card.appendChild(el("h3", "delf-doc-t", delfEsc(HS.titre))); card.appendChild(el("p", "delf-q-t", delfEsc(HS.intro)));
+          HS.audios.forEach(function (a) { let plays = 0; const b = el("button", "btn btn-audio", "🔊 " + a.titre + " (2 max)"); b.type = "button"; b.addEventListener("click", function () { if (plays >= 2) { toast("Vous avez déjà écouté 2 fois."); return; } plays++; if (window.Speech) window.Speech.speak(a.audio, { rate: 0.98 }); const rest = 2 - plays; b.textContent = rest > 0 ? "🔊 Réécouter (" + rest + ")" : "🔇 Écoutes épuisées"; if (plays >= 2) b.disabled = true; }); card.appendChild(b); });
+          card.appendChild(el("p", "delf-q-t", delfEsc(HS.tache.consigne))); card.appendChild(u.ta); card.appendChild(u.meta);
+          const body = el("div", "delf-ee"); body.appendChild(card);
+          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 2 / 3", icone: HS.icone, titre: HS.titre, intro: Math.round(P.durees.hoerenSchreiben / 60) + " min — écoutez (2× max) puis rédigez votre synthèse.", body: body, timerSeconds: P.durees.hoerenSchreiben, primary: "Terminer cette partie →", onPrimary: function () { st2.hs = [{ id: HS.tache.id, consigne: HS.tache.consigne, text: u.ta.value.trim() }]; c2_3(); } }));
+        };
+        const c2_1 = function () {
+          const lesenR = delfQCM(P.lesen.blocs, "ce");
+          const body = el("div", "section-x"); body.appendChild(el("p", "delf-q-t", delfEsc(P.lesen.intro))); body.appendChild(lesenR.el);
+          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 1 / 3", icone: "📖", titre: "Leseverstehen", intro: Math.round(P.durees.lesen / 60) + " min — lisez et répondez ; aucune correction.", body: body, timerSeconds: P.durees.lesen, primary: "Terminer cette partie →", onPrimary: function () { const lc = lesenR.collect(); st2.lesenPts = Math.round(lc.correct / (lc.total || 1) * P.lesen.sur); st2.lesenItems = lc.items; c2_2(); } }));
+        };
+        const intro2 = el("div", "delf-intro-body");
+        intro2.innerHTML = '<div class="delf-rules"><p>Épreuve écrite telc ' + CODE + ' — <strong>/' + P.sur + '</strong> (réussite ≥ ' + P.seuil + '). Trois temps :</p><ul class="delf-epreuves"><li>📖 Leseverstehen — <strong>' + Math.round(P.durees.lesen / 60) + ' min</strong></li><li>🎧✍️ Hören und Schreiben — <strong>' + Math.round(P.durees.hoerenSchreiben / 60) + ' min</strong></li><li>✍️ Schriftlicher Ausdruck — <strong>' + Math.round(P.durees.schreiben / 60) + ' min</strong></li></ul><p>Aucune correction pendant l\'épreuve ; résultat + copie corrigée + PDF sous 24 h.</p></div>';
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite", icone: "📝", titre: "Schriftliche Prüfung", intro: "", body: intro2, primary: "Commencer l'épreuve écrite →", onPrimary: c2_1 }));
+        return;
+      }
+      const st = { lesenPts: 0, sbPts: 0, hoerenPts: 0, lesenItems: [], sbItems: [], hoerenItems: [], schreiben: [] };
       const dLS = Math.round(P.durees.leseSb / 60), dH = Math.round(P.durees.hoeren / 60), dS = Math.round(P.durees.schreiben / 60);
       const s3 = function () {
         const Tk = P.schreiben.tache;
@@ -2423,7 +2461,15 @@
     const c = el("div", "delf-scorecard"); const pct = res.sur ? Math.round(res.total / res.sur * 100) : 0;
     let inner = '<div class="score-ring ' + (res.passed ? "pass" : "fail") + '"><span>' + res.total + "</span></div>";
     inner += '<p class="delf-q-t">Total ' + (part === "muendlich" ? "oral" : "écrit") + " : <strong>" + res.total + " / " + res.sur + "</strong> (" + pct + "%) — il faut " + res.seuil + "</p>";
-    if (part !== "muendlich") inner += '<div class="delf-gauges">' + telcGauge("📖 Lesen", res.lesen, res.lesenMax || 75) + telcGauge("🧩 Sprachb.", res.sprachbausteine, res.sbMax || 30) + telcGauge("🎧 Hören", res.hoeren, res.hoerenMax || 75) + telcGauge("✍️ Schreiben", res.schreiben, res.schreibenMax || 45) + "</div>";
+    if (part !== "muendlich") {
+      const gs = [];
+      if (res.lesenMax) gs.push(telcGauge("📖 Lesen", res.lesen, res.lesenMax));
+      if (res.sbMax) gs.push(telcGauge("🧩 Sprachb.", res.sprachbausteine, res.sbMax));
+      if (res.hoerenMax) gs.push(telcGauge("🎧 Hören", res.hoeren, res.hoerenMax));
+      if (res.hsMax) gs.push(telcGauge("🎧✍️ Hör+Schr", res.hs, res.hsMax));
+      gs.push(telcGauge("✍️ Schreiben", res.schreiben, res.schreibenMax || 45));
+      inner += '<div class="delf-gauges">' + gs.join("") + "</div>";
+    }
     inner += '<div class="delf-verdict ' + (res.passed ? "pass" : "fail") + '">' + (res.passed ? "✅ Partie " + (part === "muendlich" ? "orale" : "écrite") + " RÉUSSIE" : "📚 Partie non réussie — repassez-la") + "</div>";
     c.innerHTML = inner; return c;
   }
@@ -2452,6 +2498,7 @@
       qcmSec("📖 Leseverstehen — " + res.lesen + "/" + (res.lesenMax || 75), copy.lesen);
       qcmSec("🧩 Sprachbausteine — " + res.sprachbausteine + "/" + (res.sbMax || 30), copy.sprachbausteine);
       qcmSec("🎧 Hörverstehen — " + res.hoeren + "/" + (res.hoerenMax || 75), copy.hoeren);
+      prodSec("🎧✍️ Hören und Schreiben — " + res.hs + "/" + res.hsMax, copy.hoerenSchreiben, res.hsFeedback, "text");
       prodSec("✍️ Schriftlicher Ausdruck — " + res.schreiben + "/" + (res.schreibenMax || 45), copy.schreiben, res.schreibenFeedback, "text");
     }
     return w;
@@ -2465,12 +2512,12 @@
         function line(txt, size, style, color) { doc.setFont("helvetica", style || "normal"); doc.setFontSize(size || 11); doc.setTextColor(color ? color[0] : 25, color ? color[1] : 25, color ? color[2] : 25); doc.splitTextToSize(String(txt == null ? "" : txt), W).forEach(function (l) { if (y > PH - M) { doc.addPage(); y = M; } doc.text(l, M, y); y += (size || 11) + 4; }); }
         line("Examen telc " + CODE + " — partie " + (part === "muendlich" ? "orale" : "écrite"), 18, "bold"); y += 2;
         line("Résultat : " + res.total + "/" + res.sur + " — " + (res.passed ? "RÉUSSIE" : "NON RÉUSSIE"), 13, "bold", res.passed ? [21, 128, 61] : [185, 28, 28]);
-        if (part !== "muendlich") line("Lesen " + res.lesen + "/" + (res.lesenMax || 75) + " · Sprachbausteine " + res.sprachbausteine + "/" + (res.sbMax || 30) + " · Hoeren " + res.hoeren + "/" + (res.hoerenMax || 75) + " · Schreiben " + res.schreiben + "/" + (res.schreibenMax || 45), 11);
+        if (part !== "muendlich") { const pp = []; if (res.lesenMax) pp.push("Lesen " + res.lesen + "/" + res.lesenMax); if (res.sbMax) pp.push("Sprachbausteine " + res.sprachbausteine + "/" + res.sbMax); if (res.hoerenMax) pp.push("Hoeren " + res.hoeren + "/" + res.hoerenMax); if (res.hsMax) pp.push("Hoeren+Schreiben " + res.hs + "/" + res.hsMax); pp.push("Schreiben " + res.schreiben + "/" + (res.schreibenMax || 45)); line(pp.join(" · "), 11); }
         y += 6;
         function qcm(title, items) { if (!items || !items.length) return; line(title, 13, "bold"); items.forEach(function (it, i) { const ok = it.selected === it.correct; line((i + 1) + ". " + it.q, 11, "bold"); line("→ " + (it.selected >= 0 ? it.options[it.selected] : "(sans réponse)") + (ok ? "  [correct]" : "  [faux] · correct : " + it.options[it.correct]), 10, "normal", ok ? [21, 128, 61] : [185, 28, 28]); }); y += 6; }
         function prod(title, arr, fb, key) { if (!arr || !arr.length) return; line(title, 13, "bold"); arr.forEach(function (t) { line("Consigne : " + t.consigne, 10, "italic"); line(t[key] || "(rien)", 11); y += 2; }); if (fb) line("Correction IA : " + String(fb).replace(/\*\*/g, ""), 10, "normal", [70, 70, 70]); y += 6; }
         if (part === "muendlich") prod("Production orale (" + res.total + "/" + (res.sur || 75) + ")", copy.oral, res.oralFeedback, "transcript");
-        else { qcm("Leseverstehen (" + res.lesen + "/75)", copy.lesen); qcm("Sprachbausteine (" + res.sprachbausteine + "/30)", copy.sprachbausteine); qcm("Hoerverstehen (" + res.hoeren + "/75)", copy.hoeren); prod("Schriftlicher Ausdruck (" + res.schreiben + "/45)", copy.schreiben, res.schreibenFeedback, "text"); }
+        else { qcm("Leseverstehen (" + res.lesen + "/" + (res.lesenMax || 75) + ")", copy.lesen); qcm("Sprachbausteine (" + res.sprachbausteine + "/" + (res.sbMax || 30) + ")", copy.sprachbausteine); qcm("Hoerverstehen (" + res.hoeren + "/" + (res.hoerenMax || 75) + ")", copy.hoeren); prod("Hoeren und Schreiben (" + res.hs + "/" + res.hsMax + ")", copy.hoerenSchreiben, res.hsFeedback, "text"); prod("Schriftlicher Ausdruck (" + res.schreiben + "/" + (res.schreibenMax || 45) + ")", copy.schreiben, res.schreibenFeedback, "text"); }
         doc.save("telc_" + CODE + "_" + (part === "muendlich" ? "oral" : "ecrit") + ".pdf");
         btn.textContent = "✓ PDF téléchargé";
       } catch (e) { toast("PDF : erreur de génération."); btn.textContent = old; }
@@ -3819,9 +3866,9 @@
     else if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);
     else if (hash.match(/^#\/examen\/a2\/resultat/)) renderDelfResult();
     else if (hash.match(/^#\/examen\/a2(?:$|[\/?#])/)) renderDelfA2();
-    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1)\/resultat\/(ecrit|oral)/))) renderTelcResult(m[1], m[2]);
-    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1)\/(ecrit|oral)/))) renderTelcPart(m[1], m[2] === "oral" ? "muendlich" : "schriftlich");
-    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1)(?:$|[\/?#])/))) renderTelcHub(m[1]);
+    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1|c2)\/resultat\/(ecrit|oral)/))) renderTelcResult(m[1], m[2]);
+    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1|c2)\/(ecrit|oral)/))) renderTelcPart(m[1], m[2] === "oral" ? "muendlich" : "schriftlich");
+    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1|c2)(?:$|[\/?#])/))) renderTelcHub(m[1]);
     else if ((m = hash.match(/^#\/examen\/(a1|a2|finalb|finalc|final|b1|b2|c1|c2)/))) renderTest(m[1]);
     else if (hash.match(/^#\/examen/)) renderTest("a1");
     else if ((m = hash.match(/^#\/dictee\/([a-z0-9-]+)/))) renderDictee(m[1]);

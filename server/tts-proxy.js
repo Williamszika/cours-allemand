@@ -108,10 +108,13 @@ async function aiNote(kind,items,langue,sur,contexte){
 // telc : barème par niveau. Réussite >=60% dans CHAQUE partie, bénéfice gardé.
 // B1/B2 : écrit /225 (Lesen 75 + Sprachbausteine 30 + Hören 75 + Schreiben 45), oral /75.
 // C1 : écrit /166 (Lesen 48 + Sprachbausteine 22 + Hören 48 + Schreiben 48), oral /48.
+// C1 : écrit /166 (Lesen 48 + Sprachbausteine 22 + Hören 48 + Schreiben 48), oral /48.
+// C2 : écrit /225 (Lesen 60 + Hören+Schreiben 75 + Schreiben 90 ; pas de Sprachbausteine), oral /75.
 const TELC_CFG={
-  b1:{wMax:225,wPass:135,oMax:75,oPass:45,lesenMax:75,sbMax:30,hoerenMax:75,schreibenSur:45},
-  b2:{wMax:225,wPass:135,oMax:75,oPass:45,lesenMax:75,sbMax:30,hoerenMax:75,schreibenSur:45},
-  c1:{wMax:166,wPass:99,oMax:48,oPass:29,lesenMax:48,sbMax:22,hoerenMax:48,schreibenSur:48}
+  b1:{wMax:225,wPass:135,oMax:75,oPass:45,lesenMax:75,sbMax:30,hoerenMax:75,schreibenSur:45,hsSur:0},
+  b2:{wMax:225,wPass:135,oMax:75,oPass:45,lesenMax:75,sbMax:30,hoerenMax:75,schreibenSur:45,hsSur:0},
+  c1:{wMax:166,wPass:99,oMax:48,oPass:29,lesenMax:48,sbMax:22,hoerenMax:48,schreibenSur:48,hsSur:0},
+  c2:{wMax:225,wPass:135,oMax:75,oPass:45,lesenMax:60,sbMax:0,hoerenMax:0,schreibenSur:90,hsSur:75}
 };
 async function gradeExam(id,key){
   var u=loadUser(id);var ex=u&&u.exams&&u.exams[key];
@@ -145,10 +148,16 @@ async function gradeTelc(id,u,ex,key){
   var part=(key.indexOf("-muendlich")>=0)?"muendlich":"schriftlich";
   if(part==="schriftlich"){
     var lesen=clampN(p.lesen,0,cfg.lesenMax),sb=clampN(p.sprachbausteine,0,cfg.sbMax),hoeren=clampN(p.hoeren,0,cfg.hoerenMax);
-    var sch=await aiNote("ecrite (texte argumente/lettre formel)",(copy.schreiben||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue,cfg.schreibenSur,CTX);
+    var sch=await aiNote("ecrite (texte argumente/lettre formel/dissertation)",(copy.schreiben||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue,cfg.schreibenSur,CTX);
     if(!sch.ok)return "postpone";
-    var wt=lesen+sb+hoeren+sch.note;
-    ex.result={part:"schriftlich",lesen:lesen,sprachbausteine:sb,hoeren:hoeren,schreiben:sch.note,lesenMax:cfg.lesenMax,sbMax:cfg.sbMax,hoerenMax:cfg.hoerenMax,schreibenMax:cfg.schreibenSur,total:wt,sur:cfg.wMax,seuil:cfg.wPass,passed:wt>=cfg.wPass,schreibenFeedback:sch.feedback};
+    var hsNote=0,hsFb="";
+    if((cfg.hsSur||0)>0&&copy.hoerenSchreiben&&copy.hoerenSchreiben.length){
+      var hs=await aiNote("ecrite (synthese a partir d'un document audio)",(copy.hoerenSchreiben||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue,cfg.hsSur,CTX);
+      if(!hs.ok)return "postpone";
+      hsNote=hs.note;hsFb=hs.feedback;
+    }
+    var wt=lesen+sb+hoeren+sch.note+hsNote;
+    ex.result={part:"schriftlich",lesen:lesen,sprachbausteine:sb,hoeren:hoeren,schreiben:sch.note,hs:hsNote,lesenMax:cfg.lesenMax,sbMax:cfg.sbMax,hoerenMax:cfg.hoerenMax,schreibenMax:cfg.schreibenSur,hsMax:(cfg.hsSur||0),total:wt,sur:cfg.wMax,seuil:cfg.wPass,passed:wt>=cfg.wPass,schreibenFeedback:sch.feedback,hsFeedback:hsFb};
   }else{
     var oral=await aiNote("orale (3 parties : presentation, questions de suivi, discussion)",(copy.oral||[]).map(function(t){return {consigne:t.consigne,production:t.transcript};}),langue,cfg.oMax,CTX);
     if(!oral.ok)return "postpone";
