@@ -23,7 +23,7 @@
         key: "c2-schriftlich", titre: "Épreuve écrite", icone: "📝", sur: 225, seuil: 135,
         format: "c2",
         intro: "Épreuve collective d'environ 4 h 10. Textes de niveau universitaire/littéraire. Aucune correction ne s'affiche : vous composez puis remettez votre copie (corrigée sous 24 h).",
-        durees: { lesen: 80 * 60, hoerenSchreiben: 60 * 60, schreiben: 90 * 60 },
+        durees: { lesen: 80 * 60, hoerenSchreiben: 60 * 60, pause: 20 * 60, schreiben: 90 * 60 },
 
         lesen: {
           sur: 60, titre: "Leseverstehen", icone: "📖",

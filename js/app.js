@@ -2341,13 +2341,18 @@
           u.card.appendChild(u.ta); u.card.appendChild(u.meta); u.body.appendChild(u.card);
           delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 3 / 3", icone: "✍️", titre: P.schreiben.titre, intro: Math.round(P.durees.schreiben / 60) + " min — rédigez votre essai à partir des sources.", body: u.body, timerSeconds: P.durees.schreiben, primary: "Remettre la copie écrite ✅", onPrimary: function () { st2.schreiben = [{ id: Tk.id, consigne: Tk.consigne, text: u.ta.value.trim() }]; c2sub(); } }));
         };
+        const c2pause = function () {
+          const body = el("div", "completion");
+          body.innerHTML = '<div class="comp-emoji">☕</div><h2>Pause obligatoire — ' + Math.round(P.durees.pause / 60) + ' min</h2><p>Comme à l\'examen officiel telc C2, une pause est prévue avant l\'épreuve de production écrite. Reposez-vous, puis reprenez. Le minuteur passe automatiquement à la suite à la fin de la pause — vous pouvez aussi reprendre dès que vous êtes prêt(e).</p>';
+          delfScreen(Object.assign({}, SC, { phase: "Pause obligatoire", icone: "☕", titre: "Pause", intro: "", body: body, timerSeconds: P.durees.pause, primary: "Reprendre l'examen →", onPrimary: c2_3 }));
+        };
         const c2_2 = function () {
           const HS = P.hoerenSchreiben; const u = c2write(HS.tache, 7, "Ihre Zusammenfassung…");
           const card = el("div", "delf-doc"); card.appendChild(el("h3", "delf-doc-t", delfEsc(HS.titre))); card.appendChild(el("p", "delf-q-t", delfEsc(HS.intro)));
           HS.audios.forEach(function (a) { let plays = 0; const b = el("button", "btn btn-audio", "🔊 " + a.titre + " (2 max)"); b.type = "button"; b.addEventListener("click", function () { if (plays >= 2) { toast("Vous avez déjà écouté 2 fois."); return; } plays++; if (window.Speech) window.Speech.speak(a.audio, { rate: 0.98 }); const rest = 2 - plays; b.textContent = rest > 0 ? "🔊 Réécouter (" + rest + ")" : "🔇 Écoutes épuisées"; if (plays >= 2) b.disabled = true; }); card.appendChild(b); });
           card.appendChild(el("p", "delf-q-t", delfEsc(HS.tache.consigne))); card.appendChild(u.ta); card.appendChild(u.meta);
           const body = el("div", "delf-ee"); body.appendChild(card);
-          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 2 / 3", icone: HS.icone, titre: HS.titre, intro: Math.round(P.durees.hoerenSchreiben / 60) + " min — écoutez (2× max) puis rédigez votre synthèse.", body: body, timerSeconds: P.durees.hoerenSchreiben, primary: "Terminer cette partie →", onPrimary: function () { st2.hs = [{ id: HS.tache.id, consigne: HS.tache.consigne, text: u.ta.value.trim() }]; c2_3(); } }));
+          delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 2 / 3", icone: HS.icone, titre: HS.titre, intro: Math.round(P.durees.hoerenSchreiben / 60) + " min — écoutez (2× max) puis rédigez votre synthèse.", body: body, timerSeconds: P.durees.hoerenSchreiben, primary: "Terminer cette partie →", onPrimary: function () { st2.hs = [{ id: HS.tache.id, consigne: HS.tache.consigne, text: u.ta.value.trim() }]; (P.durees.pause ? c2pause() : c2_3()); } }));
         };
         const c2_1 = function () {
           const lesenR = delfQCM(P.lesen.blocs, "ce");
