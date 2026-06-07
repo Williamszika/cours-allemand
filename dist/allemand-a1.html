@@ -1175,6 +1175,16 @@ ul.delf-epreuves li { background: rgba(127, 127, 127, .08); border-radius: 10px;
 .delf-card.pending { outline: 2px dashed rgba(217, 119, 6, .5); }
 .delf-pdf-row { margin-top: 18px; }
 
+/* Dialogue oral examinateur ↔ candidat (oral 100 % voix) */
+.delf-conv { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; max-height: 44vh; overflow-y: auto; padding: 4px; }
+.delf-bubble { max-width: 85%; padding: 8px 12px; border-radius: 14px; line-height: 1.4; }
+.delf-bubble .delf-bubble-who { display: block; font-size: .72rem; font-weight: 700; opacity: .7; margin-bottom: 2px; }
+.delf-bubble.ex { align-self: flex-start; background: rgba(37, 99, 235, .1); border: 1px solid rgba(37, 99, 235, .2); border-bottom-left-radius: 4px; }
+.delf-bubble.me { align-self: flex-end; background: rgba(22, 163, 74, .12); border: 1px solid rgba(22, 163, 74, .25); border-bottom-right-radius: 4px; }
+.delf-bubble-t { white-space: pre-wrap; }
+.delf-typed { width: 100%; margin-top: 6px; }
+.delf-dialog .delf-rec-row { margin: 6px 0; }
+
 </style>
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="theme-color" content="#1e3a8a" />
@@ -22875,10 +22885,74 @@ window.Legal = (function () {
   }
 
   /* Production orale : enregistrement micro (→ /api/stt) avec repli clavier. */
-  function delfEO(taches) {
+  /* Dialogue oral examinateur ↔ candidat (100 % voix). L'examinateur (IA, mode
+     "examinateur") joue son rôle, pose des questions et conteste, mais NE CORRIGE
+     JAMAIS. Le candidat parle (micro → STT) ou écrit. Tout le dialogue est capturé
+     et noté seulement 24 h après. */
+  function delfDialog(task, niveau) {
+    const niv = niveau || "B1";
+    const lang = (window.I18N && window.I18N.lang && window.I18N.lang()) || "fr";
+    const card = el("div", "delf-doc delf-dialog");
+    card.appendChild(el("h3", "delf-doc-t", delfEsc(task.titre)));
+    card.appendChild(el("p", "delf-q-t", delfEsc(task.consigne)));
+    if (task.scenario) card.appendChild(el("p", "delf-q-t", "🎭 " + delfEsc(task.scenario)));
+    if (task.points && task.points.length) { const ul = el("ul", "delf-points"); task.points.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); card.appendChild(ul); }
+    const conv = el("div", "delf-conv"); card.appendChild(conv);
+    const status = el("span", "delf-rec-status", "");
+    const history = [], turns = [];
+    let busy = false;
+    function bubble(role, text) { const b = el("div", "delf-bubble " + (role === "user" ? "me" : "ex")); b.appendChild(el("span", "delf-bubble-who", role === "user" ? "Vous" : "🧑‍🏫 Examinateur")); const tx = el("div", "delf-bubble-t"); tx.textContent = text; b.appendChild(tx); conv.appendChild(b); conv.scrollTop = conv.scrollHeight; }
+    function pushExaminer(text) { history.push({ role: "assistant", content: text }); turns.push({ role: "assistant", content: text }); bubble("assistant", text); if (window.Speech) window.Speech.speak(text, { rate: 0.98 }); }
+    function pushUser(text) { history.push({ role: "user", content: text }); turns.push({ role: "user", content: text }); bubble("user", text); }
+    function examinerTurn() {
+      busy = true; status.textContent = "🧑‍🏫 …";
+      fetch("/api/chat", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ messages: history.slice(-16), mode: "examinateur", niveau: niv, niveauParle: niv, langue: lang, initData: delfInitData() || undefined }) })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) { busy = false; status.textContent = ""; pushExaminer((j && j.reply) || "Bitte, sprechen Sie weiter."); })
+        .catch(function () { busy = false; status.textContent = "⚠️ Connexion impossible."; });
+    }
+    function userSays(text) { text = (text || "").trim(); if (!text || busy) return; pushUser(text); examinerTurn(); }
+    const row = el("div", "delf-rec-row");
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder) {
+      const mic = el("button", "btn btn-mic", "🎤 Parler"); mic.type = "button";
+      let mr = null, chunks = [], recording = false;
+      mic.addEventListener("click", function () {
+        if (busy) return;
+        if (recording) { if (mr) mr.stop(); return; }
+        navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+          chunks = []; try { mr = new MediaRecorder(stream); } catch (e) { status.textContent = "⚠️ Micro non supporté — écrivez."; stream.getTracks().forEach(function (x) { x.stop(); }); return; }
+          mr.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+          mr.onstop = function () {
+            recording = false; mic.classList.remove("listening"); mic.textContent = "🎤 Parler"; stream.getTracks().forEach(function (x) { x.stop(); });
+            const blob = new Blob(chunks, { type: (chunks[0] && chunks[0].type) || "audio/webm" }); status.textContent = "⏳ Transcription…";
+            fetch("/api/stt", { method: "POST", headers: { "content-type": blob.type || "audio/webm" }, body: blob })
+              .then(function (r) { return r.ok ? r.json() : null; })
+              .then(function (j) { status.textContent = ""; if (j && j.text) userSays(j.text); else status.textContent = "⚠️ Rien compris — réessayez ou écrivez."; })
+              .catch(function () { status.textContent = "⚠️ Hors-ligne — écrivez."; });
+          };
+          mr.start(); recording = true; mic.classList.add("listening"); mic.textContent = "⏹️ Arrêter"; status.textContent = "🎙️ Parlez…";
+        }).catch(function () { status.textContent = "⚠️ Micro indisponible — écrivez ci-dessous."; });
+      });
+      row.appendChild(mic);
+    }
+    const replay = el("button", "btn btn-ghost small", "🔁 Réécouter"); replay.type = "button";
+    replay.addEventListener("click", function () { const last = turns.filter(function (h) { return h.role === "assistant"; }).pop(); if (last && window.Speech) window.Speech.speak(last.content, { rate: 0.98 }); });
+    row.appendChild(replay); row.appendChild(status); card.appendChild(row);
+    const inp = el("input", "production-input delf-typed"); inp.type = "text"; inp.setAttribute("placeholder", "…ou écrivez votre réponse, puis Entrée");
+    inp.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); const v = inp.value; inp.value = ""; userSays(v); } });
+    card.appendChild(inp);
+    if (task.opener) pushExaminer(task.opener);
+    else { history.push({ role: "user", content: "[Du bist Pruefer in einer muendlichen Pruefung. Aufgabe: " + (task.consigne || "") + (task.scenario ? " Szenario: " + task.scenario : "") + ". Eroeffne die Pruefung mit EINER kurzen, passenden Frage oder Replik auf Deutsch.]" }); examinerTurn(); }
+    function collect() { return { id: task.id, consigne: task.consigne + (task.scenario ? " (" + task.scenario + ")" : ""), transcript: turns.map(function (h) { return (h.role === "user" ? "Candidat : " : "Examinateur : ") + h.content; }).join("\n") }; }
+    return { el: card, collect: collect };
+  }
+
+  function delfEO(taches, niveau) {
     const wrap = el("div", "delf-eo"); const fields = [];
+    const DIALOG = ["dialog", "jeuderole", "info", "thema", "planen", "diskussion", "problemloesung", "anschlussfragen"];
     const recOK = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
     taches.forEach(function (t) {
+      if (t.mode === "dialog" || DIALOG.indexOf(t.type) >= 0) { const d = delfDialog(t, niveau); wrap.appendChild(d.el); fields.push(d.collect); return; }
       const card = el("div", "delf-doc");
       card.appendChild(el("h3", "delf-doc-t", delfEsc(t.titre)));
       card.appendChild(el("p", "delf-q-t", delfEsc(t.consigne)));
@@ -22909,9 +22983,9 @@ window.Legal = (function () {
         row.appendChild(rec); row.appendChild(status); card.appendChild(row);
       }
       card.appendChild(ta); wrap.appendChild(card);
-      fields.push({ t: t, ta: ta });
+      fields.push(function () { return { id: t.id, consigne: t.consigne, transcript: ta.value.trim() }; });
     });
-    function collect() { return fields.map(function (f) { return { id: f.t.id, consigne: f.t.consigne, transcript: f.ta.value.trim() }; }); }
+    function collect() { return fields.map(function (f) { return f(); }); }
     return { el: wrap, collect: collect };
   }
 
@@ -22936,7 +23010,7 @@ window.Legal = (function () {
       const note = el("textarea", "production-input"); note.rows = 4; note.setAttribute("placeholder", "Brouillon / vos idées (non noté)…"); body.appendChild(note);
       delfScreen(Object.assign({}, SC, { phase: "Épreuve 4 / 4 · préparation (" + Math.round(ep.prep / 60) + " min)", icone: ep.icone, titre: ep.titre + " — préparation", intro: "Vous avez " + Math.round(ep.prep / 60) + " minutes pour préparer.", body: body, timerSeconds: ep.prep, primary: "Je suis prêt(e) — parler →", onPrimary: runEO }));
     }
-    function runEO() { const ep = E.eo; const r = delfEO(ep.taches); delfScreen(Object.assign({}, SC, { phase: "Épreuve 4 / 4 · passation orale", icone: ep.icone, titre: ep.titre, intro: "Enregistrez-vous (ou écrivez ce que vous diriez) pour chaque partie.", body: r.el, timerSeconds: ep.duree, primary: "Remettre ma copie ✅", onPrimary: function () { state.eo = r.collect(); doSubmit(); } })); }
+    function runEO() { const ep = E.eo; const r = delfEO(ep.taches, CODE); delfScreen(Object.assign({}, SC, { phase: "Épreuve 4 / 4 · passation orale", icone: ep.icone, titre: ep.titre, intro: "Parlez au micro avec l'examinateur (ou écrivez). Aucune correction ne s'affiche.", body: r.el, timerSeconds: ep.duree, primary: "Remettre ma copie ✅", onPrimary: function () { state.eo = r.collect(); doSubmit(); } })); }
 
     function doSubmit() {
       if (window.TG) { try { window.TG.closingConfirmation(false); } catch (e) {} }
@@ -23286,8 +23360,8 @@ window.Legal = (function () {
     } else {
       const P = T.parts.muendlich;
       const passation = function () {
-        const r = delfEO(P.taches);
-        delfScreen(Object.assign({}, SC, { phase: "Épreuve orale · passation", icone: "🗣️", titre: "Mündliche Prüfung", intro: "Enregistrez (ou écrivez) vos 3 parties. ~15 minutes.", body: r.el, timerSeconds: P.duree, primary: "Remettre la copie orale ✅", onPrimary: function () { submitPart(code + "-muendlich", { langue: telcLang(), copy: { oral: r.collect() } }); } }));
+        const r = delfEO(P.taches, CODE);
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve orale · passation", icone: "🗣️", titre: "Mündliche Prüfung", intro: "Présentation au micro + discussion en direct avec l'examinateur. Aucune correction pendant l'épreuve.", body: r.el, timerSeconds: P.duree, primary: "Remettre la copie orale ✅", onPrimary: function () { submitPart(code + "-muendlich", { langue: telcLang(), copy: { oral: r.collect() } }); } }));
       };
       const prep = function () {
         const body = el("div", "delf-eo-prep");
