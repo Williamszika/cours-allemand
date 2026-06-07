@@ -105,14 +105,19 @@ async function aiNote(kind,items,langue,sur,contexte){
     return {ok:true,note:note,feedback:feedback};
   }catch(e){console.warn("[exam-ai]",e&&e.message);return {ok:false};}
 }
-// telc B1 : écrit /225 (Lesen 75 + Sprachbausteine 30 + Hören 75 + Schreiben 45),
-// oral /75. Réussite : >=60% dans CHAQUE partie (135/225 et 45/75), bénéfice gardé.
-const B1_W_MAX=225,B1_W_PASS=135,B1_O_MAX=75,B1_O_PASS=45;
+// telc : barème par niveau. Réussite >=60% dans CHAQUE partie, bénéfice gardé.
+// B1/B2 : écrit /225 (Lesen 75 + Sprachbausteine 30 + Hören 75 + Schreiben 45), oral /75.
+// C1 : écrit /166 (Lesen 48 + Sprachbausteine 22 + Hören 48 + Schreiben 48), oral /48.
+const TELC_CFG={
+  b1:{wMax:225,wPass:135,oMax:75,oPass:45,lesenMax:75,sbMax:30,hoerenMax:75,schreibenSur:45},
+  b2:{wMax:225,wPass:135,oMax:75,oPass:45,lesenMax:75,sbMax:30,hoerenMax:75,schreibenSur:45},
+  c1:{wMax:166,wPass:99,oMax:48,oPass:29,lesenMax:48,sbMax:22,hoerenMax:48,schreibenSur:48}
+};
 async function gradeExam(id,key){
   var u=loadUser(id);var ex=u&&u.exams&&u.exams[key];
   if(!u||!ex||ex.status!=="pending")return "none";
   if(key==="a2")return await gradeA2(id,u,ex);
-  if(key.indexOf("b1-")===0||key.indexOf("b2-")===0)return await gradeTelc(id,u,ex,key);
+  if(/^(b1|b2|c1)-/.test(key))return await gradeTelc(id,u,ex,key);
   return "none";
 }
 async function gradeA2(id,u,ex){
@@ -136,25 +141,25 @@ async function gradeA2(id,u,ex){
 }
 async function gradeTelc(id,u,ex,key){
   var p=ex.payload||{},copy=p.copy||{},langue=p.langue||"fr";
-  var code=key.slice(0,2),CTX="telc "+code.toUpperCase();
+  var code=key.slice(0,2),CTX="telc "+code.toUpperCase(),cfg=TELC_CFG[code]||TELC_CFG.b1;
   var part=(key.indexOf("-muendlich")>=0)?"muendlich":"schriftlich";
   if(part==="schriftlich"){
-    var lesen=clampN(p.lesen,0,75),sb=clampN(p.sprachbausteine,0,30),hoeren=clampN(p.hoeren,0,75);
-    var sch=await aiNote("ecrite (texte/lettre/e-mail formel)",(copy.schreiben||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue,45,CTX);
+    var lesen=clampN(p.lesen,0,cfg.lesenMax),sb=clampN(p.sprachbausteine,0,cfg.sbMax),hoeren=clampN(p.hoeren,0,cfg.hoerenMax);
+    var sch=await aiNote("ecrite (texte argumente/lettre formel)",(copy.schreiben||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue,cfg.schreibenSur,CTX);
     if(!sch.ok)return "postpone";
     var wt=lesen+sb+hoeren+sch.note;
-    ex.result={part:"schriftlich",lesen:lesen,sprachbausteine:sb,hoeren:hoeren,schreiben:sch.note,total:wt,sur:B1_W_MAX,seuil:B1_W_PASS,passed:wt>=B1_W_PASS,schreibenFeedback:sch.feedback};
+    ex.result={part:"schriftlich",lesen:lesen,sprachbausteine:sb,hoeren:hoeren,schreiben:sch.note,lesenMax:cfg.lesenMax,sbMax:cfg.sbMax,hoerenMax:cfg.hoerenMax,schreibenMax:cfg.schreibenSur,total:wt,sur:cfg.wMax,seuil:cfg.wPass,passed:wt>=cfg.wPass,schreibenFeedback:sch.feedback};
   }else{
-    var oral=await aiNote("orale (3 parties : presentation, discussion d'opinion, planification commune)",(copy.oral||[]).map(function(t){return {consigne:t.consigne,production:t.transcript};}),langue,75,CTX);
+    var oral=await aiNote("orale (3 parties : presentation, questions de suivi, discussion)",(copy.oral||[]).map(function(t){return {consigne:t.consigne,production:t.transcript};}),langue,cfg.oMax,CTX);
     if(!oral.ok)return "postpone";
-    ex.result={part:"muendlich",total:oral.note,sur:B1_O_MAX,seuil:B1_O_PASS,passed:oral.note>=B1_O_PASS,oralFeedback:oral.feedback};
+    ex.result={part:"muendlich",total:oral.note,sur:cfg.oMax,seuil:cfg.oPass,passed:oral.note>=cfg.oPass,oralFeedback:oral.feedback};
   }
   ex.status="graded";ex.gradedAt=new Date().toISOString();
   // Certificat telc : réussi seulement si l'écrit ET l'oral sont validés (bénéfice gardé).
   var sr=(u.exams[code+"-schriftlich"]&&u.exams[code+"-schriftlich"].result)||null;
   var mr=(u.exams[code+"-muendlich"]&&u.exams[code+"-muendlich"].result)||null;
   var certified=!!(sr&&sr.passed&&mr&&mr.passed);
-  var pct=Math.round(((sr?sr.total:0)+(mr?mr.total:0))/(B1_W_MAX+B1_O_MAX)*100);
+  var pct=Math.round(((sr?sr.total:0)+(mr?mr.total:0))/(cfg.wMax+cfg.oMax)*100);
   u.progress=u.progress||{};u.progress.tests=u.progress.tests||{};
   var prevB=u.progress.tests[code]||{meilleur:0,reussi:false};
   u.progress.tests[code]={meilleur:Math.max(prevB.meilleur||0,pct),reussi:!!(prevB.reussi||certified),dernier:pct};

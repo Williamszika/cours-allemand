@@ -533,7 +533,7 @@
     }
     function carteExamen(examId, titre, unlocked, sousTitre, lockText) {
       if (examId === "a2") return carteDelfA2(unlocked, lockText);
-      if (examId === "b1" || examId === "b2") return carteTelc(examId, unlocked, lockText);
+      if (examId === "b1" || examId === "b2" || examId === "c1") return carteTelc(examId, unlocked, lockText);
       const ts = window.Progress.getTestScore(examId);
       const card = el("div", "examen-final " + (unlocked ? "unlocked" : "locked") + (ts && ts.reussi ? " reussi" : ""));
       card.innerHTML =
@@ -620,7 +620,7 @@
 
     /* --- Niveau C1 (débloqué après l'examen B1 + B2) --- */
     renderNiveau({ code: "C1", exam: "c1", prevExam: "finalb", prevLabel: "l'examen B1 + B2",
-      examSous: "30 questions de tout le C1 · seuil " + COURS.seuilReussite + "%. Réussissez-le pour accéder au niveau C2 !" });
+      examSous: "Examen blanc telc C1 (écrit /166 + oral /48), corrigé par l'IA sous 24 h. Réussissez les deux parties pour accéder au niveau C2 !" });
 
     /* --- Niveau C2 (débloqué après l'examen C1) --- */
     renderNiveau({ code: "C2", exam: "c2", prevExam: "c1", prevLabel: "l'examen C1",
@@ -2242,7 +2242,7 @@
   function telcLocalGet(code) { try { return JSON.parse(localStorage.getItem("telc_" + code) || "null"); } catch (e) { return null; } }
   function telcLocalSet(code, o) { try { localStorage.setItem("telc_" + code, JSON.stringify(o || {})); } catch (e) {} }
   function telcLang() { return (window.I18N && window.I18N.lang && window.I18N.lang()) || "fr"; }
-  function telcGuardOK(code) { return code === "b2" ? (examPasse("b1") && niveauTermine("B2")) : (examPasse("final") && niveauTermine("B1")); }
+  function telcGuardOK(code) { const G = { b1: ["final", "B1"], b2: ["b1", "B2"], c1: ["finalb", "C1"] }, g = G[code] || G.b1; return examPasse(g[0]) && niveauTermine(g[1]); }
 
   function renderTelcHub(code) {
     const T = telcData(code);
@@ -2361,7 +2361,7 @@
         } }));
       };
       const intro = el("div", "delf-intro-body");
-      intro.innerHTML = '<div class="delf-rules"><p>Épreuve écrite telc ' + CODE + ' — <strong>/225</strong> (réussite ≥ 135). Trois temps enchaînés :</p><ul class="delf-epreuves"><li>📖 Leseverstehen &amp; 🧩 Sprachbausteine — <strong>' + dLS + ' min</strong></li><li>🎧 Hörverstehen — <strong>' + dH + ' min</strong></li><li>✍️ Schriftlicher Ausdruck — <strong>' + dS + ' min</strong></li></ul><p>Aucune correction pendant l\'épreuve ; votre note, votre copie corrigée et votre PDF arrivent sous 24 h.</p></div>';
+      intro.innerHTML = '<div class="delf-rules"><p>Épreuve écrite telc ' + CODE + ' — <strong>/' + P.sur + '</strong> (réussite ≥ ' + P.seuil + '). Trois temps enchaînés :</p><ul class="delf-epreuves"><li>📖 Leseverstehen &amp; 🧩 Sprachbausteine — <strong>' + dLS + ' min</strong></li><li>🎧 Hörverstehen — <strong>' + dH + ' min</strong></li><li>✍️ Schriftlicher Ausdruck — <strong>' + dS + ' min</strong></li></ul><p>Aucune correction pendant l\'épreuve ; votre note, votre copie corrigée et votre PDF arrivent sous 24 h.</p></div>';
       delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite", icone: "📝", titre: "Schriftliche Prüfung", intro: "", body: intro, primary: "Commencer l'épreuve écrite →", onPrimary: s1 }));
     } else {
       const P = T.parts.muendlich;
@@ -2423,7 +2423,7 @@
     const c = el("div", "delf-scorecard"); const pct = res.sur ? Math.round(res.total / res.sur * 100) : 0;
     let inner = '<div class="score-ring ' + (res.passed ? "pass" : "fail") + '"><span>' + res.total + "</span></div>";
     inner += '<p class="delf-q-t">Total ' + (part === "muendlich" ? "oral" : "écrit") + " : <strong>" + res.total + " / " + res.sur + "</strong> (" + pct + "%) — il faut " + res.seuil + "</p>";
-    if (part !== "muendlich") inner += '<div class="delf-gauges">' + telcGauge("📖 Lesen", res.lesen, 75) + telcGauge("🧩 Sprachb.", res.sprachbausteine, 30) + telcGauge("🎧 Hören", res.hoeren, 75) + telcGauge("✍️ Schreiben", res.schreiben, 45) + "</div>";
+    if (part !== "muendlich") inner += '<div class="delf-gauges">' + telcGauge("📖 Lesen", res.lesen, res.lesenMax || 75) + telcGauge("🧩 Sprachb.", res.sprachbausteine, res.sbMax || 30) + telcGauge("🎧 Hören", res.hoeren, res.hoerenMax || 75) + telcGauge("✍️ Schreiben", res.schreiben, res.schreibenMax || 45) + "</div>";
     inner += '<div class="delf-verdict ' + (res.passed ? "pass" : "fail") + '">' + (res.passed ? "✅ Partie " + (part === "muendlich" ? "orale" : "écrite") + " RÉUSSIE" : "📚 Partie non réussie — repassez-la") + "</div>";
     c.innerHTML = inner; return c;
   }
@@ -2447,12 +2447,12 @@
       if (fb) { const f = el("div", "delf-copy-fb"); f.innerHTML = "<strong>✨ Correction du coach Zika :</strong><br>" + delfFmt(fb); s.appendChild(f); }
       w.appendChild(s);
     }
-    if (part === "muendlich") prodSec("🗣️ Production orale — " + res.total + "/75", copy.oral, res.oralFeedback, "transcript");
+    if (part === "muendlich") prodSec("🗣️ Production orale — " + res.total + "/" + (res.sur || 75), copy.oral, res.oralFeedback, "transcript");
     else {
-      qcmSec("📖 Leseverstehen — " + res.lesen + "/75", copy.lesen);
-      qcmSec("🧩 Sprachbausteine — " + res.sprachbausteine + "/30", copy.sprachbausteine);
-      qcmSec("🎧 Hörverstehen — " + res.hoeren + "/75", copy.hoeren);
-      prodSec("✍️ Schriftlicher Ausdruck — " + res.schreiben + "/45", copy.schreiben, res.schreibenFeedback, "text");
+      qcmSec("📖 Leseverstehen — " + res.lesen + "/" + (res.lesenMax || 75), copy.lesen);
+      qcmSec("🧩 Sprachbausteine — " + res.sprachbausteine + "/" + (res.sbMax || 30), copy.sprachbausteine);
+      qcmSec("🎧 Hörverstehen — " + res.hoeren + "/" + (res.hoerenMax || 75), copy.hoeren);
+      prodSec("✍️ Schriftlicher Ausdruck — " + res.schreiben + "/" + (res.schreibenMax || 45), copy.schreiben, res.schreibenFeedback, "text");
     }
     return w;
   }
@@ -2465,11 +2465,11 @@
         function line(txt, size, style, color) { doc.setFont("helvetica", style || "normal"); doc.setFontSize(size || 11); doc.setTextColor(color ? color[0] : 25, color ? color[1] : 25, color ? color[2] : 25); doc.splitTextToSize(String(txt == null ? "" : txt), W).forEach(function (l) { if (y > PH - M) { doc.addPage(); y = M; } doc.text(l, M, y); y += (size || 11) + 4; }); }
         line("Examen telc " + CODE + " — partie " + (part === "muendlich" ? "orale" : "écrite"), 18, "bold"); y += 2;
         line("Résultat : " + res.total + "/" + res.sur + " — " + (res.passed ? "RÉUSSIE" : "NON RÉUSSIE"), 13, "bold", res.passed ? [21, 128, 61] : [185, 28, 28]);
-        if (part !== "muendlich") line("Lesen " + res.lesen + "/75 · Sprachbausteine " + res.sprachbausteine + "/30 · Hoeren " + res.hoeren + "/75 · Schreiben " + res.schreiben + "/45", 11);
+        if (part !== "muendlich") line("Lesen " + res.lesen + "/" + (res.lesenMax || 75) + " · Sprachbausteine " + res.sprachbausteine + "/" + (res.sbMax || 30) + " · Hoeren " + res.hoeren + "/" + (res.hoerenMax || 75) + " · Schreiben " + res.schreiben + "/" + (res.schreibenMax || 45), 11);
         y += 6;
         function qcm(title, items) { if (!items || !items.length) return; line(title, 13, "bold"); items.forEach(function (it, i) { const ok = it.selected === it.correct; line((i + 1) + ". " + it.q, 11, "bold"); line("→ " + (it.selected >= 0 ? it.options[it.selected] : "(sans réponse)") + (ok ? "  [correct]" : "  [faux] · correct : " + it.options[it.correct]), 10, "normal", ok ? [21, 128, 61] : [185, 28, 28]); }); y += 6; }
         function prod(title, arr, fb, key) { if (!arr || !arr.length) return; line(title, 13, "bold"); arr.forEach(function (t) { line("Consigne : " + t.consigne, 10, "italic"); line(t[key] || "(rien)", 11); y += 2; }); if (fb) line("Correction IA : " + String(fb).replace(/\*\*/g, ""), 10, "normal", [70, 70, 70]); y += 6; }
-        if (part === "muendlich") prod("Production orale (" + res.total + "/75)", copy.oral, res.oralFeedback, "transcript");
+        if (part === "muendlich") prod("Production orale (" + res.total + "/" + (res.sur || 75) + ")", copy.oral, res.oralFeedback, "transcript");
         else { qcm("Leseverstehen (" + res.lesen + "/75)", copy.lesen); qcm("Sprachbausteine (" + res.sprachbausteine + "/30)", copy.sprachbausteine); qcm("Hoerverstehen (" + res.hoeren + "/75)", copy.hoeren); prod("Schriftlicher Ausdruck (" + res.schreiben + "/45)", copy.schreiben, res.schreibenFeedback, "text"); }
         doc.save("telc_" + CODE + "_" + (part === "muendlich" ? "oral" : "ecrit") + ".pdf");
         btn.textContent = "✓ PDF téléchargé";
@@ -3819,9 +3819,9 @@
     else if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);
     else if (hash.match(/^#\/examen\/a2\/resultat/)) renderDelfResult();
     else if (hash.match(/^#\/examen\/a2(?:$|[\/?#])/)) renderDelfA2();
-    else if ((m = hash.match(/^#\/examen\/(b1|b2)\/resultat\/(ecrit|oral)/))) renderTelcResult(m[1], m[2]);
-    else if ((m = hash.match(/^#\/examen\/(b1|b2)\/(ecrit|oral)/))) renderTelcPart(m[1], m[2] === "oral" ? "muendlich" : "schriftlich");
-    else if ((m = hash.match(/^#\/examen\/(b1|b2)(?:$|[\/?#])/))) renderTelcHub(m[1]);
+    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1)\/resultat\/(ecrit|oral)/))) renderTelcResult(m[1], m[2]);
+    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1)\/(ecrit|oral)/))) renderTelcPart(m[1], m[2] === "oral" ? "muendlich" : "schriftlich");
+    else if ((m = hash.match(/^#\/examen\/(b1|b2|c1)(?:$|[\/?#])/))) renderTelcHub(m[1]);
     else if ((m = hash.match(/^#\/examen\/(a1|a2|finalb|finalc|final|b1|b2|c1|c2)/))) renderTest(m[1]);
     else if (hash.match(/^#\/examen/)) renderTest("a1");
     else if ((m = hash.match(/^#\/dictee\/([a-z0-9-]+)/))) renderDictee(m[1]);
