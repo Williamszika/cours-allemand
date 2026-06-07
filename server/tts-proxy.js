@@ -119,28 +119,33 @@ const TELC_CFG={
 async function gradeExam(id,key){
   var u=loadUser(id);var ex=u&&u.exams&&u.exams[key];
   if(!u||!ex||ex.status!=="pending")return "none";
-  if(key==="a1"||key==="a2")return await gradeDelf(id,u,ex,key);
-  if(/^(b1|b2|c1|c2)-/.test(key))return await gradeTelc(id,u,ex,key);
+  if(key==="a1"||key==="a2"||key==="final")return await gradeDelf(id,u,ex,key);
+  if(/^(b1|b2|c1|c2|finalb|finalc)-/.test(key))return await gradeTelc(id,u,ex,key);
   return "none";
 }
+// DELF : a1/a2 = /100 seuil 50 ; final (A1+A2) = /125 (4×25 + dictée 25), seuil relevé 75.
+const DELF_CFG={a1:{seuil:50,sur:100},a2:{seuil:50,sur:100},final:{seuil:75,sur:125,dictee:true}};
 async function gradeDelf(id,u,ex,key){
-  var code=key||"a2",CODE=code.toUpperCase(),CTX="DELF "+CODE;
+  var code=key||"a2",CODE=code.toUpperCase(),CTX=(code==="final"?"DELF final A1+A2":"DELF "+CODE);
+  var cfg=DELF_CFG[code]||{seuil:50,sur:100};
   var p=ex.payload||{},copy=p.copy||{},langue=p.langue||"fr";
   var co25=clampN(p.co25,0,25),ce25=clampN(p.ce25,0,25);
   var ee=await aiNote("ecrite",(copy.ee||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue,25,CTX);
   if(!ee.ok)return "postpone";
   var eo=await aiNote("orale",(copy.eo||[]).map(function(t){return {consigne:t.consigne,production:t.transcript};}),langue,25,CTX);
   if(!eo.ok)return "postpone";
-  var total=co25+ce25+ee.note+eo.note,minNote=Math.min(co25,ce25,ee.note,eo.note),elim=minNote<EXAM_ELIM,reussi=total>=EXAM_PASS&&!elim;
+  var dicteeSur=cfg.dictee?(clampN(p.dicteeSur,1,100)||25):0,dictee=cfg.dictee?clampN(p.dictee,0,dicteeSur):0;
+  var total=co25+ce25+ee.note+eo.note+dictee,minNote=Math.min(co25,ce25,ee.note,eo.note),elim=minNote<EXAM_ELIM,reussi=total>=cfg.seuil&&!elim;
   u.progress=u.progress||{};u.progress.tests=u.progress.tests||{};
+  var pct=Math.round(total/cfg.sur*100);
   var prev=u.progress.tests[code]||{meilleur:0,reussi:false};
-  u.progress.tests[code]={meilleur:Math.max(prev.meilleur||0,total),reussi:!!(prev.reussi||reussi),dernier:total};
+  u.progress.tests[code]={meilleur:Math.max(prev.meilleur||0,pct),reussi:!!(prev.reussi||reussi),dernier:pct};
   ex.status="graded";ex.gradedAt=new Date().toISOString();
-  ex.result={co25:co25,ce25:ce25,ee25:ee.note,eo25:eo.note,total:total,minNote:minNote,eliminatoire:elim,reussi:reussi,eeFeedback:ee.feedback,eoFeedback:eo.feedback};
+  ex.result={co25:co25,ce25:ce25,ee25:ee.note,eo25:eo.note,dictee:(cfg.dictee?dictee:undefined),dicteeSur:(cfg.dictee?dicteeSur:undefined),total:total,sur:cfg.sur,seuil:cfg.seuil,minNote:minNote,eliminatoire:elim,reussi:reussi,eeFeedback:ee.feedback,eoFeedback:eo.feedback};
   saveUser(id,u);
-  var msg=reussi?("🎓 Ton résultat "+CTX+" est prêt : "+total+"/100 — RÉUSSI ✅\nOuvre l'app pour ta copie corrigée et ton PDF. Glückwunsch!"):(elim?("📋 Résultat "+CTX+" : "+total+"/100. Une épreuve est sous 5/25 (éliminatoire). Regarde ta copie dans l'app et retente — du schaffst das! 💪"):("📋 Résultat "+CTX+" : "+total+"/100 (il faut 50). Pas encore réussi. Regarde ta copie dans l'app et retente bientôt ! 💪"));
+  var msg=reussi?("🎓 Ton résultat "+CTX+" est prêt : "+total+"/"+cfg.sur+" — RÉUSSI ✅\nOuvre l'app pour ta copie corrigée et ton PDF. Glückwunsch!"):(elim?("📋 Résultat "+CTX+" : "+total+"/"+cfg.sur+". Une épreuve est sous 5/25 (éliminatoire). Regarde ta copie dans l'app et retente — du schaffst das! 💪"):("📋 Résultat "+CTX+" : "+total+"/"+cfg.sur+" (il faut "+cfg.seuil+"). Pas encore réussi. Regarde ta copie dans l'app et retente bientôt ! 💪"));
   if(BOT_TOKEN)tgSend(id,msg).catch(function(){});
-  console.log("[exam] "+id+" "+CTX+" corrigé: "+total+"/100");
+  console.log("[exam] "+id+" "+CTX+" corrigé: "+total+"/"+cfg.sur);
   return "graded";
 }
 async function gradeTelc(id,u,ex,key){
