@@ -81,12 +81,12 @@
         intro: "2 textes à rédiger (niveau A2). Corrigés par l'IA après l'examen.",
         taches: [
           {
-            id: "ee1", titre: "Exercice 1 — Raconter un voyage", minMots: 40,
+            id: "ee1", titre: "Exercice 1 — Raconter un voyage", minMots: 40, maxMots: 60,
             consigne: "Erzählen Sie von einer Reise (40–60 Wörter): Wohin sind Sie gefahren, mit wem, was haben Sie gemacht? Schreiben Sie im Perfekt.",
             criteres: ["Récit au passé (Perfekt)", "Où / avec qui / quoi", "Connecteurs (zuerst, dann, danach)"]
           },
           {
-            id: "ee2", titre: "Exercice 2 — Un e-mail d'excuse et d'invitation", minMots: 40,
+            id: "ee2", titre: "Exercice 2 — Un e-mail d'excuse et d'invitation", minMots: 40, maxMots: 60,
             consigne: "Sie können zu einer Party nicht kommen. Schreiben Sie eine E-Mail (40–60 Wörter): entschuldigen Sie sich, sagen Sie warum, und laden Sie die Person zu einem anderen Treffen ein.",
             criteres: ["Excuse claire + raison", "Invitation à un autre moment", "Formules de politesse"]
           }
