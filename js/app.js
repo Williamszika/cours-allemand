@@ -2381,7 +2381,7 @@
     prodSec("✍️ Production écrite — " + res.ee25 + "/25", copy.ee, res.eeFeedback, function (t) { return t.text; });
     prodSec("🗣️ Production orale — " + res.eo25 + "/25", copy.eo, res.eoFeedback, function (t) { return t.transcript; });
     if (copy.dictee) {
-      const s = el("div", "delf-copy-sec"); s.appendChild(el("h3", null, "✒️ Dictée — " + res.dictee + "/" + (res.dicteeSur || 25) + (copy.dictee.score != null ? " (" + copy.dictee.score + "% de mots justes)" : "")));
+      const s = el("div", "delf-copy-sec"); s.appendChild(el("h3", null, "✒️ Dictée — " + res.dictee + "/" + (res.dicteeSur || 25) + " (" + Math.round((res.dictee || 0) / (res.dicteeSur || 25) * 100) + "% de mots justes)"));
       const ref = el("div", "delf-copy-prod"); ref.innerHTML = '<p class="dc">Texte attendu :</p><div class="dp">' + delfEsc(copy.dictee.texte) + "</div>";
       const got = el("div", "delf-copy-prod"); got.innerHTML = '<p class="dc">Votre dictée :</p><div class="dp">' + (delfEsc(copy.dictee.saisie) || "<em>(rien)</em>") + "</div>";
       s.appendChild(ref); s.appendChild(got); w.appendChild(s);
