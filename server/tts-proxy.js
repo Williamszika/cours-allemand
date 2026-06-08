@@ -82,6 +82,13 @@ function compStats(users){
    selon les descripteurs DELF A2 ; CO et CE sont déjà notées côté client.
    Réussite : total >= 50/100 ET aucune épreuve < 5/25 (sinon éliminatoire). */
 function clampN(x,a,b){x=Math.round(+x||0);return x<a?a:(x>b?b:x);}
+// Recalcul serveur des scores auto (H2) : on ne fait plus confiance au score calculé
+// côté client ; on le dérive des réponses soumises (selected vs correct) et, pour la
+// dictée, d'un alignement séquentiel (LCS au mot) texte vs saisie.
+function normW(s){return String(s==null?"":s).toLowerCase().replace(/[.,;:!?"«»()\[\]\/\\\-–—…]/g," ").replace(/\s+/g," ").trim();}
+function lcsScore(ref,got,sur){var R=normW(ref).split(" ").filter(Boolean),G=normW(got).split(" ").filter(Boolean);if(!R.length)return 0;var n=R.length,m=G.length,dp=new Array(m+1).fill(0);for(var i=1;i<=n;i++){var prev=0;for(var j=1;j<=m;j++){var tmp=dp[j];dp[j]=(R[i-1]===G[j-1])?prev+1:Math.max(dp[j],dp[j-1]);prev=tmp;}}return Math.round(dp[m]/Math.max(n,m)*sur);}
+function recQcm(items,sur){if(!Array.isArray(items)||!items.length)return 0;var ok=0;items.forEach(function(it){if(it&&it.selected===it.correct)ok++;});return Math.round(ok/items.length*sur);}
+function recDictee(d,sur){if(!d||!d.texte)return 0;return lcsScore(d.texte,d.saisie,sur);}
 function examGradeSys(kind,langue,sur,contexte){
   var LN={fr:"français",en:"anglais",de:"allemand",ar:"arabe",tr:"turc",ru:"russe",uk:"ukrainien",fa:"persan",es:"espagnol",it:"italien",pt:"portugais",pl:"polonais",ro:"roumain",nl:"néerlandais"};
   var lg=LN[String(langue||"fr")]||"français";sur=sur||25;var ctx=contexte||"DELF A2";var niv=/B1/.test(ctx)?"B1":"A2";
@@ -91,19 +98,20 @@ function heuristicNote(items,sur){
   sur=sur||25;var w=0;(items||[]).forEach(function(t){var s=String(t.production||"").trim();w+=s?s.split(/\s+/).length:0;});
   if(w===0)return 0;return clampN(Math.round(Math.min(0.85,w/120)*sur),0,Math.round(sur*0.9));
 }
+async function aiCall(sys,userMsg){try{var r=await anthropic(sys,[{role:"user",content:userMsg}]);if(r.status<200||r.status>=300){console.warn("[exam-ai] upstream "+r.status);return null;}var j=JSON.parse(r.buf.toString());return (j.content&&j.content[0]&&j.content[0].text)?j.content[0].text:"";}catch(e){console.warn("[exam-ai]",e&&e.message);return null;}}
 async function aiNote(kind,items,langue,sur,contexte){
   sur=sur||25;if(!ANTHKEY)return {ok:false};
   var body=(items||[]).map(function(t,i){return "Tache "+(i+1)+" — Consigne : "+String(t.consigne||"").slice(0,800)+"\nProduction du candidat : «"+(String(t.production||"").trim()||"(rien)").slice(0,3000)+"»";}).join("\n\n");
-  try{
-    var r=await anthropic(examGradeSys(kind,langue,sur,contexte),[{role:"user",content:"Epreuve de production "+kind+" ("+(contexte||"DELF A2")+").\n\n"+body}]);
-    if(r.status<200||r.status>=300){console.warn("[exam-ai] upstream "+r.status);return {ok:false};}
-    var j=JSON.parse(r.buf.toString());var txt=(j.content&&j.content[0]&&j.content[0].text)?j.content[0].text:"";
-    if(!txt)return {ok:false};
-    var m=txt.match(/NOTE\s*:?\s*([0-9]{1,3})(?:[.,][0-9]+)?\s*\/\s*([0-9]{1,3})/i);
-    var note=m?clampN(m[1],0,sur):heuristicNote(items,sur);
-    var feedback=txt.replace(/\n?\s*NOTE\s*:?\s*[0-9][^\n]*\/\s*[0-9]+\s*$/i,"").trim();
-    return {ok:true,note:note,feedback:feedback};
-  }catch(e){console.warn("[exam-ai]",e&&e.message);return {ok:false};}
+  var sys=examGradeSys(kind,langue,sur,contexte),userMsg="Epreuve de production "+kind+" ("+(contexte||"DELF A2")+").\n\n"+body;
+  var re=/NOTE\s*:?\s*([0-9]{1,3})(?:[.,][0-9]+)?\s*\/\s*([0-9]{1,3})/i;
+  var txt=await aiCall(sys,userMsg);
+  if(txt===null)return {ok:false};
+  var m=txt.match(re);
+  if(!m){ var txt2=await aiCall(sys,userMsg+"\n\nRAPPEL IMPORTANT : termine ta reponse STRICTEMENT par une ligne au format exact : NOTE: X/"+sur); if(txt2!==null){var m2=txt2.match(re);if(m2){m=m2;txt=txt2;}} }
+  var note,feedback;
+  if(m){note=clampN(m[1],0,sur);feedback=txt.replace(/\n?\s*NOTE\s*:?\s*[0-9][^\n]*\/\s*[0-9]+\s*$/i,"").trim();}
+  else{note=heuristicNote(items,sur);feedback=(txt||"").trim();console.warn("[exam-ai] NOTE introuvable apres 2 essais -> heuristique ("+note+"/"+sur+")");}
+  return {ok:true,note:note,feedback:feedback};
 }
 // telc : barème par niveau. Réussite >=60% dans CHAQUE partie, bénéfice gardé.
 // B1/B2 : écrit /225 (Lesen 75 + Sprachbausteine 30 + Hören 75 + Schreiben 45), oral /75.
@@ -132,12 +140,12 @@ async function gradeDelf(id,u,ex,key){
   var code=key||"a2",CODE=code.toUpperCase(),CTX=(code==="final"?"DELF final A1+A2":"DELF "+CODE);
   var cfg=DELF_CFG[code]||{seuil:50,sur:100};
   var p=ex.payload||{},copy=p.copy||{},langue=p.langue||"fr";
-  var co25=clampN(p.co25,0,25),ce25=clampN(p.ce25,0,25);
+  var co25=recQcm(copy.co,25),ce25=recQcm(copy.ce,25);
   var ee=await aiNote("ecrite",(copy.ee||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue,25,CTX);
   if(!ee.ok)return "postpone";
   var eo=await aiNote("orale",(copy.eo||[]).map(function(t){return {consigne:t.consigne,production:(t.candidate||t.transcript)};}),langue,25,CTX);
   if(!eo.ok)return "postpone";
-  var dicteeSur=cfg.dictee?(clampN(p.dicteeSur,1,100)||25):0,dictee=cfg.dictee?clampN(p.dictee,0,dicteeSur):0;
+  var dicteeSur=cfg.dictee?clampN((copy.dictee&&copy.dictee.sur)||25,1,100):0,dictee=cfg.dictee?recDictee(copy.dictee,dicteeSur):0;
   var total=co25+ce25+ee.note+eo.note+dictee,minNote=Math.min(co25,ce25,ee.note,eo.note),elim=minNote<EXAM_ELIM,reussi=total>=cfg.seuil&&!elim;
   u.progress=u.progress||{};u.progress.tests=u.progress.tests||{};
   var pct=Math.round(total/cfg.sur*100);
@@ -156,7 +164,7 @@ async function gradeTelc(id,u,ex,key){
   var code=key.split("-")[0],CTX="telc "+code.toUpperCase(),cfg=TELC_CFG[code]||TELC_CFG.b1;
   var part=(key.indexOf("-muendlich")>=0)?"muendlich":"schriftlich";
   if(part==="schriftlich"){
-    var lesen=clampN(p.lesen,0,cfg.lesenMax),sb=clampN(p.sprachbausteine,0,cfg.sbMax),hoeren=clampN(p.hoeren,0,cfg.hoerenMax);
+    var lesen=recQcm(copy.lesen,cfg.lesenMax),sb=recQcm(copy.sprachbausteine,cfg.sbMax),hoeren=recQcm(copy.hoeren,cfg.hoerenMax);
     var sch=await aiNote("ecrite (texte argumente/lettre formel/dissertation)",(copy.schreiben||[]).map(function(t){return {consigne:t.consigne,production:t.text};}),langue,cfg.schreibenSur,CTX);
     if(!sch.ok)return "postpone";
     var hsNote=0,hsFb="";
@@ -165,7 +173,7 @@ async function gradeTelc(id,u,ex,key){
       if(!hs.ok)return "postpone";
       hsNote=hs.note;hsFb=hs.feedback;
     }
-    var dictee=(cfg.dicteeSur||0)>0?clampN(p.dictee,0,cfg.dicteeSur):0;
+    var dictee=(cfg.dicteeSur||0)>0?recDictee(copy.dictee,cfg.dicteeSur):0;
     var wt=lesen+sb+hoeren+sch.note+hsNote+dictee;
     ex.result={part:"schriftlich",lesen:lesen,sprachbausteine:sb,hoeren:hoeren,schreiben:sch.note,hs:hsNote,dictee:dictee,lesenMax:cfg.lesenMax,sbMax:cfg.sbMax,hoerenMax:cfg.hoerenMax,schreibenMax:cfg.schreibenSur,hsMax:(cfg.hsSur||0),dicteeMax:(cfg.dicteeSur||0),total:wt,sur:cfg.wMax,seuil:cfg.wPass,passed:wt>=cfg.wPass,schreibenFeedback:sch.feedback,hsFeedback:hsFb};
   }else{
@@ -190,15 +198,18 @@ async function gradeTelc(id,u,ex,key){
   return "graded";
 }
 var examScanning=false;
+const EXAM_SCAN_MAX=parseInt(process.env.EXAM_SCAN_MAX||"20",10)||20; // copies max corrigées par scan
+const EXAM_SCAN_GAP=parseInt(process.env.EXAM_SCAN_GAP_MS||"500",10)||500; // throttle entre corrections IA
+function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
 async function scanPendingExams(){
-  if(examScanning)return;examScanning=true;
+  if(examScanning)return;examScanning=true;var graded=0;
   try{var now=Date.now();var users=listUsers();
-    for(var i=0;i<users.length;i++){var u=users[i];if(!u||!u.id||!u.exams)continue;var keys=Object.keys(u.exams);
-      for(var k=0;k<keys.length;k++){try{var ex=u.exams[keys[k]];
-        if(ex&&ex.status==="pending"&&now-(Date.parse(ex.submittedAt)||0)>=GRADE_DELAY){await gradeExam(String(u.id),keys[k]);}
+    for(var i=0;i<users.length&&graded<EXAM_SCAN_MAX;i++){var u=users[i];if(!u||!u.id||!u.exams)continue;var keys=Object.keys(u.exams);
+      for(var k=0;k<keys.length&&graded<EXAM_SCAN_MAX;k++){try{var ex=u.exams[keys[k]];
+        if(ex&&ex.status==="pending"&&now-(Date.parse(ex.submittedAt)||0)>=GRADE_DELAY){var rr=await gradeExam(String(u.id),keys[k]);if(rr==="graded"){graded++;await sleep(EXAM_SCAN_GAP);}}
       }catch(e){console.warn("[exam-scan]",e&&e.message);}}
     }
-  }finally{examScanning=false;}
+  }finally{examScanning=false;if(graded>=EXAM_SCAN_MAX)console.log("[exam-scan] plafond atteint ("+EXAM_SCAN_MAX+"), suite au prochain scan");}
 }
 const H={"Content-Type":"audio/mpeg","Cache-Control":"public, max-age=31536000, immutable"};
 http.createServer(async(rq,rs)=>{try{

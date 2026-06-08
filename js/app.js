@@ -2043,15 +2043,17 @@
     const status = el("span", "delf-rec-status", "");
     const history = [], turns = [];
     let busy = false;
+    const retryBtn = el("button", "btn btn-ghost small delf-retry", "↻ Réessayer"); retryBtn.type = "button"; retryBtn.style.display = "none";
+    retryBtn.addEventListener("click", function () { if (busy) return; examinerTurn(); });
     function bubble(role, text) { const b = el("div", "delf-bubble " + (role === "user" ? "me" : "ex")); b.appendChild(el("span", "delf-bubble-who", role === "user" ? "Vous" : "🧑‍🏫 Examinateur")); const tx = el("div", "delf-bubble-t"); tx.textContent = text; b.appendChild(tx); conv.appendChild(b); conv.scrollTop = conv.scrollHeight; }
     function pushExaminer(text) { history.push({ role: "assistant", content: text }); turns.push({ role: "assistant", content: text }); bubble("assistant", text); if (window.Speech) window.Speech.speak(text, { rate: 0.98 }); }
     function pushUser(text) { history.push({ role: "user", content: text }); turns.push({ role: "user", content: text }); bubble("user", text); }
     function examinerTurn() {
-      busy = true; status.textContent = "🧑‍🏫 …";
+      busy = true; status.textContent = "🧑‍🏫 …"; retryBtn.style.display = "none";
       fetch("/api/chat", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ messages: history.slice(-16), mode: "examinateur", niveau: niv, niveauParle: niv, langue: lang, initData: delfInitData() || undefined }) })
-        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
         .then(function (j) { busy = false; status.textContent = ""; pushExaminer((j && j.reply) || "Bitte, sprechen Sie weiter."); })
-        .catch(function () { busy = false; status.textContent = "⚠️ Connexion impossible."; });
+        .catch(function () { busy = false; status.textContent = "⚠️ Connexion perdue — appuyez sur ↻ pour réessayer."; retryBtn.style.display = ""; });
     }
     function userSays(text) { text = (text || "").trim(); if (!text || busy) return; pushUser(text); examinerTurn(); }
     const row = el("div", "delf-rec-row");
@@ -2079,7 +2081,7 @@
     }
     const replay = el("button", "btn btn-ghost small", "🔁 Réécouter"); replay.type = "button";
     replay.addEventListener("click", function () { const last = turns.filter(function (h) { return h.role === "assistant"; }).pop(); if (last && window.Speech) window.Speech.speak(last.content, { rate: 0.98 }); });
-    row.appendChild(replay); row.appendChild(status); card.appendChild(row);
+    row.appendChild(replay); row.appendChild(retryBtn); row.appendChild(status); card.appendChild(row);
     const inp = el("input", "production-input delf-typed"); inp.type = "text"; inp.setAttribute("placeholder", "…ou écrivez votre réponse, puis Entrée");
     inp.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); const v = inp.value; inp.value = ""; userSays(v); } });
     card.appendChild(inp);
