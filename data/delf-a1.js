@@ -81,12 +81,12 @@
         intro: "Vous écrivez 2 textes très simples en allemand. Corrigés par l'IA après l'examen.",
         taches: [
           {
-            id: "ee1", titre: "Exercice 1 — Se présenter", minMots: 20,
+            id: "ee1", titre: "Exercice 1 — Se présenter", minMots: 20, maxMots: 30,
             consigne: "Stellen Sie sich vor (20–30 Wörter): Name, Alter, Land, Sprachen und ein Hobby. Schreiben Sie einfache Sätze.",
             criteres: ["Name, Alter, Land", "Sprachen et un Hobby", "Phrases simples correctes (ich heiße…, ich bin…, ich wohne…)"]
           },
           {
-            id: "ee2", titre: "Exercice 2 — Une invitation (SMS)", minMots: 20,
+            id: "ee2", titre: "Exercice 2 — Une invitation (SMS)", minMots: 20, maxMots: 30,
             consigne: "Schreiben Sie eine kurze SMS an einen Freund (20–30 Wörter): Laden Sie ihn zu einem Kaffee ein. Sagen Sie wann und wo.",
             criteres: ["Invitation claire (Komm…, Hast du Zeit?)", "Quand (jour/heure) et où", "Formules simples (Hallo, Liebe Grüße)"]
           }

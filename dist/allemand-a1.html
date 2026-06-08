@@ -353,6 +353,7 @@ a { color: var(--blue); text-decoration: none; }
 .production-meta { display: flex; gap: 14px; margin-top: 8px; font-size: 12.5px; color: var(--muted); }
 .wordcount { font-weight: 700; }
 .wordcount.ok { color: var(--green); }
+.wordcount.over { color: #b45309; }
 .production-modele { margin-top: 14px; background: var(--green-light); border: 1px solid #86efac; border-radius: 12px; padding: 14px 16px; }
 .production-modele.hidden, .production-checklist.hidden, .oral-transcript.hidden, .fc-back.hidden,
 .btn.hidden, .rev-rate.hidden, .test-result.hidden { display: none; }
@@ -17763,12 +17764,12 @@ window.DICTEES = {
         intro: "Vous écrivez 2 textes très simples en allemand. Corrigés par l'IA après l'examen.",
         taches: [
           {
-            id: "ee1", titre: "Exercice 1 — Se présenter", minMots: 20,
+            id: "ee1", titre: "Exercice 1 — Se présenter", minMots: 20, maxMots: 30,
             consigne: "Stellen Sie sich vor (20–30 Wörter): Name, Alter, Land, Sprachen und ein Hobby. Schreiben Sie einfache Sätze.",
             criteres: ["Name, Alter, Land", "Sprachen et un Hobby", "Phrases simples correctes (ich heiße…, ich bin…, ich wohne…)"]
           },
           {
-            id: "ee2", titre: "Exercice 2 — Une invitation (SMS)", minMots: 20,
+            id: "ee2", titre: "Exercice 2 — Une invitation (SMS)", minMots: 20, maxMots: 30,
             consigne: "Schreiben Sie eine kurze SMS an einen Freund (20–30 Wörter): Laden Sie ihn zu einem Kaffee ein. Sagen Sie wann und wo.",
             criteres: ["Invitation claire (Komm…, Hast du Zeit?)", "Quand (jour/heure) et où", "Formules simples (Hallo, Liebe Grüße)"]
           }
@@ -17909,12 +17910,12 @@ window.DICTEES = {
         intro: "Vous rédigez 2 textes courts en allemand. Soignez la consigne, la grammaire et le vocabulaire. Votre copie sera corrigée par l'IA après l'examen.",
         taches: [
           {
-            id: "ee1", titre: "Exercice 1 — Raconter", minMots: 40,
+            id: "ee1", titre: "Exercice 1 — Raconter", minMots: 40, maxMots: 60,
             consigne: "Vous avez passé un bon week-end. Écrivez un message à un(e) ami(e) allemand(e) (40 à 60 mots) : dites où vous étiez, ce que vous avez fait et avec qui. Racontez au passé (Perfekt).",
             criteres: ["Respect de la consigne (raconter un week-end passé)", "Emploi du Perfekt", "Vocabulaire des loisirs et du temps", "Connecteurs : zuerst, dann, danach, am Ende"]
           },
           {
-            id: "ee2", titre: "Exercice 2 — Écrire un message", minMots: 40,
+            id: "ee2", titre: "Exercice 2 — Écrire un message", minMots: 40, maxMots: 60,
             consigne: "Un(e) ami(e) allemand(e) vous a aidé(e) à déménager. Écrivez-lui un message (40 à 60 mots) pour le/la remercier et l'inviter à dîner chez vous. Proposez une date et une heure.",
             criteres: ["Remerciement clair", "Invitation + proposition de date/heure", "Formules de politesse (Liebe/r…, Liebe Grüße)", "Correction grammaticale de niveau A2"]
           }
@@ -18489,7 +18490,7 @@ window.DICTEES = {
             { titre: "Vortrag — Die Aufmerksamkeitsökonomie", audio: "In meinem heutigen Vortrag möchte ich auf ein oft übersehenes Phänomen eingehen: die sogenannte Aufmerksamkeitsökonomie. Unsere Aufmerksamkeit ist zu einer knappen Ressource geworden, um die zahllose Dienste konkurrieren. Drei Punkte sind dabei zentral. Erstens: Was kostenlos erscheint, bezahlen wir mit unserer Zeit und unseren Daten. Zweitens: Die ständige Ablenkung verändert, wie wir denken – tiefes, konzentriertes Lesen fällt vielen zunehmend schwer. Drittens: Es liegt an uns, bewusste Grenzen zu setzen, denn die Anbieter haben kein Interesse daran, dass wir weniger Zeit mit ihnen verbringen." }
           ],
           tache: {
-            id: "c2-hs", consigne: "Fassen Sie die wichtigsten Aussagen des Vortrags in einem zusammenhängenden Text zusammen (ca. 120–150 Wörter). Geben Sie die drei zentralen Punkte präzise und strukturiert wieder.", minMots: 120
+            id: "c2-hs", consigne: "Fassen Sie die wichtigsten Aussagen des Vortrags in einem zusammenhängenden Text zusammen (ca. 120–150 Wörter). Geben Sie die drei zentralen Punkte präzise und strukturiert wieder.", minMots: 120, maxMots: 150
           }
         },
 
@@ -18617,12 +18618,12 @@ window.DICTEES = {
         intro: "2 textes à rédiger (niveau A2). Corrigés par l'IA après l'examen.",
         taches: [
           {
-            id: "ee1", titre: "Exercice 1 — Raconter un voyage", minMots: 40,
+            id: "ee1", titre: "Exercice 1 — Raconter un voyage", minMots: 40, maxMots: 60,
             consigne: "Erzählen Sie von einer Reise (40–60 Wörter): Wohin sind Sie gefahren, mit wem, was haben Sie gemacht? Schreiben Sie im Perfekt.",
             criteres: ["Récit au passé (Perfekt)", "Où / avec qui / quoi", "Connecteurs (zuerst, dann, danach)"]
           },
           {
-            id: "ee2", titre: "Exercice 2 — Un e-mail d'excuse et d'invitation", minMots: 40,
+            id: "ee2", titre: "Exercice 2 — Un e-mail d'excuse et d'invitation", minMots: 40, maxMots: 60,
             consigne: "Sie können zu einer Party nicht kommen. Schreiben Sie eine E-Mail (40–60 Wörter): entschuldigen Sie sich, sagen Sie warum, und laden Sie die Person zu einem anderen Treffen ein.",
             criteres: ["Excuse claire + raison", "Invitation à un autre moment", "Formules de politesse"]
           }
@@ -23268,6 +23269,28 @@ window.Legal = (function () {
   }
 
   /* Production écrite : zones de texte (aucune correction pendant l'examen). */
+  /* Compteur de mots partagé (productions écrites DELF EE + telc Schreiben).
+     Décompte vif + objectif ; vert dans la fourchette, ambre au-dessus de la
+     limite haute quand elle est connue (DELF « X à Y mots », telc « X–Y »). */
+  function wordMeter(ta, minMots, maxMots) {
+    const meta = el("div", "production-meta");
+    const c = el("span", "wordcount", ""); meta.appendChild(c);
+    let target = "";
+    if (minMots && maxMots) target = "objectif : " + minMots + "–" + maxMots + " mots";
+    else if (minMots) target = "objectif : ≥ " + minMots + " mots";
+    else if (maxMots) target = "objectif : ≤ " + maxMots + " mots";
+    if (target) meta.appendChild(el("span", "wordmin", target));
+    function upd() {
+      const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0;
+      c.textContent = w + (w > 1 ? " mots" : " mot");
+      const over = !!(maxMots && w > maxMots), okMin = !minMots || w >= minMots;
+      c.classList.toggle("ok", okMin && !over);
+      c.classList.toggle("over", over);
+    }
+    ta.addEventListener("input", upd); upd();
+    return meta;
+  }
+
   function delfEE(taches) {
     const wrap = el("div", "delf-ee"); const fields = [];
     taches.forEach(function (t) {
@@ -23275,10 +23298,7 @@ window.Legal = (function () {
       card.appendChild(el("h3", "delf-doc-t", delfEsc(t.titre)));
       card.appendChild(el("p", "delf-q-t", delfEsc(t.consigne)));
       const ta = el("textarea", "production-input"); ta.rows = 5; ta.setAttribute("placeholder", "Schreiben Sie hier auf Deutsch…");
-      const meta = el("div", "production-meta"); const c = el("span", "wordcount", "0 mot"); meta.appendChild(c);
-      if (t.minMots) meta.appendChild(el("span", "wordmin", "objectif : ≥ " + t.minMots + " mots"));
-      ta.addEventListener("input", function () { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; c.textContent = w + (w > 1 ? " mots" : " mot"); c.classList.toggle("ok", !t.minMots || w >= t.minMots); });
-      card.appendChild(ta); card.appendChild(meta); wrap.appendChild(card);
+      card.appendChild(ta); card.appendChild(wordMeter(ta, t.minMots, t.maxMots)); wrap.appendChild(card);
       fields.push({ t: t, ta: ta });
     });
     function collect() { return fields.map(function (f) { return { id: f.t.id, consigne: f.t.consigne, text: f.ta.value.trim() }; }); }
@@ -23736,8 +23756,7 @@ window.Legal = (function () {
           card.appendChild(el("p", "delf-q-t", delfEsc(Tk.consigne)));
           if (Tk.leitpunkte) { const ul = el("ul", "delf-points"); Tk.leitpunkte.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); card.appendChild(ul); }
           const ta = el("textarea", "production-input"); ta.rows = rows; ta.setAttribute("placeholder", ph);
-          const meta = el("div", "production-meta"); const wc = el("span", "wordcount", "0 mot"); meta.appendChild(wc); meta.appendChild(el("span", "wordmin", "objectif : ≥ " + Tk.minMots + " mots"));
-          ta.addEventListener("input", function () { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; wc.textContent = w + (w > 1 ? " mots" : " mot"); wc.classList.toggle("ok", w >= Tk.minMots); });
+          const meta = wordMeter(ta, Tk.minMots, Tk.maxMots);
           return { card: card, body: body, ta: ta, meta: meta };
         };
         const c2_3 = function () {
@@ -23787,9 +23806,7 @@ window.Legal = (function () {
         card.appendChild(el("p", "delf-q-t", delfEsc(Tk.consigne)));
         const ul = el("ul", "delf-points"); Tk.leitpunkte.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); card.appendChild(ul);
         const ta = el("textarea", "production-input"); ta.rows = 8; ta.setAttribute("placeholder", "Schreiben Sie hier auf Deutsch…");
-        const meta = el("div", "production-meta"); const wc = el("span", "wordcount", "0 mot"); meta.appendChild(wc); meta.appendChild(el("span", "wordmin", "objectif : ≥ " + Tk.minMots + " mots"));
-        ta.addEventListener("input", function () { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; wc.textContent = w + (w > 1 ? " mots" : " mot"); wc.classList.toggle("ok", w >= Tk.minMots); });
-        card.appendChild(ta); card.appendChild(meta); body.appendChild(card);
+        card.appendChild(ta); card.appendChild(wordMeter(ta, Tk.minMots, Tk.maxMots)); body.appendChild(card);
         delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 3 / 3", icone: "✍️", titre: "Schriftlicher Ausdruck", intro: dS + " min — rédigez votre texte (la correction viendra plus tard).", body: body, timerSeconds: P.durees.schreiben, primary: "Remettre la copie écrite ✅", onPrimary: function () {
           st.schreiben = [{ id: Tk.id, consigne: Tk.consigne, text: ta.value.trim() }];
           examDraftSet(dkey, { state: st, step: P.dictee ? "dictee" : "submit" }); (P.dictee ? sDictee() : doSubmitW());

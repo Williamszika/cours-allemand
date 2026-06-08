@@ -2020,6 +2020,28 @@
   }
 
   /* Production écrite : zones de texte (aucune correction pendant l'examen). */
+  /* Compteur de mots partagé (productions écrites DELF EE + telc Schreiben).
+     Décompte vif + objectif ; vert dans la fourchette, ambre au-dessus de la
+     limite haute quand elle est connue (DELF « X à Y mots », telc « X–Y »). */
+  function wordMeter(ta, minMots, maxMots) {
+    const meta = el("div", "production-meta");
+    const c = el("span", "wordcount", ""); meta.appendChild(c);
+    let target = "";
+    if (minMots && maxMots) target = "objectif : " + minMots + "–" + maxMots + " mots";
+    else if (minMots) target = "objectif : ≥ " + minMots + " mots";
+    else if (maxMots) target = "objectif : ≤ " + maxMots + " mots";
+    if (target) meta.appendChild(el("span", "wordmin", target));
+    function upd() {
+      const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0;
+      c.textContent = w + (w > 1 ? " mots" : " mot");
+      const over = !!(maxMots && w > maxMots), okMin = !minMots || w >= minMots;
+      c.classList.toggle("ok", okMin && !over);
+      c.classList.toggle("over", over);
+    }
+    ta.addEventListener("input", upd); upd();
+    return meta;
+  }
+
   function delfEE(taches) {
     const wrap = el("div", "delf-ee"); const fields = [];
     taches.forEach(function (t) {
@@ -2027,10 +2049,7 @@
       card.appendChild(el("h3", "delf-doc-t", delfEsc(t.titre)));
       card.appendChild(el("p", "delf-q-t", delfEsc(t.consigne)));
       const ta = el("textarea", "production-input"); ta.rows = 5; ta.setAttribute("placeholder", "Schreiben Sie hier auf Deutsch…");
-      const meta = el("div", "production-meta"); const c = el("span", "wordcount", "0 mot"); meta.appendChild(c);
-      if (t.minMots) meta.appendChild(el("span", "wordmin", "objectif : ≥ " + t.minMots + " mots"));
-      ta.addEventListener("input", function () { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; c.textContent = w + (w > 1 ? " mots" : " mot"); c.classList.toggle("ok", !t.minMots || w >= t.minMots); });
-      card.appendChild(ta); card.appendChild(meta); wrap.appendChild(card);
+      card.appendChild(ta); card.appendChild(wordMeter(ta, t.minMots, t.maxMots)); wrap.appendChild(card);
       fields.push({ t: t, ta: ta });
     });
     function collect() { return fields.map(function (f) { return { id: f.t.id, consigne: f.t.consigne, text: f.ta.value.trim() }; }); }
@@ -2488,8 +2507,7 @@
           card.appendChild(el("p", "delf-q-t", delfEsc(Tk.consigne)));
           if (Tk.leitpunkte) { const ul = el("ul", "delf-points"); Tk.leitpunkte.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); card.appendChild(ul); }
           const ta = el("textarea", "production-input"); ta.rows = rows; ta.setAttribute("placeholder", ph);
-          const meta = el("div", "production-meta"); const wc = el("span", "wordcount", "0 mot"); meta.appendChild(wc); meta.appendChild(el("span", "wordmin", "objectif : ≥ " + Tk.minMots + " mots"));
-          ta.addEventListener("input", function () { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; wc.textContent = w + (w > 1 ? " mots" : " mot"); wc.classList.toggle("ok", w >= Tk.minMots); });
+          const meta = wordMeter(ta, Tk.minMots, Tk.maxMots);
           return { card: card, body: body, ta: ta, meta: meta };
         };
         const c2_3 = function () {
@@ -2539,9 +2557,7 @@
         card.appendChild(el("p", "delf-q-t", delfEsc(Tk.consigne)));
         const ul = el("ul", "delf-points"); Tk.leitpunkte.forEach(function (p) { const li = el("li", null); li.textContent = p; ul.appendChild(li); }); card.appendChild(ul);
         const ta = el("textarea", "production-input"); ta.rows = 8; ta.setAttribute("placeholder", "Schreiben Sie hier auf Deutsch…");
-        const meta = el("div", "production-meta"); const wc = el("span", "wordcount", "0 mot"); meta.appendChild(wc); meta.appendChild(el("span", "wordmin", "objectif : ≥ " + Tk.minMots + " mots"));
-        ta.addEventListener("input", function () { const w = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; wc.textContent = w + (w > 1 ? " mots" : " mot"); wc.classList.toggle("ok", w >= Tk.minMots); });
-        card.appendChild(ta); card.appendChild(meta); body.appendChild(card);
+        card.appendChild(ta); card.appendChild(wordMeter(ta, Tk.minMots, Tk.maxMots)); body.appendChild(card);
         delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · 3 / 3", icone: "✍️", titre: "Schriftlicher Ausdruck", intro: dS + " min — rédigez votre texte (la correction viendra plus tard).", body: body, timerSeconds: P.durees.schreiben, primary: "Remettre la copie écrite ✅", onPrimary: function () {
           st.schreiben = [{ id: Tk.id, consigne: Tk.consigne, text: ta.value.trim() }];
           examDraftSet(dkey, { state: st, step: P.dictee ? "dictee" : "submit" }); (P.dictee ? sDictee() : doSubmitW());

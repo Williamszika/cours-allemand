@@ -66,7 +66,7 @@
             { titre: "Vortrag — Die Aufmerksamkeitsökonomie", audio: "In meinem heutigen Vortrag möchte ich auf ein oft übersehenes Phänomen eingehen: die sogenannte Aufmerksamkeitsökonomie. Unsere Aufmerksamkeit ist zu einer knappen Ressource geworden, um die zahllose Dienste konkurrieren. Drei Punkte sind dabei zentral. Erstens: Was kostenlos erscheint, bezahlen wir mit unserer Zeit und unseren Daten. Zweitens: Die ständige Ablenkung verändert, wie wir denken – tiefes, konzentriertes Lesen fällt vielen zunehmend schwer. Drittens: Es liegt an uns, bewusste Grenzen zu setzen, denn die Anbieter haben kein Interesse daran, dass wir weniger Zeit mit ihnen verbringen." }
           ],
           tache: {
-            id: "c2-hs", consigne: "Fassen Sie die wichtigsten Aussagen des Vortrags in einem zusammenhängenden Text zusammen (ca. 120–150 Wörter). Geben Sie die drei zentralen Punkte präzise und strukturiert wieder.", minMots: 120
+            id: "c2-hs", consigne: "Fassen Sie die wichtigsten Aussagen des Vortrags in einem zusammenhängenden Text zusammen (ca. 120–150 Wörter). Geben Sie die drei zentralen Punkte präzise und strukturiert wieder.", minMots: 120, maxMots: 150
           }
         },
 

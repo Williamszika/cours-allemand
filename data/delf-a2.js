@@ -104,12 +104,12 @@
         intro: "Vous rédigez 2 textes courts en allemand. Soignez la consigne, la grammaire et le vocabulaire. Votre copie sera corrigée par l'IA après l'examen.",
         taches: [
           {
-            id: "ee1", titre: "Exercice 1 — Raconter", minMots: 40,
+            id: "ee1", titre: "Exercice 1 — Raconter", minMots: 40, maxMots: 60,
             consigne: "Vous avez passé un bon week-end. Écrivez un message à un(e) ami(e) allemand(e) (40 à 60 mots) : dites où vous étiez, ce que vous avez fait et avec qui. Racontez au passé (Perfekt).",
             criteres: ["Respect de la consigne (raconter un week-end passé)", "Emploi du Perfekt", "Vocabulaire des loisirs et du temps", "Connecteurs : zuerst, dann, danach, am Ende"]
           },
           {
-            id: "ee2", titre: "Exercice 2 — Écrire un message", minMots: 40,
+            id: "ee2", titre: "Exercice 2 — Écrire un message", minMots: 40, maxMots: 60,
             consigne: "Un(e) ami(e) allemand(e) vous a aidé(e) à déménager. Écrivez-lui un message (40 à 60 mots) pour le/la remercier et l'inviter à dîner chez vous. Proposez une date et une heure.",
             criteres: ["Remerciement clair", "Invitation + proposition de date/heure", "Formules de politesse (Liebe/r…, Liebe Grüße)", "Correction grammaticale de niveau A2"]
           }
