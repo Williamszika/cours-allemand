@@ -2042,6 +2042,26 @@
     return meta;
   }
 
+  /* Récap de la copie avant remise (audit L3) : résumé visuel NON correctif —
+     questions répondues et longueur des productions — puis confirmation. */
+  function recapWC(s) { s = String(s == null ? "" : s).trim(); return s ? s.split(/\s+/).length : 0; }
+  function recapMots(n) { return n + (n > 1 ? " mots" : " mot"); }
+  function recapAnswered(items) { return (items || []).filter(function (it) { return it && it.selected >= 0; }).length; }
+  function recapQcmRow(rows, label, items) { const n = (items || []).length; if (!n) return; const a = recapAnswered(items); rows.push({ label: label, value: a + " / " + n + " répondues", warn: a < n }); }
+  function examRecap(SC, rows, onConfirm) {
+    const body = el("div", "exam-recap");
+    body.appendChild(el("p", "delf-q-t", "Récapitulatif de votre copie. Rien n'est encore corrigé : vérifiez que tout est complet. La remise est définitive ; la correction (IA) arrive sous 24 h."));
+    const ul = el("ul", "recap-list");
+    rows.forEach(function (r) {
+      const li = el("li", "recap-item" + (r.warn ? " warn" : ""));
+      li.appendChild(el("span", "recap-label", r.label));
+      li.appendChild(el("span", "recap-val", r.value));
+      ul.appendChild(li);
+    });
+    body.appendChild(ul);
+    delfScreen(Object.assign({}, SC, { phase: "Remise de la copie", icone: "🧾", titre: "Vérifiez votre copie", intro: "", body: body, primary: "Confirmer la remise ✅", onPrimary: onConfirm }));
+  }
+
   function delfEE(taches) {
     const wrap = el("div", "delf-ee"); const fields = [];
     taches.forEach(function (t) {
@@ -2217,6 +2237,15 @@
     function runEO() { const ep = E.eo; const r = delfEO(ep.taches, CODE); delfScreen(Object.assign({}, SC, { phase: "Épreuve 4 / 4 · passation orale", icone: ep.icone, titre: ep.titre, intro: "Parlez au micro avec l'examinateur (ou écrivez). Aucune correction ne s'affiche.", body: r.el, timerSeconds: ep.duree, primary: "Remettre ma copie ✅", onPrimary: function () { state.eo = r.collect(); doSubmit(); } })); }
 
     function doSubmit() {
+      const rows = [];
+      recapQcmRow(rows, "🎧 Compréhension de l'oral", state.co && state.co.items);
+      recapQcmRow(rows, "📖 Compréhension des écrits", state.ce && state.ce.items);
+      (state.ee || []).forEach(function (t, i) { const w = recapWC(t.text); rows.push({ label: "✍️ Production écrite — ex. " + (i + 1), value: recapMots(w), warn: w === 0 }); });
+      if (state.dictee) { const w = recapWC(state.dictee.saisie); rows.push({ label: "✒️ Dictée", value: recapMots(w) + " saisis", warn: w === 0 }); }
+      (state.eo || []).forEach(function (t, i) { const w = recapWC(t.candidate || t.transcript); rows.push({ label: "🗣️ Production orale — partie " + (i + 1), value: w > 0 ? recapMots(w) : "non enregistrée", warn: w === 0 }); });
+      examRecap(SC, rows, doSubmitNow);
+    }
+    function doSubmitNow() {
       if (window.TG) { try { window.TG.closingConfirmation(false); } catch (e) {} }
       const copy = { co: (state.co && state.co.items) || [], ce: (state.ce && state.ce.items) || [], ee: state.ee || [], eo: state.eo || [] };
       const payload = { langue: (window.I18N && window.I18N.lang && window.I18N.lang()) || "fr", co25: (state.co && state.co.score25) || 0, ce25: (state.ce && state.ce.score25) || 0, copy: copy };
@@ -2240,7 +2269,7 @@
       else if (err === "error") c.innerHTML = '<div class="comp-emoji">⚠️</div><h2>Remise impossible</h2><p>La connexion a échoué. Vérifiez votre réseau, puis réessayez.</p>';
       else { const when = (j && j.availableAt) ? new Date(j.availableAt) : null; c.innerHTML = '<div class="comp-emoji">📨</div><h2>Copie remise !</h2><p>Votre examen est enregistré. <strong>Le coach Zika (IA) corrige votre copie</strong> et vous enverra votre <strong>note /100</strong>, votre <strong>copie corrigée</strong> et votre <strong>PDF</strong>' + (when ? " vers le <strong>" + when.toLocaleString() + "</strong>" : " sous 24 h") + ".</p><p>📲 Vous recevrez une <strong>notification Telegram</strong> dès que le résultat est prêt.</p>"; }
       const actions = el("div", "rev-actions");
-      if (err === "error") { const again = el("button", "btn btn-primary", "Réessayer"); again.type = "button"; again.addEventListener("click", doSubmit); actions.appendChild(again); }
+      if (err === "error") { const again = el("button", "btn btn-primary", "Réessayer"); again.type = "button"; again.addEventListener("click", doSubmitNow); actions.appendChild(again); }
       const home = el("a", "btn " + (err ? "btn-ghost" : "btn-primary"), "Retour à l'aperçu"); home.href = "#/"; actions.appendChild(home);
       if (!err) { const stb = el("a", "btn btn-ghost", "Voir l'état de ma copie"); stb.href = base + "/resultat"; actions.appendChild(stb); }
       c.appendChild(actions); frag.appendChild(c); app.appendChild(frag);
@@ -2500,7 +2529,14 @@
       if (P.format === "c2") {
         // C2 : Leseverstehen (auto) → Hören und Schreiben (synthèse, IA) → Schriftlicher Ausdruck (IA).
         const st2 = { lesenPts: 0, lesenItems: [], hs: [], schreiben: [] };
-        const c2sub = function () { submitPart(code + "-schriftlich", { langue: telcLang(), lesen: st2.lesenPts, copy: { lesen: st2.lesenItems, hoerenSchreiben: st2.hs, schreiben: st2.schreiben } }); };
+        const c2subNow = function () { submitPart(code + "-schriftlich", { langue: telcLang(), lesen: st2.lesenPts, copy: { lesen: st2.lesenItems, hoerenSchreiben: st2.hs, schreiben: st2.schreiben } }); };
+        const c2sub = function () {
+          const rows = [];
+          recapQcmRow(rows, "📖 Leseverstehen", st2.lesenItems);
+          const hw = recapWC(st2.hs[0] && st2.hs[0].text); rows.push({ label: "🎧✍️ Hören und Schreiben", value: recapMots(hw), warn: hw === 0 });
+          const sw = recapWC(st2.schreiben[0] && st2.schreiben[0].text); rows.push({ label: "✍️ Schriftlicher Ausdruck", value: recapMots(sw), warn: sw === 0 });
+          examRecap(SC, rows, c2subNow);
+        };
         const c2write = function (Tk, rows, ph, phase, primary, onDone) {
           const body = el("div", "delf-ee"); const card = el("div", "delf-doc");
           card.appendChild(el("h3", "delf-doc-t", delfEsc(Tk.titre || P.schreiben.titre)));
@@ -2548,7 +2584,16 @@
       }
       const st = { lesenPts: 0, sbPts: 0, hoerenPts: 0, lesenItems: [], sbItems: [], hoerenItems: [], schreiben: [], dictee: null };
       const dLS = Math.round(P.durees.leseSb / 60), dH = Math.round(P.durees.hoeren / 60), dS = Math.round(P.durees.schreiben / 60);
-      const doSubmitW = function () { const payload = { langue: telcLang(), lesen: st.lesenPts, sprachbausteine: st.sbPts, hoeren: st.hoerenPts, copy: { lesen: st.lesenItems, sprachbausteine: st.sbItems, hoeren: st.hoerenItems, schreiben: st.schreiben } }; if (st.dictee) { payload.dictee = st.dictee.points; payload.dicteeSur = st.dictee.sur; payload.copy.dictee = { texte: st.dictee.texte, saisie: st.dictee.saisie, score: st.dictee.score, sur: st.dictee.sur }; } submitPart(code + "-schriftlich", payload); };
+      const doSubmitWNow = function () { const payload = { langue: telcLang(), lesen: st.lesenPts, sprachbausteine: st.sbPts, hoeren: st.hoerenPts, copy: { lesen: st.lesenItems, sprachbausteine: st.sbItems, hoeren: st.hoerenItems, schreiben: st.schreiben } }; if (st.dictee) { payload.dictee = st.dictee.points; payload.dicteeSur = st.dictee.sur; payload.copy.dictee = { texte: st.dictee.texte, saisie: st.dictee.saisie, score: st.dictee.score, sur: st.dictee.sur }; } submitPart(code + "-schriftlich", payload); };
+      const doSubmitW = function () {
+        const rows = [];
+        recapQcmRow(rows, "📖 Leseverstehen", st.lesenItems);
+        recapQcmRow(rows, "🧩 Sprachbausteine", st.sbItems);
+        recapQcmRow(rows, "🎧 Hörverstehen", st.hoerenItems);
+        const sw = recapWC(st.schreiben[0] && st.schreiben[0].text); rows.push({ label: "✍️ Schreiben", value: recapMots(sw), warn: sw === 0 });
+        if (st.dictee) { const dw = recapWC(st.dictee.saisie); rows.push({ label: "✒️ Dictée", value: recapMots(dw) + " saisis", warn: dw === 0 }); }
+        examRecap(SC, rows, doSubmitWNow);
+      };
       const sDictee = function () { const r = delfDictee(P.dictee); delfScreen(Object.assign({}, SC, { phase: "Épreuve écrite · dictée", icone: "✒️", titre: P.dictee.titre || "Dictée", intro: "Niveau " + (P.dictee.niveau || "") + " — écoutez (2× max) et écrivez exactement. Aucune correction.", body: r.el, timerSeconds: P.dictee.duree || 900, primary: "Terminer la dictée →", onPrimary: function () { st.dictee = r.collect(); examDraftSet(dkey, { state: st, step: "submit" }); doSubmitW(); } })); };
       const s3 = function () {
         const Tk = P.schreiben.tache;
@@ -2600,7 +2645,7 @@
       const P = T.parts.muendlich;
       const passation = function () {
         const r = delfEO(P.taches, CODE);
-        delfScreen(Object.assign({}, SC, { phase: "Épreuve orale · passation", icone: "🗣️", titre: "Mündliche Prüfung", intro: "Présentation au micro + discussion en direct avec l'examinateur. Aucune correction pendant l'épreuve.", body: r.el, timerSeconds: P.duree, primary: "Remettre la copie orale ✅", onPrimary: function () { submitPart(code + "-muendlich", { langue: telcLang(), copy: { oral: r.collect() } }); } }));
+        delfScreen(Object.assign({}, SC, { phase: "Épreuve orale · passation", icone: "🗣️", titre: "Mündliche Prüfung", intro: "Présentation au micro + discussion en direct avec l'examinateur. Aucune correction pendant l'épreuve.", body: r.el, timerSeconds: P.duree, primary: "Remettre la copie orale ✅", onPrimary: function () { const oral = r.collect(); const rows = oral.map(function (t, i) { const w = recapWC(t.candidate || t.transcript); return { label: "🗣️ Partie " + (i + 1), value: w > 0 ? recapMots(w) : "non enregistrée", warn: w === 0 }; }); examRecap(SC, rows, function () { submitPart(code + "-muendlich", { langue: telcLang(), copy: { oral: oral } }); }); } }));
       };
       const prep = function () {
         const body = el("div", "delf-eo-prep");
