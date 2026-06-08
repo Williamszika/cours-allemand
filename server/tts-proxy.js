@@ -186,7 +186,10 @@ async function gradeTelc(id,u,ex,key){
   var sr=(u.exams[code+"-schriftlich"]&&u.exams[code+"-schriftlich"].result)||null;
   var mr=(u.exams[code+"-muendlich"]&&u.exams[code+"-muendlich"].result)||null;
   var certified=!!(sr&&sr.passed&&mr&&mr.passed);
-  var pct=Math.round(((sr?sr.total:0)+(mr?mr.total:0))/(cfg.wMax+cfg.oMax)*100);
+  // % de progression = moyenne des parties DÉJÀ corrigées (ne pas diluer une
+  // partie réussie par l'autre encore non passée).
+  var parts=[];if(sr)parts.push(sr.total/(sr.sur||cfg.wMax));if(mr)parts.push(mr.total/(mr.sur||cfg.oMax));
+  var pct=parts.length?Math.round(parts.reduce(function(a,b){return a+b;},0)/parts.length*100):0;
   u.progress=u.progress||{};u.progress.tests=u.progress.tests||{};
   var prevB=u.progress.tests[code]||{meilleur:0,reussi:false};
   u.progress.tests[code]={meilleur:Math.max(prevB.meilleur||0,pct),reussi:!!(prevB.reussi||certified),dernier:pct};
