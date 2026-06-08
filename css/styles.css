@@ -341,6 +341,12 @@ a { color: var(--blue); text-decoration: none; }
 .wordcount { font-weight: 700; }
 .wordcount.ok { color: var(--green); }
 .wordcount.over { color: #b45309; }
+.exam-recap .recap-list { list-style: none; margin: 14px 0 0; padding: 0; }
+.recap-item { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; margin-bottom: 8px; }
+.recap-item.warn { border-color: #f2c14e; background: rgba(242, 193, 78, .08); }
+.recap-label { font-weight: 600; }
+.recap-val { color: var(--muted); font-weight: 700; white-space: nowrap; }
+.recap-item.warn .recap-val { color: #b45309; }
 .production-modele { margin-top: 14px; background: var(--green-light); border: 1px solid #86efac; border-radius: 12px; padding: 14px 16px; }
 .production-modele.hidden, .production-checklist.hidden, .oral-transcript.hidden, .fc-back.hidden,
 .btn.hidden, .rev-rate.hidden, .test-result.hidden { display: none; }
