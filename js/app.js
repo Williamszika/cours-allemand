@@ -1937,15 +1937,26 @@
     if (delfTimer) { delfTimer.stop(); delfTimer = null; }
     app.innerHTML = "";
     const frag = document.createDocumentFragment();
+    const hp = opts.hashPrefix || "#/examen/a2";
+    const backHash = opts.backHash || "#/";
+    let finished = false, btn = null, timer = null;
+    // Quitter l'examen : on stoppe le minuteur et on revient à l'accueil/au hub.
+    // Le brouillon est conservé → l'examen pourra être repris là où il s'est arrêté.
+    function leave() {
+      finished = true; if (timer) timer.stop(); delfTimer = null;
+      if (window.TG) { try { window.TG.closingConfirmation(false); } catch (e) {} }
+      location.hash = backHash;
+    }
+    function confirmLeave() { if (window.confirm("Quitter l'examen ? Vous pourrez le reprendre plus tard, là où vous vous êtes arrêté(e).")) leave(); }
     const top = el("div", "lesson-top");
-    top.innerHTML = '<span class="btn-link" style="visibility:hidden">·</span><span class="lesson-top-mod">' + (opts.brand || "🎓 DELF A2") + "</span>";
+    const quit = el("a", "btn-link delf-quit", "✕ Quitter"); quit.href = backHash;
+    quit.addEventListener("click", function (ev) { ev.preventDefault(); confirmLeave(); });
+    top.appendChild(quit);
+    top.appendChild(el("span", "lesson-top-mod", opts.brand || "🎓 DELF A2"));
     frag.appendChild(top);
     const head = el("header", "test-head delf-head");
     head.innerHTML = '<div class="lesson-num">' + (opts.phase || "DELF A2") + "</div><h1>" + (opts.icone ? opts.icone + " " : "") + opts.titre + "</h1>" + (opts.intro ? "<p>" + opts.intro + "</p>" : "");
     frag.appendChild(head);
-    const hp = opts.hashPrefix || "#/examen/a2";
-    const backHash = opts.backHash || "#/";
-    let finished = false, btn = null, timer = null;
     function finish() {
       if (finished) return;
       // L'utilisateur a quitté l'examen (back) → ne pas re-rendre par-dessus.
@@ -1961,7 +1972,7 @@
     submitRow.appendChild(btn);
     frag.appendChild(submitRow);
     app.appendChild(frag);
-    if (window.TG) { try { window.TG.closingConfirmation(true); window.TG.showBackButton(function () { location.hash = backHash; }); window.TG.setMainButton(opts.primary || "Continuer →", finish); } catch (e) {} }
+    if (window.TG) { try { window.TG.closingConfirmation(true); window.TG.showBackButton(confirmLeave); window.TG.setMainButton(opts.primary || "Continuer →", finish); } catch (e) {} }
     window.scrollTo(0, 0);
   }
 
