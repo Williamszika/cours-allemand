@@ -6,3 +6,6 @@ server/tts-cache/
 server/subscribers.json
 server/admins.json
 server/admin-log.json
+
+# Sortie transitoire du workflow de génération des romans (assemblée puis supprimée)
+/undefined/
