@@ -58,6 +58,8 @@ var SHELL = [
   "./data/delf-final.js",
   "./data/telc-finalb.js",
   "./data/telc-finalc.js",
+  "./data/roman-a1.js",
+  "./data/roman-a2.js",
   "./js/i18n.js",
   "./js/speech.js",
   "./js/progress.js",
