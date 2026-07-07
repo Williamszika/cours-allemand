@@ -1180,3 +1180,51 @@ ul.delf-epreuves li { background: rgba(127, 127, 127, .08); border-radius: 10px;
 .delf-bubble-t { white-space: pre-wrap; }
 .delf-typed { width: 100%; margin-top: 6px; }
 .delf-dialog .delf-rec-row { margin: 6px 0; }
+
+/* ---- Romans éducatifs (bibliothèque) ---- */
+.roman-home-card { display: flex; align-items: center; gap: 14px; padding: 16px; border: 1px solid #fcd34d; border-radius: 16px; text-decoration: none; color: inherit; background: linear-gradient(135deg, #fffbeb, #fef3c7); }
+.roman-home-ic { font-size: 30px; }
+.roman-home-body { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.roman-home-body span { font-size: 13.5px; color: var(--muted); }
+.roman-grid { display: flex; flex-direction: column; gap: 12px; }
+.roman-card { display: flex; gap: 14px; align-items: flex-start; padding: 16px; border: 1px solid var(--line); border-radius: 16px; text-decoration: none; color: inherit; background: #fff; }
+.roman-card.locked { opacity: .6; }
+.roman-card.done { border-color: #86efac; background: #f0fdf4; }
+.roman-ic { font-size: 30px; }
+.roman-card-body { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.roman-card-body p { margin: 2px 0 4px; font-size: 13.5px; color: var(--muted); }
+.roman-niv { align-self: flex-start; font-size: 11.5px; font-weight: 700; color: #1e3a8a; background: #dbeafe; border-radius: 8px; padding: 1px 8px; }
+.roman-card-body em { font-style: italic; font-size: 13px; color: var(--muted); }
+.roman-status { font-size: 12.5px; font-weight: 600; color: #92400e; }
+.roman-card.done .roman-status { color: #15803d; }
+.roman-legende { font-size: 12.5px; color: var(--muted); margin: 10px 0 6px; }
+.roman-legende span { font-weight: 700; margin-right: 8px; }
+.roman-head h1 { margin: 10px 0 2px; }
+.roman-sous { margin: 0 0 8px; font-style: italic; color: var(--muted); }
+.roman-bar { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; margin: 8px 0 14px; }
+.roman-bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #2563eb, #7c3aed); transition: width .25s; }
+.roman-kap-row { margin: 4px 0 10px; }
+.roman-kap { font-weight: 700; font-size: 15px; }
+.roman-suite { font-size: 12.5px; color: var(--muted); }
+.roman-texte { font-family: Georgia, "Times New Roman", serif; background: #fffdf7; border: 1px solid #f1e9d2; border-radius: 14px; padding: 18px 16px; }
+.roman-texte p { font-size: 17px; line-height: 1.85; margin: 0 0 14px; }
+.roman-texte p:last-child { margin-bottom: 0; }
+.roman-mot { font-weight: 700; cursor: pointer; border-radius: 4px; }
+.roman-mot sup { font-size: .6em; opacity: .65; margin-left: 1px; }
+.g-der { color: #2563eb; } .g-die { color: #db2777; } .g-das { color: #059669; } .g-x { color: #7c3aed; }
+.roman-notes { margin-top: 14px; border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; background: #f8fafc; }
+.roman-notes-t { margin: 0 0 8px; font-size: 14.5px; }
+.roman-fnl { list-style: none; margin: 0; padding: 0; }
+.roman-fn { padding: 5px 6px; border-radius: 8px; font-size: 14px; line-height: 1.55; }
+.roman-fn sup { opacity: .6; }
+.roman-fn-sep { color: var(--muted); }
+.roman-fn.flash { animation: romanflash 1.4s ease-out; }
+@keyframes romanflash { 0% { background: #fef08a; } 100% { background: transparent; } }
+.roman-listen { margin: 12px 0 0; }
+.roman-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 14px 0 30px; }
+.roman-page { font-size: 13.5px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+[data-tg-scheme="dark"] .roman-texte { background: #131a24; border-color: #2b3646; }
+[data-tg-scheme="dark"] .roman-card, [data-tg-scheme="dark"] .roman-notes { background: #0e1621; }
+[data-tg-scheme="dark"] .roman-home-card { background: #1c1a12; border-color: #7c6a1e; }
+[data-tg-scheme="dark"] .g-der { color: #60a5fa; } [data-tg-scheme="dark"] .g-die { color: #f472b6; }
+[data-tg-scheme="dark"] .g-das { color: #34d399; } [data-tg-scheme="dark"] .g-x { color: #a78bfa; }

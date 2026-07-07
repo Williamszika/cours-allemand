@@ -163,6 +163,7 @@
   const NOLOC = [
     ".voc-de", ".voc-nom", ".art", ".voc-ex", ".cours-ex-de", ".cours-ex-gl-de", ".hl-de", ".conv-de", ".conv-loc",
     ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag", ".pflege-de", ".dictee-ref",
+    ".roman-de", ".roman-mot", ".roman-fn", ".roman-texte",
     ".loc-keep", ".peda-de", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points",
     ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
     ".trou-input", ".trou-phrase", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript",
@@ -590,6 +591,20 @@
       const examSec = el("section", "section");
       examSec.appendChild(carteExamen(niv.exam, "Examen du niveau " + niv.code, unlocked, niv.examSous, lockText));
       frag.appendChild(examSec);
+    }
+
+    /* --- Bibliothèque : romans éducatifs par niveau --- */
+    const romansDispo = ROMAN_ORDER.filter(function (c) { return !!romanData(c); });
+    if (romansDispo.length) {
+      const ouverts = romansDispo.filter(romanUnlocked).length;
+      const bib = el("section", "section");
+      const bc = el("a", "roman-home-card");
+      bc.href = "#/romans";
+      bc.innerHTML = '<span class="roman-home-ic">📚</span><div class="roman-home-body"><strong>Romans éducatifs — la bibliothèque</strong><span>' +
+        romansDispo.length + " romans par niveau (A1 → C2) : mots colorés, vocabulaire expliqué en bas de page dans votre langue. " +
+        ouverts + " / " + romansDispo.length + ' ouverts.</span></div><span class="menu-go">→</span>';
+      bib.appendChild(bc);
+      frag.appendChild(bib);
     }
 
     renderNiveau({ code: "A1", exam: "a1", prevExam: null, prevLabel: null,
@@ -1920,6 +1935,193 @@
   function delfGuardOK(code) { if (code === "a1") return niveauTermine("A1"); if (code === "a2") return examPasse("a1") && niveauTermine("A2"); if (code === "final") return examPasse("a2"); return false; }
   function delfEsc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
   function delfFmt(s) { return delfEsc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\n/g, "<br>"); }
+
+  /* =====================  ROMANS ÉDUCATIFS (bibliothèque)  =====================
+     Un roman par niveau (A1→C2), sans images, découpé en chapitres et paginé
+     automatiquement (~1 écran = 1 page ; 50+ pages par roman). Les mots
+     importants sont colorés (bleu = der, rose = die, vert = das, violet =
+     autres) et expliqués en bas de page dans la langue de l'utilisateur.
+     Syntaxe dans le texte : [[forme affichée|forme de base|explication fr]]
+     ou [[mot|explication fr]]. */
+  const ROMAN_ORDER = ["a1", "a2", "b1", "b2", "c1", "c2"];
+  const ROMAN_EMOJI = { a1: "📕", a2: "📗", b1: "📘", b2: "📙", c1: "📔", c2: "📒" };
+  const ROMAN_RATE = { a1: 0.85, a2: 0.9, b1: 0.95, b2: 1, c1: 1, c2: 1 };
+  const ROMAN_PAGE_CHARS = 480;
+  const ROMAN_GLOSS_RE = /\[\[([^\]|]+)\|([^\]|]+)(?:\|([^\]]+))?\]\]/g;
+  function romanData(code) { return window["ROMAN_" + String(code || "").toUpperCase()] || null; }
+  function romanUnlocked(code) {
+    const req = { a1: null, a2: "a1", b1: "final", b2: "b1", c1: "finalb", c2: "c1" }[code];
+    return !req || examPasse(req);
+  }
+  function romanLockText(code) {
+    const t = { a2: "l'examen A1", b1: "l'examen final A1 + A2", b2: "l'examen B1", c1: "l'examen B1 + B2", c2: "l'examen C1" }[code];
+    return t ? "🔒 Réussissez " + t + " pour ouvrir ce roman." : "";
+  }
+  function romanEtatGet(code) { try { return JSON.parse(localStorage.getItem("roman_" + code) || "{}"); } catch (e) { return {}; } }
+  function romanEtatSet(code, o) { try { localStorage.setItem("roman_" + code, JSON.stringify(o || {})); } catch (e) {} }
+  function romanPlain(s) { return String(s || "").replace(ROMAN_GLOSS_RE, "$1"); }
+  /* Pagination : les paragraphes d'un chapitre sont regroupés en pages
+     d'environ ROMAN_PAGE_CHARS caractères ; une page ne mélange jamais
+     deux chapitres (comme dans un vrai livre). */
+  function romanPages(R) {
+    if (R.__pages) return R.__pages;
+    const pages = [];
+    (R.chapitres || []).forEach(function (ch, ci) {
+      const paras = String(ch.texte || "").split(/\n\s*\n/).map(function (s) { return s.trim(); }).filter(Boolean);
+      let cur = [], len = 0;
+      paras.forEach(function (p) {
+        const l = romanPlain(p).length;
+        if (cur.length && len + l > ROMAN_PAGE_CHARS) { pages.push({ ch: ci, paras: cur, debut: false }); cur = []; len = 0; }
+        cur.push(p); len += l;
+      });
+      if (cur.length) pages.push({ ch: ci, paras: cur, debut: false });
+    });
+    let prev = -1;
+    pages.forEach(function (p) { p.debut = p.ch !== prev; prev = p.ch; });
+    R.__pages = pages;
+    return pages;
+  }
+  function romanGenreCls(base) {
+    if (/^der\s/.test(base)) return "g-der";
+    if (/^die\s/.test(base)) return "g-die";
+    if (/^das\s/.test(base)) return "g-das";
+    return "g-x";
+  }
+  /* Explications de bas de page : stockées en français, traduites à la volée
+     dans la langue de l'utilisateur (même en immersion B1+ : le vocabulaire
+     doit rester compréhensible — demande explicite). */
+  function romanLocalizeNotes(box) {
+    const lang = window.I18N && window.I18N.lang && window.I18N.lang();
+    if (!lang || lang === "fr" || !window.I18N.translate) return;
+    box.querySelectorAll(".roman-fn-tr").forEach(function (s) {
+      const fr = s.textContent;
+      window.I18N.translate(fr, lang, "fr").then(function (out) { if (out && out !== fr) s.textContent = out; });
+    });
+  }
+
+  function renderRomans() {
+    app.innerHTML = "";
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/">← Aperçu</a><span class="lesson-top-mod">📚 Bibliothèque</span>';
+    frag.appendChild(top);
+    const head = el("header", "test-head");
+    head.innerHTML = '<div class="lesson-num">Romans éducatifs</div><h1>📚 La bibliothèque</h1><p>Un roman par niveau, écrit pour apprendre : les mots importants sont <strong>colorés</strong> et expliqués <strong>en bas de page</strong> dans votre langue. Sans images — des chapitres, des pages, une histoire.</p>';
+    frag.appendChild(head);
+    const legend = el("p", "roman-legende loc-keep");
+    legend.innerHTML = '<span class="g-der">■ der</span> <span class="g-die">■ die</span> <span class="g-das">■ das</span> <span class="g-x">■ verbes & expressions</span>';
+    frag.appendChild(legend);
+    const sec = el("section", "section roman-grid");
+    ROMAN_ORDER.forEach(function (code) {
+      const R = romanData(code);
+      if (!R) return;
+      const open = romanUnlocked(code);
+      const nb = romanPages(R).length;
+      const st = romanEtatGet(code);
+      const card = el(open ? "a" : "div", "roman-card" + (open ? "" : " locked") + (st.done ? " done" : ""));
+      if (open) card.href = "#/romans/" + code;
+      const status = !open ? romanLockText(code)
+        : st.done ? "✓ Terminé — relisez-le quand vous voulez"
+        : (st.p > 0 ? "📖 Reprendre à la page " + (st.p + 1) + " / " + nb : nb + " pages · " + (R.chapitres || []).length + " chapitres");
+      card.innerHTML = '<span class="roman-ic">' + (open ? ROMAN_EMOJI[code] : "🔒") + '</span><div class="roman-card-body">' +
+        '<span class="roman-niv loc-keep">' + R.niveau + '</span>' +
+        '<strong class="roman-de">' + delfEsc(R.titre) + '</strong>' +
+        (R.sousTitre ? '<em class="roman-de">' + delfEsc(R.sousTitre) + "</em>" : "") +
+        "<p>" + delfEsc(R.resume || "") + '</p><span class="roman-status">' + status + "</span></div>" +
+        '<span class="menu-go">' + (open ? (st.done ? "✓" : "→") : "🔒") + "</span>";
+      sec.appendChild(card);
+    });
+    frag.appendChild(sec);
+    app.appendChild(frag);
+    try { localizeUI(app); } catch (e) {}
+    if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = "#/"; }); if (window.TG.hideMainButton) window.TG.hideMainButton(); } catch (e) {} }
+    window.scrollTo(0, 0);
+  }
+
+  function renderRoman(code) {
+    const R = romanData(code);
+    if (!R || !romanUnlocked(code)) { location.hash = "#/romans"; return; }
+    const pages = romanPages(R);
+    const st = romanEtatGet(code);
+    let idx = Math.min(Math.max(0, st.p || 0), pages.length - 1);
+
+    app.innerHTML = "";
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/romans">← Bibliothèque</a><span class="lesson-top-mod">' + ROMAN_EMOJI[code] + " Roman · " + R.niveau + "</span>";
+    frag.appendChild(top);
+    const head = el("header", "roman-head");
+    head.innerHTML = '<h1 class="roman-de">' + delfEsc(R.titre) + "</h1>" + (R.sousTitre ? '<p class="roman-de roman-sous">' + delfEsc(R.sousTitre) + "</p>" : "");
+    frag.appendChild(head);
+    const bar = el("div", "roman-bar"); const fill = el("div", "roman-bar-fill"); bar.appendChild(fill); frag.appendChild(bar);
+    const kap = el("div", "roman-kap-row"); frag.appendChild(kap);
+    const texte = el("div", "roman-texte"); texte.setAttribute("dir", "ltr"); frag.appendChild(texte);
+    const legend = el("p", "roman-legende loc-keep");
+    legend.innerHTML = '<span class="g-der">■ der</span> <span class="g-die">■ die</span> <span class="g-das">■ das</span> <span class="g-x">■ verbes & expressions</span> · 👆 touchez un mot coloré';
+    frag.appendChild(legend);
+    const notesBox = el("div", "roman-notes"); frag.appendChild(notesBox);
+    const listen = el("button", "btn btn-ghost small roman-listen", "🔊 Écouter la page"); listen.type = "button";
+    frag.appendChild(listen);
+    const nav = el("div", "roman-nav");
+    const prev = el("button", "btn btn-ghost", "◀ Page"); prev.type = "button";
+    const pageLbl = el("span", "roman-page loc-keep", "");
+    const next = el("button", "btn btn-primary", "Page ▶"); next.type = "button";
+    nav.appendChild(prev); nav.appendChild(pageLbl); nav.appendChild(next);
+    frag.appendChild(nav);
+    app.appendChild(frag);
+
+    function show(i, scroll) {
+      idx = Math.min(Math.max(0, i), pages.length - 1);
+      const s2 = romanEtatGet(code); s2.p = idx; romanEtatSet(code, s2);
+      const pg = pages[idx]; const ch = (R.chapitres || [])[pg.ch] || {};
+      kap.innerHTML = '<span class="roman-kap roman-de">' + delfEsc(ch.titre || "") + "</span>" + (pg.debut ? "" : ' <span class="roman-suite">(suite)</span>');
+      const notes = []; let n = 0;
+      texte.innerHTML = pg.paras.map(function (p) {
+        return "<p>" + delfEsc(p).replace(ROMAN_GLOSS_RE, function (m, a, b, c) {
+          const shown = a, base = c ? b : a, expl = c ? c : b;
+          n++; notes.push({ n: n, base: base, expl: expl });
+          return '<span class="roman-mot ' + romanGenreCls(base) + '" data-fn="' + n + '">' + shown + "<sup>" + n + "</sup></span>";
+        }) + "</p>";
+      }).join("");
+      notesBox.innerHTML = notes.length
+        ? '<h3 class="roman-notes-t">📖 Vocabulaire de la page</h3><ul class="roman-fnl">' + notes.map(function (o) {
+            return '<li class="roman-fn" id="roman-fn-' + o.n + '"><sup>' + o.n + '</sup> <b class="roman-fn-de ' + romanGenreCls(o.base) + '">' + o.base + '</b> <span class="roman-fn-sep">—</span> <span class="roman-fn-tr">' + o.expl + "</span></li>";
+          }).join("") + "</ul>"
+        : "";
+      texte.querySelectorAll(".roman-mot").forEach(function (w) {
+        w.addEventListener("click", function () {
+          const o = notes[+w.getAttribute("data-fn") - 1]; if (!o) return;
+          if (window.Speech) window.Speech.speak(o.base.replace(/\s*\([^)]*\)\s*$/, ""), { rate: 0.9 });
+          const li = document.getElementById("roman-fn-" + o.n);
+          if (li) { li.scrollIntoView({ block: "center", behavior: "smooth" }); li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash"); }
+        });
+      });
+      romanLocalizeNotes(notesBox);
+      fill.style.width = Math.round(((idx + 1) / pages.length) * 100) + "%";
+      pageLbl.textContent = "Page " + (idx + 1) + " / " + pages.length;
+      prev.disabled = idx === 0;
+      const last = idx === pages.length - 1;
+      next.textContent = last ? "✓ Terminer le roman" : "Page ▶";
+      if (scroll !== false) window.scrollTo(0, 0);
+    }
+    prev.addEventListener("click", function () { show(idx - 1); });
+    next.addEventListener("click", function () {
+      if (idx === pages.length - 1) {
+        const s2 = romanEtatGet(code); s2.done = true; romanEtatSet(code, s2);
+        toast("📚 Bravo ! Roman terminé — " + pages.length + " pages lues.");
+        location.hash = "#/romans"; return;
+      }
+      show(idx + 1);
+    });
+    listen.addEventListener("click", function () {
+      const pg = pages[idx];
+      if (window.Speech) window.Speech.speak(pg.paras.map(romanPlain).join(" "), { rate: ROMAN_RATE[code] || 1 });
+    });
+    show(idx, false);
+    try { localizeUI(app); } catch (e) {}
+    if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = "#/romans"; }); if (window.TG.hideMainButton) window.TG.hideMainButton(); } catch (e) {} }
+    window.scrollTo(0, 0);
+  }
 
   let delfTimer = null;
   function makeDelfTimer(seconds, onExpire) {
@@ -4120,6 +4322,8 @@
     else if ((m = hash.match(/^#\/examen\/(b1|b2|c1|c2|finalb|finalc)(?:$|[\/?#])/))) renderTelcHub(m[1]);
     else if ((m = hash.match(/^#\/examen\/(a1|a2|finalb|finalc|final|b1|b2|c1|c2)/))) renderTest(m[1]);
     else if (hash.match(/^#\/examen/)) renderTest("a1");
+    else if ((m = hash.match(/^#\/romans\/(a1|a2|b1|b2|c1|c2)/))) renderRoman(m[1]);
+    else if (hash.match(/^#\/romans/)) renderRomans();
     else if ((m = hash.match(/^#\/dictee\/([a-z0-9-]+)/))) renderDictee(m[1]);
     else if (hash.match(/^#\/revision/)) renderRevision();
     else if (hash.match(/^#\/langue/)) renderLanguagePage();

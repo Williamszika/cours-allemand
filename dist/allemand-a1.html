@@ -1194,6 +1194,54 @@ ul.delf-epreuves li { background: rgba(127, 127, 127, .08); border-radius: 10px;
 .delf-typed { width: 100%; margin-top: 6px; }
 .delf-dialog .delf-rec-row { margin: 6px 0; }
 
+/* ---- Romans éducatifs (bibliothèque) ---- */
+.roman-home-card { display: flex; align-items: center; gap: 14px; padding: 16px; border: 1px solid #fcd34d; border-radius: 16px; text-decoration: none; color: inherit; background: linear-gradient(135deg, #fffbeb, #fef3c7); }
+.roman-home-ic { font-size: 30px; }
+.roman-home-body { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.roman-home-body span { font-size: 13.5px; color: var(--muted); }
+.roman-grid { display: flex; flex-direction: column; gap: 12px; }
+.roman-card { display: flex; gap: 14px; align-items: flex-start; padding: 16px; border: 1px solid var(--line); border-radius: 16px; text-decoration: none; color: inherit; background: #fff; }
+.roman-card.locked { opacity: .6; }
+.roman-card.done { border-color: #86efac; background: #f0fdf4; }
+.roman-ic { font-size: 30px; }
+.roman-card-body { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.roman-card-body p { margin: 2px 0 4px; font-size: 13.5px; color: var(--muted); }
+.roman-niv { align-self: flex-start; font-size: 11.5px; font-weight: 700; color: #1e3a8a; background: #dbeafe; border-radius: 8px; padding: 1px 8px; }
+.roman-card-body em { font-style: italic; font-size: 13px; color: var(--muted); }
+.roman-status { font-size: 12.5px; font-weight: 600; color: #92400e; }
+.roman-card.done .roman-status { color: #15803d; }
+.roman-legende { font-size: 12.5px; color: var(--muted); margin: 10px 0 6px; }
+.roman-legende span { font-weight: 700; margin-right: 8px; }
+.roman-head h1 { margin: 10px 0 2px; }
+.roman-sous { margin: 0 0 8px; font-style: italic; color: var(--muted); }
+.roman-bar { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; margin: 8px 0 14px; }
+.roman-bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #2563eb, #7c3aed); transition: width .25s; }
+.roman-kap-row { margin: 4px 0 10px; }
+.roman-kap { font-weight: 700; font-size: 15px; }
+.roman-suite { font-size: 12.5px; color: var(--muted); }
+.roman-texte { font-family: Georgia, "Times New Roman", serif; background: #fffdf7; border: 1px solid #f1e9d2; border-radius: 14px; padding: 18px 16px; }
+.roman-texte p { font-size: 17px; line-height: 1.85; margin: 0 0 14px; }
+.roman-texte p:last-child { margin-bottom: 0; }
+.roman-mot { font-weight: 700; cursor: pointer; border-radius: 4px; }
+.roman-mot sup { font-size: .6em; opacity: .65; margin-left: 1px; }
+.g-der { color: #2563eb; } .g-die { color: #db2777; } .g-das { color: #059669; } .g-x { color: #7c3aed; }
+.roman-notes { margin-top: 14px; border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; background: #f8fafc; }
+.roman-notes-t { margin: 0 0 8px; font-size: 14.5px; }
+.roman-fnl { list-style: none; margin: 0; padding: 0; }
+.roman-fn { padding: 5px 6px; border-radius: 8px; font-size: 14px; line-height: 1.55; }
+.roman-fn sup { opacity: .6; }
+.roman-fn-sep { color: var(--muted); }
+.roman-fn.flash { animation: romanflash 1.4s ease-out; }
+@keyframes romanflash { 0% { background: #fef08a; } 100% { background: transparent; } }
+.roman-listen { margin: 12px 0 0; }
+.roman-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 14px 0 30px; }
+.roman-page { font-size: 13.5px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+[data-tg-scheme="dark"] .roman-texte { background: #131a24; border-color: #2b3646; }
+[data-tg-scheme="dark"] .roman-card, [data-tg-scheme="dark"] .roman-notes { background: #0e1621; }
+[data-tg-scheme="dark"] .roman-home-card { background: #1c1a12; border-color: #7c6a1e; }
+[data-tg-scheme="dark"] .g-der { color: #60a5fa; } [data-tg-scheme="dark"] .g-die { color: #f472b6; }
+[data-tg-scheme="dark"] .g-das { color: #34d399; } [data-tg-scheme="dark"] .g-x { color: #a78bfa; }
+
 </style>
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="theme-color" content="#1e3a8a" />
@@ -18910,6 +18958,862 @@ window.DICTEES = {
 })();
 
 </script>
+    <script>
+/* =====================================================================
+   Roman éducatif — Niveau A1 : « Lena in Berlin »
+   Allemand très simple : présent, phrases courtes, vocabulaire du quotidien.
+   Syntaxe des mots glosés : [[forme affichée|forme de base|explication fr]]
+   ou [[expression|explication fr]]. Couleur automatique : der/die/das/autres.
+   ===================================================================== */
+window.ROMAN_A1 = {
+  id: "a1", niveau: "A1",
+  titre: "Lena in Berlin",
+  sousTitre: "Ein neues Leben",
+  resume: "Lena, 24 ans, quitte sa petite ville et arrive à Berlin : premier appartement, école de langue, courses, nouveaux amis. Un roman tout simple, au présent, pour lire tes premières pages en allemand.",
+  chapitres: [
+    {
+      titre: "Kapitel 1 · Der Anfang",
+      texte: [
+        "Der [[Zug|der Zug|le train]] fährt langsam in den [[Bahnhof|der Bahnhof|la gare]]. Lena sitzt am [[Fenster|das Fenster|la fenêtre]] und schaut hinaus. Berlin! Endlich Berlin. Sie ist [[müde|müde|fatigué(e)]], aber sie ist auch sehr [[glücklich|glücklich|heureux / heureuse]].",
+        "Lena ist 24 Jahre alt. Sie kommt aus einer kleinen [[Stadt|die Stadt|la ville]] im Süden. Dort wohnt ihre [[Familie|die Familie|la famille]]: ihre Mutter, ihr Vater und ihr kleiner Bruder Paul. Aber jetzt beginnt ein neues [[Leben|das Leben|la vie]].",
+        "Der Zug hält. Lena nimmt ihren [[Koffer|der Koffer|la valise]] und ihre [[Tasche|die Tasche|le sac]]. Der Koffer ist schwer. Sehr schwer. In dem Koffer sind Kleider, Bücher und ein Foto von der Familie.",
+        "Auf dem Bahnsteig sind viele [[Menschen|der Mensch (die Menschen)|l'être humain, les gens]]. Alle gehen schnell. Alle haben ein [[Ziel|das Ziel|le but, la destination]]. Lena bleibt einen Moment stehen. Sie [[atmet|atmen|respirer]] tief. Es riecht nach Kaffee und nach großer Stadt.",
+        "„Entschuldigung, wo ist der [[Ausgang|der Ausgang|la sortie]]?“, fragt Lena eine Frau. Die Frau lächelt. „Da vorne links“, sagt sie. „[[Viel Glück|bonne chance]] in Berlin!“ Woher weiß die Frau das? Vielleicht sieht man es: der große Koffer, die großen Augen.",
+        "Draußen scheint die [[Sonne|die Sonne|le soleil]]. Der [[Himmel|der Himmel|le ciel]] ist blau. Lena steht vor dem Bahnhof und denkt: Hier bin ich. Hier will ich [[bleiben|bleiben|rester]]. Hier will ich Deutsch lernen und [[arbeiten|arbeiten|travailler]].",
+        "Sie [[sucht|suchen|chercher]] ihr Handy. Eine Nachricht von Mama: „Bist du gut angekommen? Wir [[vermissen|vermissen|manquer (à qqn), regretter l'absence de]] dich schon!“ Lena schreibt zurück: „Alles gut! Berlin ist groß und schön. Ich liebe euch.“",
+        "Dann öffnet sie einen [[Zettel|der Zettel|le petit papier, la note]]. Darauf steht eine [[Adresse|die Adresse|l'adresse]]: Gartenstraße 12, bei Mia Winter. Das ist ihre neue [[Wohnung|die Wohnung|l'appartement]] — eine WG mit zwei Studenten. Lena kennt sie nur vom Internet.",
+        "„Taxi oder U-Bahn?“, denkt Lena. Das Taxi ist [[teuer|teuer|cher]]. Die U-Bahn ist [[billig|billig|bon marché]]. Lena hat nicht viel [[Geld|das Geld|l'argent]]. Also die U-Bahn. Sie zieht den schweren Koffer hinter sich her. Das neue Leben beginnt mit Sport!"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 2 · Die Wohnung",
+      texte: [
+        "Die Gartenstraße ist ruhig und grün. Vor dem [[Haus|das Haus|la maison]] Nummer 12 stehen [[Fahrräder|das Fahrrad (die Fahrräder)|le vélo]]. Lena [[klingelt|klingeln|sonner (à la porte)]]. Ihr Herz klopft schnell.",
+        "Die Tür geht auf. Ein junges Mädchen mit roten Haaren lacht: „Hallo! Du bist Lena, oder? Ich bin Mia. [[Willkommen|willkommen|bienvenue]]!“ Hinter Mia steht ein großer Junge. „Hi, ich bin Ben“, sagt er. „Dein Koffer sieht schwer aus. Ich helfe dir.“",
+        "Die Wohnung ist im dritten [[Stock|der Stock|l'étage]]. Es gibt keinen [[Aufzug|der Aufzug|l'ascenseur]]. Ben trägt den Koffer und macht dabei Witze: „Was ist da drin? Steine?“ — „Nein“, lacht Lena, „nur [[Bücher|das Buch (die Bücher)|le livre]]!“",
+        "Lenas [[Zimmer|das Zimmer|la chambre, la pièce]] ist klein, aber hell. Es gibt ein [[Bett|das Bett|le lit]], einen [[Schreibtisch|der Schreibtisch|le bureau (meuble)]], einen [[Schrank|der Schrank|l'armoire]] und ein großes Fenster. Vor dem Fenster steht ein Baum. „Perfekt“, sagt Lena leise.",
+        "Mia zeigt ihr die Wohnung: „Hier ist die [[Küche|die Küche|la cuisine]]. Das ist unser [[Kühlschrank|der Kühlschrank|le réfrigérateur]] — jeder hat ein Fach. Hier ist das [[Bad|das Bad|la salle de bains]]. Und das ist der Putzplan.“ — „Der was?“, fragt Lena. „Der [[Putzplan|der Putzplan|le planning de ménage]]! Montag putzt Ben, Mittwoch ich, Freitag du. Okay?“ — „Okay!“",
+        "Am Abend sitzen die drei in der Küche. Ben [[kocht|kochen|cuisiner, faire la cuisine]] Nudeln mit Tomatensoße. Es [[schmeckt|schmecken|avoir bon goût, plaire (nourriture)]] sehr gut. „Also, Lena“, fragt Mia, „was machst du in Berlin?“",
+        "„Ich mache einen [[Deutschkurs|der Deutschkurs|le cours d'allemand]]“, sagt Lena. „Mein Deutsch ist noch klein. Und dann [[möchte|möchten|vouloir (poliment), aimerait]] ich hier arbeiten.“ — „Dein Deutsch ist nicht klein“, sagt Ben. „Es ist jung. Es [[wächst|wachsen|grandir, pousser]] noch!“ Alle lachen.",
+        "Mia studiert [[Musik|die Musik|la musique]]. Ben studiert Informatik und spielt [[Gitarre|die Gitarre|la guitare]]. „Wir machen manchmal Musik in der Küche“, sagt Mia. „Ist das okay?“ — „Das ist mehr als okay“, sagt Lena. „Das ist [[wunderbar|wunderbar|merveilleux]].“",
+        "In der Nacht liegt Lena im Bett und hört die Stadt: ein Auto, ein Vogel, irgendwo Musik. Sie denkt an ihre Familie und an den ersten Tag. Dann [[schläft|schlafen|dormir]] sie ein — mit einem Lächeln."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 3 · Die Sprachschule",
+      texte: [
+        "Am Montag beginnt der Deutschkurs. Die [[Sprachschule|die Sprachschule|l'école de langue]] heißt „Sprachpunkt“ und liegt am Rosenplatz. Lena ist zu früh da. Sie [[wartet|warten|attendre]] vor der Tür und ist ein bisschen [[nervös|nervös|nerveux / nerveuse]].",
+        "Der [[Lehrer|der Lehrer|le professeur (homme)]] heißt Herr Braun. Er ist vielleicht fünfzig Jahre alt und trägt eine lustige [[Brille|die Brille|les lunettes]]. „Guten Morgen!“, sagt er langsam und deutlich. „Ich bin euer Lehrer. Wir lernen zusammen Deutsch — und wir lachen zusammen. Das ist wichtig.“",
+        "In der [[Klasse|die Klasse|la classe]] sind zwölf Studenten aus der ganzen Welt: Carlos aus Spanien, Amira aus Syrien, Yuki aus Japan, Pavel aus Polen und viele mehr. Alle sagen einen Satz: „Ich heiße … Ich komme aus … Ich wohne jetzt in Berlin.“",
+        "Carlos sitzt neben Lena. Er spricht schnell und macht viele [[Fehler|der Fehler (die Fehler)|la faute, l'erreur]] — aber er hat keine [[Angst|die Angst|la peur]]. „Fehler sind gut!“, sagt Herr Braun. „Ohne Fehler kein Lernen. Wer keine Fehler macht, [[übt|üben|s'exercer, s'entraîner]] nicht.“",
+        "Heute lernen sie die [[Zahlen|die Zahl (die Zahlen)|le nombre, le chiffre]] und die Uhrzeit. „Wie spät ist es?“, fragt Herr Braun. „Es ist halb zehn!“, ruft Amira. „Sehr gut! Und was machen wir um halb elf?“ — „[[Pause|die Pause|la pause]]!“, ruft die ganze Klasse. Alle lachen.",
+        "In der Pause trinken Lena, Amira und Carlos Kaffee im Hof. Amira zeigt Fotos von ihrer kleinen [[Tochter|die Tochter|la fille (enfant)]]. Carlos [[erzählt|erzählen|raconter]] von seinem Job: Er ist Koch. „Ich koche spanisch, aber ich träume auf Deutsch!“, sagt er stolz.",
+        "Nach der Pause spielen sie ein Spiel: Jeder [[beschreibt|beschreiben|décrire]] eine Person, die anderen raten. „Diese Person ist klein, freundlich und trägt eine lustige Brille …“ — „Herr Braun!“, ruft Yuki. Herr Braun macht ein trauriges Gesicht: „Klein? Ich bin nicht klein. Ich bin … kompakt.“",
+        "Um eins ist der Unterricht zu Ende. Lena geht zur U-Bahn. Ihr [[Kopf|der Kopf|la tête]] ist voll mit neuen Wörtern: die Tafel, der Stift, das Heft, wiederholen, verstehen … Sie ist müde, aber sie denkt: Heute habe ich viel [[gelernt|lernen|apprendre]]. Und morgen lerne ich mehr."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 4 · Im Supermarkt",
+      texte: [
+        "Der Kühlschrank ist leer. Auf Lenas Fach liegt nur ein alter [[Apfel|der Apfel|la pomme]]. „Zeit für den [[Supermarkt|der Supermarkt|le supermarché]]“, denkt Lena. Sie schreibt eine [[Einkaufsliste|die Einkaufsliste|la liste de courses]]: Brot, Milch, Eier, Käse, Obst, Nudeln.",
+        "Der Supermarkt ist groß und voll. Lena nimmt einen [[Einkaufswagen|der Einkaufswagen|le caddie]]. Zuerst das [[Brot|das Brot|le pain]]. Es gibt so viel Brot in Deutschland! Schwarzbrot, Vollkornbrot, Brötchen … Lena nimmt ein normales Brot und zwei [[Brötchen|das Brötchen (die Brötchen)|le petit pain]].",
+        "Dann die [[Milch|die Milch|le lait]]. Ein Mann räumt Regale ein. „Entschuldigung“, fragt Lena, „wo finde ich die Milch?“ — „Gang drei, ganz hinten“, sagt der Mann. „Danke schön!“ — „[[Gern geschehen|je vous en prie, avec plaisir]].“",
+        "Beim [[Gemüse|das Gemüse|les légumes]] trifft Lena eine alte Dame. Die Dame sucht ihre Brille und kann die [[Preise|der Preis (die Preise)|le prix]] nicht lesen. „Was kosten die Tomaten?“, fragt sie. Lena liest: „Zwei Euro neunzig das Kilo.“ — „So teuer!“, ruft die Dame. „Früher …!“ Und sie erzählt eine lange Geschichte. Lena versteht nicht alles, aber sie hört freundlich zu.",
+        "An der [[Kasse|die Kasse|la caisse]] ist eine lange [[Schlange|die Schlange|la file d'attente ; le serpent]]. Lena wartet. Sie liest die Wörter auf den Produkten: „Angebot“, „frisch“, „bio“. Neue Wörter sind überall — der Supermarkt ist auch eine Schule.",
+        "Dann ist Lena dran. „Hallo!“, sagt die Kassiererin. Piep, piep, piep. „Das macht 23 Euro 40. [[Bar|bar|en espèces]] oder mit Karte?“ — „Mit Karte, bitte.“ — „Brauchen Sie eine [[Tüte|die Tüte|le sac (plastique/papier)]]?“ — „Nein, danke, ich habe eine Tasche.“",
+        "Draußen packt Lena alles in ihre Tasche. Ein Brötchen fällt auf den Boden. Ein kleiner [[Hund|der Hund|le chien]] kommt sofort und schaut Lena mit großen Augen an. „Na gut“, lacht Lena, „das ist deins.“ Der Hund frisst das Brötchen und [[wedelt|wedeln|remuer (la queue)]] mit dem Schwanz.",
+        "Zu Hause kocht Lena zum ersten Mal für die WG: Omelett mit Käse und [[Salat|der Salat|la salade]]. Ben isst drei Portionen. „Lena“, sagt er ernst, „du bleibst für immer, ja?“ Mia lacht: „Er sagt das zu allen, die kochen können.“ Aber Lena freut sich trotzdem."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 5 · Die U-Bahn und die Stadt",
+      texte: [
+        "Am Samstag will Lena die Stadt sehen. Mia gibt ihr einen [[Stadtplan|der Stadtplan|le plan de la ville]]: „Hier, für dich. Aber das Handy hilft auch.“ Ben sagt: „Regel Nummer eins: In Berlin [[verläuft man sich|sich verlaufen|se perdre (à pied)]]. Das ist normal. So findet man die schönsten Orte!“",
+        "Lena nimmt die U-Bahn. Auf dem Plan sind viele bunte [[Linien|die Linie (die Linien)|la ligne]]: U1, U2, U8 … Eine Stimme sagt: „[[Einsteigen bitte|montez, s'il vous plaît]]!“ Die Türen schließen. Die Bahn fährt los — mal unter der Erde, mal über der [[Brücke|die Brücke|le pont]].",
+        "Am Alexanderplatz steigt Lena aus. Da ist der [[Fernsehturm|der Fernsehturm|la tour de télévision]]! Er ist 368 Meter hoch. Lena macht ein Foto für Paul. Er schreibt zurück: „Wow! Wie eine Rakete!“",
+        "Lena geht zu Fuß weiter. Sie sieht das Rote Rathaus, den Dom und die lange Straße „Unter den Linden“. Vor dem Brandenburger [[Tor|das Tor|le portail, la porte (monument) ; le but (foot)]] stehen viele Touristen. Alle machen Fotos. Ein Tourist fragt Lena auf Englisch: „Can you take a picture?“ Lena antwortet stolz auf Deutsch: „Ja, gern!“",
+        "Mittags hat Lena [[Hunger|der Hunger|la faim]]. Sie kauft eine Currywurst mit Pommes — das ist sehr Berlin, sagt Ben immer. Sie setzt sich an das [[Ufer|das Ufer|la rive, le bord (d'un fleuve)]] der Spree. Boote fahren vorbei. Die Sonne scheint auf das Wasser.",
+        "Am Nachmittag passiert es: Lena will zurück, aber sie findet die U-Bahn-Station nicht. Die Straßen sehen alle gleich aus. Ihr Handy-Akku ist bei sieben Prozent. „Ruhig bleiben“, denkt sie. Ben hat es gesagt: Verlaufen ist normal.",
+        "Sie fragt einen jungen Mann mit Skateboard: „Entschuldigung, wo ist die [[nächste|nächste|le/la plus proche, prochain(e)]] U-Bahn-Station?“ — „Immer [[geradeaus|geradeaus|tout droit]], dann rechts. Zwei Minuten.“ — „Danke!“ — „Kein Ding!“ Das versteht Lena nicht, aber es klingt freundlich.",
+        "Am Abend erzählt sie in der Küche von ihrem Tag. „Ich habe mich verlaufen“, sagt sie, „und dann habe ich einen kleinen [[Markt|der Markt|le marché]] gefunden, mit Musik und Lichtern.“ Ben nickt zufrieden: „Siehst du? Regel Nummer eins [[funktioniert|funktionieren|fonctionner]].“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 6 · Der Videoanruf",
+      texte: [
+        "Sonntagmorgen, zehn Uhr. Lenas Handy klingelt: [[Videoanruf|der Videoanruf|l'appel vidéo]] von Mama. Auf dem Bildschirm sieht Lena die ganze Familie: Mama, Papa und Paul, der eine [[Banane|die Banane|la banane]] isst.",
+        "„Zeig uns dein Zimmer!“, ruft Mama. Lena dreht das Handy langsam: das Bett, der Schreibtisch, das Fenster mit dem Baum. „Sehr schön!“, sagt Papa. „Und [[ordentlich|ordentlich|bien rangé, ordonné]]! Bist du wirklich unsere Tochter?“",
+        "Paul will alles wissen: „Hast du den Fernsehturm gesehen? Gibt es in Berlin [[Löwen|der Löwe (die Löwen)|le lion]]?“ — „Im [[Zoo|der Zoo|le zoo]], ja!“, lacht Lena. „Ich gehe bald hin und schicke dir Fotos.“",
+        "Mama fragt leise: „Und wie geht es dir wirklich, Kind?“ Lena denkt kurz nach. „Gut, Mama. Manchmal bin ich [[allein|allein|seul(e)]], das ist wahr. Aber Mia und Ben sind nett, der Kurs macht Spaß, und die Stadt ist voll mit Leben.“",
+        "„Sprichst du schon viel Deutsch?“, fragt Papa. „Jeden Tag mehr“, sagt Lena. „Ich [[träume|träumen|rêver]] sogar manchmal auf Deutsch. Gestern habe ich im Traum Brötchen gekauft!“ Alle lachen. „Das ist ein sehr deutscher Traum“, sagt Papa.",
+        "Dann zeigt Mama den [[Garten|der Garten|le jardin]]: die Tomaten sind rot, die Blumen blühen. Der alte Kater Max schläft auf der [[Bank|die Bank|le banc ; la banque]]. Lena bekommt ein warmes Gefühl im Bauch. [[Heimweh|das Heimweh|le mal du pays]]? Ein bisschen, ja.",
+        "„Wann kommst du uns [[besuchen|besuchen|rendre visite]]?“, fragt Paul. „Im Winter“, sagt Lena. „Zu Weihnachten bin ich da. Versprochen.“ — „Und ich besuche dich in Berlin!“, ruft Paul. „Ich will die Löwen sehen!“",
+        "Nach dem Anruf ist das Zimmer sehr still. Lena schaut aus dem Fenster. Dann klopft es. Mia steht da mit zwei Tassen [[Tee|der Tee|le thé]]: „Sonntags-Tee? Ben spielt gleich Gitarre.“ Lena lächelt. Heimweh ist okay — aber hier ist auch ein Zuhause."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 7 · Im Park",
+      texte: [
+        "Es ist ein warmer Donnerstag. Nach dem Kurs gehen Lena, Amira und Carlos in den [[Park|der Park|le parc]]. Der Park heißt „Volkspark“ und ist riesig: [[Wiesen|die Wiese (die Wiesen)|la prairie, la pelouse]], alte Bäume, ein kleiner See.",
+        "Überall ist Leben: Kinder spielen [[Fußball|der Fußball|le football]], eine Frau macht Yoga, zwei Männer spielen [[Schach|das Schach|les échecs]] auf einer Bank. Ein Eiswagen spielt Musik. „Drei Kugeln, bitte!“, sagt Carlos. „Schokolade, Zitrone und … was ist ‚Waldmeister‘?“ — „Ein [[Abenteuer|das Abenteuer|l'aventure]]“, sagt der Eismann.",
+        "Sie setzen sich ins [[Gras|das Gras|l'herbe]]. Amira erzählt von Syrien, von ihrer Stadt am Meer. Carlos erzählt von Sevilla. Lena erzählt von ihrem Dorf und von Paul. Drei Länder, eine Sprache: Deutsch. „Komisch“, sagt Carlos, „auf Deutsch sind wir alle [[Nachbarn|der Nachbar (die Nachbarn)|le voisin]].“",
+        "Plötzlich fliegt ein Ball zu ihnen. Ein kleiner Junge ruft: „Können Sie den Ball [[werfen|werfen|lancer]]?“ Lena wirft — viel zu weit! Der Ball landet im See. „Oh nein“, sagt Lena. „[[Es tut mir leid|je suis désolé(e)]]!“",
+        "Aber da kommt ein brauner Hund, springt ins [[Wasser|das Wasser|l'eau]] und bringt den Ball zurück. Alle klatschen. Der Hund [[schüttelt|schütteln|secouer]] sich — und jetzt sind alle nass. Der kleine Junge lacht so laut, dass die Schachspieler aufschauen.",
+        "Die Hundebesitzerin kommt: eine junge Frau mit Sportschuhen. „Entschuldigung! Bruno liebt Wasser und Bälle.“ Sie sprechen ein bisschen. Sie heißt Emma, sie [[joggt|joggen|faire du jogging]] hier jeden Donnerstag. „Kommt doch nächste Woche wieder“, sagt sie, „dann üben wir Deutsch beim [[Spazierengehen|das Spazierengehen|la promenade (à pied)]]!“",
+        "Am Abend schreibt Lena in ihr [[Tagebuch|das Tagebuch|le journal intime]]: „Heute: Eis mit komischem Namen, ein nasser Hund, eine neue Freundin. Neue Wörter: die Wiese, werfen, nass. Berlin ist am schönsten im Park.“",
+        "Sie klebt ein [[Blatt|das Blatt|la feuille]] vom Park ins Tagebuch. Es ist grün und frisch — wie ihr neues Leben."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 8 · Das Café",
+      texte: [
+        "Neben der Sprachschule gibt es ein kleines [[Café|das Café|le café (lieu)]]. Es heißt „Café Luna“. Es gibt dort den besten [[Kuchen|der Kuchen|le gâteau]] der Straße — sagt Carlos, und Carlos ist Koch, er muss es wissen.",
+        "Heute hängt an der Tür ein Zettel: „[[Aushilfe|die Aushilfe|l'aide, l'employé(e) d'appoint]] gesucht, samstags, [[Bezahlung|die Bezahlung|la paie, la rémunération]] fair.“ Lena bleibt stehen. Ihr Herz macht einen kleinen Sprung. Arbeiten? Jetzt schon? Ist ihr Deutsch gut genug?",
+        "„[[Frag einfach|fragen|demander]]!“, sagt Amira. „Der schlimmste Satz ist ‚Nein, danke‘.“ Lena atmet tief und geht hinein. Hinter der [[Theke|die Theke|le comptoir]] steht eine Frau mit grauen Locken: Frau Sommer, die [[Chefin|die Chefin|la patronne]].",
+        "„Guten Tag“, sagt Lena langsam. „Ich habe den Zettel gesehen. Ich suche einen [[Job|der Job|le job, le petit boulot]] für samstags.“ Frau Sommer schaut sie freundlich an. „Hast du [[Erfahrung|die Erfahrung|l'expérience]]?“ — „Ein bisschen. Ich habe zu Hause im Restaurant von meinem Onkel geholfen.“",
+        "„Und dein Deutsch?“ — „Es wächst noch“, sagt Lena — danke, Ben! Frau Sommer lacht laut. „Gute Antwort. Weißt du was? Komm Samstag zur [[Probe|die Probe|l'essai ; la répétition]]. Neun Uhr. Wir sehen dann.“",
+        "Am Samstag lernt Lena viel: [[Teller|der Teller (die Teller)|l'assiette]] tragen (drei auf einem Arm — fast), Kaffee machen, [[bestellen|bestellen|commander]] und kassieren. „Ein Cappuccino und ein Stück Apfelkuchen, bitte!“ — „Kommt sofort!“",
+        "Ein Gast spricht sehr schnell und sehr viel. Lena versteht nur „Rechnung“. Sie bringt die [[Rechnung|die Rechnung|l'addition, la facture]] — richtig! Der Gast gibt ihr zwei Euro [[Trinkgeld|das Trinkgeld|le pourboire]]. „Für dein Lächeln“, sagt er.",
+        "Um fünf Uhr sagt Frau Sommer: „Du bist schnell, du bist freundlich, und du fragst, wenn du etwas nicht verstehst. Das ist das Wichtigste. Der Job ist deins.“ Lena ruft sofort zu Hause an: „Mama! Ich habe einen Job! In einem echten Berliner Café!“ Und Paul im Hintergrund: „Bring Kuchen mit!“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 9 · Krank",
+      texte: [
+        "Im Oktober wird es kalt. Es [[regnet|regnen|pleuvoir]] drei Tage lang. Am Mittwoch wacht Lena auf und ihr [[Hals|der Hals|la gorge, le cou]] tut weh. Ihre [[Nase|die Nase|le nez]] läuft. Sie hat [[Husten|der Husten|la toux]]. „Oh nein“, denkt sie, „ich bin [[krank|krank|malade]].“",
+        "Mia klopft an die Tür: „Du klingst wie ein alter Bär. Bleib im Bett! Ich mache dir Tee mit [[Honig|der Honig|le miel]] und Zitrone.“ Ben ruft aus der Küche: „Und ich koche eine Suppe! Die Suppe von meiner Oma. Sie macht alles wieder gut.“",
+        "Lena misst [[Fieber|das Fieber|la fièvre]]: 38,2 Grad. Sie schreibt an Herrn Braun: „Lieber Herr Braun, ich bin krank und kann heute nicht kommen. Viele Grüße, Lena.“ Er antwortet: „[[Gute Besserung|bon rétablissement]]! Ruhen Sie sich aus. Die Grammatik wartet auf Sie.“",
+        "Am Nachmittag geht Lena mit Mia in die [[Apotheke|die Apotheke|la pharmacie]]. Die Apothekerin ist sehr freundlich. „Was fehlt Ihnen?“, fragt sie. Komischer Satz, denkt Lena — was mir fehlt? Gesundheit! Aber sie sagt: „Halsschmerzen, Husten und ein bisschen Fieber.“",
+        "Die Apothekerin gibt ihr ein [[Medikament|das Medikament|le médicament]] und Bonbons für den Hals. „Dreimal am Tag, nach dem Essen. Viel trinken, viel schlafen. Wenn das Fieber steigt, gehen Sie zum [[Arzt|der Arzt|le médecin]].“",
+        "Zwei Tage bleibt Lena im Bett. Sie schläft, trinkt Tee, hört [[Hörbücher|das Hörbuch (die Hörbücher)|le livre audio]] auf einfachem Deutsch. Bens Suppe ist wirklich magisch — oder fast. Mia bringt ihr die [[Hausaufgaben|die Hausaufgaben (Pl.)|les devoirs]] vom Kurs. Sogar Emma schickt eine Nachricht: „Bruno und ich wünschen gute Besserung! Wuff!“",
+        "Am Samstag ist Lena wieder [[gesund|gesund|en bonne santé, guéri(e)]]. Frau Sommer sagt: „Na, wieder fit? Die Gäste haben nach dir gefragt.“ — „Wirklich?“ — „Wirklich. Der Herr mit dem Trinkgeld hat gesagt: Ohne das Lächeln schmeckt der Kuchen nur halb so gut.“",
+        "Abends schreibt Lena ins Tagebuch: „Krank sein in einem fremden Land ist nicht schön. Aber ich war nicht allein. Neue Wörter: der Husten, die Apotheke, gute Besserung. Und: Freunde sind die beste [[Medizin|die Medizin|la médecine, le remède]].“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 10 · Die Post",
+      texte: [
+        "Lenas [[Großmutter|die Großmutter|la grand-mère]] hat kein Handy und keinen Computer. „Oma liebt [[Briefe|der Brief (die Briefe)|la lettre (courrier)]]“, sagt Mama immer. Also kauft Lena schönes [[Papier|das Papier|le papier]] und setzt sich an den Schreibtisch.",
+        "„Liebe Oma“, schreibt sie langsam, „ich wohne jetzt in Berlin. Die Stadt ist groß, aber die Menschen sind nett. Ich lerne jeden Tag Deutsch. Samstags arbeite ich in einem Café. Stell dir vor: Ich kann schon [[Witze|der Witz (die Witze)|la blague]] auf Deutsch verstehen — na ja, fast alle.“",
+        "Sie erzählt von Mia und Ben, von Herrn Braun und von Bruno, dem nassen Hund. Am Ende schreibt sie: „Ich denke oft an dich und an deinen Kuchen. Der Kuchen im Café ist gut — aber deiner ist besser. Deine Lena.“",
+        "Dann geht sie zur [[Post|die Post|la poste]]. Am Schalter arbeitet ein junger Mann. „Ich möchte diesen Brief [[schicken|schicken|envoyer]], bitte.“ — „Wohin?“ — „Nach Süddeutschland.“ — „Eine [[Briefmarke|die Briefmarke|le timbre]] für 85 Cent, bitte schön.“",
+        "Lena klebt die Briefmarke auf den [[Umschlag|der Umschlag|l'enveloppe]]. Auf der Briefmarke ist eine kleine Blume. „Kommt der Brief morgen an?“, fragt sie. „Übermorgen“, sagt der Mann. „Der Brief macht eine kleine [[Reise|die Reise|le voyage]] — wie Sie, oder?“ Lena lacht: „Woher wissen Sie das?“ — „Ihr Akzent reist mit.“",
+        "Eine Woche später liegt eine Antwort im [[Briefkasten|der Briefkasten|la boîte aux lettres]]. Omas Schrift ist groß und ein bisschen zittrig: „Mein liebes Kind! Dein Brief war das schönste Geschenk. Berlin, so so. Iss genug! Und wenn ein junger Mann dir Kuchen schenkt, [[heirate|heiraten|épouser, se marier]] ihn nicht sofort — prüfe erst den Kuchen.“",
+        "Lena liest den Brief dreimal. Dann legt sie ihn in das Notizbuch von Yuki, ganz nach vorn. Manche Wörter muss man nicht [[übersetzen|übersetzen|traduire]]. Liebe zum Beispiel. Die versteht man in jeder Sprache."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 11 · Der Ausflug zum See",
+      texte: [
+        "„Aufstehen!“, ruft Mia am Sonntagmorgen. „Wir machen einen [[Ausflug|der Ausflug|l'excursion]]! Zum Wannsee! Die Sonne scheint, der Sommer sagt [[Tschüss|tschüss|salut, au revoir (familier)]] — das ist der letzte warme Tag.“",
+        "Sie packen einen [[Rucksack|der Rucksack|le sac à dos]]: Brote mit Käse, Äpfel, Wasser und eine [[Decke|die Decke|la couverture]]. Ben nimmt die Gitarre. Emma kommt mit Bruno. Carlos bringt — natürlich — Tortilla. „Ohne Tortilla kein Ausflug“, sagt er ernst.",
+        "Die S-Bahn ist voll: Familien, Fahrräder, ein Mann mit einem riesigen [[Sonnenschirm|der Sonnenschirm|le parasol]]. Nach vierzig Minuten sind sie da. Der [[See|der See|le lac]] glitzert in der Sonne. Er ist so groß, dass man das andere Ufer kaum sieht.",
+        "Bruno rennt sofort ins Wasser. „Bruno! Das Handtuch ist für uns!“, ruft Emma — zu spät. Der [[Sand|der Sand|le sable]] klebt an allem: an den Füßen, an den Broten, an Brunos Nase.",
+        "Ben und Carlos [[schwimmen|schwimmen|nager]] weit hinaus. Lena bleibt am Ufer, das Wasser ist ihr zu kalt. Amira auch: „Ich schaue lieber. Das ist auch Sport — [[Zuschauen|das Zuschauen|le fait de regarder]] ist Sport für die Augen.“",
+        "Mittags essen alle auf der Decke. Das Brot knirscht ein bisschen — Sand, natürlich. Ein [[Schwan|der Schwan|le cygne]] kommt näher und schaut streng. „Der will Tortilla“, flüstert Carlos. „Über meine Leiche!“ Der Schwan bekommt am Ende doch ein Stück Brot. Schwäne [[gewinnen|gewinnen|gagner]] immer.",
+        "Am Nachmittag spielt Ben Gitarre, und die Freunde liegen im Gras. Lena schaut in den Himmel. Vor sechs Monaten kannte sie hier niemanden. Heute liegt sie mit fünf Freunden und einem nassen Hund an einem Berliner See und versteht fast jedes Wort.",
+        "Auf der Rückfahrt schläft Bruno auf Lenas Füßen ein. Alle sind still und ein bisschen rot von der Sonne. „Nächstes Jahr“, sagt Mia leise, „machen wir das wieder. Gleiche [[Leute|die Leute (Pl.)|les gens]], gleicher See.“ — „[[Versprochen|versprechen|promettre]]?“, fragt Lena. „Versprochen.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 12 · Der erste Schnee",
+      texte: [
+        "Ende November wird es richtig kalt. Lena trägt jetzt [[Handschuhe|der Handschuh (die Handschuhe)|le gant]], einen dicken [[Schal|der Schal|l'écharpe]] und eine [[Mütze|die Mütze|le bonnet]]. „Du siehst aus wie eine Berlinerin“, sagt Ben. „Nur Berliner [[frieren|frieren|avoir froid, geler]] stilvoll.“",
+        "An einem Dienstagmorgen passiert es: Lena wacht auf, und das Licht im Zimmer ist anders — weich und weiß. Sie öffnet den [[Vorhang|der Vorhang|le rideau]]. [[Schnee|der Schnee|la neige]]! Die Dächer sind weiß, der Baum vor dem Fenster ist weiß, die Fahrräder sind kleine weiße Berge.",
+        "In Lenas Heimatstadt gibt es auch Schnee, viel sogar. Aber das hier ist ihr erster Berliner Schnee, und irgendwie [[zählt|zählen|compter]] der doppelt. Sie macht ein Foto und schickt es an alle: „Berlin in Weiß!“",
+        "Auf dem Weg zur Schule rutscht Lena fast aus. Ein älterer Herr hält sie am Arm fest. „Vorsicht, junge Frau! [[Glatt|glatt|glissant ; lisse]] heute!“ — „Danke!“, sagt Lena. Der Herr lacht: „Wir Berliner fallen nur im Sommer. Im Winter haben wir keine Zeit dafür.“",
+        "In der Pause gehen alle in den Hof. Yuki sieht Schnee nicht zum ersten Mal — aber Carlos! Er steht mit offenem Mund da und fängt [[Schneeflocken|die Schneeflocke (die Schneeflocken)|le flocon de neige]] mit den Händen. „In Sevilla gibt es das nicht!“, ruft er. „Das ist … das ist Zucker vom Himmel!“",
+        "Dann fliegt der erste [[Schneeball|der Schneeball|la boule de neige]] — niemand weiß, von wem. Zwei Minuten später ist es eine große [[Schneeballschlacht|die Schneeballschlacht|la bataille de boules de neige]]: die A1-Klasse gegen die B1-Klasse. Herr Braun steht am Fenster und tut so, als sieht er nichts. Dann öffnet er das Fenster und wirft — einen perfekten Treffer auf Herrn Meiers Mütze.",
+        "Am Abend bauen Lena, Mia und Ben im Hof einen kleinen [[Schneemann|der Schneemann|le bonhomme de neige]]. Ben gibt ihm seinen alten Schal. Mia gibt ihm eine Karotte. Lena gibt ihm einen Namen: „Herr Winter.“ — „Sehr [[kreativ|kreativ|créatif / créative]]“, lacht Mia.",
+        "In dieser Nacht schreibt Lena ins Tagebuch: „Heute: erster Schnee, eine Schneeballschlacht und Herr Winter. Neue Wörter: die Schneeflocke, glatt, frieren. Der Winter kann kommen — ich habe warme Freunde.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 13 · Das Fest",
+      texte: [
+        "Im November hat Lena [[Geburtstag|der Geburtstag|l'anniversaire]]. Sie wird 25. „Wir machen ein [[Fest|das Fest|la fête]]!“, sagt Mia sofort. „Eine kleine Party in der Küche. Du lädst deine Freunde ein, wir machen den Rest.“",
+        "Lena schreibt [[Einladungen|die Einladung (die Einladungen)|l'invitation]]: an Amira, Carlos, Yuki, Emma — und an Frau Sommer. „Liebe Freunde, ich [[lade|einladen|inviter]] euch herzlich ein: Samstag, 19 Uhr, Gartenstraße 12. Es gibt Essen, Musik und Kuchen!“",
+        "Am Samstag riecht die ganze Wohnung nach Essen. Ben kocht seine berühmten Nudeln, Carlos bringt eine riesige spanische [[Tortilla|die Tortilla|la tortilla (omelette espagnole)]] mit, Amira macht süßes [[Gebäck|das Gebäck|les pâtisseries, les biscuits]] mit Pistazien. Frau Sommer kommt mit einem Apfelkuchen aus dem Café: „Der Klassiker. Für das Geburtstagskind.“",
+        "Yuki bringt ein [[Geschenk|das Geschenk|le cadeau]]: ein kleines Notizbuch mit Kirschblüten. „Für neue Wörter“, sagt sie. Emma und Bruno bringen … einen Ball. „Er hat ihn selbst [[ausgesucht|aussuchen|choisir]]“, sagt Emma ernst. Bruno wedelt stolz mit dem Schwanz.",
+        "Um neun Uhr holt Ben die Gitarre. Alle singen — erst leise, dann laut. Die [[Nachbarin|die Nachbarin|la voisine]] von unten klingelt. Oh je! Aber sie sagt nur: „Ich höre die Musik durch den Boden. Darf ich mitfeiern? Ich bringe [[Sekt|der Sekt|le vin mousseux]] mit!“ So wird die Party noch größer.",
+        "Um Mitternacht bringen Mia und Ben den Kuchen mit 25 [[Kerzen|die Kerze (die Kerzen)|la bougie]]. Alle singen „Zum Geburtstag viel Glück“ — auf Deutsch, auf Spanisch, auf Arabisch, auf Japanisch. Lena macht die Augen zu und [[wünscht sich|sich wünschen|souhaiter, faire un vœu]] etwas.",
+        "„Was hast du dir gewünscht?“, fragt Paul am nächsten Tag am Telefon. „Das ist [[geheim|geheim|secret / secrète]]“, lacht Lena. Aber wir wissen es vielleicht: Sie wünscht sich, dass dieses Jahr nie aufhört — das Jahr mit dem schweren Koffer, dem kleinen Zimmer, den neuen Wörtern und den neuen Freunden.",
+        "Vor einem halben Jahr ist Lena mit einem Koffer und drei deutschen Sätzen in Berlin angekommen. Heute hat sie ein Zuhause, einen Job, Freunde aus fünf Ländern — und ein Tagebuch voll mit Leben. Auf der letzten Seite steht: „Das war der Anfang. Die [[Geschichte|die Geschichte|l'histoire]] geht weiter.“",
+        "ENDE — Bravo, du hast deinen ersten deutschen Roman gelesen! 📖"
+      ].join("\n\n")
+    }
+  ]
+};
+
+</script>
+    <script>
+/* =====================================================================
+   Roman éducatif — Niveau A2 : « Der verlorene Schlüssel »
+   Passé composé (Perfekt), verbes modaux, vie quotidienne. Une petite
+   enquête à travers Cologne, racontée avec humour.
+   ===================================================================== */
+window.ROMAN_A2 = {
+  id: "a2", niveau: "A2",
+  titre: "Der verlorene Schlüssel",
+  sousTitre: "Ein Tag voller Überraschungen",
+  resume: "Tom a perdu la clé de son appartement — le jour où sa grand-mère arrive à Cologne ! Il refait tout son trajet de la journée : café, bibliothèque, marché, bus… Une enquête pleine d'humour, au passé composé.",
+  chapitres: [
+    {
+      titre: "Kapitel 1 · Ein wichtiger Tag",
+      texte: [
+        "Tom wacht um sieben Uhr auf und lächelt. Heute ist ein [[besonderer|besonders / besonderer|particulier, spécial]] Tag: Seine Oma kommt zu [[Besuch|der Besuch|la visite]]! Sie hat ihn seit einem Jahr nicht gesehen — seit er nach Köln [[gezogen ist|umziehen (ist umgezogen)|déménager]].",
+        "Oma Hilde ist nicht irgendeine Oma. Sie ist 78, fährt noch [[selbst|selbst|soi-même]] Auto, spielt Skat und sagt immer, was sie denkt. „Dein Kühlschrank ist eine [[Wüste|die Wüste|le désert]]“, hat sie beim letzten Besuch gesagt. Diesmal soll alles [[perfekt|perfekt|parfait]] sein.",
+        "Tom hat einen [[Plan|der Plan|le plan, le programme]] gemacht: Erst räumt er die Wohnung auf, dann kauft er auf dem Markt ein, dann [[backt|backen|faire (un gâteau), cuire au four]] er einen Kuchen. Omas Lieblingskuchen: [[Apfelkuchen|der Apfelkuchen|le gâteau aux pommes]] mit Zimt. Um 18 Uhr kommt ihr Zug an.",
+        "Er hat gestern schon viel [[vorbereitet|vorbereiten|préparer]]: Er hat die Fenster geputzt, er hat frische Blumen gekauft, und er hat sogar das Bad geschrubbt. „Oma-Standard“, nennt Tom das. Der Oma-Standard ist höher als jeder Hotel-Standard.",
+        "Um acht Uhr geht Tom aus dem Haus. Er will schnell ins Café — dort arbeitet er jeden Vormittag am Laptop, denn er ist [[Übersetzer|der Übersetzer|le traducteur]]. Danach: Bibliothek, Markt, Kuchen. Ein klarer Plan.",
+        "Aber am Abend, um kurz vor sechs, steht Tom vor seiner [[Haustür|die Haustür|la porte d'entrée]] und sucht in seiner Jackentasche. Nichts. Er sucht in der Hosentasche. Nichts. Im Rucksack? Nichts. Sein [[Schlüssel|der Schlüssel|la clé]] ist [[weg|weg|parti, disparu]].",
+        "Tom wird blass. In einer Stunde kommt Oma Hilde. Der Kuchen ist in der Wohnung. Die Blumen sind in der Wohnung. Und der Schlüssel? Der Schlüssel ist … [[irgendwo|irgendwo|quelque part]] in Köln.",
+        "„Okay, Tom“, sagt er zu sich selbst. „[[Keine Panik|die Panik|la panique]]. Denk nach! Wo bist du heute überall gewesen?“ Er zählt an den Fingern: das Café, die Bibliothek, der Markt, der Bus … Vier Orte. Eine Stunde Zeit. Das Rennen beginnt."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 2 · Die Nachbarin",
+      texte: [
+        "Zuerst klingelt Tom bei seiner Nachbarin, Frau Peters. Sie hat einen [[Ersatzschlüssel|der Ersatzschlüssel|le double de clé]] — das hat sie ihm am Anfang gesagt. „Für den [[Notfall|der Notfall|l'urgence, le cas d'urgence]]“, hat sie gesagt. Heute IST der Notfall.",
+        "Frau Peters öffnet die Tür. Sie trägt einen Jogginganzug und sieht [[überrascht|überrascht|surpris(e)]] aus. „Tom! Was ist los? Du siehst aus wie ein [[Gespenst|das Gespenst|le fantôme]].“ — „Frau Peters, ich habe meinen Schlüssel [[verloren|verlieren (hat verloren)|perdre]]! Haben Sie noch den Ersatzschlüssel?“",
+        "Frau Peters denkt nach. Dann macht sie ein trauriges Gesicht. „Ach, Tom … Den habe ich doch letzte Woche deiner [[Freundin|die Freundin|la petite amie ; l'amie]] gegeben! Sie hat deine Blumen [[gegossen|gießen (hat gegossen)|arroser]], als du in Hamburg warst.“",
+        "„Meiner Freundin?“ Tom versteht nichts. Dann fällt es ihm ein: Lisa! Seine [[Kollegin|die Kollegin|la collègue]] Lisa hat die Blumen gegossen. Aber Lisa ist seit Montag im [[Urlaub|der Urlaub|les vacances, le congé]]. Auf Mallorca. Mit dem Schlüssel? Hoffentlich nicht mit dem Schlüssel.",
+        "Tom ruft Lisa an. Mailbox. „Hallo, hier ist Lisa. Ich liege am Strand und mein Handy liegt im Hotel. Versuchen Sie es … irgendwann wieder.“ Piep. „Lisa!“, ruft Tom. „Wo ist mein Ersatzschlüssel?? Ruf mich an! Es ist [[dringend|dringend|urgent]]!“",
+        "Frau Peters hat [[Mitleid|das Mitleid|la pitié, la compassion]]. „Komm, ich mache dir einen Tee.“ — „Keine Zeit, Frau Peters! Meine Oma kommt um sechs!“ — „Hilde kommt? Oh! Dann back ich schnell ein paar [[Plätzchen|das Plätzchen (die Plätzchen)|le petit gâteau sec]]. Und du — lauf!“",
+        "Tom rennt die Treppe hinunter. Frau Peters ruft ihm [[hinterher|hinterher|derrière (qqn qui s'éloigne)]]: „Denk logisch! Wo hast du den Schlüssel zum letzten Mal [[benutzt|benutzen|utiliser]]?“ Gute Frage. Heute Morgen, an der Haustür. Danach … das Café. Also: ins Café!"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 3 · Das Café am Dom",
+      texte: [
+        "Das „Café am Dom“ ist Toms zweites [[Wohnzimmer|das Wohnzimmer|le salon]]. Jeden Vormittag sitzt er dort am gleichen Tisch, trinkt zwei Milchkaffee und arbeitet. Die Barista Nina kennt seine [[Bestellung|die Bestellung|la commande]] auswendig.",
+        "Tom stürmt herein. Das Café ist voll, es riecht nach Kaffee und [[Zimt|der Zimt|la cannelle]]. „Nina! Hast du einen Schlüssel gefunden? Heute Morgen, Tisch am Fenster?“",
+        "Nina denkt nach und ruft dann in die Küche: „Karim! Hat jemand einen Schlüssel [[liegen lassen|liegen lassen|laisser traîner, oublier (un objet)]]?“ Karim kommt mit einer großen Kiste. Auf der Kiste steht: [[Fundsachen|die Fundsache (die Fundsachen)|l'objet trouvé]].",
+        "In der Kiste liegen: drei [[Regenschirme|der Regenschirm (die Regenschirme)|le parapluie]], ein Wörterbuch, eine Sonnenbrille, ein einzelner Handschuh und — ein Schlüssel! Toms Herz springt. Aber nein: Es ist ein Fahrradschlüssel, klein und silbern. Seiner ist groß und hat einen roten [[Anhänger|der Anhänger|le porte-clés ; la remorque]].",
+        "„[[Schade|schade|dommage]]“, sagt Nina. „Aber warte — du hast heute Morgen telefoniert, ganz [[aufgeregt|aufgeregt|excité(e), agité(e)]]. Du bist rausgegangen, zum Telefonieren. Vielleicht ist der Schlüssel draußen aus der Tasche gefallen?“",
+        "Draußen sucht Tom den Boden ab. Unter den Tischen, neben den Stühlen, im [[Blumentopf|der Blumentopf|le pot de fleurs]]. Ein älterer Gast hilft ihm: „Was suchen wir?“ — „Einen Schlüssel!“ — „Ah! Ich suche seit Jahren meine Jugend. Schlüssel ist einfacher.“",
+        "Kein Schlüssel. Aber Tom [[erinnert sich|sich erinnern|se souvenir]] jetzt: Nach dem Telefonat ist er zur Bibliothek gegangen — er hat ein Buch [[zurückgegeben|zurückgeben (hat zurückgegeben)|rendre, rapporter]]. Vielleicht liegt der Schlüssel dort! „Danke, Nina!“ — „Viel Glück! Und grüß deine Oma!“ Woher wissen eigentlich alle von Oma?"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 4 · In der Bibliothek",
+      texte: [
+        "Die Stadtbibliothek ist ein moderner [[Bau|der Bau|le bâtiment, la construction]] aus Glas. Drinnen ist es sehr, sehr [[leise|leise|silencieux, à voix basse]]. Tom kommt hereingerannt — und drei Leute schauen ihn streng an. Er flüstert: „Entschuldigung.“",
+        "An der [[Ausleihe|die Ausleihe|le comptoir de prêt]] sitzt Herr Krause. Herr Krause ist Bibliothekar mit Leib und Seele: grauer Pullover, kluge Augen, und er spricht so leise, dass man [[Lippenlesen|das Lippenlesen|la lecture sur les lèvres]] lernen muss.",
+        "„Guten Abend“, flüstert Tom. „Ich war heute Mittag hier. Ich habe ein Buch zurückgegeben — ‚Deutsche Grammatik für Fortgeschrittene‘. Haben Sie [[vielleicht|vielleicht|peut-être]] einen Schlüssel gefunden?“",
+        "Herr Krause hebt eine Augenbraue. „Einen Schlüssel … Moment.“ Er öffnet eine kleine [[Schublade|die Schublade|le tiroir]]. Darin: Lesezeichen, Brillen, ein [[Gebiss|das Gebiss|le dentier]] (!) und zwei Schlüssel. Toms Augen leuchten — und dann nicht mehr. Wieder falsch: ein Autoschlüssel und ein winziger Kofferschlüssel.",
+        "„Hm“, macht Herr Krause. „Aber ich erinnere mich an Sie. Sie haben das Buch zurückgegeben und dann haben Sie am [[Regal|das Regal|l'étagère, le rayonnage]] mit den Krimis gestanden. Sehr lange. Sie haben gelesen wie ein [[Dieb|der Dieb|le voleur]] — heimlich und schnell.“",
+        "Tom wird rot. Es stimmt: Er hat den neuen Krimi von seiner Lieblingsautorin [[angefangen|anfangen (hat angefangen)|commencer]] — nur das erste Kapitel! Na gut, die ersten drei. Sie gehen zusammen zum Krimi-Regal und suchen. Zwischen den Büchern? Nichts. Auf dem Boden? Nichts. Hinter dem [[Sessel|der Sessel|le fauteuil]]? Ein Bonbon. Igitt.",
+        "„Tut mir leid“, flüstert Herr Krause. „Aber ein [[Rat|der Rat|le conseil]]: Rufen Sie das Fundbüro an. Alle Fundsachen der Stadt landen dort.“ Er schreibt die Nummer auf ein Lesezeichen. „Und den Krimi können Sie übrigens [[ausleihen|ausleihen|emprunter]]. Kostenlos. Wir sind eine Bibliothek — wir sind die guten Diebe.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 5 · Der Markt",
+      texte: [
+        "Nächste [[Station|die Station|l'étape, la station]]: der Wochenmarkt. Tom ist mittags dort gewesen und hat für Oma eingekauft: Äpfel, [[Mehl|das Mehl|la farine]], Butter, Eier. Der Apfelstand von Herrn Yilmaz ist der beste der Stadt.",
+        "Aber jetzt, um Viertel nach sechs, packen die [[Händler|der Händler (die Händler)|le commerçant, le marchand]] schon zusammen. Kisten [[stapeln sich|sich stapeln|s'empiler]], ein Lieferwagen brummt. Tom findet Herrn Yilmaz beim Aufräumen.",
+        "„Der junge Mann mit dem Apfelkuchen!“, ruft Herr Yilmaz. „Na, ist der Kuchen gut geworden?“ — „Der Kuchen ist perfekt geworden. Aber ich habe ein [[Problem|das Problem|le problème]]: Ich habe meinen Schlüssel verloren. Ist er vielleicht hier?“",
+        "Herr Yilmaz ruft sofort über den ganzen Platz: „LEUTE! Jemand hat einen SCHLÜSSEL verloren! Großer Schlüssel, roter Anhänger — stimmt's?“ — „Stimmt!“, ruft Tom. Woher weiß er das? „Du hast ihn mir mittags [[gezeigt|zeigen|montrer]]! Am Anhänger ist ein Foto, hast du gesagt. Von deiner Oma!“",
+        "Toms Herz macht einen Sprung: Der Schlüssel war also mittags noch da! „Das heißt“, denkt Tom laut, „ich habe ihn NACH dem Markt verloren. Im Bus! Ich habe den Bus [[genommen|nehmen (hat genommen)|prendre (un moyen de transport)]], Linie 16, mit allen Tüten!“",
+        "Die Gemüsefrau vom Nachbarstand mischt sich ein: „Linie 16? Mein Cousin fährt die 16! Moment.“ Sie [[tippt|tippen|taper (sur un clavier/écran)]] auf ihrem Handy. „Mehmet? Hier ist Ayşe. Hat jemand in deinem Bus einen Schlüssel gefunden? … Ja … großer Schlüssel, roter Anhänger … nein? … Frag mal die anderen [[Fahrer|der Fahrer (die Fahrer)|le chauffeur, le conducteur]] … okay, danke!“",
+        "Sie schaut Tom an: „Nichts im Bus von Mehmet. Aber alle Fundsachen aus den Bussen gehen abends ins Fundbüro am Hauptbahnhof.“ Wieder das Fundbüro! „Wie weit ist das?“, fragt Tom. — „Zehn Minuten zu Fuß. Aber es [[schließt|schließen|fermer]] um sieben!“ Tom schaut auf die Uhr: 18:25. Er rennt."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 6 · Das Fundbüro",
+      texte: [
+        "Tom rennt durch die Stadt. Vorbei am Dom, über die große [[Kreuzung|die Kreuzung|le carrefour, le croisement]], durch eine Gruppe Touristen („Sorry! Entschuldigung! Pardon!“). Um 18:37 steht er [[außer Atem|der Atem|le souffle, la respiration]] vor dem Fundbüro.",
+        "Hinter dem Schalter sitzt eine Frau mit strenger Brille und liest eine [[Zeitschrift|die Zeitschrift|le magazine, la revue]]. Das Namensschild sagt: Frau Wagner. „Wir schließen gleich“, sagt sie, ohne aufzuschauen.",
+        "„Bitte“, sagt Tom, „es ist ein Notfall. Ich habe meinen [[Wohnungsschlüssel|der Wohnungsschlüssel|la clé d'appartement]] verloren, und meine Oma kommt in zwanzig Minuten am Bahnhof an, und der Kuchen ist in der Wohnung —“ Frau Wagner hebt eine Hand. „Junger Mann. [[Der Reihe nach|die Reihe|la file, le tour (chacun son tour)]]. Formular F-12.“",
+        "Tom füllt das [[Formular|das Formular|le formulaire]] aus: Name, Adresse, verlorener [[Gegenstand|der Gegenstand|l'objet]], Ort, Zeit. Bei „Besondere Merkmale“ schreibt er: „Roter Anhänger mit Foto einer älteren Dame (streng, aber herzlich).“",
+        "Frau Wagner liest das Formular. Ihr Mund [[zuckt|zucken|tressaillir, avoir un tic]] — fast ein Lächeln. Sie verschwindet im Hinterzimmer. Tom hört Kisten, [[Rascheln|das Rascheln|le froissement, le bruissement]], ein „Hmm“. Die Uhr an der Wand tickt laut. 18:44. 18:45. 18:46.",
+        "Frau Wagner kommt zurück — mit leeren Händen. „Heute ist kein Schlüssel mit rotem Anhänger [[abgegeben worden|abgeben (wird abgegeben)|déposer, remettre]]. Die Busfunde kommen aber oft erst morgen früh an. Kommen Sie morgen wieder.“",
+        "„Morgen?!“ Tom sinkt auf einen Stuhl. Frau Wagner schaut ihn über die Brille an. „Junger Mann. Darf ich Ihnen einen [[privaten|privat|privé(e)]] Rat geben? Meine Mutter ist auch so eine Oma wie auf Ihrem Foto. Wissen Sie, was solche Omas besser finden als einen perfekten Kuchen?“ — „Was?“ — „Eine gute [[Geschichte|die Geschichte|l'histoire]]. Und Sie, junger Mann, haben heute eine sehr gute Geschichte [[gesammelt|sammeln|collectionner, rassembler]].“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 7 · Der Bahnhof",
+      texte: [
+        "18:55. Tom steht am [[Gleis|das Gleis|la voie, le quai]] 7. Der Zug aus Süddeutschland hat fünf Minuten [[Verspätung|die Verspätung|le retard]] — zum ersten Mal in der Geschichte ist Tom der Deutschen Bahn dankbar.",
+        "Er hat keinen Schlüssel, keinen Kuchen, keine Blumen. Er hat: ein Lesezeichen mit einer Telefonnummer, ein Formular F-12 (Kopie) und nasse Haare, weil es angefangen hat zu [[nieseln|nieseln|bruiner]]. Ein toller [[Empfang|der Empfang|l'accueil, la réception]].",
+        "Der Zug fährt ein. Türen öffnen sich, Menschen steigen aus: Geschäftsleute, Studenten, eine Familie mit drei Kindern und einem [[Kinderwagen|der Kinderwagen|la poussette, le landau]]. Und dann: Oma Hilde. Roter Mantel, kleiner Koffer, [[aufrecht|aufrecht|droit(e), bien droit(e)]] wie eine Königin.",
+        "„Tom, mein Junge!“ Sie [[umarmt|umarmen|prendre dans ses bras, embrasser (étreindre)]] ihn fest. Dann schaut sie ihn an — von oben bis unten, wie nur Omas das können. „Du bist nass. Du bist blass. Und du machst dein Schuldgesicht. Was ist [[passiert|passieren (ist passiert)|arriver, se produire]]?“",
+        "„Oma, es tut mir so leid. Ich habe den Schlüssel verloren. Wir können nicht in die Wohnung. Der Kuchen — dein Apfelkuchen — er steht auf dem Küchentisch und wir … wir kommen nicht [[hinein|hinein|à l'intérieur (mouvement)]].“",
+        "Oma Hilde schaut ihn an. Eine Sekunde. Zwei Sekunden. Dann lacht sie — laut, warm, mitten im Bahnhof. „Junge! Ich bin 78. Ich habe den Krieg der Wespen in meinem Garten [[überlebt|überleben|survivre]], vier platte Reifen und deinen Opa. Glaubst du, ein Schlüssel macht mir Angst?“",
+        "Sie nimmt ihn am Arm. „Jetzt erzählst du mir alles. Aber nicht hier. Ich habe im Zug eine [[Anzeige|die Anzeige|l'annonce ; la publicité]] gelesen: Da gibt es ein Café am Dom, das soll gut sein. Du [[lädst mich ein|einladen (lädt ein)|inviter]] — mit dem Geld, das du für Blumen ausgegeben hättest.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 8 · Zwei Milchkaffee",
+      texte: [
+        "Nina macht große Augen, als Tom zum zweiten Mal an diesem Tag ins Café kommt — diesmal mit einer alten Dame im roten Mantel. „Das ist also die berühmte Oma!“, ruft sie. „Der rote Anhänger! Das Foto!“ Oma Hilde strahlt: „Ich bin auf einem [[Schlüsselanhänger|der Schlüsselanhänger|le porte-clés]]? Wie eine Berühmtheit!“",
+        "Sie [[bestellen|bestellen|commander]] zwei Milchkaffee und das letzte Stück Apfelkuchen. „Nicht so gut wie meiner“, sagt Oma nach dem ersten Bissen, „aber [[ehrlich|ehrlich|honnête(ment), franc/franche]]: fast.“ Nina macht eine kleine Verbeugung.",
+        "Tom erzählt den ganzen Tag: Frau Peters und der Ersatzschlüssel auf Mallorca, die Fundsachen-Kiste mit dem einzelnen Handschuh, der flüsternde Herr Krause, das Gebiss in der Schublade („WAS?!“, ruft Oma [[entzückt|entzückt|ravi(e), enchanté(e)]]), Herr Yilmaz und sein Marktplatz-Ruf, Ayşes Cousin Mehmet, der Sprint zum Fundbüro, Frau Wagner und das Formular F-12.",
+        "Oma Hilde hört zu wie im [[Kino|das Kino|le cinéma]]. Bei der Stelle mit dem Bonbon hinter dem Sessel lacht sie so laut, dass zwei Tische mitlachen, ohne den [[Grund|der Grund|la raison, le motif]] zu kennen.",
+        "„Und jetzt?“, fragt sie am Ende. „Jetzt“, sagt Tom, „rufe ich einen [[Schlüsseldienst|der Schlüsseldienst|le serrurier (service de dépannage)]]. Das ist teuer, besonders am Abend. Aber es geht nicht anders.“",
+        "In diesem Moment [[klingelt|klingeln|sonner]] sein Handy. Eine unbekannte Nummer. „Hallo, spreche ich mit Tom? Hier ist Jonas — ich fahre die Linie 16, [[Spätschicht|die Spätschicht|le service du soir, l'équipe de nuit]]. Mehmet hat rumgefragt. Ich habe unter Sitz 23 einen Schlüssel gefunden. Großer Schlüssel … roter Anhänger … Foto von einer Dame, die aussieht, als [[backt|backen|faire de la pâtisserie]] sie den besten Kuchen der Welt.“",
+        "Tom springt auf. „DAS IST MEINER! Wo sind Sie jetzt?“ — „[[Endstation|die Endstation|le terminus]] Rheinufer. Ich fahre in zehn Minuten wieder los — Richtung Dom.“ Tom schaut Oma an. Oma trinkt in Ruhe ihren Kaffee aus und sagt: „Na los. Ein Bus [[wartet|warten|attendre]] nicht. Und ich will Sitz 23 sehen.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 9 · Die Linie 16",
+      texte: [
+        "Der Bus der Linie 16 [[glänzt|glänzen|briller]] im Abendlicht am Rheinufer. Jonas, der Fahrer, ist ein junger Mann mit Wollmütze und einem breiten Lächeln. In seiner Hand: der Schlüssel. DER Schlüssel.",
+        "„Beweisen Sie es“, sagt Jonas mit gespieltem [[Ernst|der Ernst|le sérieux, la gravité]]. „Wer ist die Dame auf dem Foto?“ Oma Hilde tritt vor, [[würdevoll|würdevoll|digne, avec dignité]] wie im Theater: „Ich.“ Jonas schaut auf das Foto, dann auf Oma, dann wieder auf das Foto. „Eindeutig. Der Kuchen-Blick. Hier, bitte.“",
+        "Tom hält den Schlüssel fest wie einen [[Schatz|der Schatz|le trésor]]. „Sie haben meinen Abend [[gerettet|retten|sauver]]. Was kann ich für Sie tun?“ Jonas winkt ab: „Nichts. Aber wenn Sie mal wieder Kuchen backen …“ — „Sie bekommen den ersten [[Teller|der Teller|l'assiette]]“, sagt Oma. „Versprochen. Ich vergesse nie ein Gesicht und nie eine gute [[Tat|die Tat|l'acte, l'action]].“",
+        "Sie fahren mit der Linie 16 zurück — natürlich. Oma will unbedingt auf Sitz 23 sitzen. „Hier hat er also gelegen“, sagt sie und schaut unter den Sitz, als sucht sie noch mehr [[Geheimnisse|das Geheimnis (die Geheimnisse)|le secret]].",
+        "Am Fenster zieht Köln vorbei: der [[beleuchtete|beleuchtet|éclairé(e), illuminé(e)]] Dom, der Rhein mit den Lichtern der Schiffe, die Menschen in den Straßencafés. „Schöne Stadt hast du dir [[ausgesucht|aussuchen (hat ausgesucht)|choisir]]“, sagt Oma leise. „Dein Opa und ich waren mal hier. 1967. Er hat mir am Rhein ein [[Eis|das Eis|la glace]] gekauft und gesagt, er hat kein Geld mehr für die Rückfahrkarte.“",
+        "„Und dann?“ — „Dann sind wir [[getrampt|trampen (ist getrampt)|faire du stop]]. 400 Kilometer. Meine Mutter hat drei Tage nicht mit mir [[gesprochen|sprechen (hat gesprochen)|parler]].“ Sie lacht. „Es war das beste Eis meines Lebens.“",
+        "Tom schaut seine Oma an und denkt: Frau Wagner vom Fundbüro hatte recht. Geschichten sind besser als perfekte Pläne. Und seine Oma ist eine [[Bibliothek|die Bibliothek|la bibliothèque]] voller Geschichten — man muss nur zuhören."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 10 · Der Kuchen",
+      texte: [
+        "Um Viertel nach acht dreht sich der Schlüssel [[endlich|endlich|enfin]] im Schloss. Klick. Die Tür geht auf. Die Wohnung riecht nach Apfelkuchen und frischen Blumen. Alles ist [[aufgeräumt|aufgeräumt|rangé(e), en ordre]], die Fenster glänzen. Oma Hilde bleibt in der Tür stehen.",
+        "„Junge“, sagt sie langsam, „das ist ja … [[sauber|sauber|propre]].“ Aus ihrem Mund ist das der größte [[Lob|das Lob|l'éloge, le compliment]] der Welt. „Sogar der Kühlschrank?“ Sie öffnet ihn: Milch, Butter, Käse, Gemüse, Saft. „Kein [[Vergleich|der Vergleich|la comparaison]] zur Wüste vom letzten Jahr! Köln tut dir gut.“",
+        "Sie essen Apfelkuchen — er ist wirklich gut geworden, [[saftig|saftig|juteux, moelleux]] und mit viel Zimt. Dazu trinken sie Tee. Oma erzählt Neuigkeiten von zu Hause: Die Nachbarin hat [[geheiratet|heiraten (hat geheiratet)|se marier]] (mit 70!), der Bäcker macht jetzt auch Pizza (skandalös!), und Toms alte Schule hat einen neuen Sportplatz.",
+        "Dann klingelt es an der Tür. Frau Peters steht davor, mit einer Dose voller warmer Plätzchen. „Hilde!“ — „Renate!“ Die beiden Frauen umarmen sich. Sie kennen sich von Omas letztem Besuch — natürlich. Omas [[Netzwerk|das Netzwerk|le réseau]] funktioniert schneller als das Internet.",
+        "Der Abend wird lang und laut. Frau Peters bleibt, es gibt noch mehr Tee, dann noch ein Gläschen [[Likör|der Likör|la liqueur]] („nur für die [[Verdauung|die Verdauung|la digestion]]!“). Die beiden Damen erzählen Geschichten aus Zeiten, als Tom noch nicht mal geplant war.",
+        "Um Mitternacht schläft Oma Hilde im Gästebett — [[zufrieden|zufrieden|satisfait(e), content(e)]] wie eine Königin nach einem guten Tag. Tom räumt die Teller weg und findet auf dem Tisch einen Zettel. Omas Schrift: „Guter Kuchen. Gute Stadt. Gute Menschen. Aber der Schlüssel kommt jetzt an eine [[Kette|die Kette|la chaîne]]. Deine Oma.“",
+        "An der Kette hängt schon etwas: Oma hat ihm ihren eigenen Schlüsselanhänger dagelassen — ein kleines silbernes [[Kleeblatt|das Kleeblatt|le trèfle]]. „Für das Glück“, steht auf der Rückseite. „Aber [[verlass dich|sich verlassen auf|compter sur, se fier à]] nicht drauf. Glück mag Leute, die rennen können.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 11 · Der Stadtbummel",
+      texte: [
+        "Am nächsten Morgen scheint die Sonne. Oma Hilde steht um sieben Uhr auf („Wer lange schläft, [[verpasst|verpassen|rater, manquer]] das Leben“) und macht Frühstück: frische Brötchen, weiche Eier, und der Kaffee ist so stark, dass Tom drei Herzschläge mehr pro Minute hat.",
+        "„Programm für heute“, sagt Oma und schneidet ihr Brötchen [[präzise|präzise|avec précision]] wie eine Chirurgin: „Erstens: der Dom. Zweitens: der Rhein. Drittens: dieser Markt mit deinem Apfelmann. Ich will die Äpfel sehen, aus denen mein Konkurrenz-Kuchen gemacht ist.“",
+        "Im Dom wird sogar Oma still. Die [[Säulen|die Säule (die Säulen)|la colonne, le pilier]] sind hoch wie Bäume, das Licht fällt bunt durch die [[Fenster|das Fenster (die Fenster)|la fenêtre, le vitrail]]. „157 Meter“, flüstert Tom. „632 Jahre [[Bauzeit|die Bauzeit|la durée de construction]].“ Oma nickt: „Siehst du. Gute Dinge brauchen Zeit. Sag das deiner [[Generation|die Generation|la génération]] mit ihren Lieferdiensten.“",
+        "Am Rhein kaufen sie ein Eis — natürlich. „Wie 1967“, sagt Tom. „Besser“, sagt Oma. „Diesmal haben wir eine Rückfahrkarte.“ Sie schauen den [[Schiffen|das Schiff (die Schiffe)|le bateau, le navire]] zu. Ein Containerschiff aus Rotterdam, ein Ausflugsboot mit winkenden Touristen. Oma winkt [[zurück|zurück|en retour]] — königlich.",
+        "Auf dem Markt umarmt Herr Yilmaz Oma Hilde wie eine alte Freundin. „Die Dame vom Anhänger! Der Schlüssel ist gefunden?“ — „Gefunden!“, ruft Tom. Herr Yilmaz gibt Oma einen Apfel: „[[Probieren|probieren|goûter, essayer]] Sie! Boskoop, der beste Kuchenapfel.“ Oma beißt hinein, kaut, denkt nach. Der ganze Stand wartet. „... [[Akzeptabel|akzeptabel|acceptable]]“, sagt sie schließlich. Herr Yilmaz strahlt, als hätte er einen [[Preis|der Preis|le prix (récompense)]] gewonnen.",
+        "Zum Abschluss gehen sie ins Café am Dom. Nina hat schon zwei Milchkaffee auf dem Tisch, und daneben — ein Stück Apfelkuchen mit einer kleinen Kerze. „Von Karim und mir. Auf die wiedergefundenen Schlüssel und die [[Familie|die Familie|la famille]].“",
+        "Oma Hilde schaut in die Runde: der Dom vor dem Fenster, der Kaffee, ihr Enkel mit roten Wangen. „Weißt du, Tom“, sagt sie, „ich habe mir [[Sorgen gemacht|sich Sorgen machen|se faire du souci]]. Ein Jahr allein in der großen Stadt. Aber jetzt sehe ich: Du bist nicht allein. Du hast hier ja ein ganzes [[Dorf|das Dorf|le village]].“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 12 · Der Abschied",
+      texte: [
+        "Drei Tage später steht Oma Hildes Koffer wieder im [[Flur|der Flur|le couloir, l'entrée]]. Er ist schwerer als bei der Ankunft: Frau Peters hat ihr [[Marmelade|die Marmelade|la confiture]] geschenkt, Herr Yilmaz zwei Kilo Boskoop-Äpfel („für den [[Vergleichstest|der Vergleichstest|le test comparatif]]!“), und Nina eine Tüte Kaffeebohnen.",
+        "Am Bahnhof kommt der Zug diesmal [[pünktlich|pünktlich|à l'heure, ponctuel(le)]]. Typisch, denkt Tom. Wenn man mehr Zeit will, ist die Bahn plötzlich perfekt.",
+        "„So“, sagt Oma Hilde und stellt den Koffer ab. „Drei Dinge, bevor ich fahre. Erstens: Der Schlüssel.“ Tom zeigt ihn hoch — er hängt an der neuen Kette, mit dem Kleeblatt. „[[Braver|brav|sage, obéissant]] Junge. Zweitens: Du kommst Weihnachten nach Hause. Dein Bruder wird sonst [[unerträglich|unerträglich|insupportable]], er vermisst dich.“",
+        "„Und drittens?“ Oma Hilde schaut ihn lange an. Dann sagt sie leise: „Drittens: Ich bin [[stolz|stolz|fier / fière]] auf dich. Du hast eine Stadt voller Freunde. Du hast einen Beruf. Und wenn etwas [[schiefgeht|schiefgehen (ist schiefgegangen)|mal tourner, échouer]] — ein Schlüssel, ein Plan, egal was — dann rennst du nicht weg. Du rennst [[hinterher|hinterher|à la poursuite, derrière]]. Das ist der Unterschied.“",
+        "Tom muss [[schlucken|schlucken|avaler, déglutir]]. „Oma …“ — „Keine [[Tränen|die Träne (die Tränen)|la larme]] am Gleis, das bringt Unglück. Umarm mich lieber.“ Er umarmt sie. Sie riecht nach Kaffee und Marmelade und ein bisschen nach Zuhause.",
+        "Der Zug fährt an. Oma Hilde steht am Fenster und winkt — königlich, versteht sich. Tom winkt zurück, bis der Zug nur noch ein Punkt ist.",
+        "Auf dem Heimweg nimmt er die Linie 16. Jonas sitzt am Steuer und grinst: „Na? Alles noch da? Schlüssel? Oma?“ — „Schlüssel ja. Oma fährt gerade nach Hause — mit zwei Kilo Äpfeln für einen Vergleichstest.“ — „Und? Wer gewinnt?“ Tom lacht: „Die Oma. Die Oma gewinnt [[immer|immer|toujours]].“",
+        "Zu Hause legt Tom den Schlüssel in die kleine Schale neben der Tür. Dann schreibt er eine Nachricht an Lisa auf Mallorca: „Alles gut. Schlüssel gefunden, Oma glücklich, Kuchen ein [[Erfolg|der Erfolg|le succès, la réussite]]. PS: Du hast noch meinen Ersatzschlüssel. Bring ihn heil zurück — er hat jetzt einen berühmten Bruder.“",
+        "ENDE — Glückwunsch! Zweiter Roman geschafft. Weiter zum Niveau B1? 📗"
+      ].join("\n\n")
+    }
+  ]
+};
+
+</script>
+    <script>
+/* =====================================================================
+   Roman éducatif — Niveau B1 : « Das Praktikum »
+   Récit au Präteritum/Perfekt, subordonnées (weil, dass, obwohl, als),
+   vocabulaire du monde du travail. Hambourg, une stagiaire, un vrai début.
+   ===================================================================== */
+window.ROMAN_B1 = {
+  id: "b1", niveau: "B1",
+  titre: "Das Praktikum",
+  sousTitre: "Drei Monate, die alles verändern",
+  resume: "Sara, 22 ans, décroche un stage dans une agence de communication à Hambourg. Premier jour, première erreur, premier conflit — et une grande décision. Un roman sur le monde du travail, avec le vocabulaire du bureau et des candidatures.",
+  chapitres: [
+    {
+      titre: "Kapitel 1 · Die Zusage",
+      texte: [
+        "Als die E-Mail kam, saß Sara gerade in der Mensa und aß eine Suppe, die nach nichts schmeckte. [[Betreff|der Betreff|l'objet (d'un e-mail)]]: „Ihre [[Bewerbung|die Bewerbung|la candidature]] — Zusage“. Sie las den Satz dreimal, weil sie ihn nicht glauben konnte: „Wir freuen uns, Ihnen einen [[Praktikumsplatz|der Praktikumsplatz|la place de stage]] in unserer Agentur anzubieten.“",
+        "Elbwind Media, Hamburg. Eine kleine, aber bekannte [[Werbeagentur|die Werbeagentur|l'agence de publicité]], direkt am Hafen. Sara hatte sich bei siebzehn Firmen [[beworben|sich bewerben (hat sich beworben)|postuler, poser sa candidature]]. Sechzehn hatten abgesagt oder gar nicht geantwortet. Die siebzehnte veränderte alles.",
+        "Sie rief sofort ihre Mutter an. „Mama, ich hab's! Drei Monate Hamburg!“ Ihre Mutter freute sich — und stellte dann die Mutter-Fragen: Wo wohnst du? Was [[verdienst|verdienen|gagner (de l'argent)]] du? Ist das seriös? „450 Euro im Monat“, sagte Sara, „und ich wohne bei Tante Karin im Gästezimmer.“",
+        "Obwohl das Geld wenig war, [[zögerte|zögern|hésiter]] Sara keine Sekunde. Sie studierte Kommunikation im vierten Semester, aber sie hatte das Gefühl, dass sie über die [[Praxis|die Praxis|la pratique]] nichts wusste. Theorien über Zielgruppen — ja. Aber wie eine echte [[Kampagne|die Kampagne|la campagne (publicitaire)]] entsteht? Keine Ahnung.",
+        "Am letzten Abend zu Hause packte sie ihren Koffer und schrieb eine Liste: 1. Pünktlich sein. 2. Viele Fragen stellen, aber nicht nerven. 3. Kaffee kochen, ohne zu [[klagen|klagen|se plaindre]]. 4. Beweisen, dass du mehr kannst als Kaffee kochen.",
+        "Ihr kleiner Bruder lehnte im Türrahmen. „Und wenn die alle doof sind?“, fragte er. Sara lachte. „Dann lerne ich, mit doofen Leuten zu arbeiten. Das ist vielleicht die wichtigste [[Fähigkeit|die Fähigkeit|la capacité, la compétence]] überhaupt.“",
+        "Im Zug nach Hamburg schaute sie aus dem Fenster und dachte an die Liste. Sie wusste noch nicht, dass sie in den nächsten drei Monaten jeden Punkt brauchen würde — besonders Punkt vier."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 2 · Der erste Tag",
+      texte: [
+        "Die Agentur lag im vierten Stock eines alten [[Kontorhauses|das Kontorhaus|l'immeuble de bureaux (typique de Hambourg)]] in der Speicherstadt. Backsteinwände, hohe Fenster, und durch die Scheiben sah man die [[Kräne|der Kran (die Kräne)|la grue]] des Hafens. Sara war zwanzig Minuten zu früh — Punkt eins der Liste.",
+        "Am [[Empfang|der Empfang|l'accueil, la réception]] saß niemand. Dafür stand dort ein Mann mit grauem Bart und Kapuzenpullover, der an einer Kaffeemaschine [[schraubte|schrauben|visser, bricoler]]. „Die ist kaputt“, sagte er, ohne aufzublicken. „Wie dieser ganze Montag.“ — „Kann ich helfen? Ich bin ganz gut mit Maschinen.“ Er blickte auf. „Du bist die neue Praktikantin.“ — „Sara.“ — „Ich bin Holger. Wenn du die [[reparierst|reparieren|réparer]], gehört dir mein Parkplatz.“",
+        "Sara fand das Problem — ein [[verstopfter|verstopft|bouché(e)]] Schlauch — und zehn Minuten später roch der Flur nach Espresso. So lernte sie am ersten Tag die wichtigste Person der Agentur kennen. Holger war nämlich nicht der Hausmeister, wie sie dachte, sondern der [[Geschäftsführer|der Geschäftsführer|le directeur, le gérant]].",
+        "„Regel Nummer eins“, sagte Holger, während er ihr die Räume zeigte: „Bei uns duzen sich alle. Regel Nummer zwei: Wer eine Idee hat, sagt sie. Auch die Praktikantin. BESONDERS die Praktikantin — die sieht noch Dinge, die wir nicht mehr sehen.“",
+        "Das [[Team|das Team|l'équipe]] war klein: Holger, die Projektleiterin Frau Behrens — „Ausnahme, die lässt sich siezen, das musst du [[respektieren|respektieren|respecter]]“ —, der Designer Jan, die Texterin Melek und zwei Entwickler, die man selten sah, weil sie hinter drei Bildschirmen wohnten.",
+        "Jan gab ihr den ersten [[Auftrag|der Auftrag|la mission, la commande]]: Bilder für eine Präsentation sortieren. Langweilig? Vielleicht. Aber Sara sortierte sie so gut, dass Jan am Abend sagte: „Du hast die Bilder nach Farben UND nach Stimmung sortiert. Das macht sonst niemand freiwillig.“",
+        "Als sie abends bei Tante Karin am Küchentisch saß, tat ihr der Kopf weh — auf die gute Art. Sie hatte an einem Tag mehr Namen, [[Abkürzungen|die Abkürzung (die Abkürzungen)|l'abréviation]] und Passwörter gelernt als im ganzen letzten Semester."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 3 · Frau Behrens",
+      texte: [
+        "Frau Behrens trug jeden Tag Blazer, sprach in kurzen Sätzen und hatte einen [[Ruf|der Ruf|la réputation]] wie ein Gewitter: Man hörte sie schon, bevor man sie sah. „Die ist streng, aber [[gerecht|gerecht|juste, équitable]]“, flüsterte Melek. „Und sie vergisst nichts. NICHTS.“",
+        "In Saras zweiter Woche leitete Frau Behrens das große Projekt: eine Kampagne für „Hafenkorn“, eine alte Hamburger [[Bäckerei|die Bäckerei|la boulangerie]] mit zwölf Filialen, die junge Kunden verlieren. Der [[Kunde|der Kunde|le client]] wollte „irgendwas mit Social Media, aber bitte nichts Peinliches“.",
+        "„Analyse zuerst“, sagte Frau Behrens in der Sitzung. „Wer kauft dort? Wer nicht mehr? Warum?“ Sie verteilte [[Aufgaben|die Aufgabe (die Aufgaben)|la tâche]] wie Spielkarten: Jan die Optik, Melek die Sprache, die Entwickler die Website. „Und die Praktikantin —“ Sara setzte sich gerade hin. „— macht die [[Umfrage|die Umfrage|le sondage, l'enquête]]. Fünfzig Interviews vor den Filialen. Bis Freitag.“",
+        "Fünfzig Interviews! Sara stand drei Tage lang vor Bäckereien und sprach fremde Menschen an. Am Anfang war es ihr [[peinlich|peinlich|gênant, embarrassant]], doch dann merkte sie: Die meisten Leute reden gern übers Brot. Eine alte Dame erzählte ihr zwanzig Minuten von Brötchen aus ihrer Kindheit — „damals, als die noch [[gekracht|krachen|craquer, croustiller]] haben!“",
+        "Sara notierte alles. Ein Muster [[fiel ihr auf|auffallen (ist aufgefallen)|frapper, sauter aux yeux]]: Junge Leute fanden die Bäckerei „gut, aber unsichtbar“. Niemand unter dreißig konnte den Namen der Filiale nennen, obwohl viele täglich daran vorbeigingen.",
+        "Am Freitag legte sie Frau Behrens eine saubere [[Auswertung|die Auswertung|l'analyse, le dépouillement (de données)]] auf den Tisch: Zahlen, Zitate, drei Diagramme. Frau Behrens blätterte, nickte langsam und sagte zwei Wörter: „Ordentliche Arbeit.“ Melek flüsterte später: „‚Ordentliche Arbeit‘ von Behrens — das ist wie ein [[Orden|der Orden|la médaille, la décoration]] von der Königin.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 4 · Der Fehler",
+      texte: [
+        "In der vierten Woche passierte es. Es war ein Dienstag, es regnete, und Sara wollte zu viel auf einmal: E-Mails beantworten, Dateien hochladen, telefonieren. Multitasking, dachte sie. [[Leichtsinn|der Leichtsinn|l'imprudence, la légèreté]], würde Frau Behrens später sagen.",
+        "Der Kunde Hafenkorn brauchte die neuen [[Entwürfe|der Entwurf (die Entwürfe)|l'ébauche, le projet, la maquette]] — vertraulich, noch nicht freigegeben. Gleichzeitig wartete die Druckerei auf alte, freigegebene Dateien. Zwei E-Mails, zwei [[Anhänge|der Anhang (die Anhänge)|la pièce jointe]]. Sara klickte auf „Senden“. Und dann noch einmal.",
+        "Zehn Minuten später wurde ihr [[eiskalt|eiskalt|glacé(e), glacial(e)]]: Sie hatte die Anhänge [[vertauscht|vertauschen|intervertir, confondre]]. Die geheimen Entwürfe lagen jetzt im Postfach der Druckerei — einer Firma, die auch für die [[Konkurrenz|die Konkurrenz|la concurrence]] von Hafenkorn druckte.",
+        "Ihr erster [[Impuls|der Impuls|l'impulsion, le réflexe]] war schrecklich und menschlich: nichts sagen. Vielleicht merkt es niemand. Die E-Mail einfach … vergessen. Sie starrte auf den Bildschirm, und ihr Herz klopfte bis zum Hals.",
+        "Dann dachte sie an ihre Liste, Punkt vier — und an etwas, das ihr Vater immer sagte: „Ein Fehler ist ein Unfall. Ein [[versteckter|verstecken|cacher]] Fehler ist eine Lüge.“ Sie stand auf, ging zu Frau Behrens' Büro und klopfte.",
+        "„Frau Behrens, ich habe einen Fehler gemacht. Einen schlimmen.“ Sie erklärte alles, ohne [[Ausreden|die Ausrede (die Ausreden)|l'excuse, le prétexte]]. Frau Behrens hörte zu, ohne das Gesicht zu verziehen. Dann griff sie zum Telefon: „Herr Petersen? Behrens hier. Sie haben vor zwanzig Minuten eine Datei von uns bekommen, die nicht für Sie [[bestimmt|bestimmt für|destiné(e) à]] war. Ich muss Sie bitten, sie ungeöffnet zu löschen — und mir das schriftlich zu [[bestätigen|bestätigen|confirmer]].“",
+        "Es funktionierte. Petersen löschte, bestätigte, [[Schaden|der Schaden|le dommage, le dégât]] abgewendet. Frau Behrens legte auf und sah Sara lange an. „Wissen Sie, warum Sie noch hier sind?“ — „Nein.“ — „Weil Sie nach zehn Minuten gekommen sind und nicht nach zehn Tagen. [[Vertrauen|das Vertrauen|la confiance]] entsteht nicht, wenn alles gut läuft. Es entsteht, wenn etwas schiefläuft.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 5 · Jan",
+      texte: [
+        "Mit Jan war es [[kompliziert|kompliziert|compliqué]]. Er war der beste Designer der Agentur, und er wusste es. Wenn Sara eine Idee sagte, schaute er kurz von seinem Bildschirm auf, sagte „Hm“ und arbeitete weiter. Das „Hm“ konnte alles bedeuten, aber meistens bedeutete es: nein.",
+        "Eines Nachmittags stellte Sara in der Teamsitzung eine Idee vor: Die Bäckerei könnte alte Kunden [[Geschichten erzählen lassen|erzählen lassen|laisser raconter]] — echte Stimmen statt Werbesprüche. Die alte Dame mit den krachenden Brötchen zum Beispiel. Jan lehnte sich zurück: „Nett. Aber [[nostalgisch|nostalgisch|nostalgique]]. Wir sollen JUNGE Kunden gewinnen, nicht alte behalten.“",
+        "„Genau deshalb“, sagte Sara, und ihre Stimme war fester, als sie erwartet hatte. „Junge Leute [[misstrauen|misstrauen|se méfier de]] der Werbung, aber sie lieben echte Geschichten. Wenn die Oma vom Brötchen von 1963 erzählt, ist das kein [[Marketing|das Marketing|le marketing]] — das ist ein Dokumentarfilm in dreißig Sekunden.“",
+        "Es wurde still. Jan öffnete den Mund, schloss ihn wieder. Holger grinste in seinen Bart. Frau Behrens machte eine [[Notiz|die Notiz|la note]] — und wenn Behrens notierte, war etwas passiert.",
+        "Danach war das [[Verhältnis|das Verhältnis|la relation, le rapport]] zwischen Sara und Jan erst einmal kühl. Er grüßte knapp, sie grüßte knapp. Melek [[seufzte|seufzen|soupirer]]: „Jungs. Er ist nicht böse, er ist [[gekränkt|gekränkt|vexé(e), blessé(e)]]. Das ist schlimmer.“",
+        "Die Lösung kam durch einen Zufall. Am Freitagabend blieben beide als Letzte im Büro — eine [[Deadline|die Deadline|la date limite, l'échéance]]. Um zehn bestellte Jan Pizza, ohne zu fragen: eine Hälfte Salami, eine Hälfte vegetarisch. „Woher weißt du, dass ich kein Fleisch esse?“, fragte Sara. „Ich bin Designer. Ich [[beobachte|beobachten|observer]].“",
+        "Über der Pizza redeten sie zum ersten Mal wirklich. Jan erzählte, dass er selbst nie studiert hatte und manchmal Angst hatte, dass „die Studierten“ ihn überholen. „Deine Idee war gut“, sagte er schließlich, mit vollem Mund. „Das war das Problem.“ Sara lachte: „Dann machen wir sie zusammen besser.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 6 · Die Kampagne",
+      texte: [
+        "Aus Saras Idee wurde ein [[Konzept|das Konzept|le concept]], und aus dem Konzept wurde eine Kampagne: „Hafenkorn erzählt“. Jan filmte mit einer kleinen Kamera echte Kunden in den Filialen. Melek schrieb keine Slogans, sondern [[Untertitel|der Untertitel (die Untertitel)|le sous-titre]]. Sara [[koordinierte|koordinieren|coordonner]] — Drehtermine, Einverständniserklärungen, Kaffee.",
+        "Die alte Dame — sie hieß Frau Lindemann — wurde der Star des ersten Videos. Sie stand in der Filiale, hielt ein Brötchen ans Ohr wie ein Telefon und sagte: „Hören Sie? Nichts. 1963 hat das Brötchen noch mit mir [[gesprochen|sprechen|parler]].“ Dann biss sie hinein, es krachte laut, und sie strahlte: „Na also. Es kann es noch.“",
+        "Das Video war 28 Sekunden lang. Es kostete fast nichts. Und es [[verbreitete sich|sich verbreiten|se répandre, se diffuser]] wie warmes Brot am Sonntagmorgen. Nach drei Tagen: 40.000 Aufrufe. Nach einer Woche: 200.000. Ein Hamburger [[Radiosender|der Radiosender|la station de radio]] lud Frau Lindemann ins Studio ein.",
+        "Der Kunde war [[begeistert|begeistert|enthousiaste, ravi(e)]] — und wollte sofort mehr. „Mehr Omas!“, rief der Marketingchef am Telefon. Frau Behrens blieb trocken: „Es geht nicht um Omas. Es geht um [[Echtheit|die Echtheit|l'authenticité]]. Wenn Sie das verstehen, machen wir weiter.“",
+        "In den nächsten Wochen entstanden sieben Videos: der Bäckerlehrling um vier Uhr morgens, die Studentin, die mit Brötchentüten ihre [[Miete|die Miete|le loyer]] im Nachbarschaftsbüro bezahlte (lange Geschichte), der Stammkunde mit dem Hund, der immer die gleiche Ecke vom Croissant bekam.",
+        "Sara lernte in dieser Zeit mehr als in vier Semestern: Wie man ein [[Budget|das Budget|le budget]] plant. Wie man Nein sagt, ohne unhöflich zu sein. Wie man eine [[Besprechung|die Besprechung|la réunion]] leitet, wenn alle gleichzeitig reden. Und wie man um 23 Uhr noch freundlich bleibt, wenn der Kunde „nur noch eine klitzekleine Änderung“ will."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 7 · Der schlechte Tag",
+      texte: [
+        "Nicht alles war Glanz. In der neunten Woche kam der Tag, den Sara später „den grauen Mittwoch“ nannte. Es begann damit, dass die [[S-Bahn|die S-Bahn|le train de banlieue, le RER]] ausfiel und sie zum ersten Mal zu spät kam — ausgerechnet zur Wochenbesprechung.",
+        "Dann [[stürzte|abstürzen (ist abgestürzt)|planter (ordinateur)]] mittags der Server ab, und drei Stunden Arbeit waren weg, weil Sara vergessen hatte zu [[speichern|speichern|enregistrer, sauvegarder]]. „Backup ist kein Hobby“, sagte einer der Entwickler, und es klang nicht freundlich.",
+        "Am Nachmittag rief der Kunde an: Ein [[Konkurrent|der Konkurrent|le concurrent]] hatte die Kampagne kopiert — gleiche Idee, echte Kunden, sogar eine eigene Oma. „Ihr habt es nicht [[geschützt|schützen (hat geschützt)|protéger]]?“, fragte der Marketingchef vorwurfsvoll, als wäre es Saras Schuld.",
+        "Und abends, als sie müde bei Tante Karin ankam, lag da ein Brief von der Universität: Die [[Frist|die Frist|le délai, l'échéance]] für die Anmeldung zur Bachelorarbeit lief in zwei Wochen ab. Zwei Welten zogen an ihr: das Studium dort, das echte Leben hier.",
+        "Tante Karin stellte ihr einen Teller Linsensuppe hin — die Familienmedizin für graue Tage. „Weißt du“, sagte sie, „ich habe dreißig Jahre im Hafen gearbeitet. Es gab Tage, da wollte ich alle Container ins Wasser [[schieben|schieben|pousser]]. Weißt du, was gegen solche Tage hilft?“ — „Linsensuppe?“ — „Schlaf. Und die Frage: Was davon ist morgen noch wichtig?“",
+        "Sara dachte nach. Die S-Bahn? Egal. Der Server? [[Ärgerlich|ärgerlich|agaçant, fâcheux]], aber gelernt: speichern. Der Konkurrent? „Kopien sind Komplimente ohne [[Anstand|der Anstand|la décence, les bonnes manières]]“, hatte Holger gesagt. Blieb der Brief. Der Brief war morgen noch wichtig. Und übermorgen. Sie schlief schlecht."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 8 · Das Gespräch",
+      texte: [
+        "Am nächsten Morgen bat Holger sie in sein Büro. Auf dem Tisch standen zwei Espressi aus der Maschine, die Sara am ersten Tag repariert hatte. „Setz dich. Ich habe eine Frage, und du sollst nicht sofort antworten.“",
+        "Er schob ihr ein Blatt über den Tisch. Oben stand: „[[Arbeitsvertrag|der Arbeitsvertrag|le contrat de travail]] — Junior-Projektmanagerin“. Sara las es zweimal. „Wir wollen dich behalten“, sagte Holger. „Ab Januar. [[Unbefristet|unbefristet|à durée indéterminée (CDI)]]. Frau Behrens hat es vorgeschlagen — und glaub mir, das passiert seltener als Schnee im August.“",
+        "Saras erster Gedanke war: JA. Ihr zweiter Gedanke war das Studium. Noch drei Semester bis zum [[Abschluss|der Abschluss|le diplôme, la fin d'études]]. „Kann ich … darüber nachdenken?“ — „Deshalb sage ich es dir heute und nicht am letzten Tag. Nimm dir zwei Wochen.“",
+        "Die zwei Wochen waren die längsten ihres Lebens. Ihre Mutter sagte: „Mach den Abschluss fertig, ein Papier ist ein Papier.“ Ihr Bruder sagte: „Nimm das Geld.“ Melek sagte: „Bleib, wir brauchen dich.“ Jan sagte: „Hm“ — aber diesmal klang das „Hm“ wie „bitte bleib“.",
+        "Frau Behrens sagte zuerst gar nichts. Dann, an einem Abend, als sie die Letzten im Büro waren, [[erzählte|erzählen|raconter]] sie unerwartet von sich: „Ich habe mit 24 mein Studium abgebrochen, für einen Job wie diesen. Ich habe es nie [[bereut|bereuen|regretter]] — aber ich habe zwanzig Jahre lang beweisen müssen, dass ich auch ohne Titel denken kann. Manche Türen öffnet nur das Papier. [[Dumm|dumm|bête, stupide]], aber wahr.“",
+        "„Was würden Sie tun?“, fragte Sara. Frau Behrens zog ihren Blazer gerade. „Ich würde niemanden fragen, was ich tun soll. Aber ich würde allen genau zuhören. Das ist nicht das Gleiche.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 9 · Die Entscheidung",
+      texte: [
+        "Sara traf ihre Entscheidung an einem Sonntag am Hafen. Sie saß auf einer Bank an den Landungsbrücken, aß ein Fischbrötchen und schaute den Schiffen zu, wie Touristen es tun — nur dass sie keine [[Touristin|die Touristin|la touriste]] mehr war. Die Stadt roch inzwischen nach Zuhause.",
+        "Sie schrieb zwei Listen, wie immer. „Bleiben“: das Team, das Geld, die Praxis, Hamburg. „Studium beenden“: der Abschluss, die Freiheit später, das [[Versprechen|das Versprechen|la promesse]] an sich selbst, Dinge zu Ende zu bringen. Die Listen waren gleich lang. Listen [[versagen|versagen|échouer, faire défaut]], wenn es wichtig wird.",
+        "Also fragte sie sich etwas anderes: Wovor habe ich [[Angst|die Angst|la peur]]? Und da war die Antwort plötzlich klar. Sie hatte Angst, dass das Angebot nie wiederkommt. Aber Angebote kommen wieder, wenn man gut ist. [[Abgebrochene|abbrechen (hat abgebrochen)|interrompre, abandonner]] Studien kommen nicht von selbst zurück.",
+        "Am Montag stand sie um neun in Holgers Büro. „Ich habe eine Antwort und einen [[Vorschlag|der Vorschlag|la proposition]]“, sagte sie. „Die Antwort ist: Ich beende erst mein Studium. Der Vorschlag ist: Ich arbeite bis dahin als [[Werkstudentin|die Werkstudentin|l'étudiante salariée (à temps partiel)]] weiter — zwei Tage die Woche, remote und in den Semesterferien hier. Und nach dem Abschluss reden wir über den Vertrag. Wenn ihr mich dann noch wollt.“",
+        "Holger schaute sie an, und sein Bart bewegte sich, weil er darunter grinste. „Behrens!“, rief er durch die offene Tür. „Sie hatten recht!“ Frau Behrens erschien im Türrahmen. „Ich habe immer recht. Womit diesmal?“ — „Sie haben gesagt: Die lehnt ab und schlägt was Besseres vor.“",
+        "So [[unterschrieb|unterschreiben (hat unterschrieben)|signer]] Sara an ihrem letzten Praktikumstag doch einen Vertrag — nur einen anderen als geplant. Zehn Stunden pro Woche, [[fair|fair|équitable, correct]] bezahlt, mit einer Zeile, die Holger persönlich eingefügt hatte: „Kaffeemaschinen-Reparaturen werden [[gesondert|gesondert|séparément, à part]] vergütet.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 10 · Der Abschied, der keiner war",
+      texte: [
+        "Am letzten Freitag des Praktikums gab es Kuchen — Melek hatte ihn gebacken, und er sah aus wie das Hafenkorn-Logo, nur schiefer. „Das ist [[Absicht|die Absicht|l'intention (ici : c'est fait exprès)]]“, behauptete sie. „Handwerk ist nie perfekt. Das ist unsere [[Botschaft|die Botschaft|le message]].“",
+        "Holger hielt eine kleine Rede. Er erzählte von der Kaffeemaschine, vom vertauschten Anhang („aus Fehlern werden Geschichten, wenn man sie [[zugibt|zugeben (hat zugegeben)|avouer, admettre]]“) und von Frau Lindemanns Brötchen. „Drei Monate. Eine Praktikantin. Sieben Videos, ein neuer Kunde, eine reparierte Maschine und eine Junior-Kollegin ab nächstem Monat. Nicht schlecht für 450 Euro, oder?“ Alle lachten, Sara am lautesten, damit niemand ihre nassen Augen bemerkte. Es bemerkten natürlich alle.",
+        "Frau Behrens schenkte ihr ein Buch: „Projektmanagement“ — natürlich. Aber innen, auf der ersten Seite, stand handschriftlich: „Für S. — Vertrauen entsteht, wenn etwas schiefläuft. Sie können Vertrauen. B.“ Es war das längste Kompliment, das je jemand von Frau Behrens bekommen hatte.",
+        "Jan schenkte ihr ein gerahmtes [[Standbild|das Standbild|l'image fixe, l'arrêt sur image]] aus dem ersten Video: Frau Lindemann mit dem Brötchen am Ohr. Unten hatte er geschrieben: „Für die, die zuhört.“ — „Hm“, sagte Sara. Jan lachte: „Genau.“",
+        "Im Zug nach Hause — für ein Wochenende bei der Familie, bevor das Semester begann — schrieb Sara in ihr Notizbuch die neue Liste: „1. Bachelorarbeit anmelden. 2. Frau Lindemann eine Karte schicken. 3. Im Januar: erste Remote-Woche gut planen. 4. In einem Jahr: den Vertrag noch mal lesen.“",
+        "Dann schaute sie aus dem Fenster. Die Elbe [[glitzerte|glitzern|scintiller]], die Kräne winkten ihr nach — so kam es ihr jedenfalls vor. Drei Monate früher hatte sie gedacht, ein Praktikum sei eine Zeile im [[Lebenslauf|der Lebenslauf|le CV]]. Jetzt wusste sie: Es war ein Anfang. Und Anfänge, das hatte Hamburg sie gelehrt, [[erkennt man|erkennen|reconnaître]] immer erst hinterher.",
+        "ENDE — Sehr gut! Der B1-Roman ist geschafft. 📘"
+      ].join("\n\n")
+    }
+  ]
+};
+
+</script>
+    <script>
+/* =====================================================================
+   Roman éducatif — Niveau B2 : « Die alte Buchhandlung »
+   Passif, Konjunktiv II, style nominal, connecteurs (dennoch, allerdings,
+   infolgedessen). Argumentation, société, engagement citoyen. Leipzig.
+   ===================================================================== */
+window.ROMAN_B2 = {
+  id: "b2", niveau: "B2",
+  titre: "Die alte Buchhandlung",
+  sousTitre: "Eine Geschichte über Bücher, Mut und Miete",
+  resume: "À Leipzig, la librairie de Herr Winter doit fermer : loyer triplé, clients partis en ligne. Mara, sa jeune employée, refuse d'abandonner — pétition, lectures publiques, bureaucratie et une idée audacieuse. Un roman sur l'engagement, au style B2 (passif, Konjunktiv II).",
+  chapitres: [
+    {
+      titre: "Kapitel 1 · Der Brief",
+      texte: [
+        "Der Brief lag zwischen zwei Rechnungen und einem Katalog für Wintermode, und er sah so [[harmlos|harmlos|inoffensif, anodin]] aus, wie es nur wirklich gefährliche Briefe tun. Mara legte ihn auf den Tresen der Buchhandlung, zwischen die [[Neuerscheinungen|die Neuerscheinung (die Neuerscheinungen)|la nouveauté, la nouvelle parution]] und die Lesebrille von Herrn Winter.",
+        "Die Buchhandlung „Winter & Wort“ existierte seit 1949. Sie überlebte die DDR, die [[Wende|die Wende|le tournant (chute du Mur, réunification)]], zwei Überschwemmungen und die Erfindung des E-Books. Sie roch nach Papier, Holz und dem Pfeifentabak, den Herr Winter seit zwanzig Jahren nicht mehr rauchte, der aber [[offenbar|offenbar|manifestement, apparemment]] in den Wänden wohnte.",
+        "Herr Winter, 71, öffnete den Brief mit dem Messer, das eigentlich für Paketschnüre [[vorgesehen|vorgesehen|prévu(e)]] war. Er las. Seine Hand mit dem Brief sank langsam, wie ein Schiff, das Wasser [[aufnimmt|aufnehmen|prendre, absorber]].",
+        "„Die [[Miete|die Miete|le loyer]] wird [[erhöht|erhöhen (wird erhöht)|augmenter]]“, sagte er. „Zum ersten Januar. Auf das Dreifache.“ — „Das Dreifache?“, wiederholte Mara. „Das ist doch nicht [[zulässig|zulässig|autorisé, licite]]!“ — „Das Haus wurde verkauft. An eine [[Immobiliengesellschaft|die Immobiliengesellschaft|la société immobilière]] mit einem Namen, der klingt wie eine Zahnpasta: ‚UrbanValue‘. Und was zulässig ist, entscheiden leider nicht die Bücher.“",
+        "Mara war 26 und arbeitete seit vier Jahren hier — erst als Aushilfe während des Studiums, dann, [[entgegen|entgegen + Dativ|contrairement à]] allen Ratschlägen ihrer Eltern, in Vollzeit. Sie kannte die Kunden mit Namen und die Bücher mit Seele.",
+        "„Was werden Sie tun?“, fragte sie. Herr Winter setzte sich auf die Leiter, mit der man die oberen Regale erreichte, und plötzlich sah er so alt aus, wie er war. „Was tut man, wenn ein Kapitel endet, Mara? Man [[blättert um|umblättern|tourner la page]]. Ich werde schließen müssen.“",
+        "In dieser Nacht schlief Mara schlecht. Gegen drei Uhr stand sie auf und schrieb einen einzigen Satz in ihr Notizbuch, den sie am Morgen kaum noch lesen konnte, der aber alles [[Folgende|das Folgende|ce qui suit, la suite]] auslöste: „Ein Kapitel endet erst, wenn niemand mehr weiterliest.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 2 · Die Bestandsaufnahme",
+      texte: [
+        "Am nächsten Morgen kam Mara mit zwei Kaffees und einem Plan. Der Plan bestand, [[genau genommen|genau genommen|à proprement parler]], aus drei Fragen, die sie an die Tafel schrieb, auf der sonst das „Buch der Woche“ [[angekündigt|ankündigen (wird angekündigt)|annoncer]] wurde: Wie schlimm ist es? Wer kann helfen? Was haben wir, das niemand sonst hat?",
+        "Herr Winter [[betrachtete|betrachten|contempler, examiner]] die Tafel wie eine moderne Skulptur — mit Respekt und leichtem Misstrauen. „Du willst kämpfen“, stellte er fest. „Ich will [[rechnen|rechnen|calculer]]“, antwortete Mara. „Kämpfen kommt danach.“",
+        "Die Rechnung war [[ernüchternd|ernüchternd|dégrisant, qui fait déchanter]]. Die Buchhandlung machte kleinen, aber stabilen Gewinn — bei der alten Miete. Bei der neuen Miete würde jeder verkaufte Roman ein [[Verlustgeschäft|das Verlustgeschäft|l'affaire déficitaire]] sein. „Wir müssten dreimal so viele Bücher verkaufen“, rechnete Mara vor, „oder etwas anderes anbieten, das es bei den [[Online-Riesen|der Riese (die Riesen)|le géant]] nicht gibt.“",
+        "„Und was gäbe es bei uns, das es dort nicht gibt?“, fragte Herr Winter. Es klang nicht [[rhetorisch|rhetorisch|rhétorique]], sondern ehrlich müde. Mara zeigte auf den Laden: „Sie. Die Leiter. Der Geruch. Frau Kellner, die jeden Donnerstag kommt und nie etwas kauft, aber immer etwas erzählt. Das hier ist kein [[Vertriebskanal|der Vertriebskanal|le canal de distribution]] — das ist ein Ort. Orte kann man nicht herunterladen.“",
+        "Sie begannen mit einer Liste der [[Stammkunden|der Stammkunde (die Stammkunden)|le client fidèle, l'habitué]]: 214 Namen, von der Richterin bis zum Straßenbahnfahrer. Dann eine Liste der Möglichkeiten: Lesungen, Schreibwerkstätten, ein Café-Regal, Schulkooperationen, ein „Buch-Abo“ mit persönlicher [[Beratung|die Beratung|le conseil (service)]].",
+        "„Und die Miete?“, fragte Herr Winter. „Gegen die Miete“, sagte Mara und zog ihren Mantel an, „brauchen wir keine Ideen, sondern [[Verbündete|der Verbündete (die Verbündeten)|l'allié]]. Ich gehe zur Zeitung.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 3 · Die Journalistin",
+      texte: [
+        "Die Lokalredaktion der „Leipziger Nachrichten“ [[befand sich|sich befinden|se trouver]] im dritten Stock eines Neubaus, in dem früher eine Druckerei gestanden hatte — eine Ironie, die dort niemandem mehr [[auffiel|auffallen|frapper, sauter aux yeux]]. Mara hatte keinen Termin, aber sie hatte Kekse und eine Geschichte.",
+        "Die Journalistin Petra Schulz hörte fünf Minuten zu, dann [[unterbrach|unterbrechen (unterbrach)|interrompre]] sie: „Buchhandlung verdrängt, Miete verdreifacht, Investor ohne Gesicht — das höre ich dreimal pro Woche. Es ist traurig, aber es ist keine [[Schlagzeile|die Schlagzeile|le gros titre, la une]] mehr. Was macht Ihre Geschichte besonders?“",
+        "Mara dachte an die Tafel. Was haben wir, das niemand sonst hat? „1953“, sagte sie langsam, „wurde in unserem Hinterzimmer eine [[verbotene|verboten|interdit(e)]] Lesung abgehalten. 1989 wurden bei uns Flugblätter versteckt — zwischen den Seiten von Goethes ‚Faust‘, weil die [[Staatssicherheit|die Staatssicherheit|la Stasi, police politique de la RDA]] Klassiker nie kontrollierte. Herr Winter hat das nie öffentlich erzählt. Er sagt, Bücher hätten [[Schweigepflicht|die Schweigepflicht|le secret professionnel]].“",
+        "Petra Schulz legte ihren Stift hin. „Und er würde es jetzt erzählen?“ — „Wenn es den Laden rettet? Ich glaube, dafür würde er sogar mit der Zahnpasta-Firma sprechen.“",
+        "Der Artikel erschien am Samstag auf Seite drei: „Das [[Gedächtnis|das Gedächtnis|la mémoire]] der Stadt wird gekündigt“. Petra Schulz hatte recherchiert, Zeitzeugen gefunden, Fotos von 1989 [[aufgetrieben|auftreiben (hat aufgetrieben)|dénicher, dégoter]]. Das Foto zeigte den jungen Herrn Winter vor seinem Laden, die Arme verschränkt, das Kinn oben.",
+        "Am Montag standen zum ersten Mal seit Jahren wieder Menschen vor der Tür, bevor Mara [[aufschloss|aufschließen (schloss auf)|ouvrir (avec une clé)]]. Eine Frau kaufte sieben Bücher und sagte: „Eins für jeden Enkel. Die sollen wissen, wo man Bücher kauft, [[solange|solange|tant que]] es noch geht.“ Es war ein schöner Tag. Aber Mara wusste: [[Mitleid|das Mitleid|la compassion, la pitié]] füllt keine Kasse dauerhaft. Sie brauchten mehr als eine Welle. Sie brauchten einen Plan B — und ein Amt."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 4 · Das Amt",
+      texte: [
+        "Wer in Deutschland etwas retten will, [[stößt|stoßen auf|se heurter à, tomber sur]] früher oder später auf ein Formular. Maras Formular hieß „Antrag auf [[Fördermittel|die Fördermittel (Pl.)|les subventions]] für kulturelle Einrichtungen“ und hatte vierzehn Seiten, von denen jede einzelne so klang, als wäre sie von einem Roboter mit Jurastudium geschrieben worden.",
+        "Das Kulturamt befand sich in einem Gebäude, in dem sich außerdem das Standesamt und die [[Kfz-Zulassungsstelle|die Zulassungsstelle|le service d'immatriculation]] befanden — Hochzeiten, Autos und Kultur, [[vereint|vereinen (vereint)|réunir, unir]] unter einem Dach und einer Wartenummer.",
+        "Frau Dr. Hoffmann vom [[Referat|das Referat|le service, le département (administration)]] Kulturförderung war freundlicher, als das Gebäude vermuten ließ. Sie las Maras Antrag, nickte mehrmals und sagte dann den Satz, den alle Ämter der Welt lieben: „Das ist [[grundsätzlich|grundsätzlich|en principe, fondamentalement]] förderfähig — allerdings …“",
+        "Das Allerdings hatte drei Teile. Erstens: Fördermittel würden nur an [[gemeinnützige|gemeinnützig|d'utilité publique, à but non lucratif]] Träger vergeben — eine Buchhandlung sei ein Geschäft. Zweitens: Die nächste Antragsrunde beginne im April; die Miete steige im Januar. Drittens — und hier senkte Frau Dr. Hoffmann die Stimme —: „Der [[Eigentümer|der Eigentümer|le propriétaire]] hat mehr Rechte, als Ihnen lieb sein wird. Aber…“",
+        "Maras Ohren stellten sich auf. In Ämtern sind die wichtigen Informationen immer hinter dem „Aber“ versteckt. „… es gibt eine [[Erhaltungssatzung|die Satzung|le règlement, les statuts]] für dieses Viertel. Wenn nachgewiesen werden kann, dass ein Gewerbe [[stadtbildprägend|prägen|marquer, façonner]] ist — historisch, kulturell, sozial —, kann die Stadt bei der Umnutzung mitreden. Das Verfahren ist selten, langsam und macht Investoren sehr, sehr nervös.“",
+        "„Wie weist man so etwas nach?“, fragte Mara. Frau Dr. Hoffmann lächelte zum ersten Mal. „Mit Papier, Frau Lindqvist. Mit sehr viel Papier. Sie arbeiten in einer Buchhandlung — ich [[nehme an|annehmen|supposer]], Papier schreckt Sie nicht.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 5 · Die Lesungen",
+      texte: [
+        "Während die Papiere gesammelt wurden, musste Geld verdient werden — und [[Aufmerksamkeit|die Aufmerksamkeit|l'attention]]. Maras Idee: „Winter-Abende“. Jeden Donnerstag eine Lesung, aber nicht die übliche Sorte, bei der ein Autor eine Stunde liest und drei Bücher [[signiert|signieren|dédicacer, signer]].",
+        "Beim ersten Winter-Abend lasen die Kunden selbst: jeder fünf Minuten aus dem Buch, das sein Leben verändert hatte. Der Straßenbahnfahrer las Kafka — „weil da einer auch nicht weiß, wohin die Linie führt“. Die Richterin las Astrid Lindgren und musste zweimal [[abbrechen|abbrechen|s'interrompre]], weil ihre Stimme nicht mitmachte.",
+        "Frau Kellner, die Donnerstagsfrau, die nie etwas kaufte, las nicht. Sie erzählte. Von ihrem Mann, der ihr vierzig Jahre lang jeden Freitag ein Buch mitgebracht hatte, [[ausgesucht|aussuchen|choisir]] von Herrn Winter persönlich. „Als er starb, habe ich aufgehört zu lesen. Aber nicht aufgehört zu kommen. Man [[gibt|aufgeben|abandonner, renoncer à]] ja die Kirche nicht auf, nur weil man mit dem lieben Gott gerade nicht spricht.“ Es war so still im Laden, dass man die Straßenbahn draußen hören konnte.",
+        "Die Winter-Abende wurden [[überregional|überregional|au-delà de la région, national]] bekannt, nachdem ein Student sie gefilmt und ins Netz gestellt hatte. Es kamen Menschen aus Dresden, aus Halle, einmal sogar ein Ehepaar aus München, das „auf der Durchreise“ war — mit leerem Kofferraum, der [[gefüllt|füllen (gefüllt)|remplir]] wieder abfuhr.",
+        "Die Kasse erholte sich. Nicht [[glänzend|glänzend|brillamment]], aber sichtbar. Und etwas anderes geschah, das in keiner Bilanz stand: Der Laden wurde wieder das, was er 1953 und 1989 gewesen war — ein Ort, an dem die Stadt sich selbst zuhörte.",
+        "Nur Herr Winter wurde stiller. Eines Abends, nach der Lesung, fand Mara ihn im Hinterzimmer, wo er alte [[Unterlagen|die Unterlagen (Pl.)|les documents, les dossiers]] sortierte. „Was, wenn wir gewinnen“, fragte er leise, „und ich zu alt bin, um es zu genießen? Ich bin einundsiebzig, Mara. Die Frage ist nicht nur, ob der Laden bleibt. Die Frage ist, [[wem|wer (Dativ: wem)|à qui]] er gehört, wenn ich es nicht mehr kann.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 6 · UrbanValue",
+      texte: [
+        "Der Anruf kam an einem Dienstag: Herr Berger von UrbanValue [[bitte um|bitten um|demander, solliciter]] ein Gespräch. Neutrale Formulierung, teurer Anzug, dachte Mara — und lag mit beidem richtig. Herr Berger erschien persönlich, mit Lederschuhen, die mehr gekostet hatten als Maras Monatsgehalt, und einem Lächeln, das im [[Fitnessstudio|das Fitnessstudio|la salle de sport]] trainiert worden war.",
+        "„Ich bin nicht Ihr [[Feind|der Feind|l'ennemi]]“, begann er, was bekanntlich nur Menschen sagen, die genau das befürchten. „UrbanValue [[investiert|investieren|investir]] in dieses Viertel. Wir bringen Aufwertung, Sicherheit, Qualität.“ — „Sie bringen dreifache Mieten“, sagte Herr Winter ruhig. „Das ist keine Aufwertung. Das ist [[Verdrängung|die Verdrängung|l'éviction, la gentrification]] mit besserem Vokabular.“",
+        "Berger hatte ein Angebot mitgebracht: UrbanValue würde die Buchhandlung als „[[Ankermieter|der Ankermieter|le locataire phare]] mit Kulturbonus“ behalten — zwanzig Prozent [[Nachlass|der Nachlass|la remise, le rabais ; la succession]] auf die neue Miete. Dafür sollte der Laden „ins Konzept passen“: neues Logo, helleres Licht, ein Kaffeetresen einer [[Kette|die Kette|la chaîne (de magasins)]], „und die alten Regale müssten natürlich raus, das versteht sich“.",
+        "„Die Regale“, sagte Herr Winter, „wurden 1949 von meinem Vater gebaut. Aus den Brettern eines [[zerbombten|zerbomben (zerbombt)|détruire par les bombes]] Hauses. Die verstehen sich nicht.“",
+        "Berger seufzte das Seufzen eines Mannes, der Sentimentalität für einen [[Kostenfaktor|der Kostenfaktor|le facteur de coût]] hält. „Ich verstehe die [[Nostalgie|die Nostalgie|la nostalgie]]. Aber die Zahlen —“ — „Die Zahlen“, unterbrach Mara, und legte einen Ordner auf den Tisch, „kennen wir. Hier sind unsere: 214 Stammkunden. Zwölf Winter-Abende, alle [[ausverkauft|ausverkauft|complet, à guichets fermés]]. Ein Presseecho von Leipzig bis München. Und ein laufendes Verfahren zur Erhaltungssatzung, Aktenzeichen KU-2874. Falls Ihre Investoren fragen, warum das Viertel plötzlich [[Gegenwind|der Gegenwind|le vent contraire, l'opposition]] macht.“",
+        "Zum ersten Mal rutschte Bergers Lächeln. Nur einen Millimeter, aber Mara sah es. „Sie [[bluffen|bluffen|bluffer]]“, sagte er. „Ich arbeite in einer Buchhandlung“, antwortete sie. „Ich habe dreitausend Geschichten gelesen. Glauben Sie mir: Ich weiß, wie man erkennt, wer blufft.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 7 · Die Petition",
+      texte: [
+        "Die Petition war Frau Kellners Idee — [[ausgerechnet|ausgerechnet|justement, précisément (ironique)]] ihre. „Ich habe vierzig Jahre lang nichts unterschrieben“, sagte sie. „Nicht mal Geburtstagskarten, das hat immer mein Mann gemacht. Aber jetzt [[sammle|sammeln|collecter, recueillir]] ich Unterschriften. Geben Sie mir Listen. Viele Listen.“",
+        "Frau Kellner [[erwies sich|sich erweisen als|s'avérer]] als Naturtalent. Sie kannte halb Leipzig, und die andere Hälfte kannte jemanden, den sie kannte. Sie stand vor Supermärkten, in Wartezimmern, bei Chorproben. Ihr Argument war immer dasselbe, und es war [[unwiderstehlich|unwiderstehlich|irrésistible]]: „Wo hat man Ihnen zum letzten Mal zugehört, ohne dass Sie etwas kaufen mussten?“",
+        "Nach drei Wochen: 4.812 Unterschriften. Nach fünf Wochen: 9.340. Die [[Übergabe|die Übergabe|la remise (officielle)]] an den Stadtrat wurde zum Ereignis: Frau Kellner trug die Kartons persönlich, flankiert vom Straßenbahnfahrer und der Richterin, gefilmt von zwei Fernsehteams. Petra Schulz schrieb: „Eine Stadt [[erinnert sich|sich erinnern|se souvenir]], was ihr gehört.“",
+        "Im Stadtrat wurde die Sache [[kontrovers|kontrovers|de manière controversée]] diskutiert. Eine Fraktion sprach von „notwendiger [[Stadtentwicklung|die Stadtentwicklung|le développement urbain]]“, eine andere von „Ausverkauf der Identität“. Ein Abgeordneter hielt eine Rede, in der das Wort „Herzblut“ sechsmal vorkam; ein anderer rechnete vor, was ein leerstehender Laden die Stadt koste.",
+        "Am Ende wurde beschlossen, was in Deutschland eben beschlossen wird: ein [[Gutachten|das Gutachten|l'expertise, le rapport d'expert]]. Drei Monate sollte es dauern. Drei Monate, die die Buchhandlung bei alter Miete nicht mehr hatte — die Erhöhung kam zum Januar.",
+        "„Wir haben die Öffentlichkeit, das Amt prüft, die Politik [[debattiert|debattieren|débattre]]“, fasste Mara am Abend zusammen. „Aber im Januar sind wir trotzdem [[zahlungsunfähig|zahlungsunfähig|insolvable]]. Wir gewinnen jede Schlacht und verlieren den Krieg — an einen Kalender.“ Herr Winter nickte langsam. Dann sagte er etwas Seltsames: „Vielleicht kämpfen wir um das Falsche. Wir kämpfen darum, dass ICH den Laden behalten darf. Vielleicht sollten wir darum kämpfen, dass ER bleibt — egal, wem er gehört. Setz dich, Mara. Ich muss dir etwas über [[Genossenschaften|die Genossenschaft (die Genossenschaften)|la coopérative]] erzählen.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 8 · Die Genossenschaft",
+      texte: [
+        "Die Idee war so alt, dass sie schon wieder neu war: Eine Genossenschaft — der Laden würde denen gehören, die ihn brauchen. Jeder [[Anteil|der Anteil|la part (sociale)]]: 250 Euro. Jedes Mitglied: eine Stimme, [[unabhängig|unabhängig von|indépendamment de]] von der Zahl der Anteile. „Kein Investor kann uns kaufen“, erklärte Mara bei der Infoveranstaltung, „weil wir dann alle der Investor sind.“",
+        "Der Notar, ein Stammkunde, [[erledigte|erledigen|s'occuper de, régler]] die Papiere zum halben Preis („Rabatt für stadtbildprägende Mandanten“). Die Richterin übernahm den [[Aufsichtsrat|der Aufsichtsrat|le conseil de surveillance]]. Ein pensionierter Banker, der sonst nur Krimis kaufte, rechnete die [[Finanzierung|die Finanzierung|le financement]] durch: 400 Anteile würden reichen — für die Kaution, die ersten Monate der neuen Miete und einen Umbau des Hinterzimmers zum Veranstaltungsraum.",
+        "400 Anteile. 100.000 Euro. „Das schafft ihr nie“, sagte Maras Vater am Telefon — derselbe Vater, der ihr vom Vollzeitjob im Buchhandel [[abgeraten|abraten (hat abgeraten)|déconseiller]] hatte. Mara notierte den Satz und klebte ihn an den Kühlschrank, als [[Treibstoff|der Treibstoff|le carburant]].",
+        "Die ersten hundert Anteile waren leicht — die Stammkunden. Die zweiten hundert kamen über die Winter-Abende und die Petition. Dann [[stockte|stocken|s'enrayer, marquer un temps d'arrêt]] es. Bei Anteil 217 schien die Stadt gesättigt. Zwei Wochen lang: nichts.",
+        "Die Rettung kam von unerwarteter Seite. Der Student, der die Lesungen filmte, schnitt ein Video: Frau Kellners Geschichte vom Mann und den Freitagsbüchern, unterlegt mit Bildern des Ladens. Am Ende nur ein Satz, weiß auf schwarz: „Manche Orte kann man nicht herunterladen. Aber man kann sie [[besitzen|besitzen|posséder]]. Ein Anteil: 250 €.“",
+        "Das Video wurde zweihunderttausendmal angesehen. Anteile wurden gezeichnet aus Hamburg, aus Wien, aus Zürich; ein Buchclub aus Köln nahm zehn. Eine Autorin, deren Namen jeder kannte, nahm zwanzig — und bot [[obendrein|obendrein|en plus, par-dessus le marché]] eine Gratis-Lesung an. Am 19. Dezember, um 16:47 Uhr, wurde Anteil Nummer 400 gezeichnet. Von Maras Vater."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 9 · Der Januar",
+      texte: [
+        "Der Januar kam mit Schnee und einem neuen Türschild: „Winter & Wort eG — eine Buchhandlung, die ihren Lesern gehört“. Die neue Miete wurde bezahlt, [[pünktlich|pünktlich|à l'heure, ponctuellement]] und mit einem gewissen Vergnügen: Das Geld kam von 412 Genossen, und die Überweisung trug den Verwendungszweck „Kapitel 2“.",
+        "Herr Berger von UrbanValue rief noch einmal an. Er klang anders — die Erhaltungssatzung war [[durchgegangen|durchgehen (ist durchgegangen)|passer, être adopté(e)]], das Gutachten fiel eindeutig aus, und eine Genossenschaft mit 412 Mitgliedern, zwei Fernsehteams und einer berühmten Autorin ließ sich schlecht [[einschüchtern|einschüchtern|intimider]]. „Vielleicht“, sagte er, „haben wir uns … suboptimal kennengelernt.“ Er schlug einen [[Mietvertrag|der Mietvertrag|le bail, le contrat de location]] über zehn Jahre vor, mit gedeckelter Steigerung. „Stabilität ist auch ein Investment“, sagte er. Diesmal bluffte er nicht.",
+        "Herr Winter unterschrieb den Vertrag mit seinem alten Füller und [[reichte|reichen|tendre, passer]] ihn dann weiter — an Mara. Denn das war die zweite Neuigkeit des Januars: Die [[Generalversammlung|die Generalversammlung|l'assemblée générale]] hatte sie zur Geschäftsführerin gewählt. Einstimmig, bei einer Enthaltung. Die Enthaltung war Mara selbst.",
+        "„Ich bleibe“, hatte Herr Winter erklärt, „als [[Ehrenvorsitzender|der Ehrenvorsitzende|le président d'honneur]] mit genau zwei Aufgaben: Ich empfehle Bücher, und ich sitze auf der Leiter.“ Frau Kellner wurde in den Vorstand gewählt — [[zuständig|zuständig für|responsable de, compétent(e) pour]] für „Gemeinschaft und Gespräche“, ein Titel, den es vorher in keiner Satzung der Welt gegeben hatte.",
+        "An einem Donnerstag Ende Januar, nach dem Winter-Abend, blieb Mara allein im Laden zurück. Sie [[löschte|löschen|éteindre ; effacer]] das Licht bis auf die Schaufensterlampe und stand einen Moment zwischen den Regalen von 1949.",
+        "Sie dachte an den Brief, der so harmlos ausgesehen hatte. An Frau Dr. Hoffmanns „allerdings“. An Bergers Lederschuhe und Frau Kellners Kartons. Es hätte alles auch [[scheitern|scheitern|échouer]] können, dachte sie. An jedem einzelnen Punkt. Vielleicht war Mut genau das: weitermachen, ohne die [[Garantie|die Garantie|la garantie]], dass die Geschichte gut ausgeht."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 10 · Epilog — Ein Jahr später",
+      texte: [
+        "Ein Jahr später erschien in den „Leipziger Nachrichten“ ein Artikel von Petra Schulz, halb [[Reportage|die Reportage|le reportage]], halb Liebeserklärung. Sie beschrieb einen Donnerstagabend bei „Winter & Wort eG“: sechzig Menschen, ein Vortrag über Lyrik, danach Diskussionen bis in die Nacht, und an der Kasse ein Schild: „Heute [[ausnahmsweise|ausnahmsweise|exceptionnellement]] bis Mitternacht geöffnet — die Gespräche sind schuld.“",
+        "Die Genossenschaft zählte inzwischen 638 Mitglieder. Das Buch-Abo hatte 190 [[Abonnenten|der Abonnent (die Abonnenten)|l'abonné]]; Herr Winter wählte jeden Monat persönlich aus, und seine [[Trefferquote|die Trefferquote|le taux de réussite]] war Legende. Zwei Schulen kamen regelmäßig zu Lesestunden; die Kinder nannten Herrn Winter „den Bücheropa“, was er mit [[gespielter|gespielt|feint(e), simulé(e)]] Empörung und echtem Stolz ertrug.",
+        "Im Hinterzimmer, dort, wo 1953 verbotene Texte gelesen und 1989 Flugblätter versteckt worden waren, hing jetzt eine kleine Tafel mit der Geschichte des Raums. Die letzte Zeile lautete: „2024: Der Raum wurde von 412 Menschen gekauft, damit er niemandem gehört — und allen.“",
+        "Mara hatte in diesem Jahr gelernt, [[Bilanzen|die Bilanz (die Bilanzen)|le bilan (comptable)]] zu lesen, Verträge zu verhandeln und auf Podien zu sprechen. Manchmal, in Sitzungen des neuen Buchhandels-Netzwerks — sieben Läden in vier Städten hatten das Genossenschaftsmodell [[übernommen|übernehmen (hat übernommen)|reprendre, adopter]] —, hörte sie sich selbst zu und dachte: Wer ist diese Frau, die da redet? Dann erinnerte sie sich an den Satz aus jener Nacht um drei Uhr.",
+        "Frau Kellner kam übrigens immer noch jeden Donnerstag. Aber seit einem Jahr kaufte sie wieder — jeden Freitag ein Buch, das Herr Winter für sie auswählte. Die alte [[Tradition|die Tradition|la tradition]], nur eine Person weiter. Auf die Frage, warum gerade freitags, antwortete sie: „Das [[verstehen|verstehen|comprendre]] Sie nicht. Das ist zwischen mir, meinem Mann und Herrn Winter.“",
+        "Und ganz am Ende des Artikels stand ein Zitat von Herrn Winter, gesprochen von der Leiter herab, die immer noch nicht [[ersetzt|ersetzen (ersetzt)|remplacer]] worden war: „Man hat mir mein Leben lang erzählt, das Buch sei tot, der Laden sei tot, die Stadt sei tot. Wissen Sie, was wirklich stirbt? Orte, für die niemand kämpft. Alles andere ist [[erstaunlich|erstaunlich|étonnamment]] lebendig.“",
+        "ENDE — Ausgezeichnet! B2 gelesen wie ein Profi. 📙"
+      ].join("\n\n")
+    }
+  ]
+};
+
+</script>
+    <script>
+/* =====================================================================
+   Roman éducatif — Niveau C1 : « Grüner Schein »
+   Discours indirect (Konjunktiv I), style nominal, tournures idiomatiques,
+   vocabulaire abstrait (économie, médias, éthique). Francfort.
+   ===================================================================== */
+window.ROMAN_C1 = {
+  id: "c1", niveau: "C1",
+  titre: "Grüner Schein",
+  sousTitre: "Eine Recherche",
+  resume: "Jonas, journaliste économique à Francfort, reçoit un indice anonyme : le géant du textile « Veridia » mentirait sur son bilan écologique. Sources, pressions, dilemmes — jusqu'où va-t-on pour la vérité ? Un roman C1 : discours indirect, idiomes, vocabulaire abstrait.",
+  chapitres: [
+    {
+      titre: "Kapitel 1 · Die Pressekonferenz",
+      texte: [
+        "Es gibt Pressekonferenzen, auf denen Neuigkeiten [[verkündet|verkünden|annoncer, proclamer]] werden, und solche, auf denen Neuigkeiten [[vertuscht|vertuschen|étouffer, dissimuler]] werden. Die Kunst besteht darin, die zweite Sorte an der Dekoration zu erkennen: je grüner die Bühne, desto grauer die Wahrheit.",
+        "Die Bühne der Veridia AG war an diesem Morgen sehr, sehr grün. Moos an den Wänden, Birkenstämme neben dem Rednerpult, und über allem der neue [[Werbeslogan|der Werbeslogan|le slogan publicitaire]]: „Mode, die der Erde guttut.“ Jonas Roth, 34, Wirtschaftsredakteur beim „Rhein-Main-Kurier“, saß in der dritten Reihe und zählte aus [[Berufszynismus|der Zynismus|le cynisme]] die Pflanzen. Siebenundzwanzig.",
+        "Der Vorstandsvorsitzende Dr. Lindner präsentierte den neuen [[Nachhaltigkeitsbericht|die Nachhaltigkeit|la durabilité, le développement durable]]: Die [[Emissionen|die Emission (die Emissionen)|l'émission (de CO2)]] seien um vierzig Prozent gesenkt worden, die gesamte Baumwolle stamme aus zertifiziertem Anbau, und bis 2030 werde man „vollständig klimaneutral“ produzieren. Der Konjunktiv der indirekten Rede, dachte Jonas, war für Journalisten erfunden worden — er hielt die Behauptungen auf Armlänge [[Abstand|der Abstand|la distance, l'écart]].",
+        "Beim Stichwort „Klimaneutralität“ [[erhob sich|sich erheben (erhob sich)|se lever]] höflicher Applaus. Jonas hob die Hand: „Herr Dr. Lindner, Ihr Bericht nennt beeindruckende Zahlen zur Produktion in Europa. Allerdings [[fertigt|fertigen|fabriquer, produire]] Veridia nach eigenen Angaben über siebzig Prozent in Südostasien. Warum [[tauchen|auftauchen|apparaître, surgir]] diese Werke im Bericht praktisch nicht auf?“",
+        "Lindners Lächeln [[geriet|geraten (geriet)|se mettre à, tomber dans (ici : vaciller)]] keine Sekunde ins Wanken. Die Zulieferer seien „selbstverständlich in die Strategie [[eingebunden|einbinden (eingebunden)|intégrer, associer]]“, die Datenlage dort sei jedoch „methodisch komplex“, man arbeite „mit Hochdruck an voller [[Transparenz|die Transparenz|la transparence]]“. Es war die Sorte Antwort, die auf alles passt und deshalb nichts bedeutet — verbales Moos.",
+        "Auf dem Rückweg in die Redaktion summte Jonas' Telefon. Eine E-Mail, [[abgeschickt|abschicken|envoyer, expédier]] über einen anonymen Server, ohne Anrede, ohne Gruß, drei Zeilen: „Der 40-Prozent-Wert ist [[erfunden|erfinden (erfunden)|inventer]]. Fragen Sie nach dem Werk in Binh Duong. Fragen Sie, was im November 2022 dort gemessen wurde — und was danach mit den Messdaten geschah.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 2 · Die Redaktion",
+      texte: [
+        "Redaktionen sind [[Misstrauensmaschinen|das Misstrauen|la méfiance]] — im besten Sinne. Wer dort mit einer heißen Geschichte ankommt, wird zuerst mit kaltem Wasser übergossen. Zuständig für das kalte Wasser war Chefredakteurin Vera Kaminski, 58, die in ihrer Laufbahn drei Landesminister zu Fall gebracht und dabei den Tonfall einer freundlichen Bibliothekarin nie [[abgelegt|ablegen|abandonner, se défaire de]] hatte.",
+        "„Eine anonyme Mail“, sagte sie, nachdem Jonas vorgetragen hatte, „ist keine Quelle. Sie ist eine [[Behauptung|die Behauptung|l'affirmation, l'allégation]] mit Tarnkappe. Sie kann von einem Gewissen stammen — oder von einem [[verärgerten|verärgert|fâché(e), contrarié(e)]] Ex-Mitarbeiter, einem Konkurrenten, einem Leerverkäufer, der auf fallende Kurse wettet. Wem nützt es, wenn wir das drucken? Diese Frage stellen Sie sich bitte bei jedem Schritt.“",
+        "Sie gab ihm [[dennoch|dennoch|néanmoins, pourtant]] zwei Wochen. „Regeln wie immer: Zwei [[voneinander unabhängige|unabhängig|indépendant(e)]] Quellen für jede Tatsachenbehauptung. Dokumente schlagen Erinnerungen. Und Jonas — bei Veridia hängen viertausend Arbeitsplätze in der Region dran, dazu unser drittgrößter [[Anzeigenkunde|der Anzeigenkunde|l'annonceur (client publicitaire)]]. Wenn wir schießen, treffen wir. Sonst schießen wir nicht.“",
+        "Jonas begann, wie man immer beginnt: mit dem, was öffentlich ist. Er las den Nachhaltigkeitsbericht dreimal — einmal als Leser, einmal als Skeptiker, einmal als [[Buchhalter|der Buchhalter|le comptable]]. Beim dritten Durchgang fiel ihm die Fußnote 37 auf, gesetzt in einer Schriftgröße, für die man juristisch eigentlich eine Lupe mitliefern müsste.",
+        "Fußnote 37 [[räumte ein|einräumen (räumte ein)|concéder, admettre]], dass die Emissionswerte der „nicht-europäischen Fertigungspartner“ auf „modellierten Durchschnittswerten“ [[beruhten|beruhen auf|reposer sur]] — nicht auf Messungen. Übersetzt: Man hatte die siebzig Prozent der Produktion, die am meisten Dreck machten, schlicht [[hochgerechnet|hochrechnen|extrapoler]]. Günstig hochgerechnet, vermutlich.",
+        "Er rief den Pressesprecher an und bat um die [[Rohdaten|die Rohdaten (Pl.)|les données brutes]] hinter Fußnote 37. Der Sprecher versprach, sich „zeitnah zu melden“. In der Sprache der Pressestellen, das wusste Jonas, bezeichnet „zeitnah“ einen Zeitraum zwischen morgen und dem [[Wärmetod|der Wärmetod|la mort thermique (de l'univers)]] des Universums."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 3 · Frau Demir",
+      texte: [
+        "Die zweite Mail kam vier Tage später, wieder anonym, diesmal mit einem Anhang: ein [[Messprotokoll|das Protokoll|le procès-verbal, le relevé]], Werk Binh Duong, November 2022. Abwasserwerte, Energieverbrauch, CO2 — und alle Zahlen etwa dreimal so hoch wie die „modellierten Durchschnittswerte“ des Berichts. Unten rechts eine Unterschrift: Dr. S. Demir, Leiterin [[Qualitätssicherung|die Qualitätssicherung|l'assurance qualité]].",
+        "Eine Unterschrift ist ein Name, und ein Name ist ein Anfang. Dr. Selin Demir, ergab die Recherche, hatte Veridia im Frühjahr 2023 [[verlassen|verlassen|quitter]] — offiziell „im besten [[Einvernehmen|das Einvernehmen|l'entente, l'accord mutuel]]“, eine Formulierung, die ungefähr so glaubwürdig ist wie „das Buffet ist gleich wieder aufgefüllt“. Sie arbeitete inzwischen an einem Umweltinstitut in Darmstadt.",
+        "Sie [[willigte|einwilligen (willigte ein)|consentir, accepter]] erst nach dem dritten Anruf in ein Treffen ein — in einem Café am Waldrand, weit weg von allem, was mit Textilien zu tun hatte. Sie war Ende vierzig, präzise wie ihr Protokoll und sichtlich [[zerrissen|zerrissen|déchiré(e), tiraillé(e)]].",
+        "„Verstehen Sie mich richtig“, begann sie. „Ich bin keine [[Rächerin|der Rächer / die Rächerin|le vengeur / la vengeresse]]. Veridia macht vieles wirklich besser als die Konkurrenz. Aber genau deshalb war ich dort — und genau deshalb bin ich gegangen.“ Im November 2022 habe ihr Team in Binh Duong gemessen, erzählte sie; die Werte seien „katastrophal von den Zielwerten [[abgewichen|abweichen (ist abgewichen)|s'écarter, diverger]]“. Sie habe das Protokoll [[vorschriftsgemäß|die Vorschrift|le règlement, la prescription]] an den Vorstand geschickt.",
+        "„Und dann?“ — „Dann wurde mir in einer Videokonferenz [[nahegelegt|nahelegen (legte nahe)|suggérer fortement]], die Methodik zu ‚harmonisieren‘. Harmonisieren!“ Sie lachte kurz und freudlos. „Man hat mir ein neues Berechnungsmodell geschickt, extern [[in Auftrag gegeben|der Auftrag|la commande, la mission]], mit dem die gleichen Rohdaten plötzlich [[unauffällig|unauffällig|discret/discrète, qui passe inaperçu]] aussahen. Als ich mich weigerte zu unterschreiben, wurde meine Abteilung ‚umstrukturiert‘. Sie kennen das Vokabular.“",
+        "Jonas kannte das Vokabular. „Würden Sie das [[eidesstattlich|eidesstattlich|sur l'honneur (déclaration solennelle)]] versichern? Und darf ich Sie [[zitieren|zitieren|citer]]?“ Selin Demir schaute lange in ihren Kaffee. „Zitieren Sie mich namentlich. Anonyme Quellen kann man wegwischen wie [[Krümel|der Krümel (die Krümel)|la miette]]. Ich habe zwei Kinder, denen ich erkläre, warum man die Wahrheit sagt. Irgendwann muss man es ihnen auch [[vormachen|vormachen|montrer l'exemple]].“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 4 · Der Druck",
+      texte: [
+        "Dass eine Redaktion recherchiert, bleibt selten lange geheim — [[spätestens|spätestens|au plus tard]] dann nicht, wenn sie anfängt, unbequeme Fragen schriftlich zu stellen. Zehn Tage nach der Pressekonferenz bat der [[Verlagsleiter|der Verlagsleiter|le directeur de la maison d'édition/du groupe de presse]] des Kuriers, Herr Brandt, Jonas und Vera Kaminski „auf einen Kaffee“ nach oben.",
+        "Kaffee gab es tatsächlich. Außerdem gab es die [[beiläufige|beiläufig|en passant, incident(e)]] Information, Veridia habe soeben die Anzeigenbuchungen für das kommende Quartal „vorläufig [[ausgesetzt|aussetzen|suspendre]]“ — ein Betrag mit sechs Nullen. „Ich sage nicht, dass das [[zusammenhängt|zusammenhängen|être lié, avoir un rapport]]“, sagte Brandt und rührte in seiner Tasse. „Ich sage nur: Es wäre bedauerlich, wenn eine … unausgereifte Geschichte das Haus in [[Schieflage|die Schieflage|la position délicate, le déséquilibre]] brächte.“",
+        "Vera Kaminski stellte ihre Tasse ab, ohne getrunken zu haben. „Herr Brandt, in dreißig Jahren habe ich gelernt: Anzeigen kommen zurück, [[Glaubwürdigkeit|die Glaubwürdigkeit|la crédibilité]] nicht. Wenn die Geschichte hält, drucken wir sie. Wenn sie nicht hält, drucken wir sie nicht — aber aus [[handwerklichen|handwerklich|artisanal ; ici : professionnel, de métier]] Gründen, nicht aus finanziellen.“ Es war das einzige Mal in diesem Herbst, dass Jonas sie laut werden hörte. Sie wurde übrigens nicht laut. Sie wurde nur sehr, sehr deutlich.",
+        "Am selben Abend erhielt Jonas einen Anruf von einer Nummer, die sein Telefon als „Veridia AG — Unternehmenskommunikation“ [[auswies|ausweisen (wies aus)|identifier, indiquer]]. Eine samtene Stimme schlug ein „Hintergrundgespräch“ vor, „vertraulich, zum besseren [[gegenseitigen|gegenseitig|mutuel(le), réciproque]] Verständnis“. Man wolle „Missverständnisse ausräumen, bevor sie in der Welt sind“.",
+        "Hintergrundgespräche sind ein legitimes Werkzeug — und eine beliebte [[Falle|die Falle|le piège]]: Was „unter drei“ gesagt wird, darf nicht zitiert werden, [[bindet|binden|lier]] aber den Journalisten. Jonas nahm an, hörte neunzig Minuten lang zu, wie beeindruckend die Klimastrategie sei, und [[verpflichtete sich|sich verpflichten|s'engager]] zu nichts. Als er ging, sagte die samtene Stimme noch einen Satz, beiläufig wie eine Wettervorhersage: „Übrigens — wir wissen natürlich, mit wem Sie sich in Darmstadt getroffen haben. Kleine Branche.“",
+        "Auf der Heimfahrt rief Jonas Frau Demir an. „Es kann [[ungemütlich|ungemütlich|inconfortable, désagréable]] werden“, sagte er. „Herr Roth“, antwortete sie ruhig, „ich habe drei Jahre lang Berichte harmonisiert. Ungemütlich ist, morgens in den Spiegel zu schauen. Alles andere ist [[Logistik|die Logistik|la logistique]].“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 5 · Das Angebot",
+      texte: [
+        "Der zweite [[Hebel|der Hebel|le levier]] kam eine Woche später, und er war klüger als der erste. Keine Drohung, kein Druck — ein Kompliment. Eine Personalberaterin, beauftragt von „einem führenden Unternehmen der Region“, lud Jonas zum Mittagessen: Man suche einen „Head of Corporate Storytelling“. [[Gehalt|das Gehalt|le salaire]]: das Dreifache seines jetzigen. Dienstwagen, Budget, „gestalterische Freiheit“.",
+        "Das führende Unternehmen der Region war, natürlich, Veridia. Man müsse das nicht als [[Interessenkonflikt|der Interessenkonflikt|le conflit d'intérêts]] sehen, flötete die Beraterin, im Gegenteil: „Gerade Ihre kritische Perspektive wäre eine [[Bereicherung|die Bereicherung|l'enrichissement]]. Veränderung gelingt von innen, nicht wahr?“",
+        "Es wäre gelogen zu behaupten, Jonas hätte nicht gerechnet. Journalistengehälter sind [[Ehrensold|der Sold|la solde (militaire)]] mit Rechtschreibprüfung; seine Wohnung war klein, sein Auto alt, und die Zinsen stiegen. Drei Tage lang trug er das Angebot mit sich herum wie einen Stein in der Jackentasche — man vergisst ihn minutenweise, aber er [[zieht|ziehen|tirer, peser]] immer auf derselben Seite.",
+        "Er sprach mit niemandem darüber außer mit seiner Schwester, die als Krankenpflegerin arbeitete und für [[moralische|moralisch|moral(e)]] Grundsatzfragen ungefähr so viel Geduld hatte wie für Leute, die im Aufzug telefonieren. „Rechne anders“, sagte sie. „Nicht was sie dir zahlen. Sondern wofür. Die zahlen nicht das Dreifache für dein Talent. Die zahlen das Dreifache für dein [[Schweigen|das Schweigen|le silence]]. Talent ist billiger.“",
+        "Am vierten Tag sagte Jonas ab — höflich, schriftlich, [[endgültig|endgültig|définitif/définitive]]. Die Antwort der Beraterin kam binnen einer Stunde und bestand aus einem einzigen Satz, der freundlich gemeint sein konnte oder auch nicht: „Schade — wir hätten Ihre Geschichte gern selbst erzählt.“",
+        "Er druckte die Mail aus und heftete sie in den Rechercheordner, Rubrik „[[Begleitumstände|der Umstand (die Umstände)|la circonstance]]“. Wenn ein Konzern versucht, den Boten zu kaufen, bevor die Botschaft erscheint, sagt das nichts über die Botschaft — juristisch. Aber es sagt etwas über die [[Nervosität|die Nervosität|la nervosité]] des Konzerns. Und Nervosität, das lehrte die Erfahrung, hat meistens einen Grund."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 6 · Die zweite Quelle",
+      texte: [
+        "Eine Quelle, ein Dokument — für Vera Kaminski war das eine halbe Geschichte, und halbe Geschichten [[erscheinen|erscheinen|paraître, être publié(e)]] beim Kurier nicht. Die zweite Quelle fand Jonas dort, wo man sie nie sucht und immer findet: in der [[Buchhaltung|die Buchhaltung|la comptabilité]].",
+        "Über das Handelsregister und zwei [[Zwischenholdings|die Holding|la holding]] stieß er auf die Firma, die das „harmonisierte Berechnungsmodell“ erstellt hatte: ein Beratungsbüro mit drei Mitarbeitern und einer Adresse, an der sich außerdem vierzig weitere Firmen einen Briefkasten teilten. [[Auffällig|auffällig|frappant(e), suspect(e)]] war weniger die Existenz des Büros als sein Honorar: 380.000 Euro für ein Rechenmodell — [[verbucht|verbuchen|comptabiliser, enregistrer]] als „Umweltdienstleistung“.",
+        "Der Zufall — Journalisten nennen ihn Fleiß — wollte es, dass einer der drei Mitarbeiter des Büros früher bei einer [[Wirtschaftsprüfungsgesellschaft|die Wirtschaftsprüfung|l'audit (des comptes)]] gearbeitet hatte, deren Alumni-Netzwerk Jonas aus einer alten Recherche kannte. Zwei Anrufe, ein Bier, und der Mann redete — nicht aus Edelmut, sondern aus [[Kränkung|die Kränkung|la vexation, la blessure d'amour-propre]]: Man hatte ihn bei der Bonuszahlung übergangen.",
+        "Ja, sagte er, das Modell sei „[[ergebnisorientiert|ergebnisorientiert|orienté résultat]]“ entwickelt worden — die Zielwerte hätten von Anfang an festgestanden, gerechnet worden sei [[rückwärts|rückwärts|à rebours, en arrière]]. Nein, schriftlich gebe es dazu nichts, man sei ja nicht dumm. Aber es gebe eine interne Präsentation mit dem [[bemerkenswerten|bemerkenswert|remarquable]] Titel „Zielkorridor-Kalibrierung“, und auf Folie neun stehe ein Satz, den er nie vergessen habe: „Kommunizierbarkeit der Werte hat [[Vorrang|der Vorrang|la priorité, la préséance]] vor methodischer Strenge.“",
+        "„Können Sie mir die Folie [[beschaffen|beschaffen|procurer, obtenir]]?“ — Der Mann konnte. Drei Tage später lag die Präsentation im Redaktionssafe, [[forensisch|forensisch|de manière forensique/légale]] geprüft: Metadaten echt, Erstellungsdatum plausibel, Autorenkürzel [[zuordenbar|zuordnen|attribuer, associer]].",
+        "Damit stand das [[Gerüst|das Gerüst|l'échafaudage, l'ossature]]: das Messprotokoll (Demir), die Anweisung zur „Harmonisierung“ (Demir, eidesstattlich), das gekaufte Modell (Präsentation plus Insider), die verschleierte Zahlung (Handelsregister). Vier Beine. Der Tisch trug."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 7 · Die Konfrontation",
+      texte: [
+        "Das journalistische Handwerk verlangt, dass man den [[Beschuldigten|der Beschuldigte|l'accusé, le mis en cause]] vor der Veröffentlichung konfrontiert — vollständig, schriftlich, mit angemessener Frist. Es ist das Fairste am Beruf und zugleich das Nervenaufreibendste: Man legt der Gegenseite die eigene Munition auf den Tisch und wartet, ob sie [[kapituliert|kapitulieren|capituler]] oder zum Gegenangriff bläst.",
+        "Der Fragenkatalog des Kuriers umfasste vierzehn Punkte. Die Antwort kam nach sechs Tagen — nicht vom Pressesprecher, sondern von einer Anwaltskanzlei, deren Briefkopf mehr Partner [[auflistete|auflisten|énumérer, lister]] als manche Fußballmannschaft Spieler hat. Man weise „sämtliche Unterstellungen mit Nachdruck zurück“, die Dokumente seien „aus dem Zusammenhang gerissen beziehungsweise [[mutmaßlich|mutmaßlich|présumé(e), vraisemblablement]] manipuliert“, und im Falle einer Veröffentlichung behalte man sich „presserechtliche Schritte in vollem Umfang“ vor.",
+        "„Übersetzung“, sagte Vera Kaminski beim Lesen: „Sie haben nichts. Wer Dokumente wirklich [[widerlegen|widerlegen|réfuter]] kann, schickt die Widerlegung, nicht die Drohung.“ [[Gleichwohl|gleichwohl|néanmoins, cependant (soutenu)]] schickte sie den gesamten Rechercheordner in die Rechtsabteilung — jede Formulierung des Artikels wurde daraufhin geprüft, ob sie eine Tatsachenbehauptung oder eine [[Wertung|die Wertung|le jugement de valeur, l'appréciation]] war, und ob für Erstere die Belege reichten.",
+        "Parallel geschah, was in solchen Phasen immer geschieht: Es wurde [[gestreut|streuen|répandre, semer (des rumeurs)]]. Ein Branchenblog, dessen Finanzierung im Dunkeln lag, schrieb über „fragwürdige Methoden eines Frankfurter Lokalblatts“; in den sozialen Netzwerken tauchten Konten auf, die Frau Demir als „verbitterte Ex-Angestellte“ [[verunglimpften|verunglimpfen|dénigrer, diffamer]]. Selin Demir rief Jonas an, ihre Stimme dünner als sonst: „Meine Tochter hat das gelesen.“",
+        "„Wir können Ihren Namen noch [[zurückziehen|zurückziehen|retirer]]“, sagte Jonas, und es kostete ihn Überwindung, denn ohne Namen wäre die Geschichte schwächer. Am anderen Ende blieb es lange still. „Nein“, sagte Frau Demir schließlich. „Genau darauf [[spekulieren|spekulieren auf|spéculer sur, miser sur]] sie ja. Dass wir am Ende doch lieber Krümel sind. Drucken Sie den Namen. Und drucken Sie ihn richtig: Doktor. Selin. Demir. Mit allem, was dazugehört.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 8 · Die Veröffentlichung",
+      texte: [
+        "Der Artikel erschien an einem Samstag, auf den Seiten eins, zwei und drei, unter der Überschrift „Grüner Schein — wie Veridia seine Klimabilanz [[frisierte|frisieren|maquiller, trafiquer (des chiffres)]]“. Online um sechs Uhr früh, gedruckt ab acht, [[hinterlegt|hinterlegen|déposer, mettre en annexe]] mit den Dokumenten in geschwärzter Form. Jonas hatte die Nacht in der Redaktion verbracht, nicht weil es nötig gewesen wäre, sondern weil man das Kind bei der Geburt nicht allein lässt.",
+        "Um 9:12 Uhr meldete sich die Nachrichtenagentur, um 10:30 Uhr die erste überregionale Zeitung, am Nachmittag das Fernsehen. Der Kurs der Veridia-Aktie [[verlor|verlieren (verlor)|perdre]] bis Handelsschluss elf Prozent. Die angekündigte Klage wurde nie [[eingereicht|einreichen|déposer (une plainte)]] — stattdessen kündigte der Aufsichtsrat am Montag eine „unabhängige Sonderprüfung“ an, und der Kapitalmarkt übersetzte das korrekt mit: Es stimmt.",
+        "Zwei Wochen später trat Dr. Lindner „aus persönlichen Gründen“ zurück; die Formulierung gehört zum [[Sperrmüll|der Sperrmüll|les encombrants]] der Wirtschaftssprache, jeder stellt sie raus, keiner schaut hin. Die Sonderprüfung bestätigte im Kern alles: erfundene Reduktionswerte, das rückwärts gerechnete Modell, die verschleierte Zahlung. Der neue Vorstand versprach „einen [[schonungslosen|schonungslos|sans ménagement, impitoyable]] Neuanfang“ und stellte — Ironie der Geschichte — als Erstes eine neue Leiterin Qualitätssicherung ein. Mit [[erweiterten|erweitern|élargir, étendre]] Befugnissen und direktem Berichtsweg an den Aufsichtsrat.",
+        "Frau Demir bekam Briefe. Hunderte. Ingenieurinnen, Buchhalter, ein Chemielehrer, eine ganze Berufsschulklasse. Die meisten begannen mit einer Variante desselben Satzes: „Ich habe auch einmal geschwiegen.“ Sie las alle und beantwortete viele, abends, nach der Arbeit, [[gewissenhaft|gewissenhaft|consciencieusement]] wie ein Messprotokoll.",
+        "Und die Anzeigen? Kamen zurück, wie Vera Kaminski es vorhergesagt hatte — nach vier Monaten, kleinlaut und ohne Kommentar. Der Verlagsleiter Brandt begegnete Jonas im Aufzug und sagte: „Gute Arbeit übrigens.“ Es klang, als hätte er den Satz vorher geübt. Vielleicht hatte er das. Man soll Menschen ihre [[Lernkurven|die Lernkurve|la courbe d'apprentissage]] nicht vorhalten."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 9 · Der Preis",
+      texte: [
+        "Im Frühjahr wurde die Recherche mit einem Journalistenpreis [[ausgezeichnet|auszeichnen|récompenser, distinguer]]. Die Gala fand in Berlin statt, mit Häppchen, die zu klein für die Gabel und zu groß für eine Hand waren, und mit Reden über die „vierte Gewalt“, die umso [[feierlicher|feierlich|solennel(le)]] wurden, je weniger die Redner selbst je recherchiert hatten.",
+        "Jonas nahm den Preis entgegen und hielt die kürzeste Dankesrede des Abends. Er dankte Vera Kaminski, „die kaltes Wasser für ein [[Qualitätsmerkmal|das Merkmal|la caractéristique, le trait]] hält, und sie hat recht“. Er dankte dem Insider, „der nicht genannt werden will und trotzdem [[unentbehrlich|unentbehrlich|indispensable]] war“. Und dann bat er Dr. Selin Demir auf die Bühne.",
+        "„Journalistenpreise“, sagte er ins Mikrofon, „werden an Leute wie mich vergeben, weil wir aufschreiben, was Leute wie sie riskieren. Das [[Verhältnis|das Verhältnis|le rapport, la proportion]] stimmt nicht ganz. Ich habe einen Artikel riskiert. Sie hat ihre Karriere riskiert, ihren Ruf und die Ruhe ihrer Familie — für ein Messprotokoll, das niemand lesen wollte.“ Der Saal stand auf. Frau Demir hielt den Preis wie etwas [[Zerbrechliches|zerbrechlich|fragile]] und sagte nur einen Satz: „Messen Sie nach. Immer. Alle.“",
+        "Später, am Rand der Gala, fragte ihn eine junge Volontärin, wie man solche Geschichten finde. Jonas dachte an die Pflanzen auf der Bühne, an Fußnote 37, an den Stein in der Jackentasche. „Man findet sie nicht“, sagte er. „Man [[stolpert|stolpern über|trébucher sur, tomber sur]] über eine Kleinigkeit, die nicht passt. Der Rest ist kein Talent. Der Rest ist die Entscheidung, nicht [[weiterzugehen|weitergehen|passer son chemin]].“",
+        "„Und der Druck? Die Anrufe, die Angebote?“ — „Gehören dazu. Merken Sie sich nur eins: Wenn man anfängt, Sie zu kaufen statt zu widerlegen, sind Sie [[auf der richtigen Spur|die Spur|la piste, la trace]]. Widerlegen ist billiger. Kaufen ist ein [[Geständnis|das Geständnis|l'aveu]] mit besseren Manieren.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 10 · Epilog — Fußnote 38",
+      texte: [
+        "Ein Jahr nach der Pressekonferenz mit den siebenundzwanzig Pflanzen veröffentlichte Veridia einen neuen Nachhaltigkeitsbericht. Jonas las ihn aus [[Gewohnheit|die Gewohnheit|l'habitude]] — und aus etwas, das er vor sich selbst nicht Sentimentalität nennen wollte.",
+        "Der Bericht war anders. Kürzer. Grauer. Die Emissionswerte der asiatischen Werke standen auf Seite vier statt in einer Fußnote, sie waren [[gemessen|messen (gemessen)|mesurer]], nicht modelliert, und sie waren schlecht — ehrlich schlecht, mit einem Sanierungsplan daneben, der Jahreszahlen und [[Verantwortliche|der Verantwortliche|le responsable]] nannte. Unterschrieben war das Kapitel von der neuen Leiterin Qualitätssicherung.",
+        "Fußnote 38 des neuen Berichts lautete: „Die Messmethodik wurde gemeinsam mit externen Prüfern [[überarbeitet|überarbeiten|remanier, réviser]] und ist öffentlich einsehbar. Hinweise auf Abweichungen nimmt die Ombudsstelle vertraulich entgegen.“ Eine Ombudsstelle. Jonas musste lächeln. [[Institutionalisiertes|institutionalisieren|institutionnaliser]] Misstrauen — die vielleicht ehrlichste Form von Vertrauen, die eine Organisation aufbringen kann.",
+        "Er schrieb darüber eine kurze Meldung, sachlich, ohne [[Häme|die Häme|la joie mauvaise, le sarcasme méchant]]. Fairness gilt in beide Richtungen, sonst ist sie nur Taktik. Die Meldung endete mit einem Zitat der neuen Qualitätschefin: „Zahlen, die man nicht [[überprüfen|überprüfen|vérifier, contrôler]] kann, sind keine Zahlen. Es sind Wünsche in Tabellenform.“",
+        "Am Abend fuhr er nach Darmstadt. Das Umweltinstitut feierte ein Sommerfest, und Selin Demir hatte ihn eingeladen — „als [[Beweisstück|das Beweisstück|la pièce à conviction]] dafür, dass es sich lohnt“, wie sie schrieb. Ihre Tochter, sechzehn, wollte inzwischen Journalistin werden, [[ausgerechnet|ausgerechnet|justement, comme par hasard]]. Jonas gab ihr den einzigen Rat, den er für [[wetterfest|wetterfest|résistant aux intempéries, solide]] hielt:",
+        "„Such nicht nach Skandalen. Such nach Kleinigkeiten, die nicht passen. Eine Fußnote. Eine Zahl, die zu rund ist. Ein Lächeln, das nicht wackelt, obwohl es müsste. Die Wahrheit ist selten laut. Meistens steht sie in Schriftgröße sechs am Ende der Seite und wartet darauf, dass jemand die [[Lupe|die Lupe|la loupe]] mitbringt.“",
+        "ENDE — Chapeau! C1 gemeistert. 📔"
+      ].join("\n\n")
+    }
+  ]
+};
+
+</script>
+    <script>
+/* =====================================================================
+   Roman éducatif — Niveau C2 : « Die Übersetzerin »
+   Registre littéraire : périodes longues, ironie, Konjunktiv, lexique
+   soutenu. Mémoire familiale entre Dresde 1961 et aujourd'hui.
+   ===================================================================== */
+window.ROMAN_C2 = {
+  id: "c2", niveau: "C2",
+  titre: "Die Übersetzerin",
+  sousTitre: "Briefe aus Dresden",
+  resume: "Ada, traductrice littéraire, hérite d'un carton de lettres écrites par sa grand-mère entre 1961 et 1989 — et découvre une sœur dont personne n'a jamais parlé. Un roman littéraire sur la mémoire, la langue et ce que l'on tait. Registre C2 : ironie, périodes, lexique soutenu.",
+  chapitres: [
+    {
+      titre: "Kapitel 1 · Der Karton",
+      texte: [
+        "Es gehört zu den stilleren [[Grausamkeiten|die Grausamkeit (die Grausamkeiten)|la cruauté]] des Erbrechts, dass es den Hinterbliebenen nicht nur Häuser und Schulden [[zuweist|zuweisen|attribuer, assigner]], sondern auch Kartons. Häuser kann man verkaufen, Schulden [[ausschlagen|ausschlagen|refuser (un héritage)]] — Kartons aber stehen eines Tages im Flur und schauen einen an.",
+        "Adas Karton kam drei Wochen nach der Beerdigung ihrer Großmutter, [[zugestellt|zustellen|remettre, livrer (courrier)]] von einem Spediteur, der sich zweimal versicherte, dass sie wirklich die [[Empfängerin|der Empfänger / die Empfängerin|le/la destinataire]] sei, als [[ahnte|ahnen|pressentir, se douter de]] er etwas. Darauf, in der akkuraten Schrift des Nachlassverwalters: „Für Ada. Sie ist die Einzige, die [[Geduld|die Geduld|la patience]] mit Wörtern hat. — M.“",
+        "Margarete Steiner, geborene Hallmann, war achtundachtzig Jahre alt geworden und hatte in ihrem Leben, [[soweit|soweit|pour autant que]] die Familie wusste, genau eine Reise unternommen: 1961 von Dresden nach Köln, mit einem Koffer und Adas damals dreijähriger Mutter an der Hand. Über das Davor sprach sie nicht. „Das Davor“, pflegte sie zu sagen, wenn jemand fragte, „ist ein Zimmer, das man nicht [[lüftet|lüften|aérer ; ici : révéler]].“",
+        "Ada war Übersetzerin — [[Belletristik|die Belletristik|la littérature (fiction)]], vorzugsweise aus dem Polnischen und Russischen, jene Bücher, bei denen die Verlage seufzen und von „schwierigen Märkten“ sprechen. Sie war es also von Berufs wegen [[gewohnt|gewohnt sein|être habitué(e) à]], die Zimmer anderer Leute zu lüften. Nur beim eigenen Erbe zögerte sie vierzehn Tage.",
+        "Als sie den Karton endlich öffnete, an einem Sonntag, an dem der Regen gegen die Scheiben ihrer Leipziger Wohnung trieb, fand sie: elf Mappen aus grauem [[Karton|der Karton|le carton]], [[beschriftet|beschriften|étiqueter, inscrire]] mit Jahreszahlen von 1961 bis 1989; ein Bündel Fotografien, mit Zwirn [[verschnürt|verschnüren|ficeler]]; und zuoberst, wie eine Warnung oder eine Bitte, einen einzelnen Umschlag: „Zuerst lesen.“",
+        "Der Brief darin bestand aus vier Sätzen, und Ada las sie so oft, bis sie sie [[auswendig|auswendig|par cœur]] konnte: „Liebe Ada. In diesen Mappen liegt, was ich nicht erzählen konnte. Ich habe es aufgeschrieben, weil man Geschriebenes [[verschieben|verschieben|reporter, remettre à plus tard]] kann und Gesagtes nicht. Wenn Du liest, sei nicht [[nachsichtig|nachsichtig|indulgent(e)]] mit mir — sei genau. Genauigkeit ist die einzige Form von Liebe, die ich Wörtern je zugetraut habe.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 2 · Mappe 1961",
+      texte: [
+        "Die erste Mappe enthielt keine Briefe, sondern [[Abschriften|die Abschrift (die Abschriften)|la copie, la transcription]] von Briefen — Durchschläge auf dünnem Papier, das unter den Fingern [[raschelte|rascheln|bruisser, froisser]] wie Herbstlaub. Margarete hatte offenbar jeden Brief, den sie je abgeschickt hatte, für sich selbst kopiert: das Archiv einer Frau, der man beigebracht hatte, dass [[Belege|der Beleg (die Belege)|la preuve, le justificatif]] überleben, wo Erinnerungen [[verhört|verhören|interroger (police)]] werden können.",
+        "Die Briefe von 1961 waren an eine gewisse „E.“ [[gerichtet|richten an|adresser à]], wohnhaft in Dresden, Striesener Straße. Sie begannen [[förmlich|förmlich|formel(le), cérémonieux]] — „Liebe E., wir sind gut angekommen“ — und wurden von Monat zu Monat dünner an Nachrichten und dichter an [[Zwischentönen|der Zwischenton (die Zwischentöne)|la nuance, le sous-entendu]]. Ada, die berufsbedingt Zwischentöne las wie andere Leute Schlagzeilen, brauchte drei Briefe, um zu begreifen, was hier geschah: Da schrieb jemand gegen eine [[Zensur|die Zensur|la censure]] an, die er im Kopf bereits mitlas.",
+        "„Das Wetter in Köln ist [[wechselhaft|wechselhaft|changeant, instable]]“ — im Kontext des Sommers 1961 hieß das, wie Ada aus den Antwortbriefen schloss, die in der Mappe ebenfalls lagen: Die Lage ist unsicher, wir wissen nicht, ob wir bleiben dürfen. „Besuch uns doch, wenn es die [[Umstände|der Umstand (die Umstände)|les circonstances]] erlauben“ hieß: Komm, solange man noch kommen kann. Und der Satz „Der Garten braucht dich“, der in drei Briefen [[hintereinander|hintereinander|d'affilée, de suite]] auftauchte, hieß offenbar etwas so Dringendes, dass E. am 9. August 1961 antwortete: „Ich habe die [[Fahrkarte|die Fahrkarte|le billet (de train)]] gekauft. Ich komme am Sonntag, den 13.“",
+        "Am 13. August 1961 wurde in Berlin die [[Grenze|die Grenze|la frontière]] geschlossen. Die Mauer, die man später die Mauer nannte, war an jenem Sonntag zunächst Stacheldraht, doch für Fahrkarten jeder Art [[genügte|genügen|suffire]] sie vollkommen.",
+        "Der nächste Brief in der Mappe, [[datiert|datieren|dater]] auf den 20. August, bestand aus einem einzigen Absatz, und Ada bemerkte, dass die Schreibmaschinen-Anschläge an mehreren Stellen das Papier [[durchschlagen|durchschlagen|transpercer]] hatten, als hätte jemand mit mehr Kraft getippt, als Buchstaben benötigen: „Liebe E. Der Garten muss nun ohne Dich [[zurechtkommen|zurechtkommen|se débrouiller, s'en sortir]]. Schreib mir, was Du siehst, und ich schreibe Dir, was ich sehe, und so behalten wir [[vier Augen|das Auge (die Augen)|l'œil]], auch wenn wir nur noch Briefe sind.“",
+        "Ada legte die Mappe beiseite und stellte die Frage, die Archivare und Enkelinnen gleichermaßen [[heimsucht|heimsuchen|hanter, tourmenter]]: Wer, um alles in der Welt, war E.?"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 3 · Die Auslassung",
+      texte: [
+        "Ihre Mutter, [[befragt|befragen|interroger]] beim sonntäglichen Telefonat, reagierte auf den Namen „E.“ mit jener besonderen Beiläufigkeit, an der man in Familien die [[Minenfelder|das Minenfeld (die Minenfelder)|le champ de mines]] erkennt. „Eine Freundin von Oma, nehme ich an. Sie hatte Brieffreundschaften. Musst du das alles [[aufwühlen|aufwühlen|remuer, raviver]]?“",
+        "Das Verb „aufwühlen“ ist [[verräterisch|verräterisch|révélateur, qui trahit]], dachte Ada. Man wühlt nur auf, was [[abgelagert|ablagern|déposer, sédimenter]] wurde; für Belangloses hat die Sprache sanftere Wörter. Sie fragte nicht weiter — noch nicht —, sondern tat, was sie bei [[widerspenstigen|widerspenstig|récalcitrant(e), rétif/rétive]] Texten immer tat: Sie kehrte zur Quelle zurück und las auf die [[Auslassungen|die Auslassung (die Auslassungen)|l'omission]] hin.",
+        "Die Auslassungen hatten System. In den Briefen bis 1961 kam das Wort „Schwester“ nicht ein einziges Mal vor — was nichts bedeutet hätte, [[wäre|sein (Konjunktiv II: wäre)|serait]] da nicht der Brief vom Dezember 1962 gewesen, in dem Margarete schrieb: „Mutters Ring soll bei Dir bleiben. Er stand Dir immer besser, auch wenn Du behauptet hast, das [[Gegenteil|das Gegenteil|le contraire]] sei wahr.“ Mütter [[vererben|vererben|léguer, transmettre]] Ringe nicht an Brieffreundinnen.",
+        "In der Mappe von 1965 fand sich sodann ein Foto, das der Zwirn bis dahin [[verborgen|verbergen (verborgen)|cacher, dissimuler]] hatte: zwei junge Frauen vor der [[Ruine|die Ruine|la ruine]] der Dresdner Frauenkirche, [[untergehakt|sich unterhaken|se prendre par le bras]], in Mänteln aus demselben Stoff, offensichtlich von derselben Hand [[geschneidert|schneidern|coudre, tailler (vêtement)]]. Die eine war unverkennbar Margarete. Die andere hatte dasselbe Kinn, dieselben hellen Augen und jenen um zwei Grad [[spöttischeren|spöttisch|moqueur/moqueuse, narquois(e)]] Mundwinkel, den Geschwister sich [[vorbehalten|sich vorbehalten|se réserver]].",
+        "Auf der Rückseite, in Bleistift: „M. und E., Ostern 1959. Der Fotograf sagte, wir sollten ernst schauen. Es ist uns nicht [[gelungen|gelingen (ist gelungen)|réussir]].“",
+        "Ada saß lange über diesem Foto. Sie hatte eine [[Großtante|die Großtante|la grand-tante]]. Sie hatte achtunddreißig Jahre lang eine Großtante gehabt, und niemand — nicht die Großmutter, nicht die Mutter, nicht die [[redselige|redselig|bavard(e), loquace]] Verwandtschaft auf Familienfesten — hatte je den Namen Elisabeth [[ausgesprochen|aussprechen (ausgesprochen)|prononcer]]. Eine Familie, begriff sie, ist auch nur ein Text. Und wie jeder Text hat sie Stellen, an denen [[gestrichen|streichen (gestrichen)|rayer, supprimer]] wurde."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 4 · Briefe durch die Mauer",
+      texte: [
+        "Die Mappen 1963 bis 1975 dokumentierten eine [[Korrespondenz|die Korrespondenz|la correspondance]], die sich unter den Bedingungen der Teilung zu einer eigenen Kunstform entwickelt hatte. Die Schwestern schrieben einander wöchentlich, wohl wissend, dass fremde Augen [[mitlasen|mitlesen (las mit)|lire par-dessus l'épaule, lire aussi]] — und sie [[verwandelten|verwandeln|transformer]] diese Zumutung in ein Spiel, dessen Regeln Ada erst nach und nach [[entschlüsselte|entschlüsseln|déchiffrer, décrypter]].",
+        "Sie schrieben in Rezepten. „Für den Stollen nimm [[diesmal|diesmal|cette fois-ci]] weniger Rosinen, die Zeiten sind nicht danach“ hieß, wie aus dem Kontext [[hervorging|hervorgehen aus (ging hervor)|ressortir de, découler de]]: Es gibt wieder Engpässe, schick nichts Auffälliges. „Backe bei kleiner Flamme“ hieß: Sei vorsichtig mit dem, was du schreibst; es gab [[Ärger|der Ärger|les ennuis]]. Und der Satz „Das Rezept unserer Mutter gelingt mir nicht mehr“, der Ada zunächst rührend [[banal|banal|banal(e)]] erschien, [[entpuppte sich|sich entpuppen als|se révéler être]] als das Traurigste der ganzen Sammlung: Elisabeth hatte begonnen, das Gesicht der Mutter zu vergessen.",
+        "Dazwischen: Behördenpost, [[abgeheftet|abheften|classer (dans un classeur)]] mit derselben Sorgfalt. Anträge auf [[Besuchsgenehmigung|die Genehmigung|l'autorisation, le permis]] — [[abgelehnt|ablehnen|refuser, rejeter]], abgelehnt, abgelehnt, die Begründungen ein Lehrstück [[bürokratischer|bürokratisch|bureaucratique]] Poesie: „mangelndes gesellschaftliches Interesse an der Reise“, als [[bemäße|bemessen (Konjunktiv II: bemäße)|mesurer, évaluer]] sich Sehnsucht nach gesellschaftlichem Interesse.",
+        "1970 durfte Elisabeth zum ersten und einzigen Mal anrufen, zwölf Minuten, [[angemeldet|anmelden|déclarer, réserver (une communication)]] über das Fernamt. Margarete notierte das Gespräch hinterher [[wortwörtlich|wortwörtlich|mot pour mot]], so gut sie konnte, auf drei Seiten — einschließlich der Pausen, die sie in eckige Klammern setzte: „[Schweigen, 8 Sekunden. Wir haben beide gewusst, [[wofür|wofür|pour quoi, à quoi (sert)]] wir zahlen.]“",
+        "Ada, die in ihrem Beruf für die Pausen zwischen den Wörtern bezahlt wurde, las diese Klammern mit einer Art [[Ehrfurcht|die Ehrfurcht|le respect mêlé de crainte, la révérence]]. Ihre Großmutter, die nie ein Buch über Sprachtheorie [[aufgeschlagen|aufschlagen|ouvrir (un livre)]] hatte, war [[nebenbei|nebenbei|au passage, accessoirement]] zur Meisterin jener Disziplin geworden, die Adas Zunft [[hochtrabend|hochtrabend|pompeux/pompeuse, grandiloquent(e)]] „Übersetzung des Unsagbaren“ nannte."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 5 · Der Riss",
+      texte: [
+        "Die Mappe 1976 war die dünnste — und die einzige, in der ein Brief fehlte. Die Durchschläge waren [[nummeriert|nummerieren|numéroter]], von Margaretes eigener Hand: Nummer 812 folgte auf Nummer 810. Wo 811 hätte liegen müssen, lag ein Zettel: „Diesen habe ich nicht kopiert. Manches soll nicht zweimal [[existieren|existieren|exister]].“",
+        "Was immer in Brief 811 gestanden hatte — Elisabeths Antwort darauf ließ die [[Wucht|die Wucht|la force, la violence (d'un impact)]] erahnen. Sie schrieb nicht in Rezepten, nicht in Zwischentönen; sie schrieb, zum einzigen Mal in fünfzehn Jahren, [[unverschlüsselt|verschlüsseln|coder, chiffrer]]: „Du schreibst, ich hätte gehen können, damals, vor dem 13. Du schreibst es nach fünfzehn Jahren, weil Du es fünfzehn Jahre lang gedacht hast. [[Sprich|sprechen (Imperativ: sprich)|parler]] es doch endlich aus: Du glaubst, ich sei aus [[Feigheit|die Feigheit|la lâcheté]] geblieben. Nun gut. Dann will ich Dir sagen, warum ich geblieben bin, und Du wirst es lesen, ohne mich [[unterbrechen|unterbrechen|interrompre]] zu können — das ist der einzige Vorteil, den Briefe vor Schwestern haben.“",
+        "Es folgten vier Seiten, die Ada zweimal las und danach das Fenster öffnete, obwohl es regnete. Elisabeth war geblieben, weil in jener Augustwoche 1961 die Mutter der beiden — von deren Existenz in Margaretes Erzählungen nur der Ring [[zeugte|zeugen von|témoigner de]] — im Sterben gelegen hatte. Jemand hatte bleiben müssen. Die Jüngere hatte die Fahrkarte gehabt, die Ältere den [[Pflichtbegriff|die Pflicht|le devoir]] einer Generation, die das Wort „ich“ nur in [[Ausnahmefällen|der Ausnahmefall (die Ausnahmefälle)|le cas exceptionnel]] benutzte.",
+        "„Du hast ein Kind gerettet und nennst es Flucht“, endete der Brief. „Ich habe eine Sterbende gehalten und nenne es nicht Mut. Wir haben beide nur getan, was an jenem Sonntag vor uns lag. Der [[Unterschied|der Unterschied|la différence]] ist: Vor Dir lag ein Anfang und vor mir ein Ende. [[Wirf|werfen (Imperativ: wirf)|jeter]] mir das nie wieder vor. Deine E.“",
+        "Danach schwiegen die Mappen für zwei Jahre. Keine Rezepte, keine Klammern, nichts. Ada saß vor dieser [[Lücke|die Lücke|le vide, la lacune]] und verstand, warum die Großmutter „nachsichtig“ [[verboten|verbieten (verboten)|interdire]] und „genau“ befohlen hatte: Nachsicht hätte hier alles [[zugekleistert|zukleistern|replâtrer, masquer grossièrement]]. Genauigkeit ließ die Wunde offen — und [[kenntlich|kenntlich|reconnaissable, identifiable]]."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 6 · Dresden",
+      texte: [
+        "Es gibt Reisen, die man plant, und Reisen, die einen [[einholen|einholen|rattraper]]. Ada fuhr an einem Donnerstag nach Dresden, [[vorgeblich|vorgeblich|prétendument, soi-disant]] wegen einer Verlagslesung, tatsächlich mit einer Fotokopie der Striesener Adresse in der Manteltasche, und sie [[ertappte sich|sich ertappen bei|se surprendre à]] dabei, im Zug die Landschaft mit den Augen der Briefe zu lesen: Hinter diesen Hügeln also hatte „der Garten“ gelegen, den es ohne E. zu [[bestellen|bestellen|cultiver (un champ) ; commander]] galt.",
+        "Die Striesener Straße hatte den Krieg, den Sozialismus und die [[Sanierungswellen|die Sanierung|la rénovation, l'assainissement]] der Nachwendezeit überstanden, was man nicht von jedem Haus sagen konnte. Nummer 34: Gründerzeit, frisch [[verputzt|verputzen|crépir]], am Klingelschild elf Namen, keiner davon Hallmann. Natürlich nicht. Ada stand eine Weile davor und kam sich [[töricht|töricht|sot(te), insensé(e)]] vor — was hatte sie erwartet? Dass die Vergangenheit die Tür öffnet und fragt, ob man Kaffee möchte?",
+        "Die Vergangenheit öffnete nicht. Aber die Gegenwart: Im Erdgeschoss, wo laut den Briefen einst die Schneiderwerkstatt der Mutter gewesen war, befand sich heute ein kleines Antiquariat. Der [[Inhaber|der Inhaber|le propriétaire, le tenant]], ein Mann von der Sorte, die Staub für ein [[Gütesiegel|das Gütesiegel|le label de qualité]] hält, hörte sich Adas Geschichte an, ohne sie zu unterbrechen — eine Höflichkeit, die im Aussterben [[begriffen|begriffen sein in|être en train de]] ist.",
+        "„Hallmann“, wiederholte er dann. „Elisabeth Hallmann.“ Er sagte den Namen, wie man ein Buch aus einem hohen Regal nimmt: vorsichtig und mit beiden Händen. „Die Klavierlehrerin. Sie hat bis in die Neunziger hier gewohnt, dritter Stock. Meine Schwester hat bei ihr Unterricht gehabt. Eine strenge Frau — streng aus [[Zuneigung|die Zuneigung|l'affection]], wenn Sie verstehen. Es hieß, sie habe im Westen eine Schwester, aber davon sprach sie nie. Nur einmal —“, er zögerte, [[abwägend|abwägen|peser, soupeser]], wie viel Erinnerung einem Fremden [[zusteht|zustehen|revenir de droit à]], „— einmal, am Tag nach dem Mauerfall, stand sie hier unten im Hof und hat geweint. Nicht wie jemand, der sich freut. Wie jemand, der [[nachzählt|nachzählen|recompter]], was es gekostet hat.“",
+        "Ada bedankte sich und kaufte, aus einem Gefühl der [[Schuldigkeit|schuldig|redevable ; coupable]] heraus, drei Bücher, die sie nicht brauchte. An der Tür drehte sie sich um: „Wissen Sie zufällig, wann sie gestorben ist?“ Der Antiquar sah sie [[eigentümlich|eigentümlich|étrange(ment), singulier/singulière]] an. „Gestorben? Frau Hallmann lebt. Pflegeheim an der Elbe, [[soviel ich weiß|soviel|autant que]]. Sie muss weit über neunzig sein.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 7 · Elisabeth",
+      texte: [
+        "Das Pflegeheim lag tatsächlich an der Elbe, mit einem Blick auf den Fluss, den die [[Broschüre|die Broschüre|la brochure]] vermutlich „idyllisch“ nannte und den die Bewohner, praktischer, zum [[Schiffezählen|zählen|compter]] benutzten. Elisabeth Hallmann, vierundneunzig, [[empfing|empfangen (empfing)|recevoir, accueillir]] Ada in einem Zimmer, in dem ein Klavier stand, das offenkundig nicht der [[Heimausstattung|die Ausstattung|l'équipement, l'aménagement]] entstammte.",
+        "Sie wusste sofort, wer Ada war. Nicht [[dem Namen nach|der Name|le nom]] — den Namen musste man ihr sagen —, sondern der Erscheinung nach: „Margaretes Kinn“, stellte sie fest, [[unumwunden|unumwunden|sans détour, franchement]] wie ein Arzt. „Und ihre Art, im Stehen zu lesen. Sie haben im Flur die Aushänge gelesen, ich habe Sie durchs Fenster gesehen. Setzen Sie sich, Kind einer [[Enkelin|die Enkelin|la petite-fille]], und sagen Sie mir, ob sie leicht gestorben ist.“",
+        "So war sie also, die gestrichene Stelle des Familientextes: [[glasklar|glasklar|limpide, d'une clarté totale]], [[unbestechlich|unbestechlich|incorruptible]], mit Händen, die vom Klavier [[gezeichnet|zeichnen (gezeichnet)|marquer]] waren, und einem Humor, der die Trauer nicht [[verscheuchte|verscheuchen|chasser, faire fuir]], sondern ihr Platz anbot. Ada erzählte: vom Karton, von den Mappen, vom fehlenden Brief 811.",
+        "Bei der Nummer 811 schloss Elisabeth die Augen. „Sie hat ihn also nicht kopiert. Gut. Es war ein [[unverzeihlicher|unverzeihlich|impardonnable]] Brief. Ich habe ihn verbrannt, sie hat ihn nicht [[vervielfältigt|vervielfältigen|reproduire, dupliquer]] — sehen Sie, so [[entschuldigt man sich|sich entschuldigen|s'excuser]] in unserer Familie: Man sorgt dafür, dass vom Schlimmsten nur eine Erinnerung bleibt, und trägt sie [[abwechselnd|abwechselnd|à tour de rôle, en alternance]].“",
+        "Sie sprachen vier Stunden. Über den August 1961, über die sterbende Mutter, über die zwölf Minuten Ferngespräch von 1970 („zwölf Minuten für neun Jahre — der [[Wechselkurs|der Wechselkurs|le taux de change]] der Teilung“). Über den Mauerfall: Margarete hatte sie danach dreimal besucht, in aller [[Heimlichkeit|die Heimlichkeit|le secret, la clandestinité]], ohne der Familie im Westen ein Wort zu sagen. „Warum heimlich?“, fragte Ada. Elisabeth sah zum Fluss.",
+        "„Weil eure Familie aus ihr eine Frau ohne Vorgeschichte gemacht hatte — die tapfere Margarete, die mit dem Kind [[bei Nacht und Nebel|der Nebel|le brouillard]] ging. In dieser Geschichte war kein Platz für eine Schwester, die blieb. Legenden, Kind, sind [[Einbahnstraßen|die Einbahnstraße (die Einbahnstraßen)|la rue à sens unique]]: Wer einmal drin wohnt, kommt nicht mehr [[rückwärts|rückwärts|en marche arrière]] hinaus. Also kam sie heimlich. Wir haben Kaffee getrunken, Klavier gespielt und die Legende draußen an der [[Garderobe|die Garderobe|le vestiaire]] abgegeben.“"
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 8 · Der Brief, der nie ankam",
+      texte: [
+        "Beim Abschied gab Elisabeth ihr einen Umschlag — [[vergilbt|vergilbt|jauni(e)]], [[frankiert|frankieren|affranchir]] mit einer Marke der Deutschen Post der DDR, [[abgestempelt|abstempeln|oblitérer, tamponner]] und mit einem violetten Vermerk versehen: „Zurück an Absender. Annahme [[verweigert|verweigern|refuser]].“",
+        "„Ich habe ihn 1977 geschrieben“, sagte Elisabeth, „ein Jahr nach unserem Streit. Margarete hat ihn nicht angenommen — das war ihre Antwort auf meinen [[Zorn|der Zorn|la colère, le courroux]], verstehen Sie, wir waren beide begabte [[Schweigerinnen|schweigen|se taire]]. Als wir uns [[versöhnten|sich versöhnen|se réconcilier]], nach dem Mauerfall, habe ich ihn ihr geben wollen. Da sagte sie: ‚Nicht jetzt. Gib ihn der, die einmal die Geduld mit Wörtern hat.‘ Wir wussten beide nicht, wen sie meinte. Jetzt weiß ich es.“",
+        "Ada öffnete den Brief im Zug, zwischen Dresden und Leipzig, während draußen die Elbhänge [[vorüberzogen|vorüberziehen (zog vorüber)|défiler, passer]]. Er war kurz. Er war das [[Gegenstück|das Gegenstück|le pendant, la contrepartie]] zu Brief 811 — die Antwort auf einen Vorwurf, den Ada nie lesen würde, und [[zugleich|zugleich|à la fois, en même temps]] dessen Auflösung.",
+        "„Liebe M.“, stand da. „Ich habe Dir [[vorgeworfen|vorwerfen (hat vorgeworfen)|reprocher]], dass Du gegangen bist, und Du mir, dass ich blieb. Dabei haben wir beide nur je eine Hälfte desselben Satzes gelebt. Du warst das Gehen, ich war das Bleiben, und der Satz hieß: Es soll etwas [[übrig bleiben|übrig bleiben|rester, subsister]] von uns. Von Dir ist ein Kind geblieben und ein Enkelkind und, wer weiß, eines Tages jemand, der Briefe lesen kann. Von mir bleiben Schüler, die Klavier spielen, und ein [[gepflegtes|pflegen (gepflegt)|entretenir, soigner]] Grab. Das ist kein schlechter Satz, M. Man muss ihn nur [[gemeinsam|gemeinsam|ensemble, en commun]] lesen. In Liebe, E.“",
+        "Ada saß sehr still. Der Zug hielt in Riesa, Leute stiegen ein und aus, jemand [[beschwerte sich|sich beschweren|se plaindre]] über die Klimaanlage — das Leben, [[unbeeindruckt|unbeeindruckt|imperturbable, nullement impressionné]] wie immer von den Umschlägen, die in ihm herumgetragen werden. Sie dachte: Zwei Frauen haben ein halbes Jahrhundert lang einen einzigen Satz übersetzt, hin und her, über eine Grenze hinweg, in Rezepten und Klammern und [[Verweigerungen|die Verweigerung|le refus]]. Und ich dachte, ich hätte den schwierigen Beruf."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 9 · Die Übersetzung",
+      texte: [
+        "Zurück in Leipzig tat Ada zunächst — nichts. Es gibt eine Phase nach jeder großen Lektüre, in der jede Handlung [[voreilig|voreilig|prématuré(e), hâtif/hâtive]] wäre; Übersetzer kennen sie als das Schweigen zwischen zwei Sprachen. Sie ließ die Mappen ruhen, [[beantwortete|beantworten|répondre à]] Verlagsmails, übersetzte einen polnischen Erzählband und ertappte sich dabei, dass sie jede Familienszene darin mit [[erhöhter|erhöhen (erhöht)|augmenter, accroître]] Aufmerksamkeit las.",
+        "Dann, im Winter, begann sie zu schreiben. Nicht einen Roman — dafür fehlte ihr, wie sie fand, die [[Anmaßung|die Anmaßung|la prétention, l'arrogance]] —, sondern eine [[Edition|die Edition|l'édition (critique)]]: die Briefe der Schwestern, [[chronologisch|chronologisch|chronologique(ment)]], mit Anmerkungen. Zu jedem Rezept die Übersetzung. Zu jeder Klammer der Kontext. Zu Brief 811 eine Fußnote: „Nicht überliefert. Die Herausgeberin hat sich gegen jede [[Rekonstruktion|die Rekonstruktion|la reconstitution]] entschieden; manche Lücken sind Teil des Textes.“",
+        "Elisabeth las das Manuskript im Pflegeheim, mit einem roten Bleistift, den sie wie ein [[Skalpell|das Skalpell|le scalpel]] führte. Ihre Korrekturen waren [[spärlich|spärlich|rare, clairsemé(e)]] und präzise: Hier sei der Winter 1969 gemeint, nicht 1968; das „Fernamt“ habe man anders [[beantragt|beantragen|demander (officiellement)]]; und an einer Stelle, an der Ada „[[Tragödie|die Tragödie|la tragédie]]“ geschrieben hatte, strich sie das Wort und setzte an den Rand: „Zu groß. Es war ein Leben. Schreiben Sie: ein Leben.“",
+        "Adas Mutter las das Manuskript zuletzt. Sie rief drei Tage lang nicht an, und Ada [[wappnete sich|sich wappnen|s'armer, se préparer à]] für den Satz vom Aufwühlen. Der Anruf kam an einem Sonntag. „Ich hatte eine Tante“, sagte ihre Mutter [[anstelle|anstelle + Genitiv|au lieu de, à la place de]] einer Begrüßung, und ihre Stimme klang, als [[probierte|probieren|essayer]] sie das Wort zum ersten Mal an, wie ein Kleid. „Ich hatte die ganze Zeit eine Tante.“ — „Du hast sie noch“, sagte Ada. „Sie zählt Schiffe an der Elbe und korrigiert meine Fußnoten. Ich kann dich [[mitnehmen|mitnehmen|emmener]].“",
+        "Im Frühjahr fuhren sie zu dritt — Ada, ihre Mutter, das Manuskript. Elisabeth spielte Klavier, [[ungeachtet|ungeachtet + Genitiv|sans égard pour, malgré]] ihrer vierundneunzig Jahre und der Hausordnung, die um zwanzig Uhr [[Ruhe|die Ruhe|le calme, le silence]] vorschrieb. Adas Mutter saß daneben und hielt die Hand einer Frau, die es ein halbes Leben lang [[offiziell|offiziell|officiellement]] nicht gegeben hatte. Niemand sprach viel. Es war kein Moment für Prosa."
+      ].join("\n\n")
+    },
+    {
+      titre: "Kapitel 10 · Epilog — Genauigkeit",
+      texte: [
+        "Das Buch erschien im Herbst unter dem Titel „Der Garten braucht dich. Briefe zwischen Dresden und Köln, 1961–1989“. Es wurde kein [[Bestseller|der Bestseller|le best-seller]] — Briefeditionen werden das selten —, aber es [[widerfuhr|widerfahren (widerfuhr)|arriver à, échoir à (soutenu)]] ihm etwas Besseres: Es wurde [[weitergereicht|weiterreichen|faire passer, transmettre]]. Von Lesern an Geschwister, mit [[unterstrichenen|unterstreichen (unterstrichen)|souligner]] Stellen und eingelegten Zetteln: „Das sind wir, oder?“",
+        "Bei der Vorstellung in Dresden saß Elisabeth in der ersten Reihe, im [[Rollstuhl|der Rollstuhl|le fauteuil roulant]], den sie als „fahrbares Klavierhockerchen“ [[verspottete|verspotten|railler, se moquer de]]. Als Ada aus dem Brief las, der nie angekommen war, hörte man im Saal jenes besondere Schweigen, das entsteht, wenn hundert Menschen [[gleichzeitig|gleichzeitig|simultanément]] an eigene Umschläge denken.",
+        "Hinterher fragte eine Studentin, was Übersetzen für sie [[bedeute|bedeuten (Konjunktiv I: bedeute)|signifier]] — die Frage, die auf Podien so [[unvermeidlich|unvermeidlich|inévitable]] ist wie das Wasserglas. Früher hätte Ada mit Theorie geantwortet. Jetzt sagte sie: „Meine Großmutter hat ihrer Schwester dreißig Jahre lang Rezepte geschrieben, in denen kein einziges Rezept stand. Übersetzen heißt: die Rosinen zählen und wissen, dass es nie um Rosinen geht.“",
+        "Elisabeth Hallmann starb im folgenden Sommer, sechsundneunzigjährig, an einem Donnerstag, nachdem sie am Mittwoch noch eine Fußnote [[beanstandet|beanstanden|contester, critiquer]] hatte (— [[zu Recht|das Recht|le droit ; à juste titre]], wie Ada einräumen musste). Auf ihrem Grabstein steht, ihrem Wunsch [[entsprechend|entsprechend|conformément à]], kein Spruch, sondern eine Taktangabe: „[[ruhig|ruhig|calme ; tranquille]], aber nicht schleppend“. Musiker verstehen das. Schwestern auch.",
+        "Der Karton steht heute in Adas Arbeitszimmer, [[zuoberst|zuoberst|tout en haut]] die elf Mappen, dann die Fotos, dann die beiden Briefe — der [[zurückgewiesene|zurückweisen (zurückgewiesen)|refuser, repousser]] und der mit den vier Sätzen. Manchmal, bei schwierigen Übersetzungen, öffnet Ada den Deckel und liest den letzten Satz ihrer Großmutter, der [[unterdessen|unterdessen|entre-temps]] auch ihr eigener [[Leitsatz|der Leitsatz|le principe directeur, la devise]] geworden ist:",
+        "„Sei nicht nachsichtig — sei genau. Genauigkeit ist die einzige Form von Liebe, die ich Wörtern je zugetraut habe.“",
+        "ENDE — Sie haben soeben einen Roman auf C2-Niveau gelesen. Respekt. 📒"
+      ].join("\n\n")
+    }
+  ]
+};
+
+</script>
     <!-- Modules applicatifs -->
     <script>
 /* =====================================================================
@@ -21418,6 +22322,7 @@ window.Legal = (function () {
   const NOLOC = [
     ".voc-de", ".voc-nom", ".art", ".voc-ex", ".cours-ex-de", ".cours-ex-gl-de", ".hl-de", ".conv-de", ".conv-loc",
     ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag", ".pflege-de", ".dictee-ref",
+    ".roman-de", ".roman-mot", ".roman-fn", ".roman-texte",
     ".loc-keep", ".peda-de", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points",
     ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
     ".trou-input", ".trou-phrase", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript",
@@ -21845,6 +22750,20 @@ window.Legal = (function () {
       const examSec = el("section", "section");
       examSec.appendChild(carteExamen(niv.exam, "Examen du niveau " + niv.code, unlocked, niv.examSous, lockText));
       frag.appendChild(examSec);
+    }
+
+    /* --- Bibliothèque : romans éducatifs par niveau --- */
+    const romansDispo = ROMAN_ORDER.filter(function (c) { return !!romanData(c); });
+    if (romansDispo.length) {
+      const ouverts = romansDispo.filter(romanUnlocked).length;
+      const bib = el("section", "section");
+      const bc = el("a", "roman-home-card");
+      bc.href = "#/romans";
+      bc.innerHTML = '<span class="roman-home-ic">📚</span><div class="roman-home-body"><strong>Romans éducatifs — la bibliothèque</strong><span>' +
+        romansDispo.length + " romans par niveau (A1 → C2) : mots colorés, vocabulaire expliqué en bas de page dans votre langue. " +
+        ouverts + " / " + romansDispo.length + ' ouverts.</span></div><span class="menu-go">→</span>';
+      bib.appendChild(bc);
+      frag.appendChild(bib);
     }
 
     renderNiveau({ code: "A1", exam: "a1", prevExam: null, prevLabel: null,
@@ -23175,6 +24094,193 @@ window.Legal = (function () {
   function delfGuardOK(code) { if (code === "a1") return niveauTermine("A1"); if (code === "a2") return examPasse("a1") && niveauTermine("A2"); if (code === "final") return examPasse("a2"); return false; }
   function delfEsc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
   function delfFmt(s) { return delfEsc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\n/g, "<br>"); }
+
+  /* =====================  ROMANS ÉDUCATIFS (bibliothèque)  =====================
+     Un roman par niveau (A1→C2), sans images, découpé en chapitres et paginé
+     automatiquement (~1 écran = 1 page ; 50+ pages par roman). Les mots
+     importants sont colorés (bleu = der, rose = die, vert = das, violet =
+     autres) et expliqués en bas de page dans la langue de l'utilisateur.
+     Syntaxe dans le texte : [[forme affichée|forme de base|explication fr]]
+     ou [[mot|explication fr]]. */
+  const ROMAN_ORDER = ["a1", "a2", "b1", "b2", "c1", "c2"];
+  const ROMAN_EMOJI = { a1: "📕", a2: "📗", b1: "📘", b2: "📙", c1: "📔", c2: "📒" };
+  const ROMAN_RATE = { a1: 0.85, a2: 0.9, b1: 0.95, b2: 1, c1: 1, c2: 1 };
+  const ROMAN_PAGE_CHARS = 480;
+  const ROMAN_GLOSS_RE = /\[\[([^\]|]+)\|([^\]|]+)(?:\|([^\]]+))?\]\]/g;
+  function romanData(code) { return window["ROMAN_" + String(code || "").toUpperCase()] || null; }
+  function romanUnlocked(code) {
+    const req = { a1: null, a2: "a1", b1: "final", b2: "b1", c1: "finalb", c2: "c1" }[code];
+    return !req || examPasse(req);
+  }
+  function romanLockText(code) {
+    const t = { a2: "l'examen A1", b1: "l'examen final A1 + A2", b2: "l'examen B1", c1: "l'examen B1 + B2", c2: "l'examen C1" }[code];
+    return t ? "🔒 Réussissez " + t + " pour ouvrir ce roman." : "";
+  }
+  function romanEtatGet(code) { try { return JSON.parse(localStorage.getItem("roman_" + code) || "{}"); } catch (e) { return {}; } }
+  function romanEtatSet(code, o) { try { localStorage.setItem("roman_" + code, JSON.stringify(o || {})); } catch (e) {} }
+  function romanPlain(s) { return String(s || "").replace(ROMAN_GLOSS_RE, "$1"); }
+  /* Pagination : les paragraphes d'un chapitre sont regroupés en pages
+     d'environ ROMAN_PAGE_CHARS caractères ; une page ne mélange jamais
+     deux chapitres (comme dans un vrai livre). */
+  function romanPages(R) {
+    if (R.__pages) return R.__pages;
+    const pages = [];
+    (R.chapitres || []).forEach(function (ch, ci) {
+      const paras = String(ch.texte || "").split(/\n\s*\n/).map(function (s) { return s.trim(); }).filter(Boolean);
+      let cur = [], len = 0;
+      paras.forEach(function (p) {
+        const l = romanPlain(p).length;
+        if (cur.length && len + l > ROMAN_PAGE_CHARS) { pages.push({ ch: ci, paras: cur, debut: false }); cur = []; len = 0; }
+        cur.push(p); len += l;
+      });
+      if (cur.length) pages.push({ ch: ci, paras: cur, debut: false });
+    });
+    let prev = -1;
+    pages.forEach(function (p) { p.debut = p.ch !== prev; prev = p.ch; });
+    R.__pages = pages;
+    return pages;
+  }
+  function romanGenreCls(base) {
+    if (/^der\s/.test(base)) return "g-der";
+    if (/^die\s/.test(base)) return "g-die";
+    if (/^das\s/.test(base)) return "g-das";
+    return "g-x";
+  }
+  /* Explications de bas de page : stockées en français, traduites à la volée
+     dans la langue de l'utilisateur (même en immersion B1+ : le vocabulaire
+     doit rester compréhensible — demande explicite). */
+  function romanLocalizeNotes(box) {
+    const lang = window.I18N && window.I18N.lang && window.I18N.lang();
+    if (!lang || lang === "fr" || !window.I18N.translate) return;
+    box.querySelectorAll(".roman-fn-tr").forEach(function (s) {
+      const fr = s.textContent;
+      window.I18N.translate(fr, lang, "fr").then(function (out) { if (out && out !== fr) s.textContent = out; });
+    });
+  }
+
+  function renderRomans() {
+    app.innerHTML = "";
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/">← Aperçu</a><span class="lesson-top-mod">📚 Bibliothèque</span>';
+    frag.appendChild(top);
+    const head = el("header", "test-head");
+    head.innerHTML = '<div class="lesson-num">Romans éducatifs</div><h1>📚 La bibliothèque</h1><p>Un roman par niveau, écrit pour apprendre : les mots importants sont <strong>colorés</strong> et expliqués <strong>en bas de page</strong> dans votre langue. Sans images — des chapitres, des pages, une histoire.</p>';
+    frag.appendChild(head);
+    const legend = el("p", "roman-legende loc-keep");
+    legend.innerHTML = '<span class="g-der">■ der</span> <span class="g-die">■ die</span> <span class="g-das">■ das</span> <span class="g-x">■ verbes & expressions</span>';
+    frag.appendChild(legend);
+    const sec = el("section", "section roman-grid");
+    ROMAN_ORDER.forEach(function (code) {
+      const R = romanData(code);
+      if (!R) return;
+      const open = romanUnlocked(code);
+      const nb = romanPages(R).length;
+      const st = romanEtatGet(code);
+      const card = el(open ? "a" : "div", "roman-card" + (open ? "" : " locked") + (st.done ? " done" : ""));
+      if (open) card.href = "#/romans/" + code;
+      const status = !open ? romanLockText(code)
+        : st.done ? "✓ Terminé — relisez-le quand vous voulez"
+        : (st.p > 0 ? "📖 Reprendre à la page " + (st.p + 1) + " / " + nb : nb + " pages · " + (R.chapitres || []).length + " chapitres");
+      card.innerHTML = '<span class="roman-ic">' + (open ? ROMAN_EMOJI[code] : "🔒") + '</span><div class="roman-card-body">' +
+        '<span class="roman-niv loc-keep">' + R.niveau + '</span>' +
+        '<strong class="roman-de">' + delfEsc(R.titre) + '</strong>' +
+        (R.sousTitre ? '<em class="roman-de">' + delfEsc(R.sousTitre) + "</em>" : "") +
+        "<p>" + delfEsc(R.resume || "") + '</p><span class="roman-status">' + status + "</span></div>" +
+        '<span class="menu-go">' + (open ? (st.done ? "✓" : "→") : "🔒") + "</span>";
+      sec.appendChild(card);
+    });
+    frag.appendChild(sec);
+    app.appendChild(frag);
+    try { localizeUI(app); } catch (e) {}
+    if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = "#/"; }); if (window.TG.hideMainButton) window.TG.hideMainButton(); } catch (e) {} }
+    window.scrollTo(0, 0);
+  }
+
+  function renderRoman(code) {
+    const R = romanData(code);
+    if (!R || !romanUnlocked(code)) { location.hash = "#/romans"; return; }
+    const pages = romanPages(R);
+    const st = romanEtatGet(code);
+    let idx = Math.min(Math.max(0, st.p || 0), pages.length - 1);
+
+    app.innerHTML = "";
+    const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/romans">← Bibliothèque</a><span class="lesson-top-mod">' + ROMAN_EMOJI[code] + " Roman · " + R.niveau + "</span>";
+    frag.appendChild(top);
+    const head = el("header", "roman-head");
+    head.innerHTML = '<h1 class="roman-de">' + delfEsc(R.titre) + "</h1>" + (R.sousTitre ? '<p class="roman-de roman-sous">' + delfEsc(R.sousTitre) + "</p>" : "");
+    frag.appendChild(head);
+    const bar = el("div", "roman-bar"); const fill = el("div", "roman-bar-fill"); bar.appendChild(fill); frag.appendChild(bar);
+    const kap = el("div", "roman-kap-row"); frag.appendChild(kap);
+    const texte = el("div", "roman-texte"); texte.setAttribute("dir", "ltr"); frag.appendChild(texte);
+    const legend = el("p", "roman-legende loc-keep");
+    legend.innerHTML = '<span class="g-der">■ der</span> <span class="g-die">■ die</span> <span class="g-das">■ das</span> <span class="g-x">■ verbes & expressions</span> · 👆 touchez un mot coloré';
+    frag.appendChild(legend);
+    const notesBox = el("div", "roman-notes"); frag.appendChild(notesBox);
+    const listen = el("button", "btn btn-ghost small roman-listen", "🔊 Écouter la page"); listen.type = "button";
+    frag.appendChild(listen);
+    const nav = el("div", "roman-nav");
+    const prev = el("button", "btn btn-ghost", "◀ Page"); prev.type = "button";
+    const pageLbl = el("span", "roman-page loc-keep", "");
+    const next = el("button", "btn btn-primary", "Page ▶"); next.type = "button";
+    nav.appendChild(prev); nav.appendChild(pageLbl); nav.appendChild(next);
+    frag.appendChild(nav);
+    app.appendChild(frag);
+
+    function show(i, scroll) {
+      idx = Math.min(Math.max(0, i), pages.length - 1);
+      const s2 = romanEtatGet(code); s2.p = idx; romanEtatSet(code, s2);
+      const pg = pages[idx]; const ch = (R.chapitres || [])[pg.ch] || {};
+      kap.innerHTML = '<span class="roman-kap roman-de">' + delfEsc(ch.titre || "") + "</span>" + (pg.debut ? "" : ' <span class="roman-suite">(suite)</span>');
+      const notes = []; let n = 0;
+      texte.innerHTML = pg.paras.map(function (p) {
+        return "<p>" + delfEsc(p).replace(ROMAN_GLOSS_RE, function (m, a, b, c) {
+          const shown = a, base = c ? b : a, expl = c ? c : b;
+          n++; notes.push({ n: n, base: base, expl: expl });
+          return '<span class="roman-mot ' + romanGenreCls(base) + '" data-fn="' + n + '">' + shown + "<sup>" + n + "</sup></span>";
+        }) + "</p>";
+      }).join("");
+      notesBox.innerHTML = notes.length
+        ? '<h3 class="roman-notes-t">📖 Vocabulaire de la page</h3><ul class="roman-fnl">' + notes.map(function (o) {
+            return '<li class="roman-fn" id="roman-fn-' + o.n + '"><sup>' + o.n + '</sup> <b class="roman-fn-de ' + romanGenreCls(o.base) + '">' + o.base + '</b> <span class="roman-fn-sep">—</span> <span class="roman-fn-tr">' + o.expl + "</span></li>";
+          }).join("") + "</ul>"
+        : "";
+      texte.querySelectorAll(".roman-mot").forEach(function (w) {
+        w.addEventListener("click", function () {
+          const o = notes[+w.getAttribute("data-fn") - 1]; if (!o) return;
+          if (window.Speech) window.Speech.speak(o.base.replace(/\s*\([^)]*\)\s*$/, ""), { rate: 0.9 });
+          const li = document.getElementById("roman-fn-" + o.n);
+          if (li) { li.scrollIntoView({ block: "center", behavior: "smooth" }); li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash"); }
+        });
+      });
+      romanLocalizeNotes(notesBox);
+      fill.style.width = Math.round(((idx + 1) / pages.length) * 100) + "%";
+      pageLbl.textContent = "Page " + (idx + 1) + " / " + pages.length;
+      prev.disabled = idx === 0;
+      const last = idx === pages.length - 1;
+      next.textContent = last ? "✓ Terminer le roman" : "Page ▶";
+      if (scroll !== false) window.scrollTo(0, 0);
+    }
+    prev.addEventListener("click", function () { show(idx - 1); });
+    next.addEventListener("click", function () {
+      if (idx === pages.length - 1) {
+        const s2 = romanEtatGet(code); s2.done = true; romanEtatSet(code, s2);
+        toast("📚 Bravo ! Roman terminé — " + pages.length + " pages lues.");
+        location.hash = "#/romans"; return;
+      }
+      show(idx + 1);
+    });
+    listen.addEventListener("click", function () {
+      const pg = pages[idx];
+      if (window.Speech) window.Speech.speak(pg.paras.map(romanPlain).join(" "), { rate: ROMAN_RATE[code] || 1 });
+    });
+    show(idx, false);
+    try { localizeUI(app); } catch (e) {}
+    if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = "#/romans"; }); if (window.TG.hideMainButton) window.TG.hideMainButton(); } catch (e) {} }
+    window.scrollTo(0, 0);
+  }
 
   let delfTimer = null;
   function makeDelfTimer(seconds, onExpire) {
@@ -25375,6 +26481,8 @@ window.Legal = (function () {
     else if ((m = hash.match(/^#\/examen\/(b1|b2|c1|c2|finalb|finalc)(?:$|[\/?#])/))) renderTelcHub(m[1]);
     else if ((m = hash.match(/^#\/examen\/(a1|a2|finalb|finalc|final|b1|b2|c1|c2)/))) renderTest(m[1]);
     else if (hash.match(/^#\/examen/)) renderTest("a1");
+    else if ((m = hash.match(/^#\/romans\/(a1|a2|b1|b2|c1|c2)/))) renderRoman(m[1]);
+    else if (hash.match(/^#\/romans/)) renderRomans();
     else if ((m = hash.match(/^#\/dictee\/([a-z0-9-]+)/))) renderDictee(m[1]);
     else if (hash.match(/^#\/revision/)) renderRevision();
     else if (hash.match(/^#\/langue/)) renderLanguagePage();
