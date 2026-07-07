@@ -1228,3 +1228,33 @@ ul.delf-epreuves li { background: rgba(127, 127, 127, .08); border-radius: 10px;
 [data-tg-scheme="dark"] .roman-home-card { background: #1c1a12; border-color: #7c6a1e; }
 [data-tg-scheme="dark"] .g-der { color: #60a5fa; } [data-tg-scheme="dark"] .g-die { color: #f472b6; }
 [data-tg-scheme="dark"] .g-das { color: #34d399; } [data-tg-scheme="dark"] .g-x { color: #a78bfa; }
+
+/* ---- Quiz de vocabulaire (romans) ---- */
+.roman-quiz-row { margin: 12px 0 0; }
+.btn-quiz { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #7c3aed, #db2777); color: #fff; border: 0; border-radius: 12px; padding: 12px 18px; font: inherit; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(124, 58, 237, .28); }
+.roman-quiz { display: flex; flex-direction: column; gap: 14px; margin: 8px 0; }
+.roman-quiz-q { border: 1px solid var(--line); border-radius: 14px; padding: 14px; background: #fff; }
+.roman-quiz-wrow { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.roman-quiz-w { font-size: 21px; font-weight: 800; }
+.roman-quiz-opts { display: flex; flex-direction: column; gap: 8px; }
+.roman-quiz-opt { text-align: left; border: 1.5px solid var(--line); border-radius: 10px; padding: 11px 13px; background: #f8fafc; font: inherit; font-size: 15px; cursor: pointer; transition: border-color .15s, background .15s; }
+.roman-quiz-opt:hover { border-color: var(--blue); }
+.roman-quiz-opt.done { cursor: default; }
+.roman-quiz-opt.ok { border-color: #16a34a; background: #f0fdf4; color: #15803d; font-weight: 700; }
+.roman-quiz-opt.ko { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.roman-quiz-result { margin-top: 14px; }
+.roman-quiz-result .completion { margin: 0; }
+/* ---- Stats de lecture (tableau de bord) ---- */
+.roman-stat-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.roman-stat { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; color: inherit; background: #fff; }
+.roman-stat.locked { opacity: .55; }
+.roman-stat-ic { font-size: 22px; }
+.roman-stat-body { flex: 1; display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.roman-stat-body b { font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.roman-stat-bar { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.roman-stat-bar span { display: block; height: 100%; border-radius: 3px; background: linear-gradient(90deg, #2563eb, #7c3aed); }
+.roman-stat-n { font-size: 12.5px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+[data-tg-scheme="dark"] .roman-quiz-q, [data-tg-scheme="dark"] .roman-stat { background: #0e1621; }
+[data-tg-scheme="dark"] .roman-quiz-opt { background: #131a24; }
+[data-tg-scheme="dark"] .roman-quiz-opt.ok { background: #06281a; }
+[data-tg-scheme="dark"] .roman-quiz-opt.ko { background: #2a0f0f; }

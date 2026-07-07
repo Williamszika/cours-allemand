@@ -163,7 +163,7 @@
   const NOLOC = [
     ".voc-de", ".voc-nom", ".art", ".voc-ex", ".cours-ex-de", ".cours-ex-gl-de", ".hl-de", ".conv-de", ".conv-loc",
     ".rp-de", ".rp-opt", ".lecon-de", ".de", ".tag", ".pflege-de", ".dictee-ref",
-    ".roman-de", ".roman-mot", ".roman-fn", ".roman-texte",
+    ".roman-de", ".roman-mot", ".roman-fn", ".roman-texte", ".roman-quiz-w", ".roman-quiz-opt",
     ".loc-keep", ".peda-de", ".cours-tag-body", ".cours-art-titre", ".cours-art-p", ".cours-points",
     ".qcm-opt", ".qcm-options", ".assoc-tile", ".conj-input", ".conj-pron", ".ordre-chip", ".ordre-pool", ".ordre-answer",
     ".trou-input", ".trou-phrase", ".trad-input", ".trad-flag", ".production-modele", ".production-input", ".oral-transcript",
@@ -1379,6 +1379,7 @@
     sec1.appendChild(cards);
     frag.appendChild(sec1);
     var __cs = competencesSection(); if (__cs) frag.appendChild(__cs);
+    var __rs = romanStatsSection(); if (__rs) frag.appendChild(__rs);
 
     // Temps d'étude (aujourd'hui / semaine / total + 7 derniers jours)
     const st = window.Progress.statsTemps();
@@ -1993,10 +1994,129 @@
   function romanLocalizeNotes(box) {
     const lang = window.I18N && window.I18N.lang && window.I18N.lang();
     if (!lang || lang === "fr" || !window.I18N.translate) return;
-    box.querySelectorAll(".roman-fn-tr").forEach(function (s) {
+    box.querySelectorAll(".roman-fn-tr, .roman-tr").forEach(function (s) {
       const fr = s.textContent;
       window.I18N.translate(fr, lang, "fr").then(function (out) { if (out && out !== fr) s.textContent = out; });
     });
+  }
+
+  /* ---- Vocabulaire d'un roman (pour les quiz) ---- */
+  function romanGloss(texte) {
+    const out = [], seen = {};
+    String(texte || "").replace(ROMAN_GLOSS_RE, function (m, a, b, c) {
+      const base = (c ? b : a).trim(), expl = (c ? c : b).trim(), key = base.toLowerCase();
+      if (!seen[key]) { seen[key] = 1; out.push({ base: base, expl: expl }); }
+      return m;
+    });
+    return out;
+  }
+  function romanChapterGloss(R, ci) { return romanGloss(((R.chapitres || [])[ci] || {}).texte); }
+  function romanAllGloss(R) {
+    const seen = {}, out = [];
+    (R.chapitres || []).forEach(function (ch) { romanGloss(ch.texte).forEach(function (g) { const k = g.base.toLowerCase(); if (!seen[k]) { seen[k] = 1; out.push(g); } }); });
+    return out;
+  }
+  function romanShuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+
+  /* Quiz de vocabulaire en fin de chapitre : QCM « mot allemand → sens »,
+     construit à partir des mots glosés du chapitre (distracteurs tirés du
+     reste du roman). Sens affichés dans la langue de l'utilisateur. */
+  function renderRomanQuiz(code, ci) {
+    const R = romanData(code); if (!R || !romanUnlocked(code)) { location.hash = "#/romans"; return; }
+    const ch = (R.chapitres || [])[ci] || {};
+    const pool = romanChapterGloss(R, ci), distract = romanAllGloss(R);
+    if (pool.length < 3) { renderRoman(code); return; }
+    const qs = romanShuffle(pool).slice(0, Math.min(8, pool.length));
+    app.innerHTML = ""; const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/romans/' + code + '">← Lecture</a><span class="lesson-top-mod">🧩 Quiz · ' + R.niveau + "</span>";
+    frag.appendChild(top);
+    const head = el("header", "roman-head");
+    head.innerHTML = '<div class="lesson-num loc-keep">' + delfEsc(ch.titre || "") + '</div><h1>🧩 Quiz de vocabulaire</h1><p>Touchez la bonne traduction. ' + qs.length + " mots de ce chapitre.</p>";
+    frag.appendChild(head);
+    const form = el("div", "roman-quiz"); frag.appendChild(form);
+    const items = qs.map(function (q) {
+      const wrongs = romanShuffle(distract.filter(function (g) { return g.base.toLowerCase() !== q.base.toLowerCase() && g.expl !== q.expl; })).slice(0, 3);
+      const opts = romanShuffle([{ expl: q.expl, ok: true }].concat(wrongs.map(function (w) { return { expl: w.expl, ok: false }; })));
+      return { q: q, opts: opts, answered: false, correct: false };
+    });
+    items.forEach(function (item) {
+      const card = el("div", "roman-quiz-q");
+      const wrow = el("div", "roman-quiz-wrow");
+      wrow.innerHTML = '<span class="roman-quiz-w roman-de ' + romanGenreCls(item.q.base) + '">' + delfEsc(item.q.base) + "</span>";
+      const spk = el("button", "btn btn-ghost small", "🔊"); spk.type = "button";
+      spk.addEventListener("click", function () { if (window.Speech) window.Speech.speak(item.q.base.replace(/\s*\([^)]*\)\s*$/, ""), { rate: 0.9 }); });
+      wrow.appendChild(spk); card.appendChild(wrow);
+      const optsWrap = el("div", "roman-quiz-opts");
+      item.opts.forEach(function (o, oi) {
+        const b = el("button", "roman-quiz-opt"); b.type = "button";
+        b.innerHTML = '<span class="roman-tr">' + delfEsc(o.expl) + "</span>";
+        b.addEventListener("click", function () {
+          if (item.answered) return;
+          item.answered = true; item.correct = !!o.ok;
+          optsWrap.querySelectorAll(".roman-quiz-opt").forEach(function (x, xi) { x.classList.add("done"); if (item.opts[xi].ok) x.classList.add("ok"); });
+          if (!o.ok) b.classList.add("ko");
+          maybeFinish();
+        });
+        optsWrap.appendChild(b);
+      });
+      card.appendChild(optsWrap); form.appendChild(card);
+    });
+    const resBox = el("div", "roman-quiz-result"); frag.appendChild(resBox);
+    app.appendChild(frag);
+    romanLocalizeNotes(app);
+    try { localizeUI(app); } catch (e) {}
+    if (window.TG) { try { window.TG.closingConfirmation(false); window.TG.showBackButton(function () { location.hash = "#/romans/" + code; }); if (window.TG.hideMainButton) window.TG.hideMainButton(); } catch (e) {} }
+    window.scrollTo(0, 0);
+    function maybeFinish() {
+      if (!items.every(function (s) { return s.answered; })) return;
+      const score = items.filter(function (s) { return s.correct; }).length, n = items.length;
+      const s2 = romanEtatGet(code); s2.quiz = s2.quiz || {}; s2.quiz[ci] = Math.max(s2.quiz[ci] || 0, score); romanEtatSet(code, s2);
+      const good = score === n, ok = score >= Math.ceil(n * 0.6);
+      resBox.innerHTML = '<div class="completion ' + (ok ? "ok" : "ko") + '"><div class="comp-emoji">' + (good ? "🏆" : ok ? "👍" : "📚") + '</div>' +
+        "<h2>" + score + " / " + n + "</h2><p>" + (good ? "Parfait — tout le vocabulaire du chapitre est acquis !" : ok ? "Bien joué ! Revois les mots manqués et continue." : "Continue à lire : relis le chapitre puis retente le quiz.") + "</p></div>";
+      const row = el("div", "rev-actions");
+      const again = el("button", "btn btn-ghost", "↻ Recommencer"); again.type = "button"; again.addEventListener("click", function () { renderRomanQuiz(code, ci); });
+      const cont = el("a", "btn btn-primary", "Continuer la lecture →"); cont.href = "#/romans/" + code;
+      row.appendChild(again); row.appendChild(cont); resBox.appendChild(row);
+      try { localizeUI(resBox); } catch (e) {}
+      resBox.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+
+  /* Section « Lecture » du tableau de bord : pages lues, romans terminés, quiz. */
+  function romanStatsSection() {
+    const codes = ROMAN_ORDER.filter(function (c) { return !!romanData(c); });
+    if (!codes.length) return null;
+    let lues = 0, total = 0, finis = 0, quiz = 0;
+    const rows = codes.map(function (c) {
+      const R = romanData(c), tot = romanPages(R).length, s = romanEtatGet(c);
+      const l = Math.min((s.lu && s.lu.length) || 0, tot);
+      lues += l; total += tot; if (s.done) finis++; quiz += s.quiz ? Object.keys(s.quiz).length : 0;
+      return { c: c, R: R, l: l, tot: tot, done: !!s.done, open: romanUnlocked(c) };
+    });
+    const sec = el("section", "lesson-section");
+    sec.appendChild(el("h2", "", "📚 Lecture (romans)"));
+    const cards = el("div", "stats-row");
+    [["📖", lues, "pages lues"], ["📕", finis + "/" + codes.length, "romans terminés"], ["🧩", quiz, "quiz faits"], ["📚", total, "pages au total"]].forEach(function (x) {
+      const cc = el("div", "stat");
+      cc.innerHTML = '<span class="stat-ic">' + x[0] + '</span><span class="stat-n">' + x[1] + '</span><span class="stat-l">' + x[2] + "</span>";
+      cards.appendChild(cc);
+    });
+    sec.appendChild(cards);
+    const list = el("div", "roman-stat-list");
+    rows.forEach(function (r) {
+      const pct = r.tot ? Math.round(r.l / r.tot * 100) : 0;
+      const row = el(r.open ? "a" : "div", "roman-stat" + (r.open ? "" : " locked"));
+      if (r.open) row.href = "#/romans/" + r.c;
+      row.innerHTML = '<span class="roman-stat-ic">' + (r.open ? ROMAN_EMOJI[r.c] : "🔒") + '</span>' +
+        '<span class="roman-stat-body"><b class="roman-de">' + delfEsc(r.R.titre) + '</b>' +
+        '<span class="roman-stat-bar"><span style="width:' + pct + '%"></span></span></span>' +
+        '<span class="roman-stat-n loc-keep">' + r.l + "/" + r.tot + (r.done ? " ✓" : "") + "</span>";
+      list.appendChild(row);
+    });
+    sec.appendChild(list);
+    return sec;
   }
 
   function renderRomans() {
@@ -2060,6 +2180,7 @@
     legend.innerHTML = '<span class="g-der">■ der</span> <span class="g-die">■ die</span> <span class="g-das">■ das</span> <span class="g-x">■ verbes & expressions</span> · 👆 touchez un mot coloré';
     frag.appendChild(legend);
     const notesBox = el("div", "roman-notes"); frag.appendChild(notesBox);
+    const quizRow = el("div", "roman-quiz-row"); frag.appendChild(quizRow);
     const listen = el("button", "btn btn-ghost small roman-listen", "🔊 Écouter la page"); listen.type = "button";
     frag.appendChild(listen);
     const nav = el("div", "roman-nav");
@@ -2072,7 +2193,7 @@
 
     function show(i, scroll) {
       idx = Math.min(Math.max(0, i), pages.length - 1);
-      const s2 = romanEtatGet(code); s2.p = idx; romanEtatSet(code, s2);
+      const s2 = romanEtatGet(code); s2.p = idx; s2.lu = s2.lu || []; if (s2.lu.indexOf(idx) < 0) s2.lu.push(idx); romanEtatSet(code, s2);
       const pg = pages[idx]; const ch = (R.chapitres || [])[pg.ch] || {};
       kap.innerHTML = '<span class="roman-kap roman-de">' + delfEsc(ch.titre || "") + "</span>" + (pg.debut ? "" : ' <span class="roman-suite">(suite)</span>');
       const notes = []; let n = 0;
@@ -2097,6 +2218,16 @@
         });
       });
       romanLocalizeNotes(notesBox);
+      quizRow.innerHTML = "";
+      const isChapEnd = idx === pages.length - 1 || (pages[idx + 1] && pages[idx + 1].ch !== pg.ch);
+      const chGloss = romanChapterGloss(R, pg.ch);
+      if (isChapEnd && chGloss.length >= 3) {
+        const best = (romanEtatGet(code).quiz || {})[pg.ch];
+        const qb = el("button", "btn btn-quiz", "🧩 Quiz du chapitre" + (best != null ? " · " + best + "/" + Math.min(8, chGloss.length) + " ✓" : ""));
+        qb.type = "button";
+        qb.addEventListener("click", function () { renderRomanQuiz(code, pg.ch); });
+        quizRow.appendChild(qb);
+      }
       fill.style.width = Math.round(((idx + 1) / pages.length) * 100) + "%";
       pageLbl.textContent = "Page " + (idx + 1) + " / " + pages.length;
       prev.disabled = idx === 0;
