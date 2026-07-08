@@ -20062,11 +20062,20 @@ window.I18N = (function () {
   function decodeEntities(s) {
     return String(s).replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&#(\d+);/g, function (m, n) { return String.fromCharCode(+n); });
   }
+  function serverTranslate(text, tgt, src) {
+    // Traduction fiable via /api/translate (serveur, sans blocage CORS).
+    // Repli silencieux si le serveur n'existe pas (site 100 % statique / hors-ligne).
+    return fetch("/api/translate?from=" + encodeURIComponent(src) + "&to=" + encodeURIComponent(tgt) + "&text=" + encodeURIComponent(text))
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { return (j && j.text) ? decodeEntities(j.text) : null; })
+      .catch(function () { return null; });
+  }
   function netTranslate(text, tgt, src) {
     if (typeof fetch !== "function") return Promise.resolve(null);
-    // Google gtx d'abord (meilleure qualité), repli MyMemory.
-    return gtxTranslate(text, tgt, src).then(function (g) {
-      return g ? g : mmTranslate(text, tgt, src);
+    // Serveur d'abord (fiable), puis Google gtx direct, puis MyMemory.
+    return serverTranslate(text, tgt, src).then(function (s) {
+      if (s) return s;
+      return gtxTranslate(text, tgt, src).then(function (g) { return g ? g : mmTranslate(text, tgt, src); });
     }).catch(function () { return mmTranslate(text, tgt, src); });
   }
   function mmTranslate(text, tgt, src) {
