@@ -4371,6 +4371,13 @@
         href: "/tuteur.html",
         actif: true
       },
+      {
+        icon: "📚",
+        titre: "Romans éducatifs",
+        desc: "La bibliothèque : un roman par niveau (A1 → C2), mots colorés et vocabulaire expliqué en bas de page dans ta langue, avec quiz de fin de chapitre.",
+        href: "#/romans",
+        actif: true
+      },
       { icon: "➕", titre: "Et plus encore", desc: "D'autres options arriveront bientôt ici.", actif: false }
     ];
 
