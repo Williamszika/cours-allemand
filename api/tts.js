@@ -17,7 +17,7 @@ module.exports = async function handler(req, res) {
     // (cURL, scripts). Domaine configurable via ALLOW_ORIGIN (défaut sprachakademie.app).
     const ALLOW = (process.env.ALLOW_ORIGIN || "sprachakademie.app").trim();
     const ref = String(req.headers.origin || req.headers.referer || "");
-    const ok = !!ref && (ref.indexOf(ALLOW) >= 0 || ref.indexOf("localhost") >= 0 || ref.indexOf("127.0.0.1") >= 0);
+    const ok = !!ref && (ref.indexOf(ALLOW) >= 0 || ref.indexOf(".vercel.app") >= 0 || ref.indexOf("localhost") >= 0 || ref.indexOf("127.0.0.1") >= 0);
     if (!ok) { res.statusCode = 403; return res.end("forbidden"); }
 
     const key = process.env.ELEVENLABS_API_KEY;
