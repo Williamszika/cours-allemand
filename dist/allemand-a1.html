@@ -1219,11 +1219,19 @@ ul.delf-epreuves li { background: rgba(127, 127, 127, .08); border-radius: 10px;
 .roman-kap-row { margin: 4px 0 10px; }
 .roman-kap { font-weight: 700; font-size: 15px; }
 .roman-suite { font-size: 12.5px; color: var(--muted); }
-.roman-texte { font-family: Georgia, "Times New Roman", serif; background: #fffdf7; border: 1px solid #f1e9d2; border-radius: 14px; padding: 18px 16px; }
-.roman-texte p { font-size: 17px; line-height: 1.85; margin: 0 0 14px; }
+.roman-texte { font-family: Georgia, "Times New Roman", serif; background: #fffdf7; border: 1px solid #f1e9d2; border-radius: 14px; padding: 24px 20px; min-height: 62vh; }
+.roman-texte p { font-size: 17.5px; line-height: 1.9; margin: 0 0 16px; text-align: justify; hyphens: auto; }
 .roman-texte p:last-child { margin-bottom: 0; }
-.roman-mot { font-weight: 700; cursor: pointer; border-radius: 4px; }
+.roman-mot { font-weight: 700; cursor: pointer; border-radius: 4px; text-decoration: underline; text-decoration-style: dotted; text-decoration-thickness: 1px; text-underline-offset: 3px; -webkit-tap-highlight-color: transparent; }
 .roman-mot sup { font-size: .6em; opacity: .65; margin-left: 1px; }
+/* Bulle de traduction (au clic sur un mot, comme une liseuse) */
+.roman-pop { position: fixed; z-index: 60; max-width: min(320px, 90vw); background: #fff; border: 1px solid #e2e6ec; border-radius: 14px; box-shadow: 0 14px 38px rgba(15, 23, 42, .24); padding: 14px 16px 12px; }
+.roman-pop-de { font-size: 19px; font-weight: 800; padding-right: 22px; }
+.roman-pop .roman-tr { margin-top: 5px; font-size: 15px; color: var(--muted); line-height: 1.5; }
+.roman-pop-spk { margin-top: 11px; background: #eef1f5; border: 1px solid #e2e6ec; border-radius: 9px; padding: 7px 12px; font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer; color: inherit; }
+.roman-pop-x { position: absolute; top: 5px; right: 8px; background: none; border: 0; font-size: 23px; line-height: 1; color: var(--muted); cursor: pointer; padding: 2px 6px; }
+[data-tg-scheme="dark"] .roman-pop { background: #141a24; border-color: #262f3d; }
+[data-tg-scheme="dark"] .roman-pop-spk { background: #1a212d; border-color: #262f3d; }
 .g-der { color: #2563eb; } .g-die { color: #db2777; } .g-das { color: #059669; } .g-x { color: #7c3aed; }
 .roman-notes { margin-top: 14px; border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; background: #f8fafc; }
 .roman-notes-t { margin: 0 0 8px; font-size: 14.5px; }
@@ -23968,7 +23976,7 @@ window.Legal = (function () {
   const ROMAN_ORDER = ["a1", "a2", "b1", "b2", "c1", "c2"];
   const ROMAN_EMOJI = { a1: "📕", a2: "📗", b1: "📘", b2: "📙", c1: "📔", c2: "📒" };
   const ROMAN_RATE = { a1: 0.85, a2: 0.9, b1: 0.95, b2: 1, c1: 1, c2: 1 };
-  const ROMAN_PAGE_CHARS = 480;
+  const ROMAN_PAGE_CHARS = 1200;
   const ROMAN_GLOSS_RE = /\[\[([^\]|]+)\|([^\]|]+)(?:\|([^\]]+))?\]\]/g;
   function romanData(code) { return window["ROMAN_" + String(code || "").toUpperCase()] || null; }
   function romanUnlocked(code) {
@@ -24198,10 +24206,31 @@ window.Legal = (function () {
     const kap = el("div", "roman-kap-row"); frag.appendChild(kap);
     const texte = el("div", "roman-texte"); texte.setAttribute("dir", "ltr"); frag.appendChild(texte);
     const legend = el("p", "roman-legende loc-keep");
-    legend.innerHTML = '<span class="g-der">■ der</span> <span class="g-die">■ die</span> <span class="g-das">■ das</span> <span class="g-x">■ verbes & expressions</span> · 👆 touchez un mot coloré';
+    legend.innerHTML = '<span class="g-der">■ der</span> <span class="g-die">■ die</span> <span class="g-das">■ das</span> <span class="g-x">■ verbes & expressions</span> · 👆 touchez un mot coloré pour la traduction';
     frag.appendChild(legend);
-    const notesBox = el("div", "roman-notes"); frag.appendChild(notesBox);
     const quizRow = el("div", "roman-quiz-row"); frag.appendChild(quizRow);
+    // Bulle de traduction : apparaît au clic sur un mot coloré (comme une liseuse).
+    const pop = el("div", "roman-pop"); pop.style.display = "none"; frag.appendChild(pop);
+    let popOpen = false;
+    function hidePop() { pop.style.display = "none"; popOpen = false; }
+    function showPop(wEl, base, expl) {
+      pop.innerHTML = '<button class="roman-pop-x" type="button" aria-label="Fermer">×</button><div class="roman-pop-de ' + romanGenreCls(base) + '">' + delfEsc(base) + '</div><div class="roman-tr">' + delfEsc(expl) + '</div><button class="roman-pop-spk" type="button">🔊 Écouter</button>';
+      pop.style.display = "block"; popOpen = true;
+      pop.querySelector(".roman-pop-x").addEventListener("click", function (e) { e.stopPropagation(); hidePop(); });
+      pop.querySelector(".roman-pop-spk").addEventListener("click", function (e) { e.stopPropagation(); if (window.Speech) window.Speech.speak(base.replace(/\s*\([^)]*\)\s*$/, ""), { rate: 0.9 }); });
+      romanLocalizeNotes(pop);
+      const r = wEl.getBoundingClientRect(), pwid = pop.offsetWidth, ph = pop.offsetHeight;
+      let left = Math.max(10, Math.min(r.left + r.width / 2 - pwid / 2, window.innerWidth - pwid - 10));
+      let top = r.bottom + 8;
+      if (top + ph > window.innerHeight - 10) top = Math.max(10, r.top - ph - 8);
+      pop.style.left = left + "px"; pop.style.top = top + "px";
+    }
+    if (window.__romanPopCleanup) window.__romanPopCleanup();
+    const onDocClick = function (e) { if (popOpen && !(e.target.closest && (e.target.closest(".roman-pop") || e.target.closest(".roman-mot")))) hidePop(); };
+    const onScroll = function () { if (popOpen) hidePop(); };
+    document.addEventListener("click", onDocClick, true);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.__romanPopCleanup = function () { document.removeEventListener("click", onDocClick, true); window.removeEventListener("scroll", onScroll); };
     const listen = el("button", "btn btn-ghost small roman-listen", "🔊 Écouter la page"); listen.type = "button";
     frag.appendChild(listen);
     const nav = el("div", "roman-nav");
@@ -24217,28 +24246,23 @@ window.Legal = (function () {
       const s2 = romanEtatGet(code); s2.p = idx; s2.lu = s2.lu || []; if (s2.lu.indexOf(idx) < 0) s2.lu.push(idx); romanEtatSet(code, s2);
       const pg = pages[idx]; const ch = (R.chapitres || [])[pg.ch] || {};
       kap.innerHTML = '<span class="roman-kap roman-de">' + delfEsc(ch.titre || "") + "</span>" + (pg.debut ? "" : ' <span class="roman-suite">(suite)</span>');
-      const notes = []; let n = 0;
+      const notes = [];
       texte.innerHTML = pg.paras.map(function (p) {
         return "<p>" + delfEsc(p).replace(ROMAN_GLOSS_RE, function (m, a, b, c) {
           const shown = a, base = c ? b : a, expl = c ? c : b;
-          n++; notes.push({ n: n, base: base, expl: expl });
-          return '<span class="roman-mot ' + romanGenreCls(base) + '" data-fn="' + n + '">' + shown + "<sup>" + n + "</sup></span>";
+          notes.push({ base: base, expl: expl });
+          return '<span class="roman-mot ' + romanGenreCls(base) + '" data-fn="' + (notes.length - 1) + '">' + shown + "</span>";
         }) + "</p>";
       }).join("");
-      notesBox.innerHTML = notes.length
-        ? '<h3 class="roman-notes-t">📖 Vocabulaire de la page</h3><ul class="roman-fnl">' + notes.map(function (o) {
-            return '<li class="roman-fn" id="roman-fn-' + o.n + '"><sup>' + o.n + '</sup> <b class="roman-fn-de ' + romanGenreCls(o.base) + '">' + o.base + '</b> <span class="roman-fn-sep">—</span> <span class="roman-fn-tr">' + o.expl + "</span></li>";
-          }).join("") + "</ul>"
-        : "";
+      hidePop();
       texte.querySelectorAll(".roman-mot").forEach(function (w) {
-        w.addEventListener("click", function () {
-          const o = notes[+w.getAttribute("data-fn") - 1]; if (!o) return;
+        w.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const o = notes[+w.getAttribute("data-fn")]; if (!o) return;
           if (window.Speech) window.Speech.speak(o.base.replace(/\s*\([^)]*\)\s*$/, ""), { rate: 0.9 });
-          const li = document.getElementById("roman-fn-" + o.n);
-          if (li) { li.scrollIntoView({ block: "center", behavior: "smooth" }); li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash"); }
+          showPop(w, o.base, o.expl);
         });
       });
-      romanLocalizeNotes(notesBox);
       quizRow.innerHTML = "";
       const isChapEnd = idx === pages.length - 1 || (pages[idx + 1] && pages[idx + 1].ch !== pg.ch);
       const chGloss = romanChapterGloss(R, pg.ch);

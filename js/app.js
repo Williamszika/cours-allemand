@@ -1947,7 +1947,7 @@
   const ROMAN_ORDER = ["a1", "a2", "b1", "b2", "c1", "c2"];
   const ROMAN_EMOJI = { a1: "📕", a2: "📗", b1: "📘", b2: "📙", c1: "📔", c2: "📒" };
   const ROMAN_RATE = { a1: 0.85, a2: 0.9, b1: 0.95, b2: 1, c1: 1, c2: 1 };
-  const ROMAN_PAGE_CHARS = 480;
+  const ROMAN_PAGE_CHARS = 1200;
   const ROMAN_GLOSS_RE = /\[\[([^\]|]+)\|([^\]|]+)(?:\|([^\]]+))?\]\]/g;
   function romanData(code) { return window["ROMAN_" + String(code || "").toUpperCase()] || null; }
   function romanUnlocked(code) {
@@ -2177,10 +2177,31 @@
     const kap = el("div", "roman-kap-row"); frag.appendChild(kap);
     const texte = el("div", "roman-texte"); texte.setAttribute("dir", "ltr"); frag.appendChild(texte);
     const legend = el("p", "roman-legende loc-keep");
-    legend.innerHTML = '<span class="g-der">■ der</span> <span class="g-die">■ die</span> <span class="g-das">■ das</span> <span class="g-x">■ verbes & expressions</span> · 👆 touchez un mot coloré';
+    legend.innerHTML = '<span class="g-der">■ der</span> <span class="g-die">■ die</span> <span class="g-das">■ das</span> <span class="g-x">■ verbes & expressions</span> · 👆 touchez un mot coloré pour la traduction';
     frag.appendChild(legend);
-    const notesBox = el("div", "roman-notes"); frag.appendChild(notesBox);
     const quizRow = el("div", "roman-quiz-row"); frag.appendChild(quizRow);
+    // Bulle de traduction : apparaît au clic sur un mot coloré (comme une liseuse).
+    const pop = el("div", "roman-pop"); pop.style.display = "none"; frag.appendChild(pop);
+    let popOpen = false;
+    function hidePop() { pop.style.display = "none"; popOpen = false; }
+    function showPop(wEl, base, expl) {
+      pop.innerHTML = '<button class="roman-pop-x" type="button" aria-label="Fermer">×</button><div class="roman-pop-de ' + romanGenreCls(base) + '">' + delfEsc(base) + '</div><div class="roman-tr">' + delfEsc(expl) + '</div><button class="roman-pop-spk" type="button">🔊 Écouter</button>';
+      pop.style.display = "block"; popOpen = true;
+      pop.querySelector(".roman-pop-x").addEventListener("click", function (e) { e.stopPropagation(); hidePop(); });
+      pop.querySelector(".roman-pop-spk").addEventListener("click", function (e) { e.stopPropagation(); if (window.Speech) window.Speech.speak(base.replace(/\s*\([^)]*\)\s*$/, ""), { rate: 0.9 }); });
+      romanLocalizeNotes(pop);
+      const r = wEl.getBoundingClientRect(), pwid = pop.offsetWidth, ph = pop.offsetHeight;
+      let left = Math.max(10, Math.min(r.left + r.width / 2 - pwid / 2, window.innerWidth - pwid - 10));
+      let top = r.bottom + 8;
+      if (top + ph > window.innerHeight - 10) top = Math.max(10, r.top - ph - 8);
+      pop.style.left = left + "px"; pop.style.top = top + "px";
+    }
+    if (window.__romanPopCleanup) window.__romanPopCleanup();
+    const onDocClick = function (e) { if (popOpen && !(e.target.closest && (e.target.closest(".roman-pop") || e.target.closest(".roman-mot")))) hidePop(); };
+    const onScroll = function () { if (popOpen) hidePop(); };
+    document.addEventListener("click", onDocClick, true);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.__romanPopCleanup = function () { document.removeEventListener("click", onDocClick, true); window.removeEventListener("scroll", onScroll); };
     const listen = el("button", "btn btn-ghost small roman-listen", "🔊 Écouter la page"); listen.type = "button";
     frag.appendChild(listen);
     const nav = el("div", "roman-nav");
@@ -2196,28 +2217,23 @@
       const s2 = romanEtatGet(code); s2.p = idx; s2.lu = s2.lu || []; if (s2.lu.indexOf(idx) < 0) s2.lu.push(idx); romanEtatSet(code, s2);
       const pg = pages[idx]; const ch = (R.chapitres || [])[pg.ch] || {};
       kap.innerHTML = '<span class="roman-kap roman-de">' + delfEsc(ch.titre || "") + "</span>" + (pg.debut ? "" : ' <span class="roman-suite">(suite)</span>');
-      const notes = []; let n = 0;
+      const notes = [];
       texte.innerHTML = pg.paras.map(function (p) {
         return "<p>" + delfEsc(p).replace(ROMAN_GLOSS_RE, function (m, a, b, c) {
           const shown = a, base = c ? b : a, expl = c ? c : b;
-          n++; notes.push({ n: n, base: base, expl: expl });
-          return '<span class="roman-mot ' + romanGenreCls(base) + '" data-fn="' + n + '">' + shown + "<sup>" + n + "</sup></span>";
+          notes.push({ base: base, expl: expl });
+          return '<span class="roman-mot ' + romanGenreCls(base) + '" data-fn="' + (notes.length - 1) + '">' + shown + "</span>";
         }) + "</p>";
       }).join("");
-      notesBox.innerHTML = notes.length
-        ? '<h3 class="roman-notes-t">📖 Vocabulaire de la page</h3><ul class="roman-fnl">' + notes.map(function (o) {
-            return '<li class="roman-fn" id="roman-fn-' + o.n + '"><sup>' + o.n + '</sup> <b class="roman-fn-de ' + romanGenreCls(o.base) + '">' + o.base + '</b> <span class="roman-fn-sep">—</span> <span class="roman-fn-tr">' + o.expl + "</span></li>";
-          }).join("") + "</ul>"
-        : "";
+      hidePop();
       texte.querySelectorAll(".roman-mot").forEach(function (w) {
-        w.addEventListener("click", function () {
-          const o = notes[+w.getAttribute("data-fn") - 1]; if (!o) return;
+        w.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const o = notes[+w.getAttribute("data-fn")]; if (!o) return;
           if (window.Speech) window.Speech.speak(o.base.replace(/\s*\([^)]*\)\s*$/, ""), { rate: 0.9 });
-          const li = document.getElementById("roman-fn-" + o.n);
-          if (li) { li.scrollIntoView({ block: "center", behavior: "smooth" }); li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash"); }
+          showPop(w, o.base, o.expl);
         });
       });
-      romanLocalizeNotes(notesBox);
       quizRow.innerHTML = "";
       const isChapEnd = idx === pages.length - 1 || (pages[idx + 1] && pages[idx + 1].ch !== pg.ch);
       const chGloss = romanChapterGloss(R, pg.ch);
