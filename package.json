@@ -2,6 +2,9 @@
   "private": true,
   "name": "cours-allemand",
   "version": "1.0.0",
-  "description": "Cours d'allemand A1->C2 + Deutsch fuer die Pflege (Mini App). Fonctions serverless dans /api (proxy TTS ElevenLabs).",
-  "license": "UNLICENSED"
+  "description": "Cours d'allemand A1->C2 + Deutsch fuer die Pflege (Mini App). Front statique + fonctions serverless dans /api (tuteur IA, examens differes, STT/TTS, admin), stockage Upstash Redis.",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@upstash/redis": "^1.38.0"
+  }
 }

@@ -3,8 +3,16 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "functions": {
-    "api/tts.js": { "maxDuration": 30 }
+    "api/tts.js": { "maxDuration": 30 },
+    "api/chat.js": { "maxDuration": 30 },
+    "api/stt.js": { "maxDuration": 30 },
+    "api/exam.js": { "maxDuration": 60 },
+    "api/admin.js": { "maxDuration": 30 },
+    "api/cron.js": { "maxDuration": 60 }
   },
+  "crons": [
+    { "path": "/api/cron", "schedule": "0 3 * * *" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
