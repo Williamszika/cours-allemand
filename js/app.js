@@ -21,6 +21,53 @@
   function niveauTermine(n) {
     return flat.filter((f) => f.lecon.niveau === n).every((f) => window.Progress.estTermine(f.lecon.id));
   }
+  /* Exercices RATÉS (répondus mais faux) d'un niveau → rattrapage avant l'examen. */
+  function exercicesRatesNiveau(niv) {
+    const res = [];
+    flat.filter((f) => f.lecon.niveau === niv).forEach((f) => {
+      const ex = (window.Progress.getLecon(f.lecon.id) || {}).exercices || {};
+      let rates = 0; Object.keys(ex).forEach((k) => { if (ex[k] === false) rates++; });
+      if (rates > 0) res.push({ lecon: f.lecon, rates: rates });
+    });
+    return res;
+  }
+  const EXAM_NIVEAUX = { a1: ["A1"], a2: ["A2"], final: ["A1", "A2"], b1: ["B1"], b2: ["B2"], finalb: ["B1", "B2"], c1: ["C1"], c2: ["C2"], finalc: ["C1", "C2"] };
+  function ratesAvantExamen(code) {
+    let res = []; (EXAM_NIVEAUX[code] || []).forEach((n) => { res = res.concat(exercicesRatesNiveau(n)); });
+    return res;
+  }
+  /* Écran de rattrapage : liste les leçons contenant des exercices ratés à
+     corriger avant de pouvoir passer l'examen du niveau. */
+  function renderRattrapage(code, lecons) {
+    const totalRates = lecons.reduce((s, x) => s + x.rates, 0);
+    app.innerHTML = ""; const frag = document.createDocumentFragment();
+    const top = el("div", "lesson-top");
+    top.innerHTML = '<a class="btn-link" href="#/">← Aperçu du programme</a><span class="lesson-top-mod">🔁 Rattrapage</span>';
+    frag.appendChild(top);
+    const head = el("header", "lesson-head");
+    head.innerHTML = '<div class="lesson-num">Avant l\'examen</div><h1>🔁 Rattrapage</h1><p class="lesson-theme">Tu as <strong>' + totalRates + '</strong> exercice' + (totalRates > 1 ? "s" : "") + ' à corriger avant de passer l\'examen. Ouvre chaque leçon, refais l\'exercice marqué en rouge, valide-le, puis reviens ici.</p>';
+    frag.appendChild(head);
+    const sec = el("section", "lesson-section");
+    lecons.forEach((x) => {
+      const card = el("a", "menu-card"); card.href = "#/lecon/" + x.lecon.id;
+      card.innerHTML = '<div class="menu-ic">📝</div><div class="menu-card-body"><h2>Leçon ' + x.lecon.numero + " — " + delfEsc(x.lecon.titre) + '</h2><p>' + x.rates + " exercice" + (x.rates > 1 ? "s" : "") + ' à corriger</p></div><span class="menu-go">→</span>';
+      sec.appendChild(card);
+    });
+    frag.appendChild(sec);
+    const row = el("div", "rev-actions");
+    const recheck = el("button", "btn btn-primary", "J'ai corrigé — vérifier ✓"); recheck.type = "button";
+    recheck.addEventListener("click", () => {
+      const rest = ratesAvantExamen(code);
+      if (!rest.length) location.hash = "#/examen/" + code;
+      else { toast("Il reste " + rest.reduce((s, x) => s + x.rates, 0) + " exercice(s) à corriger."); renderRattrapage(code, rest); }
+    });
+    row.appendChild(recheck);
+    frag.appendChild(row);
+    app.appendChild(frag);
+    try { localizeUI(app); } catch (e) {}
+    if (window.TG) { try { window.TG.showBackButton(() => { location.hash = "#/"; }); if (window.TG.hideMainButton) window.TG.hideMainButton(); } catch (e) {} }
+    window.scrollTo(0, 0);
+  }
   function isUnlocked(idx) {
     if (idx <= 0) return true;
     const l = flat[idx].lecon;
@@ -992,7 +1039,7 @@
     exo.id = "exo";
     exo.appendChild(el("h2", "", "✍️ Exercices interactifs"));
     const seuil = COURS.seuilLecon || 70;
-    exo.appendChild(el("p", "exo-group-sub", "Faites tous les exercices. Atteignez <strong>" + seuil + "% de bonnes réponses</strong> pour valider la leçon : la suivante se débloque et s'ouvre automatiquement."));
+    exo.appendChild(el("p", "exo-group-sub", "Fais <strong>tous</strong> les exercices pour valider la leçon (la suivante se débloque). Les exercices ratés seront à <strong>refaire avant l'examen du niveau</strong>."));
     const exProg = el("div", "exo-progress");
     const bar = el("div", "bar");
     const fill = el("div", "bar-fill");
@@ -1012,15 +1059,18 @@
     let completionShown = window.Progress.estTermine(l.id);
     let unlockNext = function () {}; // activé quand la leçon est validée (défini plus bas)
     function refresh() {
-      // Durci : il faut réussir TOUS les exercices pour valider la leçon.
+      // La leçon suivante se débloque dès que TOUS les exercices sont FAITS.
+      // Les exercices ratés (rouge) restent à refaire avant l'examen du niveau (rattrapage).
       const tousJustes = total > 0 && success.size === total;
+      const aRevoir = total - success.size;
       label.textContent = success.size + "/" + total + " réussis"
-        + (done.size < total ? " · encore " + (total - done.size) + " à faire" : (tousJustes ? " · leçon validée ✅" : " · " + (total - success.size) + " à corriger (en rouge)"));
-      fill.style.width = total ? (success.size / total) * 100 + "%" : "0%";
-      if (done.size === total && tousJustes) {
-        window.Progress.marquerTermine(l.id, 100);
+        + (done.size < total ? " · encore " + (total - done.size) + " à faire" : (tousJustes ? " · parfait ✅" : " · " + aRevoir + " à refaire avant l'examen"));
+      fill.style.width = total ? (done.size / total) * 100 + "%" : "0%";
+      if (done.size === total && total > 0) {
+        const score = Math.round((success.size / total) * 100);
+        window.Progress.marquerTermine(l.id, score);
         unlockNext();
-        if (!completionShown) { completionShown = true; showCompletion(exo, 100, idx, true); }
+        if (!completionShown) { completionShown = true; showCompletion(exo, score, idx, true); }
       }
     }
 
@@ -1083,7 +1133,7 @@
     const dejaValide = window.Progress.estTermine(l.id);
     const next = el("a", "btn btn-primary" + (dejaValide ? "" : " is-locked"), dejaValide ? suiteLabel : "🔒 Termine tous les exercices");
     if (dejaValide) next.href = suite;
-    else next.addEventListener("click", (e) => { e.preventDefault(); document.getElementById("exo") && document.getElementById("exo").scrollIntoView({ behavior: "smooth" }); toast("Termine tous les exercices de la leçon (≥ " + seuil + " % de réussite) pour débloquer la suite. 💪"); });
+    else next.addEventListener("click", (e) => { e.preventDefault(); document.getElementById("exo") && document.getElementById("exo").scrollIntoView({ behavior: "smooth" }); toast("Fais tous les exercices de la leçon pour débloquer la suite. 💪"); });
     nav.appendChild(next);
     unlockNext = function () {
       next.classList.remove("is-locked");
@@ -1101,7 +1151,7 @@
       window.TG.showBackButton(() => { location.hash = "#/"; });
       window.TG.closingConfirmation(false);
       if (dejaValide) window.TG.setMainButton(suiteExamen ? "🎓 Examen " + flat[idx].lecon.niveau : "Suivant →", () => { location.hash = suite; });
-      else window.TG.setMainButton("🔒 Fais tous les exercices", () => { toast("Termine tous les exercices (≥ " + seuil + " %) pour continuer. 💪"); });
+      else window.TG.setMainButton("🔒 Fais tous les exercices", () => { toast("Fais tous les exercices pour continuer. 💪"); });
     }
     window.scrollTo(0, 0);
   }
@@ -1138,7 +1188,8 @@
     c.innerHTML =
       '<div class="comp-emoji">🎉</div>' +
       "<h3>Leçon validée !</h3>" +
-      '<p><span class="comp-score">100 % — tous les exercices réussis</span> 🎯 — ' +
+      '<p>Score : <span class="comp-score">' + score + "%</span> — " +
+      (score < 100 ? "les exercices ratés seront à refaire avant l'examen. " : "parfait, tout est juste ! ") +
       (versExamen ? "passez l'examen du niveau " + flat[idx].lecon.niveau + " !" : "leçon suivante débloquée !") + "</p>" +
       '<p class="comp-auto">➡️ Ouverture de ' + cible + ' dans <span id="cd">4</span> s…</p>';
     const actions = el("div", "rev-actions");
@@ -2570,6 +2621,8 @@
     const passed = !!((window.Progress.getTestScore(code) || {}).reussi);
     const loc = delfLocalGet(code) || {};
     if (loc.status === "pending" && !passed) { location.hash = base + "/resultat"; return; }
+    // Rattrapage : corriger les exercices ratés du niveau avant l'examen.
+    if (!passed) { const rr = ratesAvantExamen(code); if (rr.length) return renderRattrapage(code, rr); }
     const state = { co: null, ce: null, ee: [], eo: [], dictee: null };
     const E = D.epreuves;
 
@@ -2844,6 +2897,8 @@
     const dkey = code + "-" + pkey;
     const loc0 = telcLocalGet(code) || {};
     if (loc0[pkey] && loc0[pkey].status === "pending" && !loc0[pkey].passed) { location.hash = base + "/resultat/" + route; return; }
+    // Rattrapage : corriger les exercices ratés du niveau avant l'examen.
+    if (!(loc0[pkey] && loc0[pkey].passed)) { const rr = ratesAvantExamen(code); if (rr.length) return renderRattrapage(code, rr); }
     const SC = { brand: "📜 telc " + CODE, hashPrefix: base, backHash: base };
 
     function submitPart(key, payload) {
