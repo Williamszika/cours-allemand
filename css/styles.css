@@ -1266,3 +1266,5 @@ ul.delf-epreuves li { background: rgba(127, 127, 127, .08); border-radius: 10px;
 [data-tg-scheme="dark"] .roman-quiz-opt { background: #131a24; }
 [data-tg-scheme="dark"] .roman-quiz-opt.ok { background: #06281a; }
 [data-tg-scheme="dark"] .roman-quiz-opt.ko { background: #2a0f0f; }
+
+.oral-status { margin: 8px 0; font-size: 14px; color: var(--muted); min-height: 20px; }

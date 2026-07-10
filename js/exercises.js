@@ -520,57 +520,63 @@ window.Exercises = (function () {
     body.appendChild(modele);
     modele.querySelector(".modele-audio").addEventListener("click", () => window.Speech && window.Speech.speak(ex.modele));
 
-    const supported = window.Speech && window.Speech.recognitionSupported && window.Speech.recognitionSupported();
+    const status = el("div", "oral-status");
+    const attendus = ex.attendus || [];
+    // On laisse la personne FINIR de parler, on transcrit sa voix (serveur STT),
+    // puis on compare aux MOTS CLÉS attendus : assez de mots clés présents → réussi.
+    function analyse(text) {
+      transcript.classList.remove("hidden");
+      transcript.innerHTML = '<span class="oral-label">Vous avez dit :</span> ';
+      transcript.appendChild(document.createTextNode("« " + text + " »"));
+      const found = attendus.filter((a) => contains(text, a));
+      const besoin = attendus.length === 0 ? 0 : Math.max(1, Math.ceil(attendus.length * 0.5));
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      const ok = attendus.length === 0 ? words >= 3 : found.length >= besoin;
+      lastOk = ok;
+      modele.classList.remove("hidden");
+      feedback.className = "exo-feedback show " + (ok ? "juste" : "faux");
+      feedback.innerHTML =
+        (ok ? "✓ Bien dit ! Vos mots clés y sont. " : "✗ Il manque des mots clés. ") +
+        (attendus.length ? "Repérés : " + found.length + "/" + attendus.length + "." : "") +
+        "<div class='exo-explication'>👉 Comparez avec le modèle" + (ok ? "." : " et réessayez.") + "</div>";
+      if (onResult) onResult(ok);
+    }
 
-    if (supported) {
+    const recOK = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
+    if (recOK) {
       const mic = el("button", "btn btn-mic", "🎤 Parler");
       mic.type = "button";
-      let listening = false;
+      let mr = null, chunks = [], recording = false;
       mic.addEventListener("click", () => {
-        if (listening) return;
-        listening = true;
-        mic.classList.add("listening");
-        mic.textContent = "🎙️ J'écoute…";
-        transcript.classList.add("hidden");
-        window.Speech.recognize(
-          (alts) => {
-            const best = alts[0] || "";
-            transcript.classList.remove("hidden");
-            transcript.innerHTML = '<span class="oral-label">Vous avez dit :</span> « ' + best + " »";
-            const attendus = ex.attendus || [];
-            const found = attendus.filter((a) => alts.some((alt) => contains(alt, a)));
-            const besoin = attendus.length === 0 ? 0 : Math.max(1, Math.ceil(attendus.length * 0.5));
-            const ok = attendus.length === 0 ? best.trim().split(/\s+/).length >= 3 : found.length >= besoin;
-            lastOk = ok;
-            modele.classList.remove("hidden");
-            feedback.className = "exo-feedback show " + (ok ? "juste" : "faux");
-            feedback.innerHTML =
-              (ok ? "✓ Bien dit ! Zika a reconnu votre production. " : "✗ Reconnaissance partielle. ") +
-              (attendus.length ? "Mots clés repérés : " + found.length + "/" + attendus.length + ". " : "") +
-              "<div class='exo-explication'>👉 Comparez avec le modèle et réessayez pour vous améliorer.</div>";
-            if (onResult) onResult(ok);
-          },
-          () => {
-            feedback.className = "exo-feedback show neutre";
-            feedback.innerHTML = "🎤 Micro indisponible ou écoute interrompue. Utilisez l'auto-évaluation ci-dessous.";
-          },
-          () => {
-            listening = false;
-            mic.classList.remove("listening");
-            mic.textContent = "🎤 Parler";
-          }
-        );
+        if (recording) { if (mr) mr.stop(); return; }
+        navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+          chunks = [];
+          try { mr = new MediaRecorder(stream); }
+          catch (e) { status.textContent = "⚠️ Micro non supporté — auto-évaluez-vous."; stream.getTracks().forEach((t) => t.stop()); return; }
+          mr.ondataavailable = (e) => { if (e.data && e.data.size) chunks.push(e.data); };
+          mr.onstop = () => {
+            recording = false; mic.classList.remove("listening"); mic.textContent = "🎤 Parler";
+            stream.getTracks().forEach((t) => t.stop());
+            const blob = new Blob(chunks, { type: (chunks[0] && chunks[0].type) || "audio/webm" });
+            status.textContent = "⏳ J'analyse votre production…";
+            fetch("/api/stt", { method: "POST", headers: { "content-type": blob.type || "audio/webm" }, body: blob })
+              .then((r) => (r.ok ? r.json() : null))
+              .then((j) => {
+                status.textContent = "";
+                if (j && j.text && j.text.trim()) analyse(j.text);
+                else { feedback.className = "exo-feedback show neutre"; feedback.innerHTML = "🎤 Je n'ai rien compris — réessayez plus près du micro, ou auto-évaluez-vous."; }
+              })
+              .catch(() => { status.textContent = ""; feedback.className = "exo-feedback show neutre"; feedback.innerHTML = "🎤 Micro/serveur indisponible — auto-évaluez-vous ci-dessous."; });
+          };
+          mr.start(); recording = true; mic.classList.add("listening"); mic.textContent = "⏹️ J'ai fini";
+          status.textContent = "🎙️ Parlez… puis appuyez sur « J'ai fini ».";
+        }).catch(() => { status.textContent = "⚠️ Micro indisponible — auto-évaluez-vous ci-dessous."; });
       });
       actions.appendChild(mic);
     } else {
-      body.appendChild(
-        el(
-          "p",
-          "exo-indice",
-          "ℹ️ La reconnaissance vocale n'est pas disponible sur ce navigateur. Écoutez le modèle, répétez à voix haute, puis auto-évaluez-vous."
-        )
-      );
+      body.appendChild(el("p", "exo-indice", "ℹ️ Le micro n'est pas disponible sur ce navigateur. Écoutez le modèle, répétez à voix haute, puis auto-évaluez-vous."));
     }
+    body.appendChild(status);
 
     const ecouter = el("button", "btn btn-ghost small", "🔊 Écouter le modèle");
     ecouter.type = "button";
