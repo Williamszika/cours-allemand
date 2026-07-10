@@ -1012,14 +1012,15 @@
     let completionShown = window.Progress.estTermine(l.id);
     let unlockNext = function () {}; // activé quand la leçon est validée (défini plus bas)
     function refresh() {
-      const besoin = Math.ceil(seuil * total / 100);
-      label.textContent = done.size + "/" + total + " faits · " + success.size + "/" + total + " justes · requis " + besoin + "/" + total;
-      fill.style.width = total ? (done.size / total) * 100 + "%" : "0%";
-      if (done.size === total && total > 0) {
-        const score = Math.round((success.size / total) * 100);
-        const passed = score >= seuil;
-        if (passed) { window.Progress.marquerTermine(l.id, score); unlockNext(); }
-        if (!completionShown) { completionShown = true; showCompletion(exo, score, idx, passed); }
+      // Durci : il faut réussir TOUS les exercices pour valider la leçon.
+      const tousJustes = total > 0 && success.size === total;
+      label.textContent = success.size + "/" + total + " réussis"
+        + (done.size < total ? " · encore " + (total - done.size) + " à faire" : (tousJustes ? " · leçon validée ✅" : " · " + (total - success.size) + " à corriger (en rouge)"));
+      fill.style.width = total ? (success.size / total) * 100 + "%" : "0%";
+      if (done.size === total && tousJustes) {
+        window.Progress.marquerTermine(l.id, 100);
+        unlockNext();
+        if (!completionShown) { completionShown = true; showCompletion(exo, 100, idx, true); }
       }
     }
 
@@ -1137,7 +1138,7 @@
     c.innerHTML =
       '<div class="comp-emoji">🎉</div>' +
       "<h3>Leçon validée !</h3>" +
-      '<p>Score : <span class="comp-score">' + score + "%</span> (requis " + seuil + "%) — " +
+      '<p><span class="comp-score">100 % — tous les exercices réussis</span> 🎯 — ' +
       (versExamen ? "passez l'examen du niveau " + flat[idx].lecon.niveau + " !" : "leçon suivante débloquée !") + "</p>" +
       '<p class="comp-auto">➡️ Ouverture de ' + cible + ' dans <span id="cd">4</span> s…</p>';
     const actions = el("div", "rev-actions");

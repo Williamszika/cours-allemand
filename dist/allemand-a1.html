@@ -21439,16 +21439,17 @@ window.Exercises = (function () {
       transcript.innerHTML = '<span class="oral-label">Vous avez dit :</span> ';
       transcript.appendChild(document.createTextNode("« " + text + " »"));
       const found = attendus.filter((a) => contains(text, a));
-      const besoin = attendus.length === 0 ? 0 : Math.max(1, Math.ceil(attendus.length * 0.5));
       const words = text.trim() ? text.trim().split(/\s+/).length : 0;
-      const ok = attendus.length === 0 ? words >= 3 : found.length >= besoin;
+      // Durci : TOUS les mots clés attendus doivent être présents (sinon on refait).
+      const ok = attendus.length === 0 ? words >= 5 : found.length >= attendus.length;
       lastOk = ok;
       modele.classList.remove("hidden");
       feedback.className = "exo-feedback show " + (ok ? "juste" : "faux");
+      const manquants = attendus.filter((a) => !contains(text, a));
       feedback.innerHTML =
-        (ok ? "✓ Bien dit ! Vos mots clés y sont. " : "✗ Il manque des mots clés. ") +
-        (attendus.length ? "Repérés : " + found.length + "/" + attendus.length + "." : "") +
-        "<div class='exo-explication'>👉 Comparez avec le modèle" + (ok ? "." : " et réessayez.") + "</div>";
+        (ok ? "✓ Parfait ! Tous les mots clés y sont. " : "✗ Il faut TOUS les mots clés. ") +
+        (attendus.length ? "Repérés : " + found.length + "/" + attendus.length + (manquants.length ? " · manquants : " + manquants.join(", ") : "") + "." : "") +
+        "<div class='exo-explication'>👉 " + (ok ? "Bravo, comparez avec le modèle." : "Écoutez le modèle et redites la phrase complète.") + "</div>";
       if (onResult) onResult(ok);
     }
 
@@ -23058,14 +23059,15 @@ window.Legal = (function () {
     let completionShown = window.Progress.estTermine(l.id);
     let unlockNext = function () {}; // activé quand la leçon est validée (défini plus bas)
     function refresh() {
-      const besoin = Math.ceil(seuil * total / 100);
-      label.textContent = done.size + "/" + total + " faits · " + success.size + "/" + total + " justes · requis " + besoin + "/" + total;
-      fill.style.width = total ? (done.size / total) * 100 + "%" : "0%";
-      if (done.size === total && total > 0) {
-        const score = Math.round((success.size / total) * 100);
-        const passed = score >= seuil;
-        if (passed) { window.Progress.marquerTermine(l.id, score); unlockNext(); }
-        if (!completionShown) { completionShown = true; showCompletion(exo, score, idx, passed); }
+      // Durci : il faut réussir TOUS les exercices pour valider la leçon.
+      const tousJustes = total > 0 && success.size === total;
+      label.textContent = success.size + "/" + total + " réussis"
+        + (done.size < total ? " · encore " + (total - done.size) + " à faire" : (tousJustes ? " · leçon validée ✅" : " · " + (total - success.size) + " à corriger (en rouge)"));
+      fill.style.width = total ? (success.size / total) * 100 + "%" : "0%";
+      if (done.size === total && tousJustes) {
+        window.Progress.marquerTermine(l.id, 100);
+        unlockNext();
+        if (!completionShown) { completionShown = true; showCompletion(exo, 100, idx, true); }
       }
     }
 
@@ -23183,7 +23185,7 @@ window.Legal = (function () {
     c.innerHTML =
       '<div class="comp-emoji">🎉</div>' +
       "<h3>Leçon validée !</h3>" +
-      '<p>Score : <span class="comp-score">' + score + "%</span> (requis " + seuil + "%) — " +
+      '<p><span class="comp-score">100 % — tous les exercices réussis</span> 🎯 — ' +
       (versExamen ? "passez l'examen du niveau " + flat[idx].lecon.niveau + " !" : "leçon suivante débloquée !") + "</p>" +
       '<p class="comp-auto">➡️ Ouverture de ' + cible + ' dans <span id="cd">4</span> s…</p>';
     const actions = el("div", "rev-actions");
