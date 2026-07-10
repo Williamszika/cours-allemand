@@ -529,16 +529,17 @@ window.Exercises = (function () {
       transcript.innerHTML = '<span class="oral-label">Vous avez dit :</span> ';
       transcript.appendChild(document.createTextNode("« " + text + " »"));
       const found = attendus.filter((a) => contains(text, a));
-      const besoin = attendus.length === 0 ? 0 : Math.max(1, Math.ceil(attendus.length * 0.5));
       const words = text.trim() ? text.trim().split(/\s+/).length : 0;
-      const ok = attendus.length === 0 ? words >= 3 : found.length >= besoin;
+      // Durci : TOUS les mots clés attendus doivent être présents (sinon on refait).
+      const ok = attendus.length === 0 ? words >= 5 : found.length >= attendus.length;
       lastOk = ok;
       modele.classList.remove("hidden");
       feedback.className = "exo-feedback show " + (ok ? "juste" : "faux");
+      const manquants = attendus.filter((a) => !contains(text, a));
       feedback.innerHTML =
-        (ok ? "✓ Bien dit ! Vos mots clés y sont. " : "✗ Il manque des mots clés. ") +
-        (attendus.length ? "Repérés : " + found.length + "/" + attendus.length + "." : "") +
-        "<div class='exo-explication'>👉 Comparez avec le modèle" + (ok ? "." : " et réessayez.") + "</div>";
+        (ok ? "✓ Parfait ! Tous les mots clés y sont. " : "✗ Il faut TOUS les mots clés. ") +
+        (attendus.length ? "Repérés : " + found.length + "/" + attendus.length + (manquants.length ? " · manquants : " + manquants.join(", ") : "") + "." : "") +
+        "<div class='exo-explication'>👉 " + (ok ? "Bravo, comparez avec le modèle." : "Écoutez le modèle et redites la phrase complète.") + "</div>";
       if (onResult) onResult(ok);
     }
 
