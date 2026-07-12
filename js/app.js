@@ -1052,6 +1052,15 @@
     // Exercices de la leçon + (si présent) le jeu de rôle avec Zika, exigé lui aussi.
     const allEx = l.exercices.slice();
     if (l.rp && l.rp.tours && l.rp.tours.length) allEx.push({ type: "rp", scene: l.rp.scene, intro: l.rp.intro, tours: l.rp.tours, fin: l.rp.fin, _niveau: l.niveau, _rp: true });
+    // Production écrite libre « À toi de jouer » : elle aussi OBLIGATOIRE. Il faut la
+    // TRAITER (écrire puis vérifier — même imparfaitement) pour valider la leçon.
+    let modele = "";
+    const gb0 = (l.grammaire || [])[0];
+    if (gb0) { const me = mergeExemples(gb0); if (me && me.length) modele = me[0].de; }
+    if (!modele && l.dialogue && l.dialogue.lignes && l.dialogue.lignes[0]) modele = l.dialogue.lignes[0].de;
+    if (!modele && l.vocabulaire && l.vocabulaire[0] && l.vocabulaire[0].ex) modele = l.vocabulaire[0].ex;
+    if (!modele) modele = "Ich lerne Deutsch.";
+    allEx.push({ type: "production", _pratique: true, consigne: "🎯 À toi de jouer — réutilise ce que tu viens d'apprendre.", prompt: "Écris 2 ou 3 phrases en allemand en réutilisant « " + l.titre + " ».", attendus: [], modele: modele });
     const total = allEx.length;
     const done = new Set();
     const success = new Set();
@@ -1063,8 +1072,11 @@
       // Les exercices ratés (rouge) restent à refaire avant l'examen du niveau (rattrapage).
       const tousJustes = total > 0 && success.size === total;
       const aRevoir = total - success.size;
-      label.textContent = success.size + "/" + total + " réussis"
-        + (done.size < total ? " · encore " + (total - done.size) + " à faire" : (tousJustes ? " · parfait ✅" : " · " + aRevoir + " à refaire avant l'examen"));
+      // Le verrou = TOUS les exercices TRAITÉS (faits), même faux. On affiche donc
+      // d'abord « faits » (le critère qui débloque), puis les ratés à rattraper.
+      label.textContent = done.size < total
+        ? done.size + "/" + total + " faits · encore " + (total - done.size) + " à traiter"
+        : (tousJustes ? total + "/" + total + " faits · tout juste ✅" : total + "/" + total + " faits · " + aRevoir + " à refaire avant l'examen");
       fill.style.width = total ? (done.size / total) * 100 + "%" : "0%";
       if (done.size === total && total > 0) {
         const score = Math.round((success.size / total) * 100);
@@ -1103,20 +1115,6 @@
     ["comp", "appro", "prod", "rp"].forEach((cat) => { if (groups[cat]) exo.appendChild(groups[cat]); });
     refresh();
     frag.appendChild(exo);
-
-    /* --- Mini-défi : pratique libre (production écrite auto-évaluée) --- */
-    let modele = "";
-    const gb0 = (l.grammaire || [])[0];
-    if (gb0) { const me = mergeExemples(gb0); if (me && me.length) modele = me[0].de; }
-    if (!modele && l.dialogue && l.dialogue.lignes && l.dialogue.lignes[0]) modele = l.dialogue.lignes[0].de;
-    if (!modele && l.vocabulaire && l.vocabulaire[0] && l.vocabulaire[0].ex) modele = l.vocabulaire[0].ex;
-    if (!modele) modele = "Ich lerne Deutsch.";
-    const prat = el("section", "lesson-section cours");
-    prat.appendChild(el("h2", "", "🎯 À toi de jouer"));
-    prat.appendChild(el("p", "exo-group-sub", "Réutilise ce que tu viens d'apprendre : écris tes propres phrases, vérifie, puis compare avec le modèle (auto-évaluation)."));
-    const practiceEx = { type: "production", prompt: "Écris 2 ou 3 phrases en allemand en réutilisant « " + l.titre + " ».", attendus: [], modele: modele };
-    prat.appendChild(window.Exercises.render(practiceEx, 0, null, {}));
-    frag.appendChild(prat);
 
     /* --- Navigation préc / suiv --- */
     const nav = el("div", "lesson-nav");
