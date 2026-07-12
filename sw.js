@@ -4,7 +4,7 @@
    cache-first (instantané et hors-ligne) avec mise à jour en arrière-plan.
    Les photos LoremFlickr sont mises en cache au fil de la navigation.
    ===================================================================== */
-var VERSION = "v1.5.92";
+var VERSION = "v1.5.93";
 var CACHE = "deutsch-a1c2-" + VERSION;
 
 var SHELL = [
@@ -156,7 +156,23 @@ self.addEventListener("fetch", function (e) {
   // Ressources tierces (SDK Telegram, polices…) : on laisse le navigateur gérer.
   if (url.origin !== self.location.origin) return;
 
-  // Même origine : cache-first + mise à jour en arrière-plan ; repli index.html.
+  // Code de l'app (page, JS, CSS) : RÉSEAU D'ABORD → toujours à jour quand on est
+  // en ligne (fini de rester bloqué sur une ancienne version en cache) ; repli
+  // cache/​index.html hors-ligne.
+  var isCode = req.mode === "navigate" || url.pathname === "/" || /\.(js|css)$/.test(url.pathname) || url.pathname.indexOf("/index.html") >= 0;
+  if (isCode) {
+    e.respondWith(
+      fetch(req).then(function (r) {
+        if (r && r.status === 200) { var cp = r.clone(); caches.open(CACHE).then(function (c) { c.put(req, cp); }); }
+        return r;
+      }).catch(function () {
+        return caches.match(req).then(function (hit) { return hit || (req.mode === "navigate" ? caches.match("./index.html") : undefined); });
+      })
+    );
+    return;
+  }
+
+  // Données & autres ressources même-origine : cache d'abord + mise à jour en arrière-plan.
   e.respondWith(
     caches.match(req).then(function (hit) {
       var net = fetch(req).then(function (r) {
