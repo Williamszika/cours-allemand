@@ -133,7 +133,7 @@ window.GRAMMAIRE = {
   g03: {
     id: "g03",
     einstieg: {"intro":"Regarde l'article devant chaque nom. Correspond-il au sexe ?","exemples":[{"de":"der Mann","fr":"l'homme"},{"de":"die Frau","fr":"la femme"},{"de":"das Kind","fr":"l'enfant"},{"de":"das Mädchen","fr":"la jeune fille (!)"}],"question":"Pourquoi *Mädchen* (fille) est-il neutre (*das*) ?"},
-    merke: ["Trois genres : *der* (masculin), *die* (féminin), *das* (neutre).","Le genre est souvent *imprévisible* : apprends toujours le mot AVEC son article.","Au pluriel, l'article défini est *die* pour tous les genres."],
+    merke: ["Trois genres : *der* (masculin), *die* (féminin), *das* (neutre).","Le nominatif est le cas du **sujet** — question **Wer?** (qui ?) / **Was?** (quoi ?).","Le genre est souvent *imprévisible* : apprends toujours le mot AVEC son article.","Au pluriel, l'article défini est *die* pour tous les genres.","Après *sein* (être), l'attribut reste au **nominatif** : *Das ist **ein** Mann*."],
     achtung: [{"erreur":"die Mädchen (une fille)","correct":"**das** Mädchen","explication":"Les diminutifs en *-chen* sont toujours neutres (*das*), quel que soit le sens."},{"erreur":"das Sonne","correct":"**die** Sonne","explication":"*Sonne* (soleil) est féminin en allemand. Le genre français ne se transpose pas."},{"erreur":"Das Auto ist rot, er ist schnell.","correct":"…**es** ist schnell.","explication":"*Auto* est neutre → on le reprend par *es*, pas *er*."}],
     kontrast: {"titre":"Le genre : allemand vs français","similitudes":["Les deux langues attribuent un genre grammatical aux noms."],"differences":["L'allemand a *trois* genres (der/die/das), le français deux.","Le genre ne correspond pas : *die Sonne* (f.) = le soleil (m.), *der Mond* (m.) = la lune (f.).","Il faut mémoriser l'article avec chaque nom : pas de règle fiable."]}, titre: "Le groupe de noms : der/die/das", titreDE: "Artikel: der/die/das",
     theme: "Grammaire", type: "grammaire", duree: 35,
@@ -165,7 +165,8 @@ window.GRAMMAIRE = {
       { type: "qcm", consigne: "Article indéfini.", question: "Das ist ___ Auto.", options: ["ein", "eine", "einen", "der"], correct: 0, explication: "Auto est neutre → ein." },
       { type: "association", consigne: "Associez le nom à son article.", paires: [{ gauche: "Mann", droite: "der" }, { gauche: "Frau", droite: "die" }, { gauche: "Kind", droite: "das" }, { gauche: "Buch", droite: "das" }] },
       { type: "trou", consigne: "Complétez (ein/eine).", texte: "Ich habe {0} Hund und {1} Katze.", accepte: [["einen"], ["eine"]], indice: "der Hund (acc.), die Katze" },
-      { type: "qcm", consigne: "Choisissez.", question: "Comment écrit-on les noms ?", options: ["Avec une majuscule", "En minuscule", "Comme on veut"], correct: 0, explication: "Tous les noms prennent une majuscule." }
+      { type: "qcm", consigne: "Choisissez.", question: "Comment écrit-on les noms ?", options: ["Avec une majuscule", "En minuscule", "Comme on veut"], correct: 0, explication: "Tous les noms prennent une majuscule." },
+      { type: "qcm", consigne: "Le cas du sujet.", question: "Le sujet d'une phrase (Wer? / Was?) est au…", options: ["nominatif", "accusatif", "datif", "génitif"], correct: 0, explication: "Le sujet est toujours au nominatif — c'est la forme du dictionnaire." }
     ]
   },
   g04: {
@@ -248,8 +249,8 @@ window.GRAMMAIRE = {
   g06: {
     id: "g06",
     einstieg: {"intro":"Compare l'article du sujet et celui de l'objet (le COD).","exemples":[{"de":"Der Mann ist hier. Ich sehe den Mann.","fr":"L'homme est là. Je vois l'homme."},{"de":"Ich habe einen Hund.","fr":"J'ai un chien."},{"de":"Ich kaufe die Zeitung.","fr":"J'achète le journal."}],"question":"Quel genre change à l'accusatif (compare *der* → *den*) ?"},
-    merke: ["L'accusatif marque le *COD* (l'objet direct de l'action).","Seul le *masculin* change : *der → den*, *ein → einen*.","Féminin (*die*), neutre (*das*) et pluriel ne changent pas à l'accusatif."],
-    achtung: [{"erreur":"Ich sehe der Mann.","correct":"Ich sehe **den** Mann.","explication":"COD masculin → accusatif *den*, pas *der*."},{"erreur":"Ich habe ein Hund.","correct":"Ich habe **einen** Hund.","explication":"*ein* masculin à l'accusatif devient *einen*."}],
+    merke: ["L'accusatif marque le *COD* (l'objet direct de l'action). Question : **Wen?** (qui ?) / **Was?** (quoi ?).","Seul le *masculin* change : *der → den*, *ein → einen*, *mein → meinen*, *kein → keinen*.","Féminin (*die*), neutre (*das*) et pluriel ne changent pas à l'accusatif.","5 prépositions imposent TOUJOURS l'accusatif : *für, um, durch, gegen, ohne* (moyen mnémo : **FUDGO**).","Après *sein* (être), PAS d'accusatif → on reste au nominatif : *Das ist **ein** Kaffee*, mais *Ich trinke **einen** Kaffee*."],
+    achtung: [{"erreur":"Ich sehe der Mann.","correct":"Ich sehe **den** Mann.","explication":"COD masculin → accusatif *den*, pas *der*."},{"erreur":"Ich habe ein Hund.","correct":"Ich habe **einen** Hund.","explication":"*ein* masculin à l'accusatif devient *einen*."},{"erreur":"ein Geschenk für der Vater","correct":"ein Geschenk für **den** Vater","explication":"*für* impose l'accusatif (mnémo FUDGO) : *der Vater* → *den Vater*."},{"erreur":"Das ist einen Kaffee.","correct":"Das ist **ein** Kaffee.","explication":"Après *sein*, on reste au nominatif (*ein*), pas d'accusatif. Contraste : *Ich trinke **einen** Kaffee* (trinken → accusatif)."}],
     kontrast: {"titre":"L'accusatif : allemand vs français","similitudes":["Les deux ont un complément d'objet direct (COD)."],"differences":["En allemand, le COD masculin change l'article (*den*, *einen*) ; en français, non.","Beaucoup de prépositions imposent l'accusatif (*für*, *ohne*, *durch*, *gegen*).","L'accusatif se *voit* sur l'article ; en français, le COD se repère à la place."]}, titre: "L'accusatif", titreDE: "Der Akkusativ",
     theme: "Grammaire", type: "grammaire", duree: 35,
     objectifs: ["Former l'accusatif (COD)", "Utiliser les pronoms à l'accusatif"],
@@ -260,7 +261,9 @@ window.GRAMMAIRE = {
       "Voici la **grande simplification** à retenir : par rapport au nominatif, **seul le masculin change** à l'accusatif. *der* devient **den**, et *ein* devient **einen**. Le féminin (*die / eine*), le neutre (*das / ein*) et le pluriel (*die*) **ne changent pas du tout**. Autrement dit, si tu maîtrises le nominatif, tu n'as qu'**une seule nouveauté** à mémoriser : der → den, ein → einen.",
       "Exemples concrets : « *Ich sehe den Mann* » (je vois l'homme — masc., donc *den*), « *Ich kaufe einen Apfel* » (j'achète une pomme — *der Apfel*, donc *einen*). Mais : « *Ich sehe die Frau* » (fém., inchangé), « *Ich habe ein Auto* » (neutre, inchangé). Beaucoup de verbes très courants entraînent l'accusatif : *haben* (avoir), *sehen* (voir), *kaufen* (acheter), *essen* (manger), *brauchen* (avoir besoin de), *nehmen* (prendre).",
       "Les **pronoms personnels** ont eux aussi une forme à l'accusatif, à connaître par cœur : *ich → mich*, *du → dich*, *er → ihn*, *sie → sie*, *es → es*, *wir → uns*, *ihr → euch*, *sie/Sie → sie/Sie*. Exemples : « *Ich liebe dich* » (je t'aime), « *Er kennt mich* » (il me connaît).",
-      "Pourquoi ce cas est-il fondamental ? Parce que l'allemand, contrairement au français, ne s'appuie pas sur l'ordre des mots pour savoir qui fait quoi : c'est la **terminaison du cas** qui le dit. « *Den Mann sieht der Hund* » signifie toujours « le chien voit l'homme », même si *den Mann* est en tête, car *den* marque clairement l'objet. Maîtriser l'accusatif, c'est commencer à comprendre la logique profonde de la langue."
+      "Pourquoi ce cas est-il fondamental ? Parce que l'allemand, contrairement au français, ne s'appuie pas sur l'ordre des mots pour savoir qui fait quoi : c'est la **terminaison du cas** qui le dit. « *Den Mann sieht der Hund* » signifie toujours « le chien voit l'homme », même si *den Mann* est en tête, car *den* marque clairement l'objet. Maîtriser l'accusatif, c'est commencer à comprendre la logique profonde de la langue.",
+      "Deux compléments essentiels pour maîtriser vraiment ce cas. **D'abord, cinq prépositions imposent TOUJOURS l'accusatif**, quel que soit le sens : **für** (pour), **um** (autour de / à), **durch** (à travers), **gegen** (contre), **ohne** (sans). Retiens-les avec le moyen mnémotechnique **FUDGO**. Exemples : « *ein Geschenk **für den** Vater* », « *Wir joggen **um den** Block* », « *Das Motorrad fährt **durch den** Tunnel* », « *ohne **einen** Plan* ». Dès qu'une de ces prépositions apparaît, le masculin passe à *den / einen*.",
+      "**Ensuite, un piège capital : après le verbe *sein* (être), on n'emploie JAMAIS l'accusatif** — on reste au **nominatif**, car *sein* ne fait subir aucune action ; il relie simplement deux choses égales. Compare : « *Ich trinke **einen** Kaffee* » (accusatif, car *trinken* agit sur le café) mais « *Das ist **ein** Kaffee* » (nominatif, car *sein* ne fait qu'identifier). La même règle vaut après *werden* (devenir) et *bleiben* (rester). Enfin, sache que les prépositions « mixtes » (*in, auf, an, über…*), elles, ne prennent l'accusatif **que** lorsqu'il y a un **déplacement** (question *Wohin?*, « vers où ? ») : « *Ich gehe **in die** Stadt* » (accusatif, mouvement) vs « *Ich bin **in der** Stadt* » (datif, position) — un point que tu approfondiras avec le datif."
     ],
     grammaire: [
       { titre: "Articles à l'accusatif",
@@ -277,14 +280,34 @@ window.GRAMMAIRE = {
         attention: "Beaucoup de débutants oublient le **-n** du masculin : on dit *Ich habe **einen** Hund* (et non « ~~ein Hund~~ »)." },
       { titre: "Pronoms personnels à l'accusatif", intro: "",
         tableau: { entetes: ["Nominatif", "Accusatif"], lignes: [["ich", "mich"], ["du", "dich"], ["er/sie/es", "ihn / sie / es"], ["wir", "uns"], ["ihr", "euch"], ["sie/Sie", "sie / Sie"]] },
-        note: "Ex. : Ich liebe dich. / Ich sehe ihn." }
+        note: "Ex. : Ich liebe dich. / Ich sehe ihn." },
+      { titre: "Prépositions toujours à l'accusatif (FUDGO)",
+        regle: "Cinq prépositions sont **toujours** suivies de l'**accusatif**, quel que soit le sens : **für** (pour), **um** (autour de / à), **durch** (à travers), **gegen** (contre), **ohne** (sans).",
+        intro: "Moyen mnémotechnique : **FUDGO** (*Für, Um, Durch, Gegen, Ohne*). Au masculin, l'article passe donc à *den / einen* : *für **den** Mann*, *ohne **einen** Plan*.",
+        tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["durch", "à travers", "durch den Tunnel"], ["für", "pour", "für meinen Vater"], ["gegen", "contre", "gegen die Wand"], ["ohne", "sans", "ohne einen Plan"], ["um", "autour de / à", "um den Block"]] },
+        exemples: [
+          { de: "Das Geschenk ist für dich.", fr: "Le cadeau est pour toi." },
+          { de: "Wir joggen um den Block.", fr: "Nous courons autour du pâté de maisons." },
+          { de: "Er kommt ohne seinen Bruder.", fr: "Il vient sans son frère." }
+        ],
+        note: "FUDGO = für, um, durch, gegen, ohne → toujours l'accusatif.",
+        attention: "Ces cinq prépositions prennent l'accusatif **même sans mouvement**. À ne pas confondre avec les prépositions **mixtes** (*in, auf, an…*), qui ne prennent l'accusatif qu'avec un **déplacement** (question *Wohin?*)." },
+      { titre: "Après « sein » : nominatif, pas accusatif !",
+        regle: "Le verbe **sein** (être) — comme **werden** (devenir) et **bleiben** (rester) — n'a **pas** de COD : ce qui suit reste au **nominatif**, jamais à l'accusatif.",
+        intro: "C'est LE piège du masculin : *Ich sehe **einen** Mann* (accusatif après *sehen*) mais *Das ist **ein** Mann* (nominatif après *sein*).",
+        tableau: { entetes: ["Verbe", "Cas", "Exemple"], lignes: [["sein (être)", "nominatif", "Das ist ein Kaffee."], ["trinken (boire)", "accusatif", "Ich trinke einen Kaffee."], ["werden (devenir)", "nominatif", "Er wird ein guter Arzt."], ["kennen (connaître)", "accusatif", "Ich kenne einen guten Arzt."]] },
+        note: "Règle d'or : sein / werden / bleiben → nominatif (jamais d'accusatif)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez l'accusatif.", question: "Ich nehme ___ Kaffee.", options: ["einen", "ein", "eine", "der"], correct: 0, explication: "der Kaffee (m.) → einen." },
       { type: "qcm", consigne: "Pronom accusatif.", question: "Ich liebe ___ ! (toi)", options: ["dich", "du", "dir", "dein"], correct: 0, explication: "du → dich (accusatif)." },
       { type: "trou", consigne: "Complétez (den/die/das).", texte: "Ich sehe {0} Mann und {1} Frau.", accepte: [["den"], ["die"]], indice: "der Mann → den ; die Frau → die" },
       { type: "association", consigne: "Associez nominatif → accusatif.", paires: [{ gauche: "ich", droite: "mich" }, { gauche: "du", droite: "dich" }, { gauche: "er", droite: "ihn" }, { gauche: "wir", droite: "uns" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je prends une salade.", accepte: ["Ich nehme einen Salat"], aide: "der Salat → accusatif" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je prends une salade.", accepte: ["Ich nehme einen Salat"], aide: "der Salat → accusatif" },
+      { type: "qcm", consigne: "Préposition + accusatif (FUDGO).", question: "Das Geschenk ist ___ meinen Vater.", options: ["für", "mit", "bei", "aus"], correct: 0, explication: "für → accusatif (FUDGO) : für meinen Vater." },
+      { type: "trou", consigne: "Complétez (accusatif après durch / für).", texte: "Wir gehen {0} den Park und kaufen etwas {1} den Abend.", accepte: [["durch"], ["für"]], indice: "durch = à travers, für = pour (FUDGO)" },
+      { type: "qcm", consigne: "sein (nominatif) ou accusatif ?", question: "Das ist ___ Kaffee, aber ich trinke ___ Tee.", options: ["ein … einen", "einen … ein", "einen … einen", "ein … ein"], correct: 0, explication: "Après sein → nominatif (ein Kaffee) ; après trinken → accusatif (einen Tee)." },
+      { type: "traduction", consigne: "Traduisez (FUDGO).", source: "Il vient sans son frère.", accepte: ["Er kommt ohne seinen Bruder"], aide: "ohne + accusatif : der Bruder → seinen Bruder" }
     ]
   },
   /* ---------------- Module A1.2 ---------------- */
@@ -427,7 +450,7 @@ window.GRAMMAIRE = {
   g10: {
     id: "g10",
     einstieg: {"intro":"À qui donne-t-on ? Observe l'article du destinataire.","exemples":[{"de":"Ich gebe dem Mann das Buch.","fr":"Je donne le livre à l'homme."},{"de":"Ich helfe der Frau.","fr":"J'aide la femme."},{"de":"Das Auto gehört dem Kind.","fr":"La voiture appartient à l'enfant."}],"question":"Comment changent *der/die/das* au datif ?"},
-    merke: ["Le datif marque souvent le *destinataire* (à qui ?).","Articles au datif : *der→dem*, *die→der*, *das→dem*, pluriel *die→den* (+ -n au nom).","Certains verbes exigent le datif : *helfen, danken, gehören, gefallen*."],
+    merke: ["Le datif marque souvent le *destinataire* — question **Wem?** (à qui ?).","Articles au datif : *der→dem*, *die→der*, *das→dem*, pluriel *die→den* (+ -n au nom).","Pronoms au datif : *mir, dir, ihm, ihr, uns, euch, ihnen* (*Ihnen* poli).","Certains verbes exigent le datif : *helfen, danken, gehören, gefallen*."],
     achtung: [{"erreur":"Ich helfe die Frau.","correct":"Ich helfe **der** Frau.","explication":"*helfen* exige le *datif* : der Frau, pas die Frau."},{"erreur":"mit der Auto","correct":"mit **dem** Auto","explication":"*Auto* est neutre → datif *dem*."},{"erreur":"mit die Kindern","correct":"mit **den** Kindern","explication":"Datif pluriel : article *den* + nom en *-n*."}],
     kontrast: {"titre":"Le datif : allemand vs français","similitudes":["Le datif ≈ le complément d'attribution (« à quelqu'un »)."],"differences":["L'allemand *marque* le datif sur l'article (dem/der) ; le français utilise « à ».","Des verbes comme *helfen, danken* prennent le datif sans préposition (≠ « aider quelqu'un »).","Au datif pluriel, le nom prend un *-n* (den Kindern, den Männern)."]}, titre: "Le groupe de noms au datif", titreDE: "Der Dativ",
     theme: "Grammaire", type: "grammaire", duree: 35,
@@ -452,14 +475,27 @@ window.GRAMMAIRE = {
           { de: "Wir kommen aus der Schweiz.", fr: "Nous venons de Suisse." }
         ],
         note: "Prépositions toujours + datif : mit, zu, bei, von, aus, nach, seit.",
-        attention: "Au **pluriel datif**, le nom prend un **-n** s'il ne l'a pas déjà : *die Kinder* → *mit **den Kindern***. Contractions fréquentes : *zu dem* = **zum**, *zu der* = **zur**, *bei dem* = **beim**." }
+        attention: "Au **pluriel datif**, le nom prend un **-n** s'il ne l'a pas déjà : *die Kinder* → *mit **den Kindern***. Contractions fréquentes : *zu dem* = **zum**, *zu der* = **zur**, *bei dem* = **beim**." },
+      { titre: "Pronoms personnels au datif",
+        regle: "Les pronoms ont aussi une forme au **datif** (« à moi, à toi… »), à connaître par cœur — très fréquente avec *helfen, geben, gefallen, gehören*.",
+        intro: "*Gib **mir** das Buch* (donne-**moi** le livre), *Ich helfe **dir*** (je **t'**aide), *Das gehört **ihm*** (ça **lui** appartient).",
+        tableau: { entetes: ["Nominatif", "Accusatif", "Datif"], lignes: [["ich", "mich", "mir"], ["du", "dich", "dir"], ["er / es", "ihn / es", "ihm"], ["sie (elle)", "sie", "ihr"], ["wir", "uns", "uns"], ["ihr", "euch", "euch"], ["sie / Sie", "sie / Sie", "ihnen / Ihnen"]] },
+        exemples: [
+          { de: "Kannst du mir helfen?", fr: "Peux-tu m'aider ?" },
+          { de: "Ich gebe dir mein Buch.", fr: "Je te donne mon livre." },
+          { de: "Das Auto gehört ihnen.", fr: "La voiture leur appartient." }
+        ],
+        note: "Datif : mir, dir, ihm, ihr, uns, euch, ihnen (Ihnen poli).",
+        attention: "Avec **deux pronoms**, l'ordre est **accusatif avant datif** : *Ich gebe **es dir*** (je te le donne). Mais avec des **noms**, c'est l'inverse : datif avant accusatif (*Ich gebe **dem Kind das Buch***)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez (mit + datif).", question: "Ich fahre mit ___ Bus.", options: ["dem", "der", "den", "das"], correct: 0, explication: "der Bus (m.) au datif → dem." },
       { type: "qcm", consigne: "Datif.", question: "Ich wohne bei ___ Mutter.", options: ["der", "dem", "die", "den"], correct: 0, explication: "die Mutter (f.) → der." },
       { type: "trou", consigne: "Complétez (dem/der).", texte: "Ich fahre mit {0} Bahn zu {1} Arzt.", accepte: [["der"], ["dem"]], indice: "die Bahn (f.), der Arzt (m.)" },
       { type: "association", consigne: "Associez (toujours + datif).", paires: [{ gauche: "mit", droite: "avec" }, { gauche: "zu", droite: "vers/chez" }, { gauche: "bei", droite: "chez" }, { gauche: "aus", droite: "de (origine)" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je voyage en train. (avec le train)", accepte: ["Ich fahre mit dem Zug", "Ich reise mit dem Zug"], aide: "mit dem Zug" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je voyage en train. (avec le train)", accepte: ["Ich fahre mit dem Zug", "Ich reise mit dem Zug"], aide: "mit dem Zug" },
+      { type: "qcm", consigne: "Pronom au datif.", question: "Kannst du ___ helfen? (à moi)", options: ["mir", "mich", "ich", "mein"], correct: 0, explication: "helfen + datif → mir (à moi)." },
+      { type: "trou", consigne: "Complétez (pronom au datif).", texte: "Das Buch gefällt {0}. (à eux)", accepte: [["ihnen"]], indice: "sie (pluriel) → ihnen" }
     ]
   },
   g11: {
@@ -544,6 +580,63 @@ window.GRAMMAIRE = {
       { type: "association", consigne: "Associez l'adjectif et son contraire.", paires: [{ gauche: "groß", droite: "klein" }, { gauche: "neu", droite: "alt" }, { gauche: "gut", droite: "schlecht" }, { gauche: "teuer", droite: "billig" }] },
       { type: "trou", consigne: "Complétez le comparatif.", texte: "Das Auto ist {0} als das Fahrrad. (schnell)", accepte: [["schneller"]], indice: "schnell + -er" },
       { type: "traduction", consigne: "Traduisez.", source: "La maison est grande.", accepte: ["Das Haus ist groß"], aide: "adjectif invariable après ist" }
+    ]
+  },
+  g13: {
+    id: "g13",
+    einstieg: {"intro":"Observe comment l'allemand exprime l'appartenance (« de qui ? »).","exemples":[{"de":"das Auto des Vaters","fr":"la voiture du père"},{"de":"die Tasche der Frau","fr":"le sac de la femme"},{"de":"Annas Buch","fr":"le livre d'Anna"}],"question":"Qu'est-ce qui change dans *der Vater* → *des Vaters* ?"},
+    merke: ["Le génitif exprime l'**appartenance** — question **Wessen?** (de qui ? à qui ?).","Articles : masculin/neutre → **des** (+ **-s** au nom), féminin/pluriel → **der**.","Noms masculins et neutres : on ajoute **-s** (mots courts : **-es**) — *des Vater**s***, *des Kind**es***.","À l'oral, on remplace souvent par **von + datif** : *das Auto **von meinem** Vater*.","Prépositions + génitif : *wegen* (à cause de), *während* (pendant), *trotz* (malgré), *(an)statt* (au lieu de)."],
+    achtung: [{"erreur":"das Auto von der Vater","correct":"das Auto **des Vaters** (ou *von dem Vater*)","explication":"Génitif masculin : *des* + nom en **-s**. À l'oral, *von* + datif (*von dem Vater*) est accepté."},{"erreur":"Annas' Buch","correct":"**Annas** Buch","explication":"Avec un prénom, on ajoute **-s** SANS apostrophe : *Annas*, *Peters* — et on le place AVANT le nom."},{"erreur":"während dem Film","correct":"während **des Films**","explication":"*während* (pendant) demande le génitif à l'écrit soigné : *des Films*."}],
+    kontrast: {"titre":"Le génitif : allemand vs français","similitudes":["Les deux expriment l'appartenance (« de… »)."],"differences":["L'allemand *décline* l'article (*des/der*) et ajoute un **-s** au nom masculin/neutre.","L'ordre est « la chose + du possesseur » : *das Auto **des Vaters***.","À l'oral, l'allemand préfère souvent *von + datif* — proche du « de » français."]}, titre: "Le génitif (l'appartenance)", titreDE: "Der Genitiv",
+    theme: "Grammaire", type: "grammaire", duree: 35,
+    objectifs: ["Exprimer l'appartenance (Wessen?)", "Former le génitif des articles et des noms", "Connaître von + datif à l'oral"],
+    grammairePoints: ["des / der", "-s au nom", "von + datif"],
+    exemplesPlus: [{"de":"Das ist das Haus meiner Eltern.","fr":"C'est la maison de mes parents."},{"de":"Die Farbe des Autos ist rot.","fr":"La couleur de la voiture est rouge."},{"de":"Während der Woche arbeite ich viel.","fr":"Pendant la semaine, je travaille beaucoup."},{"de":"Trotz des Regens gehen wir spazieren.","fr":"Malgré la pluie, nous allons nous promener."},{"de":"Das ist Peters Fahrrad.","fr":"C'est le vélo de Peter."}],
+    cours: [
+      "Le **génitif** est le **4ᵉ et dernier cas** allemand. Il exprime avant tout l'**appartenance** (la possession) : « le livre **de** l'homme », « la voiture **du** père ». La question qui le révèle est **Wessen?** (« de qui ? à qui ? »). C'est le cas le plus **formel** : on le rencontre surtout à l'écrit (journaux, textes soignés), et il complète le système que tu connais déjà (nominatif, accusatif, datif).",
+      "À la différence de l'accusatif, où seul le masculin bougeait, le génitif se reconnaît à **deux marques** simultanées. D'abord l'**article** : au masculin et au neutre, *der/das* devient **des** ; au féminin et au pluriel, *die* devient **der**. Ensuite — et c'est la nouveauté — le **nom masculin ou neutre reçoit un -s** : *der Vater* → *des Vater**s***, *das Kind* → *des Kind**es*** (on ajoute *-es* aux mots courts d'une syllabe pour faciliter la prononciation). Le féminin, lui, ne change pas le nom : *die Frau* → *der Frau*.",
+      "L'**ordre des mots** est fixe : on énonce d'abord **la chose possédée**, puis **le possesseur au génitif**, juste après. « *das Auto des Vaters* » (la voiture du père, littéralement « la voiture du-père »), « *die Farbe der Blume* » (la couleur de la fleur). Avec un **prénom**, l'allemand fait plus simple : on ajoute un **-s sans apostrophe** et on place le nom **devant** : « *Annas Auto* » (la voiture d'Anna), « *Peters Buch* » (le livre de Peter).",
+      "Certaines **prépositions** sont suivies du génitif, surtout à l'écrit : **wegen** (à cause de), **während** (pendant), **trotz** (malgré), **(an)statt** (au lieu de). Exemples : « *während des Films* » (pendant le film), « *trotz des schlechten Wetters* » (malgré le mauvais temps), « *wegen des Regens* » (à cause de la pluie).",
+      "Point essentiel pour parler naturellement : **à l'oral et dans la langue familière, le génitif de possession est très souvent remplacé par *von* + datif**. Ainsi, au lieu de « *das Auto des Vaters* », on entend couramment « *das Auto **von** meinem Vater* ». De même, après *wegen* ou *trotz*, beaucoup d'Allemands utilisent le datif à l'oral (« *wegen dem Regen* »). Retiens donc les deux : le **génitif** pour l'écrit soigné, **von + datif** pour la conversation.",
+      "Avec ce 4ᵉ cas, tu tiens **tout le système de déclinaison** allemand. Chaque cas a son rôle : le **nominatif** pour le sujet (*Wer?*), l'**accusatif** pour le COD (*Wen? / Was?*), le **datif** pour le destinataire (*Wem?*), et le **génitif** pour l'appartenance (*Wessen?*). Le tableau de synthèse ci-dessous réunit les quatre — garde-le sous les yeux : c'est la carte complète de la grammaire allemande."
+    ],
+    grammaire: [
+      { titre: "Articles au génitif",
+        regle: "Le **génitif** marque l'**appartenance** (« de qui ? » = **Wessen?**). Articles : *der/das* → **des**, *die* → **der**. Et le nom **masculin/neutre** prend un **-s** (ou **-es**).",
+        intro: "Compare : *der Vater* (sujet) → *das Auto **des Vaters*** (possesseur). *die Frau* → *die Tasche **der Frau*** (le nom féminin ne change pas).",
+        tableau: { entetes: ["Genre", "Nominatif", "Génitif"], lignes: [["masculin", "der / ein", "des / eines (+ -s au nom)"], ["féminin", "die / eine", "der / einer"], ["neutre", "das / ein", "des / eines (+ -s au nom)"], ["pluriel", "die", "der"]] },
+        schemas: [{ legende: "Le possesseur se met au génitif, juste après la chose possédée.", mots: [{ m: "das Auto", r: "chose possédée", c: "sujet" }, { m: "des", r: "article génitif", c: "verbe" }, { m: "Vaters", r: "possesseur (+ -s)", c: "objet" }] }],
+        exemples: [
+          { de: "Das ist das Haus des Lehrers.", fr: "C'est la maison du professeur." },
+          { de: "Die Farbe der Blume ist schön.", fr: "La couleur de la fleur est belle." },
+          { de: "Das ist Annas Fahrrad.", fr: "C'est le vélo d'Anna." }
+        ],
+        note: "Prénoms : -s SANS apostrophe et placé avant (Annas Auto, Peters Buch).",
+        attention: "N'oublie pas le **-s** au masculin/neutre : *das Ende **des Films*** (et non « ~~des Film~~ »). Le féminin, lui, ne prend jamais de -s : *der Frau*, *der Blume*." },
+      { titre: "Prépositions + génitif (à l'écrit)",
+        regle: "Quatre prépositions courantes demandent le **génitif** dans la langue soignée : **wegen** (à cause de), **während** (pendant), **trotz** (malgré), **(an)statt** (au lieu de).",
+        intro: "*während **des** Films*, *trotz **des** Wetters*, *wegen **des** Regens*. À l'oral, on entend souvent le datif à la place (*wegen dem Regen*).",
+        tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["während", "pendant", "während des Tages"], ["wegen", "à cause de", "wegen des Staus"], ["trotz", "malgré", "trotz des Regens"], ["(an)statt", "au lieu de", "statt eines Kaffees"]] },
+        exemples: [
+          { de: "Während der Ferien reisen wir.", fr: "Pendant les vacances, nous voyageons." },
+          { de: "Trotz des Regens spielen die Kinder.", fr: "Malgré la pluie, les enfants jouent." }
+        ],
+        note: "À l'oral / familier : ces prépositions passent souvent au datif.",
+        attention: "Pour la **possession**, l'oral remplace le génitif par **von + datif** : *das Auto **von meinem** Vater* = *das Auto **des** Vaters*." },
+      { titre: "Vue d'ensemble : les 4 cas (article défini)",
+        regle: "Voici la **carte complète** de la déclinaison. Remarque : le **masculin** est celui qui change le plus (der/den/dem/des) ; le féminin et le neutre changent peu.",
+        intro: "Chaque cas répond à une question : **Wer?** (nominatif), **Wen?** (accusatif), **Wem?** (datif), **Wessen?** (génitif).",
+        tableau: { entetes: ["Cas", "Masculin", "Féminin", "Neutre", "Pluriel"], lignes: [["Nominatif (Wer?)", "der", "die", "das", "die"], ["Accusatif (Wen?)", "den", "die", "das", "die"], ["Datif (Wem?)", "dem", "der", "dem", "den"], ["Génitif (Wessen?)", "des", "der", "des", "der"]] },
+        note: "Astuce : au masculin, tout finit par -n (accusatif/datif) ou -s (génitif) — jamais *der* ailleurs qu'au nominatif.",
+        attention: "Le pluriel au **datif** ajoute un **-n** au nom (*den Kinder**n***) ; le masculin/neutre au **génitif** ajoute un **-s** (*des Kind**es***)." }
+    ],
+    exercices: [
+      { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Quelle question pose-t-on au génitif ?", options: ["Wessen?", "Wen?", "Wem?", "Wer?"], correct: 0, explication: "Wessen? = de qui ? (appartenance) → génitif." },
+      { type: "qcm", consigne: "Génitif masculin.", question: "Das ist das Auto ___ Vaters.", options: ["des", "dem", "der", "den"], correct: 0, explication: "der Vater (m.) au génitif → des Vaters." },
+      { type: "trou", consigne: "Complétez (des / der).", texte: "Das Haus {0} Mannes und die Tasche {1} Frau.", accepte: [["des"], ["der"]], indice: "der Mann → des ; die Frau → der" },
+      { type: "association", consigne: "Associez (préposition + génitif).", paires: [{ gauche: "während", droite: "pendant" }, { gauche: "wegen", droite: "à cause de" }, { gauche: "trotz", droite: "malgré" }, { gauche: "statt", droite: "au lieu de" }] },
+      { type: "trou", consigne: "Complétez (préposition + génitif).", texte: "Wir bleiben zu Hause, {0} des Regens.", accepte: [["wegen"]], indice: "à cause de → wegen" },
+      { type: "traduction", consigne: "Traduisez.", source: "la voiture du père", accepte: ["das Auto des Vaters", "das Auto von meinem Vater"], aide: "génitif : des Vaters (ou von + datif à l'oral)" }
     ]
   }
 };

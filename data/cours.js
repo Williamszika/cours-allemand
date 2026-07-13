@@ -41,7 +41,8 @@ window.COURS = {
       "Les conjonctions (und, aber, denn, weil)",
       "Le groupe de noms au datif",
       "Indicateurs de lieu (nach, zu, in, mit)",
-      "Les adjectifs"
+      "Les adjectifs",
+      "Le génitif (l'appartenance) + les 4 cas en synthèse"
     ]
   },
 
@@ -85,7 +86,7 @@ window.COURS.examens = [
   Object.assign(byId, (window.C2DIFF && window.C2DIFF.lecons) || {});
   const L = (id) => byId[id];
   const ordreA11 = ["l01", "g01", "l02", "l03", "g02", "l04", "l05", "g03", "l06", "l07", "g06", "l08", "g05", "l09", "g04"];
-  const ordreA12 = ["l10", "l11", "g07", "l12", "l13", "g08", "l14", "g09", "l15", "l16", "g10", "g11", "l17", "l18", "g12", "l19"];
+  const ordreA12 = ["l10", "l11", "g07", "l12", "l13", "g08", "l14", "g09", "l15", "l16", "g10", "g11", "l17", "l18", "g12", "g13", "l19"];
   const ordreA21 = ["a2t01", "a2g03", "a2t02", "a2g01", "a2t03", "a2g02", "a2t04", "a2g08", "a2t05", "a2g06", "a2t06", "a2g04", "a2t07", "a2g09", "a2t08", "a2g07", "a2t09", "a2g05"];
   const ordreA22 = ["a2t10", "a2g10", "a2t11", "a2g17", "a2t12", "a2g13", "a2t13", "a2g12", "a2t14", "a2g11", "a2t15", "a2g16", "a2t16", "a2g14", "a2t17", "a2g15", "a2t18", "a2t19"];
   const ordreB11 = ["b1t01", "b1g01", "b1t02", "b1g08", "b1t03", "b1g14", "b1t04", "b1g12", "b1t05", "b1g02", "b1t06", "b1g05", "b1t07", "b1g04", "b1t08", "b1g09", "b1t09", "b1g03", "b1t10", "b1g13", "b1t11", "b1g11", "b1t12", "b1g06", "b1t13", "b1g07", "b1t14", "b1g10"];
