@@ -13995,14 +13995,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
       { exemples: [{"de":"Man lernt, indem man Fehler macht.","fr":"On apprend en faisant des erreurs."},{"de":"Obwohl es schwierig war, gab er nicht auf.","fr":"Bien que ce fût difficile, il n'a pas abandonné."}], regle: "Conjonctions de subordination (*obwohl, indem, sodass, sofern, falls*) → **verbe à la fin**.", attention: "*indem* = **moyen** (en faisant…) ; à ne pas confondre avec *so … dass*.", titre: "La subordination rejette le verbe à la fin", intro: "Les conjonctions de subordination introduisent une proposition où le verbe conjugué va à la fin.",
         tableau: { entetes: ["Conjonction", "Sens", "Exemple"], lignes: [["obwohl", "bien que", "Obwohl es regnet, gehe ich."], ["indem", "en (moyen)", "Man lernt, indem man übt."], ["sodass", "de sorte que", "Es war kalt, sodass wir blieben."], ["sofern", "dans la mesure où", "Sofern es klappt, komme ich."], ["falls", "au cas où", "Falls du Zeit hast, ruf an."]] },
         schemas: [{ legende: "Subordonnée en tête → principale commence par le verbe.", mots: [{ m: "Obwohl es regnet,", r: "subordonnée", c: "conj" }, { m: "gehe", r: "verbe (1)", c: "verbe" }, { m: "ich", r: "sujet", c: "sujet" }, { m: "spazieren", r: "complément", c: "fin" }] }],
-        note: "« indem » exprime le moyen (en faisant…) ; « sodass » la conséquence ; à ne pas confondre avec « so … dass »." }
+        note: "« indem » exprime le moyen (en faisant…) ; « sodass » la conséquence ; à ne pas confondre avec « so … dass »." },
+      { titre: "Subordonnants C1 par fonction",
+        regle: "Le C1 emploie des subordonnants **précis** au-delà de weil/dass. Tous rejettent le **verbe à la fin**.",
+        intro: "concession, moyen, conséquence, condition, but, restriction.",
+        tableau: { entetes: ["Fonction", "Conjonctions", "Exemple"], lignes: [["concession", "obwohl, obgleich, obschon", "Obwohl es regnet, …"], ["moyen", "indem, dadurch dass", "…, indem man übt."], ["conséquence", "sodass, so … dass", "…, sodass alle verstanden."], ["condition", "falls, sofern, wenn", "Falls du kommst, …"], ["but", "damit", "…, damit alle es sehen."], ["restriction", "insofern als, soweit", "…, soweit ich weiß."]] },
+        note: "obgleich/obschon = obwohl (plus soutenu / littéraire)." },
+      { titre: "Les confusions à éviter",
+        regle: "Plusieurs paires se ressemblent mais diffèrent par la **syntaxe** ou le **sens**.",
+        intro: "*obwohl* (subordonnant, verbe fin) vs *trotzdem* (adverbe, verbe 2e).",
+        tableau: { entetes: ["À distinguer", "Différence", "Exemple"], lignes: [["obwohl / trotzdem", "verbe fin / verbe 2e", "Obwohl … war / …; trotzdem war"], ["indem / so…dass", "moyen / conséquence", "indem man übt / so gut, dass"], ["falls / wenn", "éventualité / condition", "Falls es regnet (peut-être)"], ["sodass / damit", "conséquence / but", "sodass (résultat) / damit (intention)"]] },
+        note: "*damit* = but **intentionnel** ; *sodass* = conséquence (souvent non voulue)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Après une conjonction de subordination, le verbe va…", options: ["à la fin", "en 2e position", "au début"], correct: 0, explication: "Subordination → verbe conjugué à la fin." },
       { type: "qcm", consigne: "Choisissez (moyen).", question: "Man verbessert sich, ___ man regelmäßig übt.", options: ["indem", "obwohl", "sodass", "falls"], correct: 0, explication: "indem = en (moyen)." },
       { type: "trou", consigne: "Complétez (verbe à la fin).", texte: "Obwohl er müde {0}, arbeitete er weiter. (sein)", accepte: [["war"]], indice: "obwohl → verbe à la fin" },
       { type: "association", consigne: "Associez la conjonction et son sens.", paires: [{ gauche: "obwohl", droite: "bien que" }, { gauche: "indem", droite: "en (moyen)" }, { gauche: "sodass", droite: "de sorte que" }, { gauche: "falls", droite: "au cas où" }] },
-      { type: "ordre", consigne: "Construisez la subordonnée.", mots: ["obwohl", "es", "spät", "war"], correct: "obwohl es spät war", traduction: "bien qu'il fût tard" }
+      { type: "ordre", consigne: "Construisez la subordonnée.", mots: ["obwohl", "es", "spät", "war"], correct: "obwohl es spät war", traduction: "bien qu'il fût tard" },
+      { type: "qcm", consigne: "But ou conséquence ?", question: "Ich erkläre es langsam, ___ alle es verstehen. (but)", options: ["damit", "sodass", "obwohl", "indem"], correct: 0, explication: "but intentionnel → damit." },
+      { type: "qcm", consigne: "Subordonnant soutenu.", question: "___ er kaum geübt hatte, bestand er. (bien que)", options: ["Obgleich", "Trotzdem", "Dennoch", "Allerdings"], correct: 0, explication: "obgleich = obwohl (soutenu), verbe à la fin." },
+      { type: "trou", consigne: "Restriction.", texte: "{0} ich weiß, ist er verreist. (autant que)", accepte: [["Soweit"]], indice: "soweit / soviel ich weiß = autant que je sache" }
     ]
   },
   c1g04: {
@@ -14052,14 +14065,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
       { exemples: [{"de":"Je mehr man übt, desto besser wird man.","fr":"Plus on s'entraîne, meilleur on devient."},{"de":"Entweder du kommst mit, oder du bleibst.","fr":"Soit tu viens, soit tu restes."}], regle: "Connecteurs corrélés : *sowohl … als auch*, *weder … noch*, *entweder … oder*, *nicht nur … sondern auch*, **je … desto**.", attention: "Après **je** le verbe va à la **fin** ; après **desto** il vient en **2ᵉ** position.", titre: "Les connecteurs corrélés", intro: "Ils relient deux éléments et nuancent (addition, exclusion, gradation, concession).",
         tableau: { entetes: ["Connecteur", "Sens", "Exemple"], lignes: [["sowohl … als auch", "aussi bien … que", "sowohl klug als auch fleißig"], ["weder … noch", "ni … ni", "weder Zeit noch Geld"], ["nicht nur … sondern auch", "non seulement … mais aussi", "nicht nur er, sondern auch sie"], ["entweder … oder", "soit … soit", "entweder jetzt oder nie"], ["je … desto", "plus … plus", "je mehr, desto besser"]] },
         schemas: [{ legende: "je + comparatif (verbe fin), desto + comparatif (verbe 2e).", mots: [{ m: "Je länger man wartet,", r: "je … (verbe fin)", c: "conj" }, { m: "desto schwieriger", r: "desto + comparatif", c: "objet" }, { m: "wird", r: "verbe (2)", c: "verbe" }, { m: "es", r: "sujet", c: "fin" }] }],
-        note: "« weder … noch » est déjà négatif (pas d'autre négation). Après « je », verbe à la fin ; après « desto », verbe en 2e." }
+        note: "« weder … noch » est déjà négatif (pas d'autre négation). Après « je », verbe à la fin ; après « desto », verbe en 2e." },
+      { titre: "je … desto : la syntaxe en détail",
+        regle: "Structure : **je + comparatif … verbe (fin)**, puis **desto/umso + comparatif + verbe (2ᵉ) + sujet**. Les deux comparatifs montent ensemble.",
+        intro: "*Je **mehr** man **übt**, desto **sicherer** **wird** man.*",
+        tableau: { entetes: ["Partie", "Ordre", "Exemple"], lignes: [["je (subordonnée)", "je + comp. … verbe fin", "Je länger man wartet,"], ["desto (principale)", "desto + comp. + verbe 2e", "desto schwieriger wird es."], ["variante", "je … umso …", "je mehr, umso besser"], ["forme courte", "je … desto + adj.", "je eher, desto besser"]] },
+        note: "*umso* = *desto* (synonymes). Les comparatifs (mehr, besser, schwieriger) ouvrent chaque partie." },
+      { titre: "Concession et bilan : zwar…aber, einerseits…andererseits",
+        regle: "Concéder puis nuancer : **zwar … aber** (certes … mais). Peser le pour et le contre : **einerseits … andererseits**, **teils … teils**.",
+        intro: "*Es ist **zwar** teuer, **aber** gut* · ***Einerseits** …, **andererseits** …*.",
+        tableau: { entetes: ["Paire", "Sens", "Exemple"], lignes: [["zwar … aber", "certes … mais", "Zwar müde, aber glücklich."], ["einerseits … andererseits", "d'une part … d'autre part", "Einerseits ja, andererseits nein."], ["teils … teils", "en partie … en partie", "Teils gut, teils schlecht."], ["nicht nur … sondern auch", "non seulement … mais aussi", "nicht nur klug, sondern auch nett"]] },
+        note: "*zwar* annonce une concession que *aber* vient limiter — nuance très idiomatique." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« je … desto » exprime…", options: ["une gradation parallèle (plus … plus)", "une exclusion", "une alternative"], correct: 0, explication: "je mehr, desto besser." },
       { type: "qcm", consigne: "Choisissez.", question: "Er ist ___ klug ___ fleißig.", options: ["sowohl … als auch", "weder … noch", "entweder … oder", "zwar … aber"], correct: 0, explication: "addition positive → sowohl … als auch." },
       { type: "trou", consigne: "Complétez (je … desto).", texte: "Je mehr man übt, {0} besser wird man.", accepte: [["desto"]], indice: "je … desto" },
       { type: "association", consigne: "Associez le connecteur et son sens.", paires: [{ gauche: "weder … noch", droite: "ni … ni" }, { gauche: "entweder … oder", droite: "soit … soit" }, { gauche: "je … desto", droite: "plus … plus" }, { gauche: "zwar … aber", droite: "certes … mais" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Plus on attend, plus cela devient difficile.", accepte: ["Je länger man wartet, desto schwieriger wird es", "Je mehr man wartet, desto schwieriger wird es"], aide: "je … desto + comparatifs" }
+      { type: "traduction", consigne: "Traduisez.", source: "Plus on attend, plus cela devient difficile.", accepte: ["Je länger man wartet, desto schwieriger wird es", "Je mehr man wartet, desto schwieriger wird es"], aide: "je … desto + comparatifs" },
+      { type: "trou", consigne: "je … desto (verbe à la fin).", texte: "Je mehr ich {0}, desto besser verstehe ich. (lernen)", accepte: [["lerne"]], indice: "partie « je » → verbe à la fin" },
+      { type: "qcm", consigne: "Concession.", question: "Es ist ___ teuer, ___ es lohnt sich.", options: ["zwar … aber", "je … desto", "weder … noch", "sowohl … als auch"], correct: 0, explication: "concession → zwar … aber." },
+      { type: "qcm", consigne: "Synonyme de desto.", question: "« Je mehr, ___ besser » (= desto)", options: ["umso", "also", "sondern", "denn"], correct: 0, explication: "umso = desto (synonymes)." }
     ]
   },
   c1g06: {
@@ -14081,14 +14107,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
       { exemples: [{"de":"Es regnete; trotzdem gingen wir spazieren.","fr":"Il pleuvait ; malgré tout, nous nous sommes promenés."},{"de":"Er log, folglich glaubt man ihm nicht mehr.","fr":"Il a menti, par conséquent on ne le croit plus."}], regle: "Adverbes connecteurs (*deshalb, trotzdem, dennoch, folglich, allerdings*) : le verbe reste en **2ᵉ position**.", attention: "Différence clé : *weil* → verbe à la **fin** ; *deshalb* → verbe en **2ᵉ** position.", titre: "Les adverbes connecteurs (Position 1 → inversion)", intro: "Contrairement aux conjonctions de subordination, ces adverbes laissent le verbe en 2e position ; placés en tête, ils provoquent l'inversion.",
         tableau: { entetes: ["Adverbe", "Sens", "Exemple"], lignes: [["deshalb", "c'est pourquoi", "Es regnet, deshalb bleibe ich."], ["trotzdem", "malgré tout", "Es regnet, trotzdem gehe ich."], ["dennoch", "néanmoins", "Schwierig, dennoch schaffte er es."], ["folglich", "par conséquent", "Er log, folglich glaubt man ihm nicht."], ["allerdings", "toutefois", "Gut, allerdings teuer."]] },
         schemas: [{ legende: "Adverbe connecteur en tête → verbe en 2e position.", mots: [{ m: "Es war spät,", r: "principale 1", c: "objet" }, { m: "trotzdem", r: "connecteur (1)", c: "conj" }, { m: "arbeiteten", r: "verbe (2)", c: "verbe" }, { m: "wir weiter", r: "sujet + complément", c: "fin" }] }],
-        note: "Différence clé : « weil » → verbe à la fin ; « deshalb » → verbe en 2e position." }
+        note: "Différence clé : « weil » → verbe à la fin ; « deshalb » → verbe en 2e position." },
+      { titre: "Position mobile de l'adverbe connecteur",
+        regle: "Ces adverbes sont **mobiles** : en **tête** (position 1) → inversion ; ou **à l'intérieur** (après le verbe conjugué) → le verbe reste en 2ᵉ.",
+        intro: "***Trotzdem** blieb er ruhig* (tête) = *Er blieb **trotzdem** ruhig* (interne).",
+        tableau: { entetes: ["Position", "Effet", "Exemple"], lignes: [["tête (pos. 1)", "inversion (verbe 2e)", "Trotzdem kam er."], ["après le verbe", "verbe reste en 2e", "Er kam trotzdem."], ["comparé à weil", "weil → verbe à la FIN", "…, weil er müde war."]] },
+        note: "Un adverbe connecteur ne rejette **jamais** le verbe à la fin (≠ subordonnant weil/obwohl)." },
+      { titre: "Classés par fonction (registre soutenu)",
+        regle: "Les Verbindungsadverbien couvrent plusieurs relations logiques, souvent à un registre plus **soutenu** que les conjonctions simples.",
+        intro: "*jedoch* (> aber), *folglich* (> also), *dennoch* (> trotzdem).",
+        tableau: { entetes: ["Fonction", "Adverbes", "≈ conjonction"], lignes: [["conséquence", "folglich, somit, daher", "also"], ["opposition", "jedoch, hingegen, dagegen", "aber"], ["concession", "trotzdem, dennoch, gleichwohl", "obwohl (verbe fin)"], ["restriction", "allerdings, freilich", "aber"], ["addition", "außerdem, zudem, ferner", "und"]] },
+        note: "*hingegen/dagegen* marquent un contraste entre deux sujets : « Ich mag Tee; sie dagegen Kaffee »." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Après « trotzdem » en tête, le verbe se place…", options: ["en 2e position (inversion)", "à la fin", "au début"], correct: 0, explication: "Adverbe connecteur → verbe en 2e position." },
       { type: "qcm", consigne: "Choisissez (concession).", question: "Es war schwer, ___ gab er nicht auf.", options: ["dennoch", "weil", "obwohl", "damit"], correct: 0, explication: "dennoch = néanmoins (verbe en 2e)." },
       { type: "trou", consigne: "Complétez (inversion).", texte: "Es regnete; deshalb {0} wir zu Hause. (bleiben)", accepte: [["blieben"]], indice: "deshalb en tête → verbe en 2e position" },
       { type: "association", consigne: "Associez l'adverbe et son sens.", paires: [{ gauche: "deshalb", droite: "c'est pourquoi" }, { gauche: "trotzdem", droite: "malgré tout" }, { gauche: "folglich", droite: "par conséquent" }, { gauche: "allerdings", droite: "toutefois" }] },
-      { type: "ordre", consigne: "Construisez la phrase (inversion).", mots: ["Trotzdem", "blieb", "er", "ruhig"], correct: "Trotzdem blieb er ruhig", traduction: "Malgré tout, il resta calme." }
+      { type: "ordre", consigne: "Construisez la phrase (inversion).", mots: ["Trotzdem", "blieb", "er", "ruhig"], correct: "Trotzdem blieb er ruhig", traduction: "Malgré tout, il resta calme." },
+      { type: "qcm", consigne: "Position interne.", question: "Er kam ___. (malgré tout, après le verbe)", options: ["trotzdem", "obwohl", "weil", "damit"], correct: 0, explication: "adverbe mobile : Er kam trotzdem (verbe en 2e)." },
+      { type: "qcm", consigne: "Restriction soutenue.", question: "Der Plan ist gut, ___ fehlt das Geld.", options: ["allerdings", "weil", "damit", "obwohl"], correct: 0, explication: "restriction → allerdings (+ inversion)." },
+      { type: "qcm", consigne: "Adverbe ou subordonnant ?", question: "Lequel rejette le verbe à la FIN ?", options: ["obwohl", "trotzdem", "dennoch", "folglich"], correct: 0, explication: "obwohl = subordonnant → verbe à la fin ; les autres = adverbes (verbe 2e)." }
     ]
   },
   c1g07: {
