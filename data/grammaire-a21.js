@@ -213,14 +213,27 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
         schemas: [
           { legende: "Donner : à QUI (datif) + QUOI (accusatif).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "gebe", r: "verbe (2)", c: "verbe" }, { m: "dem Kind", r: "datif (à qui)", c: "objet" }, { m: "einen Apfel", r: "accusatif (quoi)", c: "fin" }] }
         ],
-        note: "Ordre habituel : datif (personne) AVANT accusatif (chose), quand les deux sont des noms." }
+        note: "Ordre habituel : datif (personne) AVANT accusatif (chose), quand les deux sont des noms." },
+      { titre: "L'ordre des objets (avec pronoms)",
+        regle: "Deux **noms** : datif + accusatif. Deux **pronoms** : **accusatif + datif**. **Mixte** : le pronom passe en premier.",
+        intro: "*Ich gebe dem Kind das Buch* → *Ich gebe **es ihm*** → *Ich gebe **es** dem Kind*.",
+        tableau: { entetes: ["Combinaison", "Ordre", "Exemple"], lignes: [["2 noms", "datif + accusatif", "Ich gebe dem Kind das Buch."], ["2 pronoms", "accusatif + datif", "Ich gebe es ihm."], ["pronom + nom", "pronom d'abord", "Ich gebe es dem Kind."]] },
+        note: "Règle simple : le pronom passe devant ; entre deux pronoms, l'accusatif gagne." },
+      { titre: "Les pronoms au datif",
+        regle: "Les pronoms ont une forme au **datif** (« à moi, à toi… »), très fréquente avec ces verbes.",
+        intro: "*Gib **mir** das Buch* · *Ich helfe **dir*** · *Das gehört **ihm***.",
+        tableau: { entetes: ["Nominatif", "Accusatif", "Datif"], lignes: [["ich", "mich", "mir"], ["du", "dich", "dir"], ["er / es", "ihn / es", "ihm"], ["sie (elle)", "sie", "ihr"], ["wir", "uns", "uns"], ["ihr", "euch", "euch"], ["sie / Sie", "sie / Sie", "ihnen / Ihnen"]] },
+        note: "Datif : mir, dir, ihm, ihr, uns, euch, ihnen (Ihnen poli)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« helfen » se construit avec…", options: ["le datif", "l'accusatif", "le nominatif"], correct: 0, explication: "helfen + datif : Ich helfe dir." },
       { type: "qcm", consigne: "Complétez (datif).", question: "Das Buch gefällt ___. (à moi)", options: ["mir", "mich", "ich", "meiner"], correct: 0, explication: "gefallen + datif → mir." },
       { type: "trou", consigne: "Complétez (datif + accusatif).", texte: "Ich gebe {0} Kind {1} Apfel.", accepte: [["dem"], ["einen"]], indice: "à qui (datif) / quoi (accusatif)" },
       { type: "association", consigne: "Associez le verbe et son cas.", paires: [{ gauche: "helfen", droite: "datif" }, { gauche: "danken", droite: "datif" }, { gauche: "sehen", droite: "accusatif" }, { gauche: "gefallen", droite: "datif" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je t'aide.", accepte: ["Ich helfe dir"], aide: "helfen + datif" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je t'aide.", accepte: ["Ich helfe dir"], aide: "helfen + datif" },
+      { type: "qcm", consigne: "Deux pronoms.", question: "« Je le lui donne » = Ich gebe…", options: ["es ihm", "ihm es", "ihn ihm", "ihm ihn"], correct: 0, explication: "2 pronoms → accusatif (es) avant datif (ihm)." },
+      { type: "trou", consigne: "Pronom au datif.", texte: "Kannst du {0} helfen? (à moi)", accepte: [["mir"]], indice: "helfen + datif → mir" },
+      { type: "qcm", consigne: "Pronom au datif.", question: "Das Buch gehört ___. (à eux)", options: ["ihnen", "sie", "sich", "ihr"], correct: 0, explication: "gehören + datif → ihnen." }
     ]
   },
   a2g07: {
@@ -242,14 +255,27 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     grammaire: [
       { exemples: [{"de":"Könnten Sie mir bitte helfen?","fr":"Pourriez-vous m'aider, s'il vous plaît ?"},{"de":"Ich hätte gern einen Kaffee.","fr":"Je voudrais un café."}], regle: "Pour la **politesse**, le **souhait** et l'**irréel** : **würde** + infinitif, ou les formes propres **hätte, wäre, könnte**.", attention: "Le « si » irréel se construit avec **wenn + Konjunktiv II** : *Wenn ich Zeit **hätte**, **würde** ich kommen*.", titre: "Formes du Konjunktiv II", intro: "würde + infinitif pour la plupart ; sein/haben/modaux ont une forme propre.",
         tableau: { entetes: ["Verbe", "Konjunktiv II", "Exemple"], lignes: [["sein", "wäre", "Wenn ich reich wäre…"], ["haben", "hätte", "Ich hätte gern Kaffee."], ["können", "könnte", "Könnten Sie helfen?"], ["werden", "würde", "Ich würde gern reisen."]] },
-        note: "Demande polie : « Könnten Sie… ? », « Ich hätte gern… », « Würden Sie… ? »." }
+        note: "Demande polie : « Könnten Sie… ? », « Ich hätte gern… », « Würden Sie… ? »." },
+      { titre: "Conjugaison de wäre, hätte, könnte",
+        regle: "Ces trois formes propres se conjuguent avec les terminaisons *-e, -est, -e, -en, -et, -en*.",
+        intro: "*ich wäre, du wärst, er wäre…* — à connaître par cœur.",
+        tableau: { entetes: ["Pronom", "sein → wäre", "haben → hätte", "können → könnte"], lignes: [["ich", "wäre", "hätte", "könnte"], ["du", "wärst", "hättest", "könntest"], ["er/sie/es", "wäre", "hätte", "könnte"], ["wir", "wären", "hätten", "könnten"], ["ihr", "wärt", "hättet", "könntet"], ["sie/Sie", "wären", "hätten", "könnten"]] },
+        note: "*möchten* (= vouloir poli) : ich möchte, du möchtest, er möchte…" },
+      { titre: "Quand würde, quand forme propre ?",
+        regle: "Pour *sein, haben* et les **modaux** → forme propre (wäre, hätte, könnte). Pour **tous les autres verbes** → *würde + infinitif*.",
+        intro: "*ich **wäre** froh* (pas « würde sein ») · *ich **würde** gern kommen* (verbe ordinaire).",
+        tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["politesse", "könnte / würde", "Könnten Sie helfen?"], ["souhait poli", "hätte / möchte gern", "Ich hätte gern Tee."], ["conseil", "sollte", "Du solltest schlafen."], ["irréel", "wenn + KII, würde", "Wenn ich Zeit hätte, würde ich…"]] },
+        note: "En cas de doute sur un verbe ordinaire : *würde + infinitif* est presque toujours correct." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Demande polie : « ___ Sie mir helfen? »", options: ["Könnten", "Können", "Konnten", "Kannst"], correct: 0, explication: "Konjunktiv II poli : Könnten Sie…" },
       { type: "qcm", consigne: "Konjunktiv II de haben.", question: "Ich ___ gern einen Kaffee.", options: ["hätte", "habe", "hatte", "würde"], correct: 0, explication: "haben → hätte." },
       { type: "trou", consigne: "Complétez (würde/wäre).", texte: "Wenn ich Zeit {0}, {1} ich mehr lesen.", accepte: [["hätte"], ["würde"]], indice: "haben → hätte ; verbe → würde" },
       { type: "ordre", consigne: "Demande polie.", mots: ["Könnten", "Sie", "mir", "helfen"], correct: "Könnten Sie mir helfen", traduction: "Pourriez-vous m'aider ?" },
-      { type: "oral", consigne: "Production orale.", prompt: "Demandez poliment l'addition au restaurant (Konjunktiv II).", attendus: ["könnte", "hätte"], modele: "Könnten Sie mir bitte die Rechnung bringen? Ich hätte gern die Rechnung." }
+      { type: "oral", consigne: "Production orale.", prompt: "Demandez poliment l'addition au restaurant (Konjunktiv II).", attendus: ["könnte", "hätte"], modele: "Könnten Sie mir bitte die Rechnung bringen? Ich hätte gern die Rechnung." },
+      { type: "qcm", consigne: "Konjunktiv II de sein (wir).", question: "Wenn wir reich ___, würden wir reisen.", options: ["wären", "sind", "waren", "wärst"], correct: 0, explication: "sein KII wir → wären." },
+      { type: "qcm", consigne: "würde ou forme propre ?", question: "Pour « haben », on dit…", options: ["ich hätte", "ich würde haben", "ich habe"], correct: 0, explication: "haben → forme propre hätte." },
+      { type: "trou", consigne: "Conseil.", texte: "Du {0} mehr schlafen. (sollen)", accepte: [["solltest"]], indice: "conseil → sollte : du solltest" }
     ]
   },
   a2g08: {
