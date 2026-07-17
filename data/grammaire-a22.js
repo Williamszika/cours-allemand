@@ -26,14 +26,24 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
           { legende: "Wohin? (direction) → accusatif.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "gehe", r: "verbe (2)", c: "verbe" }, { m: "in die Stadt", r: "direction (acc.)", c: "fin" }] },
           { legende: "Wo? (position) → datif.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "bin", r: "verbe (2)", c: "verbe" }, { m: "in der Stadt", r: "position (datif)", c: "objet" }] }
         ],
-        note: "Direction = accusatif (Wohin?) ; position = datif (Wo?). hier/da/dort, links, rechts, geradeaus, oben, unten." }
+        note: "Direction = accusatif (Wohin?) ; position = datif (Wo?). hier/da/dort, links, rechts, geradeaus, oben, unten." },
+      { titre: "Les prépositions mixtes (Wechselpräpositionen)", intro: "Neuf prépositions changent de cas selon le sens : **Wo?** (position) → datif, **Wohin?** (direction) → accusatif.", regle: "in, an, auf, über, unter, vor, hinter, neben, zwischen : datif OU accusatif.",
+        tableau: { entetes: ["Prép.", "Wo? (datif)", "Wohin? (accusatif)"], lignes: [["in", "in dem (im) Zimmer", "in das (ins) Zimmer"], ["auf", "auf dem Tisch", "auf den Tisch"], ["an", "an der Wand", "an die Wand"], ["vor", "vor dem Haus", "vor das Haus"]] },
+        exemples: [{"de":"Das Bild hängt an der Wand.","fr":"Le tableau est accroché au mur. (Wo? → datif)"},{"de":"Ich hänge das Bild an die Wand.","fr":"J'accroche le tableau au mur. (Wohin? → accusatif)"}],
+        note: "Paires de verbes utiles : liegen/legen, stehen/stellen, sitzen/setzen, hängen/hängen — le 1ᵉʳ (position, datif), le 2ᵉ (déplacement, accusatif)." },
+      { titre: "Aller (Wohin?) et venir (Woher?)", intro: "Choisir la bonne préposition de destination et de provenance.", regle: "**nach** (villes/pays neutres, *nach Hause*), **zu** (personnes/lieux précis, + datif), **in** (entrer dans, + acc.). Provenance : **aus** (pays/bâtiment), **von** (personne/point).",
+        tableau: { entetes: ["But", "Préposition", "Exemple"], lignes: [["Ville / pays", "nach + datif", "nach Berlin, nach Italien"], ["Personne / lieu", "zu + datif", "zum Arzt, zur Schule"], ["Entrer dans", "in + accusatif", "ins Kino, in die Stadt"], ["Venir de (pays)", "aus + datif", "aus Frankreich"], ["Venir de (personne)", "von + datif", "vom Arzt"]] },
+        attention: "*nach Hause* = rentrer (mouvement) ≠ *zu Hause* = être à la maison (position)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« Wohin? » demande…", options: ["la direction", "la position", "l'origine"], correct: 0, explication: "Wohin = où l'on va (direction)." },
       { type: "qcm", consigne: "Wo? → datif.", question: "Das Buch ist ___ Tisch.", options: ["auf dem", "auf den", "auf der", "an die"], correct: 0, explication: "position → datif : auf dem Tisch." },
       { type: "trou", consigne: "Complétez (in die / in der).", texte: "Ich gehe {0} Schule und ich bin {1} Schule.", accepte: [["in die"], ["in der"]], indice: "Wohin (acc.) / Wo (datif)" },
       { type: "association", consigne: "Associez.", paires: [{ gauche: "Wo?", droite: "position" }, { gauche: "Wohin?", droite: "direction" }, { gauche: "Woher?", droite: "origine" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je vais en ville.", accepte: ["Ich gehe in die Stadt"], aide: "Wohin → accusatif" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je vais en ville.", accepte: ["Ich gehe in die Stadt"], aide: "Wohin → accusatif" },
+      { type: "qcm", consigne: "Wohin? → accusatif.", question: "Ich lege das Buch ___ Tisch.", options: ["auf den", "auf dem", "auf der", "an dem"], correct: 0, explication: "Mouvement (Wohin?) → accusatif : auf den Tisch." },
+      { type: "trou", consigne: "Complétez (nach / zu / aus).", texte: "Ich fahre {0} Berlin, gehe dann {1} Arzt und komme {2} Frankreich.", accepte: [["nach"], ["zum"], ["aus"]], indice: "ville / personne / pays d'origine" },
+      { type: "qcm", cat: "comp", consigne: "Position ou déplacement ?", question: "« Das Buch liegt auf dem Tisch. » → quel cas ?", options: ["datif (Wo?)", "accusatif (Wohin?)", "génitif"], correct: 0, explication: "liegen = position → Wo? → datif." }
     ]
   },
   a2g11: {
@@ -55,14 +65,25 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     grammaire: [
       { exemples: [{"de":"Das ist das Haus meiner Eltern.","fr":"C'est la maison de mes parents."},{"de":"Wegen des Regens bleiben wir zu Hause.","fr":"À cause de la pluie, nous restons à la maison."}], regle: "Le **génitif** exprime l'**appartenance** : masc./neutre **des** + nom **-(e)s** ; fém./pluriel **der**.", attention: "À l'oral, on remplace souvent le génitif par **von + datif** : *das Auto **von** meinem Vater*.", titre: "Dire « de qui » / « de quoi »", intro: "À l'écrit : génitif. À l'oral : souvent « von + datif ».",
         tableau: { entetes: ["Forme", "Exemple", "Sens"], lignes: [["Genitiv (m/n)", "das Auto des Mannes", "la voiture de l'homme"], ["Genitiv (f/pl)", "die Tasche der Frau", "le sac de la femme"], ["von + datif (oral)", "das Auto von meinem Bruder", "la voiture de mon frère"]] },
-        note: "Au génitif, les noms masculins/neutres prennent souvent un -s (des Mannes, des Kindes)." }
+        note: "Au génitif, les noms masculins/neutres prennent souvent un -s (des Mannes, des Kindes)." },
+      { titre: "Les articles du génitif (tableau complet)", intro: "Défini **des/der**, indéfini **eines/einer**, possessif **meines/meiner**. Retiens la logique : masc./neutre → forme en -es ; fém./pluriel → forme en -er.",
+        tableau: { entetes: ["Genre", "Défini", "Indéfini", "Possessif (mein)", "+ nom"], lignes: [["Masculin", "des", "eines", "meines", "+ -(e)s → des Mannes"], ["Neutre", "des", "eines", "meines", "+ -(e)s → des Kindes"], ["Féminin", "der", "einer", "meiner", "— → der Frau"], ["Pluriel", "der", "—", "meiner", "— → der Kinder"]] },
+        exemples: [{"de":"der Beruf meines Vaters","fr":"le métier de mon père"},{"de":"das Zimmer meiner Schwester","fr":"la chambre de ma sœur"},{"de":"die Spielsachen der Kinder","fr":"les jouets des enfants"}],
+        note: "Astuce mémo : **-es** au masc./neutre (des, eines, meines), **-er** au fém./pluriel (der, einer, meiner)." },
+      { titre: "Prénoms & registre : Annas Auto vs von Anna", intro: "Deux façons courantes et faciles d'exprimer la possession sans manier tout le génitif.", regle: "**Prénom + s** (sans apostrophe) : *Annas Handy*. Ou **von + datif** à l'oral : *das Handy von Anna*.",
+        tableau: { entetes: ["Registre", "Structure", "Exemple"], lignes: [["Écrit soigné", "génitif (des/der)", "das Auto meines Vaters"], ["Avec un prénom", "Prénom + s", "Annas Auto"], ["Oral / familier", "von + datif", "das Auto von meinem Vater"]] },
+        attention: "Pas d'apostrophe en allemand ! On écrit *Annas* (et non *Anna's*).",
+        note: "Les trois sont corrects. Au niveau A2, à l'oral, *von + datif* et *Prénom + s* suffisent largement." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "À l'oral, on remplace souvent le génitif par…", options: ["von + datif", "für + accusatif", "mit + datif"], correct: 0, explication: "von + datif = génitif parlé." },
       { type: "qcm", consigne: "Génitif masculin.", question: "Das ist das Auto ___ Mannes.", options: ["des", "der", "dem", "den"], correct: 0, explication: "génitif m./n. → des (+ -s au nom)." },
       { type: "trou", consigne: "Complétez (von + datif).", texte: "Das ist das Fahrrad {0} meinem Bruder.", accepte: [["von"]], indice: "von + datif" },
       { type: "association", consigne: "Associez l'article génitif.", paires: [{ gauche: "masculin", droite: "des" }, { gauche: "féminin", droite: "der" }, { gauche: "neutre", droite: "des" }, { gauche: "pluriel", droite: "der" }] },
-      { type: "traduction", consigne: "Traduisez (oral).", source: "C'est la voiture de mon père.", accepte: ["Das ist das Auto von meinem Vater"], aide: "von + datif" }
+      { type: "traduction", consigne: "Traduisez (oral).", source: "C'est la voiture de mon père.", accepte: ["Das ist das Auto von meinem Vater"], aide: "von + datif" },
+      { type: "qcm", consigne: "Génitif féminin.", question: "Das ist das Zimmer ___ Schwester.", options: ["meiner", "meines", "meinem", "meinen"], correct: 0, explication: "génitif fém. → -er : meiner Schwester." },
+      { type: "trou", consigne: "Complétez avec un prénom au génitif.", texte: "Das ist {0} Handy. (Anna)", accepte: [["Annas"]], indice: "Prénom + s, sans apostrophe." },
+      { type: "qcm", cat: "comp", consigne: "Trouvez l'erreur.", question: "Laquelle est FAUSSE ?", options: ["Anna's Auto", "Annas Auto", "das Auto von Anna"], correct: 0, explication: "En allemand, pas d'apostrophe : Annas (et non Anna's)." }
     ]
   },
   a2g12: {
@@ -210,14 +231,24 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     grammaire: [
       { exemples: [{"de":"Ich warte auf den Bus.","fr":"J'attends le bus."},{"de":"Sie denkt oft an ihre Familie.","fr":"Elle pense souvent à sa famille."}], regle: "Beaucoup de verbes imposent une **préposition fixe** (et son cas) : *warten **auf** + Akk.*, *denken **an** + Akk.*, *sich freuen **über/auf***.", attention: "*sich freuen **auf*** = se réjouir d'avance (futur) ; *sich freuen **über*** = être content de (présent/passé).", titre: "Verbes à préposition fixe", intro: "La préposition fait partie du verbe et impose son cas.",
         tableau: { entetes: ["Verbe + prép.", "Cas", "Exemple"], lignes: [["warten auf", "accusatif", "Ich warte auf den Bus."], ["denken an", "accusatif", "Ich denke an dich."], ["sich interessieren für", "accusatif", "Ich interessiere mich für Musik."], ["sprechen mit", "datif", "Ich spreche mit dem Lehrer."], ["helfen bei", "datif", "Er hilft mir bei der Arbeit."]] },
-        note: "À apprendre par cœur (verbe + préposition + cas). Question : « auf wen/was wartest du? »." }
+        note: "À apprendre par cœur (verbe + préposition + cas). Question : « auf wen/was wartest du? »." },
+      { titre: "Les verbes à préposition les plus fréquents", intro: "La liste à mémoriser au niveau A2 — avec le cas régi. C'est un investissement rentable pour parler naturellement.",
+        tableau: { entetes: ["Verbe + prép.", "Cas", "Sens"], lignes: [["sich freuen auf", "accusatif", "avoir hâte de (futur)"], ["sich freuen über", "accusatif", "être content de (passé)"], ["Angst haben vor", "datif", "avoir peur de"], ["sich interessieren für", "accusatif", "s'intéresser à"], ["teilnehmen an", "datif", "participer à"], ["sich kümmern um", "accusatif", "s'occuper de"], ["danken für", "accusatif", "remercier pour"]] },
+        exemples: [{"de":"Ich freue mich auf die Ferien.","fr":"J'ai hâte des vacances."},{"de":"Sie hat Angst vor Spinnen.","fr":"Elle a peur des araignées."}],
+        attention: "*sich freuen **auf*** (à venir) ≠ *sich freuen **über*** (déjà arrivé). Même verbe, deux prépositions, deux sens." },
+      { titre: "Questions et renvois : wo(r)- et da(r)-", intro: "Pour une **chose**, on ne dit pas *auf was?* mais on soude préposition + wo-/da-. Le **-r-** s'ajoute si la préposition commence par une voyelle.", regle: "Chose : **wo(r)- + prép.** (question), **da(r)- + prép.** (renvoi). Personne : **prép. + pronom**.",
+        tableau: { entetes: ["Préposition", "Question (chose)", "Renvoi (chose)", "Personne"], lignes: [["auf", "worauf?", "darauf", "auf ihn/sie"], ["an", "woran?", "daran", "an ihn/sie"], ["über", "worüber?", "darüber", "über ihn/sie"], ["für", "wofür?", "dafür", "für ihn/sie"]] },
+        note: "« Worauf wartest du? — Auf den Bus. — Ich warte darauf. » Mais : « Auf wen wartest du? — Auf meinen Freund. »" }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Ich warte ___ den Bus.", options: ["auf", "an", "für", "mit"], correct: 0, explication: "warten auf + accusatif." },
       { type: "qcm", consigne: "Choisissez.", question: "Ich interessiere mich ___ Sport.", options: ["für", "auf", "an", "über"], correct: 0, explication: "sich interessieren für." },
       { type: "trou", consigne: "Complétez.", texte: "Ich denke {0} dich. (préposition)", accepte: [["an"]], indice: "denken an" },
       { type: "association", consigne: "Associez verbe → préposition.", paires: [{ gauche: "warten", droite: "auf" }, { gauche: "denken", droite: "an" }, { gauche: "sich interessieren", droite: "für" }, { gauche: "sprechen", droite: "mit" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je pense à toi.", accepte: ["Ich denke an dich"], aide: "denken an + accusatif" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je pense à toi.", accepte: ["Ich denke an dich"], aide: "denken an + accusatif" },
+      { type: "qcm", consigne: "auf ou über ?", question: "Ich freue mich ___ die Ferien (à venir).", options: ["auf", "über", "für", "an"], correct: 0, explication: "sich freuen auf = avoir hâte de (futur)." },
+      { type: "trou", consigne: "Interroger sur une chose.", texte: "{0} wartest du? — Auf den Bus.", accepte: [["Worauf"]], indice: "wo + r + auf (chose)" },
+      { type: "qcm", cat: "comp", consigne: "Chose ou personne ?", question: "« Ich warte darauf. » renvoie à…", options: ["une chose", "une personne", "un lieu"], correct: 0, explication: "da(r)- + prép. renvoie à une chose ; pour une personne : auf ihn." }
     ]
   },
   a2g16: {
@@ -239,14 +270,24 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     grammaire: [
       { regle: "Tout **nom** prend une **majuscule** et a un **genre** (der/die/das) et un **pluriel** à apprendre. Le genre n'est pas toujours logique.", attention: "Apprends toujours le nom avec son **article et son pluriel** : *das Buch, die Büch**er***.", exemples: [{"de":"Das Kind liest ein Buch.","fr":"L'enfant lit un livre."},{"de":"Die Bücher sind interessant.","fr":"Les livres sont intéressants."}], titre: "Pluriels et noms composés", intro: "Plusieurs marques de pluriel ; les noms composés se collent.",
         tableau: { entetes: ["Règle", "Singulier → Pluriel"], lignes: [["-e (souvent + Umlaut)", "der Tisch → die Tische"], ["-er (+ Umlaut)", "das Kind → die Kinder"], ["-(e)n", "die Frau → die Frauen"], ["-s (mots étrangers)", "das Auto → die Autos"], ["composé (Kompositum)", "die Haus + die Tür → die Haustür"]] },
-        note: "Le genre d'un nom composé = celui du DERNIER mot (die Haustür → die Tür). Les noms s'écrivent avec une majuscule. Suffixes féminins : -ung, -heit, -keit, -tion." }
+        note: "Le genre d'un nom composé = celui du DERNIER mot (die Haustür → die Tür). Les noms s'écrivent avec une majuscule. Suffixes féminins : -ung, -heit, -keit, -tion." },
+      { titre: "Les cinq marques du pluriel", intro: "L'allemand n'a pas un seul pluriel : cinq schémas coexistent. À apprendre **avec chaque mot**, mais des tendances aident.", regle: "-e, -er (+ Umlaut), -(e)n, -s, ou pas de changement.",
+        tableau: { entetes: ["Marque", "Tendance", "Exemple"], lignes: [["-e (+ Umlaut)", "beaucoup de masculins", "der Stuhl → die Stühle"], ["-er (+ Umlaut)", "neutres courts", "das Kind → die Kinder"], ["-(e)n", "presque tous les féminins", "die Frau → die Frauen"], ["-s", "mots étrangers", "das Auto → die Autos"], ["= (parfois Umlaut)", "-er, -en, -el", "der Lehrer → die Lehrer"]] },
+        exemples: [{"de":"ein Buch → viele Bücher","fr":"un livre → beaucoup de livres"},{"de":"eine Blume → drei Blumen","fr":"une fleur → trois fleurs"}],
+        note: "Presque tous les noms **féminins** font leur pluriel en **-(e)n** : c'est la régularité la plus fiable." },
+      { titre: "Le genre par le suffixe", intro: "Le genre paraît imprévisible, mais la **terminaison** le trahit souvent. Voici les suffixes les plus sûrs.",
+        tableau: { entetes: ["Suffixe", "Genre", "Exemple"], lignes: [["-ung, -heit, -keit", "die (fém.)", "die Wohnung, die Freiheit"], ["-tion, -tät, -ik", "die (fém.)", "die Nation, die Musik"], ["-chen, -lein", "das (neutre)", "das Mädchen, das Fräulein"], ["-er (personne/outil)", "der (masc.)", "der Lehrer, der Computer"], ["-um, -ment", "das (neutre)", "das Museum, das Dokument"]] },
+        attention: "*das Mädchen* est **neutre** (suffixe -chen), même s'il désigne une fille ! Le suffixe l'emporte sur le sens." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Le genre de « das Hausboot » vient de…", options: ["le dernier mot (Boot)", "le premier mot (Haus)", "au hasard"], correct: 0, explication: "Composé : genre du dernier élément." },
       { type: "qcm", consigne: "Pluriel de « das Kind ».", question: "ein Kind → zwei ___", options: ["Kinder", "Kinds", "Kinden", "Kinde"], correct: 0, explication: "das Kind → die Kinder." },
       { type: "trou", consigne: "Pluriel de « die Frau ».", texte: "eine Frau, viele {0}.", accepte: [["Frauen"]], indice: "-en" },
       { type: "association", consigne: "Associez singulier → pluriel.", paires: [{ gauche: "der Tisch", droite: "die Tische" }, { gauche: "das Auto", droite: "die Autos" }, { gauche: "die Frau", droite: "die Frauen" }, { gauche: "das Kind", droite: "die Kinder" }] },
-      { type: "qcm", consigne: "Article de « die Wohnung » (suffixe -ung).", question: "Les noms en -ung sont…", options: ["féminins (die)", "masculins (der)", "neutres (das)"], correct: 0, explication: "-ung → toujours féminin." }
+      { type: "qcm", consigne: "Article de « die Wohnung » (suffixe -ung).", question: "Les noms en -ung sont…", options: ["féminins (die)", "masculins (der)", "neutres (das)"], correct: 0, explication: "-ung → toujours féminin." },
+      { type: "qcm", consigne: "Le suffixe -chen.", question: "« ___ Mädchen » prend quel article ?", options: ["das", "die", "der"], correct: 0, explication: "-chen → toujours neutre (das), même pour une fille." },
+      { type: "trou", consigne: "Pluriel de « das Auto ».", texte: "ein Auto, zwei {0}.", accepte: [["Autos"]], indice: "mot étranger → -s" },
+      { type: "association", consigne: "Associez suffixe → genre.", paires: [{ gauche: "-ung", droite: "die" }, { gauche: "-chen", droite: "das" }, { gauche: "-er (Lehrer)", droite: "der" }, { gauche: "-tion", droite: "die" }] }
     ]
   },
   a2g17: {
@@ -272,14 +313,24 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
           { legende: "Wohin? → accusatif.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "lege", r: "verbe (2)", c: "verbe" }, { m: "das Buch", r: "COD", c: "objet" }, { m: "auf den Tisch", r: "direction (acc.)", c: "fin" }] },
           { legende: "Wo? → datif.", mots: [{ m: "Das Buch", r: "sujet", c: "sujet" }, { m: "liegt", r: "verbe (2)", c: "verbe" }, { m: "auf dem Tisch", r: "position (datif)", c: "objet" }] }
         ],
-        note: "Astuce : mouvement vers un endroit = accusatif ; sans mouvement = datif." }
+        note: "Astuce : mouvement vers un endroit = accusatif ; sans mouvement = datif." },
+      { titre: "Prépositions à cas fixe : les deux familles à réciter", intro: "Avant les prépositions mixtes, il faut connaître les deux listes fermées : celles toujours + accusatif, celles toujours + datif.", regle: "Accusatif : **durch, für, gegen, ohne, um**. Datif : **aus, bei, mit, nach, seit, von, zu**.",
+        tableau: { entetes: ["Toujours accusatif", "Sens", "Toujours datif", "Sens"], lignes: [["durch", "à travers", "aus", "hors de / venir de"], ["für", "pour", "bei", "chez"], ["gegen", "contre", "mit", "avec"], ["ohne", "sans", "nach", "après / vers"], ["um", "autour / à (heure)", "seit / von / zu", "depuis / de / à"]] },
+        exemples: [{"de":"Ein Geschenk für dich.","fr":"Un cadeau pour toi. (für + acc.)"},{"de":"Ich fahre mit dem Bus zur Arbeit.","fr":"Je vais au travail en bus. (mit/zu + datif)"}],
+        note: "Mémo : accusatif = « durch-für-gegen-ohne-um » ; datif = « aus-bei-mit-nach-seit-von-zu » (récite-les comme une chanson)." },
+      { titre: "Récap temps : am / um / im / seit / vor / in", intro: "Les mêmes prépositions servent au temps. Voici le tableau de référence à garder sous la main.",
+        tableau: { entetes: ["Emploi", "Préposition", "Exemple"], lignes: [["jour, moment", "am", "am Montag, am Abend"], ["heure", "um", "um 8 Uhr"], ["mois, saison", "im", "im Mai, im Winter"], ["depuis (présent)", "seit + datif", "seit zwei Jahren"], ["il y a (passé)", "vor + datif", "vor einer Woche"], ["dans (futur)", "in + datif", "in drei Tagen"]] },
+        attention: "Pas d'article contracté au hasard : *am* = an+dem, *im* = in+dem, *zum* = zu+dem, *zur* = zu+der." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« Wohin? » entraîne quel cas (préposition mixte) ?", options: ["accusatif", "datif", "génitif"], correct: 0, explication: "direction → accusatif." },
       { type: "qcm", consigne: "Wo? → datif.", question: "Das Bild hängt an ___ Wand.", options: ["der", "die", "dem", "den"], correct: 0, explication: "position, die Wand → datif : der Wand." },
       { type: "trou", consigne: "Complétez (den/dem).", texte: "Ich lege das Buch auf {0} Tisch; jetzt liegt es auf {1} Tisch.", accepte: [["den"], ["dem"]], indice: "Wohin (acc.) / Wo (datif)" },
       { type: "association", consigne: "Associez.", paires: [{ gauche: "Wo?", droite: "datif" }, { gauche: "Wohin?", droite: "accusatif" }, { gauche: "seit", droite: "datif" }, { gauche: "um", droite: "heure" }] },
-      { type: "traduction", consigne: "Traduisez (position).", source: "Le livre est sur la table.", accepte: ["Das Buch liegt auf dem Tisch", "Das Buch ist auf dem Tisch"], aide: "Wo? → auf dem Tisch" }
+      { type: "traduction", consigne: "Traduisez (position).", source: "Le livre est sur la table.", accepte: ["Das Buch liegt auf dem Tisch", "Das Buch ist auf dem Tisch"], aide: "Wo? → auf dem Tisch" },
+      { type: "qcm", consigne: "Préposition + accusatif.", question: "Laquelle est TOUJOURS suivie de l'accusatif ?", options: ["für", "mit", "seit", "zu"], correct: 0, explication: "für/durch/gegen/ohne/um → accusatif ; mit/seit/zu → datif." },
+      { type: "trou", consigne: "Complétez (durch + acc.).", texte: "Wir gehen {0} den Park.", accepte: [["durch"]], indice: "durch + accusatif" },
+      { type: "association", consigne: "Associez préposition → cas fixe.", paires: [{ gauche: "mit", droite: "datif" }, { gauche: "für", droite: "accusatif" }, { gauche: "aus", droite: "datif" }, { gauche: "ohne", droite: "accusatif" }] }
     ]
   }
 });
