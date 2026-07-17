@@ -121,14 +121,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     grammaire: [
       { exemples: [{"de":"Sie kam nach Hause und kochte das Essen.","fr":"Elle rentra et prépara le repas."},{"de":"Er hatte vorher schon angerufen.","fr":"Il avait déjà appelé auparavant."}], regle: "Dans un récit, le **Präteritum** porte le fil ; le **Plusquamperfekt** marque ce qui s'était passé **avant**.", attention: "Concordance avec *nachdem* : subordonnée **plus-que-parfait** → principale **prétérit**.", titre: "Construire un récit cohérent", intro: "Dans un texte au passé, le Präteritum porte le fil du récit ; le Plusquamperfekt marque ce qui s'était passé AVANT.",
         tableau: { entetes: ["Plan", "Temps", "Exemple"], lignes: [["fil du récit", "Präteritum", "Sie kam nach Hause und kochte."], ["antériorité", "Plusquamperfekt", "Sie hatte schon eingekauft."], ["dialogue/oral inséré", "Perfekt", "« Ich habe das gemacht », sagte sie."]] },
-        note: "Mots utiles : zuerst, dann, danach, schließlich, nachdem (+ Plusquamperfekt)." }
+        note: "Mots utiles : zuerst, dann, danach, schließlich, nachdem (+ Plusquamperfekt)." },
+      { titre: "Les mots qui structurent le récit",
+        regle: "Un récit s'organise avec des **adverbes temporels** qui marquent l'ordre et le rythme. En tête, ils entraînent l'**inversion**.",
+        intro: "*Zuerst…, dann…, plötzlich…, schließlich…* — ils font avancer l'histoire.",
+        tableau: { entetes: ["Étape", "Mots", "Exemple"], lignes: [["début", "zuerst, eines Tages", "Eines Tages ging er los."], ["suite", "dann, danach, später", "Dann traf er einen Freund."], ["surprise", "plötzlich, auf einmal", "Plötzlich klingelte es."], ["fin", "schließlich, am Ende, zuletzt", "Schließlich kam er nach Hause."]] },
+        note: "En tête de phrase, ces mots entraînent l'inversion : « Plötzlich **klingelte** das Telefon »." },
+      { titre: "Verbes fréquents du récit au prétérit",
+        regle: "Le récit emploie beaucoup de **verbes forts**. Voici ceux qu'on rencontre à chaque page — à apprendre avec leur prétérit.",
+        intro: "Ce sont eux qui font avancer l'histoire : *er **ging**, **stand** auf, **sah**, **rief***.",
+        tableau: { entetes: ["Infinitif", "Prétérit", "Sens"], lignes: [["gehen", "ging", "aller"], ["kommen", "kam", "venir"], ["stehen", "stand", "être debout"], ["sitzen", "saß", "être assis"], ["sehen", "sah", "voir"], ["rufen", "rief", "appeler / crier"], ["finden", "fand", "trouver"], ["nehmen", "nahm", "prendre"]] },
+        note: "*sein/haben* (war/hatte) et les modaux se mettent au prétérit même à l'oral." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Dans un récit écrit, le fil principal est au…", options: ["Präteritum", "Perfekt", "Plusquamperfekt"], correct: 0, explication: "Le Präteritum porte le récit écrit." },
       { type: "qcm", consigne: "Choisissez (antériorité).", question: "Als er ankam, ___ der Film schon begonnen.", options: ["hatte", "hat", "war", "ist"], correct: 0, explication: "beginnen → haben → hatte begonnen (antérieur)." },
       { type: "trou", consigne: "Complétez (Präteritum).", texte: "Sie {0} nach Hause und machte das Essen. (kommen)", accepte: [["kam"]], indice: "kommen → kam" },
       { type: "association", consigne: "Associez le rôle et le temps.", paires: [{ gauche: "fil du récit", droite: "Präteritum" }, { gauche: "antériorité", droite: "Plusquamperfekt" }, { gauche: "oral/dialogue", droite: "Perfekt" }, { gauche: "sein/haben", droite: "Präteritum" }] },
-      { type: "ordre", consigne: "Phrase au plus-que-parfait.", mots: ["Er", "hatte", "vorher", "angerufen"], correct: "Er hatte vorher angerufen", traduction: "Il avait appelé avant." }
+      { type: "ordre", consigne: "Phrase au plus-que-parfait.", mots: ["Er", "hatte", "vorher", "angerufen"], correct: "Er hatte vorher angerufen", traduction: "Il avait appelé avant." },
+      { type: "qcm", consigne: "Prétérit fort (récit).", question: "Prétérit de « stehen » (er) :", options: ["stand", "stehte", "stund", "gestanden"], correct: 0, explication: "stehen → stand (verbe fort)." },
+      { type: "trou", consigne: "Adverbe de récit + inversion.", texte: "Plötzlich {0} das Telefon. (klingeln)", accepte: [["klingelte"]], indice: "verbe faible → klingelte, en 2e position après Plötzlich" },
+      { type: "qcm", consigne: "Structurer le récit.", question: "___ kam er endlich nach Hause. (à la fin)", options: ["Schließlich", "Zuerst", "Plötzlich", "Dann"], correct: 0, explication: "fin du récit → schließlich." }
     ]
   },
   b1g19: {
@@ -220,14 +233,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     grammaire: [
       { exemples: [{"de":"Ich bin stolz auf meine Arbeit.","fr":"Je suis fier de mon travail."},{"de":"Sie ist zufrieden mit dem Ergebnis.","fr":"Elle est satisfaite du résultat."}], regle: "Des **adjectifs** imposent une préposition fixe : *stolz **auf***, *zufrieden **mit***, *bereit **zu***, *abhängig **von***.", attention: "Interroger/reprendre comme les verbes : *Worauf bist du stolz? – Ich bin stolz **darauf***.", titre: "Adjectif + préposition + cas", intro: "Comme les verbes, certains adjectifs imposent une préposition et un cas. À apprendre par paires.",
         tableau: { entetes: ["Adjectif", "Préposition + cas", "Exemple"], lignes: [["stolz", "auf + Akk.", "stolz auf den Erfolg"], ["zufrieden", "mit + Dat.", "zufrieden mit der Note"], ["böse", "auf + Akk.", "böse auf den Kollegen"], ["bereit", "zu + Dat.", "bereit zur Abreise"], ["verliebt", "in + Akk.", "verliebt in sie"], ["abhängig", "von + Dat.", "abhängig von den Eltern"]] },
-        note: "Pour interroger : « Worauf bist du stolz? » ; pour reprendre : « Ich bin stolz darauf. »" }
+        note: "Pour interroger : « Worauf bist du stolz? » ; pour reprendre : « Ich bin stolz darauf. »" },
+      { titre: "Classés par cas : accusatif vs datif",
+        regle: "La préposition impose le **cas**. Regroupe-les : certaines prennent l'**accusatif** (auf, für, in, über, um), d'autres le **datif** (mit, von, zu, an).",
+        intro: "*stolz **auf** dich* (acc.) vs *zufrieden **mit** dir* (dat.).",
+        tableau: { entetes: ["Cas", "Adjectifs", "Exemple"], lignes: [["+ accusatif", "stolz auf, böse auf, neugierig auf, verliebt in, bekannt für", "stolz auf den Erfolg"], ["+ datif", "zufrieden mit, einverstanden mit, verheiratet mit, bereit zu, abhängig von", "zufrieden mit der Note"], ["an + datif", "interessiert an, beteiligt an", "interessiert an Kunst"]] },
+        note: "auf/für/in/über/um → accusatif ; mit/von/zu/an (position) → datif." },
+      { titre: "Interroger et reprendre (wo(r)- / da(r)-)",
+        regle: "Comme pour les verbes : **chose** → *wo(r)-* (question) et *da(r)-* (reprise) ; **personne** → préposition + pronom.",
+        intro: "***Worauf** bist du stolz? — Ich bin stolz **darauf**.* (chose) · *stolz **auf ihn*** (personne).",
+        tableau: { entetes: ["Adjectif+prép", "Chose (question)", "Chose (reprise)", "Personne"], lignes: [["stolz auf", "worauf?", "darauf", "auf ihn"], ["zufrieden mit", "womit?", "damit", "mit ihm"], ["abhängig von", "wovon?", "davon", "von ihm"], ["interessiert an", "woran?", "daran", "an ihm"]] },
+        note: "Chose → un seul mot (wo-/da-). Personne → préposition + pronom séparé." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« zufrieden » se construit avec…", options: ["mit + datif", "auf + accusatif", "für + accusatif"], correct: 0, explication: "zufrieden mit + datif." },
       { type: "qcm", consigne: "Choisissez la préposition.", question: "Ich bin stolz ___ meine Arbeit.", options: ["auf", "mit", "von", "zu"], correct: 0, explication: "stolz auf + accusatif." },
       { type: "trou", consigne: "Complétez (abhängig + préposition).", texte: "Er ist noch abhängig {0} seinen Eltern.", accepte: [["von"]], indice: "abhängig von + datif" },
       { type: "association", consigne: "Associez l'adjectif et sa préposition.", paires: [{ gauche: "stolz", droite: "auf" }, { gauche: "zufrieden", droite: "mit" }, { gauche: "bereit", droite: "zu" }, { gauche: "verliebt", droite: "in" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je suis content de ma note.", accepte: ["Ich bin zufrieden mit meiner Note"], aide: "zufrieden mit + datif" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je suis content de ma note.", accepte: ["Ich bin zufrieden mit meiner Note"], aide: "zufrieden mit + datif" },
+      { type: "qcm", consigne: "Cas imposé.", question: "« verliebt in » régit…", options: ["l'accusatif", "le datif", "le génitif"], correct: 0, explication: "verliebt in + accusatif (verliebt in sie/ihn)." },
+      { type: "trou", consigne: "Reprise d'une chose.", texte: "— Bist du mit dem Ergebnis zufrieden? — Ja, ich bin sehr {0}.", accepte: [["damit"]], indice: "chose → da + mit = damit" },
+      { type: "qcm", consigne: "Question sur une chose.", question: "___ bist du stolz? — Auf meine Arbeit.", options: ["Worauf", "Auf was", "Wofür", "Worüber"], correct: 0, explication: "stolz auf → Worauf ? (wo+r+auf)." }
     ]
   },
   b1g22: {
@@ -248,14 +274,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     grammaire: [
       { exemples: [{"de":"Sie spricht sowohl Deutsch als auch Englisch.","fr":"Elle parle aussi bien allemand qu'anglais."},{"de":"Ich trinke weder Kaffee noch Tee.","fr":"Je ne bois ni café ni thé."}], regle: "Connecteurs doubles : **sowohl … als auch**, **weder … noch**, **entweder … oder**, **nicht nur … sondern auch**.", attention: "*weder … noch* est **déjà négatif**. Après *sondern*, on corrige une **négation** précédente.", titre: "Les connecteurs doubles", intro: "Ils relient deux éléments de même nature pour énumérer ou opposer.",
         tableau: { entetes: ["Connecteur", "Sens", "Exemple"], lignes: [["sowohl … als auch", "aussi bien … que", "Sie spricht sowohl Deutsch als auch Englisch."], ["weder … noch", "ni … ni", "Ich trinke weder Kaffee noch Tee."], ["entweder … oder", "soit … soit", "Wir fahren entweder nach Rom oder nach Paris."], ["nicht nur … sondern auch", "non seulement … mais aussi", "Er ist nicht nur klug, sondern auch fleißig."]] },
-        note: "« weder … noch » est déjà négatif : pas d'autre négation. Après « sondern », on corrige une négation précédente." }
+        note: "« weder … noch » est déjà négatif : pas d'autre négation. Après « sondern », on corrige une négation précédente." },
+      { titre: "Accord du verbe et position",
+        regle: "**sowohl … als auch** + sujets → verbe au **pluriel**. **weder … noch** / **entweder … oder** → le verbe s'accorde avec le sujet **le plus proche**. En tête, **entweder** entraîne l'**inversion**.",
+        intro: "*Sowohl Anna als auch Tom **kommen*** (pluriel). *Weder du noch er **hat** Zeit* (proche).",
+        tableau: { entetes: ["Connecteur", "Accord du verbe", "Exemple"], lignes: [["sowohl … als auch", "pluriel", "Sowohl er als auch sie kommen."], ["weder … noch", "sujet le plus proche", "Weder du noch er hat Zeit."], ["entweder … oder", "sujet le plus proche", "Entweder die Kinder oder die Mutter kocht."]] },
+        note: "En tête de phrase, *entweder / nicht nur* déclenchent l'**inversion** : « Entweder gehst du, oder … »." },
+      { titre: "sondern ou aber ? (mais)",
+        regle: "**sondern** = « mais au contraire » : il **corrige** une négation (*nicht … sondern*). **aber** = « mais » simple (contraste), sans négation obligatoire.",
+        intro: "*Das ist **nicht** rot, **sondern** blau* (correction). *Es ist teuer, **aber** schön* (contraste).",
+        tableau: { entetes: ["Mot", "Emploi", "Exemple"], lignes: [["sondern", "après une négation (correction)", "Nicht heute, sondern morgen."], ["aber", "contraste simple", "Klein, aber fein."], ["nicht nur … sondern auch", "ajout", "Nicht nur klug, sondern auch nett."]] },
+        note: "*sondern* exige une négation avant ; sans négation, on emploie *aber*." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« weder … noch » signifie…", options: ["ni … ni", "soit … soit", "aussi bien … que"], correct: 0, explication: "weder … noch = ni … ni." },
       { type: "qcm", consigne: "Choisissez.", question: "Wir fahren ___ nach Rom ___ nach Paris.", options: ["entweder … oder", "weder … noch", "sowohl … als", "nicht … sondern"], correct: 0, explication: "soit … soit → entweder … oder." },
       { type: "trou", consigne: "Complétez (sowohl … als auch).", texte: "Sie spricht sowohl Deutsch {0} auch Englisch.", accepte: [["als"]], indice: "sowohl … als auch" },
       { type: "association", consigne: "Associez le connecteur et son sens.", paires: [{ gauche: "sowohl … als auch", droite: "aussi bien … que" }, { gauche: "weder … noch", droite: "ni … ni" }, { gauche: "entweder … oder", droite: "soit … soit" }, { gauche: "nicht nur … sondern auch", droite: "non seulement … mais aussi" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je ne bois ni café ni thé.", accepte: ["Ich trinke weder Kaffee noch Tee"], aide: "weder … noch" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je ne bois ni café ni thé.", accepte: ["Ich trinke weder Kaffee noch Tee"], aide: "weder … noch" },
+      { type: "qcm", consigne: "sondern ou aber ?", question: "Das ist nicht mein Buch, ___ deins.", options: ["sondern", "aber", "denn", "oder"], correct: 0, explication: "correction après négation → sondern." },
+      { type: "qcm", consigne: "Accord du verbe.", question: "Sowohl Anna als auch Tom ___ eingeladen.", options: ["sind", "ist", "war", "hat"], correct: 0, explication: "sowohl … als auch → pluriel : sind." },
+      { type: "trou", consigne: "Contraste simple (sans négation).", texte: "Die Wohnung ist klein, {0} gemütlich.", accepte: [["aber"]], indice: "contraste simple → aber" }
     ]
   },
   b1g23: {
