@@ -12173,14 +12173,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
       { exemples: [{"de":"Das Auto steht vor dem Haus.","fr":"La voiture est devant la maison."},{"de":"Ich stelle die Vase auf den Tisch.","fr":"Je pose le vase sur la table."}], regle: "Prépositions à deux cas : **datif** pour la position (**Wo?**), **accusatif** pour la direction (**Wohin?**).", attention: "Couples : *liegen/legen, stehen/stellen* — Wo? (Dat.) vs Wohin? (Akk.).", titre: "Position (Dat.) ou direction (Akk.)", intro: "Neuf prépositions prennent le datif (Wo?) ou l'accusatif (Wohin?).",
         tableau: { entetes: ["Question", "Cas", "Exemple"], lignes: [["Wo? (position)", "datif", "Das Buch liegt auf dem Tisch."], ["Wohin? (direction)", "accusatif", "Ich lege das Buch auf den Tisch."], ["Wo?", "datif", "Ich bin in der Stadt."], ["Wohin?", "accusatif", "Ich fahre in die Stadt."]] },
         schemas: [{ legende: "Wohin ? → accusatif (mouvement vers).", mots: [{ m: "Er", r: "sujet", c: "sujet" }, { m: "hängt", r: "verbe (2)", c: "verbe" }, { m: "das Bild", r: "accusatif", c: "objet" }, { m: "an die Wand", r: "direction (acc.)", c: "fin" }] }],
-        note: "Couples utiles : liegen/legen, stehen/stellen, sitzen/setzen, hängen — position (Dat.) vs action de placer (Akk.)." }
+        note: "Couples utiles : liegen/legen, stehen/stellen, sitzen/setzen, hängen — position (Dat.) vs action de placer (Akk.)." },
+      { titre: "Les couples de verbes et leurs formes",
+        regle: "Les **verbes de position** (forts, + datif) et les **verbes d'action** (faibles, + accusatif) vont par paires. Attention à leurs formes au prétérit / participe.",
+        intro: "*Das Buch **lag** auf dem Tisch* (position) vs *Ich **legte** das Buch auf den Tisch* (action).",
+        tableau: { entetes: ["Position (Dat.)", "Prétérit / Part.", "Action (Akk.)"], lignes: [["liegen (être couché)", "lag / gelegen", "legen (poser à plat)"], ["stehen (être debout)", "stand / gestanden", "stellen (poser debout)"], ["sitzen (être assis)", "saß / gesessen", "setzen (asseoir)"], ["hängen (pendre)", "hing / gehangen", "hängen (accrocher)"]] },
+        note: "Les verbes de position sont souvent **forts** (lag, stand, saß, hing) ; les verbes d'action sont **faibles** (legte, stellte, setzte, hängte)." },
+      { titre: "Emploi figuré : le cas est FIXÉ",
+        regle: "Dans les expressions **figurées** (verbe/adjectif à préposition), la règle Wo?/Wohin? ne s'applique plus : le **cas est imposé** par l'expression.",
+        intro: "*sich freuen **auf** + accusatif*, *teilnehmen **an** + datif* — indépendamment du mouvement.",
+        tableau: { entetes: ["Expression", "Cas fixé", "Exemple"], lignes: [["denken an", "accusatif", "Ich denke an dich."], ["sich freuen auf", "accusatif", "Ich freue mich auf den Urlaub."], ["teilnehmen an", "datif", "Ich nehme an dem Kurs teil."], ["leiden unter", "datif", "Er leidet unter dem Stress."]] },
+        note: "Ici, pas de Wo?/Wohin? : le cas fait partie de l'expression et se mémorise avec elle." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Pour la DIRECTION (Wohin?), on emploie…", options: ["l'accusatif", "le datif", "le génitif"], correct: 0, explication: "Wohin? → accusatif." },
       { type: "qcm", consigne: "Choisissez (Wo?).", question: "Das Auto steht vor ___ Haus.", options: ["dem", "das", "den", "der"], correct: 0, explication: "position → datif, das Haus → dem." },
       { type: "trou", consigne: "Complétez (Wohin?, accusatif).", texte: "Ich stelle die Vase auf {0} Tisch.", accepte: [["den"]], indice: "direction → accusatif, der Tisch → den" },
       { type: "association", consigne: "Associez le verbe et le cas.", paires: [{ gauche: "liegen", droite: "datif (position)" }, { gauche: "legen", droite: "accusatif (direction)" }, { gauche: "stehen", droite: "datif (position)" }, { gauche: "stellen", droite: "accusatif (direction)" }] },
-      { type: "ordre", consigne: "Construisez la phrase (direction).", mots: ["Ich", "gehe", "in", "die", "Stadt"], correct: "Ich gehe in die Stadt", traduction: "Je vais en ville." }
+      { type: "ordre", consigne: "Construisez la phrase (direction).", mots: ["Ich", "gehe", "in", "die", "Stadt"], correct: "Ich gehe in die Stadt", traduction: "Je vais en ville." },
+      { type: "qcm", consigne: "Position ou action ?", question: "Prétérit de « liegen » (position) :", options: ["lag", "legte", "liegte", "gelegen"], correct: 0, explication: "liegen (position, fort) → lag." },
+      { type: "trou", consigne: "Verbe d'action (accusatif).", texte: "Ich {0} das Buch auf den Tisch. (poser à plat)", accepte: [["lege"]], indice: "action → legen + accusatif" },
+      { type: "qcm", consigne: "Emploi figuré (cas fixé).", question: "Ich nehme ___ dem Seminar teil.", options: ["an", "auf", "in", "über"], correct: 0, explication: "teilnehmen an + datif (cas fixé)." }
     ]
   },
   b2g05: {
@@ -12202,14 +12215,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
       { exemples: [{"de":"Das Problem muss gelöst werden.","fr":"Le problème doit être résolu."},{"de":"Das Museum ist sonntags geschlossen.","fr":"Le musée est fermé le dimanche."}], regle: "Vorgangspassiv (**werden** + participe = l'action) ; Zustandspassiv (**sein** + participe = le résultat) ; avec modal : *muss … gemacht **werden***.", attention: "Au **Perfekt passif**, *werden → **worden*** (*ist gebaut **worden***), sans ge-.", titre: "Passif de processus, passif d'état, passif modal", intro: "Vorgangspassiv : werden + participe (l'action). Zustandspassiv : sein + participe (le résultat). Avec modal : … werden (à la fin).",
         tableau: { entetes: ["Type", "Forme", "Exemple"], lignes: [["Présent", "wird + participe", "Das Haus wird gebaut."], ["Prétérit", "wurde + participe", "Das Haus wurde gebaut."], ["Parfait", "ist + participe + worden", "Das Haus ist gebaut worden."], ["avec modal", "muss + participe + werden", "Das muss repariert werden."], ["passif d'état", "ist + participe", "Das Haus ist gebaut. (résultat)"]] },
         schemas: [{ legende: "Passif avec modal : … participe + werden (fin).", mots: [{ m: "Der Vertrag", r: "sujet", c: "sujet" }, { m: "muss", r: "modal (2)", c: "verbe" }, { m: "heute", r: "complément", c: "objet" }, { m: "unterschrieben werden", r: "participe + werden (fin)", c: "fin" }] }],
-        note: "Au Perfekt passif, le participe de werden devient « worden » (sans ge-). Agent : von + datif." }
+        note: "Au Perfekt passif, le participe de werden devient « worden » (sans ge-). Agent : von + datif." },
+      { titre: "Les alternatives au passif (B2)",
+        regle: "L'allemand soigné remplace parfois le passif par des **tournures équivalentes** : **sein + zu + infinitif**, **sich lassen + infinitif**, **man** + actif, ou un adjectif en **-bar**.",
+        intro: "*Das Problem **ist zu lösen*** = *muss gelöst werden*. *Das **lässt sich** machen* = *kann gemacht werden*.",
+        tableau: { entetes: ["Tournure", "= passif", "Exemple"], lignes: [["sein + zu + Inf.", "muss/kann … werden", "Das ist noch zu erledigen."], ["sich lassen + Inf.", "kann … werden", "Das lässt sich reparieren."], ["man + actif", "on …", "Man kann das leicht lösen."], ["adjectif en -bar", "kann … werden", "Das ist machbar / lösbar."]] },
+        note: "Ces formes sont fréquentes à l'écrit soutenu et allègent le style." },
+      { titre: "Passif impersonnel et l'agent",
+        regle: "**Passif impersonnel** : sans sujet réel, avec **es** en tête ou rien. **Agent** : *von + datif* (l'auteur) / *durch + accusatif* (le moyen).",
+        intro: "*Es wird getanzt* / *Hier **wird** gearbeitet* (l'activité seule compte).",
+        tableau: { entetes: ["Structure", "Rôle", "Exemple"], lignes: [["Es wird + participe", "activité (impersonnel)", "Es wird viel gelacht."], ["Hier wird + participe", "impersonnel sans es", "Hier wird gearbeitet."], ["von + datif", "l'auteur", "von der Regierung beschlossen"], ["durch + accusatif", "le moyen", "durch einen Fehler verursacht"]] },
+        note: "Le passif impersonnel décrit une activité générale sans dire qui la fait." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Le passif d'état (résultat) se forme avec…", options: ["sein + participe", "werden + participe", "haben + participe"], correct: 0, explication: "Zustandspassiv : Das Geschäft ist geöffnet." },
       { type: "qcm", consigne: "Choisissez (Perfekt passif).", question: "Das Haus ist letztes Jahr gebaut ___.", options: ["worden", "geworden", "gewesen", "werden"], correct: 0, explication: "Perfekt passif → … worden." },
       { type: "trou", consigne: "Complétez (passif modal).", texte: "Der Brief muss heute noch geschrieben {0}.", accepte: [["werden"]], indice: "passif + modal → participe + werden" },
       { type: "association", consigne: "Associez le temps et la forme.", paires: [{ gauche: "présent", droite: "wird gebaut" }, { gauche: "prétérit", droite: "wurde gebaut" }, { gauche: "parfait", droite: "ist gebaut worden" }, { gauche: "état", droite: "ist gebaut" }] },
-      { type: "ordre", consigne: "Construisez la phrase au passif.", mots: ["Das", "Problem", "wurde", "gelöst"], correct: "Das Problem wurde gelöst", traduction: "Le problème a été résolu." }
+      { type: "ordre", consigne: "Construisez la phrase au passif.", mots: ["Das", "Problem", "wurde", "gelöst"], correct: "Das Problem wurde gelöst", traduction: "Le problème a été résolu." },
+      { type: "qcm", consigne: "Alternative au passif.", question: "« Das lässt sich machen » signifie…", options: ["Das kann gemacht werden", "Das muss gemacht werden", "Das ist schon gemacht"], correct: 0, explication: "sich lassen + infinitif = kann … werden." },
+      { type: "trou", consigne: "sein + zu + infinitif.", texte: "Das Formular ist bis Freitag {0} unterschreiben.", accepte: [["zu"]], indice: "sein + zu + infinitif = doit être signé" },
+      { type: "qcm", consigne: "von ou durch ?", question: "Die Stadt wurde ___ ein Erdbeben zerstört.", options: ["durch", "von", "mit", "bei"], correct: 0, explication: "moyen / cause → durch + accusatif." }
     ]
   },
   b2g06: {
@@ -12258,14 +12284,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     grammaire: [
       { regle: "Masculins (souvent animés) prenant **-(e)n** hors du nominatif singulier : *Kollege, Kunde, Student, Nachbar, Mensch, Herr*.", attention: "Indices : noms en **-e**, en *-ist/-ent*, ou d'origine grecque (*Journalist, Tourist*).", exemples: [{"de":"Ich berate den Kunden.","fr":"Je conseille le client."},{"de":"Ich spreche mit dem Nachbarn.","fr":"Je parle avec le voisin."}], titre: "Ces masculins prennent -(e)n partout sauf au nominatif singulier", intro: "Un groupe de masculins (souvent des êtres animés) ajoute -n/-en à l'accusatif, au datif et au génitif.",
         tableau: { entetes: ["Nominatif", "Acc./Dat.", "Sens"], lignes: [["der Kollege", "den/dem Kollegen", "le collègue"], ["der Kunde", "den/dem Kunden", "le client"], ["der Student", "den/dem Studenten", "l'étudiant"], ["der Nachbar", "den/dem Nachbarn", "le voisin"], ["der Mensch", "den/dem Menschen", "l'humain"], ["der Herr", "den/dem Herrn", "monsieur"]] },
-        note: "Indices : noms en -e (Kollege), nationalités/professions (Student, Praktikant), origine grecque (Tourist, Journalist)." }
+        note: "Indices : noms en -e (Kollege), nationalités/professions (Student, Praktikant), origine grecque (Tourist, Journalist)." },
+      { titre: "Le modèle complet (der Student)",
+        regle: "Un nom de la n-déclinaison prend **-en** à l'accusatif, au datif ET au génitif — seul le **nominatif singulier** reste nu.",
+        intro: "Le pluriel suit le même -en.",
+        tableau: { entetes: ["Cas", "Singulier", "Pluriel"], lignes: [["Nominatif", "der Student", "die Studenten"], ["Accusatif", "den Studenten", "die Studenten"], ["Datif", "dem Studenten", "den Studenten"], ["Génitif", "des Studenten", "der Studenten"]] },
+        note: "Une seule forme nue : le **nominatif singulier** (der Student)." },
+      { titre: "Le génitif en -ns et l'adjectif",
+        regle: "Quelques-uns (*Name, Wille, Gedanke* + le neutre *Herz*) font **-ns** au génitif : *des Name**ns***. Un **adjectif** devant un n-nom prend aussi **-en** : *den nett**en** Kollegen*.",
+        intro: "*der Name → des Name**ns*** · *den **netten** Kollegen* (adjectif + nom : deux -en).",
+        tableau: { entetes: ["Nominatif", "Datif", "Génitif"], lignes: [["der Name", "dem Namen", "des Namens"], ["der Gedanke", "dem Gedanken", "des Gedankens"], ["das Herz", "dem Herzen", "des Herzens"], ["+ adjectif", "dem netten Kollegen", "des netten Kollegen"]] },
+        note: "Adjectif + n-nom → tous deux en **-en** au datif/accusatif/génitif (den netten Studenten)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "La n-déclinaison concerne surtout…", options: ["des masculins animés", "tous les neutres", "les féminins"], correct: 0, explication: "der Kollege, der Kunde, der Mensch…" },
       { type: "qcm", consigne: "Choisissez.", question: "Ich berate den ___. (Kunde)", options: ["Kunden", "Kunde", "Kundes", "Kunder"], correct: 0, explication: "accusatif → den Kunden." },
       { type: "trou", consigne: "Complétez (datif).", texte: "Ich spreche mit dem {0}. (Nachbar)", accepte: [["Nachbarn"]], indice: "datif → den/dem …n" },
       { type: "association", consigne: "Associez nominatif et accusatif.", paires: [{ gauche: "der Kollege", droite: "den Kollegen" }, { gauche: "der Herr", droite: "den Herrn" }, { gauche: "der Student", droite: "den Studenten" }, { gauche: "der Mensch", droite: "den Menschen" }] },
-      { type: "ordre", consigne: "Construisez la phrase.", mots: ["Ich", "frage", "den", "Kollegen"], correct: "Ich frage den Kollegen", traduction: "Je demande au collègue." }
+      { type: "ordre", consigne: "Construisez la phrase.", mots: ["Ich", "frage", "den", "Kollegen"], correct: "Ich frage den Kollegen", traduction: "Je demande au collègue." },
+      { type: "trou", consigne: "Génitif spécial en -ns.", texte: "Der Anfang {0} Namens ist schwer zu lesen.", accepte: [["des"]], indice: "der Name → génitif des Namens" },
+      { type: "qcm", consigne: "Adjectif + n-nom (datif).", question: "Ich habe mit ___ gesprochen. (der nette Kollege)", options: ["dem netten Kollegen", "dem nette Kollege", "den netten Kollegen", "dem netten Kollege"], correct: 0, explication: "datif : dem netten Kollegen (adjectif -en + nom -en)." },
+      { type: "trou", consigne: "Accusatif (n-déclinaison).", texte: "Wir suchen einen erfahrenen {0}. (Experte)", accepte: [["Experten"]], indice: "der Experte → einen Experten (acc.)" }
     ]
   },
   b2g08: {
