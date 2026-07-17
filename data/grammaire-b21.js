@@ -22,14 +22,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     grammaire: [
       { regle: "Au B2, les modaux expriment aussi la **supposition** : *müssen* (quasi sûr), *dürfte* (probable), *können* (possible).", attention: "*sollen* subjectif = **rumeur** (*Er **soll** reich sein*) ; *wollen* subjectif = **prétention** (*Er **will** nichts gewusst haben*).", exemples: [{"de":"Er muss krank sein.","fr":"Il doit être malade (j'en suis sûr)."},{"de":"Sie dürfte schon da sein.","fr":"Elle est probablement déjà là."}], titre: "Sens objectif et sens subjectif", intro: "Au B2, les modaux servent aussi à exprimer une SUPPOSITION (sens subjectif), pas seulement l'obligation ou la capacité.",
         tableau: { entetes: ["Modal", "Sens objectif", "Sens subjectif (supposition)"], lignes: [["müssen", "devoir (obligation)", "Er muss krank sein. (j'en suis sûr)"], ["können", "pouvoir (capacité)", "Das kann stimmen. (c'est possible)"], ["dürfen", "avoir le droit", "Er dürfte zu Hause sein. (probablement)"], ["sollen", "devoir (consigne)", "Er soll reich sein. (on dit que)"], ["wollen", "vouloir", "Er will alles gesehen haben. (il prétend)"]] },
-        note: "Degrés de certitude : müssen (quasi sûr) > dürfte (probable) > könnte/kann (possible). « sollen » subjectif = rumeur ; « wollen » subjectif = prétention." }
+        note: "Degrés de certitude : müssen (quasi sûr) > dürfte (probable) > könnte/kann (possible). « sollen » subjectif = rumeur ; « wollen » subjectif = prétention." },
+      { titre: "La supposition sur le PASSÉ",
+        regle: "Pour supposer sur le **passé**, on emploie le modal + **infinitif passé** (participe + haben/sein) : *Er **muss** krank **gewesen sein*** (il a dû être malade).",
+        intro: "modal + participe + haben/sein : *Sie **dürfte** es **vergessen haben***.",
+        tableau: { entetes: ["Certitude", "Structure", "Exemple"], lignes: [["quasi sûr", "muss + Part. + haben/sein", "Er muss es gewusst haben."], ["probable", "dürfte + Part. + haben/sein", "Sie dürfte gegangen sein."], ["possible", "könnte + Part. + haben/sein", "Er könnte krank gewesen sein."], ["rumeur (passé)", "soll + Part. + haben/sein", "Er soll reich gewesen sein."]] },
+        note: "Présent : *Er muss krank sein*. Passé : *Er muss krank **gewesen sein*** (+ infinitif passé)." },
+      { titre: "L'échelle de certitude",
+        regle: "Les modaux subjectifs forment une **échelle**, du plus sûr au plus incertain.",
+        intro: "*muss* (≈100 %) → *dürfte/müsste* (≈80 %) → *kann/könnte* (≈50 %) → *mag* (peu probable).",
+        tableau: { entetes: ["Modal", "Certitude", "Nuance"], lignes: [["muss", "≈ 95-100 %", "déduction quasi sûre"], ["dürfte / müsste", "≈ 75-90 %", "très probable"], ["kann / könnte", "≈ 50 %", "possible"], ["mag", "faible", "il se peut (concession)"], ["kann nicht", "exclu", "impossible"]] },
+        note: "*Das kann nicht stimmen* = impossible (exclusion). *Das mag sein* = c'est possible (concession)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« Er muss krank sein » exprime ici…", options: ["une supposition quasi certaine", "une obligation", "une permission"], correct: 0, explication: "Sens subjectif : j'en suis presque sûr." },
       { type: "qcm", consigne: "Choisissez (rumeur).", question: "Er ___ sehr reich sein, sagt man.", options: ["soll", "muss", "will", "darf"], correct: 0, explication: "sollen subjectif = on dit que." },
       { type: "trou", consigne: "Complétez (probabilité).", texte: "Sie {0} jetzt im Büro sein, sie arbeitet ja immer bis sechs.", accepte: [["dürfte"]], indice: "supposition probable → dürfte" },
       { type: "association", consigne: "Associez le modal et son sens subjectif.", paires: [{ gauche: "müssen", droite: "quasi certain" }, { gauche: "dürfte", droite: "probable" }, { gauche: "können", droite: "possible" }, { gauche: "wollen", droite: "prétention" }] },
-      { type: "qcm", consigne: "Choisissez.", question: "« Er will alles gewusst haben » signifie…", options: ["Il prétend avoir tout su", "Il veut tout savoir", "Il doit tout savoir"], correct: 0, explication: "wollen subjectif = prétendre." }
+      { type: "qcm", consigne: "Choisissez.", question: "« Er will alles gewusst haben » signifie…", options: ["Il prétend avoir tout su", "Il veut tout savoir", "Il doit tout savoir"], correct: 0, explication: "wollen subjectif = prétendre." },
+      { type: "trou", consigne: "Supposition sur le passé.", texte: "Er muss den Bus verpasst {0}.", accepte: [["haben"]], indice: "supposition passée → modal + participe + haben" },
+      { type: "qcm", consigne: "Échelle de certitude.", question: "Le plus sûr : « Er ___ es gewesen sein. »", options: ["muss", "könnte", "mag", "kann nicht"], correct: 0, explication: "müssen = déduction quasi certaine." },
+      { type: "qcm", consigne: "Impossibilité.", question: "« Das ___ nicht stimmen » (c'est impossible).", options: ["kann", "muss", "soll", "will"], correct: 0, explication: "kann nicht = exclusion / impossibilité." }
     ]
   },
   b2g02: {
@@ -210,14 +223,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     grammaire: [
       { exemples: [{"de":"Er bewirbt sich um eine Stelle.","fr":"Il postule pour un emploi."},{"de":"Das Team besteht aus fünf Leuten.","fr":"L'équipe se compose de cinq personnes."}], regle: "Verbes à préposition fixe : *sich bewerben **um***, *bestehen **aus***, *teilnehmen **an***, *hinweisen **auf***.", attention: "Reprise d'une **chose** par *da(r)-* (*darauf*), d'une **personne** par *préposition + wen/wem*.", titre: "Préposition fixe + cas + reprise", intro: "Beaucoup de verbes B2 imposent une préposition. On reprend une chose par da(r)- et on interroge par wo(r)-.",
         tableau: { entetes: ["Verbe", "Préposition + cas", "Exemple"], lignes: [["sich bewerben", "um + Akk.", "Ich bewerbe mich um die Stelle."], ["bestehen", "aus + Dat.", "Das Team besteht aus fünf Personen."], ["teilnehmen", "an + Dat.", "Sie nimmt an dem Kurs teil."], ["sich handeln", "um + Akk.", "Es handelt sich um einen Irrtum."], ["hinweisen", "auf + Akk.", "Ich weise darauf hin, dass …"]] },
-        note: "Chose : « Worum bewirbst du dich? – Ich bewerbe mich darum. » Personne : « Um wen …? »" }
+        note: "Chose : « Worum bewirbst du dich? – Ich bewerbe mich darum. » Personne : « Um wen …? »" },
+      { titre: "Annoncer une subordonnée : da(r)- + dass / zu",
+        regle: "Un verbe à préposition annonce souvent la subordonnée par un **adverbe pronominal** (da(r)-) : *da(r)+prép* + *, dass…* (sujets différents) ou *, zu + infinitif* (même sujet).",
+        intro: "*Ich freue mich **darauf**, dich zu sehen* (même sujet) · *…**darüber**, dass du kommst* (sujets ≠).",
+        tableau: { entetes: ["Verbe + prép.", "Annonce", "Exemple"], lignes: [["sich freuen auf", "darauf …, zu + inf.", "Ich freue mich darauf, zu kommen."], ["warten auf", "darauf …, dass", "Ich warte darauf, dass er kommt."], ["denken an", "daran …, zu + inf.", "Denk daran, ihn anzurufen."], ["hinweisen auf", "darauf …, dass", "Ich weise darauf hin, dass …"]] },
+        note: "Même sujet → da(r)- + **zu + infinitif**. Sujets différents → da(r)- + **dass** + subordonnée." },
+      { titre: "Verbes à préposition B2 (à enrichir)",
+        regle: "Élargis ta liste avec ces verbes fréquents à l'écrit et aux examens. Chaque verbe = préposition + cas fixes.",
+        intro: "Attention aux verbes à **deux sens** selon la préposition.",
+        tableau: { entetes: ["Verbe", "Prép. + cas", "Sens"], lignes: [["sich bewerben", "um + Akk.", "postuler pour"], ["bestehen", "aus + Dat.", "se composer de"], ["bestehen", "auf + Dat.", "insister sur"], ["zweifeln", "an + Dat.", "douter de"], ["verzichten", "auf + Akk.", "renoncer à"], ["sich beziehen", "auf + Akk.", "se référer à"]] },
+        note: "*bestehen **aus*** (se composer de) ≠ *bestehen **auf*** (insister sur) — même verbe, sens opposés." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« sich bewerben » se construit avec…", options: ["um + accusatif", "auf + datif", "an + accusatif"], correct: 0, explication: "sich bewerben um + accusatif." },
       { type: "qcm", consigne: "Choisissez.", question: "Das Team besteht ___ fünf Personen.", options: ["aus", "von", "über", "um"], correct: 0, explication: "bestehen aus + datif." },
       { type: "trou", consigne: "Complétez (an + datif).", texte: "Ich nehme {0} dem Seminar teil.", accepte: [["an"]], indice: "teilnehmen an + datif" },
       { type: "association", consigne: "Associez le verbe et sa préposition.", paires: [{ gauche: "sich bewerben", droite: "um" }, { gauche: "bestehen", droite: "aus" }, { gauche: "teilnehmen", droite: "an" }, { gauche: "hinweisen", droite: "auf" }] },
-      { type: "qcm", consigne: "Reprise (chose).", question: "Worauf weist du hin? – Ich weise ___ hin.", options: ["darauf", "daran", "darum", "davon"], correct: 0, explication: "hinweisen auf → darauf." }
+      { type: "qcm", consigne: "Reprise (chose).", question: "Worauf weist du hin? – Ich weise ___ hin.", options: ["darauf", "daran", "darum", "davon"], correct: 0, explication: "hinweisen auf → darauf." },
+      { type: "trou", consigne: "Annonce d'une subordonnée (da(r)-).", texte: "Ich freue mich {0}, dass du kommst.", accepte: [["darüber"]], indice: "sich freuen über → darüber + dass" },
+      { type: "qcm", consigne: "aus ou auf ?", question: "Ich bestehe ___ meiner Meinung. (insister)", options: ["auf", "aus", "an", "über"], correct: 0, explication: "bestehen auf + datif = insister ; aus = se composer de." },
+      { type: "trou", consigne: "Même sujet → zu + infinitif.", texte: "Ich freue mich darauf, dich {0} sehen.", accepte: [["zu"]], indice: "da(r)- + zu + infinitif (même sujet)" }
     ]
   },
   b2g07: {
@@ -280,14 +306,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
       { exemples: [{"de":"Es war so spät, dass alle gingen.","fr":"Il était si tard que tout le monde est parti."},{"de":"Er kam nicht, denn er war krank.","fr":"Il n'est pas venu, car il était malade."}], regle: "Cause : *weil/da* (verbe fin), *denn* (2ᵉ). Conséquence : *deshalb* (2ᵉ), **so + adjectif + dass** (verbe fin).", attention: "*so … dass* insiste sur le **degré** : *Es war **so** kalt, **dass** wir blieben*.", titre: "Dire pourquoi et avec quelle conséquence", intro: "Cause : weil/da (verbe fin), denn (verbe 2e). Conséquence : deshalb (verbe 2e), so + adjectif + dass (verbe fin).",
         tableau: { entetes: ["Mot", "Rôle / position du verbe", "Exemple"], lignes: [["weil", "cause — verbe FIN", "Er kam nicht, weil er krank war."], ["denn", "cause — verbe 2e", "Er kam nicht, denn er war krank."], ["deshalb", "conséquence — verbe 2e", "Er war krank, deshalb kam er nicht."], ["so … dass", "conséquence — verbe FIN", "Es war so kalt, dass wir blieben."], ["solch … dass", "conséquence — verbe FIN", "Es war solch ein Lärm, dass …"]] },
         schemas: [{ legende: "so … dass : conséquence, verbe à la FIN.", mots: [{ m: "Es war so kalt,", r: "intensité", c: "objet" }, { m: "dass", r: "conséquence", c: "conj" }, { m: "wir zu Hause", r: "sujet + complément", c: "sujet" }, { m: "blieben", r: "verbe (fin)", c: "fin" }] }],
-        note: "« so + adjectif + dass » insiste sur le degré : « so müde, dass … ». weil/da/so…dass → verbe à la fin ; denn/deshalb → verbe 2e." }
+        note: "« so + adjectif + dass » insiste sur le degré : « so müde, dass … ». weil/da/so…dass → verbe à la fin ; denn/deshalb → verbe 2e." },
+      { titre: "La cause nominale (registre soutenu)",
+        regle: "À l'écrit soutenu, la cause s'exprime par **préposition + nom** (au lieu d'une subordonnée) : **wegen, aufgrund, infolge** (+ génitif), **dank** (+ génitif/datif).",
+        intro: "*Wegen des Regens…* = *Weil es regnet…*. Plus court, plus formel.",
+        tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["wegen + Gén.", "à cause de", "wegen des Staus"], ["aufgrund + Gén.", "en raison de", "aufgrund der Krise"], ["infolge + Gén.", "par suite de", "infolge des Unfalls"], ["dank + Gén./Dat.", "grâce à", "dank deiner Hilfe"]] },
+        note: "Ces prépositions + nom remplacent une subordonnée en *weil* (registre écrit)." },
+      { titre: "Connecteurs de conséquence soutenus",
+        regle: "Au-delà de *deshalb*, l'écrit emploie **folglich, somit, daher, infolgedessen** (= par conséquent). Tous en position 1 → **inversion**.",
+        intro: "*Der Zug fiel aus, **folglich** kam ich zu spät.*",
+        tableau: { entetes: ["Connecteur", "Sens", "Registre"], lignes: [["deshalb / deswegen", "c'est pourquoi", "courant"], ["daher / darum", "de ce fait", "courant / écrit"], ["folglich / somit", "par conséquent", "soutenu"], ["infolgedessen", "par suite de quoi", "soutenu"]] },
+        note: "Tous entraînent l'inversion (verbe en 2e) : « …, somit **haben** wir … »." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Avec « so … dass », le verbe de la conséquence va…", options: ["à la fin", "en 2e position", "au début"], correct: 0, explication: "dass = subordination → verbe à la fin." },
       { type: "qcm", consigne: "Cause ou conséquence ?", question: "Er war krank, ___ blieb er zu Hause.", options: ["deshalb", "weil", "denn nicht", "dass"], correct: 0, explication: "conséquence + verbe 2e → deshalb." },
       { type: "trou", consigne: "Complétez (so … dass, verbe à la fin).", texte: "Es war so spät, dass niemand mehr da {0}. (sein)", accepte: [["war"]], indice: "dass → verbe à la fin (prétérit)" },
       { type: "association", consigne: "Associez le mot et son rôle.", paires: [{ gauche: "weil", droite: "cause (verbe fin)" }, { gauche: "denn", droite: "cause (verbe 2e)" }, { gauche: "deshalb", droite: "conséquence (verbe 2e)" }, { gauche: "so … dass", droite: "conséquence (verbe fin)" }] },
-      { type: "ordre", consigne: "Construisez la subordonnée de cause.", mots: ["weil", "er", "krank", "war"], correct: "weil er krank war", traduction: "parce qu'il était malade" }
+      { type: "ordre", consigne: "Construisez la subordonnée de cause.", mots: ["weil", "er", "krank", "war"], correct: "weil er krank war", traduction: "parce qu'il était malade" },
+      { type: "trou", consigne: "Cause nominale (+ génitif).", texte: "{0} des schlechten Wetters fahren wir nicht.", accepte: [["Wegen"]], indice: "cause nominale soutenue → wegen + génitif" },
+      { type: "qcm", consigne: "Cause soutenue.", question: "___ der Krise steigen die Preise. (en raison de)", options: ["Aufgrund", "Weil", "Denn", "Obwohl"], correct: 0, explication: "aufgrund + génitif = en raison de (nominal)." },
+      { type: "qcm", consigne: "Conséquence soutenue.", question: "Der Zug fiel aus, ___ kam ich zu spät.", options: ["folglich", "weil", "obwohl", "damit"], correct: 0, explication: "conséquence soutenue → folglich (+ inversion)." }
     ]
   }
 });
