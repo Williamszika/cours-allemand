@@ -262,14 +262,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
       { exemples: [{"de":"An deiner Stelle wäre ich vorsichtiger.","fr":"À ta place, je serais plus prudent."},{"de":"Er tut, als ob nichts geschehen wäre.","fr":"Il fait comme si rien ne s'était passé."}], regle: "Présent (würde/hätte/wäre/könnte) et passé (**hätte/wäre + participe**) ; comparaison **als ob** + KII (fin).", attention: "Après *als ob* → verbe à la **fin** ; souhait : *Wenn ich doch nur … hätte!*", titre: "Présent et passé de l'irréel", intro: "Présent : würde + infinitif ou formes propres ; passé : hätte/wäre + participe II.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["politesse", "könnte / würde", "Könnten Sie mir helfen?"], ["souhait irréel", "wenn … doch nur", "Wenn ich doch nur Zeit hätte!"], ["irréel présent", "würde + infinitif", "Ich würde sofort kündigen."], ["irréel passé", "hätte/wäre + participe", "Ich wäre gern gekommen."], ["comparaison", "als ob + KII (fin)", "Er tut, als ob er alles wüsste."]] },
         schemas: [{ legende: "Irréel passé : wäre (2) … participe (fin).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "wäre", r: "wäre (2)", c: "verbe" }, { m: "gern früher", r: "complément", c: "objet" }, { m: "gekommen", r: "participe (fin)", c: "fin" }] }],
-        note: "Après « als ob », le verbe (Konjunktiv II) va à la fin ; après « als » seul, juste après (« als wüsste er »)." }
+        note: "Après « als ob », le verbe (Konjunktiv II) va à la fin ; après « als » seul, juste après (« als wüsste er »)." },
+      { titre: "Les formes simples soutenues",
+        regle: "À l'écrit soigné, on préfère la **forme simple** du Konjunktiv II (prétérit + Umlaut) à *würde* : *käme, ginge, gäbe, ließe, wüsste, träte*.",
+        intro: "*Das **käme** für mich nicht infrage* — plus élégant que « würde … kommen ».",
+        tableau: { entetes: ["Infinitif", "Prétérit", "Konjunktiv II"], lignes: [["kommen", "kam", "käme"], ["gehen", "ging", "ginge"], ["geben", "gab", "gäbe"], ["lassen", "ließ", "ließe"], ["wissen", "wusste", "wüsste"], ["treten", "trat", "träte"]] },
+        note: "Formation : prétérit + Umlaut (a→ä, o→ö, u→ü) + terminaisons -e, -est, -e, -en, -et, -en." },
+      { titre: "Fonctions C1 : distance et « avoir failli »",
+        regle: "Le KII sert la **distance diplomatique** (affirmations prudentes, suggestions) et exprime « avoir failli » avec **beinahe/fast** + KII passé.",
+        intro: "*Man **könnte** argumentieren…* · *Es **wäre** denkbar…* · *Beinahe **hätte** ich es vergessen*.",
+        tableau: { entetes: ["Fonction", "Structure", "Exemple"], lignes: [["affirmation prudente", "könnte / dürfte / wäre", "Das könnte stimmen."], ["suggestion polie", "es wäre + adj. + zu", "Es wäre ratsam, zu warten."], ["avoir failli", "beinahe/fast + KII passé", "Beinahe wäre ich gefallen."], ["comparaison irréelle", "als ob + KII (fin)", "als ob nichts gewesen wäre"]] },
+        note: "*beinahe/fast* + hätte/wäre + participe = « j'ai failli … » (l'événement n'a PAS eu lieu)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "L'irréel du passé se forme avec…", options: ["hätte/wäre + participe II", "würde + infinitif", "haben + infinitif"], correct: 0, explication: "Ich hätte gesagt / Ich wäre gegangen." },
       { type: "qcm", consigne: "Choisissez (politesse).", question: "___ Sie mir kurz helfen?", options: ["Könnten", "Können", "Konnten", "Kannst"], correct: 0, explication: "Konjunktiv II poli : Könnten Sie…?" },
       { type: "trou", consigne: "Complétez (als ob, verbe à la fin).", texte: "Er tut, als ob er alles {0}. (wissen)", accepte: [["wüsste"]], indice: "als ob + Konjunktiv II → wüsste" },
       { type: "association", consigne: "Associez l'infinitif et sa forme.", paires: [{ gauche: "haben", droite: "hätte" }, { gauche: "sein", droite: "wäre" }, { gauche: "wissen", droite: "wüsste" }, { gauche: "werden", droite: "würde" }] },
-      { type: "ordre", consigne: "Construisez (souhait irréel).", mots: ["Wenn", "ich", "doch", "nur", "Zeit", "hätte"], correct: "Wenn ich doch nur Zeit hätte", traduction: "Si seulement j'avais le temps !" }
+      { type: "ordre", consigne: "Construisez (souhait irréel).", mots: ["Wenn", "ich", "doch", "nur", "Zeit", "hätte"], correct: "Wenn ich doch nur Zeit hätte", traduction: "Si seulement j'avais le temps !" },
+      { type: "qcm", consigne: "Forme simple soutenue.", question: "Konjunktiv II soutenu de « kommen » :", options: ["käme", "würde kommen", "kam", "gekommen"], correct: 0, explication: "forme simple : käme (élégant, écrit)." },
+      { type: "trou", consigne: "Avoir failli.", texte: "Beinahe {0} ich den Zug verpasst. (haben)", accepte: [["hätte"]], indice: "beinahe + hätte + participe = j'ai failli" },
+      { type: "qcm", consigne: "Distance diplomatique.", question: "Affirmation prudente : « Das ___ stimmen. »", options: ["könnte", "muss", "wird", "ist"], correct: 0, explication: "könnte = affirmation prudente (ça pourrait être vrai)." }
     ]
   },
   c1g09: {
