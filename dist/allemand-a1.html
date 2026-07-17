@@ -10576,14 +10576,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
       { regle: "Condition irréelle : **wenn + Konjunktiv II**, conséquence avec **würde / hätte / wäre**. *sonst* = sinon.", attention: "On peut inverser sans *wenn* : *Hätte ich Zeit, würde ich kommen*.", exemples: [{"de":"Wenn ich Zeit hätte, würde ich dir helfen.","fr":"Si j'avais le temps, je t'aiderais."},{"de":"Beeil dich, sonst kommen wir zu spät.","fr":"Dépêche-toi, sinon nous arriverons en retard."}], titre: "La condition irréelle", intro: "« Wenn + Konjunktiv II », conséquence avec würde / hätte / wäre. « sonst » = sinon.",
         tableau: { entetes: ["Condition", "Conséquence"], lignes: [["Wenn ich Zeit hätte,", "würde ich dir helfen."], ["Wenn ich reich wäre,", "würde ich reisen."], ["Beeil dich,", "sonst kommst du zu spät."]] },
         schemas: [{ legende: "wenn en tête → la principale commence par le verbe.", mots: [{ m: "Wenn ich Zeit hätte,", r: "condition (wenn)", c: "conj" }, { m: "würde", r: "verbe (1)", c: "verbe" }, { m: "ich dir", r: "sujet + datif", c: "sujet" }, { m: "helfen", r: "infinitif (fin)", c: "fin" }] }],
-        note: "On peut inverser : « Ich würde dir helfen, wenn ich Zeit hätte. » « sonst » introduit la conséquence négative." }
+        note: "On peut inverser : « Ich würde dir helfen, wenn ich Zeit hätte. » « sonst » introduit la conséquence négative." },
+      { titre: "Les trois types de conditions",
+        regle: "**Réelle** : *wenn* + présent → présent. **Irréelle (présent)** : *wenn* + Konjunktiv II → würde/wäre/hätte. **Irréelle (passé)** : *wenn* + hätte/wäre + participe.",
+        intro: "*Wenn es regnet, bleibe ich* (réel) · *…regnen würde, bliebe ich* (irréel) · *…geregnet hätte, wäre ich geblieben* (passé).",
+        tableau: { entetes: ["Type", "Structure", "Exemple"], lignes: [["réelle", "wenn + présent → présent", "Wenn ich Zeit habe, komme ich."], ["irréelle présent", "wenn + Konj. II → würde/wäre", "Wenn ich Zeit hätte, käme ich."], ["irréelle passé", "wenn + hätte/wäre + participe", "Wenn ich Zeit gehabt hätte, wäre ich gekommen."]] },
+        note: "Réel = possible (présent). Irréel = imaginaire (Konjunktiv II). Passé = trop tard (regret)." },
+      { titre: "wenn, falls ou sonst ?",
+        regle: "**wenn** = si (condition réelle ou répétée). **falls** = au cas où (condition **incertaine**). **sonst** = sinon (conséquence **négative**, + inversion).",
+        intro: "*Falls du kommst…* (éventuel) vs *Beeil dich, **sonst** verpassen wir…* (sinon).",
+        tableau: { entetes: ["Mot", "Sens", "Exemple"], lignes: [["wenn", "si / quand", "Wenn es regnet, bleibe ich."], ["falls", "au cas où", "Falls es regnet, nimm den Schirm."], ["sonst", "sinon (+ inversion)", "Beeil dich, sonst kommst du zu spät."]] },
+        note: "*sonst* est un adverbe → inversion (verbe en 2e). *wenn/falls* rejettent le verbe à la fin de la subordonnée." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Une condition irréelle se construit avec…", options: ["wenn + Konjunktiv II", "wenn + présent", "weil + indicatif"], correct: 0, explication: "Wenn ich Zeit hätte, würde ich…" },
       { type: "qcm", consigne: "Choisissez.", question: "Wenn ich du ___, würde ich es sofort machen.", options: ["wäre", "bin", "war", "bist"], correct: 0, explication: "sein → wäre (Konjunktiv II)." },
       { type: "trou", consigne: "Complétez (sonst).", texte: "Beeil dich, {0} verpassen wir den Zug.", accepte: [["sonst"]], indice: "sinon = sonst" },
       { type: "association", consigne: "Associez l'infinitif et sa forme.", paires: [{ gauche: "haben", droite: "hätte" }, { gauche: "sein", droite: "wäre" }, { gauche: "werden", droite: "würde" }, { gauche: "können", droite: "könnte" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Si j'avais le temps, je viendrais.", accepte: ["Wenn ich Zeit hätte, würde ich kommen", "Ich würde kommen, wenn ich Zeit hätte"], aide: "wenn + hätte … würde" }
+      { type: "traduction", consigne: "Traduisez.", source: "Si j'avais le temps, je viendrais.", accepte: ["Wenn ich Zeit hätte, würde ich kommen", "Ich würde kommen, wenn ich Zeit hätte"], aide: "wenn + hätte … würde" },
+      { type: "qcm", consigne: "Réelle ou irréelle ?", question: "« Wenn ich Zeit habe, komme ich » est une condition…", options: ["réelle (possible)", "irréelle (imaginaire)", "passée"], correct: 0, explication: "wenn + présent → présent = condition réelle." },
+      { type: "trou", consigne: "Condition irréelle au passé.", texte: "Wenn ich das gewusst {0}, wäre ich gekommen. (haben)", accepte: [["hätte"]], indice: "irréel passé → hätte + participe" },
+      { type: "qcm", consigne: "wenn, falls ou sonst ?", question: "Nimm einen Schirm mit, ___ wirst du nass.", options: ["sonst", "wenn", "falls", "als"], correct: 0, explication: "conséquence négative → sonst (+ inversion)." }
     ]
   },
   b1g16: {
@@ -10646,14 +10659,32 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     grammaire: [
       { exemples: [{"de":"Wir müssen eine Entscheidung treffen.","fr":"Nous devons prendre une décision."},{"de":"Es regnet; trotzdem gehen wir raus.","fr":"Il pleut ; malgré tout, nous sortons."}], regle: "Locutions figées **nom + verbe** (*eine Entscheidung **treffen***, *eine Frage **stellen***) et connecteurs (*außerdem, trotzdem, deswegen*).", attention: "Après *außerdem/trotzdem/deswegen* en tête, le verbe reste en **2ᵉ position**.", titre: "Locutions figées et connecteurs", intro: "Beaucoup d'expressions associent un nom et un verbe précis. Les connecteurs relient les phrases (et placent le verbe en 2e position).",
         tableau: { entetes: ["Locution / connecteur", "Sens", "Exemple"], lignes: [["eine Entscheidung treffen", "prendre une décision", "Ich treffe eine Entscheidung."], ["eine Frage stellen", "poser une question", "Er stellt eine Frage."], ["außerdem", "de plus", "Es ist teuer; außerdem ist es weit."], ["trotzdem", "malgré tout", "Es regnet; trotzdem gehe ich."], ["deswegen", "c'est pourquoi", "Ich bin krank; deswegen bleibe ich."]] },
-        note: "Après außerdem / trotzdem / deswegen en tête, le verbe reste en 2e position (inversion)." }
+        note: "Après außerdem / trotzdem / deswegen en tête, le verbe reste en 2e position (inversion)." },
+      { titre: "Locutions figées nom + verbe (à connaître)",
+        regle: "Beaucoup d'idées se disent avec un **couple nom + verbe** figé, plus soutenu que le verbe simple.",
+        intro: "*eine Entscheidung **treffen*** (= entscheiden), *eine Frage **stellen*** (= fragen).",
+        tableau: { entetes: ["Locution", "= verbe simple", "Sens"], lignes: [["eine Entscheidung treffen", "entscheiden", "prendre une décision"], ["eine Frage stellen", "fragen", "poser une question"], ["Hilfe leisten", "helfen", "porter secours"], ["eine Rolle spielen", "—", "jouer un rôle"], ["Rücksicht nehmen", "—", "faire attention (aux autres)"], ["zur Verfügung stehen", "—", "être à disposition"]] },
+        note: "Chaque locution a **son** verbe : « eine Entscheidung *treffen* » (jamais « machen »)." },
+      { titre: "Trois classes de connecteurs (place du verbe)",
+        regle: "Les mots de liaison se rangent en **3 classes** selon leur effet sur le verbe.",
+        intro: "coordonnants (verbe 2) · connecteurs adverbiaux (position 1 → inversion) · subordonnants (verbe à la fin).",
+        tableau: { entetes: ["Classe", "Exemples", "Place du verbe"], lignes: [["coordonnants", "und, aber, oder, denn, sondern", "position 2 (pas d'inversion)"], ["adverbes connecteurs", "deshalb, trotzdem, außerdem, deswegen", "position 1 → inversion"], ["subordonnants", "weil, obwohl, dass, wenn", "verbe à la FIN"]] },
+        note: "Piège : *trotzdem* (adverbe → inversion) vs *obwohl* (subordonnant → verbe fin) : même sens, syntaxe opposée." },
+      { titre: "Nominaliser un verbe : das + infinitif",
+        regle: "Un infinitif peut devenir un **nom neutre** : majuscule + article **das**. Il désigne l'activité.",
+        intro: "*lesen → **das Lesen*** (la lecture), *essen → **das Essen*** (le repas).",
+        tableau: { entetes: ["Verbe", "Nom (das)", "Exemple"], lignes: [["lesen", "das Lesen", "Das Lesen macht Spaß."], ["rauchen", "das Rauchen", "Das Rauchen ist verboten."], ["schwimmen", "das Schwimmen", "Das Schwimmen ist gesund."]] },
+        note: "L'infinitif nominalisé est toujours **neutre** (das) et prend une **majuscule**." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez le verbe.", question: "eine Entscheidung ___", options: ["treffen", "machen", "geben", "nehmen"], correct: 0, explication: "Locution figée : eine Entscheidung treffen." },
       { type: "qcm", consigne: "Choisissez le connecteur.", question: "Es regnet. ___ gehe ich spazieren. (malgré tout)", options: ["Trotzdem", "Deswegen", "Außerdem", "Weil"], correct: 0, explication: "trotzdem = malgré tout." },
       { type: "trou", consigne: "Complétez (inversion après deswegen).", texte: "Ich bin müde, deswegen {0} ich nach Hause. (gehen)", accepte: [["gehe"]], indice: "deswegen en tête → verbe en 2e position" },
       { type: "association", consigne: "Associez le connecteur et son sens.", paires: [{ gauche: "außerdem", droite: "de plus" }, { gauche: "trotzdem", droite: "malgré tout" }, { gauche: "deswegen", droite: "c'est pourquoi" }, { gauche: "eine Frage stellen", droite: "poser une question" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je prends une décision.", accepte: ["Ich treffe eine Entscheidung"], aide: "eine Entscheidung treffen" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je prends une décision.", accepte: ["Ich treffe eine Entscheidung"], aide: "eine Entscheidung treffen" },
+      { type: "qcm", consigne: "Classe du connecteur.", question: "Après « obwohl », le verbe va…", options: ["à la fin", "en 2e position", "en position 1"], correct: 0, explication: "obwohl = subordonnant → verbe à la fin." },
+      { type: "trou", consigne: "Nominalisation.", texte: "{0} Rauchen ist hier verboten.", accepte: [["Das"]], indice: "infinitif nominalisé → neutre : das" },
+      { type: "qcm", consigne: "Locution figée.", question: "eine Frage ___", options: ["stellen", "machen", "geben", "fragen"], correct: 0, explication: "eine Frage stellen (poser une question)." }
     ]
   },
   b1g18: {
@@ -10758,14 +10789,32 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
       { exemples: [{"de":"Die Lampe hängt über dem Tisch.","fr":"La lampe est suspendue au-dessus de la table."},{"de":"Ich hänge das Bild an die Wand.","fr":"J'accroche le tableau au mur."}], regle: "Neuf prépositions mixtes (*an, auf, hinter, in, neben, über, unter, vor, zwischen*) : **datif** si position (**Wo?**), **accusatif** si direction (**Wohin?**).", attention: "Couples : *liegen/legen, stehen/stellen, sitzen/setzen* — position (Dat.) vs action de placer (Akk.).", titre: "Les prépositions mixtes (Wechselpräpositionen)", intro: "Neuf prépositions de lieu prennent le datif (position : Wo?) ou l'accusatif (direction : Wohin?).",
         tableau: { entetes: ["Question", "Cas", "Exemple"], lignes: [["Wo? (position)", "datif", "Das Buch liegt auf dem Tisch."], ["Wohin? (direction)", "accusatif", "Ich lege das Buch auf den Tisch."], ["Wo?", "datif", "Ich bin in der Schule."], ["Wohin?", "accusatif", "Ich gehe in die Schule."]] },
         schemas: [{ legende: "Wohin ? → accusatif (mouvement vers).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "stelle", r: "verbe (2)", c: "verbe" }, { m: "die Vase", r: "accusatif (quoi)", c: "objet" }, { m: "auf den Tisch", r: "direction (acc.)", c: "fin" }] }],
-        note: "Les 9 : an, auf, hinter, in, neben, über, unter, vor, zwischen. Position = Dat., direction = Akk." }
+        note: "Les 9 : an, auf, hinter, in, neben, über, unter, vor, zwischen. Position = Dat., direction = Akk." },
+      { titre: "Toutes les prépositions par cas",
+        regle: "Chaque préposition impose un cas fixe (sauf les 9 mixtes). À mémoriser par groupes.",
+        intro: "Mnémo : accusatif = **FUDGO** (für, um, durch, gegen, ohne) ; datif = *mit-nach-aus-bei-seit-von-zu*.",
+        tableau: { entetes: ["Cas", "Prépositions", "Exemple"], lignes: [["accusatif", "durch, für, gegen, ohne, um, bis", "für dich, ohne Geld"], ["datif", "aus, bei, mit, nach, seit, von, zu", "mit dem Bus, zu dir"], ["génitif", "während, trotz, wegen, statt", "während des Tages"], ["mixte (Wo?/Wohin?)", "in, an, auf, über, unter, vor, hinter, neben, zwischen", "auf dem/den Tisch"]] },
+        note: "Les mixtes changent (position/direction) ; les autres ont un **cas fixe**." },
+      { titre: "Les couples de verbes : position vs mouvement",
+        regle: "Des verbes vont par **paires** : un verbe de **position** (+ datif, Wo?) et un verbe d'**action de placer** (+ accusatif, Wohin?).",
+        intro: "*Das Buch **liegt** auf dem Tisch* (datif) vs *Ich **lege** das Buch auf den Tisch* (accusatif).",
+        tableau: { entetes: ["Position (Wo? + Dat.)", "Mouvement (Wohin? + Akk.)", "Sens"], lignes: [["liegen (lag)", "legen (legte)", "être couché / poser à plat"], ["stehen (stand)", "stellen (stellte)", "être debout / poser debout"], ["sitzen (saß)", "setzen (setzte)", "être assis / asseoir"], ["hängen (hing)", "hängen (hängte)", "être suspendu / accrocher"]] },
+        note: "Verbes de position → datif ; verbes d'action → accusatif." },
+      { titre: "Les contractions fréquentes",
+        regle: "Préposition + article se **fondent** souvent en un seul mot, à l'oral comme à l'écrit.",
+        intro: "*in dem → im*, *in das → ins*, *an dem → am*, *zu dem → zum*.",
+        tableau: { entetes: ["Datif (Wo?)", "Accusatif (Wohin?)", "Autres"], lignes: [["in dem → im", "in das → ins", "zu dem → zum"], ["an dem → am", "an das → ans", "zu der → zur"], ["bei dem → beim", "auf das → aufs", "von dem → vom"]] },
+        note: "Ces contractions sont la **norme** : « im Kino », « zur Schule », « ans Meer »." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Pour une DIRECTION (Wohin?), on emploie…", options: ["l'accusatif", "le datif", "le génitif"], correct: 0, explication: "Wohin? → accusatif." },
       { type: "qcm", consigne: "Choisissez le cas.", question: "Ich hänge das Bild an ___ Wand. (Wohin?)", options: ["die", "der", "dem", "den"], correct: 0, explication: "direction + die Wand (f.) accusatif → die." },
       { type: "trou", consigne: "Complétez (position, datif).", texte: "Das Bild hängt an {0} Wand.", accepte: [["der"]], indice: "Wo? → datif, féminin die Wand → der" },
       { type: "association", consigne: "Associez la question et le cas.", paires: [{ gauche: "Wo?", droite: "datif" }, { gauche: "Wohin?", droite: "accusatif" }, { gauche: "liegen", droite: "position" }, { gauche: "legen", droite: "direction" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je vais à l'école.", accepte: ["Ich gehe in die Schule"], aide: "direction → in + accusatif" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je vais à l'école.", accepte: ["Ich gehe in die Schule"], aide: "direction → in + accusatif" },
+      { type: "qcm", consigne: "Cas d'une préposition.", question: "« aus, bei, mit, nach » régissent…", options: ["le datif", "l'accusatif", "le génitif"], correct: 0, explication: "aus/bei/mit/nach → datif (toujours)." },
+      { type: "trou", consigne: "Verbe de position (datif).", texte: "Die Vase {0} auf dem Tisch. (stehen)", accepte: [["steht"]], indice: "position (Wo?) → stehen + datif" },
+      { type: "qcm", consigne: "Contraction.", question: "« Ich gehe in das Kino » se contracte en…", options: ["ins Kino", "im Kino", "ans Kino", "zum Kino"], correct: 0, explication: "in das → ins (direction, accusatif)." }
     ]
   },
   b1g21: {
