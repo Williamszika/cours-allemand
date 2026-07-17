@@ -190,14 +190,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     grammaire: [
       { regle: "Locutions connectrices : *aus diesem Grund* (pour cette raison), *im Gegensatz dazu* (en revanche), *darüber hinaus* (en outre).", attention: "Comme les Verbindungsadverbien : en tête, le verbe reste en **2ᵉ** position.", exemples: [{"de":"Es ist teuer. Darüber hinaus ist es weit.","fr":"C'est cher. En outre, c'est loin."},{"de":"Im Gegensatz dazu ist die Bahn günstig.","fr":"En revanche, le train est avantageux."}], titre: "Les locutions connectrices du texte", intro: "Ces groupes figés relient les idées et structurent un texte soutenu. Placés en tête → inversion (verbe en 2e).",
         tableau: { entetes: ["Locution", "Sens", "Fonction"], lignes: [["aus diesem Grund", "pour cette raison", "cause/conséquence"], ["im Gegensatz dazu", "en revanche", "opposition"], ["im Vergleich dazu", "en comparaison", "comparaison"], ["in diesem Zusammenhang", "à ce propos", "transition"], ["darüber hinaus", "en outre", "addition"]] },
-        note: "Comme les Verbindungsadverbien, ces locutions laissent le verbe en 2e position : « Aus diesem Grund haben wir … »." }
+        note: "Comme les Verbindungsadverbien, ces locutions laissent le verbe en 2e position : « Aus diesem Grund haben wir … »." },
+      { titre: "Structurer un texte argumentatif",
+        regle: "Pour organiser un essai, on dispose de connecteurs par **fonction discursive** : introduire, ajouter, illustrer, opposer, conclure.",
+        intro: "*zunächst … darüber hinaus … im Gegensatz dazu … abschließend*.",
+        tableau: { entetes: ["Fonction", "Connecteurs"], lignes: [["introduire", "zunächst, vor allem, in erster Linie"], ["ajouter", "darüber hinaus, ferner, zudem"], ["illustrer", "beispielsweise, so etwa, unter anderem"], ["opposer", "im Gegensatz dazu, demgegenüber, hingegen"], ["conclure", "abschließend, zusammenfassend, letztlich"]] },
+        note: "Ces locutions ouvrent souvent la phrase → inversion (verbe en 2ᵉ)." },
+      { titre: "Locutions idiomatiques (geschweige denn…)",
+        regle: "Des locutions figées enrichissent l'argumentation : **geschweige denn** (encore moins), **einerseits … andererseits**, **sei es … sei es**, **zumal** (d'autant plus que).",
+        intro: "*Er kann kaum laufen, **geschweige denn** rennen* · *…, **zumal** es spät war*.",
+        tableau: { entetes: ["Locution", "Sens", "Exemple"], lignes: [["geschweige denn", "encore moins", "kaum laufen, geschweige denn rennen"], ["einerseits … andererseits", "d'une part … d'autre part", "einerseits ja, andererseits nein"], ["sei es …, sei es …", "que ce soit … ou …", "sei es heute, sei es morgen"], ["zumal", "d'autant (plus) que", "…, zumal es regnete"]] },
+        note: "*geschweige denn* renforce une négation : « pas X, et encore moins Y »." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« im Gegensatz dazu » exprime…", options: ["une opposition", "une addition", "une cause"], correct: 0, explication: "im Gegensatz dazu = en revanche." },
       { type: "qcm", consigne: "Choisissez (addition).", question: "Es ist günstig. ___ ist es praktisch.", options: ["Darüber hinaus", "Im Gegensatz dazu", "Aus diesem Grund", "Trotzdem"], correct: 0, explication: "darüber hinaus = en outre (addition)." },
       { type: "trou", consigne: "Complétez (inversion).", texte: "Aus diesem Grund {0} wir die Lösung. (wählen)", accepte: [["wählen", "wählten"]], indice: "locution en tête → verbe en 2e position" },
       { type: "association", consigne: "Associez la locution et son sens.", paires: [{ gauche: "aus diesem Grund", droite: "pour cette raison" }, { gauche: "im Gegensatz dazu", droite: "en revanche" }, { gauche: "darüber hinaus", droite: "en outre" }, { gauche: "im Vergleich dazu", droite: "en comparaison" }] },
-      { type: "ordre", consigne: "Construisez la phrase (inversion).", mots: ["Darüber", "hinaus", "ist", "es", "günstig"], correct: "Darüber hinaus ist es günstig", traduction: "En outre, c'est avantageux." }
+      { type: "ordre", consigne: "Construisez la phrase (inversion).", mots: ["Darüber", "hinaus", "ist", "es", "günstig"], correct: "Darüber hinaus ist es günstig", traduction: "En outre, c'est avantageux." },
+      { type: "qcm", consigne: "Renforcement négatif.", question: "Er hat kein Auto, ___ ein Haus.", options: ["geschweige denn", "sondern auch", "im Gegensatz", "darüber hinaus"], correct: 0, explication: "geschweige denn = encore moins (renforce la négation)." },
+      { type: "qcm", consigne: "Conclure.", question: "___ lässt sich sagen, dass … (pour conclure)", options: ["Zusammenfassend", "Zunächst", "Beispielsweise", "Einerseits"], correct: 0, explication: "zusammenfassend / abschließend = pour conclure." },
+      { type: "trou", consigne: "D'autant que.", texte: "Wir blieben zu Hause, {0} es stark regnete.", accepte: [["zumal"]], indice: "d'autant (plus) que → zumal" }
     ]
   },
   c1g15: {
@@ -300,14 +313,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     grammaire: [
       { exemples: [{"de":"Nehmen Sie bitte Platz!","fr":"Asseyez-vous, je vous prie !"},{"de":"Bitte nicht stören!","fr":"Prière de ne pas déranger !"}], regle: "Quatre formes : **du** (radical), **ihr** (+ -t), **Sie** (verbe + Sie), **wir** (verbe + wir). À l'écrit : **infinitif** (consignes).", attention: "*sein* est irrégulier : *Sei / Seid / Seien Sie* ruhig! Alternative polie : *Würden Sie bitte …?*", titre: "Donner un ordre ou une consigne", intro: "L'impératif a quatre formes ; à l'écrit, on lui préfère parfois l'infinitif (consignes) ou « sollen ».",
         tableau: { entetes: ["Personne", "Forme", "Exemple"], lignes: [["du", "radical (parfois -e)", "Komm! / Arbeite!"], ["ihr", "radical + -t", "Kommt!"], ["Sie", "verbe + Sie", "Kommen Sie!"], ["wir", "verbe + wir", "Gehen wir!"], ["consigne écrite", "infinitif", "Bitte nicht rauchen!"]] },
-        note: "sein est irrégulier : Sei ruhig! / Seid ruhig! / Seien Sie ruhig! Alternative polie : « Würden Sie bitte …? »." }
+        note: "sein est irrégulier : Sei ruhig! / Seid ruhig! / Seien Sie ruhig! Alternative polie : « Würden Sie bitte …? »." },
+      { titre: "L'impératif « du » : les irrégularités",
+        regle: "À **du**, les verbes forts en **e → i/ie** gardent le changement et **perdent le -e** : *nehmen → **nimm!***, *geben → **gib!***. Mais **a → ä** ne s'applique PAS : *fahren → **fahr!***.",
+        intro: "*Nimm!* · *Gib mir das!* · *Lies vor!* · mais *Fahr langsam!*, *Schlaf gut!*",
+        tableau: { entetes: ["Infinitif", "Impératif du", "Règle"], lignes: [["nehmen", "nimm!", "e → i, sans -e"], ["geben", "gib!", "e → i"], ["lesen", "lies!", "e → ie"], ["sehen", "sieh!", "e → ie"], ["fahren", "fahr!", "a → ä : NON"], ["laufen", "lauf!", "au → äu : NON"]] },
+        note: "Le changement e→i/ie reste à l'impératif ; le changement a→ä disparaît (fahr!, schlaf!)." },
+      { titre: "Les alternatives à l'impératif",
+        regle: "Selon le registre : **infinitif** (consignes), **sollen** (ordre rapporté), **passif sein+zu** (officiel), **question au KII** (poli), **Konjunktiv I** (recettes).",
+        intro: "*Bitte anschnallen!* · *Du sollst warten* · *Das ist auszufüllen* · *Würden Sie bitte…?* · *Man nehme…*",
+        tableau: { entetes: ["Alternative", "Registre", "Exemple"], lignes: [["infinitif", "consigne / panneau", "Nicht rauchen!"], ["sollen", "ordre indirect", "Du sollst dich ausruhen."], ["sein + zu", "officiel", "Das Formular ist auszufüllen."], ["Würden Sie …?", "très poli", "Würden Sie bitte warten?"], ["Konjunktiv I (man)", "recette / mode d'emploi", "Man nehme zwei Eier."]] },
+        note: "Les particules *doch/mal/bitte* adoucissent l'impératif : « Komm doch mal! »." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Sur un panneau, la consigne emploie souvent…", options: ["l'infinitif", "le subjonctif", "le prétérit"], correct: 0, explication: "Bitte nicht rauchen! (infinitif)." },
       { type: "qcm", consigne: "Choisissez (impératif Sie).", question: "___ Sie bitte langsamer!", options: ["Sprechen", "Sprich", "Sprecht", "Gesprochen"], correct: 0, explication: "forme de politesse : Sprechen Sie!" },
       { type: "trou", consigne: "Complétez (impératif du de sein).", texte: "{0} bitte ruhig! (sein, du)", accepte: [["Sei"]], indice: "sein → Sei!" },
       { type: "association", consigne: "Associez la personne et la forme.", paires: [{ gauche: "du", droite: "Komm!" }, { gauche: "ihr", droite: "Kommt!" }, { gauche: "Sie", droite: "Kommen Sie!" }, { gauche: "wir", droite: "Gehen wir!" }] },
-      { type: "ordre", consigne: "Construisez l'impératif poli.", mots: ["Nehmen", "Sie", "bitte", "Platz"], correct: "Nehmen Sie bitte Platz", traduction: "Asseyez-vous, je vous prie." }
+      { type: "ordre", consigne: "Construisez l'impératif poli.", mots: ["Nehmen", "Sie", "bitte", "Platz"], correct: "Nehmen Sie bitte Platz", traduction: "Asseyez-vous, je vous prie." },
+      { type: "qcm", consigne: "Impératif du (e→i).", question: "Impératif « du » de « nehmen » :", options: ["Nimm!", "Nehm!", "Nimme!", "Nehme!"], correct: 0, explication: "nehmen : e→i, sans -e → Nimm!" },
+      { type: "qcm", consigne: "a → ä ?", question: "Impératif « du » de « fahren » :", options: ["Fahr!", "Fähr!", "Fahre du!", "Fährst!"], correct: 0, explication: "a → ä ne s'applique PAS à l'impératif : Fahr!" },
+      { type: "trou", consigne: "Alternative (recette, Konjunktiv I).", texte: "Man {0} zwei Eier und etwas Mehl. (nehmen)", accepte: [["nehme"]], indice: "recette → Konjunktiv I : man nehme" }
     ]
   },
   c1g18: {

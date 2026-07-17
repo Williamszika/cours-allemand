@@ -23,14 +23,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
       { exemples: [{"de":"Nachdem er gegangen war, wurde es still.","fr":"Après son départ, le silence s'installa."},{"de":"Damals lebte sie noch in Berlin.","fr":"À l'époque, elle vivait encore à Berlin."}], regle: "Perfekt (oral/lettres), Präteritum (récit écrit), Plusquamperfekt (antériorité). On les **combine** dans un texte cohérent.", attention: "Le **Präteritum** domine le récit littéraire ; le **Perfekt** l'oral et la correspondance.", titre: "Trois temps, trois fonctions", intro: "Perfekt (oral, lettres), Präteritum (récit écrit, presse), Plusquamperfekt (action antérieure). On les combine dans un texte cohérent.",
         tableau: { entetes: ["Temps", "Registre / rôle", "Exemple"], lignes: [["Perfekt", "oral, e-mail", "Ich habe es erledigt."], ["Präteritum", "récit écrit", "Er verließ das Haus."], ["Plusquamperfekt", "antériorité", "Nachdem er gegangen war, …"], ["sein/haben/Modale", "Präteritum à l'oral aussi", "Ich war / hatte / musste"]] },
         schemas: [{ legende: "Antériorité : Plusquamperfekt → Präteritum.", mots: [{ m: "Nachdem er gegangen war,", r: "antérieur", c: "conj" }, { m: "schloss", r: "verbe (1)", c: "verbe" }, { m: "sie", r: "sujet", c: "sujet" }, { m: "die Tür", r: "complément", c: "fin" }] }],
-        note: "Le Präteritum domine le récit littéraire ; le Perfekt domine l'oral et la correspondance." }
+        note: "Le Präteritum domine le récit littéraire ; le Perfekt domine l'oral et la correspondance." },
+      { titre: "Le Futur II : supposition sur le passé",
+        regle: "**Futur II** = *werden + participe II + haben/sein*. Il exprime une **supposition sur le passé** (le plus fréquent) ou une action **achevée dans le futur**.",
+        intro: "*Er **wird** wohl im Stau **gestanden haben*** (il a dû…) · *Bis morgen **werde** ich alles **erledigt haben*** (j'aurai fini).",
+        tableau: { entetes: ["Emploi", "Structure", "Exemple"], lignes: [["supposition (passé)", "wird wohl + Part. + haben/sein", "Er wird es vergessen haben."], ["action future achevée", "wird + Part. + haben/sein", "Bis Freitag wird er fertig sein."], ["+ wohl/sicher", "renforce la supposition", "Sie wird wohl krank gewesen sein."]] },
+        note: "Futur II + *wohl* = « il a probablement … » (déduction sur le passé), plus soutenu que « dürfte … haben »." },
+      { titre: "Antériorité immédiate : kaum …, als",
+        regle: "Pour « à peine … que », on emploie **kaum … als/da** (avec inversion) ou **sobald** (dès que). *nachdem* + Plusquamperfekt marque une antériorité nette.",
+        intro: "***Kaum** war er gegangen, **da** klingelte es* · ***Sobald** er kam, begannen wir*.",
+        tableau: { entetes: ["Structure", "Sens", "Exemple"], lignes: [["kaum … als/da", "à peine … que", "Kaum war er da, als es klingelte."], ["sobald", "dès que", "Sobald ich ankam, rief ich an."], ["nachdem + Plusqpf.", "après que (antériorité)", "Nachdem er gegangen war, …"], ["sowie", "aussitôt que (soutenu)", "Sowie er kam, ging sie."]] },
+        note: "*Kaum* en tête entraîne l'inversion : « Kaum **hatte** er … »." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Pour une action antérieure à une autre action passée, on emploie…", options: ["le Plusquamperfekt", "le Perfekt", "le Futur"], correct: 0, explication: "Plusquamperfekt = le passé du passé." },
       { type: "qcm", consigne: "Choisissez.", question: "Le récit littéraire écrit privilégie…", options: ["le Präteritum", "le Perfekt", "le Plusquamperfekt"], correct: 0, explication: "Präteritum = temps du récit écrit." },
       { type: "trou", consigne: "Complétez (Plusquamperfekt).", texte: "Als ich ankam, {0} der Zug bereits abgefahren.", accepte: [["war"]], indice: "abfahren → sein → war abgefahren" },
       { type: "association", consigne: "Associez le temps et son usage.", paires: [{ gauche: "Perfekt", droite: "oral / e-mail" }, { gauche: "Präteritum", droite: "récit écrit" }, { gauche: "Plusquamperfekt", droite: "antériorité" }, { gauche: "sein/haben", droite: "Präteritum à l'oral" }] },
-      { type: "ordre", consigne: "Phrase au Plusquamperfekt.", mots: ["Sie", "hatte", "alles", "längst", "vergessen"], correct: "Sie hatte alles längst vergessen", traduction: "Elle avait depuis longtemps tout oublié." }
+      { type: "ordre", consigne: "Phrase au Plusquamperfekt.", mots: ["Sie", "hatte", "alles", "längst", "vergessen"], correct: "Sie hatte alles längst vergessen", traduction: "Elle avait depuis longtemps tout oublié." },
+      { type: "qcm", consigne: "Supposition sur le passé.", question: "« Il a dû rater le train » =", options: ["Er wird den Zug verpasst haben", "Er hat den Zug verpasst", "Er wird den Zug verpassen"], correct: 0, explication: "Futur II + supposition : wird … verpasst haben." },
+      { type: "trou", consigne: "À peine … que (inversion).", texte: "Kaum {0} er gegangen, da klingelte das Telefon. (sein)", accepte: [["war"]], indice: "kaum + inversion : kaum war er gegangen" },
+      { type: "qcm", consigne: "Futur II.", question: "« Bis morgen ___ ich alles erledigt haben. »", options: ["werde", "würde", "habe", "bin"], correct: 0, explication: "Futur II : werde … erledigt haben (action future achevée)." }
     ]
   },
   c1g02: {
@@ -259,14 +272,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     grammaire: [
       { exemples: [{"de":"Ich hätte früher kommen sollen.","fr":"J'aurais dû venir plus tôt."},{"de":"Das muss bis morgen erledigt werden.","fr":"Cela doit être fait pour demain."}], regle: "Sens **subjectif** (supposition : *dürfte, müsste*), combinaisons au **passé** (*hätte … müssen*) et au **passif** (*muss … werden*).", attention: "Ordre final : *Ich hätte gehen **müssen*** (infinitif + modal à l'infinitif).", titre: "Modaux : nuances avancées", intro: "Au C1, les modaux expriment la supposition (sens subjectif) et se combinent au passé et au passif.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["supposition", "dürfte / müsste", "Er dürfte schon da sein."], ["rumeur", "sollen", "Er soll sehr reich sein."], ["prétention", "wollen", "Sie will nichts gewusst haben."], ["passé + modal", "hätte … müssen", "Ich hätte gehen müssen."], ["passif + modal", "muss … werden", "Das muss erledigt werden."]] },
-        note: "Degrés : müssen (quasi sûr) > dürfte (probable) > könnte (possible)." }
+        note: "Degrés : müssen (quasi sûr) > dürfte (probable) > könnte (possible)." },
+      { titre: "Le verbe lassen (3 emplois)",
+        regle: "**lassen** a trois sens : **faire faire** (causatif), **sich lassen + inf.** (= pouvoir être fait), **laisser** (permettre / abandonner).",
+        intro: "*Ich **lasse** das Auto reparieren* · *Das **lässt sich** machen* · *Lass mich in Ruhe!*",
+        tableau: { entetes: ["Emploi", "Sens", "Exemple"], lignes: [["lassen + inf.", "faire faire (causatif)", "Ich lasse mir die Haare schneiden."], ["sich lassen + inf.", "peut être fait", "Das lässt sich leicht erklären."], ["lassen (+ objet)", "laisser / permettre", "Lass mich das machen!"], ["Perfekt", "double infinitif", "Ich habe es reparieren lassen."]] },
+        note: "Au Perfekt : *habe … reparieren **lassen*** (double infinitif, pas « gelassen »)." },
+      { titre: "Les semi-modaux : scheinen, drohen … + zu",
+        regle: "Certains verbes se construisent avec **zu + infinitif** comme des modaux : **scheinen** (sembler), **drohen** (menacer de/risquer), **pflegen** (avoir coutume de), **brauchen** (ne pas avoir besoin de).",
+        intro: "*Er **scheint** zu **schlafen*** · *Es **droht** zu **regnen***.",
+        tableau: { entetes: ["Verbe", "Sens", "Exemple"], lignes: [["scheinen zu", "sembler", "Er scheint zu schlafen."], ["drohen zu", "menacer de / risquer", "Das Haus droht einzustürzen."], ["pflegen zu", "avoir coutume de", "Er pflegt früh aufzustehen."], ["brauchen zu (nég.)", "ne pas avoir besoin de", "Du brauchst nicht zu kommen."]] },
+        note: "Ces verbes gardent le *zu* + infinitif (≠ vrais modaux, sans zu)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« Er dürfte schon da sein » exprime…", options: ["une probabilité", "une permission", "une obligation"], correct: 0, explication: "dürfte = supposition probable." },
       { type: "qcm", consigne: "Choisissez (passé + modal).", question: "Ich ___ früher gehen müssen.", options: ["hätte", "habe", "würde", "bin"], correct: 0, explication: "regret/obligation passée : hätte … müssen." },
       { type: "trou", consigne: "Complétez (passif + modal).", texte: "Der Bericht muss bis morgen geschrieben {0}.", accepte: [["werden"]], indice: "passif + modal → participe + werden" },
       { type: "association", consigne: "Associez le modal et son sens subjectif.", paires: [{ gauche: "müssen", droite: "quasi certain" }, { gauche: "dürfte", droite: "probable" }, { gauche: "sollen", droite: "rumeur" }, { gauche: "wollen", droite: "prétention" }] },
-      { type: "ordre", consigne: "Construisez la phrase (passé + modal).", mots: ["Ich", "hätte", "anrufen", "sollen"], correct: "Ich hätte anrufen sollen", traduction: "J'aurais dû appeler." }
+      { type: "ordre", consigne: "Construisez la phrase (passé + modal).", mots: ["Ich", "hätte", "anrufen", "sollen"], correct: "Ich hätte anrufen sollen", traduction: "J'aurais dû appeler." },
+      { type: "qcm", consigne: "sich lassen.", question: "« Das lässt sich machen » = ", options: ["kann gemacht werden", "muss gemacht werden", "wird gemacht"], correct: 0, explication: "sich lassen + inf = possibilité passive." },
+      { type: "trou", consigne: "Semi-modal (scheinen).", texte: "Er scheint müde {0} sein.", accepte: [["zu"]], indice: "scheinen + zu + infinitif" },
+      { type: "qcm", consigne: "Perfekt de lassen (causatif).", question: "Ich habe das Auto reparieren ___.", options: ["lassen", "gelassen", "gelasst", "lasst"], correct: 0, explication: "double infinitif : habe … reparieren lassen." }
     ]
   },
   c1g08: {
