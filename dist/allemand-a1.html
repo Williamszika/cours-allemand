@@ -10095,14 +10095,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     grammaire: [
       { regle: "Interroger sur une **chose** : **wo(r)-** + préposition (*Worauf? Woran?*). Reprendre : **da(r)-** + préposition (*darauf, daran*).", attention: "On ajoute **-r-** devant une voyelle : *wo**r**auf*, *da**r**auf*. Pour une **personne** : *Auf **wen**?*", exemples: [{"de":"Worauf wartest du? – Ich warte darauf.","fr":"Qu'attends-tu ? – Je l'attends."},{"de":"An wen denkst du?","fr":"À qui penses-tu ?"}], titre: "Wo(r)- pour les choses, da(r)- pour répondre", intro: "Pour interroger sur une CHOSE avec un verbe à préposition, on fusionne wo(+r) + préposition. Pour reprendre, on emploie da(+r) + préposition.",
         tableau: { entetes: ["Verbe + prép.", "Question (chose)", "Reprise"], lignes: [["warten auf", "Worauf wartest du?", "Ich warte darauf."], ["denken an", "Woran denkst du?", "Ich denke daran."], ["sich freuen über", "Worüber freust du dich?", "Ich freue mich darüber."], ["sprechen über", "Worüber sprecht ihr?", "Wir sprechen darüber."]] },
-        note: "On ajoute « -r- » devant une voyelle : wo + (r) + auf = worauf ; da + (r) + auf = darauf. Pour une PERSONNE, on garde « préposition + qui » : Auf wen wartest du?" }
+        note: "On ajoute « -r- » devant une voyelle : wo + (r) + auf = worauf ; da + (r) + auf = darauf. Pour une PERSONNE, on garde « préposition + qui » : Auf wen wartest du?" },
+      { titre: "La question indirecte (verbe à la fin)",
+        regle: "Une question **rapportée** devient une **subordonnée** : le verbe part à la **fin**. Oui/non → **ob** ; question ouverte → le **mot interrogatif** (wann, wo, warum…).",
+        intro: "*Wann kommt er?* → *Ich weiß nicht, **wann** er **kommt**.* · *Kommt er?* → *…, **ob** er **kommt**.*",
+        tableau: { entetes: ["Question directe", "Question indirecte", "Introducteur"], lignes: [["Wann kommt er?", "…, wann er kommt.", "wann"], ["Wo wohnst du?", "…, wo du wohnst.", "wo"], ["Kommt er?", "…, ob er kommt.", "ob (oui/non)"], ["Hat sie Zeit?", "…, ob sie Zeit hat.", "ob"]] },
+        note: "Question oui/non → **ob** (jamais wenn). Le verbe conjugué va à la **fin**." },
+      { titre: "Toutes les formes wo(r)- / da(r)-",
+        regle: "Pour une **chose** : *wo(r)-* (question) et *da(r)-* (reprise). Un **-r-** s'insère devant une voyelle.",
+        intro: "Apprends-les par paires, avec le verbe qui va avec.",
+        tableau: { entetes: ["Préposition", "Question", "Reprise"], lignes: [["für", "wofür?", "dafür"], ["auf", "worauf?", "darauf"], ["an", "woran?", "daran"], ["über", "worüber?", "darüber"], ["mit", "womit?", "damit"], ["von", "wovon?", "davon"], ["nach", "wonach?", "danach"], ["zu", "wozu?", "dazu"]] },
+        note: "-r- devant voyelle : wo**r**auf, da**r**an. Personne → préposition + wen/wem (an wen?)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Pour interroger sur une chose avec « warten auf », on dit…", options: ["Worauf?", "Auf wen?", "Wofür?"], correct: 0, explication: "wo + r + auf = worauf (chose)." },
       { type: "qcm", consigne: "Choisissez la reprise.", question: "Denkst du an den Termin? – Ja, ich denke ___.", options: ["daran", "darauf", "darüber", "dafür"], correct: 0, explication: "denken an → daran." },
       { type: "trou", consigne: "Complétez (worüber/darüber).", texte: "{0} freust du dich? – Ich freue mich darüber.", accepte: [["Worüber"]], indice: "question sur une chose, sich freuen über" },
       { type: "association", consigne: "Associez le verbe et son adverbe pronominal.", paires: [{ gauche: "warten auf", droite: "darauf" }, { gauche: "denken an", droite: "daran" }, { gauche: "sprechen über", droite: "darüber" }, { gauche: "sich interessieren für", droite: "dafür" }] },
-      { type: "qcm", consigne: "Personne ou chose ?", question: "Pour « Je pense à ma mère », on demande…", options: ["An wen denkst du?", "Woran denkst du?", "Wofür denkst du?", "Daran denkst du?"], correct: 0, explication: "Personne → préposition + wen : An wen?" }
+      { type: "qcm", consigne: "Personne ou chose ?", question: "Pour « Je pense à ma mère », on demande…", options: ["An wen denkst du?", "Woran denkst du?", "Wofür denkst du?", "Daran denkst du?"], correct: 0, explication: "Personne → préposition + wen : An wen?" },
+      { type: "qcm", consigne: "Question indirecte.", question: "Weißt du, ___ der Zug abfährt?", options: ["wann", "wenn", "als", "dass"], correct: 0, explication: "question sur le moment → wann (verbe à la fin)." },
+      { type: "trou", consigne: "Question oui/non indirecte.", texte: "Ich frage mich, {0} er heute kommt.", accepte: [["ob"]], indice: "oui/non → ob" },
+      { type: "qcm", consigne: "Reprise d'une chose.", question: "Interessierst du dich für Kunst? — Ja, ich interessiere mich ___.", options: ["dafür", "für sie", "darauf", "dazu"], correct: 0, explication: "sich interessieren für → dafür (chose)." }
     ]
   },
   b1g04: {
@@ -10289,14 +10302,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     grammaire: [
       { exemples: [{"de":"Vor zwei Wochen war ich krank.","fr":"Il y a deux semaines, j'étais malade."},{"de":"Bis morgen muss ich fertig sein.","fr":"Je dois avoir fini d'ici demain."}], regle: "Prépositions temporelles : **vor** (il y a), **seit** (depuis), **bis** (jusqu'à), **ab** (à partir de), **innerhalb** (en l'espace de, + génitif).", attention: "*seit* + datif + **présent** = « depuis » ; à ne pas confondre avec *vor* (il y a) : *vor zwei Jahren* ≠ *seit zwei Jahren*.", titre: "Les prépositions temporelles fréquentes", intro: "Chaque préposition temporelle impose un cas. La plupart régissent le datif.",
         tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["vor + Dat.", "il y a / avant", "vor zwei Jahren"], ["seit + Dat.", "depuis", "seit Montag"], ["bis", "jusqu'à", "bis morgen"], ["ab + Dat.", "à partir de", "ab nächster Woche"], ["über + Akk.", "pendant (durée)", "über das Wochenende"], ["innerhalb + Gen.", "en l'espace de", "innerhalb einer Stunde"]] },
-        note: "« seit » + datif et un verbe au présent traduisent le français « depuis » : « Ich lerne seit zwei Jahren Deutsch »." }
+        note: "« seit » + datif et un verbe au présent traduisent le français « depuis » : « Ich lerne seit zwei Jahren Deutsch »." },
+      { titre: "Rappel : am / um / im (et sans préposition)",
+        regle: "Base temporelle : **am** + jour/moment, **um** + heure précise, **im** + mois/saison. **Pas de préposition** avec *heute, morgen, gestern* et les **années**.",
+        intro: "*am Montag, um 8 Uhr, im Sommer* — mais *heute*, *2024* (sans préposition).",
+        tableau: { entetes: ["Marqueur", "Usage", "Exemple"], lignes: [["am", "jour, moment", "am Freitag, am Abend"], ["um", "heure précise", "um 9 Uhr"], ["im", "mois, saison", "im Mai, im Winter"], ["— (rien)", "heute/morgen, années", "heute, 2024"]] },
+        note: "Exception : *in der Nacht*. Années sans préposition : *2024* (ou *im Jahr 2024*)." },
+      { titre: "vor, seit ou in ? (le trio piège)",
+        regle: "**vor** + datif = « il y a » (passé fini). **seit** + datif = « depuis » (a commencé, dure encore, + présent). **in** + datif = « dans » (futur).",
+        intro: "*vor drei Jahren* (il y a 3 ans) · *seit drei Jahren* (depuis 3 ans) · *in drei Jahren* (dans 3 ans).",
+        tableau: { entetes: ["Préposition", "Repère", "Exemple"], lignes: [["vor + Dat.", "passé (fini)", "Vor zwei Jahren zog ich um."], ["seit + Dat.", "depuis → maintenant", "Seit zwei Jahren wohne ich hier."], ["in + Dat.", "futur (dans)", "In zwei Jahren ziehe ich um."]] },
+        note: "Piège : *seit* va avec le **présent** (l'action continue) ; *vor* décrit un point du passé." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« seit » exprime…", options: ["le point de départ d'une durée (depuis)", "la fin (jusqu'à)", "le futur lointain"], correct: 0, explication: "seit = depuis (+ datif, présent)." },
       { type: "qcm", consigne: "Choisissez la préposition.", question: "Ich wohne ___ drei Jahren hier.", options: ["seit", "bis", "vor", "ab"], correct: 0, explication: "Durée qui continue → seit." },
       { type: "trou", consigne: "Complétez.", texte: "Wir haben {0} morgen Zeit. (jusqu'à)", accepte: [["bis"]], indice: "jusqu'à = bis" },
       { type: "association", consigne: "Associez la préposition et son sens.", paires: [{ gauche: "vor", droite: "il y a / avant" }, { gauche: "seit", droite: "depuis" }, { gauche: "bis", droite: "jusqu'à" }, { gauche: "ab", droite: "à partir de" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "J'apprends l'allemand depuis deux ans.", accepte: ["Ich lerne seit zwei Jahren Deutsch", "Seit zwei Jahren lerne ich Deutsch"], aide: "seit + datif, présent" }
+      { type: "traduction", consigne: "Traduisez.", source: "J'apprends l'allemand depuis deux ans.", accepte: ["Ich lerne seit zwei Jahren Deutsch", "Seit zwei Jahren lerne ich Deutsch"], aide: "seit + datif, présent" },
+      { type: "qcm", consigne: "am, um ou im ?", question: "Der Kurs beginnt ___ neun Uhr.", options: ["um", "am", "im", "in"], correct: 0, explication: "heure précise → um." },
+      { type: "qcm", consigne: "vor, seit ou in ?", question: "___ zwei Wochen fahre ich in den Urlaub. (dans)", options: ["In", "Vor", "Seit", "Ab"], correct: 0, explication: "futur « dans » → in + datif." },
+      { type: "trou", consigne: "Rappel (saison).", texte: "{0} Winter ist es kalt.", accepte: [["Im"]], indice: "saison → im" }
     ]
   },
   b1g09: {
@@ -10318,14 +10344,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
       { exemples: [{"de":"Früher habe ich in Köln gewohnt.","fr":"Autrefois, j'habitais à Cologne."},{"de":"Zuerst arbeite ich, dann entspanne ich mich.","fr":"D'abord je travaille, ensuite je me détends."}], regle: "Adverbes pour situer/enchaîner : **damals, früher, neulich** (passé) ; **zuerst, dann, schließlich** (ordre).", attention: "Placé **en 1ʳᵉ position**, l'adverbe entraîne l'**inversion** : *Dann **gehe** ich…* (verbe en 2ᵉ).", titre: "Situer et enchaîner dans le temps", intro: "Les adverbes de temps précisent QUAND et dans quel ORDRE. Ils peuvent occuper la 1re position (le verbe reste 2e).",
         tableau: { entetes: ["Adverbe", "Sens", "Exemple"], lignes: [["damals", "à l'époque", "Damals war ich jung."], ["früher", "autrefois", "Früher rauchte er."], ["neulich", "récemment / l'autre jour", "Neulich traf ich ihn."], ["zuerst", "d'abord", "Zuerst frühstücke ich."], ["dann / danach", "ensuite", "Dann gehe ich zur Arbeit."], ["schließlich", "finalement", "Schließlich kam er doch."]] },
         schemas: [{ legende: "Adverbe en tête → verbe toujours en 2e position.", mots: [{ m: "Damals", r: "adverbe (1)", c: "objet" }, { m: "wohnte", r: "verbe (2)", c: "verbe" }, { m: "ich", r: "sujet", c: "sujet" }, { m: "in Köln", r: "complément", c: "fin" }] }],
-        note: "Quand l'adverbe ouvre la phrase, on a l'inversion : sujet APRÈS le verbe (« Dann gehe ich… »)." }
+        note: "Quand l'adverbe ouvre la phrase, on a l'inversion : sujet APRÈS le verbe (« Dann gehe ich… »)." },
+      { titre: "schon, noch, erst, gerade (les nuances)",
+        regle: "**schon** = déjà. **noch** = encore ; **noch nicht** = pas encore. **erst** = seulement / pas avant (temps). **gerade** = juste maintenant.",
+        intro: "*Ich habe **schon** gegessen* · *Er ist **noch nicht** da* · *Sie kommt **erst** um 8* · *Ich esse **gerade***.",
+        tableau: { entetes: ["Adverbe", "Sens", "Exemple"], lignes: [["schon", "déjà", "Ich bin schon fertig."], ["noch", "encore", "Ich arbeite noch."], ["noch nicht", "pas encore", "Er ist noch nicht da."], ["erst", "seulement / pas avant (temps)", "Sie kommt erst um 8."], ["gerade", "juste maintenant", "Ich telefoniere gerade."]] },
+        note: "Piège : *erst* (temps) ≠ *nur* (quantité). « erst um 8 » = pas avant 8h ; « nur 8 Euro » = seulement 8 €." },
+      { titre: "Se repérer : passé / présent / futur",
+        regle: "Range les adverbes selon le **moment** : passé, présent, futur.",
+        intro: "*gestern → heute → morgen* ; *damals → jetzt → bald*.",
+        tableau: { entetes: ["Passé", "Présent", "Futur"], lignes: [["gestern, vorgestern", "heute", "morgen, übermorgen"], ["damals, früher", "jetzt, gerade", "bald, gleich, später"], ["neulich, letztens", "heutzutage", "demnächst, in Zukunft"]] },
+        note: "*gleich* = tout de suite ; *bald* = bientôt ; *demnächst* = prochainement." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« schließlich » signifie…", options: ["finalement", "d'abord", "récemment"], correct: 0, explication: "schließlich = enfin / finalement." },
       { type: "qcm", consigne: "Choisissez.", question: "___ war ich Kind, jetzt bin ich erwachsen.", options: ["Damals", "Bald", "Gleich", "Jetzt"], correct: 0, explication: "damals = à l'époque (passé)." },
       { type: "trou", consigne: "Complétez (inversion).", texte: "Zuerst {0} ich, dann arbeite ich. (frühstücken)", accepte: [["frühstücke"]], indice: "adverbe en tête → verbe en 2e position" },
       { type: "association", consigne: "Associez l'adverbe et son sens.", paires: [{ gauche: "zuerst", droite: "d'abord" }, { gauche: "dann", droite: "ensuite" }, { gauche: "schließlich", droite: "finalement" }, { gauche: "früher", droite: "autrefois" }] },
-      { type: "ordre", consigne: "Construisez la phrase (inversion).", mots: ["Dann", "gehe", "ich", "nach", "Hause"], correct: "Dann gehe ich nach Hause", traduction: "Ensuite je rentre à la maison." }
+      { type: "ordre", consigne: "Construisez la phrase (inversion).", mots: ["Dann", "gehe", "ich", "nach", "Hause"], correct: "Dann gehe ich nach Hause", traduction: "Ensuite je rentre à la maison." },
+      { type: "qcm", consigne: "erst ou nur ?", question: "Der Zug kommt ___ um 10 Uhr (pas avant).", options: ["erst", "nur", "schon", "noch"], correct: 0, explication: "« pas avant » dans le temps → erst." },
+      { type: "trou", consigne: "pas encore.", texte: "Ich bin {0} nicht fertig.", accepte: [["noch"]], indice: "pas encore = noch nicht" },
+      { type: "qcm", consigne: "Futur proche.", question: "Ich komme ___! (tout de suite)", options: ["gleich", "damals", "gestern", "neulich"], correct: 0, explication: "tout de suite → gleich (futur proche)." }
     ]
   },
   b1g10: {
