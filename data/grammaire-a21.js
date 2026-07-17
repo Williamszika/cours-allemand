@@ -148,14 +148,27 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     grammaire: [
       { exemples: [{"de":"Ich habe keine Geschwister.","fr":"Je n'ai pas de frères et sœurs."},{"de":"Niemand war zu Hause.","fr":"Personne n'était à la maison."}], regle: "**kein** nie un **nom** (sans article / indéfini) ; **nicht** nie le reste. Mots spécifiques : **nichts** (rien), **niemand** (personne), **nie** (jamais).", attention: "**niemand** et **nichts** sont déjà négatifs : pas de double négation (*Ich sehe **nichts***).", titre: "Les mots de négation", intro: "kein nie un nom ; nicht le reste ; et des mots spécifiques.",
         tableau: { entetes: ["Mot", "Sens", "Exemple"], lignes: [["kein", "aucun/pas de", "Ich habe kein Auto."], ["nicht", "ne… pas", "Ich komme nicht."], ["nichts", "rien", "Ich sehe nichts."], ["niemand", "personne", "Niemand ist da."], ["nie", "jamais", "Ich rauche nie."]] },
-        note: "« nicht » se place en général à la fin, mais AVANT un adjectif/lieu : « Das ist nicht gut »." }
+        note: "« nicht » se place en général à la fin, mais AVANT un adjectif/lieu : « Das ist nicht gut »." },
+      { titre: "La place de nicht",
+        regle: "**nicht** se place à la **fin** s'il nie toute la phrase ; **juste avant** l'élément s'il nie une partie ; **avant** le participe/l'infinitif/l'adjectif.",
+        intro: "*Ich komme **nicht*** (toute la phrase) vs *Ich fahre **nicht** nach Berlin* (le lieu).",
+        tableau: { entetes: ["Type", "Place de nicht", "Exemple"], lignes: [["négation totale", "à la fin", "Ich kenne ihn nicht."], ["négation partielle", "avant l'élément", "Ich fahre nicht heute."], ["avant participe", "nicht + participe", "Ich habe ihn nicht gesehen."], ["avant adjectif", "nicht + adjectif", "Das ist nicht teuer."]] },
+        note: "Pour un nom avec ein / sans article → **kein** (Ich habe kein Auto)." },
+      { titre: "Positif → négatif (les paires)",
+        regle: "Chaque mot positif a son **contraire négatif** — un seul mot suffit (pas de double négation).",
+        intro: "*etwas → nichts* · *jemand → niemand* · *immer → nie* · *schon → noch nicht*.",
+        tableau: { entetes: ["Positif", "Négatif", "Exemple"], lignes: [["etwas (qqch)", "nichts (rien)", "Ich sehe nichts."], ["jemand (qqn)", "niemand (personne)", "Niemand ist da."], ["immer (toujours)", "nie / niemals (jamais)", "Ich gehe nie hin."], ["schon (déjà)", "noch nicht (pas encore)", "Ich bin noch nicht fertig."], ["noch (encore)", "kein/nicht … mehr (ne plus)", "Ich habe kein Geld mehr."]] },
+        note: "« ne… plus » : *kein … mehr* (nom) / *nicht mehr* (verbe). « pas encore » : *noch nicht*." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "___ ist im Büro. (personne)", options: ["Niemand", "Nichts", "Nicht", "Kein"], correct: 0, explication: "niemand = personne." },
       { type: "qcm", consigne: "nicht ou kein ?", question: "Ich habe ___ Hunger.", options: ["keinen", "nicht", "nichts", "nie"], correct: 0, explication: "der Hunger (m.) sans article → keinen." },
       { type: "trou", consigne: "Complétez.", texte: "Ich sehe {0}. (rien)", accepte: [["nichts"]], indice: "rien" },
       { type: "association", consigne: "Associez.", paires: [{ gauche: "nichts", droite: "rien" }, { gauche: "niemand", droite: "personne" }, { gauche: "nie", droite: "jamais" }, { gauche: "kein", droite: "aucun" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je ne fume jamais.", accepte: ["Ich rauche nie"], aide: "nie" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je ne fume jamais.", accepte: ["Ich rauche nie"], aide: "nie" },
+      { type: "qcm", consigne: "Place de nicht.", question: "Ich habe den Film ___.", options: ["nicht gesehen", "gesehen nicht", "nicht", "gesehen"], correct: 0, explication: "nicht avant le participe : nicht gesehen." },
+      { type: "trou", consigne: "Ne… plus (nom).", texte: "Ich habe {0} Geld mehr.", accepte: [["kein"]], indice: "kein … mehr = ne plus de" },
+      { type: "qcm", consigne: "Pas encore.", question: "« Je ne suis pas encore prêt » = Ich bin ___ fertig.", options: ["noch nicht", "nicht mehr", "nie", "kein"], correct: 0, explication: "pas encore → noch nicht." }
     ]
   },
   a2g05: {
@@ -181,14 +194,27 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
           { legende: "Principale : verbe en 2e position.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "bleibe", r: "verbe (2)", c: "verbe" }, { m: "zu Hause", r: "complément", c: "objet" }] },
           { legende: "Subordonnée (weil) : le verbe est rejeté à la FIN.", mots: [{ m: "…, weil", r: "connecteur", c: "conj" }, { m: "ich", r: "sujet", c: "sujet" }, { m: "müde", r: "complément", c: "objet" }, { m: "bin", r: "verbe (fin)", c: "fin" }] }
         ],
-        note: "Si la subordonnée est en tête, la principale commence par le verbe : « Weil ich müde bin, bleibe ich zu Hause »." }
+        note: "Si la subordonnée est en tête, la principale commence par le verbe : « Weil ich müde bin, bleibe ich zu Hause »." },
+      { titre: "Trois familles de connecteurs",
+        regle: "**Coordination** (und, aber, denn, oder) → verbe en **2ᵉ**. **Subordination** (weil, dass, wenn…) → verbe à la **fin**. **Adverbes** (deshalb, trotzdem) → **inversion**.",
+        intro: "*…, **denn** ich **bin** müde* (2e) · *…, **weil** ich müde **bin*** (fin) · *…; **deshalb** **bleibe** ich* (inversion).",
+        tableau: { entetes: ["Famille", "Exemples", "Place du verbe"], lignes: [["coordination", "und, aber, oder, denn, sondern", "2ᵉ position"], ["subordination", "weil, dass, wenn, obwohl, ob", "à la FIN"], ["adverbes connecteurs", "deshalb, trotzdem, dann", "inversion (2ᵉ)"]] },
+        note: "Piège : *denn* (2ᵉ) et *weil* (fin) ont le même sens mais une syntaxe opposée." },
+      { titre: "Les subordonnants par sens",
+        regle: "À l'A2, connais ces subordonnants par **fonction** (tous → verbe à la fin).",
+        intro: "cause, temps, concession, condition, but, question.",
+        tableau: { entetes: ["Sens", "Conjonction", "Exemple"], lignes: [["cause", "weil, da", "…, weil es regnet."], ["temps", "wenn, als, während", "…, wenn ich Zeit habe."], ["concession", "obwohl", "…, obwohl es regnet."], ["condition", "wenn, falls", "…, wenn du willst."], ["but", "damit", "…, damit alle es sehen."], ["question", "ob", "…, ob er kommt."]] },
+        note: "*als* = un fait unique au passé ; *wenn* = présent/futur ou répétition." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Avec « obwohl », le verbe va…", options: ["à la fin", "en 2e position", "au début"], correct: 0, explication: "obwohl = subordination → verbe à la fin." },
       { type: "qcm", consigne: "Complétez.", question: "Ich bleibe zu Hause, weil es ___.", options: ["regnet", "regnet nicht heute", "es regnet", "regnen"], correct: 0, explication: "verbe à la fin : … weil es regnet." },
       { type: "trou", consigne: "Complétez (verbe à la fin).", texte: "Ich glaube, dass er morgen {0}. (kommen)", accepte: [["kommt"]], indice: "dass → verbe à la fin" },
       { type: "ordre", consigne: "Construisez la subordonnée.", mots: ["weil", "ich", "müde", "bin"], correct: "weil ich müde bin", traduction: "parce que je suis fatigué" },
-      { type: "qcm", consigne: "Choisissez la conjonction.", question: "Ich gehe spazieren, ___ es regnet. (bien que)", options: ["obwohl", "weil", "dass", "wenn"], correct: 0, explication: "obwohl = bien que." }
+      { type: "qcm", consigne: "Choisissez la conjonction.", question: "Ich gehe spazieren, ___ es regnet. (bien que)", options: ["obwohl", "weil", "dass", "wenn"], correct: 0, explication: "obwohl = bien que." },
+      { type: "qcm", consigne: "denn ou weil ?", question: "Même sens que weil mais verbe en 2ᵉ :", options: ["denn", "dass", "obwohl", "wenn"], correct: 0, explication: "denn = car (coordination, verbe en 2ᵉ)." },
+      { type: "trou", consigne: "Verbe à la fin (dass).", texte: "Ich glaube, dass er recht {0}. (haben)", accepte: [["hat"]], indice: "dass → verbe à la fin : hat" },
+      { type: "qcm", consigne: "Subordonnée en tête.", question: "___ es regnet, bleibe ich zu Hause.", options: ["Weil", "Denn", "Deshalb", "Und"], correct: 0, explication: "Weil + verbe fin ; la principale commence par le verbe (bleibe ich)." }
     ]
   },
   a2g06: {
@@ -297,14 +323,25 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     grammaire: [
       { exemples: [{"de":"Am Montag um acht beginnt der Kurs.","fr":"Lundi à huit heures, le cours commence."},{"de":"Ich arbeite seit drei Jahren hier.","fr":"Je travaille ici depuis trois ans."}], regle: "Situer dans le temps : **am** (jour), **um** (heure), **im** (mois/saison), **seit** (depuis), **von … bis** (de … à).", attention: "« depuis » se dit **seit + datif** avec un verbe au **présent** : *Ich lerne **seit** zwei Jahren Deutsch*.", titre: "Dire quand", intro: "Chaque repère temporel a sa structure.",
         tableau: { entetes: ["Expression", "Sens", "Exemple"], lignes: [["am + jour", "le…", "am Montag"], ["im + mois/saison", "en…", "im Sommer"], ["um + heure", "à…", "um 8 Uhr"], ["seit + datif", "depuis", "seit zwei Jahren"], ["vor + datif", "il y a", "vor einer Woche"], ["jeden Tag (acc.)", "chaque jour", "jeden Tag, jede Woche"]] },
-        note: "Durée habituelle à l'accusatif : jeden Tag, jeden Morgen, letzten Montag." }
+        note: "Durée habituelle à l'accusatif : jeden Tag, jeden Morgen, letzten Montag." },
+      { titre: "seit / vor / in : depuis, il y a, dans", intro: "Trois prépositions qui situent une durée par rapport à maintenant. Toutes régissent le **datif**.",
+        tableau: { entetes: ["Prép.", "Sens", "Quand ?", "Exemple"], lignes: [["seit + datif", "depuis", "commencé avant, continue", "seit drei Jahren"], ["vor + datif", "il y a", "fini, dans le passé", "vor drei Jahren"], ["in + datif", "dans", "à venir, futur", "in drei Jahren"]] },
+        exemples: [{"de":"Ich lerne seit einem Jahr Deutsch.","fr":"J'apprends l'allemand depuis un an."},{"de":"Vor einem Jahr habe ich angefangen.","fr":"Il y a un an, j'ai commencé."},{"de":"In einem Jahr spreche ich fließend.","fr":"Dans un an, je parlerai couramment."}],
+        attention: "Ne traduis jamais « depuis » par *für* ! *seit* + présent : *Ich wohne seit 2020 hier.*",
+        note: "Même durée (« drei Jahren »), trois sens selon la préposition : avant/pendant → seit, passé → vor, futur → in." },
+      { titre: "L'ordre des compléments : TeKaMoLo", intro: "Quand plusieurs compléments se suivent, l'allemand aime cet ordre : **Te**mps → **Ka**use → **Mo**dalité → **Lo**cal.", regle: "**Temps avant lieu** : *Ich fahre morgen nach Berlin* (et non « nach Berlin morgen »).",
+        tableau: { entetes: ["Te (quand)", "Ka (pourquoi)", "Mo (comment)", "Lo (où)"], lignes: [["heute", "wegen der Arbeit", "mit dem Zug", "nach Köln"], ["morgen", "—", "allein", "ins Büro"], ["jeden Tag", "—", "mit dem Rad", "zur Schule"]] },
+        note: "Retiens surtout : le **temps passe avant le lieu**. C'est l'erreur d'ordre la plus fréquente." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "___ zwei Jahren wohne ich hier.", options: ["Seit", "Vor", "Am", "Um"], correct: 0, explication: "seit + datif = depuis." },
       { type: "qcm", consigne: "Choisissez.", question: "Wir treffen uns ___ Freitag.", options: ["am", "im", "um", "seit"], correct: 0, explication: "jour → am." },
       { type: "trou", consigne: "Complétez.", texte: "{0} Sommer fahre ich {1} 9 Uhr los.", accepte: [["im"], ["um"]], indice: "saison / heure" },
       { type: "association", consigne: "Associez.", paires: [{ gauche: "am", droite: "Montag" }, { gauche: "im", droite: "Juli" }, { gauche: "um", droite: "10 Uhr" }, { gauche: "seit", droite: "2020" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Il y a une semaine.", accepte: ["Vor einer Woche", "vor einer woche"], aide: "vor + datif" }
+      { type: "traduction", consigne: "Traduisez.", source: "Il y a une semaine.", accepte: ["Vor einer Woche", "vor einer woche"], aide: "vor + datif" },
+      { type: "qcm", consigne: "Passé, présent ou futur ?", question: "« In zwei Tagen komme ich. » = ", options: ["Dans deux jours (futur)", "Depuis deux jours", "Il y a deux jours"], correct: 0, explication: "in + datif = dans (futur)." },
+      { type: "trou", consigne: "Complétez (depuis / il y a).", texte: "Ich arbeite {0} drei Jahren hier, aber {1} einem Monat war ich krank.", accepte: [["seit"], ["vor"]], indice: "durée en cours / passé fini" },
+      { type: "qcm", cat: "comp", consigne: "Ordre des mots (TeKaMoLo).", question: "Quelle phrase est correcte ?", options: ["Ich fahre morgen nach Berlin.", "Ich fahre nach Berlin morgen.", "Ich morgen fahre nach Berlin."], correct: 0, explication: "Temps (morgen) avant lieu (nach Berlin)." }
     ]
   },
   a2g09: {
