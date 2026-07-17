@@ -142,14 +142,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
       { exemples: [{"de":"Du brauchst dir keine Sorgen zu machen.","fr":"Tu n'as pas besoin de t'inquiéter."},{"de":"Du brauchst nur anzurufen.","fr":"Tu n'as qu'à appeler."}], regle: "« **(nicht/nur) brauchen … zu** + infinitif » remplace souvent *müssen* : *Du **brauchst nicht zu** kommen* (= tu n'as pas besoin de venir).", attention: "« brauchen … zu » s'emploie surtout au **négatif** (nicht) ou **restrictif** (nur) ; sinon on garde **müssen**.", titre: "Les modaux et « (nicht) brauchen … zu »", intro: "Les modaux placent l'infinitif à la fin. « nicht/nur brauchen … zu + infinitif » remplace souvent « nicht/nur müssen ».",
         tableau: { entetes: ["Verbe", "Sens", "Exemple"], lignes: [["müssen", "devoir (obligation)", "Ich muss arbeiten."], ["dürfen", "avoir le droit", "Du darfst gehen."], ["sollen", "devoir (consigne)", "Du sollst pünktlich sein."], ["nicht brauchen + zu", "ne pas avoir besoin de", "Du brauchst nicht zu kommen."], ["nur brauchen + zu", "n'avoir qu'à", "Du brauchst nur zu fragen."]] },
         schemas: [{ legende: "brauchen (2) … zu + infinitif (fin).", mots: [{ m: "Du", r: "sujet", c: "sujet" }, { m: "brauchst", r: "brauchen (2)", c: "verbe" }, { m: "nicht", r: "négation", c: "objet" }, { m: "zu kommen", r: "zu + infinitif (fin)", c: "fin" }] }],
-        note: "« brauchen … zu » s'emploie surtout au négatif (nicht) ou restrictif (nur). À l'affirmatif simple, on garde müssen." }
+        note: "« brauchen … zu » s'emploie surtout au négatif (nicht) ou restrictif (nur). À l'affirmatif simple, on garde müssen." },
+      { titre: "Conjugaison des modaux au présent",
+        regle: "Les modaux sont **irréguliers** : à *ich* et *er/sie/es*, **pas de terminaison**, et souvent un **changement de voyelle** au singulier.",
+        intro: "Retiens surtout : *ich kann, ich muss, ich will, ich darf* (sans -e).",
+        tableau: { entetes: ["Pronom", "können", "müssen", "dürfen", "wollen"], lignes: [["ich", "kann", "muss", "darf", "will"], ["du", "kannst", "musst", "darfst", "willst"], ["er/sie/es", "kann", "muss", "darf", "will"], ["wir", "können", "müssen", "dürfen", "wollen"], ["ihr", "könnt", "müsst", "dürft", "wollt"], ["sie/Sie", "können", "müssen", "dürfen", "wollen"]] },
+        note: "*sollen* ne change pas de voyelle (ich soll). *möchten* (vouloir poli) : ich möchte, du möchtest." },
+      { titre: "Négation : nicht müssen ≠ nicht dürfen",
+        regle: "**nicht müssen** = ce n'est **pas nécessaire** (pas obligé). **nicht dürfen** = c'est **interdit**. C'est LE piège des modaux.",
+        intro: "*Du **musst** nicht kommen* (libre à toi) vs *Du **darfst** nicht kommen* (interdit).",
+        tableau: { entetes: ["Forme", "Sens", "Exemple"], lignes: [["nicht müssen", "pas obligé", "Du musst nicht bezahlen."], ["nicht dürfen", "interdit", "Du darfst nicht parken."], ["nicht brauchen zu", "pas besoin de", "Du brauchst nichts zu kaufen."]] },
+        note: "Le français « ne pas devoir » = **nicht müssen** (pas obligé), jamais *nicht dürfen* — attention au contresens." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« Du brauchst nicht zu kommen » signifie…", options: ["Tu n'as pas besoin de venir", "Tu dois venir", "Tu ne peux pas venir"], correct: 0, explication: "nicht brauchen zu = pas besoin de." },
       { type: "qcm", consigne: "Choisissez.", question: "Avec « brauchen », l'infinitif est précédé de…", options: ["zu", "rien", "um", "dass"], correct: 0, explication: "brauchen … zu + infinitif." },
       { type: "trou", consigne: "Complétez (zu).", texte: "Du brauchst nur {0} fragen.", accepte: [["zu"]], indice: "nur brauchen zu + infinitif" },
       { type: "association", consigne: "Associez le modal et son sens.", paires: [{ gauche: "müssen", droite: "devoir" }, { gauche: "dürfen", droite: "avoir le droit" }, { gauche: "sollen", droite: "consigne" }, { gauche: "wollen", droite: "vouloir" }] },
-      { type: "ordre", consigne: "Construisez la phrase.", mots: ["Du", "brauchst", "nicht", "zu", "warten"], correct: "Du brauchst nicht zu warten", traduction: "Tu n'as pas besoin d'attendre." }
+      { type: "ordre", consigne: "Construisez la phrase.", mots: ["Du", "brauchst", "nicht", "zu", "warten"], correct: "Du brauchst nicht zu warten", traduction: "Tu n'as pas besoin d'attendre." },
+      { type: "qcm", consigne: "Conjugaison (dürfen).", question: "___ ich hier parken?", options: ["Darf", "Darfe", "Dürfe", "Darfst"], correct: 0, explication: "dürfen : ich darf (sans -e, voyelle change)." },
+      { type: "qcm", consigne: "Sens de la négation.", question: "« Du musst nicht kommen » veut dire…", options: ["tu n'es pas obligé", "c'est interdit", "tu ne peux pas"], correct: 0, explication: "nicht müssen = pas obligé." },
+      { type: "trou", consigne: "Interdiction (dürfen).", texte: "Hier {0} man nicht rauchen.", accepte: [["darf"]], indice: "interdit → man darf nicht" }
     ]
   },
   b1g05: {
@@ -352,14 +365,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
       { exemples: [{"de":"Ich freue mich über dein Geschenk.","fr":"Je suis content de ton cadeau."},{"de":"Wir treffen uns um acht.","fr":"On se retrouve à huit heures."}], regle: "Verbes réfléchis : pronom accordé au sujet (**mich, dich, sich, uns, euch**). En général **accusatif** ; **datif** s'il y a déjà un COD.", attention: "Datif : *Ich wasche **mir** die Hände* (le COD *die Hände* force le réfléchi au datif).", titre: "Le pronom réfléchi s'accorde avec le sujet", intro: "Les verbes réfléchis ont un pronom (mich, dich, sich…). En général à l'accusatif ; au datif quand il y a déjà un COD.",
         tableau: { entetes: ["Sujet", "Réfléchi (Akk.)", "Exemple"], lignes: [["ich", "mich", "Ich freue mich."], ["du", "dich", "Du erinnerst dich."], ["er/sie/es", "sich", "Er interessiert sich."], ["wir", "uns", "Wir treffen uns."], ["ihr", "euch", "Ihr entspannt euch."], ["sie/Sie", "sich", "Sie waschen sich."]] },
         schemas: [{ legende: "Le réfléchi suit le verbe conjugué.", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "interessiere", r: "verbe (2)", c: "verbe" }, { m: "mich", r: "réfléchi (acc.)", c: "objet" }, { m: "für Sport", r: "prép. + complément", c: "fin" }] }],
-        note: "Datif : « Ich wasche mir die Hände » (le COD die Hände force le réfléchi au datif : mir)." }
+        note: "Datif : « Ich wasche mir die Hände » (le COD die Hände force le réfléchi au datif : mir)." },
+      { titre: "Accusatif ou datif ? (seuls ich/du changent)",
+        regle: "Le réfléchi est à l'**accusatif** en général, au **datif** quand il y a **déjà un COD**. Seules *ich* et *du* diffèrent : **mich/mir**, **dich/dir**.",
+        intro: "*Ich wasche **mich*** (acc.) vs *Ich wasche **mir** die Hände* (dat., car « die Hände » est le COD).",
+        tableau: { entetes: ["Sujet", "Accusatif", "Datif"], lignes: [["ich", "mich", "mir"], ["du", "dich", "dir"], ["er/sie/es", "sich", "sich"], ["wir", "uns", "uns"], ["ihr", "euch", "euch"], ["sie/Sie", "sich", "sich"]] },
+        note: "À partir de *er/sie/es*, accusatif = datif (sich, uns, euch, sich). Seuls *ich* et *du* changent." },
+      { titre: "Verbes réfléchis à préposition (à mémoriser)",
+        regle: "Beaucoup de verbes réfléchis ont une **préposition fixe** qui impose le cas. À apprendre en bloc : *sich* + verbe + préposition.",
+        intro: "Au quotidien : *sich freuen auf, sich interessieren für, sich erinnern an*.",
+        tableau: { entetes: ["Verbe", "Prép. + cas", "Exemple"], lignes: [["sich freuen", "auf/über + Akk.", "Ich freue mich auf den Urlaub."], ["sich interessieren", "für + Akk.", "Sie interessiert sich für Kunst."], ["sich erinnern", "an + Akk.", "Ich erinnere mich an dich."], ["sich ärgern", "über + Akk.", "Er ärgert sich über den Stau."], ["sich kümmern", "um + Akk.", "Ich kümmere mich um alles."], ["sich bewerben", "um + Akk.", "Sie bewirbt sich um die Stelle."]] },
+        note: "*sich freuen **auf*** = se réjouir d'avance ; *sich freuen **über*** = être content de (déjà arrivé)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Le pronom réfléchi s'accorde avec…", options: ["le sujet", "le COD", "le verbe seul"], correct: 0, explication: "ich → mich, du → dich, etc." },
       { type: "qcm", consigne: "Choisissez le réfléchi.", question: "Wir treffen ___ um acht.", options: ["uns", "sich", "euch", "mich"], correct: 0, explication: "wir → uns." },
       { type: "trou", consigne: "Complétez (réfléchi).", texte: "Ich interessiere {0} für Musik.", accepte: [["mich"]], indice: "ich → mich" },
       { type: "association", consigne: "Associez le sujet et le réfléchi.", paires: [{ gauche: "ich", droite: "mich" }, { gauche: "du", droite: "dich" }, { gauche: "wir", droite: "uns" }, { gauche: "ihr", droite: "euch" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je me réjouis.", accepte: ["Ich freue mich"], aide: "sich freuen → ich freue mich" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je me réjouis.", accepte: ["Ich freue mich"], aide: "sich freuen → ich freue mich" },
+      { type: "qcm", consigne: "Réfléchi au datif.", question: "Ich wasche ___ die Hände.", options: ["mir", "mich", "sich", "mein"], correct: 0, explication: "Avec un COD (die Hände) → datif : mir." },
+      { type: "trou", consigne: "Réfléchi + préposition.", texte: "Ich erinnere mich gern {0} meine Kindheit.", accepte: [["an"]], indice: "sich erinnern an + accusatif" },
+      { type: "qcm", consigne: "Accusatif ou datif ?", question: "Ich putze ___ die Zähne.", options: ["mir", "mich", "sich", "meine"], correct: 0, explication: "COD (die Zähne) → réfléchi datif : mir." }
     ]
   },
   b1g11: {
@@ -428,14 +454,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     grammaire: [
       { regle: "Comparatif : adjectif **+ -er** (+ **als** = que). Superlatif : **am … -sten**, ou **der/die/das … -ste** devant un nom.", attention: "Beaucoup prennent un **Umlaut** (*alt → älter*) ; irréguliers : *gut → besser → am besten*. « que » = **als**.", exemples: [{"de":"Berlin ist größer als Bonn.","fr":"Berlin est plus grand que Bonn."},{"de":"Das ist der schnellste Zug.","fr":"C'est le train le plus rapide."}], titre: "Les trois degrés", intro: "Comparatif : adjectif + -er (+ als). Superlatif : am + adjectif + -sten, ou article + adjectif + -ste devant un nom.",
         tableau: { entetes: ["Positif", "Comparatif", "Superlatif"], lignes: [["schnell", "schneller", "am schnellsten"], ["alt", "älter", "am ältesten"], ["gut", "besser", "am besten"], ["gern", "lieber", "am liebsten"], ["hoch", "höher", "am höchsten"]] },
-        note: "Devant un nom, le superlatif se décline : « der schnellste Zug », « die beste Idee ». Comparatif d'égalité : so … wie." }
+        note: "Devant un nom, le superlatif se décline : « der schnellste Zug », « die beste Idee ». Comparatif d'égalité : so … wie." },
+      { titre: "Les deux superlatifs : am -sten ou der -ste",
+        regle: "**am + adjectif + -sten** = superlatif **attribut/adverbe** (invariable). **der/die/das + adjectif + -ste** = superlatif **devant un nom** (décliné).",
+        intro: "*Dieser Zug ist **am schnellsten*** (attribut) vs *der **schnellste** Zug* (devant le nom).",
+        tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["attribut (après sein)", "am …-sten", "Anna ist am größten."], ["devant un nom (nom.)", "der/die/das …-ste", "der größte Mann"], ["devant un nom (acc.)", "den/die/das …-ste", "Ich sehe den größten Mann."], ["adverbe", "am …-sten", "Er läuft am schnellsten."]] },
+        note: "Devant un nom, le superlatif se **décline** comme un adjectif (der schnellste, den schnellsten…)." },
+      { titre: "Irréguliers et la terminaison -est",
+        regle: "Quelques adjectifs sont **irréguliers** (à mémoriser). Les adjectifs en **-t, -d, -s, -z, -ß** insèrent un **-e-** au superlatif : *am ält**e**sten*.",
+        intro: "*gut → besser → am besten* ; *alt → älter → am ält**e**sten*.",
+        tableau: { entetes: ["Positif", "Comparatif", "Superlatif"], lignes: [["gut", "besser", "am besten"], ["viel", "mehr", "am meisten"], ["gern", "lieber", "am liebsten"], ["hoch", "höher", "am höchsten"], ["nah", "näher", "am nächsten"], ["alt (-t)", "älter", "am ältesten"]] },
+        note: "Comparatif d'**égalité** : *so … wie* (aussi … que) — « Tom ist so groß wie Paul »." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Le comparatif de supériorité se construit avec…", options: ["adjectif + -er + als", "so + adjectif + wie", "am + -sten"], correct: 0, explication: "schneller als = plus rapide que." },
       { type: "qcm", consigne: "Comparatif de « gut ».", question: "Mein Auto ist ___ als deins.", options: ["besser", "guter", "gutter", "am besten"], correct: 0, explication: "gut → besser (irrégulier)." },
       { type: "trou", consigne: "Complétez (superlatif).", texte: "Der ICE ist der {0} Zug. (schnell)", accepte: [["schnellste"]], indice: "der + -ste devant le nom" },
       { type: "association", consigne: "Associez positif et comparatif.", paires: [{ gauche: "alt", droite: "älter" }, { gauche: "gut", droite: "besser" }, { gauche: "gern", droite: "lieber" }, { gauche: "hoch", droite: "höher" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Berlin est plus grand que Munich.", accepte: ["Berlin ist größer als München"], aide: "groß → größer … als" }
+      { type: "traduction", consigne: "Traduisez.", source: "Berlin est plus grand que Munich.", accepte: ["Berlin ist größer als München"], aide: "groß → größer … als" },
+      { type: "qcm", consigne: "Superlatif adverbe.", question: "Wer läuft ___? — Anna.", options: ["am schnellsten", "der schnellste", "schneller", "am schnellste"], correct: 0, explication: "adverbe → am schnellsten." },
+      { type: "trou", consigne: "Superlatif avec -est (adjectif en -t).", texte: "Der Winter ist die {0} Jahreszeit. (kalt)", accepte: [["kälteste"]], indice: "kalt → -t donc -est + Umlaut : kälteste" },
+      { type: "qcm", consigne: "Égalité.", question: "« Tom est aussi grand que Paul » = Tom ist so groß ___ Paul.", options: ["wie", "als", "denn", "so"], correct: 0, explication: "égalité → so … wie." }
     ]
   },
   b1g13: {
@@ -456,14 +495,26 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     grammaire: [
       { exemples: [{"de":"Trotz des schlechten Wetters fahren wir.","fr":"Malgré le mauvais temps, nous partons."},{"de":"Das ist die Meinung der Experten.","fr":"C'est l'avis des experts."}], regle: "Le **génitif** marque l'appartenance : masc./neutre **des …(e)s**, fém./pluriel **der**. Prépositions : *wegen, trotz, während, statt*.", attention: "À l'oral on dit souvent **von + datif** (*das Auto **von** dem Mann*).", titre: "Le cas de l'appartenance", intro: "Le génitif indique à qui appartient quelque chose. Masc./neutre : des + nom + -(e)s. Fém./pluriel : der.",
         tableau: { entetes: ["Genre", "Article", "Exemple"], lignes: [["masculin", "des …(e)s", "das Auto des Mannes"], ["neutre", "des …(e)s", "die Farbe des Hauses"], ["féminin", "der", "das Buch der Frau"], ["pluriel", "der", "die Zimmer der Kinder"], ["prépositions", "+ génitif", "wegen des Wetters, trotz der Kälte"]] },
-        note: "À l'oral, on remplace souvent le génitif par « von + datif » : « das Auto von dem Mann ». Prépositions à génitif : wegen (à cause de), trotz (malgré), während (pendant)." }
+        note: "À l'oral, on remplace souvent le génitif par « von + datif » : « das Auto von dem Mann ». Prépositions à génitif : wegen (à cause de), trotz (malgré), während (pendant)." },
+      { titre: "Les articles au génitif",
+        regle: "Masc./neutre → **des / eines** (+ **-s/-es** au nom) ; fém./pluriel → **der / einer** (nom inchangé).",
+        intro: "Le nom masc./neutre prend **-s** (mots longs) ou **-es** (mots courts d'une syllabe) : *des Autos*, *des Kindes*.",
+        tableau: { entetes: ["Genre", "Défini", "Indéfini", "Exemple"], lignes: [["masculin", "des", "eines", "des/eines Mannes"], ["féminin", "der", "einer", "der/einer Frau"], ["neutre", "des", "eines", "des/eines Kindes"], ["pluriel", "der", "— (keiner)", "der Kinder"]] },
+        note: "Mots d'une syllabe → **-es** (des Kindes, des Mannes) ; mots longs → **-s** (des Autos, des Lehrers)." },
+      { titre: "Prépositions à génitif (et l'oral)",
+        regle: "Quatre prépositions courantes régissent le génitif à l'écrit : **wegen** (à cause de), **trotz** (malgré), **während** (pendant), **(an)statt** (au lieu de).",
+        intro: "À l'oral / familier, on entend souvent le **datif** (*wegen dem Regen*), et pour la possession **von + datif** (*das Auto von meinem Vater*).",
+        tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["wegen", "à cause de", "wegen des Staus"], ["trotz", "malgré", "trotz des Regens"], ["während", "pendant", "während der Woche"], ["(an)statt", "au lieu de", "statt eines Kaffees"]] },
+        note: "Registre : **génitif** à l'écrit soigné ; **von + datif** / datif à l'oral courant." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Le génitif exprime…", options: ["l'appartenance", "le lieu où l'on va", "le moment précis"], correct: 0, explication: "das Auto des Mannes = la voiture de l'homme." },
       { type: "qcm", consigne: "Choisissez (masculin génitif).", question: "Das ist das Auto ___ Mannes.", options: ["des", "der", "dem", "den"], correct: 0, explication: "masculin génitif → des + -(e)s." },
       { type: "trou", consigne: "Complétez (wegen + génitif).", texte: "Wegen {0} Wetters bleiben wir zu Hause.", accepte: [["des"]], indice: "wegen + génitif, neutre das Wetter → des" },
       { type: "association", consigne: "Associez la préposition et son sens.", paires: [{ gauche: "wegen", droite: "à cause de" }, { gauche: "trotz", droite: "malgré" }, { gauche: "während", droite: "pendant" }, { gauche: "statt", droite: "au lieu de" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "C'est la voiture de la femme.", accepte: ["Das ist das Auto der Frau"], aide: "féminin génitif → der Frau" }
+      { type: "traduction", consigne: "Traduisez.", source: "C'est la voiture de la femme.", accepte: ["Das ist das Auto der Frau"], aide: "féminin génitif → der Frau" },
+      { type: "trou", consigne: "Génitif -es (mot d'une syllabe).", texte: "Die Farbe {0} Kindes ist blau. (das Kind)", accepte: [["des"]], indice: "neutre → des + Kindes (-es)" },
+      { type: "qcm", consigne: "Registre oral.", question: "À l'oral, « la voiture de mon père » se dit souvent…", options: ["das Auto von meinem Vater", "das Auto der Vater", "das Auto meinem Vater"], correct: 0, explication: "À l'oral : von + datif (l'écrit soigné dirait « meines Vaters »)." }
     ]
   },
   b1g14: {
