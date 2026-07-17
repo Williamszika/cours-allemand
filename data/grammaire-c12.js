@@ -53,14 +53,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
       { exemples: [{"de":"Der Autor, dessen Buch ich lese, ist berühmt.","fr":"L'auteur dont je lis le livre est célèbre."},{"de":"Das ist alles, was ich weiß.","fr":"C'est tout ce que je sais."}], regle: "Relatifs avancés : **génitif** *dessen/deren*, **was** (après *alles/nichts/das Beste* ou une phrase), **wo** (lieu).", attention: "*was* peut reprendre **toute la principale** : *Er kam zu spät, **was** alle ärgerte*.", titre: "Relatifs avancés : génitif, neutre, lieu", intro: "Outre der/die/das, le C1 emploie le génitif relatif (dessen/deren), « was » (après tout/rien/le neutre) et « wo ».",
         tableau: { entetes: ["Type", "Pronom", "Exemple"], lignes: [["sujet", "der/die/das", "der Mann, der kommt"], ["génitif", "dessen / deren", "der Autor, dessen Buch ich las"], ["+ préposition", "mit dem, für die", "die Kollegin, mit der ich arbeite"], ["neutre/abstrait", "was", "alles, was ich weiß"], ["lieu", "wo", "die Stadt, wo ich wohne"]] },
         schemas: [{ legende: "Génitif relatif : dessen + nom … verbe à la FIN.", mots: [{ m: "der Autor,", r: "principale", c: "objet" }, { m: "dessen Buch", r: "génitif relatif", c: "conj" }, { m: "ich gerade", r: "sujet + complément", c: "sujet" }, { m: "lese", r: "verbe (fin)", c: "fin" }] }],
-        note: "« was » reprend etwas, nichts, alles, das, ou une phrase entière : « Er kam zu spät, was mich ärgerte »." }
+        note: "« was » reprend etwas, nichts, alles, das, ou une phrase entière : « Er kam zu spät, was mich ärgerte »." },
+      { titre: "Les relatifs prépositionnels (wo(r)-)",
+        regle: "Pour une **chose** après une préposition, on peut employer **wo(r)- + préposition** au lieu de *préposition + relatif* : *das Thema, **worüber** wir sprechen* = *über das wir sprechen*.",
+        intro: "Pour une **personne**, on garde *préposition + relatif* (*der Mann, mit dem…*).",
+        tableau: { entetes: ["Antécédent", "Préposition + relatif", "wo(r)- (chose)"], lignes: [["das Thema (über)", "über das wir sprechen", "worüber wir sprechen"], ["das Ziel (auf)", "auf das er hofft", "worauf er hofft"], ["das Mittel (mit)", "mit dem man …", "womit man …"], ["die Sache (von)", "von der ich rede", "wovon ich rede"]] },
+        note: "wo(r)- surtout pour les choses abstraites ; pour une personne, toujours préposition + relatif." },
+      { titre: "Tableau complet + weshalb/weswegen",
+        regle: "Le pronom relatif complet inclut le **génitif** (dessen/deren) et le **datif pluriel** (denen). *weshalb/weswegen* reprend une **cause**.",
+        intro: "*der Grund, **weshalb** ich komme* (la raison pour laquelle…).",
+        tableau: { entetes: ["Cas", "masc.", "fém.", "neutre", "pluriel"], lignes: [["Nominatif", "der", "die", "das", "die"], ["Accusatif", "den", "die", "das", "die"], ["Datif", "dem", "der", "dem", "denen"], ["Génitif", "dessen", "deren", "dessen", "deren"]] },
+        note: "denen (datif pluriel) et dessen/deren (génitif) sont les seules formes différentes de l'article." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Après « alles », le relatif est…", options: ["was", "das", "der", "dem"], correct: 0, explication: "alles, was … (neutre/abstrait → was)." },
       { type: "qcm", consigne: "Choisissez (génitif relatif).", question: "Der Autor, ___ Buch ich lese, ist berühmt.", options: ["dessen", "deren", "den", "dem"], correct: 0, explication: "génitif masculin → dessen." },
       { type: "trou", consigne: "Complétez (relatif de lieu).", texte: "Das ist die Stadt, {0} ich geboren bin.", accepte: [["wo"]], indice: "lieu → wo" },
       { type: "association", consigne: "Associez le contexte et le relatif.", paires: [{ gauche: "génitif masc.", droite: "dessen" }, { gauche: "génitif fém./plur.", droite: "deren" }, { gauche: "après alles/nichts", droite: "was" }, { gauche: "lieu", droite: "wo" }] },
-      { type: "ordre", consigne: "Construisez la relative (génitif).", mots: ["dessen", "Auto", "kaputt", "ist"], correct: "dessen Auto kaputt ist", traduction: "dont la voiture est cassée" }
+      { type: "ordre", consigne: "Construisez la relative (génitif).", mots: ["dessen", "Auto", "kaputt", "ist"], correct: "dessen Auto kaputt ist", traduction: "dont la voiture est cassée" },
+      { type: "qcm", consigne: "Relatif prépositionnel (chose).", question: "Das Thema, ___ wir sprechen, ist wichtig.", options: ["worüber", "über den", "über wen", "das"], correct: 0, explication: "chose + über → worüber (= über das)." },
+      { type: "trou", consigne: "Datif pluriel relatif.", texte: "Die Leute, {0} ich helfe, sind dankbar.", accepte: [["denen"]], indice: "datif pluriel relatif → denen" },
+      { type: "qcm", consigne: "Personne ou chose ?", question: "Der Kollege, ___ ich arbeite, ist nett.", options: ["mit dem", "womit", "worüber", "mit was"], correct: 0, explication: "personne → préposition + relatif : mit dem (pas womit)." }
     ]
   },
   c1g12: {
@@ -110,14 +123,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     grammaire: [
       { regle: "Déclinaison selon le déterminant (der / ein / sans article) et le cas. Après **etwas/nichts/viel** → adjectif nominalisé en **-es**.", attention: "Après *viele, einige, mehrere* : déclinaison **forte** au pluriel (*viele nett**e** Leute*).", exemples: [{"de":"Erzähl mir etwas Schönes!","fr":"Raconte-moi quelque chose de beau !"},{"de":"Ich kenne viele nette Leute.","fr":"Je connais beaucoup de gens sympathiques."}], titre: "Les trois déclinaisons, sans faille", intro: "La terminaison dépend du déterminant (défini, indéfini, aucun) et du cas.",
         tableau: { entetes: ["Contexte", "Nom. m.", "Acc. m.", "Dat. f."], lignes: [["der …", "der gute Wein", "den guten Wein", "der guten Idee"], ["ein …", "ein guter Wein", "einen guten Wein", "einer guten Idee"], ["sans article", "guter Wein", "guten Wein", "guter Idee"], ["etwas/nichts + adj.", "etwas Gutes", "etwas Gutes", "—"]] },
-        note: "Après etwas, nichts, viel, wenig : adjectif nominalisé en -es (etwas Schönes). Après viele, einige, mehrere : déclinaison forte au pluriel (viele nette Leute)." }
+        note: "Après etwas, nichts, viel, wenig : adjectif nominalisé en -es (etwas Schönes). Après viele, einige, mehrere : déclinaison forte au pluriel (viele nette Leute)." },
+      { titre: "L'adjectif substantivé (der Deutsche)",
+        regle: "Un adjectif peut devenir un **nom** (majuscule) et **garder ses terminaisons d'adjectif** selon l'article : *der Deutsche / ein Deutscher / die Deutschen*.",
+        intro: "*der Angestellte, ein Angestellter, die Angestellten* — se décline comme un adjectif épithète.",
+        tableau: { entetes: ["Cas", "avec der", "avec ein", "pluriel"], lignes: [["Nominatif", "der Deutsche", "ein Deutscher", "die Deutschen"], ["Accusatif", "den Deutschen", "einen Deutschen", "die Deutschen"], ["Datif", "dem Deutschen", "einem Deutschen", "den Deutschen"], ["Génitif", "des Deutschen", "eines Deutschen", "der Deutschen"]] },
+        note: "Fréquents : der/die Deutsche, Angestellte, Bekannte, Verwandte, Reisende, Erwachsene, Beamte." },
+      { titre: "Après etwas/nichts et viele/alle",
+        regle: "Après **etwas, nichts, viel, wenig** : adjectif **nominalisé** fort en **-es**. Après **viele, einige, mehrere** : **fort** (parallèle). Après **alle, beide, sämtliche** : **faible** (-en).",
+        intro: "*nichts **Neues*** · *viele **nette** Leute* · *alle **netten** Leute*.",
+        tableau: { entetes: ["Déterminant", "Déclinaison", "Exemple"], lignes: [["etwas / nichts / viel", "nominalisé fort -es", "etwas Gutes, nichts Neues"], ["viele / einige / mehrere", "forte (parallèle)", "viele nette Leute"], ["alle / beide / sämtliche", "faible (-en)", "alle netten Leute"], ["dieser / jener / welcher", "faible (-en)", "dieser nette Mann"]] },
+        note: "Piège C1 : *viele* → forte (nette) mais *alle* → faible (netten)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Sans article, l'adjectif prend…", options: ["la marque forte du cas", "toujours -e", "aucune terminaison"], correct: 0, explication: "guter Wein, kaltes Wasser (forte)." },
       { type: "qcm", consigne: "Choisissez.", question: "Ich trinke einen ___ Wein.", options: ["guten", "guter", "gutes", "gute"], correct: 0, explication: "ein + masc. acc. → guten." },
       { type: "trou", consigne: "Complétez (après etwas).", texte: "Erzähl mir etwas {0}! (gut)", accepte: [["Gutes"]], indice: "etwas + adjectif nominalisé en -es" },
       { type: "association", consigne: "Associez le contexte et la terminaison (nom. m.).", paires: [{ gauche: "der … Wein", droite: "gute" }, { gauche: "ein … Wein", droite: "guter" }, { gauche: "… Wein (sans art.)", droite: "guter" }, { gauche: "den … Wein", droite: "guten" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "beaucoup de gens sympathiques (nominatif)", accepte: ["viele nette Leute", "viele nette Menschen"], aide: "viele + déclinaison forte au pluriel → nette" }
+      { type: "traduction", consigne: "Traduisez.", source: "beaucoup de gens sympathiques (nominatif)", accepte: ["viele nette Leute", "viele nette Menschen"], aide: "viele + déclinaison forte au pluriel → nette" },
+      { type: "qcm", consigne: "Adjectif substantivé.", question: "Nominatif : « un Allemand » =", options: ["ein Deutscher", "ein Deutsche", "ein Deutschen", "einen Deutschen"], correct: 0, explication: "ein + forte : ein Deutscher." },
+      { type: "trou", consigne: "Après alle (faible).", texte: "Alle {0} Kollegen waren da. (nett)", accepte: [["netten"]], indice: "alle → déclinaison faible : -en" },
+      { type: "trou", consigne: "Après nichts (nominalisé).", texte: "Es gibt nichts {0} unter der Sonne. (neu)", accepte: [["Neues"]], indice: "nichts + adjectif nominalisé en -es" }
     ]
   },
   c1g14: {
@@ -280,14 +306,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
       { exemples: [{"de":"Das lässt sich leicht erklären.","fr":"Cela peut s'expliquer facilement."},{"de":"Die Aufgabe ist bis Freitag zu erledigen.","fr":"La tâche doit être faite pour vendredi."}], regle: "Passif (werden/sein + participe) et **substituts** : *man*, *sich lassen* (= können werden), *sein + zu + Inf.*, adjectifs en **-bar**.", attention: "*Das lässt sich lösen* = *kann gelöst werden* ; *Das ist zu lösen* = *muss/kann gelöst werden*.", titre: "Passif et alternatives", intro: "Outre le passif (werden/sein + participe), le C1 emploie des formes de substitution plus légères.",
         tableau: { entetes: ["Forme", "Exemple", "Équivaut à"], lignes: [["Vorgangspassiv", "Es wird gemacht.", "(action)"], ["Zustandspassiv", "Es ist gemacht.", "(résultat)"], ["man", "Man macht es.", "Es wird gemacht."], ["sich lassen", "Das lässt sich machen.", "kann gemacht werden"], ["sein + zu + Inf.", "Das ist zu machen.", "muss/kann gemacht werden"], ["adjectif en -bar", "machbar, lösbar", "kann gemacht/gelöst werden"]] },
         schemas: [{ legende: "Passiversatz : sein + zu + infinitif = nécessité/possibilité passive.", mots: [{ m: "Das Problem", r: "sujet", c: "sujet" }, { m: "ist", r: "sein (2)", c: "verbe" }, { m: "leicht", r: "complément", c: "objet" }, { m: "zu lösen", r: "zu + infinitif (fin)", c: "fin" }] }],
-        note: "« lösbar » = « kann gelöst werden » ; « Das lässt sich lösen » = même idée, registre courant." }
+        note: "« lösbar » = « kann gelöst werden » ; « Das lässt sich lösen » = même idée, registre courant." },
+      { titre: "Le passif à tous les temps",
+        regle: "Le *Vorgangspassiv* se conjugue à **tous les temps** en changeant seulement *werden*. Au Perfekt/Plusquamperfekt : **worden** (sans ge-).",
+        intro: "Le participe du verbe ne bouge pas ; *werden* porte le temps.",
+        tableau: { entetes: ["Temps", "Forme", "Exemple (bauen)"], lignes: [["Präsens", "wird gebaut", "Das Haus wird gebaut."], ["Präteritum", "wurde gebaut", "Das Haus wurde gebaut."], ["Perfekt", "ist gebaut worden", "Das Haus ist gebaut worden."], ["Plusquamperfekt", "war gebaut worden", "Das Haus war gebaut worden."], ["Futur I", "wird gebaut werden", "Das Haus wird gebaut werden."]] },
+        note: "Perfekt / Plusquamperfekt passif : ist/war … **worden** (jamais « geworden »)." },
+      { titre: "Nuances des substituts du passif",
+        regle: "Les substituts ne sont pas interchangeables : **sein + zu** = obligation OU possibilité ; **sich lassen** = possibilité ; **-bar/-lich** = possibilité inhérente.",
+        intro: "*Die Miete ist zu zahlen* (obligation) vs *Das ist leicht zu lösen* (possibilité).",
+        tableau: { entetes: ["Forme", "Nuance", "Exemple"], lignes: [["sein + zu + Inf.", "obligation ou possibilité", "Die Miete ist zu zahlen."], ["sich lassen + Inf.", "possibilité", "Das lässt sich machen."], ["-bar / -lich", "possibilité inhérente", "essbar, verständlich"], ["man + actif", "généralisation neutre", "Man sagt, dass …"]] },
+        note: "Négation : *un-* + -bar = « in- » (unlösbar = insoluble = nicht lösbar)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« Das lässt sich machen » équivaut à…", options: ["kann gemacht werden", "muss gemacht werden", "wurde gemacht"], correct: 0, explication: "sich lassen = possibilité passive." },
       { type: "qcm", consigne: "Choisissez (passif d'état).", question: "Le résultat (Zustandspassiv) se forme avec…", options: ["sein + participe", "werden + participe", "haben + participe"], correct: 0, explication: "Die Tür ist geöffnet (état)." },
       { type: "trou", consigne: "Complétez (sein + zu + Inf.).", texte: "Das Problem ist leicht zu {0}. (lösen)", accepte: [["lösen"]], indice: "sein + zu + infinitif" },
       { type: "association", consigne: "Associez la forme et son équivalent.", paires: [{ gauche: "man macht", droite: "es wird gemacht" }, { gauche: "lässt sich machen", droite: "kann gemacht werden" }, { gauche: "ist zu machen", droite: "muss gemacht werden" }, { gauche: "machbar", droite: "kann gemacht werden" }] },
-      { type: "ordre", consigne: "Construisez la phrase (Passiversatz).", mots: ["Das", "lässt", "sich", "leicht", "lösen"], correct: "Das lässt sich leicht lösen", traduction: "Cela peut se résoudre facilement." }
+      { type: "ordre", consigne: "Construisez la phrase (Passiversatz).", mots: ["Das", "lässt", "sich", "leicht", "lösen"], correct: "Das lässt sich leicht lösen", traduction: "Cela peut se résoudre facilement." },
+      { type: "qcm", consigne: "Perfekt passif.", question: "Das Haus ist gebaut ___.", options: ["worden", "geworden", "gewesen", "werden"], correct: 0, explication: "Perfekt passif : ist … worden." },
+      { type: "trou", consigne: "Adjectif en -bar.", texte: "Dieses Problem ist nicht lös{0}.", accepte: [["bar"]], indice: "lösen → lösbar (possibilité passive)" },
+      { type: "qcm", consigne: "Équivalent.", question: "« Die Rechnung ist zu bezahlen » exprime plutôt…", options: ["une obligation", "une interdiction", "un souhait"], correct: 0, explication: "sein + zu : ici obligation (doit être payée)." }
     ]
   }
 });
