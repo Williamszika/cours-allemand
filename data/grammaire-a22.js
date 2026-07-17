@@ -84,14 +84,27 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     grammaire: [
       { regle: "Devant un nom, l'**adjectif se décline**. Après *der/die/das* → **-e / -en** ; après *ein* → l'adjectif **porte la marque du genre** (*ein **guter** Wein*).", attention: "Sans article, l'adjectif prend la **terminaison forte** du cas (*gut**er** Wein*, *kalt**es** Wasser*).", exemples: [{"de":"Der gute Wein ist teuer.","fr":"Le bon vin est cher."},{"de":"Ich trinke einen guten Kaffee.","fr":"Je bois un bon café."}], titre: "L'adjectif devant le nom", intro: "Après l'article défini : surtout -e (sing.) et -en. Après « ein » : prend la marque du genre.",
         tableau: { entetes: ["Cas / genre", "après der/die/das", "après ein/eine"], lignes: [["m. nominatif", "der gute Mann", "ein guter Mann"], ["m. accusatif", "den guten Mann", "einen guten Mann"], ["f. nom./acc.", "die gute Frau", "eine gute Frau"], ["n. nom./acc.", "das gute Kind", "ein gutes Kind"]] },
-        note: "Rappel : après « sein » l'adjectif est INVARIABLE (Der Mann ist gut). Devant le nom, il s'accorde." }
+        note: "Rappel : après « sein » l'adjectif est INVARIABLE (Der Mann ist gut). Devant le nom, il s'accorde." },
+      { titre: "Après der/die/das : la déclinaison faible",
+        regle: "Après l'article défini, l'adjectif est **faible** : **-e** dans le « bloc » nominatif singulier (+ acc. fém./neutre), **-en** partout ailleurs.",
+        intro: "Le **datif** et le **pluriel** sont toujours en **-en**.",
+        tableau: { entetes: ["Cas", "Masculin", "Féminin", "Neutre", "Pluriel"], lignes: [["Nominatif", "der gute", "die gute", "das gute", "die guten"], ["Accusatif", "den guten", "die gute", "das gute", "die guten"], ["Datif", "dem guten", "der guten", "dem guten", "den guten"]] },
+        note: "5 cases en -e (le bloc nominatif/accusatif singulier) ; tout le reste en -en." },
+      { titre: "Après ein/kein/mein : la déclinaison mixte",
+        regle: "Après *ein*, l'adjectif **porte la marque du genre** là où *ein* ne la montre pas : **-er** (masc. nom.), **-es** (neutre nom./acc.). Ailleurs → **-en**.",
+        intro: "*ein gut**er** Mann*, *ein gut**es** Kind*, mais *einen gut**en** Mann*.",
+        tableau: { entetes: ["Cas", "Masculin", "Féminin", "Neutre"], lignes: [["Nominatif", "ein guter", "eine gute", "ein gutes"], ["Accusatif", "einen guten", "eine gute", "ein gutes"], ["Datif", "einem guten", "einer guten", "einem guten"]] },
+        note: "3 formes « fortes » : guter (m. nom.), gutes (n. nom./acc.) ; le reste en -en." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Devant un nom, l'adjectif…", options: ["s'accorde", "ne change jamais", "prend toujours -en"], correct: 0, explication: "Adjectif épithète = accordé." },
       { type: "qcm", consigne: "Terminaison.", question: "Ich kaufe einen ___ Wagen. (neu, m. acc.)", options: ["neuen", "neuer", "neues", "neu"], correct: 0, explication: "ein + m. accusatif → neuen." },
       { type: "trou", consigne: "Complétez (gut).", texte: "Das ist eine {0} Idee und ein {1} Plan.", accepte: [["gute"], ["guter"]], indice: "eine gute (f) / ein guter (m nom.)" },
       { type: "association", consigne: "Associez.", paires: [{ gauche: "der ___ Mann", droite: "gute" }, { gauche: "die ___ Frau", droite: "gute" }, { gauche: "das ___ Kind", droite: "gute" }, { gauche: "den ___ Mann", droite: "guten" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "une belle maison", accepte: ["ein schönes Haus"], aide: "ein + neutre → -es" }
+      { type: "traduction", consigne: "Traduisez.", source: "une belle maison", accepte: ["ein schönes Haus"], aide: "ein + neutre → -es" },
+      { type: "qcm", consigne: "Datif (faible).", question: "Ich wohne in dem ___ Haus. (klein)", options: ["kleinen", "kleine", "kleines", "kleiner"], correct: 0, explication: "datif après dem → faible -en : kleinen." },
+      { type: "trou", consigne: "Mixte (neutre nom.).", texte: "Das ist ein {0} Auto. (schnell)", accepte: [["schnelles"]], indice: "ein + neutre nom. → -es" },
+      { type: "qcm", consigne: "Datif (mixte).", question: "Ich fahre mit einem ___ Auto. (neu)", options: ["neuen", "neues", "neuer", "neu"], correct: 0, explication: "datif après einem → -en : neuen." }
     ]
   },
   a2g13: {
