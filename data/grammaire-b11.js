@@ -139,14 +139,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
       { exemples: [{"de":"Wenn ich reich wäre, würde ich reisen.","fr":"Si j'étais riche, je voyagerais."},{"de":"An deiner Stelle würde ich es versuchen.","fr":"À ta place, j'essaierais."}], regle: "Irréel / politesse / souhait : **würde** + infinitif, ou **hätte, wäre, könnte, sollte**. Passé : **hätte/wäre + participe**.", attention: "Conseil : *An deiner Stelle **würde** ich…* / *Du **solltest**…*", titre: "Présent et passé du Konjunktiv II", intro: "Présent : würde + infinitif, ou hätte/wäre/könnte… Passé (irréel/regret) : hätte/wäre + participe II.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["Politesse", "könnte / würde", "Könnten Sie mir helfen?"], ["Souhait", "hätte / wäre gern", "Ich hätte gern einen Kaffee."], ["Conseil", "sollte / würde", "Du solltest mehr schlafen."], ["Irréel présent", "würde + infinitif", "Ich würde gern kommen."], ["Irréel passé", "hätte/wäre + participe", "Ich hätte das nicht gesagt."]] },
         schemas: [{ legende: "Irréel passé : hätte (2) … participe (fin).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "hätte", r: "hätte (2)", c: "verbe" }, { m: "das anders", r: "complément", c: "objet" }, { m: "gemacht", r: "participe (fin)", c: "fin" }] }],
-        note: "Regret : « Ich hätte mehr lernen sollen » (j'aurais dû travailler plus). « An deiner Stelle hätte ich… » = à ta place, j'aurais…" }
+        note: "Regret : « Ich hätte mehr lernen sollen » (j'aurais dû travailler plus). « An deiner Stelle hätte ich… » = à ta place, j'aurais…" },
+      { titre: "Les formes propres à connaître par cœur",
+        regle: "Quatre familles ont une **forme propre** qu'on emploie à la place de *würde* : **sein → wäre**, **haben → hätte**, **werden → würde**, et les modaux (**könnte, müsste, dürfte, sollte**).",
+        intro: "Elles se forment sur le prétérit + Umlaut + les terminaisons *-e, -est, -e, -en, -et, -en*.",
+        tableau: { entetes: ["Pronom", "sein → wäre", "haben → hätte", "können → könnte"], lignes: [["ich", "wäre", "hätte", "könnte"], ["du", "wärst", "hättest", "könntest"], ["er/sie/es", "wäre", "hätte", "könnte"], ["wir", "wären", "hätten", "könnten"], ["ihr", "wärt", "hättet", "könntet"], ["sie/Sie", "wären", "hätten", "könnten"]] },
+        note: "Ce sont parmi les formes les plus fréquentes de la langue — à automatiser." },
+      { titre: "würde + infinitif ou forme propre ?",
+        regle: "**Règle pratique :** pour *sein*, *haben* et les **modaux**, on emploie la **forme propre** (wäre, hätte, könnte). Pour **tous les autres verbes**, on préfère **würde + infinitif**.",
+        intro: "On dit *ich **wäre** froh* (et non « würde sein »), mais *ich **würde** gern kommen* (verbe ordinaire).",
+        tableau: { entetes: ["Verbe", "On dit", "On évite"], lignes: [["sein", "ich wäre", "würde sein"], ["haben", "ich hätte", "würde haben"], ["können / müssen", "ich könnte / müsste", "würde können"], ["autres verbes", "ich würde gehen / machen", "(forme propre soutenue)"]] },
+        note: "En cas de doute sur un verbe ordinaire : *würde + infinitif* est presque toujours correct." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Le subjonctif II passé se forme avec…", options: ["hätte/wäre + participe II", "würde + infinitif", "haben + infinitif"], correct: 0, explication: "Ich hätte gesagt / Ich wäre gegangen." },
       { type: "qcm", consigne: "Demande polie.", question: "___ Sie mir bitte helfen?", options: ["Könnten", "Können", "Konnten", "Kannst"], correct: 0, explication: "Konjunktiv II poli : Könnten Sie…?" },
       { type: "trou", consigne: "Complétez (Konjunktiv II de haben).", texte: "Ich {0} gern einen Tee.", accepte: [["hätte"]], indice: "haben → hätte (souhait poli)" },
       { type: "association", consigne: "Associez l'infinitif et sa forme.", paires: [{ gauche: "haben", droite: "hätte" }, { gauche: "sein", droite: "wäre" }, { gauche: "können", droite: "könnte" }, { gauche: "werden", droite: "würde" }] },
-      { type: "oral", consigne: "Production orale.", prompt: "Exprimez un regret au passé (j'aurais dû / je n'aurais pas dû…).", attendus: ["hätte", "sollen"], modele: "Ich hätte mehr lernen sollen. Ich hätte das nicht sagen sollen." }
+      { type: "oral", consigne: "Production orale.", prompt: "Exprimez un regret au passé (j'aurais dû / je n'aurais pas dû…).", attendus: ["hätte", "sollen"], modele: "Ich hätte mehr lernen sollen. Ich hätte das nicht sagen sollen." },
+      { type: "trou", consigne: "Konjunktiv II de sein (irréel).", texte: "Wenn ich du {0}, würde ich es sofort machen.", accepte: [["wäre"]], indice: "sein → wäre" },
+      { type: "qcm", consigne: "Quelle forme préférer ?", question: "Pour un verbe ordinaire (kommen), on dit plutôt…", options: ["ich würde kommen", "ich käme", "ich komme"], correct: 0, explication: "Verbe ordinaire → würde + infinitif (käme existe mais est soutenu)." },
+      { type: "trou", consigne: "Irréel passé (sein + participe).", texte: "Wenn er früher gekommen {0}, hätte er den Zug erreicht.", accepte: [["wäre"]], indice: "kommen → wäre + gekommen" }
     ]
   },
   b1g06: {
@@ -311,14 +324,33 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
       { exemples: [{"de":"Das Haus wird gerade renoviert.","fr":"La maison est en cours de rénovation."},{"de":"Die Briefe werden jeden Tag verschickt.","fr":"Les lettres sont envoyées chaque jour."}], regle: "**Passif** = **werden** (2ᵉ position) + **participe II** (fin). L'agent éventuel : **von + datif**.", attention: "Le **COD** de la phrase active devient le **sujet** au passif. Au Perfekt passif, *werden → **worden***.", titre: "werden + participe II (à la fin)", intro: "Le passif met en valeur l'ACTION. On conjugue « werden » en 2e position et on place le participe II à la fin. L'agent éventuel : « von + datif ».",
         tableau: { entetes: ["Voix", "Exemple"], lignes: [["Actif", "Der Techniker repariert das Auto."], ["Passif", "Das Auto wird repariert."], ["Passif + agent", "Das Auto wird von dem Techniker repariert."], ["Pluriel", "Die Nachrichten werden gesendet."]] },
         schemas: [{ legende: "Passif présent : werden (2) + participe (fin).", mots: [{ m: "Das Auto", r: "sujet", c: "sujet" }, { m: "wird", r: "werden (2)", c: "verbe" }, { m: "gerade", r: "complément", c: "objet" }, { m: "repariert", r: "participe (fin)", c: "fin" }] }],
-        note: "Le COD de la phrase active (das Auto) devient le SUJET au passif. L'agent (souvent omis) : von + datif." }
+        note: "Le COD de la phrase active (das Auto) devient le SUJET au passif. L'agent (souvent omis) : von + datif." },
+      { titre: "Le passif à tous les temps",
+        regle: "On garde toujours **werden + participe II** ; seul *werden* change de temps. Au **Perfekt**, on dit **worden** (jamais « geworden »).",
+        intro: "Le participe du verbe ne bouge pas ; c'est l'auxiliaire *werden* qui porte le temps.",
+        tableau: { entetes: ["Temps", "Formation", "Exemple (reparieren)"], lignes: [["Présent", "wird + PII", "Das Auto wird repariert."], ["Prétérit", "wurde + PII", "Das Auto wurde repariert."], ["Parfait", "ist + PII + worden", "Das Auto ist repariert worden."], ["Futur", "wird + PII + werden", "Das Auto wird repariert werden."], ["+ modal", "modal + PII + werden", "Das Auto muss repariert werden."]] },
+        note: "Perfekt passif : *ist … **worden*** (et non « geworden »). Avec un modal, le participe + *werden* filent à la fin." },
+      { titre: "L'agent : von ou durch ?",
+        regle: "**von + datif** = l'**auteur** de l'action (qui la fait). **durch + accusatif** = le **moyen** ou la cause intermédiaire (par quoi).",
+        intro: "*Das Fenster wurde **von einem Kind** zerbrochen* (l'auteur) vs *Die Stadt wurde **durch einen Sturm** zerstört* (le moyen).",
+        tableau: { entetes: ["Marqueur", "Rôle", "Exemple"], lignes: [["von + datif", "l'auteur (qui ?)", "von dem Architekten"], ["durch + accusatif", "le moyen (par quoi ?)", "durch einen Sturm"]] },
+        note: "Le plus souvent, l'agent est **omis** — c'est même tout l'intérêt du passif." },
+      { titre: "Processus (werden) vs état (sein)",
+        regle: "**Vorgangspassiv** (*werden* + PII) = l'**action** en cours. **Zustandspassiv** (*sein* + PII) = le **résultat**, l'état obtenu.",
+        intro: "*Die Tür **wird** geöffnet* (on est en train de l'ouvrir) vs *Die Tür **ist** geöffnet* (elle est ouverte — c'est fait).",
+        tableau: { entetes: ["Type", "Auxiliaire", "Sens"], lignes: [["Vorgangspassiv", "werden + PII", "l'action se déroule"], ["Zustandspassiv", "sein + PII", "l'état / le résultat"]] },
+        note: "Ne confonds pas *Das Auto **wird** repariert* (on le répare) et *Das Auto **ist** repariert* (il est réparé)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Le passif présent se forme avec…", options: ["werden + participe II", "haben + participe II", "sein + infinitif"], correct: 0, explication: "Das Auto wird repariert." },
       { type: "qcm", consigne: "Mettez au passif.", question: "Actif : « Man sendet die Nachrichten. » → Die Nachrichten ___ gesendet.", options: ["werden", "wird", "sind", "haben"], correct: 0, explication: "Pluriel → werden + participe." },
       { type: "trou", consigne: "Complétez (werden).", texte: "Das Buch {0} oft gelesen.", accepte: [["wird"]], indice: "singulier → wird + participe" },
       { type: "association", consigne: "Associez l'infinitif et le participe II.", paires: [{ gauche: "reparieren", droite: "repariert" }, { gauche: "senden", droite: "gesendet" }, { gauche: "schreiben", droite: "geschrieben" }, { gauche: "bauen", droite: "gebaut" }] },
-      { type: "ordre", consigne: "Construisez la phrase au passif.", mots: ["Das", "Auto", "wird", "repariert"], correct: "Das Auto wird repariert", traduction: "La voiture est réparée." }
+      { type: "ordre", consigne: "Construisez la phrase au passif.", mots: ["Das", "Auto", "wird", "repariert"], correct: "Das Auto wird repariert", traduction: "La voiture est réparée." },
+      { type: "qcm", consigne: "Passif au Perfekt.", question: "Das Haus ist letztes Jahr gebaut ___.", options: ["worden", "geworden", "gewesen", "gehabt"], correct: 0, explication: "Perfekt passif : ist … worden (jamais « geworden »)." },
+      { type: "qcm", consigne: "von ou durch ?", question: "Die Stadt wurde ___ einen Sturm zerstört.", options: ["durch", "von", "mit", "bei"], correct: 0, explication: "durch + accusatif = le moyen / la cause (un orage)." },
+      { type: "trou", consigne: "Passif avec modal (fin de phrase).", texte: "Der Text muss bis morgen übersetzt {0}.", accepte: [["werden"]], indice: "modal + participe + werden" },
+      { type: "qcm", consigne: "Processus ou état ?", question: "« Die Tür ist geöffnet » exprime…", options: ["un état (résultat)", "une action en cours", "le futur"], correct: 0, explication: "sein + participe = Zustandspassiv (l'état obtenu)." }
     ]
   },
   b1g12: {
@@ -396,14 +428,33 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
       { regle: "Le **pronom relatif** reprend le nom en **genre/nombre**, mais prend le **cas** de sa fonction. Le **verbe va à la fin**.", attention: "Avec préposition, celle-ci **précède** le pronom : *der Kollege, **mit dem** ich arbeite*.", exemples: [{"de":"Das ist die Frau, die hier arbeitet.","fr":"C'est la femme qui travaille ici."},{"de":"Der Film, den ich sah, war gut.","fr":"Le film que j'ai vu était bon."}], titre: "Le pronom relatif = article + verbe à la fin", intro: "Le pronom relatif reprend le nom (genre/nombre) mais prend le CAS de sa fonction dans la relative. Le verbe va à la fin. Avec préposition, celle-ci précède le pronom.",
         tableau: { entetes: ["Cas", "masculin", "féminin", "neutre", "pluriel"], lignes: [["Nominatif", "der", "die", "das", "die"], ["Accusatif", "den", "die", "das", "die"], ["Datif", "dem", "der", "dem", "denen"]] },
         schemas: [{ legende: "Relative : virgule, pronom relatif, … verbe à la FIN.", mots: [{ m: "Das ist der Mann,", r: "principale", c: "objet" }, { m: "der", r: "relatif (nom.)", c: "conj" }, { m: "Deutsch", r: "complément", c: "sujet" }, { m: "spricht", r: "verbe (fin)", c: "fin" }] }],
-        note: "Avec préposition : « der Kollege, mit dem ich arbeite » (mit + datif). La préposition reste collée au pronom." }
+        note: "Avec préposition : « der Kollege, mit dem ich arbeite » (mit + datif). La préposition reste collée au pronom." },
+      { titre: "Tableau complet des pronoms relatifs",
+        regle: "Le pronom relatif **ressemble à l'article défini**, sauf au **génitif** (dessen/deren) et au **datif pluriel** (denen).",
+        intro: "Genre et nombre viennent du **nom** ; le **cas** vient de la **fonction** dans la relative.",
+        tableau: { entetes: ["Cas", "masculin", "féminin", "neutre", "pluriel"], lignes: [["Nominatif", "der", "die", "das", "die"], ["Accusatif", "den", "die", "das", "die"], ["Datif", "dem", "der", "dem", "denen"], ["Génitif", "dessen", "deren", "dessen", "deren"]] },
+        note: "Seules 4 formes diffèrent de l'article : **dessen, deren** (génitif) et **denen** (datif pluriel)." },
+      { titre: "Le génitif relatif : dessen / deren (= dont)",
+        regle: "Pour l'appartenance (« dont »), on emploie **dessen** (antécédent masc./neutre) et **deren** (fém./pluriel). Le nom qui suit **n'a pas d'article**.",
+        intro: "*Der Mann, **dessen** Auto rot ist* (dont la voiture…). *Die Frau, **deren** Sohn hier wohnt* (dont le fils…).",
+        tableau: { entetes: ["Antécédent", "Relatif", "Exemple"], lignes: [["masculin", "dessen", "der Mann, dessen Auto…"], ["féminin", "deren", "die Frau, deren Sohn…"], ["neutre", "dessen", "das Kind, dessen Spielzeug…"], ["pluriel", "deren", "die Leute, deren Haus…"]] },
+        note: "*dessen/deren* sont invariables et le nom suivant ne prend **pas** d'article (*dessen Auto*, non « dessen das Auto »)." },
+      { titre: "was et wo (relatifs particuliers)",
+        regle: "**was** remplace le relatif après *alles, etwas, nichts, das*, ou reprend **toute une phrase**. **wo** relie un **lieu**.",
+        intro: "*Alles, **was** ich habe* (tout ce que j'ai). *Die Stadt, **wo** ich wohne* (= in der ich wohne).",
+        tableau: { entetes: ["Mot", "Emploi", "Exemple"], lignes: [["was", "après alles/etwas/nichts/das", "Das ist alles, was ich weiß."], ["was", "reprend toute une phrase", "Er kam zu spät, was mich ärgerte."], ["wo", "un lieu (= in dem/der)", "Das Café, wo wir uns trafen."]] },
+        note: "*wo* peut remplacer *préposition + relatif* pour un lieu : *die Stadt, in der / **wo** ich wohne*." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Dans une relative, le verbe conjugué se place…", options: ["à la fin", "en 2e position", "au début"], correct: 0, explication: "Comme toute subordonnée." },
       { type: "qcm", consigne: "Choisissez le pronom.", question: "Das ist die Frau, ___ hier arbeitet.", options: ["die", "der", "das", "den"], correct: 0, explication: "die Frau, sujet → nominatif féminin = die." },
       { type: "trou", consigne: "Complétez (der/den).", texte: "Der Film, {0} ich gesehen habe, war gut.", accepte: [["den"]], indice: "COD masculin → accusatif = den" },
       { type: "association", consigne: "Associez le nom et son pronom relatif au nominatif.", paires: [{ gauche: "der Mann", droite: "der" }, { gauche: "die Frau", droite: "die" }, { gauche: "das Kind", droite: "das" }, { gauche: "die Leute", droite: "die" }] },
-      { type: "ordre", consigne: "Construisez la relative (avec préposition).", mots: ["mit", "dem", "ich", "arbeite"], correct: "mit dem ich arbeite", traduction: "avec qui je travaille" }
+      { type: "ordre", consigne: "Construisez la relative (avec préposition).", mots: ["mit", "dem", "ich", "arbeite"], correct: "mit dem ich arbeite", traduction: "avec qui je travaille" },
+      { type: "trou", consigne: "Génitif relatif (masculin).", texte: "Der Mann, {0} Auto vor der Tür steht, ist mein Nachbar.", accepte: [["dessen"]], indice: "dont (masc.) → dessen" },
+      { type: "trou", consigne: "Génitif relatif (féminin).", texte: "Die Kollegin, {0} Büro neben meinem ist, heißt Anna.", accepte: [["deren"]], indice: "dont (fém.) → deren" },
+      { type: "qcm", consigne: "Choisissez le relatif.", question: "Das ist alles, ___ ich weiß.", options: ["was", "das", "dass", "wie"], correct: 0, explication: "Après « alles », on emploie « was »." },
+      { type: "trou", consigne: "Relatif de lieu.", texte: "Das ist die Stadt, {0} ich geboren bin.", accepte: [["wo"]], indice: "un lieu → wo (= in der)" }
     ]
   }
 });

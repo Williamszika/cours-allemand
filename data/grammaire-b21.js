@@ -79,14 +79,33 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     grammaire: [
       { regle: "Trois systèmes selon le déterminant : après **der** (faible -e/-en), après **ein** (mixte), **sans article** (forte).", attention: "Sans article, l'adjectif **porte** la marque du cas : *gut**er** Wein*, *kalt**em** Wasser* (datif).", exemples: [{"de":"der gute Wein / ein guter Wein / guter Wein","fr":"le bon vin / un bon vin / du bon vin"},{"de":"Ich trinke einen guten Wein.","fr":"Je bois un bon vin."}], titre: "Trois systèmes selon le déterminant", intro: "L'adjectif épithète prend une terminaison selon ce qui le précède : article défini, indéfini, ou rien.",
         tableau: { entetes: ["Contexte", "Nom. masc.", "Acc. masc.", "Dat. fém."], lignes: [["après der/die/das", "der gute Wein", "den guten Wein", "der guten Idee"], ["après ein/kein/mein", "ein guter Wein", "einen guten Wein", "einer guten Idee"], ["sans article", "guter Wein", "guten Wein", "guter Idee"]] },
-        note: "Sans article, l'adjectif « porte » la marque du cas (déclinaison forte). Après un article défini, c'est -e ou -en (déclinaison faible)." }
+        note: "Sans article, l'adjectif « porte » la marque du cas (déclinaison forte). Après un article défini, c'est -e ou -en (déclinaison faible)." },
+      { titre: "Type 1 — après l'article défini (déclinaison faible)",
+        regle: "Après **der / die / das** (et *dieser, jeder, welcher, alle*…), l'adjectif prend une terminaison **faible** : **-e** ou **-en**. L'article porte déjà le cas, donc l'adjectif en dit peu.",
+        intro: "Règle express : **-e** dans le « bloc » nominatif singulier (+ accusatif féminin/neutre), **-en** partout ailleurs.",
+        tableau: { entetes: ["Cas", "Masculin", "Féminin", "Neutre", "Pluriel"], lignes: [["Nom.", "der gute", "die gute", "das gute", "die guten"], ["Acc.", "den guten", "die gute", "das gute", "die guten"], ["Dat.", "dem guten", "der guten", "dem guten", "den guten"], ["Gén.", "des guten", "der guten", "des guten", "der guten"]] },
+        note: "Seulement 5 cases en **-e** (le bloc nominatif/accusatif singulier) ; tout le reste est en **-en**." },
+      { titre: "Type 2 — après ein/kein/mein (déclinaison mixte)",
+        regle: "Après **ein, kein, mein, dein…**, la déclinaison est **mixte** : là où *ein* ne marque pas le genre (masc. nominatif, neutre nom./acc.), c'est l'**adjectif** qui le fait (**-er, -es**).",
+        intro: "Par rapport au type faible, seules **3 cases** changent : *ein gut**er*** (masc. nom.), *ein gut**es*** (neutre nom./acc.).",
+        tableau: { entetes: ["Cas", "Masculin", "Féminin", "Neutre", "Pluriel (kein)"], lignes: [["Nom.", "ein guter", "eine gute", "ein gutes", "keine guten"], ["Acc.", "einen guten", "eine gute", "ein gutes", "keine guten"], ["Dat.", "einem guten", "einer guten", "einem guten", "keinen guten"], ["Gén.", "eines guten", "einer guten", "eines guten", "keiner guten"]] },
+        note: "*ein* n'a pas de pluriel : on prend *kein/mein* (*keine guten Weine*)." },
+      { titre: "Type 3 — sans article (déclinaison forte)",
+        regle: "**Sans article**, l'adjectif prend les terminaisons **fortes** — celles de l'article défini (der→**-er**, das→**-es**, dem→**-em**, den→**-en**) : il porte seul la marque du cas.",
+        intro: "Fréquent après une **préposition sans article**, avec les **matières** et au **pluriel indéterminé** : *guter Wein*, *mit kaltem Wasser*, *kalte Getränke*.",
+        tableau: { entetes: ["Cas", "Masculin", "Féminin", "Neutre", "Pluriel"], lignes: [["Nom.", "guter", "gute", "gutes", "gute"], ["Acc.", "guten", "gute", "gutes", "gute"], ["Dat.", "gutem", "guter", "gutem", "guten"], ["Gén.", "guten", "guter", "guten", "guter"]] },
+        note: "Astuce : la terminaison forte **copie l'article défini** (der→-er, das→-es, dem→-em). Exception : génitif masc./neutre en **-en** (*guten Weines*)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Sans article, l'adjectif prend…", options: ["la marque forte du cas", "toujours -e", "aucune terminaison"], correct: 0, explication: "guter Wein, gutes Bier (déclinaison forte)." },
       { type: "qcm", consigne: "Choisissez.", question: "Ich trinke einen ___ Wein.", options: ["guten", "guter", "gutes", "gute"], correct: 0, explication: "ein + masc. accusatif → guten." },
       { type: "trou", consigne: "Complétez (sans article, nominatif neutre).", texte: "Frisch{0} Brot schmeckt am besten.", accepte: [["es"]], indice: "sans article, neutre nom. → frisches" },
       { type: "association", consigne: "Associez le contexte et la terminaison (nom. masc.).", paires: [{ gauche: "der … Wein", droite: "gute" }, { gauche: "ein … Wein", droite: "guter" }, { gauche: "… Wein (sans article)", droite: "guter" }, { gauche: "den … Wein", droite: "guten" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "un bon café (accusatif)", accepte: ["einen guten Kaffee"], aide: "ein + masc. acc. → einen guten" }
+      { type: "traduction", consigne: "Traduisez.", source: "un bon café (accusatif)", accepte: ["einen guten Kaffee"], aide: "ein + masc. acc. → einen guten" },
+      { type: "trou", consigne: "Faible (après article défini, nom. masc.).", texte: "Der {0} Wein kommt aus Italien. (gut)", accepte: [["gute"]], indice: "der + nominatif masculin → -e" },
+      { type: "trou", consigne: "Mixte (après ein, acc. masc.).", texte: "Sie hat einen {0} Film gesehen. (spannend)", accepte: [["spannenden"]], indice: "ein + accusatif masculin → -en" },
+      { type: "qcm", consigne: "Forte (sans article, datif neutre).", question: "Ich trinke Tee mit ___ Wasser. (kalt)", options: ["kaltem", "kalten", "kaltes", "kalte"], correct: 0, explication: "Sans article, datif neutre → kaltem (comme « dem »)." },
+      { type: "trou", consigne: "Forte (formule de politesse, datif pluriel).", texte: "Mit {0} Grüßen beende ich den Brief. (freundlich)", accepte: [["freundlichen"]], indice: "sans article, datif pluriel → -en" }
     ]
   },
   b2g04: {
