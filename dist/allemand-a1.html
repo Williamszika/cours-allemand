@@ -12406,14 +12406,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
       { exemples: [{"de":"Ich hätte dir gern geholfen.","fr":"J'aurais aimé t'aider."},{"de":"Er tut, als ob er alles wüsste.","fr":"Il fait comme s'il savait tout."}], regle: "Présent : **würde** + infinitif / *hätte, wäre, könnte*. Passé : **hätte/wäre + participe**. Comparaison irréelle : **als ob** + KII (fin).", attention: "Avec modal au passé : *Ich **hätte** kommen **können*** (double infinitif à la fin).", titre: "Présent et passé", intro: "Présent : würde + infinitif, ou les formes propres (hätte, wäre, könnte…). Passé : hätte/wäre + participe II.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["politesse", "könnte / würde", "Könnten Sie mir helfen?"], ["souhait", "hätte/wäre gern", "Ich hätte gern mehr Zeit."], ["irréel présent", "würde + infinitif", "Ich würde sofort kündigen."], ["irréel passé", "hätte/wäre + participe", "Ich hätte das nie gesagt."], ["conseil", "An deiner Stelle würde ich …", "An deiner Stelle würde ich warten."]] },
         schemas: [{ legende: "Irréel passé : hätte (2) … participe (fin).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "hätte", r: "hätte (2)", c: "verbe" }, { m: "das anders", r: "complément", c: "objet" }, { m: "gemacht", r: "participe (fin)", c: "fin" }] }],
-        note: "Avec un modal au passé : « Ich hätte kommen können » (j'aurais pu venir) — double infinitif à la fin." }
+        note: "Avec un modal au passé : « Ich hätte kommen können » (j'aurais pu venir) — double infinitif à la fin." },
+      { titre: "Le passé avec un modal (double infinitif)",
+        regle: "Konjunktiv II passé + **modal** = *hätte* + infinitif + infinitif du modal, tous **à la fin** (« double infinitif ») : *Ich **hätte** kommen **können***.",
+        intro: "*Ich hätte es machen **müssen*** (j'aurais dû le faire) · *Du hättest fragen **sollen*** (tu aurais dû demander).",
+        tableau: { entetes: ["Sens", "Structure", "Exemple"], lignes: [["j'aurais pu", "hätte + inf. + können", "Ich hätte kommen können."], ["j'aurais dû", "hätte + inf. + müssen/sollen", "Ich hätte fragen sollen."], ["je n'aurais pas dû", "hätte nicht + inf. + sollen", "Das hätte ich nicht sagen sollen."]] },
+        note: "Toujours *hätte* (jamais wäre) + les deux infinitifs à la fin (kommen können)." },
+      { titre: "La comparaison irréelle : als ob",
+        regle: "Pour « comme si », on emploie **als ob** (+ Konjunktiv II, verbe à la **fin**) ou **als** (+ Konjunktiv II juste après *als*).",
+        intro: "*Er tut, **als ob** er alles **wüsste*** = *Er tut, **als wüsste** er alles* (comme s'il savait tout).",
+        tableau: { entetes: ["Structure", "Place du verbe", "Exemple"], lignes: [["als ob + KII", "verbe à la fin", "Sie tut, als ob sie krank wäre."], ["als + KII", "verbe juste après als", "Sie tut, als wäre sie krank."], ["passé", "als ob + hätte/wäre + part.", "…, als ob er es vergessen hätte."]] },
+        note: "*als ob* → verbe à la fin ; *als* seul → verbe tout de suite après. Les deux = « comme si »." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "L'irréel du passé se forme avec…", options: ["hätte/wäre + participe II", "würde + infinitif", "haben + infinitif"], correct: 0, explication: "Ich hätte gesagt / Ich wäre gegangen." },
       { type: "qcm", consigne: "Choisissez (politesse).", question: "___ Sie mir bitte helfen?", options: ["Könnten", "Können", "Konnten", "Kannst"], correct: 0, explication: "Konjunktiv II poli : Könnten Sie…?" },
       { type: "trou", consigne: "Complétez (irréel passé de sein).", texte: "An deiner Stelle {0} ich früher gegangen.", accepte: [["wäre"]], indice: "gehen → sein → wäre gegangen" },
       { type: "association", consigne: "Associez l'infinitif et sa forme.", paires: [{ gauche: "haben", droite: "hätte" }, { gauche: "sein", droite: "wäre" }, { gauche: "können", droite: "könnte" }, { gauche: "werden", droite: "würde" }] },
-      { type: "ordre", consigne: "Construisez la phrase (irréel passé).", mots: ["Ich", "hätte", "das", "nie", "gesagt"], correct: "Ich hätte das nie gesagt", traduction: "Je n'aurais jamais dit ça." }
+      { type: "ordre", consigne: "Construisez la phrase (irréel passé).", mots: ["Ich", "hätte", "das", "nie", "gesagt"], correct: "Ich hätte das nie gesagt", traduction: "Je n'aurais jamais dit ça." },
+      { type: "trou", consigne: "Passé avec modal (double infinitif).", texte: "Ich hätte dich anrufen {0}. (aurais dû)", accepte: [["sollen"]], indice: "hätte + infinitif + sollen (fin)" },
+      { type: "qcm", consigne: "als ob + verbe ?", question: "Er tut, als ob er alles ___.", options: ["wüsste", "weiß", "gewusst", "wissen"], correct: 0, explication: "als ob + Konjunktiv II (wüsste), verbe à la fin." },
+      { type: "qcm", consigne: "Passé + modal.", question: "« J'aurais pu venir » =", options: ["Ich hätte kommen können", "Ich wäre kommen können", "Ich hätte gekommen können", "Ich würde kommen können"], correct: 0, explication: "hätte + kommen + können (double infinitif)." }
     ]
   },
   b2g10: {
@@ -12463,14 +12476,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
       { exemples: [{"de":"Ich fahre morgen mit dem Zug nach Köln.","fr":"Demain, je vais à Cologne en train."},{"de":"Er hat gestern nicht angerufen.","fr":"Il n'a pas appelé hier."}], regle: "Champ central : **TeKaMoLo** (Temporel – Kausal – Modal – Lokal). Verbe conjugué en **2ᵉ**, reste du verbe **à la fin**.", attention: "*nicht* se place **avant** l'élément nié (adjectif, lieu) mais **à la fin** s'il nie le verbe seul.", titre: "Le champ central : TeKaMoLo", intro: "Dans le Mittelfeld, l'ordre habituel des compléments est : Temporel – Kausal – Modal – Lokal. Le verbe conjugué reste en 2e position, le reste du verbe à la fin (parenthèse verbale).",
         tableau: { entetes: ["Ordre", "Question", "Exemple"], lignes: [["Te (temps)", "wann?", "Ich fahre morgen"], ["Ka (cause)", "warum?", "… wegen der Arbeit"], ["Mo (manière)", "wie?", "… mit dem Zug"], ["Lo (lieu)", "wohin?", "… nach Berlin."]] },
         schemas: [{ legende: "Parenthèse verbale : verbe (2) … reste du verbe (fin).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "habe", r: "auxiliaire (2)", c: "verbe" }, { m: "gestern in Berlin", r: "Te … Lo", c: "objet" }, { m: "gearbeitet", r: "participe (fin)", c: "fin" }] }],
-        note: "« nicht » se place en fin de Mittelfeld, mais AVANT l'élément nié (adjectif, lieu, partie du verbe) : « Ich fahre nicht nach Berlin »." }
+        note: "« nicht » se place en fin de Mittelfeld, mais AVANT l'élément nié (adjectif, lieu, partie du verbe) : « Ich fahre nicht nach Berlin »." },
+      { titre: "La place de « nicht »",
+        regle: "**nicht** se place **à la fin** s'il nie **toute la phrase** ; **juste avant** l'élément s'il nie **une partie** ; et **avant** le 2ᵉ élément verbal (participe, infinitif, particule).",
+        intro: "*Ich komme heute **nicht*** (toute la phrase) vs *Ich fahre **nicht** nach Berlin* (le lieu).",
+        tableau: { entetes: ["Type", "Place de nicht", "Exemple"], lignes: [["négation totale", "à la fin", "Ich kenne ihn nicht."], ["négation partielle", "avant l'élément", "Ich fahre nicht nach Berlin."], ["avant participe/infinitif", "nicht + verbe (fin)", "Ich habe ihn nicht gesehen."], ["avant l'attribut", "nicht + adjectif", "Das ist nicht teuer."]] },
+        note: "Pour nier un nom avec ein / sans article, on emploie **kein**, pas nicht (Ich habe kein Auto)." },
+      { titre: "La place des pronoms (au plus tôt)",
+        regle: "Les **pronoms** se placent **au début** du champ central, **avant** les groupes nominaux. Entre pronoms : **accusatif avant datif**.",
+        intro: "*Er hat **es ihr** gestern gegeben* (pronoms d'abord, es avant ihr).",
+        tableau: { entetes: ["Situation", "Ordre", "Exemple"], lignes: [["2 pronoms", "accusatif + datif", "Er gibt es ihr."], ["pronom + nom", "pronom d'abord", "Er gibt es dem Kind."], ["pronom vs TeKaMoLo", "pronom avant les compléments", "Ich habe es gestern gekauft."]] },
+        note: "Les pronoms « remontent » : ils passent avant le temps/lieu (« Er hat es ihr gestern gegeben »)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "TeKaMoLo signifie l'ordre…", options: ["temps – cause – manière – lieu", "lieu – manière – cause – temps", "sujet – verbe – objet"], correct: 0, explication: "Temporal, Kausal, Modal, Lokal." },
       { type: "qcm", consigne: "Choisissez le bon ordre.", question: "Ich fahre …", options: ["morgen mit dem Zug nach Köln", "nach Köln morgen mit dem Zug", "mit dem Zug morgen nach Köln", "nach Köln mit dem Zug morgen"], correct: 0, explication: "Temps (morgen) – manière (mit dem Zug) – lieu (nach Köln)." },
       { type: "trou", consigne: "Complétez (négation de lieu).", texte: "Ich fahre {0} nach Berlin, ich bleibe hier.", accepte: [["nicht"]], indice: "négation avant l'élément nié : nicht nach Berlin" },
       { type: "association", consigne: "Associez la lettre et la catégorie.", paires: [{ gauche: "Te", droite: "temps" }, { gauche: "Ka", droite: "cause" }, { gauche: "Mo", droite: "manière" }, { gauche: "Lo", droite: "lieu" }] },
-      { type: "ordre", consigne: "Construisez la phrase (TeKaMoLo).", mots: ["Ich", "gehe", "heute", "zu", "Fuß", "ins", "Büro"], correct: "Ich gehe heute zu Fuß ins Büro", traduction: "Aujourd'hui je vais au bureau à pied." }
+      { type: "ordre", consigne: "Construisez la phrase (TeKaMoLo).", mots: ["Ich", "gehe", "heute", "zu", "Fuß", "ins", "Büro"], correct: "Ich gehe heute zu Fuß ins Büro", traduction: "Aujourd'hui je vais au bureau à pied." },
+      { type: "qcm", consigne: "Place de nicht (participe).", question: "Ich habe den Film ___.", options: ["nicht gesehen", "gesehen nicht", "nicht", "gesehen"], correct: 0, explication: "nicht avant le participe : nicht gesehen." },
+      { type: "trou", consigne: "Ordre des pronoms.", texte: "Er hat {0} {1} gegeben. (es / ihr)", accepte: [["es"], ["ihr"]], indice: "accusatif (es) avant datif (ihr)" },
+      { type: "qcm", consigne: "nicht ou kein ?", question: "Ich habe ___ Zeit.", options: ["keine", "nicht", "nicht die", "kein"], correct: 0, explication: "nier un nom sans article → kein : keine Zeit." }
     ]
   },
   b2g12: {
@@ -12559,14 +12585,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     grammaire: [
       { regle: "**Discours indirect** (presse) : **Konjunktiv I** (*sei, habe, könne, werde*) pour citer **sans s'engager**.", attention: "Si le KI = indicatif (souvent au **pluriel**), on passe au **Konjunktiv II** (*sie **hätten***).", exemples: [{"de":"Er sagt, er sei müde.","fr":"Il dit qu'il est fatigué."},{"de":"Sie sagen, sie hätten keine Zeit.","fr":"Ils disent qu'ils n'ont pas le temps."}], titre: "Citer sans s'engager", intro: "Le Konjunktiv I (3e personne) sert au discours indirect, surtout dans la presse et les comptes rendus.",
         tableau: { entetes: ["Direct", "Indirect (Konjunktiv I)"], lignes: [["« Ich bin müde. »", "Er sagt, er sei müde."], ["« Ich habe Zeit. »", "Sie sagt, sie habe Zeit."], ["« Ich kann kommen. »", "Er sagt, er könne kommen."], ["« Ich werde anrufen. »", "Sie sagt, sie werde anrufen."], ["« Ich machte das. »", "Er sagt, er habe das gemacht. (passé → Perfekt KI)"]] },
-        note: "Le passé du discours indirect se rend par le Perfekt au Konjunktiv I : « er habe … gemacht », « sie sei … gegangen »." }
+        note: "Le passé du discours indirect se rend par le Perfekt au Konjunktiv I : « er habe … gemacht », « sie sei … gegangen »." },
+      { titre: "Conjugaison du Konjunktiv I (sein, haben, können)",
+        regle: "Formation : radical de l'infinitif + **-e, -est, -e, -en, -et, -en**. *sein* est irrégulier (sans -e au singulier).",
+        intro: "La 3ᵉ personne du singulier est la plus fréquente : *sei, habe, werde, könne*.",
+        tableau: { entetes: ["Pronom", "sein", "haben", "können"], lignes: [["ich", "sei", "habe", "könne"], ["du", "sei(e)st", "habest", "könnest"], ["er/sie/es", "sei", "habe", "könne"], ["wir", "seien", "haben", "können"], ["ihr", "seiet", "habet", "könnet"], ["sie/Sie", "seien", "haben", "können"]] },
+        note: "*sein* n'a pas de -e à ich/er (sei). Les formes identiques à l'indicatif (haben au pluriel) basculent au KII." },
+      { titre: "Quand basculer au Konjunktiv II",
+        regle: "Si la forme du Konjunktiv I est **identique à l'indicatif** (souvent au **pluriel** et à *ich*), on la remplace par le **Konjunktiv II** pour rester clair.",
+        intro: "*sie haben* (KI = indicatif) → *sie **hätten*** (KII). Idem *ich habe → hätte*.",
+        tableau: { entetes: ["Personne", "KI = indicatif ?", "Forme utilisée"], lignes: [["er/sie/es habe", "non (≠ hat)", "habe (KI) ✓"], ["ich habe", "oui (= indicatif)", "hätte (KII)"], ["wir haben", "oui (= indicatif)", "hätten (KII)"], ["sie (pl.) haben", "oui (= indicatif)", "hätten (KII)"]] },
+        note: "La 3ᵉ personne du singulier garde presque toujours le KI (sei, habe, gehe) ; le pluriel bascule souvent au KII." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Le Konjunktiv I sert surtout…", options: ["au discours indirect (presse)", "à l'irréel", "à la politesse"], correct: 0, explication: "Citer des propos de façon neutre." },
       { type: "qcm", consigne: "Choisissez (Konjunktiv I de sein).", question: "Er sagt, er ___ krank.", options: ["sei", "ist", "wäre", "war"], correct: 0, explication: "discours indirect → Konjunktiv I : sei." },
       { type: "trou", consigne: "Complétez (Konjunktiv I de haben).", texte: "Sie sagt, sie {0} keine Zeit.", accepte: [["habe"]], indice: "haben → habe (Konjunktiv I, 3e sing.)" },
       { type: "association", consigne: "Associez l'infinitif et le Konjunktiv I (er).", paires: [{ gauche: "sein", droite: "sei" }, { gauche: "haben", droite: "habe" }, { gauche: "können", droite: "könne" }, { gauche: "werden", droite: "werde" }] },
-      { type: "qcm", consigne: "Choisissez (passé indirect).", question: "« Ich habe es gemacht. » → Er sagt, er ___ es gemacht.", options: ["habe", "hatte", "hat", "haben"], correct: 0, explication: "passé indirect → Perfekt KI : habe gemacht." }
+      { type: "qcm", consigne: "Choisissez (passé indirect).", question: "« Ich habe es gemacht. » → Er sagt, er ___ es gemacht.", options: ["habe", "hatte", "hat", "haben"], correct: 0, explication: "passé indirect → Perfekt KI : habe gemacht." },
+      { type: "qcm", consigne: "KI ou bascule KII ?", question: "Die Sprecher betonten, sie ___ nichts gewusst.", options: ["hätten", "haben", "habe", "hatten"], correct: 0, explication: "« sie haben » = indicatif → bascule au KII : hätten." },
+      { type: "trou", consigne: "Konjunktiv I de werden (futur indirect).", texte: "Der Minister sagte, er {0} die Steuern senken.", accepte: [["werde"]], indice: "werden → werde (KI, 3e sing.)" },
+      { type: "qcm", consigne: "Konjunktiv I de sein (2e sing).", question: "Konjunktiv I : « du ___ »", options: ["seist", "bist", "wärst", "sei"], correct: 0, explication: "sein KI 2e sing → sei(e)st." }
     ]
   },
   b2g15: {
