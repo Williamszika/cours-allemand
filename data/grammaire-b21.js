@@ -64,14 +64,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
       { exemples: [{"de":"Die Firma meldete hohe Verluste.","fr":"L'entreprise a annoncé de fortes pertes."},{"de":"Nachdem sie studiert hatte, fand sie eine Stelle.","fr":"Après ses études, elle a trouvé un poste."}], regle: "Perfekt (oral/e-mail), Präteritum (récit écrit/presse), Plusquamperfekt (antériorité). On les **combine** dans un texte.", attention: "*sein, haben* et les modaux → **Präteritum** même à l'oral.", titre: "Trois temps, trois usages", intro: "Perfekt = oral et lettres ; Präteritum = récit écrit et presse ; Plusquamperfekt = antériorité.",
         tableau: { entetes: ["Temps", "Registre / rôle", "Exemple"], lignes: [["Perfekt", "oral, e-mail", "Ich habe das schon erledigt."], ["Präteritum", "récit écrit, presse", "Die Firma meldete Verluste."], ["Plusquamperfekt", "antériorité", "Nachdem er gekündigt hatte, zog er um."], ["sein/haben/Modale", "Präteritum même à l'oral", "Ich war müde / hatte keine Zeit."]] },
         schemas: [{ legende: "Antériorité avec nachdem (Plusquamperfekt → Präteritum).", mots: [{ m: "Nachdem er studiert hatte,", r: "antérieur", c: "conj" }, { m: "fand", r: "verbe (1)", c: "verbe" }, { m: "er", r: "sujet", c: "sujet" }, { m: "eine Stelle", r: "complément", c: "fin" }] }],
-        note: "Dans un texte au Präteritum, le Plusquamperfekt situe ce qui s'était passé avant." }
+        note: "Dans un texte au Präteritum, le Plusquamperfekt situe ce qui s'était passé avant." },
+      { titre: "Les modaux au prétérit (récit & oral)",
+        regle: "Les **modaux** se mettent au **prétérit** même à l'oral (comme sein/haben). Prétérit régulier en **-te**, **sans Umlaut** : *muss → **musste***, *kann → **konnte***.",
+        intro: "*Ich **musste** arbeiten*, *er **konnte** nicht kommen*, *sie **wollte** helfen*.",
+        tableau: { entetes: ["Infinitif", "Prétérit", "Sens"], lignes: [["müssen", "musste", "devoir"], ["können", "konnte", "pouvoir"], ["wollen", "wollte", "vouloir"], ["dürfen", "durfte", "avoir le droit"], ["sollen", "sollte", "devoir (consigne)"], ["mögen", "mochte", "aimer"]] },
+        note: "Au prétérit, les modaux **perdent l'Umlaut** : müssen → musste (« müsste » = Konjunktiv II)." },
+      { titre: "La concordance des temps dans un texte",
+        regle: "Dans un récit, les temps se **combinent** : le **Präteritum** (ou Perfekt) porte le fil, le **Plusquamperfekt** marque ce qui précède, le **présent** une vérité générale.",
+        intro: "*Er **war** müde, denn er **hatte** die ganze Nacht **gearbeitet***.",
+        tableau: { entetes: ["Plan", "Temps", "Exemple"], lignes: [["fil du récit", "Präteritum / Perfekt", "Sie kam nach Hause."], ["ce qui précède", "Plusquamperfekt", "Sie hatte vorher eingekauft."], ["vérité générale", "Präsens", "Sie wusste, dass Berlin groß ist."], ["futur dans le passé", "würde + inf.", "Er sagte, er würde kommen."]] },
+        note: "Le Plusquamperfekt n'apparaît jamais seul : il se rattache toujours à un autre passé." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Dans la presse écrite, on emploie surtout…", options: ["le Präteritum", "le Perfekt", "le Plusquamperfekt"], correct: 0, explication: "Le Präteritum est le temps du récit écrit." },
       { type: "qcm", consigne: "Choisissez (antériorité).", question: "Nachdem er ___ hatte, ging er. (essen)", options: ["gegessen", "gegessen war", "aß", "isst"], correct: 0, explication: "nachdem + Plusquamperfekt : hatte gegessen." },
       { type: "trou", consigne: "Complétez (Plusquamperfekt).", texte: "Als wir ankamen, {0} der Zug schon abgefahren.", accepte: [["war"]], indice: "abfahren → sein → war abgefahren" },
       { type: "association", consigne: "Associez le temps et son usage.", paires: [{ gauche: "Perfekt", droite: "oral / e-mail" }, { gauche: "Präteritum", droite: "récit écrit" }, { gauche: "Plusquamperfekt", droite: "antériorité" }, { gauche: "sein/haben", droite: "Präteritum à l'oral" }] },
-      { type: "ordre", consigne: "Phrase au Plusquamperfekt.", mots: ["Er", "hatte", "die", "Stelle", "schon", "bekommen"], correct: "Er hatte die Stelle schon bekommen", traduction: "Il avait déjà obtenu le poste." }
+      { type: "ordre", consigne: "Phrase au Plusquamperfekt.", mots: ["Er", "hatte", "die", "Stelle", "schon", "bekommen"], correct: "Er hatte die Stelle schon bekommen", traduction: "Il avait déjà obtenu le poste." },
+      { type: "qcm", consigne: "Modal au prétérit.", question: "Prétérit de « müssen » (ich) :", options: ["musste", "müsste", "muss", "gemusst"], correct: 0, explication: "müssen → musste (sans Umlaut ; müsste = Konjunktiv II)." },
+      { type: "trou", consigne: "Modal au prétérit.", texte: "Als Kind {0} ich nicht schwimmen. (können)", accepte: [["konnte"]], indice: "können → konnte" },
+      { type: "qcm", consigne: "Concordance.", question: "Er war müde, weil er zu wenig ___.", options: ["geschlafen hatte", "geschlafen hat", "schlief", "schläft"], correct: 0, explication: "antériorité → Plusquamperfekt : geschlafen hatte." }
     ]
   },
   b2g03: {

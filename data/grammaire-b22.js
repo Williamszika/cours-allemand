@@ -271,14 +271,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     grammaire: [
       { regle: "Quand le **Konjunktiv I** se confond avec l'indicatif, on le **remplace** par le Konjunktiv II ou par **würde + infinitif**.", attention: "Règle pratique : **3ᵉ sing.** → KI (*er sei, habe*) ; **pluriel / ich** → KII ou *würde*.", exemples: [{"de":"Sie sagen, sie kämen später.","fr":"Ils disent qu'ils viendront plus tard."},{"de":"Er meint, die Leute würden mehr lesen.","fr":"Il pense que les gens liraient davantage."}], titre: "Quand le Konjunktiv I se confond avec l'indicatif", intro: "Si la forme du Konjunktiv I est identique à l'indicatif (souvent au pluriel et à « ich »), on la remplace par le Konjunktiv II, ou par « würde + infinitif ».",
         tableau: { entetes: ["Direct", "KI ambigu", "Forme de substitution"], lignes: [["« Sie haben Zeit. »", "sie haben (= indicatif)", "Sie hätten Zeit. (KII)"], ["« Wir kommen. »", "wir kommen (= indicatif)", "Sie kämen / würden kommen."], ["« Ich bin müde. »", "ich sei (rare à la 1re)", "Ich sei / wäre müde."], ["« Sie lernen viel. »", "sie lernen (= indicatif)", "Sie würden viel lernen."]] },
-        note: "Règle pratique : 3e personne du singulier → Konjunktiv I (er sei, er habe) ; pluriel et « ich » → Konjunktiv II ou würde." }
+        note: "Règle pratique : 3e personne du singulier → Konjunktiv I (er sei, er habe) ; pluriel et « ich » → Konjunktiv II ou würde." },
+      { titre: "La procédure en 3 étapes",
+        regle: "Pour le discours indirect : **1)** essaie le **Konjunktiv I** ; **2)** s'il = l'indicatif, prends le **Konjunktiv II** ; **3)** si le KII = l'indicatif aussi, prends **würde + infinitif**.",
+        intro: "*er habe* (KI ≠ indicatif ✓) · *sie haben* → *sie hätten* (KII) · *sie lernen* → *sie würden lernen*.",
+        tableau: { entetes: ["Étape", "Test", "Exemple"], lignes: [["1. Konjunktiv I", "≠ indicatif ?", "er habe, er sei ✓"], ["2. → Konjunktiv II", "si KI = indicatif", "sie hätten, sie kämen"], ["3. → würde + inf.", "si KII = indicatif", "sie würden lernen"]] },
+        note: "Priorité : KI d'abord, puis KII, puis würde. La 3ᵉ pers. du singulier reste presque toujours au KI." },
+      { titre: "Quelle forme selon la personne",
+        regle: "La **3ᵉ personne du singulier** garde le Konjunktiv I (forme claire) ; les autres personnes basculent souvent au Konjunktiv II ou à *würde*.",
+        intro: "*er/sie/es* → KI (sei, habe, komme) ; *ich, wir, sie (pl.)* → KII / würde.",
+        tableau: { entetes: ["Personne", "Forme conseillée", "Exemple (kommen)"], lignes: [["ich", "KII / würde", "ich käme / würde kommen"], ["du", "KI (-est)", "du kommest"], ["er/sie/es", "KI ✓", "er komme"], ["wir", "KII / würde", "wir kämen / würden kommen"], ["ihr", "KI (-et)", "ihr kommet"], ["sie/Sie", "KII / würde", "sie kämen / würden kommen"]] },
+        note: "En pratique, la presse utilise surtout la 3ᵉ personne (er sei, sie habe) — la plus claire." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "On remplace le Konjunktiv I quand…", options: ["il se confond avec l'indicatif", "il est trop court", "le sujet est « er »"], correct: 0, explication: "Pour rester clair, on passe au Konjunktiv II / würde." },
       { type: "qcm", consigne: "Choisissez (substitution, pluriel).", question: "Sie sagen, sie ___ keine Zeit. (haben)", options: ["hätten", "haben", "habe", "hätte"], correct: 0, explication: "pluriel ambigu → Konjunktiv II : hätten." },
       { type: "trou", consigne: "Complétez (würde + infinitif).", texte: "Er sagt, die Leute {0} mehr lesen. (würde + lesen → forme conjuguée)", accepte: [["würden"]], indice: "pluriel → würden + infinitif" },
       { type: "association", consigne: "Associez la personne et la forme conseillée.", paires: [{ gauche: "er/sie (3e sing.)", droite: "Konjunktiv I (sei, habe)" }, { gauche: "sie (pluriel)", droite: "Konjunktiv II / würde" }, { gauche: "ich", droite: "Konjunktiv II / würde" }, { gauche: "wir", droite: "Konjunktiv II / würde" }] },
-      { type: "qcm", consigne: "Choisissez.", question: "Pourquoi « sie haben » devient « sie hätten » au discours indirect ?", options: ["Sinon = indicatif (ambigu)", "Pour faire poli", "C'est obligatoire partout"], correct: 0, explication: "« sie haben » KI = indicatif → on passe au KII." }
+      { type: "qcm", consigne: "Choisissez.", question: "Pourquoi « sie haben » devient « sie hätten » au discours indirect ?", options: ["Sinon = indicatif (ambigu)", "Pour faire poli", "C'est obligatoire partout"], correct: 0, explication: "« sie haben » KI = indicatif → on passe au KII." },
+      { type: "qcm", consigne: "Procédure.", question: "Ordre de priorité des formes :", options: ["KI → KII → würde", "würde → KII → KI", "KII → würde → KI"], correct: 0, explication: "On essaie d'abord le KI, puis le KII, puis würde." },
+      { type: "trou", consigne: "3e étape (würde).", texte: "Er sagt, die Preise {0} weiter steigen.", accepte: [["würden"]], indice: "pluriel ambigu → würden + infinitif" },
+      { type: "qcm", consigne: "Forme claire (3e sing).", question: "Er sagt, er ___ krank. (garder le KI)", options: ["sei", "wäre", "würde sein", "ist"], correct: 0, explication: "3e sing → Konjunktiv I clair : sei." }
     ]
   },
   b2g16: {
@@ -340,14 +353,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     grammaire: [
       { exemples: [{"de":"Während der Sitzung war es still.","fr":"Pendant la réunion, c'était silencieux."},{"de":"Aufgrund der Krise stiegen die Preise.","fr":"En raison de la crise, les prix ont augmenté."}], regle: "Prépositions à **génitif** (soutenu) : *wegen* (à cause de), *trotz* (malgré), *während* (pendant), *aufgrund, innerhalb, statt*.", attention: "À l'oral, *wegen/trotz* tolèrent le datif, mais le **génitif** reste la norme écrite.", titre: "Les prépositions qui régissent le génitif", intro: "Au registre soutenu, plusieurs prépositions imposent le génitif (causales, concessives, temporelles, locales).",
         tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["wegen", "à cause de", "wegen des Wetters"], ["trotz", "malgré", "trotz der Probleme"], ["während", "pendant", "während der Sitzung"], ["aufgrund", "en raison de", "aufgrund der Krise"], ["innerhalb / außerhalb", "à l'intérieur / en dehors de", "innerhalb einer Woche"], ["statt / anstatt", "au lieu de", "statt eines Briefes"]] },
-        note: "À l'oral, « wegen » et « trotz » sont souvent suivis du datif, mais le génitif reste correct et soutenu." }
+        note: "À l'oral, « wegen » et « trotz » sont souvent suivis du datif, mais le génitif reste correct et soutenu." },
+      { titre: "Classées par fonction",
+        regle: "Les prépositions à génitif se rangent par **sens** : cause, concession, temps, lieu, alternative.",
+        intro: "En connaître les familles aide à varier le style écrit.",
+        tableau: { entetes: ["Fonction", "Prépositions", "Exemple"], lignes: [["cause", "wegen, aufgrund, infolge", "wegen des Staus"], ["concession", "trotz, ungeachtet", "trotz der Kälte"], ["temps", "während, innerhalb, binnen", "während der Ferien"], ["lieu", "innerhalb, außerhalb, oberhalb", "außerhalb der Stadt"], ["alternative", "(an)statt", "statt eines Autos"]] },
+        note: "Toutes régissent le génitif : *der/das → des (+ -s)*, *die → der*." },
+      { titre: "Génitif ou von + datif ? (registre)",
+        regle: "**Écrit soutenu** → génitif. **Oral / familier** → souvent le datif. Devant un nom **sans article** (pluriel), on prend *von + datif*.",
+        intro: "*trotz des Regens* (écrit) / *trotz dem Regen* (oral).",
+        tableau: { entetes: ["Situation", "Écrit (soutenu)", "Oral / familier"], lignes: [["avec article (sing.)", "wegen des Staus", "wegen dem Stau"], ["féminin", "während der Sitzung", "während der Sitzung"], ["pluriel sans article", "wegen von Fehlern", "wegen Fehlern"], ["prénom + -s", "trotz Annas Warnung", "trotz Annas Warnung"]] },
+        note: "Le **génitif** est la norme en rédaction ; le datif est courant à l'oral mais à éviter à l'écrit soigné." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« trotz » exprime…", options: ["l'opposition (malgré)", "la cause", "le but"], correct: 0, explication: "trotz = malgré (concession)." },
       { type: "qcm", consigne: "Choisissez (génitif masculin).", question: "Wegen ___ Staus kam ich zu spät.", options: ["des", "der", "dem", "den"], correct: 0, explication: "wegen + génitif, der Stau → des Staus." },
       { type: "trou", consigne: "Complétez (génitif féminin).", texte: "Während {0} Sitzung war es still.", accepte: [["der"]], indice: "während + génitif, die Sitzung → der" },
       { type: "association", consigne: "Associez la préposition et son sens.", paires: [{ gauche: "wegen", droite: "à cause de" }, { gauche: "trotz", droite: "malgré" }, { gauche: "aufgrund", droite: "en raison de" }, { gauche: "statt", droite: "au lieu de" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Malgré la pluie, nous sommes sortis.", accepte: ["Trotz des Regens sind wir rausgegangen", "Trotz des Regens gingen wir raus", "Trotz des Regens sind wir nach draußen gegangen"], aide: "trotz + génitif : trotz des Regens" }
+      { type: "traduction", consigne: "Traduisez.", source: "Malgré la pluie, nous sommes sortis.", accepte: ["Trotz des Regens sind wir rausgegangen", "Trotz des Regens gingen wir raus", "Trotz des Regens sind wir nach draußen gegangen"], aide: "trotz + génitif : trotz des Regens" },
+      { type: "qcm", consigne: "Fonction.", question: "« während » exprime…", options: ["le temps", "la cause", "la concession"], correct: 0, explication: "während = pendant (temporel)." },
+      { type: "trou", consigne: "Génitif (lieu).", texte: "Das Hotel liegt außerhalb {0} Stadt.", accepte: [["der"]], indice: "außerhalb + génitif, die Stadt → der" },
+      { type: "qcm", consigne: "Registre écrit.", question: "À l'écrit soigné, on écrit…", options: ["wegen des Wetters", "wegen dem Wetter", "wegen das Wetter"], correct: 0, explication: "écrit → génitif : wegen des Wetters." }
     ]
   }
 });
