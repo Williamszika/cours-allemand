@@ -25,14 +25,21 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
       { exemples: [{"de":"Das Gesetz wurde 2020 verabschiedet.","fr":"La loi a été adoptée en 2020."},{"de":"Der Brief muss heute unterschrieben werden.","fr":"La lettre doit être signée aujourd'hui."}], regle: "Passif à **tous les temps** (*wird / wurde / ist … worden / wird … werden*) ; avec modal : participe + **werden** (fin).", attention: "Perfekt passif : *werden → **worden*** ; agent : *von + datif*, cause : *durch + accusatif*.", titre: "Le passif sous toutes ses formes", intro: "Le Vorgangspassiv (werden + participe) existe à tous les temps ; avec un modal, l'infinitif passif (… werden) va à la fin.",
         tableau: { entetes: ["Temps", "Forme", "Exemple"], lignes: [["présent", "wird + participe", "Das Haus wird gebaut."], ["prétérit", "wurde + participe", "Das Haus wurde gebaut."], ["parfait", "ist + participe + worden", "Das Haus ist gebaut worden."], ["futur", "wird + participe + werden", "Das Haus wird gebaut werden."], ["+ modal", "muss … participe + werden", "Es muss gebaut werden."]] },
         schemas: [{ legende: "Passif + modal : participe + werden (à la fin).", mots: [{ m: "Der Vertrag", r: "sujet", c: "sujet" }, { m: "muss", r: "modal (2)", c: "verbe" }, { m: "heute", r: "complément", c: "objet" }, { m: "unterschrieben werden", r: "participe + werden (fin)", c: "fin" }] }],
-        note: "Au Perfekt passif, le participe de werden devient « worden » (sans ge-). Agent : von + datif ; cause : durch + accusatif." }
+        note: "Au Perfekt passif, le participe de werden devient « worden » (sans ge-). Agent : von + datif ; cause : durch + accusatif." },
+      { titre: "Vorgangspassiv (werden) vs Zustandspassiv (sein)", intro: "L'allemand oppose deux passifs : le passif-processus (l'action se déroule) et le passif-état (le résultat existe). L'auxiliaire tranche.",
+        tableau: { entetes: ["Type", "Auxiliaire", "Sens", "Exemple"], lignes: [["Vorgangspassiv", "werden + Part. II", "action en cours", "Das Geschäft wird geöffnet."], ["Zustandspassiv", "sein + Part. II", "résultat / état", "Das Geschäft ist geöffnet."]] },
+        attention: "*Die Tür wird geschlossen* (on la ferme, processus) ≠ *Die Tür ist geschlossen* (elle est fermée, état)." },
+      { titre: "Exprimer l'agent : von, durch, mit", intro: "Le passif peut nommer qui ou quoi agit. Trois marqueurs selon qu'il s'agit d'un acteur, d'un intermédiaire ou d'un instrument.",
+        tableau: { entetes: ["Marqueur", "Rôle", "Exemple"], lignes: [["von + Dat.", "agent (acteur)", "vom Chef unterschrieben"], ["durch + Akk.", "moyen / intermédiaire", "durch einen Boten überbracht"], ["mit + Dat.", "instrument", "mit einem Messer geschnitten"]] },
+        note: "Passif impersonnel (sans sujet) : *Hier **wird** nicht **geraucht*** — l'action seule compte, pas l'agent." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Au Perfekt passif, on emploie…", options: ["ist + participe + worden", "ist + geworden", "hat + participe"], correct: 0, explication: "Das Haus ist gebaut worden." },
       { type: "qcm", consigne: "Choisissez (passif + modal).", question: "Der Brief muss heute geschrieben ___.", options: ["werden", "worden", "wird", "sein"], correct: 0, explication: "passif + modal → participe + werden." },
       { type: "trou", consigne: "Complétez (passif prétérit).", texte: "Das Gesetz {0} 2020 verabschiedet.", accepte: [["wurde"]], indice: "prétérit passif → wurde + participe" },
       { type: "association", consigne: "Associez le temps et la forme.", paires: [{ gauche: "présent", droite: "wird gebaut" }, { gauche: "prétérit", droite: "wurde gebaut" }, { gauche: "parfait", droite: "ist gebaut worden" }, { gauche: "futur", droite: "wird gebaut werden" }] },
-      { type: "ordre", consigne: "Construisez (passif + modal).", mots: ["Es", "muss", "sofort", "erledigt", "werden"], correct: "Es muss sofort erledigt werden", traduction: "Cela doit être fait immédiatement." }
+      { type: "ordre", consigne: "Construisez (passif + modal).", mots: ["Es", "muss", "sofort", "erledigt", "werden"], correct: "Es muss sofort erledigt werden", traduction: "Cela doit être fait immédiatement." },
+      { type: "qcm", consigne: "von ou durch ?", question: "Der Brief wurde ___ den Chef unterschrieben.", options: ["von", "durch", "mit", "aus"], correct: 0, explication: "agent (acteur) → von + datif." }
     ]
   },
   c2g13: {
@@ -54,14 +61,21 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
       { exemples: [{"de":"Das Buch liest sich gut.","fr":"Ce livre se lit bien."},{"de":"Das Problem ist nicht zu lösen.","fr":"Le problème ne peut pas être résolu."}], regle: "Alléger le passif : *man*, *sich lassen* (= können werden), *sein + zu + Inf.* (= müssen/können werden), adjectifs en **-bar**.", attention: "*Das Buch liest **sich** gut* : tournure pronominale à valeur **passive**.", titre: "Les alternatives au passif", intro: "Pour alléger le style, on remplace le passif par des tournures actives ou modales.",
         tableau: { entetes: ["Forme", "Exemple", "Équivaut à"], lignes: [["man", "Man löst das Problem.", "Das Problem wird gelöst."], ["sich lassen", "Das lässt sich lösen.", "kann gelöst werden"], ["sein + zu + Inf.", "Das ist zu lösen.", "muss/kann gelöst werden"], ["adjectif -bar", "lösbar, machbar", "kann gelöst/gemacht werden"], ["sich + Inf.", "Das Buch liest sich gut.", "kann gut gelesen werden"]] },
         schemas: [{ legende: "sein + zu + infinitif = nécessité/possibilité passive.", mots: [{ m: "Das Problem", r: "sujet", c: "sujet" }, { m: "ist", r: "sein (2)", c: "verbe" }, { m: "leicht", r: "complément", c: "objet" }, { m: "zu lösen", r: "zu + infinitif (fin)", c: "fin" }] }],
-        note: "« Das Buch liest sich gut » : tournure pronominale à valeur passive (peut se lire facilement)." }
+        note: "« Das Buch liest sich gut » : tournure pronominale à valeur passive (peut se lire facilement)." },
+      { titre: "sein + zu + Infinitiv : possibilité ou nécessité", intro: "Cette tournure remplace un passif modal. Selon le contexte, elle signifie « peut être… » ou « doit être… ».",
+        tableau: { entetes: ["Contexte", "Sens", "Exemple"], lignes: [["nu (souvent)", "nécessité (müssen)", "Die Regel ist einzuhalten."], ["+ leicht / schwer", "possibilité (können)", "Das ist leicht zu machen."], ["+ nicht / kaum", "impossibilité", "Das ist nicht zu ändern."]] },
+        attention: "L'infinitif avec *zu* (et le préfixe séparable intercalé : *ein**zu**halten*) va à la fin." },
+      { titre: "Les suffixes à valeur passive (-bar, -lich, -abel)", intro: "Un adjectif dérivé peut condenser tout un passif de possibilité en un seul mot.",
+        tableau: { entetes: ["Suffixe", "Exemple", "Équivaut à"], lignes: [["-bar", "lösbar", "kann gelöst werden"], ["-lich", "verständlich", "kann verstanden werden"], ["-abel", "akzeptabel", "kann akzeptiert werden"], ["un- + -bar", "unverzichtbar", "kann nicht verzichtet werden"]] },
+        note: "Ces adjectifs remplacent une relative passive : *ein Problem, das gelöst werden kann* → *ein lösbares Problem*." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« lösbar » équivaut à…", options: ["kann gelöst werden", "muss gelöst werden", "wurde gelöst"], correct: 0, explication: "-bar = possibilité passive." },
       { type: "qcm", consigne: "Choisissez (substitut).", question: "Das Problem ___ sich leicht lösen.", options: ["lässt", "wird", "ist", "hat"], correct: 0, explication: "sich lassen = kann … werden." },
       { type: "trou", consigne: "Complétez (sein + zu + Inf.).", texte: "Diese Aufgabe ist leicht zu {0}. (lösen)", accepte: [["lösen"]], indice: "sein + zu + infinitif" },
       { type: "association", consigne: "Associez la forme et son équivalent.", paires: [{ gauche: "man macht", droite: "es wird gemacht" }, { gauche: "lässt sich machen", droite: "kann gemacht werden" }, { gauche: "ist zu machen", droite: "muss gemacht werden" }, { gauche: "machbar", droite: "kann gemacht werden" }] },
-      { type: "ordre", consigne: "Construisez (Passiversatz).", mots: ["Das", "lässt", "sich", "leicht", "erklären"], correct: "Das lässt sich leicht erklären", traduction: "Cela peut s'expliquer facilement." }
+      { type: "ordre", consigne: "Construisez (Passiversatz).", mots: ["Das", "lässt", "sich", "leicht", "erklären"], correct: "Das lässt sich leicht erklären", traduction: "Cela peut s'expliquer facilement." },
+      { type: "qcm", consigne: "Suffixe passif.", question: "« verständlich » équivaut à…", options: ["kann verstanden werden", "muss verstanden werden", "hat verstanden"], correct: 0, explication: "-lich = possibilité passive : peut être compris." }
     ]
   },
   c2g14: {
@@ -82,14 +96,21 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     grammaire: [
       { exemples: [{"de":"Sie soll sehr begabt sein.","fr":"On dit qu'elle est très douée."},{"de":"Er will nichts davon gewusst haben.","fr":"Il prétend n'en avoir rien su."}], regle: "Sens subjectif (supposition : *dürfte/müsste* ; rumeur : *sollen* ; prétention : *wollen*) + combinaisons passé/passif.", attention: "*Er **will** es nicht gewusst haben* = il **prétend** ne pas l'avoir su.", titre: "Modaux : objectif, subjectif, composé", intro: "Au C2, les modaux nuancent la supposition et se combinent au passé et au passif.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["supposition", "dürfte / müsste", "Er dürfte recht haben."], ["rumeur", "sollen", "Sie soll sehr begabt sein."], ["prétention", "wollen", "Er will es nicht gewusst haben."], ["passé + modal", "hätte … müssen", "Ich hätte fragen müssen."], ["passif + modal", "muss … werden", "Es muss geprüft werden."]] },
-        note: "« Er will es nicht gewusst haben » = il prétend ne pas l'avoir su (wollen subjectif au passé)." }
+        note: "« Er will es nicht gewusst haben » = il prétend ne pas l'avoir su (wollen subjectif au passé)." },
+      { titre: "L'échelle de la supposition (modaux subjectifs)", intro: "Au sens subjectif, chaque modal encode un degré de certitude. Maîtriser cette gradation, c'est nuancer sa pensée avec précision.",
+        tableau: { entetes: ["Modal", "Degré", "Exemple"], lignes: [["muss", "quasi certain", "Er muss zu Hause sein."], ["dürfte", "probable", "Er dürfte zu Hause sein."], ["könnte / kann", "possible", "Er könnte zu Hause sein."], ["mag", "concession (admettons)", "Das mag stimmen."], ["kann nicht", "exclu", "Das kann nicht wahr sein."]] },
+        note: "Même phrase, cinq degrés de certitude selon le modal — de la quasi-certitude (muss) à l'impossibilité (kann nicht)." },
+      { titre: "Le double infinitif : présent, passé, subordonnée", intro: "Au passé, un modal + infinitif produit le double infinitif ; en subordonnée, l'auxiliaire conjugué recule avant le bloc.",
+        tableau: { entetes: ["Contexte", "Structure", "Exemple"], lignes: [["présent", "modal + Inf.", "Ich muss arbeiten."], ["parfait", "haben + Inf. + Inf.", "Ich habe arbeiten müssen."], ["subordonnée", "…, weil ich habe … müssen", "…, weil ich habe arbeiten müssen."], ["Konjunktiv II", "hätte + Inf. + Inf.", "Ich hätte kommen müssen."]] },
+        attention: "En subordonnée avec double infinitif, l'auxiliaire *habe/hätte* passe **avant** les deux infinitifs, contre la règle habituelle du verbe à la fin." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« Sie soll sehr begabt sein » exprime…", options: ["une rumeur (on dit que)", "une obligation", "une capacité"], correct: 0, explication: "sollen subjectif = on dit que." },
       { type: "qcm", consigne: "Choisissez (passé + modal).", question: "Ich ___ vorher fragen müssen.", options: ["hätte", "habe", "würde", "bin"], correct: 0, explication: "regret/obligation passée : hätte … müssen." },
       { type: "trou", consigne: "Complétez (supposition probable).", texte: "Er {0} inzwischen angekommen sein. (probablement)", accepte: [["dürfte"]], indice: "supposition probable → dürfte + infinitif passé" },
       { type: "association", consigne: "Associez le modal et son sens subjectif.", paires: [{ gauche: "müssen", droite: "quasi certain" }, { gauche: "dürfte", droite: "probable" }, { gauche: "sollen", droite: "rumeur" }, { gauche: "wollen", droite: "prétention" }] },
-      { type: "ordre", consigne: "Construisez (passé + modal).", mots: ["Ich", "hätte", "es", "wissen", "müssen"], correct: "Ich hätte es wissen müssen", traduction: "J'aurais dû le savoir." }
+      { type: "ordre", consigne: "Construisez (passé + modal).", mots: ["Ich", "hätte", "es", "wissen", "müssen"], correct: "Ich hätte es wissen müssen", traduction: "J'aurais dû le savoir." },
+      { type: "qcm", consigne: "Degré de certitude.", question: "Quel modal exprime la supposition la PLUS forte (quasi certaine) ?", options: ["muss", "dürfte", "könnte", "mag"], correct: 0, explication: "müssen subjectif = quasi-certitude ; dürfte = probable ; könnte = possible." }
     ]
   },
   c2g15: {
@@ -110,14 +131,21 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     grammaire: [
       { exemples: [{"de":"Das ist der schönste Tag meines Lebens.","fr":"C'est le plus beau jour de ma vie."},{"de":"Heute ist es wärmer als gestern.","fr":"Aujourd'hui, il fait plus chaud qu'hier."}], regle: "Déclinaison (faible/mixte/forte) + degrés : comparatif **-er**, superlatif **am … -sten / der … -ste**, avec irréguliers.", attention: "Irréguliers : *gut → besser → am besten* ; *viel → mehr → am meisten* ; *hoch → höher*.", titre: "Déclinaison et degrés", intro: "L'adjectif épithète se décline selon le déterminant ; les degrés se forment en -er / am -sten, avec des irréguliers.",
         tableau: { entetes: ["Aspect", "Règle", "Exemple"], lignes: [["après der", "faible (-e/-en)", "der gute Wein"], ["après ein", "mixte", "ein guter Wein"], ["sans article", "forte", "guter Wein"], ["comparatif", "-er (+ Umlaut)", "alt → älter"], ["superlatif", "am -sten / der -ste", "am ältesten / der älteste"]] },
-        note: "Irréguliers : gut → besser → am besten ; viel → mehr → am meisten ; hoch → höher → am höchsten ; gern → lieber → am liebsten." }
+        note: "Irréguliers : gut → besser → am besten ; viel → mehr → am meisten ; hoch → höher → am höchsten ; gern → lieber → am liebsten." },
+      { titre: "Les trois déclinaisons au nominatif (vue synoptique)", intro: "La terminaison de l'adjectif dépend du déterminant : article défini (faible), indéfini (mixte) ou rien (forte).",
+        tableau: { entetes: ["Type", "Masc.", "Fém.", "Neutre", "Pluriel"], lignes: [["faible (der)", "der gute", "die gute", "das gute", "die guten"], ["mixte (ein)", "ein guter", "eine gute", "ein gutes", "keine guten"], ["forte (∅)", "guter", "gute", "gutes", "gute"]] },
+        note: "Règle d'or : quand l'article ne marque pas le genre, l'adjectif prend la marque forte (ein gut**er** Wein, kalt**es** Wasser)." },
+      { titre: "je … desto & cas particuliers", intro: "Au-delà du comparatif simple, le C2 maîtrise la corrélation, la progression et les adjectifs non comparables.",
+        tableau: { entetes: ["Structure", "Emploi", "Exemple"], lignes: [["je … desto / umso", "corrélation", "Je mehr, desto besser."], ["immer + comparatif", "progression", "Es wird immer schwieriger."], ["so … wie", "égalité", "so schnell wie möglich"], ["non comparables", "adjectifs absolus", "tot, rund, optimal, schwanger"]] },
+        attention: "Dans *je …, desto …*, la subordonnée en *je* met le verbe à la fin ; la principale en *desto* le met en 2ᵉ position." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Sans article, l'adjectif prend…", options: ["la marque forte du cas", "toujours -e", "aucune terminaison"], correct: 0, explication: "guter Wein, kaltes Wasser." },
       { type: "qcm", consigne: "Choisissez (superlatif irrégulier).", question: "gut → besser → am ___", options: ["besten", "gutesten", "bessten", "meisten"], correct: 0, explication: "gut → besser → am besten." },
       { type: "trou", consigne: "Complétez (comparatif avec Umlaut).", texte: "Mein Bruder ist {0} als ich. (alt)", accepte: [["älter"]], indice: "alt → älter (Umlaut)" },
       { type: "association", consigne: "Associez positif et comparatif.", paires: [{ gauche: "gut", droite: "besser" }, { gauche: "viel", droite: "mehr" }, { gauche: "hoch", droite: "höher" }, { gauche: "gern", droite: "lieber" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "le plus beau jour de ma vie", accepte: ["der schönste Tag meines Lebens"], aide: "superlatif décliné : der schönste + génitif" }
+      { type: "traduction", consigne: "Traduisez.", source: "le plus beau jour de ma vie", accepte: ["der schönste Tag meines Lebens"], aide: "superlatif décliné : der schönste + génitif" },
+      { type: "qcm", consigne: "Corrélation.", question: "___ mehr man übt, desto besser wird man.", options: ["Je", "So", "Wie", "Als"], correct: 0, explication: "corrélation je … desto (+ comparatif)." }
     ]
   },
   c2g16: {
@@ -138,14 +166,21 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     grammaire: [
       { exemples: [{"de":"Ich bin mir des Risikos bewusst.","fr":"Je suis conscient du risque."},{"de":"Der Sohn ist dem Vater sehr ähnlich.","fr":"Le fils ressemble beaucoup au père."}], regle: "La **rection des adjectifs** : datif (*treu, ähnlich*), **génitif** (*(sich) bewusst, sicher*), préposition (*stolz auf, fähig zu*).", attention: "Adjectifs à génitif (soutenus) : *Ich bin mir des Problems **bewusst***.", titre: "La rection des adjectifs", intro: "Certains adjectifs régissent un datif, un génitif ou une préposition fixe.",
         tableau: { entetes: ["Adjectif", "Complément", "Exemple"], lignes: [["treu / ähnlich", "+ Dat.", "Er bleibt sich treu."], ["bewusst / sicher", "+ Gen.", "Ich bin mir der Lage bewusst."], ["stolz", "auf + Akk.", "stolz auf den Erfolg"], ["fähig", "zu + Dat.", "zu allem fähig"], ["reich", "an + Dat.", "reich an Erfahrung"]] },
-        note: "Adjectifs à génitif (soutenus) : (sich) bewusst, sicher, würdig, verdächtig, schuldig." }
+        note: "Adjectifs à génitif (soutenus) : (sich) bewusst, sicher, würdig, verdächtig, schuldig." },
+      { titre: "Les adjectifs à datif les plus fréquents", intro: "Une famille d'adjectifs régit le datif — souvent des adjectifs de relation, de ressemblance ou de conformité.",
+        tableau: { entetes: ["Adjectif", "Sens", "Exemple"], lignes: [["ähnlich", "semblable à", "dem Vater ähnlich"], ["treu", "fidèle à", "seinen Prinzipien treu"], ["überlegen", "supérieur à", "dem Gegner überlegen"], ["gewachsen", "à la hauteur de", "der Aufgabe gewachsen"], ["dankbar", "reconnaissant à", "dir dankbar"]] },
+        note: "Le datif se place avant l'adjectif : *Er ist **seiner Aufgabe** gewachsen.*" },
+      { titre: "Les adjectifs à préposition fixe", intro: "Comme les verbes, beaucoup d'adjectifs imposent une préposition avec son cas — à mémoriser en bloc.",
+        tableau: { entetes: ["Adjectif + prép.", "Cas", "Sens"], lignes: [["stolz auf", "+ Akk.", "fier de"], ["interessiert an", "+ Dat.", "intéressé par"], ["abhängig von", "+ Dat.", "dépendant de"], ["reich an", "+ Dat.", "riche en"], ["fähig zu", "+ Dat.", "capable de"]] },
+        attention: "La préposition ne se traduit pas mot à mot : *stolz **auf*** (et non *über*), *reich **an*** (et non *von*)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« sich einer Sache bewusst sein » régit…", options: ["le génitif", "le datif", "l'accusatif"], correct: 0, explication: "bewusst + génitif : der Lage bewusst." },
       { type: "qcm", consigne: "Choisissez (datif).", question: "Der Sohn ist ___ Vater sehr ähnlich.", options: ["dem", "den", "des", "der"], correct: 0, explication: "ähnlich + datif → dem Vater." },
       { type: "trou", consigne: "Complétez (reich an).", texte: "Die Region ist reich {0} Bodenschätzen.", accepte: [["an"]], indice: "reich an + datif" },
       { type: "association", consigne: "Associez l'adjectif et son complément.", paires: [{ gauche: "treu", droite: "datif" }, { gauche: "bewusst", droite: "génitif" }, { gauche: "stolz", droite: "auf + Akk." }, { gauche: "fähig", droite: "zu + Dat." }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je suis conscient du problème.", accepte: ["Ich bin mir des Problems bewusst"], aide: "bewusst + génitif (des Problems)" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je suis conscient du problème.", accepte: ["Ich bin mir des Problems bewusst"], aide: "bewusst + génitif (des Problems)" },
+      { type: "qcm", consigne: "Préposition fixe.", question: "Der Erfolg ist ___ vielen Faktoren abhängig.", options: ["von", "auf", "an", "zu"], correct: 0, explication: "abhängig von + datif = dépendant de." }
     ]
   },
   c2g17: {
@@ -166,14 +201,21 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     grammaire: [
       { exemples: [{"de":"Das Problem ist durchaus lösbar.","fr":"Le problème est tout à fait soluble."},{"de":"Eine sinnvolle Lösung wäre besser.","fr":"Une solution sensée serait préférable."}], regle: "Suffixes adjectivaux : **-bar** (possibilité), **-los** (sans), **-haft, -ig, -lich**, **-voll/-reich** (abondance).", attention: "Opposition utile : *-voll* (plein de) ↔ *-los* (sans) : *sinnvoll / sinnlos*.", titre: "Les suffixes adjectivaux", intro: "On forme des adjectifs par dérivation ; chaque suffixe apporte une nuance.",
         tableau: { entetes: ["Suffixe", "Sens", "Exemple"], lignes: [["-bar", "possibilité (passive)", "lösbar, essbar"], ["-los", "absence (sans)", "arbeitslos, hilflos"], ["-haft", "qui a la qualité de", "vorbildhaft, fehlerhaft"], ["-ig", "qualité", "sonnig, mutig"], ["-lich", "relation/atténuation", "freundlich, rötlich"], ["-voll / -reich", "abondance", "wertvoll, erfolgreich"]] },
-        note: "Opposition utile : -voll (plein de) vs -los (sans) : sinnvoll / sinnlos, hoffnungsvoll / hoffnungslos." }
+        note: "Opposition utile : -voll (plein de) vs -los (sans) : sinnvoll / sinnlos, hoffnungsvoll / hoffnungslos." },
+      { titre: "-lich vs -isch : le suffixe change le sens", intro: "Deux suffixes proches mais distincts : *-lich* neutre ou atténuant, *-isch* souvent péjoratif. Des paires minimales le montrent.",
+        tableau: { entetes: ["Paire", "Forme neutre (-lich)", "Forme péjorative (-isch)"], lignes: [["kind…", "kindlich (enfantin, positif)", "kindisch (puéril, négatif)"], ["weib…", "weiblich (féminin)", "weibisch (efféminé, péj.)"], ["-lich atténuant", "rötlich (rougeâtre)", "—"], ["-isch origine", "—", "französisch, städtisch"]] },
+        attention: "*Er ist kindlich* (candide, positif) ≠ *Er ist kindisch* (immature, reproche) : ne pas confondre !" },
+      { titre: "Les préfixes adjectivaux (un-, hoch-, intensificateurs)", intro: "La préfixation crée négation et gradation. Certains préfixes intensifient de façon familière et imagée.",
+        tableau: { entetes: ["Préfixe", "Sens", "Exemple"], lignes: [["un-", "négation", "unmöglich, unklar"], ["hoch-", "haut degré", "hochmodern, hochsensibel"], ["blut- / tod-", "intensif (familier)", "blutjung, todmüde"], ["erz-", "renforçateur (souvent péj.)", "erzkonservativ"]] },
+        note: "*un-* nie (unglücklich), mais attention : *unheimlich* peut aussi intensifier familièrement (« unheimlich gut » = super bien)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Le suffixe « -los » exprime…", options: ["l'absence (sans)", "la possibilité", "l'abondance"], correct: 0, explication: "arbeitslos = sans travail." },
       { type: "qcm", consigne: "Choisissez (possibilité).", question: "Ce qui peut être mangé est…", options: ["essbar", "esslos", "esshaft", "essig"], correct: 0, explication: "-bar = possibilité : essbar." },
       { type: "trou", consigne: "Complétez (Sinn + -voll).", texte: "Eine sinn{0}e Aufgabe motiviert. (suffixe d'abondance)", accepte: [["voll"]], indice: "sinnvoll (plein de sens)" },
       { type: "association", consigne: "Associez le suffixe et son sens.", paires: [{ gauche: "-bar", droite: "possibilité" }, { gauche: "-los", droite: "sans" }, { gauche: "-voll", droite: "plein de" }, { gauche: "-ig", droite: "qualité" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "sans espoir", accepte: ["hoffnungslos"], aide: "Hoffnung + -los" }
+      { type: "traduction", consigne: "Traduisez.", source: "sans espoir", accepte: ["hoffnungslos"], aide: "Hoffnung + -los" },
+      { type: "qcm", consigne: "kindlich ou kindisch ?", question: "Pour « puéril, immature » (péjoratif), on dit…", options: ["kindisch", "kindlich", "kindhaft"], correct: 0, explication: "kindisch = puéril (péjoratif) ; kindlich = enfantin (neutre)." }
     ]
   },
   c2g18: {
@@ -195,14 +237,21 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
       { regle: "Le **style nominal** condense une subordonnée en groupe nominal (préposition + nom, souvent génitif) — typique de l'écrit soutenu.", attention: "Excessif, il **alourdit** ; au C2, on l'emploie **à bon escient**.", exemples: [{"de":"Wegen steigender Preise sank die Nachfrage.","fr":"En raison de la hausse des prix, la demande a baissé."},{"de":"Nach Prüfung der Unterlagen entschied sie.","fr":"Après examen des documents, elle a décidé."}], titre: "Du verbe au nom (registre écrit)", intro: "Le style nominal condense une subordonnée en groupe nominal ; il est typique de l'écrit administratif et scientifique.",
         tableau: { entetes: ["Verbal (subordonnée)", "Nominal (groupe)"], lignes: [["weil die Preise steigen", "wegen steigender Preise"], ["nachdem man geprüft hat", "nach der Prüfung"], ["obwohl es Widerstand gab", "trotz des Widerstands"], ["wenn man ankommt", "bei der Ankunft"], ["um zu informieren", "zur Information"]] },
         schemas: [{ legende: "Subordonnée → préposition + groupe nominal (souvent génitif).", mots: [{ m: "wegen", r: "préposition", c: "conj" }, { m: "steigender", r: "adjectif décliné", c: "objet" }, { m: "Preise", r: "nom (génitif)", c: "sujet" }, { m: "(stieg die Inflation)", r: "principale", c: "verbe" }] }],
-        note: "Le style nominal alourdit s'il est excessif ; au C2 on l'emploie à bon escient pour la densité et l'objectivité." }
+        note: "Le style nominal alourdit s'il est excessif ; au C2 on l'emploie à bon escient pour la densité et l'objectivité." },
+      { titre: "Chaque connecteur et sa préposition nominale", intro: "Nominaliser une circonstancielle, c'est remplacer le subordonnant par la bonne préposition et mettre le nom au bon cas.",
+        tableau: { entetes: ["Subordonnant", "Préposition nominale", "Cas"], lignes: [["weil", "wegen / aufgrund", "+ Gén."], ["nachdem", "nach", "+ Dat."], ["bevor", "vor", "+ Dat."], ["obwohl", "trotz", "+ Gén."], ["indem", "durch", "+ Akk."], ["damit / um zu", "zu / zwecks", "+ Dat. / Gén."]] },
+        note: "Le sens de la subordonnée (cause, temps, concession, moyen, but) guide le choix de la préposition." },
+      { titre: "Verbalstil ↔ Nominalstil : quand choisir", intro: "Les deux registres coexistent. Le C2 les emploie à bon escient, sans tomber dans le « Beamtendeutsch » illisible.",
+        tableau: { entetes: ["Registre", "Effet", "Emploi typique"], lignes: [["Nominalstil", "dense, objectif, impersonnel", "sciences, droit, administration"], ["Verbalstil", "vivant, clair, dynamique", "récit, oral, vulgarisation"]] },
+        attention: "Un excès de style nominal produit le lourd « Beamtendeutsch » : la maîtrise consiste à doser, pas à tout nominaliser." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Le style nominal est typique…", options: ["de l'écrit administratif/scientifique", "de l'oral familier", "des SMS"], correct: 0, explication: "Registre écrit soutenu, dense et objectif." },
       { type: "qcm", consigne: "Choisissez (nominalisation).", question: "weil die Preise steigen → ___ steigender Preise", options: ["wegen", "trotz", "bei", "nach"], correct: 0, explication: "weil → wegen (cause)." },
       { type: "trou", consigne: "Complétez (nachdem → nach).", texte: "{0} der Prüfung erhielt sie das Zeugnis. (nachdem → préposition)", accepte: [["Nach"]], indice: "nachdem → nach + datif" },
       { type: "association", consigne: "Associez le verbal et le nominal.", paires: [{ gauche: "weil … steigen", droite: "wegen steigender Preise" }, { gauche: "nachdem … geprüft", droite: "nach der Prüfung" }, { gauche: "obwohl … Widerstand", droite: "trotz des Widerstands" }, { gauche: "um zu informieren", droite: "zur Information" }] },
-      { type: "traduction", consigne: "Traduisez (style nominal).", source: "En raison de la hausse des prix, la demande a baissé.", accepte: ["Wegen steigender Preise sank die Nachfrage", "Aufgrund steigender Preise sank die Nachfrage"], aide: "wegen/aufgrund + génitif" }
+      { type: "traduction", consigne: "Traduisez (style nominal).", source: "En raison de la hausse des prix, la demande a baissé.", accepte: ["Wegen steigender Preise sank die Nachfrage", "Aufgrund steigender Preise sank die Nachfrage"], aide: "wegen/aufgrund + génitif" },
+      { type: "qcm", consigne: "Nominalisation (concession).", question: "« obwohl es Widerstand gab » se nominalise en…", options: ["trotz des Widerstands", "wegen des Widerstands", "nach des Widerstands"], correct: 0, explication: "obwohl → trotz + génitif (concession)." }
     ]
   },
   c2g19: {
@@ -223,14 +272,21 @@ window.GRAMMAIRE_C2 = Object.assign(window.GRAMMAIRE_C2 || {}, {
     grammaire: [
       { exemples: [{"de":"Mittels eines Codes wird entschlüsselt.","fr":"On déchiffre au moyen d'un code."},{"de":"Infolge des Unfalls war die Straße gesperrt.","fr":"À la suite de l'accident, la route était fermée."}], regle: "Prépositions à génitif de l'écrit : *mittels* (au moyen de), *anhand* (à l'aide de), *infolge* (à la suite de), *angesichts, seitens, zwecks*.", attention: "Surtout à l'**écrit** ; à l'oral on dit plutôt *mit, wegen, von … aus*.", titre: "Les prépositions à génitif du registre écrit", intro: "La langue administrative et scientifique emploie des prépositions à génitif précises.",
         tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["mittels", "au moyen de", "mittels eines Codes"], ["anhand", "à l'aide de", "anhand der Daten"], ["infolge", "à la suite de", "infolge des Unfalls"], ["angesichts", "compte tenu de", "angesichts der Lage"], ["seitens", "de la part de", "seitens der Behörde"], ["zwecks", "aux fins de", "zwecks Überprüfung"]] },
-        note: "Ces prépositions appartiennent surtout à l'écrit ; à l'oral, on les remplace souvent par « mit, wegen, von … aus »." }
+        note: "Ces prépositions appartiennent surtout à l'écrit ; à l'oral, on les remplace souvent par « mit, wegen, von … aus »." },
+      { titre: "Classées par sens (moyen, cause, concession, référence)", intro: "Ces prépositions à génitif se regroupent par valeur sémantique — indispensable pour choisir la nuance exacte.",
+        tableau: { entetes: ["Sens", "Prépositions", "Exemple"], lignes: [["moyen / base", "mittels, anhand, kraft", "anhand der Daten"], ["cause / suite", "infolge, angesichts, aufgrund", "infolge des Unfalls"], ["concession", "ungeachtet, unbeschadet", "ungeachtet der Kritik"], ["référence", "hinsichtlich, bezüglich", "bezüglich Ihrer Anfrage"], ["faveur / but", "zugunsten, zwecks", "zugunsten der Kinder"]] },
+        note: "*ungeachtet* (en dépit de) = concession soutenue ; *hinsichtlich/bezüglich* (concernant) = référence administrative." },
+      { titre: "De l'écrit soutenu à l'oral courant", intro: "Chaque préposition écrite à génitif a un équivalent oral plus simple (souvent + datif). Savoir passer de l'un à l'autre montre la maîtrise du registre.",
+        tableau: { entetes: ["Écrit (+ Gén.)", "Oral courant", "Sens"], lignes: [["mittels", "mit (+ Dat.)", "au moyen de"], ["infolge / aufgrund", "wegen", "à cause de / par suite de"], ["ungeachtet", "trotz", "en dépit de"], ["seitens", "von … (aus)", "de la part de"]] },
+        attention: "Employées à l'oral, ces prépositions sonnent pédantes ; réservées à l'écrit, elles donnent précision et tenue." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« anhand » signifie…", options: ["à l'aide de", "malgré", "en faveur de"], correct: 0, explication: "anhand = à l'aide de (+ génitif)." },
       { type: "qcm", consigne: "Choisissez (génitif).", question: "Infolge ___ Unfalls war die Straße gesperrt.", options: ["des", "der", "dem", "den"], correct: 0, explication: "infolge + génitif, der Unfall → des Unfalls." },
       { type: "trou", consigne: "Complétez (au moyen de).", texte: "{0} eines Algorithmus wird sortiert. (au moyen de)", accepte: [["Mittels"]], indice: "au moyen de = mittels + génitif" },
       { type: "association", consigne: "Associez la préposition et son sens.", paires: [{ gauche: "mittels", droite: "au moyen de" }, { gauche: "anhand", droite: "à l'aide de" }, { gauche: "infolge", droite: "à la suite de" }, { gauche: "seitens", droite: "de la part de" }] },
-      { type: "traduction", consigne: "Traduisez (langue écrite).", source: "Compte tenu de la situation, des mesures ont été prises.", accepte: ["Angesichts der Lage wurden Maßnahmen ergriffen", "Angesichts der Situation wurden Maßnahmen ergriffen"], aide: "angesichts + génitif + passif" }
+      { type: "traduction", consigne: "Traduisez (langue écrite).", source: "Compte tenu de la situation, des mesures ont été prises.", accepte: ["Angesichts der Lage wurden Maßnahmen ergriffen", "Angesichts der Situation wurden Maßnahmen ergriffen"], aide: "angesichts + génitif + passif" },
+      { type: "qcm", consigne: "Sens (concession).", question: "« ungeachtet aller Warnungen » signifie…", options: ["en dépit de tous les avertissements", "à cause des avertissements", "grâce aux avertissements"], correct: 0, explication: "ungeachtet = en dépit de (concession, + génitif)." }
     ]
   }
 });
