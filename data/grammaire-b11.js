@@ -25,14 +25,33 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
       { exemples: [{"de":"Nachdem er gegessen hatte, ging er schlafen.","fr":"Après avoir mangé, il est allé dormir."},{"de":"Als ich ankam, war der Zug schon weg.","fr":"Quand je suis arrivé, le train était déjà parti."}], regle: "Trois temps : **Perfekt** (oral), **Präteritum** (récit écrit), **Plusquamperfekt** (*hatte/war* + participe = action **antérieure** à une autre action passée).", attention: "Avec **nachdem** : subordonnée au **plus-que-parfait**, principale au prétérit/Perfekt.", titre: "Trois temps pour le passé", intro: "Perfekt = passé parlé. Präteritum = passé du récit écrit. Plusquamperfekt = action antérieure à une autre action passée.",
         tableau: { entetes: ["Temps", "Formation", "Exemple"], lignes: [["Perfekt", "haben/sein + participe II", "Ich habe gegessen."], ["Präteritum", "radical + -te / Ablaut", "Ich aß. / Ich ging."], ["Plusquamperfekt", "hatte/war + participe II", "Ich hatte gegessen."], ["sein/haben/modaux", "Präteritum à l'oral aussi", "Ich war / hatte / musste"]] },
         schemas: [{ legende: "Plusquamperfekt + nachdem : l'antériorité.", mots: [{ m: "Nachdem ich gegessen hatte,", r: "antérieur (Plusqpf.)", c: "conj" }, { m: "ging", r: "verbe (1)", c: "verbe" }, { m: "ich", r: "sujet", c: "sujet" }, { m: "los", r: "complément", c: "fin" }] }],
-        note: "À l'oral on emploie le Perfekt ; le Präteritum domine à l'écrit. sein, haben et les modaux se mettent au Präteritum même à l'oral." }
+        note: "À l'oral on emploie le Perfekt ; le Präteritum domine à l'écrit. sein, haben et les modaux se mettent au Präteritum même à l'oral." },
+      { titre: "Le prétérit : faible ou fort ?",
+        regle: "**Verbes faibles** : radical + **-te** + terminaison (machen → mach**te**). **Verbes forts** : changement de voyelle (**Ablaut**), sans -te (gehen → **ging**, fahren → **fuhr**).",
+        intro: "Terminaisons du prétérit : *–, -st, –, -en, -t, -en* — à *ich* et *er/sie/es*, **pas** de terminaison.",
+        tableau: { entetes: ["Pronom", "faible : machen", "fort : gehen", "fort : fahren"], lignes: [["ich", "machte", "ging", "fuhr"], ["du", "machtest", "gingst", "fuhrst"], ["er/sie/es", "machte", "ging", "fuhr"], ["wir", "machten", "gingen", "fuhren"], ["ihr", "machtet", "gingt", "fuhrt"], ["sie/Sie", "machten", "gingen", "fuhren"]] },
+        note: "À *ich* et *er/sie/es*, le prétérit n'a **pas** de terminaison (ich ging, er ging)." },
+      { titre: "Verbes forts fréquents (à mémoriser)",
+        regle: "Les verbes forts changent de voyelle. Apprends-les par la **triade** infinitif – prétérit – participe II.",
+        intro: "Voici les plus courants — autant les automatiser tôt.",
+        tableau: { entetes: ["Infinitif", "Prétérit", "Participe II"], lignes: [["gehen (aller)", "ging", "gegangen"], ["kommen (venir)", "kam", "gekommen"], ["fahren (rouler)", "fuhr", "gefahren"], ["sehen (voir)", "sah", "gesehen"], ["essen (manger)", "aß", "gegessen"], ["nehmen (prendre)", "nahm", "genommen"], ["sprechen (parler)", "sprach", "gesprochen"], ["schreiben (écrire)", "schrieb", "geschrieben"]] },
+        note: "Astuce : apprends toujours les **3 formes** ensemble (gehen – ging – gegangen)." },
+      { titre: "Perfekt : haben ou sein ?",
+        regle: "La plupart des verbes prennent **haben**. On emploie **sein** avec les verbes de **déplacement** (gehen, fahren, kommen) et de **changement d'état** (aufstehen, einschlafen, sterben, werden) + *bleiben/sein*.",
+        intro: "*Ich **habe** gegessen* mais *Ich **bin** gegangen*.",
+        tableau: { entetes: ["Auxiliaire", "Type de verbe", "Exemple"], lignes: [["haben", "action / transitif (majorité)", "Ich habe gearbeitet."], ["sein", "déplacement (gehen, fahren…)", "Ich bin gefahren."], ["sein", "changement d'état", "Er ist eingeschlafen."], ["sein", "bleiben, sein, werden", "Ich bin geblieben."]] },
+        note: "Test : va-t-on d'un point A à B, ou change-t-on d'état ? → **sein**. Sinon → **haben**." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Le Plusquamperfekt exprime…", options: ["une action antérieure à une autre action passée", "le futur", "une habitude présente"], correct: 0, explication: "C'est le « passé du passé »." },
       { type: "qcm", consigne: "Choisissez le temps oral.", question: "À l'oral, pour raconter, on préfère…", options: ["le Perfekt", "le Präteritum", "le Plusquamperfekt", "le Futur"], correct: 0, explication: "Oral → Perfekt ; écrit → Präteritum." },
       { type: "trou", consigne: "Complétez (Plusquamperfekt : hatte/war).", texte: "Als wir ankamen, {0} der Film schon angefangen.", accepte: [["hatte"]], indice: "anfangen → haben → hatte angefangen" },
       { type: "association", consigne: "Associez l'infinitif et son prétérit.", paires: [{ gauche: "gehen", droite: "ging" }, { gauche: "kommen", droite: "kam" }, { gauche: "sein", droite: "war" }, { gauche: "haben", droite: "hatte" }] },
-      { type: "ordre", consigne: "Phrase au Plusquamperfekt.", mots: ["Ich", "hatte", "den", "Brief", "schon", "geschrieben"], correct: "Ich hatte den Brief schon geschrieben", traduction: "J'avais déjà écrit la lettre." }
+      { type: "ordre", consigne: "Phrase au Plusquamperfekt.", mots: ["Ich", "hatte", "den", "Brief", "schon", "geschrieben"], correct: "Ich hatte den Brief schon geschrieben", traduction: "J'avais déjà écrit la lettre." },
+      { type: "qcm", consigne: "Prétérit fort.", question: "Prétérit de « gehen » (er) :", options: ["ging", "gehte", "gang", "gegangen"], correct: 0, explication: "gehen est fort : er ging (Ablaut, sans -te)." },
+      { type: "trou", consigne: "Prétérit faible.", texte: "Als Kind {0} ich oft im Park. (spielen)", accepte: [["spielte"]], indice: "verbe faible → radical + -te" },
+      { type: "qcm", consigne: "Perfekt : haben ou sein ?", question: "Ich ___ gestern nach Hause gefahren.", options: ["bin", "habe", "war", "hatte"], correct: 0, explication: "fahren (déplacement) → sein : ich bin gefahren." },
+      { type: "trou", consigne: "Perfekt (auxiliaire).", texte: "Gestern {0} wir einen Film gesehen.", accepte: [["haben"]], indice: "sehen → haben : wir haben gesehen" }
     ]
   },
   b1g02: {
@@ -209,14 +228,26 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     grammaire: [
       { regle: "Un groupe de **masculins** (souvent des personnes : *Junge, Kollege, Student, Mensch, Herr*) prend **-(e)n** partout **sauf au nominatif singulier**.", attention: "Indices : noms en **-e**, professions/nationalités (*Polizist*) ; *Herr* fait *Herr**n***.", exemples: [{"de":"Ich frage den Polizisten.","fr":"Je demande au policier."},{"de":"Ich helfe dem Kollegen.","fr":"J'aide le collègue."}], titre: "Ces masculins prennent -(e)n partout sauf au nominatif singulier", intro: "Un groupe de noms masculins (souvent des personnes) ajoute -n ou -en à l'accusatif, au datif et au génitif.",
         tableau: { entetes: ["Nominatif", "Accusatif/Datif", "Sens"], lignes: [["der Junge", "den/dem Jungen", "le garçon"], ["der Kollege", "den/dem Kollegen", "le collègue"], ["der Student", "den/dem Studenten", "l'étudiant"], ["der Mensch", "den/dem Menschen", "l'être humain"], ["der Herr", "den/dem Herrn", "monsieur"], ["der Name", "den/dem Namen", "le nom"]] },
-        note: "Indices : beaucoup finissent en -e (Junge, Kollege), ou sont des nationalités/professions (Student, Polizist), ou viennent du grec (Tourist, Journalist)." }
+        note: "Indices : beaucoup finissent en -e (Junge, Kollege), ou sont des nationalités/professions (Student, Polizist), ou viennent du grec (Tourist, Journalist)." },
+      { titre: "Le modèle complet (der Student)",
+        regle: "Un nom de la N-Deklination prend **-en** à l'**accusatif, au datif ET au génitif** — seul le **nominatif singulier** reste nu.",
+        intro: "Le pluriel suit le même -en. Retiens le schéma sur un mot type.",
+        tableau: { entetes: ["Cas", "Singulier", "Pluriel"], lignes: [["Nominatif", "der Student", "die Studenten"], ["Accusatif", "den Studenten", "die Studenten"], ["Datif", "dem Studenten", "den Studenten"], ["Génitif", "des Studenten", "der Studenten"]] },
+        note: "Une seule forme nue : le **nominatif singulier** (der Student). Partout ailleurs : Studenten." },
+      { titre: "Le cas spécial : génitif en -ns",
+        regle: "Un petit groupe (surtout **der Name**) prend **-n** partout, mais **-ns** au **génitif** : *des Name**ns***.",
+        intro: "Groupe à part : *Name, Wille, Gedanke, Glaube, Buchstabe* et le neutre *das Herz*.",
+        tableau: { entetes: ["Nominatif", "Datif", "Génitif"], lignes: [["der Name", "dem Namen", "des Namens"], ["der Gedanke", "dem Gedanken", "des Gedankens"], ["der Wille", "dem Willen", "des Willens"], ["das Herz", "dem Herzen", "des Herzens"]] },
+        note: "Ils font -n au datif/accusatif mais **-ns** au génitif. *das Herz* est le seul neutre du groupe." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "La N-Deklination ajoute -n/-en…", options: ["partout sauf au nominatif singulier", "seulement au pluriel", "jamais"], correct: 0, explication: "Acc./Dat./Gén. → -(e)n." },
       { type: "qcm", consigne: "Complétez.", question: "Ich kenne den ___. (Student)", options: ["Studenten", "Student", "Studente", "Studentes"], correct: 0, explication: "accusatif → den Studenten." },
       { type: "trou", consigne: "Complétez (N-Deklination).", texte: "Ich helfe dem {0}. (Kollege)", accepte: [["Kollegen"]], indice: "datif → den/dem …en" },
       { type: "association", consigne: "Associez nominatif et accusatif.", paires: [{ gauche: "der Junge", droite: "den Jungen" }, { gauche: "der Herr", droite: "den Herrn" }, { gauche: "der Name", droite: "den Namen" }, { gauche: "der Mensch", droite: "den Menschen" }] },
-      { type: "ordre", consigne: "Construisez la phrase.", mots: ["Ich", "frage", "den", "Polizisten"], correct: "Ich frage den Polizisten", traduction: "Je demande au policier." }
+      { type: "ordre", consigne: "Construisez la phrase.", mots: ["Ich", "frage", "den", "Polizisten"], correct: "Ich frage den Polizisten", traduction: "Je demande au policier." },
+      { type: "qcm", consigne: "Génitif spécial en -ns.", question: "Das ist der Anfang ___. (der Name)", options: ["des Namens", "des Namen", "des Names", "dem Namen"], correct: 0, explication: "der Name → génitif « des Namens » (-ns)." },
+      { type: "trou", consigne: "Datif (N-Deklination, -ns groupe).", texte: "Von ganzem {0} danke ich dir. (das Herz)", accepte: [["Herzen"]], indice: "das Herz → dem/ganzem Herzen (datif)" }
     ]
   },
   b1g08: {
