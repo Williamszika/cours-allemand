@@ -80,14 +80,27 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     grammaire: [
       { regle: "L'**article change selon le cas** : nominatif (sujet), accusatif (COD), datif (COI). Le plus mobile est le masculin : *der → den → dem*.", attention: "Au **datif pluriel**, le nom prend un **-n** (*den Kindern*).", exemples: [{"de":"Der Mann gibt dem Kind einen Apfel.","fr":"L'homme donne une pomme à l'enfant."},{"de":"Ich sehe die Frau.","fr":"Je vois la femme."}], titre: "L'article défini selon le cas", intro: "L'article change selon la fonction du nom dans la phrase.",
         tableau: { entetes: ["Cas", "masculin", "féminin", "neutre", "pluriel"], lignes: [["Nominatif (sujet)", "der", "die", "das", "die"], ["Accusatif (COD)", "den", "die", "das", "die"], ["Datif (COI)", "dem", "der", "dem", "den +n"]] },
-        note: "Indéfini : ein/eine → einen (m. acc.) → einem/einer (datif). Au pluriel datif, le nom prend souvent un -n." }
+        note: "Indéfini : ein/eine → einen (m. acc.) → einem/einer (datif). Au pluriel datif, le nom prend souvent un -n." },
+      { titre: "Trouver le bon cas (méthode)",
+        regle: "Pour choisir le cas : **sujet** → nominatif (Wer?) ; **COD** → accusatif (Wen?) ; **à qui** → datif (Wem?) ; après une **préposition** → le cas qu'elle impose.",
+        intro: "*Der Mann* (sujet) *gibt* *dem Kind* (à qui) *den Ball* (quoi).",
+        tableau: { entetes: ["Indice", "Question", "Cas"], lignes: [["qui fait l'action", "Wer?", "Nominatif"], ["ce qui subit", "Wen? / Was?", "Accusatif"], ["le destinataire", "Wem?", "Datif"], ["après für/ohne/durch", "—", "Accusatif"], ["après mit/zu/bei", "—", "Datif"]] },
+        note: "Le verbe et la préposition décident : helfen → datif ; für → accusatif." },
+      { titre: "Les possessifs se déclinent comme ein",
+        regle: "**mein, dein, sein, ihr, unser, euer, Ihr** prennent les mêmes terminaisons que *ein/kein*.",
+        intro: "*mein Bruder → meinen Bruder → meinem Bruder → meines Bruders*.",
+        tableau: { entetes: ["Cas", "Masculin", "Féminin", "Neutre", "Pluriel"], lignes: [["Nominatif", "mein", "meine", "mein", "meine"], ["Accusatif", "meinen", "meine", "mein", "meine"], ["Datif", "meinem", "meiner", "meinem", "meinen"], ["Génitif", "meines", "meiner", "meines", "meiner"]] },
+        note: "Apprends *ein* → tu connais *mein, dein, kein*… (mêmes terminaisons)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Quel cas pour le COD ?", options: ["Accusatif", "Datif", "Nominatif"], correct: 0, explication: "Le complément d'objet direct = accusatif." },
       { type: "qcm", consigne: "Datif.", question: "Ich gebe ___ Mann das Buch.", options: ["dem", "den", "der", "das"], correct: 0, explication: "der Mann au datif (COI) → dem." },
       { type: "trou", consigne: "Complétez (den/dem).", texte: "Ich sehe {0} Hund und gebe {1} Hund Wasser.", accepte: [["den"], ["dem"]], indice: "COD → accusatif ; COI → datif" },
       { type: "association", consigne: "Associez cas → article masculin.", paires: [{ gauche: "Nominatif", droite: "der" }, { gauche: "Accusatif", droite: "den" }, { gauche: "Datif", droite: "dem" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je donne le livre à la femme.", accepte: ["Ich gebe der Frau das Buch"], aide: "der Frau (datif) + das Buch (acc.)" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je donne le livre à la femme.", accepte: ["Ich gebe der Frau das Buch"], aide: "der Frau (datif) + das Buch (acc.)" },
+      { type: "qcm", consigne: "Possessif à l'accusatif.", question: "Ich sehe ___ Bruder. (mon frère, COD)", options: ["meinen", "mein", "meinem", "meines"], correct: 0, explication: "mein + masc. acc. → meinen." },
+      { type: "trou", consigne: "Possessif au datif.", texte: "Ich helfe {0} Schwester. (ma sœur)", accepte: [["meiner"]], indice: "mein + fém. datif → meiner" },
+      { type: "qcm", consigne: "Quel cas ?", question: "« Ich danke dem Lehrer » — dem Lehrer est…", options: ["datif", "accusatif", "nominatif"], correct: 0, explication: "danken → datif." }
     ]
   },
   a2g04: {
@@ -261,14 +274,27 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     grammaire: [
       { exemples: [{"de":"Der Mann gibt dem Kind den Ball.","fr":"L'homme donne le ballon à l'enfant."},{"de":"Das ist das Auto meines Bruders.","fr":"C'est la voiture de mon frère."}], regle: "Quatre cas : **Nominatif** (sujet), **Accusatif** (COD), **Datif** (COI / après certaines prép.), **Genitiv** (appartenance). La **fonction** du nom décide du cas.", attention: "Le cas se voit surtout sur l'**article** et l'**adjectif**, rarement sur le nom.", titre: "Les 3 cas essentiels", intro: "Chaque cas a une fonction et une question.",
         tableau: { entetes: ["Cas", "Fonction", "Question", "Exemple"], lignes: [["Nominatif", "sujet", "wer? (qui ?)", "Der Mann schläft."], ["Accusatif", "COD", "wen/was?", "Ich sehe den Mann."], ["Datif", "COI (à qui)", "wem?", "Ich helfe dem Mann."]] },
-        note: "Astuce : le cas dépend du verbe et des prépositions. mit/zu/bei… → datif ; durch/für/ohne… → accusatif." }
+        note: "Astuce : le cas dépend du verbe et des prépositions. mit/zu/bei… → datif ; durch/für/ohne… → accusatif." },
+      { titre: "Tableau complet des 4 cas (article défini)",
+        regle: "Voici la **carte complète** de la déclinaison. Le **masculin** change le plus (der/den/dem/des) ; féminin et neutre changent peu.",
+        intro: "Chaque cas répond à une question : **Wer?** (nom.), **Wen?** (acc.), **Wem?** (dat.), **Wessen?** (gén.).",
+        tableau: { entetes: ["Cas", "Masculin", "Féminin", "Neutre", "Pluriel"], lignes: [["Nominatif", "der", "die", "das", "die"], ["Accusatif", "den", "die", "das", "die"], ["Datif", "dem", "der", "dem", "den"], ["Génitif", "des", "der", "des", "der"]] },
+        note: "Datif pluriel : nom + -n (den Kindern) ; génitif masc./neutre : nom + -s (des Mannes)." },
+      { titre: "L'article indéfini et kein/mein",
+        regle: "*ein/kein/mein* suivent le même schéma que *der* — sauf au masc. nominatif et au neutre nom./acc., où ils n'ont pas de terminaison.",
+        intro: "*ein Mann → einen Mann → einem Mann → eines Mannes*.",
+        tableau: { entetes: ["Cas", "Masculin", "Féminin", "Neutre", "Pluriel (kein)"], lignes: [["Nominatif", "ein", "eine", "ein", "keine"], ["Accusatif", "einen", "eine", "ein", "keine"], ["Datif", "einem", "einer", "einem", "keinen"], ["Génitif", "eines", "einer", "eines", "keiner"]] },
+        note: "*ein* n'a pas de pluriel : on prend *kein/mein* (keine Kinder)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Quelle question pour le datif ?", options: ["wem?", "wen?", "wer?"], correct: 0, explication: "Datif → wem? (à qui ?)." },
       { type: "qcm", consigne: "Identifiez le cas.", question: "« Ich sehe den Hund. » → den Hund est…", options: ["accusatif (COD)", "datif", "nominatif"], correct: 0, explication: "COD → accusatif." },
       { type: "trou", consigne: "Complétez (der/den/dem).", texte: "{0} Mann (sujet) gibt {1} Kind (à qui) {2} Ball (quoi).", accepte: [["Der"], ["dem"], ["den"]], indice: "nominatif / datif / accusatif" },
       { type: "association", consigne: "Associez cas → question.", paires: [{ gauche: "Nominatif", droite: "wer?" }, { gauche: "Accusatif", droite: "wen?" }, { gauche: "Datif", droite: "wem?" }] },
-      { type: "qcm", consigne: "Préposition + datif ?", question: "Lequel est toujours + datif ?", options: ["mit", "für", "durch", "ohne"], correct: 0, explication: "mit + datif. (für/durch/ohne + accusatif.)" }
+      { type: "qcm", consigne: "Préposition + datif ?", question: "Lequel est toujours + datif ?", options: ["mit", "für", "durch", "ohne"], correct: 0, explication: "mit + datif. (für/durch/ohne + accusatif.)" },
+      { type: "qcm", consigne: "Datif pluriel.", question: "Ich helfe ___ Kindern.", options: ["den", "die", "der", "dem"], correct: 0, explication: "datif pluriel → den (+ nom en -n : Kindern)." },
+      { type: "trou", consigne: "Accusatif masculin.", texte: "Ich sehe {0} Mann. (der Mann)", accepte: [["den"]], indice: "accusatif masculin → den" },
+      { type: "qcm", consigne: "Article indéfini datif.", question: "Ich gebe ___ Kind einen Apfel. (à un enfant)", options: ["einem", "ein", "einen", "eines"], correct: 0, explication: "datif neutre → einem." }
     ]
   }
 });
