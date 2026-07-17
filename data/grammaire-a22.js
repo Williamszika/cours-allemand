@@ -126,14 +126,27 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     grammaire: [
       { exemples: [{"de":"Ich rufe dich morgen an.","fr":"Je t'appelle demain."},{"de":"Ich habe den Text nicht verstanden.","fr":"Je n'ai pas compris le texte."}], regle: "**Séparables** (*auf-, an-, ein-, mit-, vor-, zu-*) : le préfixe **part à la fin**. **Inséparables** (*be-, er-, ent-, ver-, zer-, miss-*) : restent collés.", attention: "Au participe, l'inséparable n'a **pas** de *ge-* (*verstanden, bekommen*) ; le séparable l'insère (*aufgestanden*).", titre: "Séparable ou inséparable ?", intro: "La particule séparable part à la fin ; l'inséparable reste collée.",
         tableau: { entetes: ["Type", "Préfixes", "Exemple"], lignes: [["séparable", "auf-, ein-, an-, mit-, zu-, aus-", "Ich stehe um 7 auf."], ["inséparable", "be-, ge-, er-, ver-, ent-, emp-, zer-", "Ich verstehe das."]] },
-        note: "Au Perfekt : séparable → aufgestanden (ge- au milieu) ; inséparable → verstanden (PAS de ge-)." }
+        note: "Au Perfekt : séparable → aufgestanden (ge- au milieu) ; inséparable → verstanden (PAS de ge-)." },
+      { titre: "Où va la particule séparable ?",
+        regle: "**Présent / prétérit** : verbe en 2ᵉ, particule **à la fin**. **Perfekt** : *ge-* au milieu. **Avec un modal / dans une subordonnée** : le verbe se **recolle**.",
+        intro: "*Ich **stehe** … **auf*** · *Ich bin **aufgestanden*** · *Ich muss **aufstehen*** · *…, weil ich **aufstehe***.",
+        tableau: { entetes: ["Contexte", "Forme", "Exemple"], lignes: [["présent (principale)", "verbe 2 + particule fin", "Ich stehe um 7 auf."], ["Perfekt", "ge- au milieu", "Ich bin aufgestanden."], ["avec modal", "infinitif recollé", "Ich muss früh aufstehen."], ["subordonnée (weil…)", "recollé à la fin", "…, weil ich früh aufstehe."]] },
+        note: "La particule ne se détache qu'à la principale (présent/prétérit) ; sinon elle reste collée." },
+      { titre: "Verbes séparables fréquents",
+        regle: "Voici les plus courants du quotidien — à apprendre avec leur sens.",
+        intro: "*aufstehen, einkaufen, anrufen, fernsehen…*",
+        tableau: { entetes: ["Verbe", "Sens", "Exemple"], lignes: [["aufstehen", "se lever", "Ich stehe um 6 auf."], ["einkaufen", "faire les courses", "Ich kaufe ein."], ["anrufen", "appeler", "Ich rufe dich an."], ["ankommen", "arriver", "Der Zug kommt an."], ["fernsehen", "regarder la TV", "Ich sehe fern."], ["aufräumen", "ranger", "Ich räume auf."]] },
+        note: "L'accent tombe sur la particule (ÁUFstehen) → séparable." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« verstehen » est…", options: ["inséparable", "séparable"], correct: 0, explication: "ver- = préfixe inséparable." },
       { type: "qcm", consigne: "Séparable : placez la particule.", question: "Ich ___ um 7 Uhr ___ . (aufstehen)", options: ["stehe … auf", "aufstehe … —", "stehe auf … —", "auf … stehe"], correct: 0, explication: "verbe en 2e, particule à la fin." },
       { type: "trou", consigne: "Complétez (séparable einkaufen).", texte: "Wir {0} am Samstag {1}.", accepte: [["kaufen"], ["ein"]], indice: "verbe + particule à la fin" },
       { type: "association", consigne: "Séparable (S) ou inséparable (I) ?", paires: [{ gauche: "aufstehen", droite: "séparable" }, { gauche: "verstehen", droite: "inséparable" }, { gauche: "ankommen", droite: "séparable" }, { gauche: "bekommen", droite: "inséparable" }] },
-      { type: "ordre", consigne: "Construisez la phrase.", mots: ["Der", "Zug", "kommt", "um", "acht", "an"], correct: "Der Zug kommt um acht an", traduction: "Le train arrive à huit heures." }
+      { type: "ordre", consigne: "Construisez la phrase.", mots: ["Der", "Zug", "kommt", "um", "acht", "an"], correct: "Der Zug kommt um acht an", traduction: "Le train arrive à huit heures." },
+      { type: "qcm", consigne: "Avec un modal.", question: "Avec « müssen », le séparable…", options: ["se recolle (aufstehen)", "se détache", "perd la particule"], correct: 0, explication: "Ich muss aufstehen (infinitif recollé)." },
+      { type: "trou", consigne: "Perfekt (séparable).", texte: "Ich habe am Samstag ein{0}. (einkaufen)", accepte: [["gekauft"]], indice: "einkaufen → eingekauft (ge- au milieu)" },
+      { type: "qcm", consigne: "Subordonnée.", question: "…, weil ich früh ___.", options: ["aufstehe", "auf stehe", "stehe auf", "aufstehen"], correct: 0, explication: "subordonnée → recollé à la fin : aufstehe." }
     ]
   },
   a2g14: {
