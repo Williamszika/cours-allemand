@@ -24,14 +24,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     grammaire: [
       { exemples: [{"de":"Er dürfte den Zug verpasst haben.","fr":"Il a probablement raté le train."},{"de":"Vermutlich kommt sie später.","fr":"Elle viendra probablement plus tard."}], regle: "Graduer la **probabilité** : *müsste/dürfte* (probable), *wird wohl*, *vermutlich*, *könnte/womöglich* (possible).", attention: "Hypothèse au **passé** : *Er **dürfte** es vergessen **haben*** (dürfte + infinitif passé).", titre: "Les degrés de la supposition", intro: "On exprime une hypothèse par un modal au sens subjectif, par « werden + wohl » ou par un adverbe.",
         tableau: { entetes: ["Degré", "Moyen", "Exemple"], lignes: [["quasi sûr", "müsste / dürfte", "Er müsste schon da sein."], ["probable", "wird wohl", "Sie wird wohl kommen."], ["vraisemblable", "vermutlich / wahrscheinlich", "Vermutlich klappt es."], ["apparent", "offenbar / anscheinend", "Offenbar hat er es vergessen."], ["possible", "könnte / womöglich", "Womöglich regnet es."]] },
-        note: "Hypothèse au passé : « Er dürfte es vergessen haben » (dürfte + infinitif passé)." }
+        note: "Hypothèse au passé : « Er dürfte es vergessen haben » (dürfte + infinitif passé)." },
+      { titre: "Introduire une hypothèse (angenommen, es sei denn)",
+        regle: "Le C1 introduit une hypothèse par des tournures figées : **angenommen (, dass)**, **gesetzt den Fall**, **vorausgesetzt (, dass)** (à condition que), **es sei denn** (à moins que).",
+        intro: "***Angenommen**, du hättest recht…* · *Ich komme, **es sei denn**, es regnet*.",
+        tableau: { entetes: ["Structure", "Sens", "Exemple"], lignes: [["angenommen (, dass)", "à supposer que", "Angenommen, er käme, …"], ["gesetzt den Fall", "en admettant que", "Gesetzt den Fall, es klappt, …"], ["vorausgesetzt (, dass)", "à condition que", "…, vorausgesetzt, du hilfst."], ["es sei denn", "à moins que", "Ich komme, es sei denn, es regnet."]] },
+        note: "*angenommen / gesetzt den Fall* + Konjunktiv II (irréel) ; *vorausgesetzt* + indicatif (réel)." },
+      { titre: "Les adverbes de probabilité (et un piège)",
+        regle: "Les **Modaladverbien** graduent la certitude. Piège : **anscheinend** (selon toute apparence, réel) ≠ **scheinbar** (en apparence seulement, faux).",
+        intro: "*bestimmt > wahrscheinlich > wohl > vielleicht*. *anscheinend schläft er* (réel) vs *scheinbar* (faux-semblant).",
+        tableau: { entetes: ["Adverbe", "Degré / sens"], lignes: [["bestimmt / sicher", "très sûr"], ["wahrscheinlich / vermutlich", "probable"], ["wohl", "vraisemblablement"], ["anscheinend", "selon les apparences (réel)"], ["scheinbar", "en apparence (mais FAUX)"], ["vielleicht / möglicherweise", "possible (incertain)"]] },
+        note: "Ne confonds pas *anscheinend* (c'est probablement vrai) et *scheinbar* (ça en a l'air, mais c'est faux)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« dürfte » exprime une supposition…", options: ["probable", "certaine à 100 %", "impossible"], correct: 0, explication: "dürfte = probablement." },
       { type: "qcm", consigne: "Choisissez (probable, futur).", question: "Sie ___ wohl bald kommen.", options: ["wird", "ist", "hat", "war"], correct: 0, explication: "werden + wohl = probabilité." },
       { type: "trou", consigne: "Complétez (apparence).", texte: "{0} hat er den Termin vergessen. (apparemment)", accepte: [["Offenbar", "Anscheinend"]], indice: "apparemment = offenbar / anscheinend" },
       { type: "association", consigne: "Associez le marqueur et le degré.", paires: [{ gauche: "dürfte", droite: "probable" }, { gauche: "müsste", droite: "quasi sûr" }, { gauche: "könnte", droite: "possible" }, { gauche: "offenbar", droite: "apparent" }] },
-      { type: "qcm", consigne: "Choisissez (hypothèse passée).", question: "Er ___ es vergessen haben.", options: ["dürfte", "darf", "durfte", "muss nicht"], correct: 0, explication: "dürfte + infinitif passé = supposition au passé." }
+      { type: "qcm", consigne: "Choisissez (hypothèse passée).", question: "Er ___ es vergessen haben.", options: ["dürfte", "darf", "durfte", "muss nicht"], correct: 0, explication: "dürfte + infinitif passé = supposition au passé." },
+      { type: "qcm", consigne: "Introduire une hypothèse.", question: "___, du hättest recht — was dann?", options: ["Angenommen", "Weil", "Obwohl", "Damit"], correct: 0, explication: "angenommen = à supposer que (+ Konjunktiv II)." },
+      { type: "qcm", consigne: "anscheinend ou scheinbar ?", question: "Il dort vraiment, semble-t-il : « Er schläft ___. »", options: ["anscheinend", "scheinbar", "kaum", "nie"], correct: 0, explication: "anscheinend = selon les apparences (réel) ; scheinbar = faux-semblant." },
+      { type: "qcm", consigne: "À moins que.", question: "Ich komme, ___, es regnet.", options: ["es sei denn", "vorausgesetzt", "angenommen", "obwohl"], correct: 0, explication: "à moins que → es sei denn." }
     ]
   },
   c1g11: {
@@ -246,14 +259,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     grammaire: [
       { regle: "**Discours indirect** complet : affirmations (*sei, habe*), **questions** (*ob* / mot interrogatif), **ordres** (*sollen*).", attention: "Si le KI = indicatif (pluriel), on passe au **Konjunktiv II** (*sie hätten*).", exemples: [{"de":"Er sagt, er sei bereit.","fr":"Il dit qu'il est prêt."},{"de":"Er fragt, ob ich komme.","fr":"Il demande si je viens."}], titre: "Le discours indirect complet", intro: "Le Konjunktiv I rapporte des propos. On adapte aussi les questions (ob / W-Wort) et les ordres (sollen).",
         tableau: { entetes: ["Type", "Direct", "Indirect"], lignes: [["affirmation", "« Ich bin müde. »", "Er sagt, er sei müde."], ["passé", "« Ich war dort. »", "Er sagt, er sei dort gewesen."], ["question oui/non", "« Kommst du? »", "Er fragt, ob ich komme."], ["question W", "« Wann kommst du? »", "Er fragt, wann ich komme."], ["ordre", "« Komm! »", "Er sagt, ich solle kommen."]] },
-        note: "Si le Konjunktiv I se confond avec l'indicatif (pluriel), on passe au Konjunktiv II : « sie haben » → « sie hätten »." }
+        note: "Si le Konjunktiv I se confond avec l'indicatif (pluriel), on passe au Konjunktiv II : « sie haben » → « sie hätten »." },
+      { titre: "Formes du Konjunktiv I (dont le passé)",
+        regle: "KI = radical + **-e** ; *sein* est irrégulier (sei). Le **passé** indirect se rend par le **Perfekt du KI** : *sei/habe + participe*.",
+        intro: "*er sei, er habe, er werde, er könne* ; passé : *er **habe** es **gemacht***, *er **sei gegangen***.",
+        tableau: { entetes: ["Verbe", "KI présent (er)", "KI passé (er)"], lignes: [["sein", "sei", "sei gewesen"], ["haben", "habe", "habe gehabt"], ["machen", "mache", "habe gemacht"], ["gehen", "gehe", "sei gegangen"], ["werden", "werde", "sei geworden"]] },
+        note: "sein KI complet : sei, sei(e)st, sei, seien, seiet, seien. Le passé indirect n'a qu'une forme (Perfekt KI)." },
+      { titre: "Concordance : présent, passé, futur",
+        regle: "Quel que soit le temps du discours direct : présent → **KI présent** ; passé (tous) → **KI Perfekt** ; futur → **KI werde + infinitif**.",
+        intro: "*« Ich komme »* → *er komme* · *« Ich kam / bin gekommen »* → *er sei gekommen* · *« Ich werde kommen »* → *er werde kommen*.",
+        tableau: { entetes: ["Direct", "Indirect (KI)", "Exemple"], lignes: [["présent", "KI présent", "Er sagt, er komme."], ["prétérit / parfait", "KI Perfekt (sei/habe + part.)", "Er sagt, er sei gekommen."], ["plus-que-parfait", "KI Perfekt", "Er sagt, er habe es getan."], ["futur", "werde + infinitif", "Er sagt, er werde kommen."]] },
+        note: "Les trois temps du passé fusionnent en UNE forme indirecte : le Perfekt du KI." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Un ordre rapporté se rend avec…", options: ["sollen", "müssen", "dürfen", "wollen"], correct: 0, explication: "« Komm! » → Er sagt, ich solle kommen." },
       { type: "qcm", consigne: "Choisissez (Konjunktiv I de sein).", question: "Sie sagt, sie ___ krank.", options: ["sei", "ist", "wäre", "war"], correct: 0, explication: "Konjunktiv I : sei." },
       { type: "trou", consigne: "Complétez (question oui/non indirecte).", texte: "Er fragt, {0} ich Zeit habe.", accepte: [["ob"]], indice: "question oui/non → ob" },
       { type: "association", consigne: "Associez l'infinitif et le Konjunktiv I (er).", paires: [{ gauche: "sein", droite: "sei" }, { gauche: "haben", droite: "habe" }, { gauche: "können", droite: "könne" }, { gauche: "werden", droite: "werde" }] },
-      { type: "qcm", consigne: "Choisissez (substitution au pluriel).", question: "Sie sagen, sie ___ keine Zeit. (haben)", options: ["hätten", "haben", "habe", "hätte"], correct: 0, explication: "pluriel ambigu → Konjunktiv II : hätten." }
+      { type: "qcm", consigne: "Choisissez (substitution au pluriel).", question: "Sie sagen, sie ___ keine Zeit. (haben)", options: ["hätten", "haben", "habe", "hätte"], correct: 0, explication: "pluriel ambigu → Konjunktiv II : hätten." },
+      { type: "trou", consigne: "Passé indirect (KI Perfekt).", texte: "Er sagt, er {0} die Aufgabe erledigt. (haben)", accepte: [["habe"]], indice: "passé indirect → habe + participe" },
+      { type: "qcm", consigne: "Futur indirect.", question: "« Ich werde kommen » → Er sagt, er ___ kommen.", options: ["werde", "wird", "würde", "sei"], correct: 0, explication: "futur indirect → werde + infinitif." },
+      { type: "qcm", consigne: "Passé (mouvement).", question: "« Ich bin gegangen » → Er sagt, er ___ gegangen.", options: ["sei", "habe", "wäre", "ist"], correct: 0, explication: "gehen (mouvement) → KI Perfekt avec sein : sei gegangen." }
     ]
   },
   c1g17: {
