@@ -13938,14 +13938,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
       { exemples: [{"de":"Nachdem er gegangen war, wurde es still.","fr":"Après son départ, le silence s'installa."},{"de":"Damals lebte sie noch in Berlin.","fr":"À l'époque, elle vivait encore à Berlin."}], regle: "Perfekt (oral/lettres), Präteritum (récit écrit), Plusquamperfekt (antériorité). On les **combine** dans un texte cohérent.", attention: "Le **Präteritum** domine le récit littéraire ; le **Perfekt** l'oral et la correspondance.", titre: "Trois temps, trois fonctions", intro: "Perfekt (oral, lettres), Präteritum (récit écrit, presse), Plusquamperfekt (action antérieure). On les combine dans un texte cohérent.",
         tableau: { entetes: ["Temps", "Registre / rôle", "Exemple"], lignes: [["Perfekt", "oral, e-mail", "Ich habe es erledigt."], ["Präteritum", "récit écrit", "Er verließ das Haus."], ["Plusquamperfekt", "antériorité", "Nachdem er gegangen war, …"], ["sein/haben/Modale", "Präteritum à l'oral aussi", "Ich war / hatte / musste"]] },
         schemas: [{ legende: "Antériorité : Plusquamperfekt → Präteritum.", mots: [{ m: "Nachdem er gegangen war,", r: "antérieur", c: "conj" }, { m: "schloss", r: "verbe (1)", c: "verbe" }, { m: "sie", r: "sujet", c: "sujet" }, { m: "die Tür", r: "complément", c: "fin" }] }],
-        note: "Le Präteritum domine le récit littéraire ; le Perfekt domine l'oral et la correspondance." }
+        note: "Le Präteritum domine le récit littéraire ; le Perfekt domine l'oral et la correspondance." },
+      { titre: "Le Futur II : supposition sur le passé",
+        regle: "**Futur II** = *werden + participe II + haben/sein*. Il exprime une **supposition sur le passé** (le plus fréquent) ou une action **achevée dans le futur**.",
+        intro: "*Er **wird** wohl im Stau **gestanden haben*** (il a dû…) · *Bis morgen **werde** ich alles **erledigt haben*** (j'aurai fini).",
+        tableau: { entetes: ["Emploi", "Structure", "Exemple"], lignes: [["supposition (passé)", "wird wohl + Part. + haben/sein", "Er wird es vergessen haben."], ["action future achevée", "wird + Part. + haben/sein", "Bis Freitag wird er fertig sein."], ["+ wohl/sicher", "renforce la supposition", "Sie wird wohl krank gewesen sein."]] },
+        note: "Futur II + *wohl* = « il a probablement … » (déduction sur le passé), plus soutenu que « dürfte … haben »." },
+      { titre: "Antériorité immédiate : kaum …, als",
+        regle: "Pour « à peine … que », on emploie **kaum … als/da** (avec inversion) ou **sobald** (dès que). *nachdem* + Plusquamperfekt marque une antériorité nette.",
+        intro: "***Kaum** war er gegangen, **da** klingelte es* · ***Sobald** er kam, begannen wir*.",
+        tableau: { entetes: ["Structure", "Sens", "Exemple"], lignes: [["kaum … als/da", "à peine … que", "Kaum war er da, als es klingelte."], ["sobald", "dès que", "Sobald ich ankam, rief ich an."], ["nachdem + Plusqpf.", "après que (antériorité)", "Nachdem er gegangen war, …"], ["sowie", "aussitôt que (soutenu)", "Sowie er kam, ging sie."]] },
+        note: "*Kaum* en tête entraîne l'inversion : « Kaum **hatte** er … »." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Pour une action antérieure à une autre action passée, on emploie…", options: ["le Plusquamperfekt", "le Perfekt", "le Futur"], correct: 0, explication: "Plusquamperfekt = le passé du passé." },
       { type: "qcm", consigne: "Choisissez.", question: "Le récit littéraire écrit privilégie…", options: ["le Präteritum", "le Perfekt", "le Plusquamperfekt"], correct: 0, explication: "Präteritum = temps du récit écrit." },
       { type: "trou", consigne: "Complétez (Plusquamperfekt).", texte: "Als ich ankam, {0} der Zug bereits abgefahren.", accepte: [["war"]], indice: "abfahren → sein → war abgefahren" },
       { type: "association", consigne: "Associez le temps et son usage.", paires: [{ gauche: "Perfekt", droite: "oral / e-mail" }, { gauche: "Präteritum", droite: "récit écrit" }, { gauche: "Plusquamperfekt", droite: "antériorité" }, { gauche: "sein/haben", droite: "Präteritum à l'oral" }] },
-      { type: "ordre", consigne: "Phrase au Plusquamperfekt.", mots: ["Sie", "hatte", "alles", "längst", "vergessen"], correct: "Sie hatte alles längst vergessen", traduction: "Elle avait depuis longtemps tout oublié." }
+      { type: "ordre", consigne: "Phrase au Plusquamperfekt.", mots: ["Sie", "hatte", "alles", "längst", "vergessen"], correct: "Sie hatte alles längst vergessen", traduction: "Elle avait depuis longtemps tout oublié." },
+      { type: "qcm", consigne: "Supposition sur le passé.", question: "« Il a dû rater le train » =", options: ["Er wird den Zug verpasst haben", "Er hat den Zug verpasst", "Er wird den Zug verpassen"], correct: 0, explication: "Futur II + supposition : wird … verpasst haben." },
+      { type: "trou", consigne: "À peine … que (inversion).", texte: "Kaum {0} er gegangen, da klingelte das Telefon. (sein)", accepte: [["war"]], indice: "kaum + inversion : kaum war er gegangen" },
+      { type: "qcm", consigne: "Futur II.", question: "« Bis morgen ___ ich alles erledigt haben. »", options: ["werde", "würde", "habe", "bin"], correct: 0, explication: "Futur II : werde … erledigt haben (action future achevée)." }
     ]
   },
   c1g02: {
@@ -14174,14 +14187,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     grammaire: [
       { exemples: [{"de":"Ich hätte früher kommen sollen.","fr":"J'aurais dû venir plus tôt."},{"de":"Das muss bis morgen erledigt werden.","fr":"Cela doit être fait pour demain."}], regle: "Sens **subjectif** (supposition : *dürfte, müsste*), combinaisons au **passé** (*hätte … müssen*) et au **passif** (*muss … werden*).", attention: "Ordre final : *Ich hätte gehen **müssen*** (infinitif + modal à l'infinitif).", titre: "Modaux : nuances avancées", intro: "Au C1, les modaux expriment la supposition (sens subjectif) et se combinent au passé et au passif.",
         tableau: { entetes: ["Emploi", "Forme", "Exemple"], lignes: [["supposition", "dürfte / müsste", "Er dürfte schon da sein."], ["rumeur", "sollen", "Er soll sehr reich sein."], ["prétention", "wollen", "Sie will nichts gewusst haben."], ["passé + modal", "hätte … müssen", "Ich hätte gehen müssen."], ["passif + modal", "muss … werden", "Das muss erledigt werden."]] },
-        note: "Degrés : müssen (quasi sûr) > dürfte (probable) > könnte (possible)." }
+        note: "Degrés : müssen (quasi sûr) > dürfte (probable) > könnte (possible)." },
+      { titre: "Le verbe lassen (3 emplois)",
+        regle: "**lassen** a trois sens : **faire faire** (causatif), **sich lassen + inf.** (= pouvoir être fait), **laisser** (permettre / abandonner).",
+        intro: "*Ich **lasse** das Auto reparieren* · *Das **lässt sich** machen* · *Lass mich in Ruhe!*",
+        tableau: { entetes: ["Emploi", "Sens", "Exemple"], lignes: [["lassen + inf.", "faire faire (causatif)", "Ich lasse mir die Haare schneiden."], ["sich lassen + inf.", "peut être fait", "Das lässt sich leicht erklären."], ["lassen (+ objet)", "laisser / permettre", "Lass mich das machen!"], ["Perfekt", "double infinitif", "Ich habe es reparieren lassen."]] },
+        note: "Au Perfekt : *habe … reparieren **lassen*** (double infinitif, pas « gelassen »)." },
+      { titre: "Les semi-modaux : scheinen, drohen … + zu",
+        regle: "Certains verbes se construisent avec **zu + infinitif** comme des modaux : **scheinen** (sembler), **drohen** (menacer de/risquer), **pflegen** (avoir coutume de), **brauchen** (ne pas avoir besoin de).",
+        intro: "*Er **scheint** zu **schlafen*** · *Es **droht** zu **regnen***.",
+        tableau: { entetes: ["Verbe", "Sens", "Exemple"], lignes: [["scheinen zu", "sembler", "Er scheint zu schlafen."], ["drohen zu", "menacer de / risquer", "Das Haus droht einzustürzen."], ["pflegen zu", "avoir coutume de", "Er pflegt früh aufzustehen."], ["brauchen zu (nég.)", "ne pas avoir besoin de", "Du brauchst nicht zu kommen."]] },
+        note: "Ces verbes gardent le *zu* + infinitif (≠ vrais modaux, sans zu)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« Er dürfte schon da sein » exprime…", options: ["une probabilité", "une permission", "une obligation"], correct: 0, explication: "dürfte = supposition probable." },
       { type: "qcm", consigne: "Choisissez (passé + modal).", question: "Ich ___ früher gehen müssen.", options: ["hätte", "habe", "würde", "bin"], correct: 0, explication: "regret/obligation passée : hätte … müssen." },
       { type: "trou", consigne: "Complétez (passif + modal).", texte: "Der Bericht muss bis morgen geschrieben {0}.", accepte: [["werden"]], indice: "passif + modal → participe + werden" },
       { type: "association", consigne: "Associez le modal et son sens subjectif.", paires: [{ gauche: "müssen", droite: "quasi certain" }, { gauche: "dürfte", droite: "probable" }, { gauche: "sollen", droite: "rumeur" }, { gauche: "wollen", droite: "prétention" }] },
-      { type: "ordre", consigne: "Construisez la phrase (passé + modal).", mots: ["Ich", "hätte", "anrufen", "sollen"], correct: "Ich hätte anrufen sollen", traduction: "J'aurais dû appeler." }
+      { type: "ordre", consigne: "Construisez la phrase (passé + modal).", mots: ["Ich", "hätte", "anrufen", "sollen"], correct: "Ich hätte anrufen sollen", traduction: "J'aurais dû appeler." },
+      { type: "qcm", consigne: "sich lassen.", question: "« Das lässt sich machen » = ", options: ["kann gemacht werden", "muss gemacht werden", "wird gemacht"], correct: 0, explication: "sich lassen + inf = possibilité passive." },
+      { type: "trou", consigne: "Semi-modal (scheinen).", texte: "Er scheint müde {0} sein.", accepte: [["zu"]], indice: "scheinen + zu + infinitif" },
+      { type: "qcm", consigne: "Perfekt de lassen (causatif).", question: "Ich habe das Auto reparieren ___.", options: ["lassen", "gelassen", "gelasst", "lasst"], correct: 0, explication: "double infinitif : habe … reparieren lassen." }
     ]
   },
   c1g08: {
@@ -14463,14 +14489,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     grammaire: [
       { regle: "Locutions connectrices : *aus diesem Grund* (pour cette raison), *im Gegensatz dazu* (en revanche), *darüber hinaus* (en outre).", attention: "Comme les Verbindungsadverbien : en tête, le verbe reste en **2ᵉ** position.", exemples: [{"de":"Es ist teuer. Darüber hinaus ist es weit.","fr":"C'est cher. En outre, c'est loin."},{"de":"Im Gegensatz dazu ist die Bahn günstig.","fr":"En revanche, le train est avantageux."}], titre: "Les locutions connectrices du texte", intro: "Ces groupes figés relient les idées et structurent un texte soutenu. Placés en tête → inversion (verbe en 2e).",
         tableau: { entetes: ["Locution", "Sens", "Fonction"], lignes: [["aus diesem Grund", "pour cette raison", "cause/conséquence"], ["im Gegensatz dazu", "en revanche", "opposition"], ["im Vergleich dazu", "en comparaison", "comparaison"], ["in diesem Zusammenhang", "à ce propos", "transition"], ["darüber hinaus", "en outre", "addition"]] },
-        note: "Comme les Verbindungsadverbien, ces locutions laissent le verbe en 2e position : « Aus diesem Grund haben wir … »." }
+        note: "Comme les Verbindungsadverbien, ces locutions laissent le verbe en 2e position : « Aus diesem Grund haben wir … »." },
+      { titre: "Structurer un texte argumentatif",
+        regle: "Pour organiser un essai, on dispose de connecteurs par **fonction discursive** : introduire, ajouter, illustrer, opposer, conclure.",
+        intro: "*zunächst … darüber hinaus … im Gegensatz dazu … abschließend*.",
+        tableau: { entetes: ["Fonction", "Connecteurs"], lignes: [["introduire", "zunächst, vor allem, in erster Linie"], ["ajouter", "darüber hinaus, ferner, zudem"], ["illustrer", "beispielsweise, so etwa, unter anderem"], ["opposer", "im Gegensatz dazu, demgegenüber, hingegen"], ["conclure", "abschließend, zusammenfassend, letztlich"]] },
+        note: "Ces locutions ouvrent souvent la phrase → inversion (verbe en 2ᵉ)." },
+      { titre: "Locutions idiomatiques (geschweige denn…)",
+        regle: "Des locutions figées enrichissent l'argumentation : **geschweige denn** (encore moins), **einerseits … andererseits**, **sei es … sei es**, **zumal** (d'autant plus que).",
+        intro: "*Er kann kaum laufen, **geschweige denn** rennen* · *…, **zumal** es spät war*.",
+        tableau: { entetes: ["Locution", "Sens", "Exemple"], lignes: [["geschweige denn", "encore moins", "kaum laufen, geschweige denn rennen"], ["einerseits … andererseits", "d'une part … d'autre part", "einerseits ja, andererseits nein"], ["sei es …, sei es …", "que ce soit … ou …", "sei es heute, sei es morgen"], ["zumal", "d'autant (plus) que", "…, zumal es regnete"]] },
+        note: "*geschweige denn* renforce une négation : « pas X, et encore moins Y »." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« im Gegensatz dazu » exprime…", options: ["une opposition", "une addition", "une cause"], correct: 0, explication: "im Gegensatz dazu = en revanche." },
       { type: "qcm", consigne: "Choisissez (addition).", question: "Es ist günstig. ___ ist es praktisch.", options: ["Darüber hinaus", "Im Gegensatz dazu", "Aus diesem Grund", "Trotzdem"], correct: 0, explication: "darüber hinaus = en outre (addition)." },
       { type: "trou", consigne: "Complétez (inversion).", texte: "Aus diesem Grund {0} wir die Lösung. (wählen)", accepte: [["wählen", "wählten"]], indice: "locution en tête → verbe en 2e position" },
       { type: "association", consigne: "Associez la locution et son sens.", paires: [{ gauche: "aus diesem Grund", droite: "pour cette raison" }, { gauche: "im Gegensatz dazu", droite: "en revanche" }, { gauche: "darüber hinaus", droite: "en outre" }, { gauche: "im Vergleich dazu", droite: "en comparaison" }] },
-      { type: "ordre", consigne: "Construisez la phrase (inversion).", mots: ["Darüber", "hinaus", "ist", "es", "günstig"], correct: "Darüber hinaus ist es günstig", traduction: "En outre, c'est avantageux." }
+      { type: "ordre", consigne: "Construisez la phrase (inversion).", mots: ["Darüber", "hinaus", "ist", "es", "günstig"], correct: "Darüber hinaus ist es günstig", traduction: "En outre, c'est avantageux." },
+      { type: "qcm", consigne: "Renforcement négatif.", question: "Er hat kein Auto, ___ ein Haus.", options: ["geschweige denn", "sondern auch", "im Gegensatz", "darüber hinaus"], correct: 0, explication: "geschweige denn = encore moins (renforce la négation)." },
+      { type: "qcm", consigne: "Conclure.", question: "___ lässt sich sagen, dass … (pour conclure)", options: ["Zusammenfassend", "Zunächst", "Beispielsweise", "Einerseits"], correct: 0, explication: "zusammenfassend / abschließend = pour conclure." },
+      { type: "trou", consigne: "D'autant que.", texte: "Wir blieben zu Hause, {0} es stark regnete.", accepte: [["zumal"]], indice: "d'autant (plus) que → zumal" }
     ]
   },
   c1g15: {
@@ -14573,14 +14612,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     grammaire: [
       { exemples: [{"de":"Nehmen Sie bitte Platz!","fr":"Asseyez-vous, je vous prie !"},{"de":"Bitte nicht stören!","fr":"Prière de ne pas déranger !"}], regle: "Quatre formes : **du** (radical), **ihr** (+ -t), **Sie** (verbe + Sie), **wir** (verbe + wir). À l'écrit : **infinitif** (consignes).", attention: "*sein* est irrégulier : *Sei / Seid / Seien Sie* ruhig! Alternative polie : *Würden Sie bitte …?*", titre: "Donner un ordre ou une consigne", intro: "L'impératif a quatre formes ; à l'écrit, on lui préfère parfois l'infinitif (consignes) ou « sollen ».",
         tableau: { entetes: ["Personne", "Forme", "Exemple"], lignes: [["du", "radical (parfois -e)", "Komm! / Arbeite!"], ["ihr", "radical + -t", "Kommt!"], ["Sie", "verbe + Sie", "Kommen Sie!"], ["wir", "verbe + wir", "Gehen wir!"], ["consigne écrite", "infinitif", "Bitte nicht rauchen!"]] },
-        note: "sein est irrégulier : Sei ruhig! / Seid ruhig! / Seien Sie ruhig! Alternative polie : « Würden Sie bitte …? »." }
+        note: "sein est irrégulier : Sei ruhig! / Seid ruhig! / Seien Sie ruhig! Alternative polie : « Würden Sie bitte …? »." },
+      { titre: "L'impératif « du » : les irrégularités",
+        regle: "À **du**, les verbes forts en **e → i/ie** gardent le changement et **perdent le -e** : *nehmen → **nimm!***, *geben → **gib!***. Mais **a → ä** ne s'applique PAS : *fahren → **fahr!***.",
+        intro: "*Nimm!* · *Gib mir das!* · *Lies vor!* · mais *Fahr langsam!*, *Schlaf gut!*",
+        tableau: { entetes: ["Infinitif", "Impératif du", "Règle"], lignes: [["nehmen", "nimm!", "e → i, sans -e"], ["geben", "gib!", "e → i"], ["lesen", "lies!", "e → ie"], ["sehen", "sieh!", "e → ie"], ["fahren", "fahr!", "a → ä : NON"], ["laufen", "lauf!", "au → äu : NON"]] },
+        note: "Le changement e→i/ie reste à l'impératif ; le changement a→ä disparaît (fahr!, schlaf!)." },
+      { titre: "Les alternatives à l'impératif",
+        regle: "Selon le registre : **infinitif** (consignes), **sollen** (ordre rapporté), **passif sein+zu** (officiel), **question au KII** (poli), **Konjunktiv I** (recettes).",
+        intro: "*Bitte anschnallen!* · *Du sollst warten* · *Das ist auszufüllen* · *Würden Sie bitte…?* · *Man nehme…*",
+        tableau: { entetes: ["Alternative", "Registre", "Exemple"], lignes: [["infinitif", "consigne / panneau", "Nicht rauchen!"], ["sollen", "ordre indirect", "Du sollst dich ausruhen."], ["sein + zu", "officiel", "Das Formular ist auszufüllen."], ["Würden Sie …?", "très poli", "Würden Sie bitte warten?"], ["Konjunktiv I (man)", "recette / mode d'emploi", "Man nehme zwei Eier."]] },
+        note: "Les particules *doch/mal/bitte* adoucissent l'impératif : « Komm doch mal! »." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Sur un panneau, la consigne emploie souvent…", options: ["l'infinitif", "le subjonctif", "le prétérit"], correct: 0, explication: "Bitte nicht rauchen! (infinitif)." },
       { type: "qcm", consigne: "Choisissez (impératif Sie).", question: "___ Sie bitte langsamer!", options: ["Sprechen", "Sprich", "Sprecht", "Gesprochen"], correct: 0, explication: "forme de politesse : Sprechen Sie!" },
       { type: "trou", consigne: "Complétez (impératif du de sein).", texte: "{0} bitte ruhig! (sein, du)", accepte: [["Sei"]], indice: "sein → Sei!" },
       { type: "association", consigne: "Associez la personne et la forme.", paires: [{ gauche: "du", droite: "Komm!" }, { gauche: "ihr", droite: "Kommt!" }, { gauche: "Sie", droite: "Kommen Sie!" }, { gauche: "wir", droite: "Gehen wir!" }] },
-      { type: "ordre", consigne: "Construisez l'impératif poli.", mots: ["Nehmen", "Sie", "bitte", "Platz"], correct: "Nehmen Sie bitte Platz", traduction: "Asseyez-vous, je vous prie." }
+      { type: "ordre", consigne: "Construisez l'impératif poli.", mots: ["Nehmen", "Sie", "bitte", "Platz"], correct: "Nehmen Sie bitte Platz", traduction: "Asseyez-vous, je vous prie." },
+      { type: "qcm", consigne: "Impératif du (e→i).", question: "Impératif « du » de « nehmen » :", options: ["Nimm!", "Nehm!", "Nimme!", "Nehme!"], correct: 0, explication: "nehmen : e→i, sans -e → Nimm!" },
+      { type: "qcm", consigne: "a → ä ?", question: "Impératif « du » de « fahren » :", options: ["Fahr!", "Fähr!", "Fahre du!", "Fährst!"], correct: 0, explication: "a → ä ne s'applique PAS à l'impératif : Fahr!" },
+      { type: "trou", consigne: "Alternative (recette, Konjunktiv I).", texte: "Man {0} zwei Eier und etwas Mehl. (nehmen)", accepte: [["nehme"]], indice: "recette → Konjunktiv I : man nehme" }
     ]
   },
   c1g18: {
