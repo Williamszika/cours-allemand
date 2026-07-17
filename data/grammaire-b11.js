@@ -72,14 +72,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
     grammaire: [
       { exemples: [{"de":"Wir freuen uns auf die Ferien.","fr":"Nous nous réjouissons des vacances."},{"de":"Ich interessiere mich für Geschichte.","fr":"Je m'intéresse à l'histoire."}], regle: "Verbes à **préposition fixe**, à mémoriser par paires (*warten auf, denken an, sich interessieren für*) : la préposition fixe le **cas**.", attention: "Chose → reprise par *da(r)-* (*darauf*) et question par *wo(r)-* (*Worauf?*) ; personne → *préposition + wen/wem*.", titre: "Verbe + préposition + cas fixe", intro: "Beaucoup de verbes se construisent avec une préposition imposée, qui fixe le cas. À apprendre par cœur.",
         tableau: { entetes: ["Verbe", "Préposition + cas", "Exemple"], lignes: [["warten", "auf + Akk.", "Ich warte auf den Bus."], ["denken", "an + Akk.", "Ich denke an dich."], ["sich freuen", "auf + Akk. (futur)", "Ich freue mich auf den Urlaub."], ["sich freuen", "über + Akk. (présent)", "Ich freue mich über das Geschenk."], ["sprechen", "mit + Dat. / über + Akk.", "Ich spreche mit ihm über die Arbeit."], ["sich interessieren", "für + Akk.", "Ich interessiere mich für Musik."]] },
-        note: "« sich freuen auf » = se réjouir d'avance (futur) ; « sich freuen über » = être content de (présent/passé)." }
+        note: "« sich freuen auf » = se réjouir d'avance (futur) ; « sich freuen über » = être content de (présent/passé)." },
+      { titre: "Chose vs personne : da(r)- et wo(r)-",
+        regle: "Pour une **chose** : reprise par **da(r)-** + préposition (*dafür, daran, darauf*) et question par **wo(r)-** + préposition (*wofür, woran, worauf*). Pour une **personne** : préposition + pronom (*für ihn*, *an wen?*).",
+        intro: "On insère un **-r-** si la préposition commence par une voyelle : *da**r**auf*, *wo**r**an*.",
+        tableau: { entetes: ["Prép.", "Chose (reprise)", "Chose (question)", "Personne"], lignes: [["für", "dafür", "wofür?", "für ihn / für wen?"], ["an", "daran", "woran?", "an ihn / an wen?"], ["auf", "darauf", "worauf?", "auf ihn / auf wen?"], ["über", "darüber", "worüber?", "über ihn / über wen?"], ["mit", "damit", "womit?", "mit ihm / mit wem?"]] },
+        note: "Chose → **da-/wo-** (un seul mot). Personne → **préposition + pronom** séparé." },
+      { titre: "Verbes à préposition — la liste à connaître",
+        regle: "À apprendre par **paire** (verbe + préposition + cas). Voici les plus fréquents.",
+        intro: "Astuce : mémorise-les dans une courte phrase, jamais isolés.",
+        tableau: { entetes: ["Verbe", "Prép. + cas", "Sens"], lignes: [["sich interessieren", "für + Akk.", "s'intéresser à"], ["warten", "auf + Akk.", "attendre"], ["denken", "an + Akk.", "penser à"], ["sich erinnern", "an + Akk.", "se souvenir de"], ["Angst haben", "vor + Dat.", "avoir peur de"], ["bitten", "um + Akk.", "demander (qqch)"], ["teilnehmen", "an + Dat.", "participer à"], ["gehören", "zu + Dat.", "faire partie de"]] },
+        note: "Le cas est **imposé** par la préposition : für/um/auf/an → accusatif ; vor/zu → datif." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« warten » se construit avec…", options: ["auf + accusatif", "an + datif", "für + datif"], correct: 0, explication: "warten auf + accusatif." },
       { type: "qcm", consigne: "Choisissez la préposition.", question: "Ich interessiere mich ___ Politik.", options: ["für", "auf", "an", "über"], correct: 0, explication: "sich interessieren für + accusatif." },
       { type: "trou", consigne: "Complétez (an + accusatif).", texte: "Ich denke oft {0} meine Familie.", accepte: [["an"]], indice: "denken an + accusatif" },
       { type: "association", consigne: "Associez le verbe et sa préposition.", paires: [{ gauche: "warten", droite: "auf" }, { gauche: "denken", droite: "an" }, { gauche: "sich interessieren", droite: "für" }, { gauche: "sprechen", droite: "mit" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je me réjouis des vacances.", accepte: ["Ich freue mich auf den Urlaub", "Ich freue mich auf die Ferien"], aide: "sich freuen auf + accusatif" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je me réjouis des vacances.", accepte: ["Ich freue mich auf den Urlaub", "Ich freue mich auf die Ferien"], aide: "sich freuen auf + accusatif" },
+      { type: "qcm", consigne: "Reprise d'une chose.", question: "— Denkst du an die Prüfung? — Ja, ich denke oft ___.", options: ["daran", "an sie", "darauf", "an es"], correct: 0, explication: "Chose → daran (da + r + an)." },
+      { type: "qcm", consigne: "Question sur une chose.", question: "___ wartest du? — Auf den Bus.", options: ["Worauf", "Auf was", "Worüber", "Wofür"], correct: 0, explication: "warten auf + chose → Worauf ? (wo + r + auf)." },
+      { type: "trou", consigne: "Reprise (personne).", texte: "Ich denke oft an meinen Bruder. → Ich denke oft an {0}. (lui)", accepte: [["ihn"]], indice: "personne → préposition + pronom (an ihn)" }
     ]
   },
   b1g03: {
@@ -200,14 +213,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
       { exemples: [{"de":"Ich empfehle Ihnen dieses Buch.","fr":"Je vous recommande ce livre."},{"de":"Gib mir bitte das Salz.","fr":"Passe-moi le sel, s'il te plaît."}], regle: "Verbes à **datif (personne) + accusatif (chose)** : *geben, schenken, zeigen, empfehlen*. Datif avant accusatif (deux noms).", attention: "Si la **chose est un pronom**, elle passe **avant** : *Ich gebe **es** dem Kind*.", titre: "Datif (à qui) + accusatif (quoi)", intro: "Certains verbes prennent un datif (personne) ET un accusatif (chose). Ordre habituel : datif avant accusatif quand ce sont des noms.",
         tableau: { entetes: ["Verbe", "Construction", "Exemple"], lignes: [["geben", "jdm etwas", "Ich gebe dem Kind einen Apfel."], ["schenken", "jdm etwas", "Er schenkt ihr Blumen."], ["zeigen", "jdm etwas", "Ich zeige dir das Foto."], ["empfehlen", "jdm etwas", "Ich empfehle Ihnen das Buch."], ["erklären", "jdm etwas", "Er erklärt mir die Regel."]] },
         schemas: [{ legende: "Donner : à QUI (datif) + QUOI (accusatif).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "gebe", r: "verbe (2)", c: "verbe" }, { m: "dem Kind", r: "datif (à qui)", c: "objet" }, { m: "einen Apfel", r: "accusatif (quoi)", c: "fin" }] }],
-        note: "Si la chose est un pronom, il passe avant : « Ich gebe es dem Kind. » (accusatif pronom avant datif nom)." }
+        note: "Si la chose est un pronom, il passe avant : « Ich gebe es dem Kind. » (accusatif pronom avant datif nom)." },
+      { titre: "L'ordre datif / accusatif",
+        regle: "Deux **noms** : datif puis accusatif. Deux **pronoms** : **accusatif puis datif**. **Mixte** : le **pronom** passe toujours en premier.",
+        intro: "*Ich gebe dem Kind das Buch* → *Ich gebe **es ihm*** → *Ich gebe **es** dem Kind*.",
+        tableau: { entetes: ["Combinaison", "Ordre", "Exemple"], lignes: [["2 noms", "datif + accusatif", "Ich gebe dem Kind das Buch."], ["2 pronoms", "accusatif + datif", "Ich gebe es ihm."], ["pronom + nom", "pronom d'abord", "Ich gebe es dem Kind."]] },
+        note: "Règle simple : le **pronom** passe toujours devant ; entre deux pronoms, l'**accusatif** gagne." },
+      { titre: "Les verbes à datif seul",
+        regle: "Certains verbes ont un **seul** complément, au **datif** (là où le français attend un COD) : *helfen, danken, gefallen, gehören, antworten, folgen, gratulieren*.",
+        intro: "*Ich helfe **dir*** (je t'aide), *Das gehört **mir*** (ça m'appartient), *Das gefällt **ihm*** (ça lui plaît).",
+        tableau: { entetes: ["Verbe", "Sens", "Exemple"], lignes: [["helfen", "aider", "Ich helfe dem Mann."], ["danken", "remercier", "Ich danke dir."], ["gefallen", "plaire", "Das Bild gefällt mir."], ["gehören", "appartenir", "Das Auto gehört ihm."], ["gratulieren", "féliciter", "Wir gratulieren dir!"]] },
+        note: "Piège pour francophones : *helfen/danken* prennent le **datif**, pas l'accusatif (*ich helfe **dir***, non « dich »)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Avec « geben », l'ordre habituel (deux noms) est…", options: ["datif puis accusatif", "accusatif puis datif", "nominatif puis datif"], correct: 0, explication: "à qui (datif) avant quoi (accusatif)." },
       { type: "qcm", consigne: "Complétez (datif).", question: "Ich zeige ___ das Foto. (à toi)", options: ["dir", "dich", "du", "deiner"], correct: 0, explication: "zeigen + datif → dir." },
       { type: "trou", consigne: "Complétez (datif + accusatif).", texte: "Ich gebe {0} Kind {1} Apfel.", accepte: [["dem"], ["einen"]], indice: "à qui (datif) / quoi (accusatif)" },
       { type: "association", consigne: "Associez le verbe et sa construction.", paires: [{ gauche: "schenken", droite: "jdm etwas" }, { gauche: "empfehlen", droite: "jdm etwas" }, { gauche: "helfen", droite: "+ datif" }, { gauche: "sehen", droite: "+ accusatif" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je recommande le livre à mon amie.", accepte: ["Ich empfehle meiner Freundin das Buch"], aide: "empfehlen + datif (personne) + accusatif (chose)" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je recommande le livre à mon amie.", accepte: ["Ich empfehle meiner Freundin das Buch"], aide: "empfehlen + datif (personne) + accusatif (chose)" },
+      { type: "qcm", consigne: "Deux pronoms : quel ordre ?", question: "« Je le lui donne » = Ich gebe…", options: ["es ihm", "ihm es", "ihn ihm", "ihm ihn"], correct: 0, explication: "Deux pronoms → accusatif (es) avant datif (ihm)." },
+      { type: "trou", consigne: "Verbe à datif seul.", texte: "Kannst du {0} helfen? (à moi)", accepte: [["mir"]], indice: "helfen + datif → mir" },
+      { type: "qcm", consigne: "Datif ou accusatif ?", question: "Das Buch gehört ___. (à eux)", options: ["ihnen", "sie", "sich", "ihr"], correct: 0, explication: "gehören + datif → ihnen." }
     ]
   },
   b1g07: {
