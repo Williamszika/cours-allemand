@@ -155,14 +155,27 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     grammaire: [
       { exemples: [{"de":"Gestern habe ich Fußball gespielt.","fr":"Hier, j'ai joué au football."},{"de":"Es war kalt und ich hatte keine Jacke.","fr":"Il faisait froid et je n'avais pas de veste."}], regle: "**Perfekt** = oral, lettres, conversation. **Präteritum** = récit écrit, presse, contes. Même passé, **registre** différent.", attention: "*sein, haben* et les **modaux** vont au **Präteritum** même à l'oral (*Ich **war** müde*).", titre: "Quel passé utiliser ?", intro: "Même sens, contextes différents.",
         tableau: { entetes: ["Contexte", "Temps", "Exemple"], lignes: [["conversation", "Perfekt", "Ich habe gegessen."], ["récit écrit / presse", "Präteritum", "Er ging nach Hause."], ["sein / haben / modaux (oral)", "Präteritum", "Ich war / hatte / musste"]] },
-        note: "Règle pratique : à l'oral, Perfekt partout — sauf war, hatte, et les modaux (konnte, musste…)." }
+        note: "Règle pratique : à l'oral, Perfekt partout — sauf war, hatte, et les modaux (konnte, musste…)." },
+      { titre: "La même phrase : Perfekt vs Präteritum",
+        regle: "Le sens est **identique** ; seul le registre change.",
+        intro: "Oral → Perfekt · écrit → Präteritum.",
+        tableau: { entetes: ["Perfekt (oral)", "Präteritum (écrit)"], lignes: [["Ich habe gearbeitet.", "Ich arbeitete."], ["Er ist gekommen.", "Er kam."], ["Wir haben gegessen.", "Wir aßen."], ["Sie hat es gesehen.", "Sie sah es."]] },
+        note: "Choisis selon le canal : conversation/message → Perfekt ; récit écrit/presse → Präteritum." },
+      { titre: "L'exception : sein, haben, modaux",
+        regle: "Ces verbes restent au **prétérit même à l'oral** (leurs formes Perfekt sont lourdes).",
+        intro: "*Ich war / hatte / konnte / musste / wollte / durfte*.",
+        tableau: { entetes: ["Infinitif", "Prétérit (oral)", "Perfekt (évité)"], lignes: [["sein", "ich war", "(ich bin gewesen)"], ["haben", "ich hatte", "(ich habe gehabt)"], ["können", "ich konnte", "(gekonnt)"], ["müssen", "ich musste", "(gemusst)"], ["wollen", "ich wollte", "(gewollt)"]] },
+        note: "On dit « Ich war müde », pas « Ich bin müde gewesen » (correct mais lourd)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "À l'oral, pour « être » au passé on dit…", options: ["war (Präteritum)", "habe gewesen", "bin gewesen"], correct: 0, explication: "sein → war (même à l'oral)." },
       { type: "qcm", consigne: "Conversation.", question: "Was ___ du gestern gemacht?", options: ["hast", "machtest", "tatest", "warst"], correct: 0, explication: "conversation → Perfekt : hast … gemacht." },
       { type: "trou", consigne: "Complétez (war/hatte).", texte: "Gestern {0} ich krank und {1} Fieber.", accepte: [["war"], ["hatte"]], indice: "sein / haben au prétérit" },
       { type: "association", consigne: "Associez contexte → temps.", paires: [{ gauche: "conversation", droite: "Perfekt" }, { gauche: "récit écrit", droite: "Präteritum" }, { gauche: "sein/haben", droite: "Präteritum" }] },
-      { type: "traduction", consigne: "Traduisez (oral).", source: "J'ai mangé une pizza.", accepte: ["Ich habe eine Pizza gegessen"], aide: "Perfekt" }
+      { type: "traduction", consigne: "Traduisez (oral).", source: "J'ai mangé une pizza.", accepte: ["Ich habe eine Pizza gegessen"], aide: "Perfekt" },
+      { type: "qcm", consigne: "Registre.", question: "Dans un conte écrit, on emploie…", options: ["le Präteritum", "le Perfekt", "le présent"], correct: 0, explication: "récit écrit → Präteritum (Es war einmal…)." },
+      { type: "trou", consigne: "Modal (oral).", texte: "Ich {0} gestern nicht kommen. (können)", accepte: [["konnte"]], indice: "modal → prétérit même à l'oral : konnte" },
+      { type: "qcm", consigne: "Conversation.", question: "« Es-tu allé au cinéma ? » (oral) =", options: ["Bist du ins Kino gegangen?", "Gingst du ins Kino?", "Warst du ins Kino gehen?"], correct: 0, explication: "oral + gehen (mouvement) → Perfekt avec sein." }
     ]
   },
   a2g15: {

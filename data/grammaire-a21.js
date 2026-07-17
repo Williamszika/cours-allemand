@@ -22,14 +22,27 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     grammaire: [
       { regle: "Le **prétérit** est le temps du **récit écrit**. Réguliers : radical + **-te** (*machen → machte*). Irréguliers : changement de voyelle (*gehen → ging*).", attention: "À l'oral on préfère le **Perfekt** ; mais **sein, haben** et les **modaux** se disent au prétérit même à l'oral (*war, hatte, musste*).", exemples: [{"de":"Gestern machte er seine Hausaufgaben.","fr":"Hier, il a fait ses devoirs."},{"de":"Sie ging früh nach Hause.","fr":"Elle est rentrée tôt à la maison."}], titre: "Le prétérit (temps du récit écrit)", intro: "Réguliers : radical + -te. Irréguliers : radical modifié.",
         tableau: { entetes: ["Infinitif", "Type", "er/sie/es"], lignes: [["machen", "régulier", "machte"], ["arbeiten", "régulier", "arbeitete"], ["gehen", "irrégulier", "ging"], ["kommen", "irrégulier", "kam"], ["müssen", "modal", "musste"], ["können", "modal", "konnte"]] },
-        note: "À l'oral on préfère le Perfekt ; le Präteritum domine à l'écrit (récits, presse) et pour sein/haben/modaux." }
+        note: "À l'oral on préfère le Perfekt ; le Präteritum domine à l'écrit (récits, presse) et pour sein/haben/modaux." },
+      { titre: "sein, haben et les modaux au prétérit",
+        regle: "À connaître par cœur — ce sont les seuls qu'on emploie au **prétérit même à l'oral**.",
+        intro: "Terminaisons : *–, -st, –, -en, -t, -en* — à *ich* et *er/sie/es*, pas de terminaison.",
+        tableau: { entetes: ["Pronom", "sein", "haben", "können"], lignes: [["ich", "war", "hatte", "konnte"], ["du", "warst", "hattest", "konntest"], ["er/sie/es", "war", "hatte", "konnte"], ["wir", "waren", "hatten", "konnten"], ["ihr", "wart", "hattet", "konntet"], ["sie/Sie", "waren", "hatten", "konnten"]] },
+        note: "Les modaux perdent l'Umlaut au prétérit : müssen → musste, können → konnte." },
+      { titre: "Les verbes forts fréquents",
+        regle: "Les verbes forts **changent de voyelle** au prétérit (sans -te). À apprendre par cœur — ce sont eux qui font les récits.",
+        intro: "*gehen → ging*, *kommen → kam*, *sehen → sah*.",
+        tableau: { entetes: ["Infinitif", "Prétérit (er)", "Sens"], lignes: [["gehen", "ging", "aller"], ["kommen", "kam", "venir"], ["sehen", "sah", "voir"], ["essen", "aß", "manger"], ["nehmen", "nahm", "prendre"], ["sprechen", "sprach", "parler"], ["finden", "fand", "trouver"], ["geben", "gab", "donner"]] },
+        note: "À *ich* et *er/sie/es* : forme identique et sans terminaison (ich ging = er ging)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Le prétérit régulier se forme avec…", options: ["radical + -te", "ge- + -t", "radical + -st"], correct: 0, explication: "machen → machte." },
       { type: "qcm", consigne: "Prétérit de « können ».", question: "Ich ___ nicht kommen.", options: ["konnte", "kann", "könnte", "gekonnt"], correct: 0, explication: "können → konnte." },
       { type: "trou", consigne: "Complétez (prétérit de machen).", texte: "Gestern {0} er seine Hausaufgaben.", accepte: [["machte"]], indice: "régulier : mach + te" },
       { type: "association", consigne: "Associez infinitif → prétérit.", paires: [{ gauche: "gehen", droite: "ging" }, { gauche: "kommen", droite: "kam" }, { gauche: "sein", droite: "war" }, { gauche: "haben", droite: "hatte" }] },
-      { type: "ordre", consigne: "Phrase au prétérit.", mots: ["Er", "ging", "nach", "Hause"], correct: "Er ging nach Hause", traduction: "Il rentra à la maison." }
+      { type: "ordre", consigne: "Phrase au prétérit.", mots: ["Er", "ging", "nach", "Hause"], correct: "Er ging nach Hause", traduction: "Il rentra à la maison." },
+      { type: "qcm", consigne: "Prétérit de sein (wir).", question: "Wir ___ gestern im Kino.", options: ["waren", "warst", "war", "wart"], correct: 0, explication: "sein prétérit wir → waren." },
+      { type: "trou", consigne: "Prétérit fort.", texte: "Er {0} mir ein Buch. (geben)", accepte: [["gab"]], indice: "geben → gab (fort)" },
+      { type: "qcm", consigne: "Modal au prétérit.", question: "Prétérit de « müssen » (ich) :", options: ["musste", "müsste", "muss", "gemusst"], correct: 0, explication: "müssen → musste (sans Umlaut)." }
     ]
   },
   a2g02: {
@@ -51,14 +64,27 @@ window.GRAMMAIRE_A2 = Object.assign(window.GRAMMAIRE_A2 || {}, {
     grammaire: [
       { regle: "**Perfekt** = **haben/sein** (2ᵉ position) + **participe II** à la fin. Mouvement/changement d'état → **sein** ; sinon → **haben**.", attention: "Verbes en **-ieren** : **pas** de *ge-* (*studieren → studiert*). Séparables : *ge-* au milieu (*eingekauft*).", exemples: [{"de":"Ich habe einen Film gesehen.","fr":"J'ai vu un film."},{"de":"Wir sind nach Hause gefahren.","fr":"Nous sommes rentrés à la maison."}], titre: "Auxiliaire + participe (à la fin)", intro: "Mouvement / changement d'état → sein. Sinon → haben.",
         tableau: { entetes: ["Infinitif", "Auxiliaire", "Participe II"], lignes: [["machen", "haben", "gemacht"], ["sehen", "haben", "gesehen"], ["gehen", "sein", "gegangen"], ["fahren", "sein", "gefahren"], ["bleiben", "sein", "geblieben"], ["aufstehen", "sein", "aufgestanden"]] },
-        note: "Verbes en -ieren : pas de ge- (studieren → studiert). Séparables : ge- au milieu (eingekauft)." }
+        note: "Verbes en -ieren : pas de ge- (studieren → studiert). Séparables : ge- au milieu (eingekauft)." },
+      { titre: "Former le participe II (les 5 cas)",
+        regle: "Le participe suit **5 schémas** selon le type de verbe.",
+        intro: "*machen → gemacht* · *sehen → gesehen* · *studieren → studiert* · *verstehen → verstanden* · *einkaufen → eingekauft*.",
+        tableau: { entetes: ["Type", "Schéma", "Exemple"], lignes: [["faible", "ge- + radical + -t", "machen → gemacht"], ["fort", "ge- + radical + -en", "sehen → gesehen"], ["-ieren", "PAS de ge-", "studieren → studiert"], ["inséparable (be-/ver-)", "PAS de ge-", "verstehen → verstanden"], ["séparable", "ge- au milieu", "einkaufen → eingekauft"]] },
+        note: "Les verbes forts changent souvent de voyelle (trinken → getrunken, sprechen → gesprochen)." },
+      { titre: "Participes forts fréquents",
+        regle: "Les verbes forts sont à mémoriser un par un — voici les plus courants (souvent avec changement de voyelle).",
+        intro: "Apprends l'infinitif + l'auxiliaire + le participe ensemble.",
+        tableau: { entetes: ["Infinitif", "Aux.", "Participe II"], lignes: [["trinken", "haben", "getrunken"], ["sprechen", "haben", "gesprochen"], ["schreiben", "haben", "geschrieben"], ["nehmen", "haben", "genommen"], ["essen", "haben", "gegessen"], ["kommen", "sein", "gekommen"], ["fliegen", "sein", "geflogen"], ["werden", "sein", "geworden"]] },
+        note: "Mouvement / changement d'état → sein (gekommen, geflogen, geworden)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez l'auxiliaire.", question: "Ich ___ ins Kino gegangen.", options: ["bin", "habe", "war", "hatte"], correct: 0, explication: "gehen (mouvement) → sein." },
       { type: "qcm", consigne: "Participe de « sehen ».", question: "Ich habe einen Film ___.", options: ["gesehen", "geseht", "gesieht", "sah"], correct: 0, explication: "sehen → gesehen (irrégulier)." },
       { type: "trou", consigne: "Complétez (auxiliaire).", texte: "Wir {0} Pizza gegessen und dann {1} wir nach Hause gefahren.", accepte: [["haben"], ["sind"]], indice: "essen → haben ; fahren → sein" },
       { type: "association", consigne: "Associez → participe.", paires: [{ gauche: "fahren", droite: "gefahren" }, { gauche: "bleiben", droite: "geblieben" }, { gauche: "studieren", droite: "studiert" }, { gauche: "einkaufen", droite: "eingekauft" }] },
-      { type: "ordre", consigne: "Phrase au Perfekt.", mots: ["Ich", "habe", "einen", "Film", "gesehen"], correct: "Ich habe einen Film gesehen", traduction: "J'ai vu un film." }
+      { type: "ordre", consigne: "Phrase au Perfekt.", mots: ["Ich", "habe", "einen", "Film", "gesehen"], correct: "Ich habe einen Film gesehen", traduction: "J'ai vu un film." },
+      { type: "qcm", consigne: "Verbe en -ieren.", question: "Participe de « telefonieren » :", options: ["telefoniert", "getelefoniert", "telefonierte", "telefonieren"], correct: 0, explication: "-ieren : pas de ge- → telefoniert." },
+      { type: "trou", consigne: "Séparable (ge- au milieu).", texte: "Ich bin um sieben auf{0}. (aufstehen)", accepte: [["gestanden"]], indice: "aufstehen → aufgestanden" },
+      { type: "qcm", consigne: "Participe fort.", question: "Participe de « trinken » :", options: ["getrunken", "getrinkt", "getrank", "trinkte"], correct: 0, explication: "trinken → getrunken (fort)." }
     ]
   },
   a2g03: {
