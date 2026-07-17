@@ -66,14 +66,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     grammaire: [
       { exemples: [{"de":"Eine Reihe von Gästen fehlt noch.","fr":"Un certain nombre d'invités manquent encore."},{"de":"Anna und Tom kommen später.","fr":"Anna et Tom viennent plus tard."}], regle: "Le verbe s'accorde avec le **noyau** du sujet : *A und B* → pluriel ; *eine Reihe von …* → singulier (noyau *Reihe*).", attention: "*es gibt* est **toujours** au singulier (*es gibt viele Möglichkeiten*).", titre: "Le verbe s'accorde avec le vrai sujet", intro: "On repère le noyau du sujet pour choisir le singulier ou le pluriel.",
         tableau: { entetes: ["Sujet", "Accord", "Exemple"], lignes: [["nom singulier", "singulier", "Die Gruppe arbeitet gut."], ["eine Reihe von + pluriel", "singulier (noyau Reihe)", "Eine Reihe von Studenten fehlt."], ["A und B", "pluriel", "Anna und Tom kommen."], ["sowohl … als auch", "pluriel", "Sowohl er als auch sie sind da."], ["weder … noch", "souvent pluriel", "Weder er noch sie waren da."]] },
-        note: "« es gibt » est toujours suivi… du verbe au singulier (es gibt viele Möglichkeiten). Le noyau « eine Reihe / eine Gruppe » impose le singulier." }
+        note: "« es gibt » est toujours suivi… du verbe au singulier (es gibt viele Möglichkeiten). Le noyau « eine Reihe / eine Gruppe » impose le singulier." },
+      { titre: "Quantités, fractions et pourcentages",
+        regle: "Les expressions de **quantité** (eine Million, ein Drittel, die Hälfte) prennent en général le **singulier** ; avec *… Prozent von + pluriel*, l'accord suit souvent le **nom mesuré**.",
+        intro: "*Eine Million Menschen **lebt** hier* (singulier) · *30 Prozent der Wähler **sind** dafür* (pluriel).",
+        tableau: { entetes: ["Sujet", "Accord usuel", "Exemple"], lignes: [["eine Million / Milliarde", "singulier", "Eine Million lebt hier."], ["ein Drittel / die Hälfte", "singulier", "Ein Drittel fehlt."], ["… Prozent + pluriel", "pluriel (nom mesuré)", "30 Prozent sind dagegen."], ["ein Kilo / ein Liter + nom", "selon le nom", "Ein Kilo Äpfel reicht."]] },
+        note: "Fractions et « eine Million » → singulier ; « … Prozent von + pluriel » → souvent pluriel." },
+      { titre: "Le « es » impersonnel et explétif",
+        regle: "**es gibt** + accusatif est **toujours singulier**. Mais le **es explétif** en tête n'est qu'un « remplisseur » : le verbe s'accorde avec le **vrai sujet** qui suit.",
+        intro: "*Es **gibt** viele Fehler* (es gibt, singulier) vs *Es **kommen** viele Gäste* (vrai sujet = viele Gäste, pluriel).",
+        tableau: { entetes: ["Structure", "Accord", "Exemple"], lignes: [["es gibt + Akk.", "toujours singulier", "Es gibt viele Probleme."], ["es + verbe + vrai sujet", "selon le vrai sujet", "Es kommen drei Gäste."], ["es explétif tombe si inversion", "—", "Drei Gäste kommen."]] },
+        note: "*es gibt* ne change jamais. Le *es* explétif disparaît si un autre élément passe en tête." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« Anna und Tom ___ » prend…", options: ["le pluriel (kommen)", "le singulier (kommt)", "peu importe"], correct: 0, explication: "deux sujets coordonnés → pluriel." },
       { type: "qcm", consigne: "Choisissez.", question: "Eine Reihe von Studenten ___ heute.", options: ["fehlt", "fehlen", "fehlst", "fehle"], correct: 0, explication: "noyau « eine Reihe » → singulier." },
       { type: "trou", consigne: "Complétez (accord).", texte: "Sowohl er als auch seine Kollegen {0} eingeladen. (sein)", accepte: [["sind"]], indice: "sowohl … als auch → pluriel : sind" },
       { type: "association", consigne: "Associez le sujet et l'accord.", paires: [{ gauche: "die Gruppe", droite: "singulier" }, { gauche: "Anna und Tom", droite: "pluriel" }, { gauche: "eine Reihe von …", droite: "singulier" }, { gauche: "es gibt", droite: "singulier" }] },
-      { type: "qcm", consigne: "Choisissez.", question: "Es ___ viele Möglichkeiten.", options: ["gibt", "geben", "gibst", "gäbe"], correct: 0, explication: "es gibt = toujours singulier." }
+      { type: "qcm", consigne: "Choisissez.", question: "Es ___ viele Möglichkeiten.", options: ["gibt", "geben", "gibst", "gäbe"], correct: 0, explication: "es gibt = toujours singulier." },
+      { type: "qcm", consigne: "Quantité.", question: "Eine Million Menschen ___ in dieser Stadt.", options: ["lebt", "leben", "lebst", "gelebt"], correct: 0, explication: "eine Million → singulier : lebt." },
+      { type: "qcm", consigne: "es explétif.", question: "Es ___ viele Gäste. (vrai sujet pluriel)", options: ["kommen", "kommt", "gibt", "ist"], correct: 0, explication: "es explétif : le verbe s'accorde avec « viele Gäste » → kommen." },
+      { type: "trou", consigne: "Fraction (accord).", texte: "Ein Drittel der Mitglieder {0} abwesend. (sein)", accepte: [["ist"]], indice: "ein Drittel → singulier : ist" }
     ]
   },
   b2g11: {
@@ -176,14 +189,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
       { exemples: [{"de":"Wenn ich doch nur mehr Zeit hätte!","fr":"Si seulement j'avais plus de temps !"},{"de":"Sie sieht aus, als ob sie müde wäre.","fr":"Elle a l'air fatiguée."}], regle: "Emplois : **souhait irréel** (*Wenn … doch nur*), **comparaison irréelle** (*als ob* + KII fin), **politesse**, **conseil**.", attention: "Après **als ob**, le verbe va à la **fin** ; après **als** seul, il vient **juste après** (*als wüsste er*).", titre: "Souhaits et comparaisons irréels", intro: "Le Konjunktiv II sert au souhait irréel (wenn … doch nur) et à la comparaison irréelle (als ob).",
         tableau: { entetes: ["Emploi", "Structure", "Exemple"], lignes: [["souhait irréel", "Wenn … doch nur + KII", "Wenn ich doch nur mehr Zeit hätte!"], ["comparaison", "als ob + KII (fin)", "Er tut, als ob er alles wüsste."], ["comparaison", "als + KII (verbe 2e)", "Er tut, als wüsste er alles."], ["politesse/conseil", "würde / sollte", "Du solltest dich ausruhen."]] },
         schemas: [{ legende: "als ob : verbe au Konjunktiv II à la FIN.", mots: [{ m: "Er tut so,", r: "principale", c: "objet" }, { m: "als ob", r: "comparaison irréelle", c: "conj" }, { m: "er alles", r: "sujet + complément", c: "sujet" }, { m: "wüsste", r: "Konjunktiv II (fin)", c: "fin" }] }],
-        note: "Après « als ob », le verbe va à la fin ; après « als » seul, le verbe vient juste après (« als wüsste er »)." }
+        note: "Après « als ob », le verbe va à la fin ; après « als » seul, le verbe vient juste après (« als wüsste er »)." },
+      { titre: "würde ou forme simple ?",
+        regle: "*würde + infinitif* est passe-partout. Mais des **verbes fréquents** ont une **forme simple** élégante (surtout à l'écrit) : *käme, ginge, gäbe, wüsste, ließe, bräuchte*.",
+        intro: "*Ich **käme** gern* = *Ich würde gern kommen*. À l'écrit soutenu, la forme simple est plus fine.",
+        tableau: { entetes: ["Infinitif", "Konjunktiv II simple", "= würde"], lignes: [["kommen", "käme", "würde kommen"], ["gehen", "ginge", "würde gehen"], ["geben", "gäbe", "würde geben"], ["wissen", "wüsste", "würde wissen"], ["lassen", "ließe", "würde lassen"], ["brauchen", "bräuchte", "würde brauchen"]] },
+        note: "Toujours la forme simple pour *sein/haben/modaux* (wäre, hätte, könnte). Pour les autres, *würde* reste correct." },
+      { titre: "Le souhait irréel (wenn … doch nur)",
+        regle: "Le souhait irréel s'exprime avec **wenn … doch (nur/bloß)** + KII, ou **sans wenn** (verbe en tête). Présent → KII présent ; regret du passé → KII passé.",
+        intro: "*Wenn ich **doch nur** Zeit **hätte**!* (présent) · *Hätte ich **doch** mehr **gelernt**!* (regret passé).",
+        tableau: { entetes: ["Type", "Structure", "Exemple"], lignes: [["présent (avec wenn)", "Wenn … doch nur + KII", "Wenn ich doch nur reich wäre!"], ["présent (sans wenn)", "verbe + doch nur …", "Wäre ich doch nur reich!"], ["passé (regret)", "Wenn … doch + hätte/wäre + part.", "Wenn ich doch mehr gelernt hätte!"]] },
+        note: "*doch, nur, bloß* renforcent le souhait. Sans *wenn*, le verbe passe en tête (Hätte ich …!)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Après « als ob », le verbe (Konjunktiv II) se place…", options: ["à la fin", "en 2e position", "au début"], correct: 0, explication: "als ob → subordination → verbe à la fin." },
       { type: "qcm", consigne: "Choisissez (souhait irréel).", question: "Wenn ich doch nur mehr Geld ___!", options: ["hätte", "habe", "hatte", "haben"], correct: 0, explication: "souhait irréel → Konjunktiv II : hätte." },
       { type: "trou", consigne: "Complétez (als ob, verbe à la fin).", texte: "Er tut, als ob er krank {0}. (sein)", accepte: [["wäre"]], indice: "als ob + Konjunktiv II → wäre" },
       { type: "association", consigne: "Associez l'emploi et la structure.", paires: [{ gauche: "souhait irréel", droite: "wenn … doch nur" }, { gauche: "comparaison", droite: "als ob" }, { gauche: "conseil", droite: "du solltest" }, { gauche: "politesse", droite: "würde" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Si seulement j'avais plus de temps !", accepte: ["Wenn ich doch nur mehr Zeit hätte", "Hätte ich doch nur mehr Zeit"], aide: "souhait irréel : wenn … doch nur + Konjunktiv II" }
+      { type: "traduction", consigne: "Traduisez.", source: "Si seulement j'avais plus de temps !", accepte: ["Wenn ich doch nur mehr Zeit hätte", "Hätte ich doch nur mehr Zeit"], aide: "souhait irréel : wenn … doch nur + Konjunktiv II" },
+      { type: "qcm", consigne: "Forme simple.", question: "Konjunktiv II simple de « kommen » (ich) :", options: ["käme", "kommte", "kämte", "gekommen"], correct: 0, explication: "kommen → käme (forme simple)." },
+      { type: "trou", consigne: "Souhait irréel (passé, regret).", texte: "Hätte ich doch mehr {0}! (lernen)", accepte: [["gelernt"]], indice: "regret passé → hätte + participe" },
+      { type: "qcm", consigne: "würde ou forme simple ?", question: "Pour « haben », on dit plutôt…", options: ["ich hätte", "ich würde haben", "ich habe"], correct: 0, explication: "haben → forme simple hätte (jamais würde haben)." }
     ]
   },
   b2g14: {
@@ -273,14 +299,27 @@ window.GRAMMAIRE_B2 = Object.assign(window.GRAMMAIRE_B2 || {}, {
     grammaire: [
       { regle: "Locutions **nom + verbe support** (style formel) : *in Frage **stellen***, *zur Verfügung **stehen***, *Bezug **nehmen** auf*.", attention: "À l'**oral**, on préfère le verbe simple (*in Frage stellen* → *bezweifeln*).", exemples: [{"de":"Wir treffen eine Entscheidung.","fr":"Nous prenons une décision."},{"de":"Das Material steht zur Verfügung.","fr":"Le matériel est à disposition."}], titre: "Les Funktionsverbgefüge (style soutenu)", intro: "Ces locutions associent un nom et un verbe « support ». Elles donnent un style formel et ont souvent un équivalent verbal simple.",
         tableau: { entetes: ["Locution", "Sens", "Équivalent simple"], lignes: [["eine Entscheidung treffen", "prendre une décision", "(sich) entscheiden"], ["in Frage stellen", "remettre en question", "bezweifeln"], ["zur Verfügung stehen", "être à disposition", "verfügbar sein"], ["Bezug nehmen auf", "se référer à", "sich beziehen auf"], ["in Kraft treten", "entrer en vigueur", "gelten"]] },
-        note: "À l'écrit formel, ces tournures sont fréquentes ; à l'oral, on préfère souvent le verbe simple." }
+        note: "À l'écrit formel, ces tournures sont fréquentes ; à l'oral, on préfère souvent le verbe simple." },
+      { titre: "Classées par verbe support",
+        regle: "Les *Funktionsverbgefüge* se regroupent par **verbe support** (le verbe qui « porte » la locution). En connaître les familles aide à les reconnaître.",
+        intro: "*treffen* : eine Entscheidung/Wahl treffen. *stellen* : in Frage / zur Verfügung stellen.",
+        tableau: { entetes: ["Verbe support", "Locutions", "Sens"], lignes: [["treffen", "eine Entscheidung / Wahl treffen", "décider / choisir"], ["stellen", "in Frage / zur Verfügung stellen", "mettre en question / à disposition"], ["nehmen", "Bezug / Rücksicht / Abschied nehmen", "se référer / égards / partir"], ["üben", "Kritik / Druck üben", "critiquer / faire pression"], ["treten", "in Kraft / in Kontakt treten", "entrer en vigueur / en contact"]] },
+        note: "Le **nom** porte le sens ; le verbe support est fixe et se mémorise avec lui." },
+      { titre: "Style nominal ↔ style verbal",
+        regle: "Le style **nominal** (Funktionsverbgefüge, nominalisation) est typique de l'écrit administratif ; le style **verbal** (verbe simple) est plus direct.",
+        intro: "*Nach **Prüfung** des Antrags…* (nominal) = *Nachdem wir den Antrag **geprüft** haben…* (verbal).",
+        tableau: { entetes: ["Nominal (soutenu)", "Verbal (direct)"], lignes: [["eine Entscheidung treffen", "(sich) entscheiden"], ["Kritik üben an", "kritisieren"], ["zur Anwendung kommen", "angewendet werden"], ["in Erfüllung gehen", "sich erfüllen"]] },
+        note: "L'écrit administratif préfère le nominal ; à l'oral, on revient au verbe simple." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez le verbe support.", question: "eine Entscheidung ___", options: ["treffen", "machen", "geben", "nehmen"], correct: 0, explication: "eine Entscheidung treffen." },
       { type: "qcm", consigne: "Choisissez l'équivalent.", question: "« in Frage stellen » signifie…", options: ["bezweifeln", "fragen", "antworten", "verfügen"], correct: 0, explication: "remettre en question = bezweifeln." },
       { type: "trou", consigne: "Complétez (locution).", texte: "Das Material steht Ihnen zur {0}.", accepte: [["Verfügung"]], indice: "zur Verfügung stehen" },
       { type: "association", consigne: "Associez la locution et son sens.", paires: [{ gauche: "in Frage stellen", droite: "remettre en question" }, { gauche: "zur Verfügung stehen", droite: "être à disposition" }, { gauche: "Bezug nehmen auf", droite: "se référer à" }, { gauche: "in Kraft treten", droite: "entrer en vigueur" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Nous prenons une décision.", accepte: ["Wir treffen eine Entscheidung"], aide: "eine Entscheidung treffen" }
+      { type: "traduction", consigne: "Traduisez.", source: "Nous prenons une décision.", accepte: ["Wir treffen eine Entscheidung"], aide: "eine Entscheidung treffen" },
+      { type: "qcm", consigne: "Verbe support.", question: "Kritik ___ (critiquer)", options: ["üben", "machen", "geben", "nehmen"], correct: 0, explication: "Kritik üben (an + datif) = critiquer." },
+      { type: "trou", consigne: "Locution avec « treten ».", texte: "Das neue Gesetz tritt morgen in {0}.", accepte: [["Kraft"]], indice: "in Kraft treten = entrer en vigueur" },
+      { type: "qcm", consigne: "Équivalent verbal.", question: "« Kritik üben » = ", options: ["kritisieren", "loben", "fragen", "danken"], correct: 0, explication: "Kritik üben = kritisieren." }
     ]
   },
   b2g17: {
