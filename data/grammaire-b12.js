@@ -52,14 +52,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
       { exemples: [{"de":"Ich spare Geld, um zu reisen.","fr":"J'économise de l'argent pour voyager."},{"de":"Ich schreibe es auf, damit ich es nicht vergesse.","fr":"Je le note pour ne pas l'oublier."}], regle: "Exprimer le **but** : **um … zu** + infinitif (même sujet) ou **damit** + subordonnée (sujet différent, verbe à la fin).", attention: "Test : même sujet → *um … zu* ; nouveau sujet → *damit*.", titre: "Exprimer le but", intro: "« um … zu + infinitif » si le sujet est le même. « damit » si le sujet change (verbe à la fin).",
         tableau: { entetes: ["Structure", "Condition", "Exemple"], lignes: [["um … zu + Inf.", "même sujet", "Ich spare, um zu reisen."], ["damit", "sujet différent", "Ich spare, damit meine Kinder studieren können."]] },
         schemas: [{ legende: "damit : verbe conjugué à la FIN.", mots: [{ m: "Ich erkläre es,", r: "principale", c: "objet" }, { m: "damit", r: "but", c: "conj" }, { m: "du es", r: "sujet + objet", c: "sujet" }, { m: "verstehst", r: "verbe (fin)", c: "fin" }] }],
-        note: "Test : si on peut garder le même sujet → um … zu ; s'il faut un nouveau sujet → damit." }
+        note: "Test : si on peut garder le même sujet → um … zu ; s'il faut un nouveau sujet → damit." },
+      { titre: "um…zu, damit et les autres « …zu »",
+        regle: "But : **um…zu** (même sujet) / **damit** (sujet différent). Deux cousins utiles : **ohne…zu** (sans) et **(an)statt…zu** (au lieu de) — même sujet, *zu + infinitif* à la fin.",
+        intro: "*Er ging, **ohne** zu **grüßen*** (sans saluer). *Er spielt, **statt** zu **lernen*** (au lieu d'étudier).",
+        tableau: { entetes: ["Structure", "Sens", "Exemple"], lignes: [["um … zu", "but (pour)", "Ich lerne, um zu bestehen."], ["damit", "but (sujet ≠)", "Ich helfe, damit du es schaffst."], ["ohne … zu", "sans", "Er ging, ohne zu zahlen."], ["(an)statt … zu", "au lieu de", "Er schläft, statt zu arbeiten."]] },
+        note: "*um / ohne / (an)statt … zu* : même sujet, *zu+infinitif* à la fin. *damit* : sujet différent, verbe conjugué à la fin." },
+      { titre: "But avec un nom : für + accusatif",
+        regle: "Devant un **nom**, le but se dit **für + accusatif** (*für die Gesundheit*). Devant un **verbe**, on utilise *um…zu* / *damit*.",
+        intro: "*Ich mache Sport **für** meine Gesundheit* (nom) vs *…, **um** fit **zu** bleiben* (verbe).",
+        tableau: { entetes: ["Complément", "Structure", "Exemple"], lignes: [["un nom", "für + Akk.", "Geld für die Reise"], ["un verbe (même sujet)", "um … zu", "sparen, um zu reisen"], ["un verbe (sujet ≠)", "damit", "…, damit du reisen kannst"]] },
+        note: "*für* = but avec un **nom** ; *um…zu / damit* = but avec un **verbe**." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« um … zu » s'emploie quand…", options: ["le sujet est le même", "le sujet change", "il y a deux verbes conjugués"], correct: 0, explication: "Même sujet → um … zu." },
       { type: "qcm", consigne: "um…zu ou damit ?", question: "Ich spreche langsam, ___ alle mich verstehen.", options: ["damit", "um zu", "weil", "um"], correct: 0, explication: "sujet différent (alle) → damit." },
       { type: "trou", consigne: "Complétez (um … zu).", texte: "Ich lerne Deutsch, {0} in Berlin zu arbeiten.", accepte: [["um"]], indice: "but, même sujet : um … zu" },
       { type: "association", consigne: "Associez.", paires: [{ gauche: "um … zu", droite: "même sujet" }, { gauche: "damit", droite: "sujet différent" }, { gauche: "weil", droite: "cause" }, { gauche: "obwohl", droite: "concession" }] },
-      { type: "ordre", consigne: "Construisez la finale.", mots: ["um", "Geld", "zu", "sparen"], correct: "um Geld zu sparen", traduction: "pour économiser de l'argent" }
+      { type: "ordre", consigne: "Construisez la finale.", mots: ["um", "Geld", "zu", "sparen"], correct: "um Geld zu sparen", traduction: "pour économiser de l'argent" },
+      { type: "qcm", consigne: "ohne … zu.", question: "Er ging weg, ___ sich zu verabschieden.", options: ["ohne", "um", "damit", "statt"], correct: 0, explication: "sans dire au revoir → ohne … zu." },
+      { type: "trou", consigne: "But avec un nom.", texte: "Ich spare Geld {0} eine Reise.", accepte: [["für"]], indice: "devant un nom → für + accusatif" },
+      { type: "qcm", consigne: "au lieu de.", question: "Er spielt den ganzen Tag, ___ zu lernen.", options: ["statt", "um", "ohne", "für"], correct: 0, explication: "au lieu d'étudier → (an)statt … zu." }
     ]
   },
   b1g17: {
@@ -137,14 +150,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
       { exemples: [{"de":"Während ich koche, deckst du den Tisch.","fr":"Pendant que je cuisine, tu mets la table."},{"de":"Sobald er kommt, fangen wir an.","fr":"Dès qu'il arrive, nous commençons."}], regle: "**Simultanéité** : *während, solange*. **Succession** : *bevor* (avant), *nachdem* (après), *sobald* (dès que). Verbe à la fin.", attention: "Avec **nachdem**, pense à la concordance des temps (plus-que-parfait → prétérit).", titre: "Simultané ou successif ?", intro: "Simultanéité : während, solange. Non-simultanéité : bevor (avant), nachdem (après), sobald (dès que). Verbe à la fin.",
         tableau: { entetes: ["Conjonction", "Relation", "Exemple"], lignes: [["während", "simultané", "Während ich koche, deckst du den Tisch."], ["solange", "simultané (durée)", "Solange es regnet, bleiben wir drin."], ["bevor", "avant", "Bevor ich gehe, esse ich."], ["nachdem", "après (antériorité)", "Nachdem ich gegessen hatte, ging ich."], ["sobald", "dès que", "Sobald er kommt, fangen wir an."]] },
         schemas: [{ legende: "während : verbe à la FIN dans la subordonnée.", mots: [{ m: "Während ich", r: "subordonnée (während)", c: "conj" }, { m: "Musik", r: "complément", c: "sujet" }, { m: "höre,", r: "verbe (fin)", c: "fin" }, { m: "koche ich", r: "principale (verbe 1)", c: "verbe" }] }],
-        note: "Avec « nachdem », pensez à la concordance des temps : subordonnée plus-que-parfait → principale prétérit." }
+        note: "Avec « nachdem », pensez à la concordance des temps : subordonnée plus-que-parfait → principale prétérit." },
+      { titre: "Les trois « quand » : als / wenn / wann",
+        regle: "**als** = fait **unique** au passé. **wenn** = présent/futur ou **répétition** (immer wenn). **wann** = **question** (« à quel moment ? »), même indirecte.",
+        intro: "*Als ich klein war* (une fois) · *Wenn es regnet* (chaque fois) · *Ich weiß nicht, wann…* (question).",
+        tableau: { entetes: ["Mot", "Emploi", "Exemple"], lignes: [["als", "fait unique passé", "Als ich ankam, regnete es."], ["wenn", "présent / futur", "Wenn ich Zeit habe, lese ich."], ["wenn", "répétition (immer)", "Immer wenn er kommt, lacht sie."], ["wann", "question (indirecte)", "Ich weiß nicht, wann er kommt."]] },
+        note: "Piège : passé unique → **als** (jamais wenn). Question → **wann** (jamais wenn/ob)." },
+      { titre: "nachdem / bevor : la concordance des temps",
+        regle: "Avec **nachdem** (antériorité), la subordonnée est à un temps **antérieur** à la principale : Plusquamperfekt → Präteritum, ou Perfekt → Präsens.",
+        intro: "*Nachdem ich gegessen **hatte**, **ging** ich* (d'abord manger, puis partir).",
+        tableau: { entetes: ["Subordonnée", "Principale", "Exemple"], lignes: [["Plusquamperfekt", "Präteritum", "Nachdem ich gegessen hatte, ging ich."], ["Perfekt", "Präsens / Futur", "Nachdem ich gegessen habe, gehe ich."], ["bevor : même temps", "même temps", "Bevor ich gehe, esse ich."]] },
+        note: "*nachdem* = décalage d'un temps (le plus tôt = plus-que-parfait). *bevor/während* : mêmes temps des deux côtés." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« während » exprime…", options: ["la simultanéité", "l'antériorité", "la cause"], correct: 0, explication: "während = pendant que (en même temps)." },
       { type: "qcm", consigne: "Choisissez.", question: "___ er kommt, fangen wir an. (dès que)", options: ["Sobald", "Bevor", "Nachdem", "Obwohl"], correct: 0, explication: "sobald = dès que." },
       { type: "trou", consigne: "Complétez (verbe à la fin).", texte: "Bevor ich {0}, frühstücke ich. (gehen)", accepte: [["gehe"]], indice: "bevor → verbe à la fin" },
       { type: "association", consigne: "Associez la conjonction et la relation.", paires: [{ gauche: "während", droite: "simultané" }, { gauche: "bevor", droite: "avant" }, { gauche: "nachdem", droite: "après" }, { gauche: "sobald", droite: "dès que" }] },
-      { type: "ordre", consigne: "Construisez la subordonnée.", mots: ["während", "ich", "arbeite"], correct: "während ich arbeite", traduction: "pendant que je travaille" }
+      { type: "ordre", consigne: "Construisez la subordonnée.", mots: ["während", "ich", "arbeite"], correct: "während ich arbeite", traduction: "pendant que je travaille" },
+      { type: "qcm", consigne: "als, wenn ou wann ?", question: "___ ich ein Kind war, wohnte ich in Rom.", options: ["Als", "Wenn", "Wann", "Ob"], correct: 0, explication: "fait unique au passé → als." },
+      { type: "trou", consigne: "Répétition.", texte: "Immer {0} es schneit, freuen sich die Kinder.", accepte: [["wenn"]], indice: "répétition → wenn" },
+      { type: "qcm", consigne: "nachdem + temps.", question: "Nachdem er gegessen ___, ging er.", options: ["hatte", "hat", "war", "ist"], correct: 0, explication: "nachdem → antériorité : Plusquamperfekt (hatte gegessen)." }
     ]
   },
   b1g20: {
@@ -251,14 +277,27 @@ window.GRAMMAIRE_B1 = Object.assign(window.GRAMMAIRE_B1 || {}, {
       { exemples: [{"de":"Ich bleibe zu Hause, weil ich müde bin.","fr":"Je reste à la maison parce que je suis fatigué."},{"de":"Es ist spät, deshalb gehe ich jetzt.","fr":"Il est tard, c'est pourquoi je pars maintenant."}], regle: "**Cause** : *weil/da* (verbe **fin**), *denn* (verbe **2ᵉ**). **Conséquence** : *deshalb/deswegen/daher* (verbe **2ᵉ**).", attention: "*weil* → verbe à la fin ; *deshalb* → verbe en 2ᵉ position.", titre: "Dire pourquoi et donc", intro: "Cause : weil/da (verbe à la fin), denn (verbe 2e). Conséquence : deshalb/deswegen/daher/darum (verbe 2e).",
         tableau: { entetes: ["Mot", "Rôle / position du verbe", "Exemple"], lignes: [["weil", "cause — verbe FIN", "Ich bleibe, weil ich krank bin."], ["da", "cause (connue) — verbe FIN", "Da es regnet, bleibe ich."], ["denn", "cause — verbe 2e", "Ich bleibe, denn ich bin krank."], ["deshalb", "conséquence — verbe 2e", "Ich bin krank, deshalb bleibe ich."], ["daher / darum", "conséquence — verbe 2e", "Es regnet, daher gehe ich nicht."]] },
         schemas: [{ legende: "weil : cause, verbe à la FIN.", mots: [{ m: "Ich bleibe zu Hause,", r: "principale", c: "objet" }, { m: "weil", r: "cause", c: "conj" }, { m: "ich krank", r: "sujet + complément", c: "sujet" }, { m: "bin", r: "verbe (fin)", c: "fin" }] }],
-        note: "weil/da → subordination (verbe fin). denn/deshalb/deswegen/daher/darum → coordination (verbe 2e position)." }
+        note: "weil/da → subordination (verbe fin). denn/deshalb/deswegen/daher/darum → coordination (verbe 2e position)." },
+      { titre: "La conséquence forte : sodass / so … dass",
+        regle: "Pour « si bien que / tellement … que », on emploie **sodass** (de sorte que) ou **so + adjectif + dass** : la subordonnée a le **verbe à la fin**.",
+        intro: "*Es war **so** kalt, **dass** wir blieben* (tellement froid que…). *Er sprach leise, **sodass** ich nichts verstand*.",
+        tableau: { entetes: ["Structure", "Sens", "Exemple"], lignes: [["sodass", "de sorte que", "Er kam spät, sodass wir warten mussten."], ["so … dass", "tellement … que", "Es war so heiß, dass ich nicht schlief."], ["dass → verbe fin", "subordonnée", "…, dass ich nichts hörte."]] },
+        note: "*so … dass* encadre l'adjectif : *so + adjectif*, puis *dass + verbe à la fin*." },
+      { titre: "weil, da ou denn : lequel choisir ?",
+        regle: "**weil** = cause neutre (la plus fréquente). **da** = cause **déjà connue**, souvent en tête. **denn** = cause, style **coordonné** (verbe en 2ᵉ position).",
+        intro: "*Ich bleibe, **weil** es regnet* · ***Da** es regnet, bleibe ich* · *Ich bleibe, **denn** es regnet*.",
+        tableau: { entetes: ["Mot", "Nuance", "Place du verbe"], lignes: [["weil", "cause neutre (répond à warum?)", "à la fin"], ["da", "cause connue / évidente", "à la fin"], ["denn", "cause, registre coordonné", "en 2ᵉ position"]] },
+        note: "Seul **weil** peut répondre seul à « Warum? ». **denn** ne se met jamais en tête de phrase." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Avec « weil », le verbe va…", options: ["à la fin", "en 2e position", "au début"], correct: 0, explication: "weil = subordination → verbe à la fin." },
       { type: "qcm", consigne: "Cause ou conséquence ?", question: "Es regnet, ___ bleibe ich zu Hause.", options: ["deshalb", "weil", "denn nicht", "dass"], correct: 0, explication: "conséquence + verbe 2e → deshalb." },
       { type: "trou", consigne: "Complétez (weil + verbe à la fin).", texte: "Ich komme nicht, weil ich keine Zeit {0}. (haben)", accepte: [["habe"]], indice: "weil → verbe à la fin" },
       { type: "association", consigne: "Associez le mot et son rôle.", paires: [{ gauche: "weil", droite: "cause (verbe fin)" }, { gauche: "denn", droite: "cause (verbe 2e)" }, { gauche: "deshalb", droite: "conséquence" }, { gauche: "da", droite: "cause connue" }] },
-      { type: "ordre", consigne: "Construisez la subordonnée de cause.", mots: ["weil", "ich", "müde", "bin"], correct: "weil ich müde bin", traduction: "parce que je suis fatigué" }
+      { type: "ordre", consigne: "Construisez la subordonnée de cause.", mots: ["weil", "ich", "müde", "bin"], correct: "weil ich müde bin", traduction: "parce que je suis fatigué" },
+      { type: "qcm", consigne: "Conséquence forte.", question: "Es war so kalt, ___ wir drinnen blieben.", options: ["dass", "weil", "denn", "damit"], correct: 0, explication: "so + adjectif + dass = tellement … que." },
+      { type: "trou", consigne: "so … dass.", texte: "Er lief {0} schnell, dass ich ihn verlor.", accepte: [["so"]], indice: "so + adjectif … dass" },
+      { type: "qcm", consigne: "Réponse à « Warum? ».", question: "— Warum bleibst du? — ___ ich müde bin.", options: ["Weil", "Denn", "Deshalb", "Da"], correct: 0, explication: "Seul « weil » peut répondre seul à Warum ?" }
     ]
   }
 });
