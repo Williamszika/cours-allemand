@@ -95,14 +95,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
       { regle: "Le **participe** placé devant le nom (et décliné) condense une relative : **Partizip I** (actif), **Partizip II** (passif/accompli).", attention: "Construction **étendue** : article + [compléments + participe] + nom (*das **von allen gelesene** Buch*).", exemples: [{"de":"das lachende Kind","fr":"l'enfant qui rit"},{"de":"der gerade gelesene Roman","fr":"le roman qu'on vient de lire"}], titre: "Le participe comme adjectif épithète", intro: "Placé devant le nom et décliné, le participe condense une relative. Partizip I = sens actif/simultané ; Partizip II = sens passif/accompli.",
         tableau: { entetes: ["Relative", "Attribut participial"], lignes: [["das Kind, das lacht", "das lachende Kind"], ["der Roman, der gelesen wird", "der gelesene Roman"], ["die Frau, die schläft", "die schlafende Frau"], ["das Buch, das von allen gelesen wird", "das von allen gelesene Buch"]] },
         schemas: [{ legende: "Attribut étendu : article + [compléments + participe] + nom.", mots: [{ m: "das", r: "article", c: "sujet" }, { m: "von allen", r: "complément", c: "objet" }, { m: "gelesene", r: "participe décliné", c: "verbe" }, { m: "Buch", r: "nom", c: "fin" }] }],
-        note: "Partizip I = infinitif + d (lachen → lachend) ; il se décline comme un adjectif. Construction fréquente à l'écrit soutenu." }
+        note: "Partizip I = infinitif + d (lachen → lachend) ; il se décline comme un adjectif. Construction fréquente à l'écrit soutenu." },
+      { titre: "Partizip I ou Partizip II ?",
+        regle: "**Partizip I** (infinitif + **-d**) = sens **actif/simultané** (« qui fait »). **Partizip II** = sens **passif/accompli** (« qui a été fait »). Les deux se déclinent comme des adjectifs.",
+        intro: "*das **lachende** Kind* (qui rit — actif) vs *das **reparierte** Auto* (réparé — passif).",
+        tableau: { entetes: ["", "Partizip I", "Partizip II"], lignes: [["formation", "infinitif + -d", "ge…t / ge…en"], ["sens", "actif, simultané", "passif, accompli"], ["exemple", "die steigenden Preise", "die gestiegenen Preise"], ["= relative", "…, die steigen", "…, die gestiegen sind"]] },
+        note: "Partizip I : steigen → steigend (actif) ; Partizip II : steigen → gestiegen (accompli)." },
+      { titre: "Le « gérondif » : zu + Partizip I",
+        regle: "**zu + Partizip I** devant le nom exprime une **nécessité/possibilité passive** : *die **zu lösende** Aufgabe* = la tâche **qui doit être résolue**.",
+        intro: "= *die Aufgabe, die gelöst werden muss/kann*. Structure très soutenue.",
+        tableau: { entetes: ["Construction", "=", "Exemple"], lignes: [["die zu lösende Aufgabe", "die gelöst werden muss", "à résoudre"], ["das zu prüfende Dokument", "das geprüft werden muss", "à vérifier"], ["die nicht zu übersehenden Fehler", "die man nicht übersehen kann", "impossibles à ignorer"]] },
+        note: "zu + participe I = « à faire / qui doit être fait ». Se décline comme un adjectif." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Le Partizip I exprime un sens…", options: ["actif / simultané", "passif / accompli", "futur"], correct: 0, explication: "das lachende Kind = qui rit (actif)." },
       { type: "qcm", consigne: "Choisissez (Partizip I).", question: "das ___ Kind (lachen)", options: ["lachende", "gelachte", "lachte", "gelacht"], correct: 0, explication: "Partizip I : lachen → lachend + -e." },
       { type: "trou", consigne: "Complétez (Partizip II attribut).", texte: "der von allen {0} Roman (lesen)", accepte: [["gelesene"]], indice: "Partizip II : lesen → gelesen + -e" },
       { type: "association", consigne: "Associez la relative et l'attribut.", paires: [{ gauche: "das Kind, das lacht", droite: "das lachende Kind" }, { gauche: "der Roman, der gelesen wird", droite: "der gelesene Roman" }, { gauche: "die Frau, die schläft", droite: "die schlafende Frau" }, { gauche: "der Zug, der ankommt", droite: "der ankommende Zug" }] },
-      { type: "qcm", consigne: "Choisissez.", question: "« der reparierte Wagen » vient de…", options: ["der Wagen, der repariert wurde", "der Wagen, der repariert", "der Wagen repariert"], correct: 0, explication: "Partizip II = sens passif/accompli." }
+      { type: "qcm", consigne: "Choisissez.", question: "« der reparierte Wagen » vient de…", options: ["der Wagen, der repariert wurde", "der Wagen, der repariert", "der Wagen repariert"], correct: 0, explication: "Partizip II = sens passif/accompli." },
+      { type: "qcm", consigne: "Partizip I ou II ?", question: "« die steigenden Preise » utilise…", options: ["le Partizip I (actif)", "le Partizip II (passif)", "un infinitif"], correct: 0, explication: "steigend = Partizip I, sens actif/simultané." },
+      { type: "qcm", consigne: "Gérondif (zu + Partizip I).", question: "« die zu lösende Aufgabe » = ", options: ["die gelöst werden muss", "die gelöst wurde", "die löst"], correct: 0, explication: "zu + Partizip I = nécessité passive : qui doit être résolue." },
+      { type: "trou", consigne: "Attribut étendu (ordre).", texte: "das {0} allen gelesene Buch (par tous)", accepte: [["von"]], indice: "article + [von allen + participe] + nom" }
     ]
   },
   c1g13: {
@@ -192,14 +205,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     grammaire: [
       { regle: "Un adjectif/participe peut devenir **nom** (majuscule) en gardant sa **déclinaison d'adjectif** : *der **Reisende**, der **Angestellte**, das **Beste***.", attention: "Déclinaison vivante : *der Angestellte / ein Angestellt**er** / dem Angestellt**en***.", exemples: [{"de":"Der Angestellte ist krank.","fr":"L'employé est malade."},{"de":"Wir haben etwas Neues erlebt.","fr":"Nous avons vécu quelque chose de nouveau."}], titre: "Quand l'adjectif/participe devient nom", intro: "Un adjectif ou participe peut se nominaliser (majuscule) ; il garde sa déclinaison d'adjectif.",
         tableau: { entetes: ["Origine", "Nom", "Sens"], lignes: [["angestellt", "der/die Angestellte", "l'employé(e)"], ["reisen → reisend", "der/die Reisende", "le voyageur"], ["bekannt", "ein Bekannter", "une connaissance"], ["gut", "das Beste / das Gute", "le meilleur / le bien"], ["neu (après etwas)", "etwas Neues", "quelque chose de nouveau"]] },
-        note: "Ces noms se déclinent comme des adjectifs : der Angestellte / ein Angestellter / dem Angestellten." }
+        note: "Ces noms se déclinent comme des adjectifs : der Angestellte / ein Angestellter / dem Angestellten." },
+      { titre: "Déclinaison complète (der Angestellte)",
+        regle: "Le participe/adjectif nominalisé se décline **exactement comme un adjectif** : faible après *der*, forte/mixte après *ein* ou sans article.",
+        intro: "*der Angestellte / ein Angestellter / dem Angestellten / die Angestellten*.",
+        tableau: { entetes: ["Cas", "der", "ein", "pluriel"], lignes: [["Nominatif", "der Angestellte", "ein Angestellter", "die Angestellten"], ["Accusatif", "den Angestellten", "einen Angestellten", "die Angestellten"], ["Datif", "dem Angestellten", "einem Angestellten", "den Angestellten"], ["Génitif", "des Angestellten", "eines Angestellten", "der Angestellten"]] },
+        note: "Sans article au pluriel : *Angestellte* (forte) — « Angestellte streiken »." },
+      { titre: "Les abstraits neutres (das Gute)",
+        regle: "Un adjectif neutre nominalisé désigne une **notion abstraite** : *das Gute, das Beste, das Wichtigste*. Beaucoup d'**expressions figées** en dérivent.",
+        intro: "*Das **Beste** kommt noch* · *im **Allgemeinen*** (en général) · *im **Großen und Ganzen*** (dans l'ensemble).",
+        tableau: { entetes: ["Expression", "Sens"], lignes: [["das Gute / das Böse", "le bien / le mal"], ["das Wichtigste", "le plus important"], ["im Allgemeinen", "en général"], ["im Großen und Ganzen", "dans l'ensemble"], ["auf dem Laufenden", "au courant"]] },
+        note: "Ces neutres abstraits prennent une majuscule et se déclinent (des Guten, im Allgemeinen)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Un adjectif nominalisé garde…", options: ["sa déclinaison d'adjectif", "une déclinaison fixe", "aucune déclinaison"], correct: 0, explication: "der Angestellte / ein Angestellter." },
       { type: "qcm", consigne: "Choisissez.", question: "Ich spreche mit ___ Angestellten. (dem)", options: ["dem", "der", "den", "das"], correct: 0, explication: "datif : mit dem Angestellten." },
       { type: "trou", consigne: "Complétez (après etwas).", texte: "Wir haben etwas {0} erlebt. (schön)", accepte: [["Schönes"]], indice: "etwas + adj. nominalisé en -es" },
       { type: "association", consigne: "Associez l'origine et le nom.", paires: [{ gauche: "angestellt", droite: "der Angestellte" }, { gauche: "reisend", droite: "der Reisende" }, { gauche: "bekannt", droite: "ein Bekannter" }, { gauche: "gut", droite: "das Beste" }] },
-      { type: "qcm", consigne: "Choisissez (nominatif, sans article).", question: "Ein ___ hat angerufen. (bekannt)", options: ["Bekannter", "Bekannte", "Bekannten", "Bekanntes"], correct: 0, explication: "ein + masc. nom. → Bekannter." }
+      { type: "qcm", consigne: "Choisissez (nominatif, sans article).", question: "Ein ___ hat angerufen. (bekannt)", options: ["Bekannter", "Bekannte", "Bekannten", "Bekanntes"], correct: 0, explication: "ein + masc. nom. → Bekannter." },
+      { type: "qcm", consigne: "Déclinaison (génitif).", question: "das Büro ___ Angestellten.", options: ["des", "der", "dem", "den"], correct: 0, explication: "génitif : des Angestellten." },
+      { type: "trou", consigne: "Sans article au pluriel.", texte: "Viele {0} streiken heute. (angestellt → nom)", accepte: [["Angestellte"]], indice: "pluriel sans « die » → forte : Angestellte" },
+      { type: "qcm", consigne: "Expression figée.", question: "« en général » se dit…", options: ["im Allgemeinen", "in allgemein", "am allgemein", "das Allgemeine"], correct: 0, explication: "im Allgemeinen (neutre nominalisé figé)." }
     ]
   },
   c1g16: {
@@ -277,14 +303,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
       { regle: "Du **style verbal** au **style nominal** : on condense une subordonnée en groupe nominal (*weil es regnet* → *wegen des Regens*).", attention: "Correspondances : *weil → wegen*, *obwohl → trotz*, *nachdem → nach*, *wenn → bei*, *indem → durch*.", exemples: [{"de":"Wegen des Regens blieben wir zu Hause.","fr":"À cause de la pluie, nous sommes restés à la maison."},{"de":"Nach der Prüfung war sie erleichtert.","fr":"Après l'examen, elle était soulagée."}], titre: "Du verbe au nom (style soutenu)", intro: "À l'écrit formel, on condense une subordonnée en groupe nominal introduit par une préposition.",
         tableau: { entetes: ["Style verbal (subordonnée)", "Style nominal (groupe)"], lignes: [["weil es regnet", "wegen des Regens"], ["nachdem er ankam", "nach seiner Ankunft"], ["obwohl es schwierig ist", "trotz der Schwierigkeit"], ["indem man übt", "durch Üben"], ["wenn man ankommt", "bei der Ankunft"]] },
         schemas: [{ legende: "Subordonnée → préposition + nom (souvent + génitif).", mots: [{ m: "wegen", r: "préposition", c: "conj" }, { m: "des starken", r: "génitif", c: "objet" }, { m: "Regens", r: "nom", c: "sujet" }, { m: "(blieben wir)", r: "principale", c: "verbe" }] }],
-        note: "Correspondances : weil→wegen, trotzdem/obwohl→trotz, nachdem→nach, bevor→vor, wenn→bei, indem→durch." }
+        note: "Correspondances : weil→wegen, trotzdem/obwohl→trotz, nachdem→nach, bevor→vor, wenn→bei, indem→durch." },
+      { titre: "Les suffixes de nominalisation",
+        regle: "Un verbe ou un adjectif devient un **nom** grâce à des suffixes qui déterminent aussi le **genre**.",
+        intro: "*prüfen → die Prüf**ung*** · *frei → die Frei**heit*** · *das **Lernen*** (infinitif nominalisé).",
+        tableau: { entetes: ["Suffixe", "Genre", "Exemple"], lignes: [["-ung (verbe)", "die", "lösen → die Lösung"], ["-heit / -keit (adj.)", "die", "frei → die Freiheit"], ["-tion / -ität", "die", "reagieren → die Reaktion"], ["-nis", "das / die", "erlauben → die Erlaubnis"], ["das + infinitif", "das", "das Lesen, das Rauchen"]] },
+        note: "Les noms en -ung, -heit, -keit, -tion, -ität sont **féminins** ; l'infinitif nominalisé est **neutre**." },
+      { titre: "Quelle préposition, quel cas ?",
+        regle: "Chaque conjonction se nominalise avec une **préposition** et un **cas** précis. À mémoriser ensemble.",
+        intro: "*weil → wegen + génitif* · *nachdem → nach + datif* · *indem → durch + accusatif*.",
+        tableau: { entetes: ["Conjonction", "Préposition + cas", "Exemple nominal"], lignes: [["weil", "wegen + Gén.", "wegen des Regens"], ["obwohl", "trotz + Gén.", "trotz der Kälte"], ["nachdem", "nach + Dat.", "nach dem Essen"], ["bevor", "vor + Dat.", "vor der Abreise"], ["während / wenn", "bei / während", "beim Kochen"], ["indem", "durch + Akk.", "durch regelmäßiges Üben"]] },
+        note: "Attention au cas : wegen/trotz → génitif ; nach/vor/bei → datif ; durch → accusatif." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« weil » se nominalise en…", options: ["wegen + génitif", "trotz + génitif", "durch + accusatif"], correct: 0, explication: "weil → wegen (cause)." },
       { type: "qcm", consigne: "Choisissez.", question: "nachdem er ankam → ___ seiner Ankunft", options: ["nach", "vor", "bei", "durch"], correct: 0, explication: "nachdem → nach (postériorité)." },
       { type: "trou", consigne: "Complétez (obwohl → trotz).", texte: "{0} der Schwierigkeit gelang es. (obwohl → préposition)", accepte: [["Trotz"]], indice: "obwohl → trotz + génitif" },
       { type: "association", consigne: "Associez la conjonction et la préposition.", paires: [{ gauche: "weil", droite: "wegen" }, { gauche: "obwohl", droite: "trotz" }, { gauche: "nachdem", droite: "nach" }, { gauche: "indem", droite: "durch" }] },
-      { type: "traduction", consigne: "Traduisez (style nominal).", source: "À cause de la pluie, nous sommes restés.", accepte: ["Wegen des Regens sind wir geblieben", "Wegen des Regens blieben wir"], aide: "wegen + génitif (des Regens)" }
+      { type: "traduction", consigne: "Traduisez (style nominal).", source: "À cause de la pluie, nous sommes restés.", accepte: ["Wegen des Regens sind wir geblieben", "Wegen des Regens blieben wir"], aide: "wegen + génitif (des Regens)" },
+      { type: "qcm", consigne: "Suffixe & genre.", question: "« die Lösung » (de lösen) est…", options: ["féminin (-ung)", "masculin", "neutre"], correct: 0, explication: "les noms en -ung sont féminins : die Lösung." },
+      { type: "trou", consigne: "Nominalisation (indem → durch).", texte: "{0} regelmäßiges Üben lernt man schnell.", accepte: [["Durch"]], indice: "indem → durch + accusatif" },
+      { type: "qcm", consigne: "Cas après la préposition.", question: "« nach » (de nachdem) régit…", options: ["le datif", "le génitif", "l'accusatif"], correct: 0, explication: "nach + datif : nach dem Essen." }
     ]
   },
   c1g19: {
