@@ -13966,14 +13966,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     grammaire: [
       { exemples: [{"de":"Wir fahren in die Schweiz.","fr":"Nous allons en Suisse."},{"de":"Seit Montag arbeite ich von zu Hause.","fr":"Depuis lundi, je travaille de chez moi."}], regle: "Le choix dépend du **sens** (position/direction, point/durée) et chaque préposition impose un **cas**.", attention: "*nach* + ville/pays **sans** article ; *in* + pays **avec** article (*in die Schweiz*).", titre: "Lieu et temps : préposition + cas", intro: "Le choix dépend du sens (position/direction, point/durée) et chaque préposition impose un cas.",
         tableau: { entetes: ["Type", "Préposition", "Exemple"], lignes: [["lieu (où)", "an/in + Dat.", "an der Wand, in der Stadt"], ["lieu (vers)", "nach/zu/in + …", "nach Berlin, zur Arbeit"], ["temps (point)", "an/um/in + Dat.", "am Montag, um acht, im Mai"], ["temps (durée)", "seit/während/innerhalb", "seit Jahren, innerhalb einer Woche"]] },
-        note: "« nach » + ville/pays sans article (nach Berlin) ; « in » + pays avec article (in die Schweiz)." }
+        note: "« nach » + ville/pays sans article (nach Berlin) ; « in » + pays avec article (in die Schweiz)." },
+      { titre: "Prépositions de lieu au génitif (soutenu)",
+        regle: "Un groupe de prépositions **spatiales** régit le génitif : **innerhalb/außerhalb**, **oberhalb/unterhalb**, **diesseits/jenseits**, **längs/entlang**, **inmitten**.",
+        intro: "*innerhalb **des** Gebäudes* · *jenseits **der** Grenze* · *oberhalb **des** Dorfes*.",
+        tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["innerhalb / außerhalb", "à l'intérieur / dehors", "außerhalb der Stadt"], ["oberhalb / unterhalb", "au-dessus / en dessous", "oberhalb des Sees"], ["diesseits / jenseits", "en deçà / au-delà", "jenseits der Grenze"], ["inmitten", "au milieu de", "inmitten der Menge"], ["längs / entlang", "le long de", "längs des Flusses"]] },
+        note: "Toutes + génitif (registre écrit). À l'oral, souvent von + datif (außerhalb von der Stadt)." },
+      { titre: "Temps et direction : les confusions",
+        regle: "Temps : **vor** (il y a) / **seit** (depuis, + présent) / **in** (dans, futur). Direction : **nach** (villes/pays sans article) / **in** (pays à article) / **zu** (personnes, lieux précis).",
+        intro: "*vor / seit / in einer Woche* · *nach Berlin* / *in die Schweiz* / *zum Arzt*.",
+        tableau: { entetes: ["Emploi", "Préposition", "Exemple"], lignes: [["il y a (passé)", "vor + Dat.", "vor drei Tagen"], ["depuis (→ maintenant)", "seit + Dat.", "seit drei Tagen"], ["dans (futur)", "in + Dat.", "in drei Tagen"], ["vers (ville/pays)", "nach", "nach Italien"], ["vers (pays à article)", "in + Akk.", "in die Türkei"], ["vers (personne/lieu)", "zu + Dat.", "zum Zahnarzt"]] },
+        note: "Confusion classique : vor (il y a) ≠ seit (depuis). Pays à article → in + accusatif, pas nach." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« innerhalb » exprime…", options: ["une durée (en l'espace de)", "un lieu précis", "une direction"], correct: 0, explication: "innerhalb + génitif = en l'espace de." },
       { type: "qcm", consigne: "Choisissez la préposition (direction, pays avec article).", question: "Wir fahren ___ die Schweiz.", options: ["in", "nach", "zu", "an"], correct: 0, explication: "pays avec article → in die Schweiz." },
       { type: "trou", consigne: "Complétez (temps, mois).", texte: "{0} Mai blühen die Bäume.", accepte: [["Im"]], indice: "mois → im (in dem)" },
       { type: "association", consigne: "Associez la préposition et son domaine.", paires: [{ gauche: "seit", droite: "temps (durée)" }, { gauche: "nach", droite: "lieu (direction)" }, { gauche: "an", droite: "lieu/temps (point)" }, { gauche: "innerhalb", droite: "temps/lieu (génitif)" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Depuis lundi, je travaille à la maison.", accepte: ["Seit Montag arbeite ich zu Hause", "Seit Montag arbeite ich im Homeoffice"], aide: "seit + datif" }
+      { type: "traduction", consigne: "Traduisez.", source: "Depuis lundi, je travaille à la maison.", accepte: ["Seit Montag arbeite ich zu Hause", "Seit Montag arbeite ich im Homeoffice"], aide: "seit + datif" },
+      { type: "qcm", consigne: "Lieu au génitif.", question: "___ der Stadt ist es ruhiger. (en dehors)", options: ["Außerhalb", "Innerhalb", "Gegenüber", "Entlang"], correct: 0, explication: "außerhalb + génitif = en dehors de." },
+      { type: "trou", consigne: "Au-delà (génitif).", texte: "{0} der Grenze spricht man Deutsch.", accepte: [["Jenseits"]], indice: "jenseits + génitif = au-delà de" },
+      { type: "qcm", consigne: "vor, seit ou in ?", question: "___ drei Jahren lebe ich hier (depuis).", options: ["Seit", "Vor", "In", "Nach"], correct: 0, explication: "depuis → seit + datif + présent." }
     ]
   },
   c1g03: {
@@ -14036,14 +14049,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     grammaire: [
       { exemples: [{"de":"Ich bin gespannt auf das Ergebnis.","fr":"J'ai hâte de connaître le résultat."},{"de":"Sie ist von der Idee überzeugt.","fr":"Elle est convaincue par l'idée."}], regle: "Adjectifs à préposition fixe : *stolz **auf***, *fähig **zu***, *verantwortlich **für***, *überzeugt **von***, *abhängig **von***.", attention: "Interroger/reprendre comme les verbes : *Worauf bist du stolz? – darauf*.", titre: "Adjectif + préposition + cas", intro: "De nombreux adjectifs C1 régissent une préposition fixe (et un cas). À mémoriser par paires.",
         tableau: { entetes: ["Adjectif", "Préposition + cas", "Exemple"], lignes: [["stolz", "auf + Akk.", "stolz auf den Erfolg"], ["fähig", "zu + Dat.", "zu allem fähig"], ["verantwortlich", "für + Akk.", "verantwortlich für das Projekt"], ["überzeugt", "von + Dat.", "überzeugt von der Idee"], ["abhängig", "von + Dat.", "abhängig von der Hilfe"], ["gespannt", "auf + Akk.", "gespannt auf das Ergebnis"]] },
-        note: "Pour interroger : « Worauf bist du stolz? » ; pour reprendre : « Ich bin stolz darauf. »" }
+        note: "Pour interroger : « Worauf bist du stolz? » ; pour reprendre : « Ich bin stolz darauf. »" },
+      { titre: "Les adjectifs à génitif (registre soutenu)",
+        regle: "Quelques adjectifs régissent le **génitif**, souvent avec un réfléchi : *sich einer Sache **bewusst/sicher/gewiss*** sein, *einer Sache **würdig/verdächtig/mächtig*** sein.",
+        intro: "*Ich bin mir **des Risikos** bewusst* · *Er ist **des Diebstahls** verdächtig*.",
+        tableau: { entetes: ["Adjectif", "Sens", "Exemple"], lignes: [["sich bewusst", "conscient de", "sich der Gefahr bewusst sein"], ["sich sicher/gewiss", "sûr/certain de", "sich seiner Sache sicher"], ["würdig", "digne de", "des Preises würdig"], ["verdächtig", "soupçonné de", "des Diebstahls verdächtig"], ["mächtig", "maître de (langue)", "der deutschen Sprache mächtig"]] },
+        note: "Registre très soutenu ; à l'oral, on emploie souvent une préposition à la place." },
+      { titre: "Adjectifs à préposition : par cas",
+        regle: "La préposition impose le cas : **auf/für/über/um** → accusatif ; **von/mit/zu/an** → datif ; certains → **génitif**.",
+        intro: "*stolz **auf** + acc.* · *überzeugt **von** + dat.* · *bewusst + génitif*.",
+        tableau: { entetes: ["Cas", "Adjectifs", "Exemple"], lignes: [["+ accusatif", "stolz auf, gespannt auf, verantwortlich für", "stolz auf den Erfolg"], ["+ datif", "überzeugt von, abhängig von, fähig zu", "überzeugt von der Idee"], ["+ génitif", "bewusst, sicher, würdig, verdächtig", "sich der Gefahr bewusst"]] },
+        note: "Chose → wo(r)-/da(r)- (worauf/darauf) ; le génitif reste au registre écrit." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« verantwortlich » se construit avec…", options: ["für + accusatif", "von + datif", "auf + datif"], correct: 0, explication: "verantwortlich für + accusatif." },
       { type: "qcm", consigne: "Choisissez la préposition.", question: "Ich bin überzeugt ___ deinem Talent.", options: ["von", "auf", "für", "über"], correct: 0, explication: "überzeugt von + datif." },
       { type: "trou", consigne: "Complétez (gespannt + préposition).", texte: "Ich bin gespannt {0} das Ergebnis.", accepte: [["auf"]], indice: "gespannt auf + accusatif" },
       { type: "association", consigne: "Associez l'adjectif et sa préposition.", paires: [{ gauche: "stolz", droite: "auf" }, { gauche: "fähig", droite: "zu" }, { gauche: "verantwortlich", droite: "für" }, { gauche: "überzeugt", droite: "von" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Je suis fier de mon travail.", accepte: ["Ich bin stolz auf meine Arbeit"], aide: "stolz auf + accusatif" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je suis fier de mon travail.", accepte: ["Ich bin stolz auf meine Arbeit"], aide: "stolz auf + accusatif" },
+      { type: "trou", consigne: "Adjectif + génitif.", texte: "Ich bin mir {0} Gefahr bewusst. (die Gefahr)", accepte: [["der"]], indice: "bewusst + génitif → der Gefahr" },
+      { type: "qcm", consigne: "Adjectif + génitif.", question: "Er ist ___ Diebstahls verdächtig.", options: ["des", "dem", "den", "der"], correct: 0, explication: "verdächtig + génitif : des Diebstahls." },
+      { type: "qcm", consigne: "Cas imposé.", question: "« fähig zu » régit…", options: ["le datif", "l'accusatif", "le génitif"], correct: 0, explication: "zu + datif : fähig zu großen Leistungen." }
     ]
   },
   c1g05: {
@@ -14218,14 +14244,27 @@ window.GRAMMAIRE_C1 = Object.assign(window.GRAMMAIRE_C1 || {}, {
     grammaire: [
       { exemples: [{"de":"Angesichts der Lage müssen wir handeln.","fr":"Compte tenu de la situation, nous devons agir."},{"de":"Hinsichtlich der Kosten gibt es noch Fragen.","fr":"Concernant les coûts, il reste des questions."}], regle: "Outre *wegen/trotz/während*, le C1 emploie *angesichts* (compte tenu de), *hinsichtlich* (concernant), *zugunsten*, *mangels* (+ génitif).", attention: "Registre **écrit** : à l'oral, on les remplace souvent par *wegen/von … aus*.", titre: "Le registre soutenu impose le génitif", intro: "Outre wegen/trotz/während, le C1 emploie des prépositions à génitif plus rares et formelles.",
         tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["wegen", "à cause de", "wegen des Wetters"], ["trotz", "malgré", "trotz aller Probleme"], ["angesichts", "compte tenu de", "angesichts der Lage"], ["hinsichtlich", "concernant", "hinsichtlich der Kosten"], ["zugunsten", "en faveur de", "zugunsten der Kinder"], ["mangels", "faute de", "mangels Beweisen"]] },
-        note: "À l'oral, wegen/trotz tolèrent le datif ; le génitif reste la norme écrite soignée." }
+        note: "À l'oral, wegen/trotz tolèrent le datif ; le génitif reste la norme écrite soignée." },
+      { titre: "Les prépositions formelles par fonction",
+        regle: "L'écrit administratif regorge de prépositions à génitif. Regroupe-les par **sens**.",
+        intro: "cause, référence, faveur, moyen, temps.",
+        tableau: { entetes: ["Fonction", "Prépositions", "Exemple"], lignes: [["cause", "wegen, aufgrund, infolge, angesichts", "angesichts der Lage"], ["référence", "hinsichtlich, bezüglich, betreffs", "bezüglich Ihrer Anfrage"], ["faveur/opposition", "zugunsten, zulasten, ungeachtet", "zugunsten der Kinder"], ["moyen", "mittels, anhand, kraft", "anhand der Daten"], ["temps/occasion", "während, anlässlich, binnen", "anlässlich des Jubiläums"]] },
+        note: "*ungeachtet* (= malgré) peut suivre ou précéder son nom : « ungeachtet der Kritik » / « der Kritik ungeachtet »." },
+      { titre: "Cas particuliers (laut, mangels, sans article)",
+        regle: "**laut** et **dank** hésitent entre génitif et datif. Devant un nom **sans article**, le pluriel prend souvent le **datif**.",
+        intro: "*laut **des** Berichts* / *laut **dem** Bericht* · *mangels **Beweisen*** (datif pl.).",
+        tableau: { entetes: ["Cas", "Génitif (écrit)", "Alternative"], lignes: [["laut", "laut des Gesetzes", "laut dem Gesetz (datif)"], ["dank", "dank deines Einsatzes", "dank deinem Einsatz (datif)"], ["pluriel sans article", "mangels Beweise", "mangels Beweisen (datif)"], ["nom seul", "wegen Umzugs", "wegen Umzug (oral)"]] },
+        note: "laut/dank : génitif à l'écrit, datif fréquent ; pluriel sans article → datif pour marquer le cas." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "« angesichts » signifie…", options: ["compte tenu de", "malgré", "en faveur de"], correct: 0, explication: "angesichts = compte tenu de / face à." },
       { type: "qcm", consigne: "Choisissez (génitif masculin).", question: "Wegen ___ Sturms fiel der Zug aus.", options: ["des", "der", "dem", "den"], correct: 0, explication: "wegen + génitif, der Sturm → des Sturms." },
       { type: "trou", consigne: "Complétez (génitif féminin).", texte: "Hinsichtlich {0} Kosten gibt es noch Fragen.", accepte: [["der"]], indice: "hinsichtlich + génitif, die Kosten (pl.) → der" },
       { type: "association", consigne: "Associez la préposition et son sens.", paires: [{ gauche: "trotz", droite: "malgré" }, { gauche: "angesichts", droite: "compte tenu de" }, { gauche: "zugunsten", droite: "en faveur de" }, { gauche: "mangels", droite: "faute de" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Malgré tous les problèmes, il a réussi.", accepte: ["Trotz aller Probleme hat er es geschafft", "Trotz aller Probleme schaffte er es"], aide: "trotz + génitif" }
+      { type: "traduction", consigne: "Traduisez.", source: "Malgré tous les problèmes, il a réussi.", accepte: ["Trotz aller Probleme hat er es geschafft", "Trotz aller Probleme schaffte er es"], aide: "trotz + génitif" },
+      { type: "qcm", consigne: "Référence (concernant).", question: "___ Ihrer Anfrage teilen wir mit …", options: ["Bezüglich", "Wegen", "Trotz", "Zugunsten"], correct: 0, explication: "bezüglich + génitif = concernant." },
+      { type: "trou", consigne: "Génitif (au moyen de).", texte: "{0} der Daten lässt sich das beweisen. (anhand)", accepte: [["Anhand"]], indice: "anhand + génitif = au moyen de" },
+      { type: "qcm", consigne: "laut + cas.", question: "« laut » se construit avec…", options: ["le génitif ou le datif", "l'accusatif seul", "le nominatif"], correct: 0, explication: "laut : génitif (écrit) ou datif (courant)." }
     ]
   }
 });
