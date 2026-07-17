@@ -41,14 +41,21 @@ window.GRAMMAIRE = {
           { de: "Wir sind müde.", fr: "Nous sommes fatigués." }
         ],
         note: "« sein » est irrégulier : à apprendre par cœur.",
-        attention: "Si le radical finit par **-t** ou **-d** (*arbeiten*, *finden*), on intercale un **-e-** pour pouvoir prononcer : *du arbeit**e**st*, *er find**e**t*." }
+        attention: "Si le radical finit par **-t** ou **-d** (*arbeiten*, *finden*), on intercale un **-e-** pour pouvoir prononcer : *du arbeit**e**st*, *er find**e**t*." },
+      { titre: "« haben » (avoir) & les verbes en -t/-d", intro: "L'autre verbe irrégulier incontournable, et l'astuce du -e- de liaison.", regle: "**haben** est irrégulier (surtout *du hast*, *er hat*). Si le radical finit par **-t/-d**, on ajoute un **-e-** avant la terminaison.",
+        tableau: { entetes: ["Pronom", "haben", "arbeiten (-t)"], lignes: [["ich", "habe", "arbeite"], ["du", "hast", "arbeitest"], ["er/sie/es", "hat", "arbeitet"], ["wir", "haben", "arbeiten"], ["ihr", "habt", "arbeitet"], ["sie/Sie", "haben", "arbeiten"]] },
+        exemples: [{ de: "Ich habe einen Bruder.", fr: "J'ai un frère." }, { de: "Du hast recht.", fr: "Tu as raison." }, { de: "Er arbeitet in Berlin.", fr: "Il travaille à Berlin." }],
+        note: "haben : ich habe, du hast, er hat, wir haben, ihr habt, sie haben.",
+        attention: "Le -e- de liaison rend le mot prononçable : *du arbeit**e**st*, *er find**e**t*, *ihr wart**e**t*." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Quelle terminaison avec « du » ?", options: ["-st", "-t", "-en", "-e"], correct: 0, explication: "du → radical + -st." },
       { type: "conjugaison", consigne: "Conjuguez « wohnen ».", verbe: "wohnen", items: [{ pronom: "ich", reponse: "wohne" }, { pronom: "du", reponse: "wohnst" }, { pronom: "er/sie/es", reponse: "wohnt" }, { pronom: "wir", reponse: "wohnen" }, { pronom: "ihr", reponse: "wohnt" }, { pronom: "sie/Sie", reponse: "wohnen" }] },
       { type: "conjugaison", consigne: "Conjuguez « sein ».", verbe: "sein", items: [{ pronom: "ich", reponse: "bin" }, { pronom: "du", reponse: "bist" }, { pronom: "er/sie/es", reponse: "ist" }, { pronom: "wir", reponse: "sind" }, { pronom: "ihr", reponse: "seid" }, { pronom: "sie/Sie", reponse: "sind" }] },
       { type: "trou", consigne: "Complétez le pronom.", texte: "{0} bist mein Freund. (tu)", accepte: [["du"]], indice: "2e personne" },
-      { type: "ordre", consigne: "Ordre des mots.", mots: ["Wir", "machen", "eine", "Pause"], correct: "Wir machen eine Pause", traduction: "Nous faisons une pause." }
+      { type: "ordre", consigne: "Ordre des mots.", mots: ["Wir", "machen", "eine", "Pause"], correct: "Wir machen eine Pause", traduction: "Nous faisons une pause." },
+      { type: "conjugaison", consigne: "Conjuguez « haben ».", verbe: "haben", items: [{ pronom: "ich", reponse: "habe" }, { pronom: "du", reponse: "hast" }, { pronom: "er/sie/es", reponse: "hat" }, { pronom: "wir", reponse: "haben" }, { pronom: "ihr", reponse: "habt" }, { pronom: "sie/Sie", reponse: "haben" }] },
+      { type: "trou", consigne: "Complétez (-e- de liaison).", texte: "Du {0} viel. (arbeiten)", accepte: [["arbeitest"]], indice: "radical en -t → +e-" }
     ]
   },
   g02: {
@@ -108,7 +115,14 @@ window.GRAMMAIRE = {
           { de: "Er fährt nach Hamburg.", fr: "Il va (roule) à Hambourg." }
         ],
         note: "Seules les 2e (du) et 3e (er/sie/es) personnes du singulier changent.",
-        attention: "Au pluriel et avec *ich*/*wir*/*sie*, on garde la voyelle de l'infinitif : *wir **sprechen***, *ich **fahre*** (et non « ~~spreche~~ », « ~~fähre~~ »)." }
+        attention: "Au pluriel et avec *ich*/*wir*/*sie*, on garde la voyelle de l'infinitif : *wir **sprechen***, *ich **fahre*** (et non « ~~spreche~~ », « ~~fähre~~ »)." },
+      { titre: "Les verbes forts les plus fréquents", intro: "À apprendre avec leur forme *er* — c'est là que le changement se voit.",
+        tableau: { entetes: ["Infinitif", "du", "er/sie/es", "Type"], lignes: [["essen", "isst", "isst", "e → i"], ["nehmen", "nimmst", "nimmt", "e → i (+ cons.)"], ["geben", "gibst", "gibt", "e → i"], ["sehen", "siehst", "sieht", "e → ie"], ["lesen", "liest", "liest", "e → ie"], ["fahren", "fährst", "fährt", "a → ä"], ["schlafen", "schläfst", "schläft", "a → ä"], ["laufen", "läufst", "läuft", "au → äu"]] },
+        note: "au → äu existe aussi (laufen → er läuft), mais c'est plus rare." },
+      { titre: "Deux cas particuliers : nehmen & wissen", intro: "Deux verbes très courants qui sortent du schéma.", regle: "*nehmen* change la voyelle ET double la consonne. *wissen* (savoir) est irrégulier au singulier.",
+        tableau: { entetes: ["Pronom", "nehmen", "wissen"], lignes: [["ich", "nehme", "weiß"], ["du", "nimmst", "weißt"], ["er/sie/es", "nimmt", "weiß"], ["wir", "nehmen", "wissen"], ["ihr", "nehmt", "wisst"], ["sie/Sie", "nehmen", "wissen"]] },
+        exemples: [{ de: "Nimmst du einen Kaffee?", fr: "Tu prends un café ?" }, { de: "Ich weiß es nicht.", fr: "Je ne sais pas." }],
+        note: "nehmen : du nimmst, er nimmt (à mémoriser à part)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Er ___ Deutsch. (sprechen)", options: ["spricht", "sprecht", "sprichst", "sprechen"], correct: 0, explication: "sprechen : e→i → er spricht." },
@@ -116,6 +130,7 @@ window.GRAMMAIRE = {
       { type: "conjugaison", consigne: "Conjuguez « sprechen ».", verbe: "sprechen", items: [{ pronom: "ich", reponse: "spreche" }, { pronom: "du", reponse: "sprichst" }, { pronom: "er/sie/es", reponse: "spricht" }, { pronom: "wir", reponse: "sprechen" }, { pronom: "ihr", reponse: "sprecht" }, { pronom: "sie/Sie", reponse: "sprechen" }] },
       { type: "trou", consigne: "Complétez (lesen).", texte: "Sie {0} ein Buch. (elle)", accepte: [["liest"]], indice: "e → ie" },
       { type: "association", consigne: "Associez.", paires: [{ gauche: "ich nehme", droite: "du nimmst" }, { gauche: "ich gebe", droite: "du gibst" }, { gauche: "ich esse", droite: "du isst" }] },
+      { type: "qcm", consigne: "Verbe fort.", question: "Er ___ einen Apfel. (nehmen)", options: ["nimmt", "nehmt", "nimmst", "nehmen"], correct: 0, explication: "nehmen : e→i + consonne → er nimmt." },
       { type: "production", cat: "prod", competence: "conj_present",
         consigne: "Production écrite - les verbes à changement de voyelle.",
         prompt: "Écris 4 phrases avec des verbes à changement de voyelle (fahren, sprechen, sehen, lesen, geben, nehmen…). Utilise au moins une fois *du* et une fois *er/sie/es* pour bien montrer le changement.",
@@ -158,7 +173,13 @@ window.GRAMMAIRE = {
           { de: "Ich sehe ein Kind.", fr: "Je vois un enfant." }
         ],
         note: "Les noms s'écrivent toujours avec une MAJUSCULE.",
-        attention: "Au pluriel, l'article défini est **die** pour tous les genres — et il n'existe **pas** de pluriel de *ein* (on dit *Kinder* tout court, ou *keine Kinder* à la négation)." }
+        attention: "Au pluriel, l'article défini est **die** pour tous les genres — et il n'existe **pas** de pluriel de *ein* (on dit *Kinder* tout court, ou *keine Kinder* à la négation)." },
+      { titre: "Deviner le genre grâce à la terminaison", intro: "Le genre semble imprévisible, mais certaines terminaisons le trahissent presque toujours.",
+        tableau: { entetes: ["Terminaison", "Genre", "Exemple"], lignes: [["-ung, -heit, -keit", "die", "die Zeitung, die Freiheit"], ["-e (souvent)", "die", "die Lampe, die Blume"], ["-chen, -lein", "das", "das Mädchen, das Brötchen"], ["-er (métier/outil)", "der", "der Lehrer, der Computer"], ["-o, -um", "das", "das Auto, das Museum"]] },
+        note: "Ces tendances couvrent beaucoup de mots — mais apprends toujours l'article pour être sûr." },
+      { titre: "der / ein / — : quel article choisir ?", intro: "Défini = chose connue, indéfini = chose nouvelle, pas d'article = généralité ou métier.", regle: "*der/die/das* = « le/la » (précis) ; *ein/eine* = « un/une » (nouveau) ; **pas d'article** devant un métier ou une matière.",
+        tableau: { entetes: ["Situation", "Article", "Exemple"], lignes: [["chose déjà connue", "der/die/das", "Der Mann dort ist nett."], ["chose nouvelle", "ein/eine", "Da ist ein Mann."], ["métier (après sein)", "— (rien)", "Ich bin Lehrer."], ["généralité (pluriel)", "— (rien)", "Kinder spielen gern."]] },
+        note: "« Ich bin Arzt » (sans article) — l'allemand omet l'article devant les métiers." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez l'article défini.", question: "___ Frau ist nett.", options: ["Die", "Der", "Das", "Den"], correct: 0, explication: "Frau est féminin → die." },
@@ -166,7 +187,9 @@ window.GRAMMAIRE = {
       { type: "association", consigne: "Associez le nom à son article.", paires: [{ gauche: "Mann", droite: "der" }, { gauche: "Frau", droite: "die" }, { gauche: "Kind", droite: "das" }, { gauche: "Buch", droite: "das" }] },
       { type: "trou", consigne: "Complétez (ein/eine).", texte: "Ich habe {0} Hund und {1} Katze.", accepte: [["einen"], ["eine"]], indice: "der Hund (acc.), die Katze" },
       { type: "qcm", consigne: "Choisissez.", question: "Comment écrit-on les noms ?", options: ["Avec une majuscule", "En minuscule", "Comme on veut"], correct: 0, explication: "Tous les noms prennent une majuscule." },
-      { type: "qcm", consigne: "Le cas du sujet.", question: "Le sujet d'une phrase (Wer? / Was?) est au…", options: ["nominatif", "accusatif", "datif", "génitif"], correct: 0, explication: "Le sujet est toujours au nominatif — c'est la forme du dictionnaire." }
+      { type: "qcm", consigne: "Le cas du sujet.", question: "Le sujet d'une phrase (Wer? / Was?) est au…", options: ["nominatif", "accusatif", "datif", "génitif"], correct: 0, explication: "Le sujet est toujours au nominatif — c'est la forme du dictionnaire." },
+      { type: "qcm", consigne: "Genre par terminaison.", question: "« ___ Zeitung » (terminaison -ung) prend quel article ?", options: ["die", "der", "das"], correct: 0, explication: "-ung → toujours féminin (die)." },
+      { type: "association", consigne: "Associez la terminaison au genre.", paires: [{ gauche: "-ung", droite: "die" }, { gauche: "-chen", droite: "das" }, { gauche: "-er (Lehrer)", droite: "der" }, { gauche: "-heit", droite: "die" }] }
     ]
   },
   g04: {
@@ -198,14 +221,23 @@ window.GRAMMAIRE = {
           { de: "Er kommt heute nicht.", fr: "Il ne vient pas aujourd'hui." }
         ],
         note: "kein se décline comme « ein » : keinen (m. acc.), keine (f./pl.), kein (n.).",
-        attention: "**nicht** se place **avant** un adjectif ou un complément de lieu (« *Das ist **nicht** schön* », « *Ich fahre **nicht** nach Berlin* »), mais **à la fin** quand il nie le verbe seul (« *Ich arbeite **nicht*** »)." }
+        attention: "**nicht** se place **avant** un adjectif ou un complément de lieu (« *Das ist **nicht** schön* », « *Ich fahre **nicht** nach Berlin* »), mais **à la fin** quand il nie le verbe seul (« *Ich arbeite **nicht*** »)." },
+      { titre: "La déclinaison de « kein »", intro: "*kein* se décline exactement comme *ein* — plus la forme du pluriel (que *ein* n'a pas).", regle: "Nominatif et accusatif de *kein* : seul le masculin accusatif prend *-en*.",
+        tableau: { entetes: ["Cas", "Masc.", "Fém.", "Neutre", "Pluriel"], lignes: [["Nominatif", "kein", "keine", "kein", "keine"], ["Accusatif", "keinen", "keine", "kein", "keine"]] },
+        exemples: [{ de: "Ich habe keinen Hund.", fr: "Je n'ai pas de chien. (der Hund, acc.)" }, { de: "Ich habe keine Zeit.", fr: "Je n'ai pas le temps. (die Zeit)" }, { de: "Wir haben keine Kinder.", fr: "Nous n'avons pas d'enfants. (pluriel)" }],
+        note: "Comme ein : keinen (masc. acc.), keine (fém./pl.), kein (neutre)." },
+      { titre: "nein / nicht / doch", intro: "Trois mots à ne pas confondre pour répondre et nier.", regle: "**nein** = non (réponse). **nicht** = ne… pas (dans la phrase). **doch** = si ! (contredire une question négative).",
+        tableau: { entetes: ["Mot", "Rôle", "Exemple"], lignes: [["nein", "réponse « non »", "— Kommst du? — Nein."], ["nicht", "nie le verbe/l'adjectif", "Ich komme nicht."], ["doch", "« si ! » (contredit)", "— Du kommst nicht? — Doch!"]] },
+        note: "« doch » n'existe pas en français : il affirme contre une question négative." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "nicht ou kein ?", question: "Ich habe ___ Zeit.", options: ["keine", "nicht", "kein", "nichts"], correct: 0, explication: "die Zeit (f.) sans article → keine." },
       { type: "qcm", consigne: "Choisissez.", question: "Ich verstehe das ___.", options: ["nicht", "kein", "keine", "keinen"], correct: 0, explication: "On nie un verbe/nom défini → nicht." },
       { type: "trou", consigne: "Complétez (kein/keine/keinen).", texte: "Er trinkt {0} Bier und isst {1} Suppe.", accepte: [["kein"], ["keine"]], indice: "das Bier, die Suppe" },
       { type: "ordre", consigne: "Ordre des mots.", mots: ["Ich", "habe", "keinen", "Hunger"], correct: "Ich habe keinen Hunger", traduction: "Je n'ai pas faim." },
-      { type: "traduction", consigne: "Traduisez.", source: "Je ne bois pas de café.", accepte: ["Ich trinke keinen Kaffee"], aide: "kein + accusatif (der Kaffee)" }
+      { type: "traduction", consigne: "Traduisez.", source: "Je ne bois pas de café.", accepte: ["Ich trinke keinen Kaffee"], aide: "kein + accusatif (der Kaffee)" },
+      { type: "qcm", consigne: "Répondre « si ! ».", question: "— Magst du keinen Tee? — ___ !", options: ["Doch", "Nein", "Nicht", "Ja"], correct: 0, explication: "Contredire une question négative → Doch !" },
+      { type: "qcm", consigne: "Déclinaison de kein.", question: "Ich habe ___ Hund. (der Hund, accusatif)", options: ["keinen", "kein", "keine", "nicht"], correct: 0, explication: "der Hund masc. accusatif → keinen." }
     ]
   },
   g05: {
@@ -236,14 +268,23 @@ window.GRAMMAIRE = {
           { de: "Ich wohne in der Stadt.", fr: "J'habite en ville." }
         ],
         note: "Datif : der→dem, das→dem, die→der. « in dem » = im, « an dem » = am.",
-        attention: "Ces prépositions (*in, auf, an, unter…*) peuvent aussi prendre l'**accusatif** quand il y a un **déplacement** (question **Wohin?**). Ici, on parle de **position** (Wo?) → **datif**." }
+        attention: "Ces prépositions (*in, auf, an, unter…*) peuvent aussi prendre l'**accusatif** quand il y a un **déplacement** (question **Wohin?**). Ici, on parle de **position** (Wo?) → **datif**." },
+      { titre: "Les articles au datif", intro: "Après ces prépositions de position, l'article passe au datif. Voici toutes les formes.", regle: "*der/das* → **dem**, *die* → **der**, pluriel → **den** (+ -n au nom).",
+        tableau: { entetes: ["Genre", "Nominatif", "Datif", "Contraction"], lignes: [["masculin", "der", "dem", "an dem = am"], ["féminin", "die", "der", "—"], ["neutre", "das", "dem", "in dem = im"], ["pluriel", "die", "den", "—"]] },
+        exemples: [{ de: "auf dem Tisch (der Tisch)", fr: "sur la table" }, { de: "in der Küche (die Küche)", fr: "dans la cuisine" }, { de: "im Garten (in dem Garten)", fr: "dans le jardin" }],
+        note: "Contractions incontournables : in dem = im, an dem = am." },
+      { titre: "Les 9 prépositions mixtes", intro: "Neuf prépositions peuvent être suivies du datif (Wo?) OU de l'accusatif (Wohin?). Ici, position → datif.", regle: "in, an, auf, über, unter, vor, hinter, neben, zwischen.",
+        tableau: { entetes: ["Préposition", "Sens", "Position (Wo? + datif)"], lignes: [["in / an / auf", "dans / à / sur", "in dem Zimmer"], ["über / unter", "au-dessus / sous", "über dem Sofa"], ["vor / hinter", "devant / derrière", "vor dem Haus"], ["neben / zwischen", "à côté / entre", "neben der Tür"]] },
+        note: "Mémo : ces 9-là sont « à deux cas ». Sans mouvement (Wo?) → toujours datif." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Das Buch ist ___ dem Tisch.", options: ["auf", "in", "neben", "an"], correct: 0, explication: "sur la table → auf." },
       { type: "qcm", consigne: "Datif correct.", question: "Die Lampe ist in ___ Küche.", options: ["der", "dem", "die", "den"], correct: 0, explication: "die Küche (f.) au datif → der." },
       { type: "association", consigne: "Associez.", paires: [{ gauche: "auf", droite: "sur" }, { gauche: "unter", droite: "sous" }, { gauche: "neben", droite: "à côté de" }, { gauche: "zwischen", droite: "entre" }] },
       { type: "trou", consigne: "Complétez (dem/der).", texte: "Der Stuhl steht neben {0} Sofa und vor {1} Wand.", accepte: [["dem"], ["der"]], indice: "das Sofa, die Wand" },
-      { type: "ordre", consigne: "Ordre des mots.", mots: ["Die", "Katze", "ist", "unter", "dem", "Bett"], correct: "Die Katze ist unter dem Bett", traduction: "Le chat est sous le lit." }
+      { type: "ordre", consigne: "Ordre des mots.", mots: ["Die", "Katze", "ist", "unter", "dem", "Bett"], correct: "Die Katze ist unter dem Bett", traduction: "Le chat est sous le lit." },
+      { type: "qcm", consigne: "Contraction.", question: "« in dem Garten » se contracte en…", options: ["im Garten", "am Garten", "in Garten", "beim Garten"], correct: 0, explication: "in dem = im." },
+      { type: "trou", consigne: "Complétez (dem/der).", texte: "Das Bild hängt an {0} Wand und die Uhr steht auf {1} Tisch.", accepte: [["der"], ["dem"]], indice: "die Wand (f.) → der ; der Tisch (m.) → dem" }
     ]
   },
   g06: {
@@ -355,14 +396,20 @@ window.GRAMMAIRE = {
           { de: "Sie ist nach Berlin gefahren.", fr: "Elle est allée (en véhicule) à Berlin." }
         ],
         note: "Mouvement (fahren, gehen, fliegen) → auxiliaire SEIN. Sinon HABEN.",
-        attention: "Au Perfekt, le préfixe séparable se **recolle** dans le participe : *einkaufen* → *ich habe **eingekauft***. Les verbes en **-ieren** n'ont **pas** de *ge-* : *studieren* → *studiert*." }
+        attention: "Au Perfekt, le préfixe séparable se **recolle** dans le participe : *einkaufen* → *ich habe **eingekauft***. Les verbes en **-ieren** n'ont **pas** de *ge-* : *studieren* → *studiert*." },
+      { titre: "Participes passés à connaître par cœur", intro: "Les verbes forts ont un participe en *-en*, souvent avec changement de voyelle. Voici les plus fréquents.",
+        tableau: { entetes: ["Infinitif", "Participe", "Auxiliaire"], lignes: [["essen", "gegessen", "haben"], ["trinken", "getrunken", "haben"], ["sprechen", "gesprochen", "haben"], ["sehen", "gesehen", "haben"], ["lesen", "gelesen", "haben"], ["schreiben", "geschrieben", "haben"], ["gehen", "gegangen", "sein"], ["fahren", "gefahren", "sein"]] },
+        exemples: [{ de: "Ich habe einen Brief geschrieben.", fr: "J'ai écrit une lettre." }, { de: "Wir sind ins Kino gegangen.", fr: "Nous sommes allés au cinéma." }],
+        note: "Mouvement (gehen, fahren, kommen) → sein. Les autres → haben." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Où va l'infinitif après un modal ?", options: ["À la fin", "En 2e position", "Au début"], correct: 0, explication: "Modal conjugué en 2e, infinitif à la fin." },
       { type: "conjugaison", consigne: "Conjuguez « können ».", verbe: "können", items: [{ pronom: "ich", reponse: "kann" }, { pronom: "du", reponse: "kannst" }, { pronom: "er/sie/es", reponse: "kann" }, { pronom: "wir", reponse: "können" }, { pronom: "ihr", reponse: "könnt" }, { pronom: "sie/Sie", reponse: "können" }] },
       { type: "qcm", consigne: "Auxiliaire ?", question: "Ich ___ nach Berlin gefahren.", options: ["bin", "habe", "ist", "hat"], correct: 0, explication: "fahren (mouvement) → sein." },
       { type: "trou", consigne: "Participe passé de « machen ».", texte: "Was hast du {0}?", accepte: [["gemacht"]], indice: "ge-…-t" },
-      { type: "ordre", consigne: "Ordre (séparable).", mots: ["Ich", "stehe", "um", "sieben", "auf"], correct: "Ich stehe um sieben auf", traduction: "Je me lève à sept heures." }
+      { type: "ordre", consigne: "Ordre (séparable).", mots: ["Ich", "stehe", "um", "sieben", "auf"], correct: "Ich stehe um sieben auf", traduction: "Je me lève à sept heures." },
+      { type: "qcm", consigne: "Participe fort.", question: "Participe passé de « trinken » ?", options: ["getrunken", "getrinkt", "getrank", "trinkt"], correct: 0, explication: "trinken → getrunken (verbe fort)." },
+      { type: "association", consigne: "Associez l'infinitif au participe.", paires: [{ gauche: "essen", droite: "gegessen" }, { gauche: "sehen", droite: "gesehen" }, { gauche: "gehen", droite: "gegangen" }, { gauche: "schreiben", droite: "geschrieben" }] }
     ]
   },
   g08: {
@@ -393,14 +440,23 @@ window.GRAMMAIRE = {
           { de: "Im Sommer fahren wir ans Meer.", fr: "En été, nous allons à la mer." }
         ],
         note: "Exception : « in der Nacht ».",
-        attention: "Pas de préposition avec *heute*, *morgen*, *gestern* : on dit ***Heute** arbeite ich* (et non « ~~am heute~~ »)." }
+        attention: "Pas de préposition avec *heute*, *morgen*, *gestern* : on dit ***Heute** arbeite ich* (et non « ~~am heute~~ »)." },
+      { titre: "seit / vor / in (+ datif)", intro: "Trois prépositions temporelles très fréquentes, toutes suivies du datif.", regle: "**seit** = depuis (dure encore), **vor** = il y a (passé), **in** = dans (futur).",
+        tableau: { entetes: ["Préposition", "Sens", "Exemple"], lignes: [["seit", "depuis", "seit zwei Jahren"], ["vor", "il y a", "vor einer Woche"], ["in", "dans", "in einer Stunde"]] },
+        exemples: [{ de: "Ich lerne seit einem Jahr Deutsch.", fr: "J'apprends l'allemand depuis un an." }, { de: "Vor einer Woche war ich krank.", fr: "Il y a une semaine, j'étais malade." }],
+        note: "« seit » se dit avec le présent : Ich wohne seit 2020 hier." },
+      { titre: "Fréquence & durée à l'accusatif", intro: "Certaines expressions de temps se mettent à l'accusatif SANS préposition, et les adverbes disent la fréquence.", regle: "*jeden Tag*, *jede Woche*, *letzten Montag* = accusatif. immer > oft > manchmal > selten > nie.",
+        tableau: { entetes: ["Type", "Exemple", "Sens"], lignes: [["durée/répétition (acc.)", "jeden Tag", "chaque jour"], ["fréquence", "immer / oft / nie", "toujours / souvent / jamais"], ["repères", "heute / morgen / gestern", "aujourd'hui / demain / hier"]] },
+        note: "« jeden Tag » est à l'accusatif (der Tag → jeden), sans préposition." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Heure précise → quelle préposition ?", options: ["um", "am", "im", "in"], correct: 0, explication: "um 9 Uhr." },
       { type: "qcm", consigne: "Choisissez.", question: "___ Sommer ist es warm.", options: ["Im", "Am", "Um", "In"], correct: 0, explication: "saison → im." },
       { type: "trou", consigne: "Complétez (am/um/im).", texte: "{0} Montag habe ich {1} 10 Uhr einen Termin.", accepte: [["am"], ["um"]], indice: "jour / heure" },
       { type: "association", consigne: "Associez.", paires: [{ gauche: "um", droite: "9 Uhr" }, { gauche: "am", droite: "Montag" }, { gauche: "im", droite: "Januar" }] },
-      { type: "traduction", consigne: "Traduisez.", source: "Lundi à huit heures.", accepte: ["Am Montag um acht Uhr", "am Montag um 8 Uhr"], aide: "am … um …" }
+      { type: "traduction", consigne: "Traduisez.", source: "Lundi à huit heures.", accepte: ["Am Montag um acht Uhr", "am Montag um 8 Uhr"], aide: "am … um …" },
+      { type: "qcm", consigne: "depuis / il y a / dans ?", question: "« ___ zwei Jahren wohne ich hier. » (depuis)", options: ["Seit", "Vor", "In", "Am"], correct: 0, explication: "seit + datif = depuis (dure encore)." },
+      { type: "trou", consigne: "Complétez (accusatif de temps).", texte: "Ich lerne {0} Tag Deutsch. (chaque)", accepte: [["jeden"]], indice: "der Tag → jeden (accusatif)" }
     ]
   },
   g09: {
@@ -437,14 +493,19 @@ window.GRAMMAIRE = {
           { legende: "Coordination (und / aber / denn) : le verbe reste en 2e position.", mots: [{ m: "Es ist kalt,", r: "phrase 1", c: "objet" }, { m: "aber", r: "connecteur", c: "conj" }, { m: "die Sonne", r: "sujet", c: "sujet" }, { m: "scheint", r: "verbe (2)", c: "verbe" }] },
           { legende: "Subordination (weil) : le verbe est rejeté à la FIN.", mots: [{ m: "Ich bleibe,", r: "principale", c: "objet" }, { m: "weil", r: "connecteur", c: "conj" }, { m: "es", r: "sujet", c: "sujet" }, { m: "regnet", r: "verbe (fin)", c: "fin" }] }
         ],
-        note: "Comparez : « denn ich bin krank » (2e) vs « weil ich krank bin » (fin)." }
+        note: "Comparez : « denn ich bin krank » (2e) vs « weil ich krank bin » (fin)." },
+      { titre: "dass, wenn, ob… (autres subordonnants)", intro: "Comme *weil*, ces conjonctions rejettent le verbe conjugué à la fin. Voici les plus utiles.", regle: "dass (que), wenn (si/quand), ob (si, question), obwohl (bien que), als (quand, passé).",
+        tableau: { entetes: ["Conjonction", "Sens", "Exemple (verbe à la fin)"], lignes: [["dass", "que", "Ich weiß, dass er kommt."], ["wenn", "si / quand", "Wenn es regnet, bleibe ich."], ["ob", "si (question)", "Ich frage, ob er kommt."], ["obwohl", "bien que", "…, obwohl es kalt ist."]] },
+        note: "Toutes les subordonnées envoient le verbe conjugué à la fin — sans exception." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Avec « weil », le verbe va…", options: ["à la fin", "en 2e position", "au début"], correct: 0, explication: "weil = subordination → verbe à la fin." },
       { type: "qcm", consigne: "Conjonction logique.", question: "Es ist kalt, ___ die Sonne scheint.", options: ["aber", "und", "denn", "weil"], correct: 0, explication: "opposition → aber." },
       { type: "trou", consigne: "Complétez (verbe à la fin).", texte: "Ich komme nicht, weil ich krank {0}.", accepte: [["bin"]], indice: "weil → verbe à la fin" },
       { type: "ordre", consigne: "Ordre (subordonnée).", mots: ["weil", "es", "einen", "Stau", "gibt"], correct: "weil es einen Stau gibt", traduction: "parce qu'il y a un embouteillage" },
-      { type: "qcm", consigne: "Choisissez.", question: "Ich lerne Deutsch, ___ ich in Berlin wohne.", options: ["weil", "aber", "oder", "und"], correct: 0, explication: "cause → weil." }
+      { type: "qcm", consigne: "Choisissez.", question: "Ich lerne Deutsch, ___ ich in Berlin wohne.", options: ["weil", "aber", "oder", "und"], correct: 0, explication: "cause → weil." },
+      { type: "trou", consigne: "Verbe à la fin (dass).", texte: "Ich weiß, dass er heute {0}. (kommen)", accepte: [["kommt"]], indice: "dass → verbe conjugué à la fin" },
+      { type: "qcm", consigne: "Subordonnant.", question: "___ es regnet, bleibe ich zu Hause. (quand/si)", options: ["Wenn", "Denn", "Aber", "Und"], correct: 0, explication: "condition → wenn (verbe à la fin)." }
     ]
   },
   g10: {
@@ -486,7 +547,11 @@ window.GRAMMAIRE = {
           { de: "Das Auto gehört ihnen.", fr: "La voiture leur appartient." }
         ],
         note: "Datif : mir, dir, ihm, ihr, uns, euch, ihnen (Ihnen poli).",
-        attention: "Avec **deux pronoms**, l'ordre est **accusatif avant datif** : *Ich gebe **es dir*** (je te le donne). Mais avec des **noms**, c'est l'inverse : datif avant accusatif (*Ich gebe **dem Kind das Buch***)." }
+        attention: "Avec **deux pronoms**, l'ordre est **accusatif avant datif** : *Ich gebe **es dir*** (je te le donne). Mais avec des **noms**, c'est l'inverse : datif avant accusatif (*Ich gebe **dem Kind das Buch***)." },
+      { titre: "Les verbes qui exigent le datif", intro: "Certains verbes n'ont PAS de COD à l'accusatif : leur complément est au datif. À apprendre comme tels.", regle: "helfen, danken, gefallen, gehören, antworten, folgen, passen + datif.",
+        tableau: { entetes: ["Verbe", "Sens", "Exemple"], lignes: [["helfen", "aider", "Ich helfe dir."], ["danken", "remercier", "Ich danke dem Lehrer."], ["gefallen", "plaire", "Das Buch gefällt mir."], ["gehören", "appartenir", "Das Auto gehört ihm."]] },
+        exemples: [{ de: "Kannst du mir helfen?", fr: "Peux-tu m'aider ?" }, { de: "Das gefällt mir sehr.", fr: "Ça me plaît beaucoup." }],
+        note: "Piège pour un francophone : « aider quelqu'un » = helfen + DATIF (jemandem helfen)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez (mit + datif).", question: "Ich fahre mit ___ Bus.", options: ["dem", "der", "den", "das"], correct: 0, explication: "der Bus (m.) au datif → dem." },
@@ -495,7 +560,8 @@ window.GRAMMAIRE = {
       { type: "association", consigne: "Associez (toujours + datif).", paires: [{ gauche: "mit", droite: "avec" }, { gauche: "zu", droite: "vers/chez" }, { gauche: "bei", droite: "chez" }, { gauche: "aus", droite: "de (origine)" }] },
       { type: "traduction", consigne: "Traduisez.", source: "Je voyage en train. (avec le train)", accepte: ["Ich fahre mit dem Zug", "Ich reise mit dem Zug"], aide: "mit dem Zug" },
       { type: "qcm", consigne: "Pronom au datif.", question: "Kannst du ___ helfen? (à moi)", options: ["mir", "mich", "ich", "mein"], correct: 0, explication: "helfen + datif → mir (à moi)." },
-      { type: "trou", consigne: "Complétez (pronom au datif).", texte: "Das Buch gefällt {0}. (à eux)", accepte: [["ihnen"]], indice: "sie (pluriel) → ihnen" }
+      { type: "trou", consigne: "Complétez (pronom au datif).", texte: "Das Buch gefällt {0}. (à eux)", accepte: [["ihnen"]], indice: "sie (pluriel) → ihnen" },
+      { type: "qcm", consigne: "Verbe à datif.", question: "Ich ___ meiner Mutter. (aider)", options: ["helfe", "sehe", "habe", "mag"], correct: 0, explication: "helfen + datif : Ich helfe meiner Mutter." }
     ]
   },
   g11: {
@@ -526,14 +592,23 @@ window.GRAMMAIRE = {
           { de: "Wir gehen in die Stadt.", fr: "Nous allons en ville." }
         ],
         note: "« zu Hause » = être à la maison (lieu) ; « nach Hause » = vers la maison (mouvement).",
-        attention: "Pays avec article → **in** + accusatif, pas *nach* : *in **die** Schweiz*, *in **die** Türkei* (et non « ~~nach die Schweiz~~ »)." }
+        attention: "Pays avec article → **in** + accusatif, pas *nach* : *in **die** Schweiz*, *in **die** Türkei* (et non « ~~nach die Schweiz~~ »)." },
+      { titre: "Wo? / Wohin? / Woher?", intro: "Trois questions pour l'espace : où l'on est, où l'on va, d'où l'on vient.", regle: "**Wo?** = position (datif). **Wohin?** = direction (nach/zu/in+acc.). **Woher?** = origine (aus/von).",
+        tableau: { entetes: ["Question", "Sens", "Réponse type"], lignes: [["Wo?", "où (position)", "in der Stadt (datif)"], ["Wohin?", "vers où (direction)", "in die Stadt / nach Berlin"], ["Woher?", "d'où (origine)", "aus Frankreich / von der Arbeit"]] },
+        exemples: [{ de: "Wo bist du? — Zu Hause.", fr: "Où es-tu ? — À la maison." }, { de: "Wohin gehst du? — Nach Hause.", fr: "Où vas-tu ? — À la maison." }, { de: "Woher kommst du? — Aus Spanien.", fr: "D'où viens-tu ? — D'Espagne." }],
+        note: "Une même préposition (in) change de cas : Wo? → datif, Wohin? → accusatif." },
+      { titre: "D'où viens-tu ? aus / von", intro: "Deux prépositions pour l'origine, toutes deux + datif.", regle: "**aus** = venir d'un pays/ville/bâtiment. **von** = venir d'une personne ou d'un point de départ.",
+        tableau: { entetes: ["Préposition", "Usage", "Exemple"], lignes: [["aus", "pays, ville, bâtiment", "aus Frankreich, aus dem Haus"], ["von", "personne, point de départ", "von der Arbeit, von Anna"], ["nach Hause", "rentrer (figé)", "Ich gehe nach Hause."], ["zu Hause", "être à la maison (figé)", "Ich bin zu Hause."]] },
+        note: "« Ich komme aus Deutschland » (pays) mais « Ich komme von der Arbeit » (lieu d'activité)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez (ville).", question: "Ich fliege ___ Spanien.", options: ["nach", "zu", "in", "mit"], correct: 0, explication: "pays sans article → nach." },
       { type: "qcm", consigne: "Choisissez.", question: "Ich gehe ___ Arzt.", options: ["zum", "nach", "in", "auf"], correct: 0, explication: "personne/lieu précis → zu (zum = zu dem)." },
       { type: "trou", consigne: "Complétez (nach/zu).", texte: "Heute fahre ich {0} München und dann gehe ich {1} Bahnhof.", accepte: [["nach"], ["zum"]], indice: "ville / lieu précis" },
       { type: "association", consigne: "Associez.", paires: [{ gauche: "nach", droite: "ville/pays" }, { gauche: "zu", droite: "personne/lieu" }, { gauche: "zu Hause", droite: "à la maison" }] },
-      { type: "ordre", consigne: "Ordre des mots.", mots: ["Ich", "gehe", "nach", "Hause"], correct: "Ich gehe nach Hause", traduction: "Je rentre à la maison." }
+      { type: "ordre", consigne: "Ordre des mots.", mots: ["Ich", "gehe", "nach", "Hause"], correct: "Ich gehe nach Hause", traduction: "Je rentre à la maison." },
+      { type: "qcm", consigne: "Origine (Woher?).", question: "Ich komme ___ Frankreich.", options: ["aus", "von", "nach", "zu"], correct: 0, explication: "pays d'origine → aus." },
+      { type: "trou", consigne: "Complétez (nach Hause / zu Hause).", texte: "Am Abend gehe ich {0} Hause; jetzt bin ich {1} Hause.", accepte: [["nach"], ["zu"]], indice: "mouvement / position" }
     ]
   },
   g12: {
@@ -572,14 +647,20 @@ window.GRAMMAIRE = {
           { de: "Heute ist es kälter als gestern.", fr: "Aujourd'hui il fait plus froid qu'hier." }
         ],
         note: "Ex. : Berlin ist größer als Bonn.",
-        attention: "Le mot pour « que » dans une comparaison est **als**, pas *wie*. *wie* sert seulement à l'**égalité** : *so groß **wie*** (aussi grand que)." }
+        attention: "Le mot pour « que » dans une comparaison est **als**, pas *wie*. *wie* sert seulement à l'**égalité** : *so groß **wie*** (aussi grand que)." },
+      { titre: "Le superlatif (am …-sten)", intro: "Après le comparatif, le degré maximum : « le plus… ». Forme attribut : *am* + adjectif + *-sten*.", regle: "am + adjectif + **-(e)sten**. Souvent Umlaut, comme au comparatif. Irréguliers : gut → am besten.",
+        tableau: { entetes: ["Adjectif", "Comparatif", "Superlatif"], lignes: [["klein", "kleiner", "am kleinsten"], ["groß", "größer", "am größten"], ["gut", "besser", "am besten"], ["gern", "lieber", "am liebsten"]] },
+        exemples: [{ de: "Im Winter sind die Tage am kürzesten.", fr: "En hiver, les jours sont les plus courts." }, { de: "Ich trinke am liebsten Kaffee.", fr: "Je bois de préférence du café." }],
+        note: "Échelle : klein → kleiner → am kleinsten (positif, comparatif, superlatif)." }
     ],
     exercices: [
       { type: "qcm", cat: "comp", consigne: "Choisissez.", question: "Après « ist », l'adjectif…", options: ["ne change pas", "prend -en", "prend -e"], correct: 0, explication: "Adjectif attribut = invariable." },
       { type: "qcm", consigne: "Comparatif de « groß ».", question: "Berlin ist ___ als Bonn.", options: ["größer", "großer", "am größten", "groß"], correct: 0, explication: "groß → größer (Umlaut)." },
       { type: "association", consigne: "Associez l'adjectif et son contraire.", paires: [{ gauche: "groß", droite: "klein" }, { gauche: "neu", droite: "alt" }, { gauche: "gut", droite: "schlecht" }, { gauche: "teuer", droite: "billig" }] },
       { type: "trou", consigne: "Complétez le comparatif.", texte: "Das Auto ist {0} als das Fahrrad. (schnell)", accepte: [["schneller"]], indice: "schnell + -er" },
-      { type: "traduction", consigne: "Traduisez.", source: "La maison est grande.", accepte: ["Das Haus ist groß"], aide: "adjectif invariable après ist" }
+      { type: "traduction", consigne: "Traduisez.", source: "La maison est grande.", accepte: ["Das Haus ist groß"], aide: "adjectif invariable après ist" },
+      { type: "qcm", consigne: "Superlatif de « gut ».", question: "Dieser Film ist ___.", options: ["am besten", "am gutsten", "besser", "gut"], correct: 0, explication: "gut → besser → am besten (irrégulier)." },
+      { type: "association", consigne: "Associez (comparatif → superlatif).", paires: [{ gauche: "größer", droite: "am größten" }, { gauche: "besser", droite: "am besten" }, { gauche: "lieber", droite: "am liebsten" }, { gauche: "kleiner", droite: "am kleinsten" }] }
     ]
   },
   g13: {
