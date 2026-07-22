@@ -77,16 +77,94 @@ window.Exercises = (function () {
     card.classList.toggle("exo-ko", !res.ok);
   }
 
+  /* ---------- Mode révision (leçon déjà terminée : exercices verrouillés) ----------
+     On ré-affiche l'exercice sans possibilité de le refaire, on révèle la bonne
+     réponse, et on colore la carte en vert (réussi) ou rouge (à revoir). */
+  function lockInputs(container) {
+    container.querySelectorAll("input, textarea").forEach((n) => { n.readOnly = true; n.tabIndex = -1; });
+    container.querySelectorAll("select").forEach((n) => { n.disabled = true; });
+    container.querySelectorAll("button").forEach((b) => { if (!b.classList.contains("btn-audio")) { b.disabled = true; b.tabIndex = -1; } });
+    container.classList.add("exo-locked");
+  }
+  function revealSolution(ex, body) {
+    switch (ex.type) {
+      case "qcm":
+      case "ecoute":
+        body.querySelectorAll(".qcm-opt").forEach((b, i) => { if (i === ex.correct) b.classList.add("correct"); });
+        break;
+      case "trou":
+        body.querySelectorAll(".trou-input").forEach((inp) => {
+          const idx = parseInt(inp.dataset.idx, 10);
+          inp.value = (ex.accepte && ex.accepte[idx] && ex.accepte[idx][0]) || "";
+          inp.classList.add("ok");
+        });
+        break;
+      case "conjugaison":
+        body.querySelectorAll(".conj-input").forEach((inp) => { inp.value = inp.dataset.rep || ""; inp.classList.add("ok"); });
+        break;
+      case "traduction": {
+        const inp = body.querySelector(".trad-input");
+        if (inp) { inp.value = (ex.accepte && ex.accepte[0]) || ""; inp.classList.add("ok"); }
+        break;
+      }
+      case "ordre": {
+        const pool = body.querySelector(".ordre-pool"); if (pool) pool.style.display = "none";
+        const ans = body.querySelector(".ordre-answer");
+        if (ans) { ans.classList.remove("empty"); ans.textContent = ""; ans.appendChild(el("span", "ordre-chip placed ok", ex.correct)); }
+        break;
+      }
+    }
+  }
+  function buildReview(ex, body, feedback, review) {
+    if (ex.type === "association") {
+      const sol = el("div", "assoc-review");
+      (ex.paires || []).forEach((p) => {
+        const row = el("div", "assoc-review-row");
+        row.appendChild(el("span", "assoc-review-l", p.gauche));
+        row.appendChild(el("span", "assoc-review-arrow", "→"));
+        row.appendChild(el("span", "assoc-review-r", p.droite));
+        sol.appendChild(row);
+      });
+      body.appendChild(sol);
+    } else if (GRADABLE.indexOf(ex.type) >= 0) {
+      if (ex.type === "qcm" || ex.type === "ecoute") buildChoice(ex, body);
+      else if (ex.type === "trou") buildTrou(ex, body);
+      else if (ex.type === "conjugaison") buildConjugaison(ex, body);
+      else if (ex.type === "ordre") buildOrdre(ex, body);
+      else if (ex.type === "traduction") buildTraduction(ex, body);
+      revealSolution(ex, body);
+      lockInputs(body);
+    } else if (ex.type === "production" || ex.type === "oral") {
+      body.appendChild(el("p", "exo-question", ex.prompt || ex.consigne || ""));
+      if (ex.modele) {
+        const m = el("div", "production-modele");
+        m.innerHTML = '<div class="modele-head">✅ Modèle <button type="button" class="btn-audio modele-audio">🔊 Écouter</button></div><p class="modele-text">' + ex.modele + "</p>";
+        body.appendChild(m);
+        const ab = m.querySelector(".modele-audio"); if (ab) ab.addEventListener("click", () => window.Speech && window.Speech.speak(ex.modele));
+      }
+    } else if (ex.type === "rp") {
+      body.appendChild(el("p", "exo-indice", "🎭 Jeu de rôle déjà réalisé."));
+    }
+    feedback.className = "exo-feedback show " + (review.ok ? "juste" : "faux");
+    let msg = review.ok
+      ? "✓ <strong>Déjà traité — réussi.</strong>"
+      : "✗ <strong>Déjà traité — à revoir.</strong> La bonne réponse est indiquée ci-dessus.";
+    if (ex.explication) msg += '<div class="exo-explication">💡 ' + ex.explication + "</div>";
+    feedback.innerHTML = msg;
+  }
+
   /* ---------- Rendu d'un exercice ---------- */
   function render(ex, index, onResult, options) {
     options = options || {};
     const testMode = !!options.testMode;
+    const review = options.review || null;
     const card = el("div", "exo");
     card.dataset.type = ex.type;
 
     const head = el("div", "exo-head");
     head.appendChild(el("span", "exo-num", (options.label || "Exercice " + (index + 1))));
     head.appendChild(el("span", "exo-type", typeLabel(ex.type)));
+    if (review) head.appendChild(el("span", "exo-review-badge " + (review.ok ? "ok" : "ko"), review.ok ? "✓ Réussi" : "✗ À revoir"));
     card.appendChild(head);
 
     if (ex.consigne) card.appendChild(el("p", "exo-consigne", ex.consigne));
@@ -95,6 +173,15 @@ window.Exercises = (function () {
     card.appendChild(body);
     const actions = el("div", "exo-actions");
     const feedback = el("div", "exo-feedback");
+
+    // Leçon déjà terminée : on montre la correction (verrouillée), sans bouton « Vérifier ».
+    if (review) {
+      buildReview(ex, body, feedback, review);
+      card.classList.add("exo-review", review.ok ? "exo-ok" : "exo-ko");
+      card.appendChild(actions);
+      card.appendChild(feedback);
+      return card;
+    }
 
     if (GRADABLE.indexOf(ex.type) >= 0) {
       let checker = null;

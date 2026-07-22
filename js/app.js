@@ -1039,7 +1039,10 @@
     exo.id = "exo";
     exo.appendChild(el("h2", "", "✍️ Exercices interactifs"));
     const seuil = COURS.seuilLecon || 70;
-    exo.appendChild(el("p", "exo-group-sub", "Fais <strong>tous</strong> les exercices pour valider la leçon (la suivante se débloque). Les exercices ratés seront à <strong>refaire avant l'examen du niveau</strong>."));
+    const lessonDone = window.Progress.estTermine(l.id);
+    exo.appendChild(el("p", "exo-group-sub", lessonDone
+      ? "✅ Leçon déjà terminée — voici ta <strong>correction</strong>. Les exercices <strong style=\"color:var(--green)\">réussis</strong> apparaissent en vert, ceux <strong style=\"color:var(--red)\">à revoir</strong> en rouge. Ils ne sont plus modifiables."
+      : "Fais <strong>tous</strong> les exercices pour valider la leçon (la suivante se débloque). Les exercices ratés seront à <strong>refaire avant l'examen du niveau</strong>."));
     const exProg = el("div", "exo-progress");
     const bar = el("div", "bar");
     const fill = el("div", "bar-fill");
@@ -1065,7 +1068,7 @@
     const done = new Set();
     const success = new Set();
     (function () { var sv = (window.Progress.getLecon(l.id) || {}).exercices || {}; Object.keys(sv).forEach(function (k) { var i = +k; if (i >= 0 && i < total) { done.add(i); if (sv[k]) success.add(i); } }); })();
-    let completionShown = window.Progress.estTermine(l.id);
+    let completionShown = lessonDone;
     let unlockNext = function () {}; // activé quand la leçon est validée (défini plus bas)
     function refresh() {
       // La leçon suivante se débloque dès que TOUS les exercices sont FAITS.
@@ -1103,13 +1106,19 @@
       return groups[cat];
     }
     allEx.forEach((ex, i) => {
-      const node = window.Exercises.render(ex, i, (ok) => {
-        done.add(i);
-        if (ok) success.add(i);
-        else success.delete(i);
-        window.Progress.setExercice(l.id, i, ok);
-        refresh();
-      });
+      let node;
+      if (lessonDone && done.has(i)) {
+        // Leçon terminée + exercice déjà traité → correction verrouillée (vert/rouge).
+        node = window.Exercises.render(ex, i, null, { review: { ok: success.has(i) } });
+      } else {
+        node = window.Exercises.render(ex, i, (ok) => {
+          done.add(i);
+          if (ok) success.add(i);
+          else success.delete(i);
+          window.Progress.setExercice(l.id, i, ok);
+          refresh();
+        });
+      }
       groupOf(ex._rp ? "rp" : exoCat(ex)).appendChild(node);
     });
     ["comp", "appro", "prod", "rp"].forEach((cat) => { if (groups[cat]) exo.appendChild(groups[cat]); });
@@ -4305,7 +4314,10 @@
       const exo = el("section", "lesson-section"); exo.id = "exo";
       exo.appendChild(el("h2", "", "✍️ Exercices interactifs"));
       const seuil = 70;
-      exo.appendChild(el("p", "exo-group-sub", "Fais tous les exercices et atteins <strong>" + seuil + "%</strong> de réussite pour valider la leçon."));
+      const lessonDone = window.Progress.estTermine(l.id);
+      exo.appendChild(el("p", "exo-group-sub", lessonDone
+        ? "✅ Leçon déjà validée — voici ta <strong>correction</strong>. Les exercices <strong style=\"color:var(--green)\">réussis</strong> sont en vert, ceux <strong style=\"color:var(--red)\">à revoir</strong> en rouge. Ils ne sont plus modifiables."
+        : "Fais tous les exercices et atteins <strong>" + seuil + "%</strong> de réussite pour valider la leçon."));
       const exProg = el("div", "exo-progress"); const bar = el("div", "bar"); const fill = el("div", "bar-fill");
       bar.appendChild(fill); const label = el("span", "exo-progress-label", ""); exProg.appendChild(label); exProg.appendChild(bar); exo.appendChild(exProg);
       const allEx = l.exercices.slice();
@@ -4328,7 +4340,12 @@
       const groups = {};
       function groupOf(cat) { if (!groups[cat]) { const g = el("div", "exo-group exo-group-" + cat); g.appendChild(el("h3", "exo-group-title", groupDefs[cat][0])); g.appendChild(el("p", "exo-group-sub", groupDefs[cat][1])); groups[cat] = g; } return groups[cat]; }
       allEx.forEach((ex, i) => {
-        const node = window.Exercises.render(ex, i, (ok) => { done.add(i); if (ok) success.add(i); else success.delete(i); window.Progress.setExercice(l.id, i, ok); refresh(); });
+        let node;
+        if (lessonDone && done.has(i)) {
+          node = window.Exercises.render(ex, i, null, { review: { ok: success.has(i) } });
+        } else {
+          node = window.Exercises.render(ex, i, (ok) => { done.add(i); if (ok) success.add(i); else success.delete(i); window.Progress.setExercice(l.id, i, ok); refresh(); });
+        }
         groupOf(ex._rp ? "rp" : exoCat(ex)).appendChild(node);
       });
       ["comp", "appro", "prod", "rp"].forEach((cat) => { if (groups[cat]) exo.appendChild(groups[cat]); });
