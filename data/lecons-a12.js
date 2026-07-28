@@ -63,6 +63,11 @@ window.MODULE_A12 = {
               ["schließlich", "enfin", "Schließlich gehe ich zur Arbeit."]
             ]
           },
+          exemples: [
+            { de: "Zuerst frühstücke ich, dann fahre ich zur Arbeit.", fr: "D'abord je prends le petit-déjeuner, puis je vais au travail." },
+            { de: "Danach treffe ich Freunde.", fr: "Ensuite je retrouve des amis." },
+            { de: "Schließlich gehe ich ins Bett.", fr: "Enfin je vais me coucher." }
+          ],
           note: "⚠️ Règle d'or : le verbe reste en 2e position. « Dann dusche ich » (et non « Dann ich dusche »)."
         },
         {
@@ -78,6 +83,11 @@ window.MODULE_A12 = {
               ["la nuit", "in der Nacht / nachts"]
             ]
           },
+          exemples: [
+            { de: "Am Morgen trinke ich Kaffee.", fr: "Le matin je bois du café." },
+            { de: "Am Abend sehe ich fern.", fr: "Le soir je regarde la télé." },
+            { de: "Morgens jogge ich meistens.", fr: "Le matin (habituellement) je fais du jogging." }
+          ],
           note: "Les formes en -s (morgens, abends) signifient « habituellement le matin/soir »."
         }
       ],
@@ -189,6 +199,11 @@ window.MODULE_A12 = {
               ["sie/Sie", "müssen", "können", "wollen"]
             ]
           },
+          exemples: [
+            { de: "Ich muss heute arbeiten.", fr: "Je dois travailler aujourd'hui." },
+            { de: "Kannst du mir helfen?", fr: "Peux-tu m'aider ?" },
+            { de: "Wir wollen ins Kino gehen.", fr: "Nous voulons aller au cinéma." }
+          ],
           note: "⚠️ ich et er/sie/es n'ont PAS de terminaison : ich muss, er kann, sie will."
         },
         {
@@ -202,6 +217,11 @@ window.MODULE_A12 = {
               ["Wir wollen am Freitag", "", "feiern."]
             ]
           },
+          exemples: [
+            { de: "Ich möchte einen Kaffee trinken.", fr: "J'aimerais boire un café." },
+            { de: "Du musst jetzt nach Hause gehen.", fr: "Tu dois rentrer à la maison maintenant." },
+            { de: "Er kann sehr gut Deutsch sprechen.", fr: "Il sait très bien parler allemand." }
+          ],
           note: "Cette structure « modal ... infinitif » s'appelle la parenthèse verbale (Satzklammer)."
         }
       ],
@@ -320,6 +340,11 @@ window.MODULE_A12 = {
               ["Sie", "infinitif + Sie", "Öffnen Sie die Datei!"]
             ]
           },
+          exemples: [
+            { de: "Komm bitte her!", fr: "Viens ici s'il te plaît !" },
+            { de: "Nehmen Sie Platz!", fr: "Asseyez-vous ! (poli)" },
+            { de: "Macht die Bücher auf!", fr: "Ouvrez les livres ! (à plusieurs)" }
+          ],
           note: "À la forme « du », pas de pronom : « Klick hier! » Pour « Sie », on garde le pronom : « Klicken Sie hier! »"
         },
         {
@@ -334,6 +359,11 @@ window.MODULE_A12 = {
               ["haben (avoir)", "Hab Geduld!", "Haben Sie Geduld!"]
             ]
           },
+          exemples: [
+            { de: "Sei vorsichtig!", fr: "Sois prudent !" },
+            { de: "Iss dein Gemüse!", fr: "Mange tes légumes !" },
+            { de: "Seien Sie pünktlich!", fr: "Soyez ponctuel ! (poli)" }
+          ],
           note: "« Sei vorsichtig! » = Sois prudent ! / « Seien Sie vorsichtig! » (poli)."
         }
       ],
@@ -504,6 +534,11 @@ window.MODULE_A12 = {
               ["ab", "à partir de", "ab Montag"]
             ]
           },
+          exemples: [
+            { de: "Am Montag habe ich frei.", fr: "Lundi je suis en congé." },
+            { de: "Der Kurs beginnt um neun Uhr.", fr: "Le cours commence à neuf heures." },
+            { de: "Im Sommer fahren wir ans Meer.", fr: "En été nous allons à la mer." }
+          ],
           note: "⚠️ « in der Nacht » est l'exception (pas « am »). Heure → um ; jour → am ; mois/saison → im."
         },
         {
@@ -518,6 +553,11 @@ window.MODULE_A12 = {
               ["Leider kann ich nicht.", "Malheureusement je ne peux pas."]
             ]
           },
+          exemples: [
+            { de: "Können Sie mir bitte helfen?", fr: "Pouvez-vous m'aider s'il vous plaît ?" },
+            { de: "Könnten wir einen Termin machen?", fr: "Pourrions-nous prendre rendez-vous ?" },
+            { de: "Passt Ihnen Montag um zehn?", fr: "Lundi à dix heures vous convient-il ?" }
+          ],
           note: "« Passt Ihnen ...? » et « Geht es am ...? » sont les formules typiques pour proposer un créneau."
         }
       ],
@@ -635,6 +675,11 @@ window.MODULE_A12 = {
               ["denn", "car", "Ich bleibe zu Hause, denn es regnet."]
             ]
           },
+          exemples: [
+            { de: "Ich trinke Tee und ich lese ein Buch.", fr: "Je bois du thé et je lis un livre." },
+            { de: "Möchtest du Kaffee oder Tee?", fr: "Veux-tu du café ou du thé ?" },
+            { de: "Es ist spät, aber ich bin nicht müde.", fr: "Il est tard, mais je ne suis pas fatigué." }
+          ],
           note: "Ces 4 conjonctions ne comptent pas comme « position 1 » : l'ordre normal sujet-verbe est conservé."
         },
         {
@@ -649,6 +694,11 @@ window.MODULE_A12 = {
               ["Es sind 25 Grad.", "Il fait 25 degrés."]
             ]
           },
+          exemples: [
+            { de: "Es regnet und es ist kalt.", fr: "Il pleut et il fait froid." },
+            { de: "Heute ist es sonnig.", fr: "Aujourd'hui il fait soleil." },
+            { de: "Im Winter schneit es oft.", fr: "En hiver il neige souvent." }
+          ],
           note: "« Es gibt » = il y a ; « Es ist » = il est/fait. Ne pas confondre."
         }
       ],
@@ -766,6 +816,11 @@ window.MODULE_A12 = {
               ["Sie ist nach Berlin", "", "gefahren."]
             ]
           },
+          exemples: [
+            { de: "Ich habe gestern Fußball gespielt.", fr: "Hier j'ai joué au foot." },
+            { de: "Wir haben einen Film gesehen.", fr: "Nous avons vu un film." },
+            { de: "Sie ist nach Berlin gefahren.", fr: "Elle est allée à Berlin." }
+          ],
           note: "⚠️ Verbes de mouvement/changement d'état (fahren, fliegen, gehen, kommen) → auxiliaire SEIN. Les autres → HABEN."
         },
         {
@@ -781,6 +836,11 @@ window.MODULE_A12 = {
               ["sehen", "irrégulier", "gesehen"]
             ]
           },
+          exemples: [
+            { de: "Ich habe das schon gemacht.", fr: "J'ai déjà fait ça." },
+            { de: "Er hat den ganzen Tag gearbeitet.", fr: "Il a travaillé toute la journée." },
+            { de: "Wir haben im Supermarkt eingekauft.", fr: "Nous avons fait les courses au supermarché." }
+          ],
           note: "Verbes séparables : ge- s'insère : einkaufen → eingekauft. Verbes en -ieren : pas de ge- (buchen reste régulier, mais reservieren → reserviert)."
         }
       ],
@@ -951,6 +1011,11 @@ window.MODULE_A12 = {
               ["das Fahrrad", "neutre", "mit dem Fahrrad"]
             ]
           },
+          exemples: [
+            { de: "Ich fahre mit dem Bus zur Arbeit.", fr: "Je vais au travail en bus." },
+            { de: "Sie schreibt mit einem Stift.", fr: "Elle écrit avec un stylo." },
+            { de: "Wir fahren mit dem Zug nach Hamburg.", fr: "Nous allons à Hambourg en train." }
+          ],
           note: "Exception : « zu Fuß » (à pied), sans « mit »."
         },
         {
@@ -965,6 +1030,11 @@ window.MODULE_A12 = {
               ["zu Hause / nach Hause", "à la maison / vers la maison", "Ich bin zu Hause."]
             ]
           },
+          exemples: [
+            { de: "Ich fahre nach Italien.", fr: "Je vais en Italie." },
+            { de: "Er geht zum Arzt.", fr: "Il va chez le médecin." },
+            { de: "Am Abend gehe ich nach Hause.", fr: "Le soir je rentre à la maison." }
+          ],
           note: "« nach Hause » = rentrer (mouvement) ; « zu Hause » = être à la maison (lieu)."
         }
       ],
@@ -1084,6 +1154,11 @@ window.MODULE_A12 = {
               ["an", "à / contre", "Das Bild hängt an der Wand."]
             ]
           },
+          exemples: [
+            { de: "Das Buch liegt auf dem Tisch.", fr: "Le livre est sur la table." },
+            { de: "Die Lampe steht neben dem Sofa.", fr: "La lampe est à côté du canapé." },
+            { de: "Ich bin in der Küche.", fr: "Je suis dans la cuisine." }
+          ],
           note: "Datif : der→dem, das→dem, die→der. (Avec mouvement « Wohin? », ce serait l'accusatif — niveau A2.)"
         },
         {
@@ -1097,6 +1172,11 @@ window.MODULE_A12 = {
               ["Das Zimmer hat ein Fenster.", "La pièce a une fenêtre."]
             ]
           },
+          exemples: [
+            { de: "Die Wohnung hat einen Balkon.", fr: "L'appartement a un balcon." },
+            { de: "Es gibt eine große Küche.", fr: "Il y a une grande cuisine." },
+            { de: "Mein Zimmer hat ein Fenster.", fr: "Ma chambre a une fenêtre." }
+          ],
           note: "Rappel accusatif : seul le masculin change (ein → einen : einen Balkon)."
         }
       ],
@@ -1269,6 +1349,11 @@ window.MODULE_A12 = {
               ["sie/Sie", "sollen", "Sie sollen sich ausruhen."]
             ]
           },
+          exemples: [
+            { de: "Du sollst viel Wasser trinken.", fr: "Tu devrais boire beaucoup d'eau." },
+            { de: "Der Arzt sagt, ich soll mich ausruhen.", fr: "Le médecin dit que je dois me reposer." },
+            { de: "Sollen wir ein Taxi nehmen?", fr: "Devrions-nous prendre un taxi ?" }
+          ],
           note: "« Du sollst viel trinken » = Tu devrais beaucoup boire (conseil du médecin)."
         },
         {
@@ -1282,6 +1367,11 @@ window.MODULE_A12 = {
               ["haben + ...schmerzen", "Ich habe Kopfschmerzen.", "J'ai mal à la tête."]
             ]
           },
+          exemples: [
+            { de: "Mein Kopf tut weh.", fr: "J'ai mal à la tête." },
+            { de: "Ich habe Bauchschmerzen.", fr: "J'ai mal au ventre." },
+            { de: "Tut dir der Hals weh?", fr: "As-tu mal à la gorge ?" }
+          ],
           note: "Composés : Kopf + Schmerzen = Kopfschmerzen ; Bauch + Schmerzen = Bauchschmerzen."
         }
       ],
@@ -1452,6 +1542,11 @@ window.MODULE_A12 = {
               ["Sie ruft an,", "weil sie den Termin vergisst."]
             ]
           },
+          exemples: [
+            { de: "Ich bleibe zu Hause, weil ich krank bin.", fr: "Je reste à la maison parce que je suis malade." },
+            { de: "Sie lernt Deutsch, weil sie in Berlin wohnt.", fr: "Elle apprend l'allemand parce qu'elle habite à Berlin." },
+            { de: "Wir kommen nicht, weil es regnet.", fr: "Nous ne venons pas parce qu'il pleut." }
+          ],
           note: "⚠️ Comparez : « denn ich bin krank » (verbe en 2e) vs « weil ich krank bin » (verbe à la fin). Même sens, syntaxe différente !"
         },
         {
@@ -1465,6 +1560,11 @@ window.MODULE_A12 = {
               ["..., weil der Zug Verspätung hatte.", "... parce que le train avait du retard."]
             ]
           },
+          exemples: [
+            { de: "Ich bin müde, weil ich schlecht geschlafen habe.", fr: "Je suis fatigué parce que j'ai mal dormi." },
+            { de: "Er hat Hunger, weil er nichts gegessen hat.", fr: "Il a faim parce qu'il n'a rien mangé." },
+            { de: "Sie freut sich, weil sie bestanden hat.", fr: "Elle est contente parce qu'elle a réussi." }
+          ],
           note: "Ordre dans la subordonnée : weil + sujet + ... + participe + auxiliaire (tout à la fin)."
         }
       ],

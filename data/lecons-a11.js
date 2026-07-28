@@ -495,6 +495,11 @@ window.MODULE_A11 = {
               ["sie/Sie", "sprechen", "—"]
             ]
           },
+          exemples: [
+            { de: "Ich spreche Französisch, und du sprichst Deutsch.", fr: "Je parle français, et toi tu parles allemand." },
+            { de: "Sie spricht drei Sprachen.", fr: "Elle parle trois langues." },
+            { de: "Sprichst du auch Englisch?", fr: "Parles-tu aussi anglais ?" }
+          ],
           note: "Même schéma pour « essen » (manger : du isst) et « nehmen » (prendre : du nimmst)."
         },
         {
@@ -507,6 +512,11 @@ window.MODULE_A11 = {
               ["Woher? (d'où ?)", "aus", "Ich komme aus Italien."]
             ]
           },
+          exemples: [
+            { de: "Ich wohne in Deutschland, aber ich komme aus Portugal.", fr: "J'habite en Allemagne, mais je viens du Portugal." },
+            { de: "Kommst du aus Österreich?", fr: "Viens-tu d'Autriche ?" },
+            { de: "Wir leben in Berlin.", fr: "Nous vivons à Berlin." }
+          ],
           note:
             "Exceptions avec article : die Schweiz, die Türkei, die USA → in der Schweiz / aus der Schweiz."
         }
@@ -631,6 +641,11 @@ window.MODULE_A11 = {
               ["Ich spiele nicht gern Tennis.", "Je n'aime pas jouer au tennis."]
             ]
           },
+          exemples: [
+            { de: "Ich trinke gern Kaffee.", fr: "J'aime bien boire du café." },
+            { de: "Spielst du gern Fußball?", fr: "Aimes-tu jouer au foot ?" },
+            { de: "Sie liest sehr gern Romane.", fr: "Elle aime beaucoup lire des romans." }
+          ],
           note: "Plus fort : « sehr gern » (beaucoup) ; contraire : « nicht gern » (ne pas aimer)."
         },
         {
@@ -647,6 +662,11 @@ window.MODULE_A11 = {
               ["sie/Sie", "lesen", "sehen"]
             ]
           },
+          exemples: [
+            { de: "Ich lese ein Buch, und du liest eine Zeitung.", fr: "Je lis un livre, et toi tu lis un journal." },
+            { de: "Er liest jeden Abend vor dem Schlafen.", fr: "Il lit tous les soirs avant de dormir." },
+            { de: "Siehst du den Film heute?", fr: "Regardes-tu le film aujourd'hui ?" }
+          ],
           note: "du liest = tu lis (un seul « s » à l'oral, le -t suffit)."
         }
       ],
@@ -816,6 +836,11 @@ window.MODULE_A11 = {
               ["neutre (das)", "ein", "ein Büro"]
             ]
           },
+          exemples: [
+            { de: "Das ist ein Mann und eine Frau.", fr: "C'est un homme et une femme." },
+            { de: "Hier ist ein Buch.", fr: "Voici un livre." },
+            { de: "Ist das ein Hund oder eine Katze?", fr: "Est-ce un chien ou un chat ?" }
+          ],
           note:
             "Profession : « Ich bin Arzt. » (sans article). Mais : « Das ist ein Arzt. » (présentation)."
         },
@@ -830,6 +855,11 @@ window.MODULE_A11 = {
               ["votre (Sie)", "Ihr Büro", "Ihre Kollegin"]
             ]
           },
+          exemples: [
+            { de: "Das ist mein Vater und meine Mutter.", fr: "C'est mon père et ma mère." },
+            { de: "Wo ist dein Handy?", fr: "Où est ton portable ?" },
+            { de: "Meine Familie wohnt in Hamburg.", fr: "Ma famille habite à Hambourg." }
+          ],
           note: "mein → meine devant un nom féminin ou un pluriel."
         }
       ],
@@ -946,6 +976,11 @@ window.MODULE_A11 = {
               ["anrufen", "Ich rufe dich an.", "Je t'appelle."]
             ]
           },
+          exemples: [
+            { de: "Ich stehe um sieben Uhr auf.", fr: "Je me lève à sept heures." },
+            { de: "Der Zug kommt um zehn Uhr an.", fr: "Le train arrive à dix heures." },
+            { de: "Wann rufst du mich an?", fr: "Quand est-ce que tu m'appelles ?" }
+          ],
           note: "Le préfixe (auf, ein, an, fern...) saute toujours à la FIN de la phrase au présent."
         },
         {
@@ -960,6 +995,11 @@ window.MODULE_A11 = {
               ["13:45", "Es ist Viertel vor zwei.", "Moins le quart avant deux."]
             ]
           },
+          exemples: [
+            { de: "Es ist Viertel nach acht.", fr: "Il est huit heures et quart." },
+            { de: "Der Film beginnt um halb neun.", fr: "Le film commence à huit heures et demie." },
+            { de: "Wie spät ist es? — Es ist zehn vor sieben.", fr: "Quelle heure est-il ? — Il est sept heures moins dix." }
+          ],
           note:
             "⚠️ « halb zwei » = 13h30 (la demie EN ROUTE vers 2), pas 2h30 ! Piège classique pour les francophones."
         }
@@ -1131,6 +1171,11 @@ window.MODULE_A11 = {
               ["pluriel", "Zimmer", "Es gibt Zimmer."]
             ]
           },
+          exemples: [
+            { de: "Hier gibt es einen Supermarkt und eine Bäckerei.", fr: "Ici, il y a un supermarché et une boulangerie." },
+            { de: "Gibt es ein Problem?", fr: "Y a-t-il un problème ?" },
+            { de: "In der Stadt gibt es viele Cafés.", fr: "En ville, il y a beaucoup de cafés." }
+          ],
           note: "Le masculin est le seul à changer à l'accusatif : ein → einen, der → den."
         },
         {
@@ -1147,6 +1192,11 @@ window.MODULE_A11 = {
               ["sie/Sie", "möchten", "Möchten Sie Frühstück?"]
             ]
           },
+          exemples: [
+            { de: "Ich möchte einen Kaffee, bitte.", fr: "J'aimerais un café, s'il vous plaît." },
+            { de: "Möchtest du etwas trinken?", fr: "Voudrais-tu boire quelque chose ?" },
+            { de: "Sie möchte nach Hause gehen.", fr: "Elle aimerait rentrer à la maison." }
+          ],
           note: "ich et er/sie/es ont la MÊME forme : möchte (pas de -t)."
         }
       ],
@@ -1266,6 +1316,11 @@ window.MODULE_A11 = {
               ["an", "près de / à", "Das Hotel ist am Bahnhof."]
             ]
           },
+          exemples: [
+            { de: "Die Bank ist neben der Post.", fr: "La banque est à côté de la poste." },
+            { de: "Das Auto steht vor dem Haus.", fr: "La voiture est devant la maison." },
+            { de: "Wir wohnen in der Stadt, am Bahnhof.", fr: "Nous habitons en ville, près de la gare." }
+          ],
           note: "« an dem » se contracte en « am », « in dem » en « im »."
         },
         {
@@ -1280,6 +1335,11 @@ window.MODULE_A11 = {
               ["Nehmen Sie die erste Straße links.", "Prenez la 1re rue à gauche."]
             ]
           },
+          exemples: [
+            { de: "Entschuldigung, wie komme ich zum Bahnhof?", fr: "Pardon, comment vais-je à la gare ?" },
+            { de: "Gehen Sie geradeaus, dann rechts.", fr: "Allez tout droit, puis à droite." },
+            { de: "Wo ist die Apotheke, bitte?", fr: "Où est la pharmacie, s'il vous plaît ?" }
+          ],
           note: "« zum » = zu dem (vers le, masc./neutre) ; « zur » = zu der (vers la, fém.)."
         }
       ],
@@ -1454,6 +1514,11 @@ window.MODULE_A11 = {
               ["adjectif", "nicht", "Das ist nicht lecker."]
             ]
           },
+          exemples: [
+            { de: "Ich habe kein Auto und keine Zeit.", fr: "Je n'ai pas de voiture ni de temps." },
+            { de: "Das ist nicht richtig.", fr: "Ce n'est pas correct." },
+            { de: "Er trinkt keinen Alkohol.", fr: "Il ne boit pas d'alcool." }
+          ],
           note: "kein se décline comme ein : keinen (m. acc.), keine (f.), kein (n.), keine (pl.)."
         },
         {
@@ -1468,6 +1533,11 @@ window.MODULE_A11 = {
               ["pluriel", "die Pommes", "die Pommes"]
             ]
           },
+          exemples: [
+            { de: "Ich möchte einen Tee und ein Wasser.", fr: "J'aimerais un thé et une eau." },
+            { de: "Sie bestellt einen Salat.", fr: "Elle commande une salade." },
+            { de: "Wir nehmen die Suppe und den Fisch.", fr: "Nous prenons la soupe et le poisson." }
+          ],
           note: "« Ich nehme einen Kaffee. » (der Kaffee → einen Kaffee)."
         }
       ],
