@@ -23538,32 +23538,54 @@ window.Legal = (function () {
   function allLessonsDone() {
     return flat.every((f) => window.Progress.estTermine(f.lecon.id));
   }
-  /* Prochaine étape gardée du parcours (leçon ou examen) → hash */
-  function prochaineEtape() {
-    for (const f of flat) if (f.lecon.niveau === "A1" && !window.Progress.estTermine(f.lecon.id)) return "#/lecon/" + f.lecon.id;
+  /* Niveau (A1..C2) d'un module d'après son id ("a1-1" → "A1"). */
+  function moduleNiveau(m) { return String((m && m.id) || "a1").split("-")[0].toUpperCase(); }
+  /* Une dictée de module est-elle réussie ? (pas de dictée → considérée faite) */
+  function dicteeFaite(modId) {
+    if (!(window.DICTEES && window.DICTEES[modId])) return true;
+    const ts = window.Progress.getTestScore("dictee-" + modId);
+    return !!(ts && ts.reussi);
+  }
+  /* Toutes les dictées d'un niveau sont-elles réussies ? (verrou d'examen) */
+  function dicteesFaites(code) {
+    return (COURS.modules || []).filter((m) => moduleNiveau(m) === code).every((m) => dicteeFaite(m.id));
+  }
+  /* Prochaine étape DANS un niveau : leçon non faite, puis DICTÉE du module
+     (OBLIGATOIRE) une fois toutes les leçons du module faites. null si tout est fait.
+     `extraDone` = id d'une leçon à considérer comme déjà terminée (leçon en cours). */
+  function etapeNiveau(code, extraDone) {
+    for (const m of (COURS.modules || [])) {
+      if (moduleNiveau(m) !== code) continue;
+      for (const l of (m.lecons || [])) if (l.id !== extraDone && !window.Progress.estTermine(l.id)) return "#/lecon/" + l.id;
+      if (!dicteeFaite(m.id)) return "#/dictee/" + m.id; // ✍️ dictée obligatoire avant la suite
+    }
+    return null;
+  }
+  /* Cœur du parcours gardé : leçon, dictée (obligatoire) ou examen → hash. */
+  function prochaineEtapeCore(extraDone) {
+    let e;
+    if ((e = etapeNiveau("A1", extraDone))) return e;
     if (!examPasse("a1")) return "#/examen/a1";
-    for (const f of flat) if (f.lecon.niveau === "A2" && !window.Progress.estTermine(f.lecon.id)) return "#/lecon/" + f.lecon.id;
+    if ((e = etapeNiveau("A2", extraDone))) return e;
     if (!examPasse("a2")) return "#/examen/a2";
     if (!examPasse("final")) return "#/examen/final";
-    for (const f of flat) if (f.lecon.niveau === "B1" && !window.Progress.estTermine(f.lecon.id)) return "#/lecon/" + f.lecon.id;
+    if ((e = etapeNiveau("B1", extraDone))) return e;
     if (!examPasse("b1")) return "#/examen/b1";
-    for (const f of flat) if (f.lecon.niveau === "B2" && !window.Progress.estTermine(f.lecon.id)) return "#/lecon/" + f.lecon.id;
+    if ((e = etapeNiveau("B2", extraDone))) return e;
     if (!examPasse("b2")) return "#/examen/b2";
     if (!examPasse("finalb")) return "#/examen/finalb";
-    for (const f of flat) if (f.lecon.niveau === "C1" && !window.Progress.estTermine(f.lecon.id)) return "#/lecon/" + f.lecon.id;
+    if ((e = etapeNiveau("C1", extraDone))) return e;
     if (!examPasse("c1")) return "#/examen/c1";
-    for (const f of flat) if (f.lecon.niveau === "C2" && !window.Progress.estTermine(f.lecon.id)) return "#/lecon/" + f.lecon.id;
+    if ((e = etapeNiveau("C2", extraDone))) return e;
     if (!examPasse("c2")) return "#/examen/c2";
     if (!examPasse("finalc")) return "#/examen/finalc";
     return "#/";
   }
-  /* Étape après une leçon : leçon suivante du même niveau, sinon examen du niveau */
-  function etapeApresLecon(idx) {
-    const l = flat[idx].lecon;
-    const next = flat[idx + 1];
-    if (next && next.lecon.niveau === l.niveau) return "#/lecon/" + next.lecon.id;
-    return "#/examen/" + (l.niveau === "A1" ? "a1" : l.niveau === "A2" ? "a2" : l.niveau === "B1" ? "b1" : l.niveau === "B2" ? "b2" : l.niveau === "C1" ? "c1" : "c2");
-  }
+  /* Prochaine étape gardée du parcours (leçon, dictée ou examen) → hash */
+  function prochaineEtape() { return prochaineEtapeCore(null); }
+  /* Étape après une leçon : on considère la leçon courante comme faite, puis on
+     renvoie la prochaine étape (leçon suivante, DICTÉE du module, ou examen). */
+  function etapeApresLecon(idx) { return prochaineEtapeCore(flat[idx].lecon.id); }
   /* Placement : ouvre le parcours jusqu'au niveau choisi/déterminé, en
      marquant les niveaux antérieurs comme acquis (leçons + examens-verrous). */
   const ORDRE_NIVEAUX = ["A1", "A2", "B1", "B2", "C1", "C2"];
@@ -23817,7 +23839,7 @@ window.Legal = (function () {
     /* --- Hero --- */
     const niveauActuel = window.Progress.getNiveau();
     const badge = niveauActuel
-      ? '<div class="niveau-actuel">🎯 Ton niveau actuel : <strong>' + niveauActuel + "</strong> <span>" + (NIVEAU_LABELS[niveauActuel] || "") + '</span><a class="niveau-actuel-link" href="#/start">↺ changer</a></div>'
+      ? '<div class="niveau-actuel">🎯 Ton niveau actuel : <strong>' + niveauActuel + "</strong> <span>" + (NIVEAU_LABELS[niveauActuel] || "") + "</span></div>"
       : "";
     const hero = el("header", "hero");
     hero.innerHTML =
@@ -23917,9 +23939,7 @@ window.Legal = (function () {
     const statsBtn = el("a", "btn btn-ghost", "📊 Statistiques");
     statsBtn.href = "#/stats";
     secondRow.appendChild(statsBtn);
-    const niveauBtn = el("a", "btn btn-ghost", "🎯 Tester / changer mon niveau");
-    niveauBtn.href = "#/start";
-    secondRow.appendChild(niveauBtn);
+    // Bouton « changer de niveau » retiré : le parcours démarre toujours à A1.
     const installBtn = el("button", "btn btn-ghost install-btn", "📲 Installer l'app");
     installBtn.type = "button";
     installBtn.addEventListener("click", promptInstall);
@@ -24082,10 +24102,14 @@ window.Legal = (function () {
         frag.appendChild(sec);
       });
 
-      const unlocked = niveauTermine(niv.code) && prevPassed;
+      // Verrou d'examen : leçons faites + prérequis + DICTÉES du niveau réussies (obligatoires).
+      const dicteesOk = dicteesFaites(niv.code);
+      const unlocked = niveauTermine(niv.code) && prevPassed && dicteesOk;
       const lockText = !prevPassed
         ? ("Réussissez d'abord " + niv.prevLabel + ".")
-        : ("Terminez les leçons du niveau " + niv.code + " pour passer l'examen.");
+        : !niveauTermine(niv.code)
+          ? ("Terminez les leçons du niveau " + niv.code + " pour passer l'examen.")
+          : ("✍️ Réussissez d'abord la/les dictée(s) du niveau " + niv.code + " (obligatoire) pour passer l'examen.");
       const examSec = el("section", "section");
       examSec.appendChild(carteExamen(niv.exam, "Examen du niveau " + niv.code, unlocked, niv.examSous, lockText));
       frag.appendChild(examSec);
@@ -24585,7 +24609,10 @@ window.Legal = (function () {
     } else nav.appendChild(el("span", ""));
     const suite = etapeApresLecon(idx);
     const suiteExamen = /examen/.test(suite);
-    const suiteLabel = suiteExamen ? "🎓 Examen du niveau " + flat[idx].lecon.niveau + " →" : flat[idx + 1].lecon.titre + " →";
+    const suiteDictee = /\/dictee\//.test(suite);
+    const suiteLabel = suiteExamen ? "🎓 Examen du niveau " + flat[idx].lecon.niveau + " →"
+      : suiteDictee ? "✍️ Dictée du module (obligatoire) →"
+      : (flat[idx + 1] ? flat[idx + 1].lecon.titre + " →" : "Continuer →");
     // Verrou : on ne passe à la suite qu'une fois la leçon validée
     // (tous les exercices faits + score requis). Pas de saut de leçon.
     const dejaValide = window.Progress.estTermine(l.id);
@@ -24597,7 +24624,7 @@ window.Legal = (function () {
       next.classList.remove("is-locked");
       next.textContent = suiteLabel;
       next.href = suite;
-      if (window.TG) window.TG.setMainButton(suiteExamen ? "🎓 Examen " + flat[idx].lecon.niveau : "Suivant →", () => { location.hash = suite; });
+      if (window.TG) window.TG.setMainButton(suiteExamen ? "🎓 Examen " + flat[idx].lecon.niveau : suiteDictee ? "✍️ Dictée du module" : "Suivant →", () => { location.hash = suite; });
     };
     frag.appendChild(nav);
 
@@ -26775,6 +26802,13 @@ window.Legal = (function () {
      ACCUEIL DU COACH — choix / test de niveau
      ==================================================================== */
   function renderOnboarding() {
+    // Choix de niveau DÉSACTIVÉ : tout le monde démarre au niveau A1 et progresse
+    // ensuite vers le haut (les niveaux supérieurs se débloquent via les examens).
+    if (!window.Progress.getNiveau()) placerAuNiveau("A1");
+    var __dest = prochaineEtape();
+    location.hash = (!__dest || __dest === "#/") ? "#/menu" : __dest;
+    return;
+    /* --- Ancien écran de choix de niveau (désactivé, conservé pour référence) --- */
     const labels = NIVEAU_LABELS;
     const frag = document.createDocumentFragment();
 
@@ -27385,7 +27419,12 @@ window.Legal = (function () {
         '<p class="dictee-feedback">📝 <strong>Ponctuation :</strong> le texte original a ' + r.pRef + " signe(s) ; tu en as " + r.pUsr + ". " +
         (Math.abs(r.pRef - r.pUsr) <= 1 ? "Très bien !" : "Surveille les points, les virgules et les majuscules des noms.") + "</p>" +
         '<div class="dictee-correct"><span class="cours-tag">✅ Texte correct — tes mots faux/oubliés en rouge, casse en orange</span><p class="dictee-ref">' + refHtml + "</p></div>" +
-        '<div class="rev-actions"><button class="btn btn-ghost" id="dictee-retry">↺ Recommencer</button><a class="btn btn-primary" href="#/">Retour au programme</a></div>';
+        '<div class="rev-actions"><button class="btn btn-ghost" id="dictee-retry">↺ Recommencer</button>' +
+        (reussi
+          ? '<a class="btn btn-primary" href="' + prochaineEtape() + '">Continuer →</a>'
+          : '<a class="btn btn-primary" href="#/">Retour au programme</a>') +
+        '</div>' +
+        (reussi ? '' : '<p class="dictee-feedback">✍️ Il faut <strong>70 %</strong> pour valider la dictée (obligatoire avant de continuer). Réécoute et retente — tu vas y arriver ! 💪</p>');
       result.classList.remove("hidden");
       const retry = document.getElementById("dictee-retry"); if (retry) retry.addEventListener("click", () => renderDictee(moduleId));
       if (window.TG) window.TG.haptic(reussi ? "success" : "warning");
@@ -27988,8 +28027,9 @@ window.Legal = (function () {
     else if (hash.match(/^#\/pflege\/glossar/)) renderPflegeGlossar();
     else if (hash.match(/^#\/pflege/)) renderPflege();
     else if (hash.match(/^#\/start/)) renderOnboarding();
-    else if ((m = hash.match(/^#\/placement-niveau\/(A1|A2|B1|B2|C1|C2)/))) renderNiveauTest(m[1]);
-    else if (hash.match(/^#\/placement/)) renderPlacement();
+    // Choix de niveau / test de placement désactivés : on redirige vers le parcours A1.
+    else if (hash.match(/^#\/placement-niveau\//)) renderOnboarding();
+    else if (hash.match(/^#\/placement/)) renderOnboarding();
     else if ((m = hash.match(/^#\/lecon\/(.+)$/))) renderLecon(m[1]);
     else if ((m = hash.match(/^#\/examen\/(a1|a2|final)\/resultat/))) renderDelfResult(m[1]);
     else if ((m = hash.match(/^#\/examen\/(a1|a2|final)(?:$|[\/?#])/))) renderDelf(m[1]);
