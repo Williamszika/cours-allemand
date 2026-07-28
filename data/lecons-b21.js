@@ -74,6 +74,11 @@ window.MODULE_B21 = {
       ],
       grammaire: [
         { attention: "Le verbe devient nom (*ausbilden → die Ausbildung*), souvent suivi d'un **génitif** (*der Lehrlinge*).", titre: "Nominaliser pour un style soutenu", intro: "À l'écrit formel (B2), on transforme souvent un verbe en nom : « ausbilden → die Ausbildung ». Cela condense l'information.",
+        exemples: [
+          { de: "Nach eingehender Prüfung der Unterlagen entschied der Ausschuss.", fr: "Après un examen approfondi des documents, le comité a décidé." },
+          { de: "Die Umsetzung der Reform erfordert Zeit.", fr: "La mise en œuvre de la réforme demande du temps." },
+          { de: "Trotz des schlechten Wetters fand das Fest statt.", fr: "Malgré le mauvais temps, la fête a eu lieu." }
+        ],
           tableau: { entetes: ["Verbe", "Nom", "Exemple"], lignes: [["ausbilden", "die Ausbildung", "die Ausbildung der Lehrlinge"], ["bewerben", "die Bewerbung", "die Bewerbung um die Stelle"], ["entscheiden", "die Entscheidung", "die Entscheidung über das Studium"], ["fördern", "die Förderung", "die Förderung von Talenten"]] },
           note: "La nominalisation s'accompagne souvent d'un complément au génitif (der Lehrlinge) ou avec « von »." }
       ],
@@ -152,6 +157,11 @@ window.MODULE_B21 = {
       ],
       grammaire: [
         { attention: "*sich* = réciprocité (l'un l'autre) ; on peut renforcer avec **einander** (*Sie helfen einander*).", titre: "Réciprocité et adjectifs à préposition", intro: "« sich » exprime la réciprocité (l'un l'autre) ; beaucoup d'adjectifs imposent une préposition + cas.",
+        exemples: [
+          { de: "Sie helfen sich gegenseitig.", fr: "Ils s'entraident mutuellement." },
+          { de: "Ich bin auf das Ergebnis gespannt.", fr: "Je suis curieux de connaître le résultat." },
+          { de: "Er ist von seiner Idee überzeugt.", fr: "Il est convaincu de son idée." }
+        ],
           tableau: { entetes: ["Structure", "Sens", "Exemple"], lignes: [["sich verstehen", "s'entendre", "Sie verstehen sich gut."], ["sich verlassen auf + Akk.", "compter sur", "Ich verlasse mich auf dich."], ["böse auf + Akk.", "fâché contre", "Er ist böse auf mich."], ["nett zu + Dat.", "gentil avec", "Sie ist nett zu allen."]] },
           note: "Pour la réciprocité, on peut renforcer avec « einander » : « Sie helfen einander »." }
       ],
@@ -230,6 +240,11 @@ window.MODULE_B21 = {
       ],
       grammaire: [
         { attention: "**Wo?** → datif / **Wohin?** → accusatif : *Ich stelle die Vase **auf den** Tisch* (direction).", titre: "Situer et déménager : Wechselpräpositionen", intro: "Les prépositions mixtes prennent le datif (position, Wo?) ou l'accusatif (direction, Wohin?).",
+        exemples: [
+          { de: "Ich hänge das Bild an die Wand.", fr: "J'accroche le tableau au mur. (mouvement → accusatif)" },
+          { de: "Das Bild hängt an der Wand.", fr: "Le tableau est accroché au mur. (position → datif)" },
+          { de: "Wir ziehen in eine größere Wohnung.", fr: "Nous emménageons dans un appartement plus grand." }
+        ],
           tableau: { entetes: ["Question", "Cas", "Exemple"], lignes: [["Wo? (position)", "datif", "Der Schrank steht in der Ecke."], ["Wohin? (direction)", "accusatif", "Ich stelle den Schrank in die Ecke."], ["Wo?", "datif", "Die Lampe hängt über dem Tisch."], ["Wohin?", "accusatif", "Ich hänge die Lampe über den Tisch."]] },
           schemas: [{ legende: "Wohin ? → accusatif (mouvement vers).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "stelle", r: "verbe (2)", c: "verbe" }, { m: "das Sofa", r: "accusatif", c: "objet" }, { m: "an die Wand", r: "direction (acc.)", c: "fin" }] }],
           note: "an, auf, hinter, in, neben, über, unter, vor, zwischen : position = Dat., direction = Akk." }
@@ -309,6 +324,11 @@ window.MODULE_B21 = {
       ],
       grammaire: [
         { attention: "Exigence polie au **Konjunktiv II** (*Ich **würde** Sie bitten…*) ; clôture : *Mit freundlichen Grüßen*.", titre: "La lettre de réclamation (registre formel)", intro: "On structure : objet, exposé des faits, exigence (Konjunktiv II), délai, formule de politesse.",
+        exemples: [
+          { de: "Sehr geehrte Damen und Herren, hiermit möchte ich mich beschweren.", fr: "Madame, Monsieur, je souhaite par la présente formuler une réclamation." },
+          { de: "Leider entspricht die Ware nicht der Beschreibung.", fr: "Malheureusement, la marchandise ne correspond pas à la description." },
+          { de: "Ich erwarte eine baldige Rückerstattung.", fr: "J'attends un remboursement rapide." }
+        ],
           tableau: { entetes: ["Fonction", "Formule"], lignes: [["Objet", "Betreff: Beschwerde über …"], ["Exposé", "Leider musste ich feststellen, dass …"], ["Exigence", "Ich würde Sie bitten, … / Ich erwarte, dass …"], ["Délai", "… bis spätestens zum 30. Juni."], ["Clôture", "Mit freundlichen Grüßen"]] },
           note: "Le Konjunktiv II (« ich würde Sie bitten ») rend l'exigence ferme mais polie." }
       ],
@@ -387,6 +407,11 @@ window.MODULE_B21 = {
       ],
       grammaire: [
         { attention: "*gelten **als*** = passer pour : une généralisation **prudente**, pas une vérité absolue.", titre: "Généraliser sans affirmer : « gelten als », « man », « es heißt »", intro: "Pour décrire une tendance culturelle sans la présenter comme une vérité absolue.",
+        exemples: [
+          { de: "Deutschland gilt als sehr pünktlich.", fr: "L'Allemagne est réputée très ponctuelle." },
+          { de: "Es heißt, der Winter werde hart.", fr: "On dit que l'hiver sera rude." },
+          { de: "Man sagt, dass Sport gesund sei.", fr: "On dit que le sport est bon pour la santé." }
+        ],
           tableau: { entetes: ["Tournure", "Sens", "Exemple"], lignes: [["gelten als", "passer pour", "Deutsche gelten als pünktlich."], ["man", "on (général)", "In Japan grüßt man mit einer Verbeugung."], ["es heißt, dass", "on dit que", "Es heißt, dass Hierarchien flacher werden."], ["tendenziell", "plutôt / en tendance", "Der Ton ist tendenziell formell."]] },
           note: "Ces tournures permettent une généralisation prudente, attendue à l'écrit B2." }
       ],
@@ -465,6 +490,11 @@ window.MODULE_B21 = {
       ],
       grammaire: [
         { attention: "*einerseits … andererseits* structure l'argumentation ; le passif rend le propos impersonnel.", titre: "Argumenter : connecteurs et passif impersonnel", intro: "On organise un argumentaire avec des connecteurs ; le passif rend le propos impersonnel et objectif.",
+        exemples: [
+          { de: "Einerseits ist es teuer, andererseits sehr praktisch.", fr: "D'une part c'est cher, d'autre part très pratique." },
+          { de: "Es wird oft behauptet, dass Technik uns entlaste.", fr: "On affirme souvent que la technique nous soulage." },
+          { de: "Zunächst muss geklärt werden, wer verantwortlich ist.", fr: "Il faut d'abord clarifier qui est responsable." }
+        ],
           tableau: { entetes: ["Fonction", "Connecteur / forme", "Exemple"], lignes: [["thèse", "einerseits", "Einerseits stärkt die EU den Handel,"], ["contre", "andererseits", "andererseits verlieren Staaten an Macht."], ["concession", "zwar … aber", "Zwar ist es teuer, aber sinnvoll."], ["passif", "wird … + participe", "Vieles wird gemeinsam entschieden."]] },
           note: "« einerseits … andererseits » structure une argumentation équilibrée." }
       ],
@@ -543,6 +573,11 @@ window.MODULE_B21 = {
       ],
       grammaire: [
         { attention: "Évite les sujets **heikel** (salaire, religion, politique) ; préfère les questions ouvertes.", titre: "Lancer et relancer la conversation", intro: "On préfère des questions ouvertes (W-Fragen) et des relances brèves pour montrer son intérêt.",
+        exemples: [
+          { de: "Übrigens, hast du schon gehört, dass sie umzieht?", fr: "Au fait, as-tu entendu qu'elle déménage ?" },
+          { de: "Um noch einmal auf das Thema zurückzukommen …", fr: "Pour revenir encore une fois sur le sujet…" },
+          { de: "Wie siehst du das eigentlich?", fr: "Et toi, comment vois-tu les choses au fond ?" }
+        ],
           tableau: { entetes: ["Acte", "Formule"], lignes: [["Ouvrir", "Schönes Wetter heute, nicht wahr?"], ["Question ouverte", "Was machen Sie beruflich?"], ["Relancer", "Ach wirklich? Erzählen Sie mehr!"], ["Clore poliment", "Es war nett, mit Ihnen zu plaudern."]] },
           note: "Sujets sûrs : météo, voyages, loisirs. Sujets à éviter : salaire, religion, politique, âge." }
       ],

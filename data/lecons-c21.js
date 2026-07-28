@@ -73,6 +73,11 @@ window.MODULE_C21 = {
       ],
       grammaire: [
         { titre: "Argumenter en style soutenu", intro: "Au C2, l'écrit privilégie le style nominal et des connecteurs précis pour articuler une argumentation dense.",
+        exemples: [
+          { de: "Es lässt sich kaum bestreiten, dass sich das Klima wandelt.", fr: "On ne saurait guère contester que le climat change." },
+          { de: "Diese These bedarf einer gründlichen Prüfung.", fr: "Cette thèse requiert un examen approfondi." },
+          { de: "Nicht zuletzt spielt der Kontext eine Rolle.", fr: "Le contexte joue notamment un rôle non négligeable." }
+        ],
           tableau: { entetes: ["Fonction", "Tournure", "Exemple"], lignes: [["thèse", "Es ist unbestreitbar, dass", "Es ist unbestreitbar, dass Medien prägen."], ["nuance", "einerseits … andererseits", "einerseits informativ, andererseits manipulativ"], ["concession", "wenngleich", "wenngleich umstritten"], ["conséquence", "demzufolge", "Demzufolge sinkt das Vertrauen."]] },
           note: "« wenngleich » (bien que) et « demzufolge » (par conséquent) relèvent d'un registre écrit très soutenu." }
       ],
@@ -151,6 +156,11 @@ window.MODULE_C21 = {
       ],
       grammaire: [
         { titre: "Raconter avec recul et nuance", intro: "Le récit du passé combine les temps (Präteritum, Plusquamperfekt) et, pour la distance critique, le Konjunktiv (discours rapporté, irréel).",
+        exemples: [
+          { de: "Rückblickend erscheint die Entscheidung fragwürdig.", fr: "Rétrospectivement, la décision paraît discutable." },
+          { de: "Was damals selbstverständlich schien, ist heute umstritten.", fr: "Ce qui semblait évident à l'époque est aujourd'hui contesté." },
+          { de: "Hätte man anders gehandelt, wäre vieles vermeidbar gewesen.", fr: "Si l'on avait agi autrement, bien des choses auraient pu être évitées." }
+        ],
           tableau: { entetes: ["Outil", "Effet", "Exemple"], lignes: [["Präteritum", "récit", "Damals herrschte Aufbruchstimmung."], ["Plusquamperfekt", "antériorité", "Was zuvor geschehen war, prägte alles."], ["Konjunktiv I", "distance/citation", "Zeitzeugen sagen, es sei hart gewesen."], ["Konjunktiv II", "irréel/recul", "Ohne die Mauer wäre vieles anders."]] },
           note: "Le mélange maîtrisé de ces formes signale le niveau C2 dans un texte de mémoire." }
       ],
@@ -229,6 +239,11 @@ window.MODULE_C21 = {
       ],
       grammaire: [
         { titre: "Nuancer caractère et hypothèse", intro: "Pour décrire l'ambivalence, on combine adjectifs nuancés et hypothèses (Konjunktiv II).",
+        exemples: [
+          { de: "Er ist zwar begabt, neigt aber zur Nachlässigkeit.", fr: "Il est certes doué, mais enclin à la négligence." },
+          { de: "Sollte sich die Annahme bestätigen, ändert das alles.", fr: "Si l'hypothèse se confirmait, cela changerait tout." },
+          { de: "Es sei denn, es lägen neue Beweise vor.", fr: "À moins que de nouvelles preuves n'existent." }
+        ],
           tableau: { entetes: ["Idée", "Moyen", "Exemple"], lignes: [["atténuation", "eher / tendenziell", "Er ist eher zurückhaltend."], ["ambivalence", "zwar … doch", "zwar ehrlich, doch schroff"], ["hypothèse", "an seiner Stelle würde ich", "An seiner Stelle würde ich schweigen."], ["irréel", "wenn … wäre", "Wäre er ehrlicher, hätte er Freunde."]] },
           note: "« Wäre er ehrlicher, … » : la condition irréelle peut commencer par le verbe (sans « wenn »)." }
       ],
@@ -307,6 +322,11 @@ window.MODULE_C21 = {
       ],
       grammaire: [
         { titre: "Comparer et critiquer", intro: "On compare des systèmes avec le comparatif/superlatif et on structure la critique par des subordonnées.",
+        exemples: [
+          { de: "Im Vergleich zum Vorjahr sind die Zahlen rückläufig.", fr: "Par rapport à l'an dernier, les chiffres sont en baisse." },
+          { de: "Der Ansatz greift zu kurz.", fr: "L'approche est trop limitée." },
+          { de: "Man tut dem Autor unrecht, wenn man ihn darauf reduziert.", fr: "On fait tort à l'auteur en le réduisant à cela." }
+        ],
           tableau: { entetes: ["Fonction", "Moyen", "Exemple"], lignes: [["comparaison", "im Vergleich zu", "Im Vergleich zu früher …"], ["gradation", "je … desto", "Je früher man fördert, desto besser."], ["concession", "obgleich", "obgleich reformiert, noch unfair"], ["restriction", "insofern, als", "Es ist gut, insofern es fördert."]] },
           note: "« obgleich » et « insofern, als » sont des conjonctions soutenues (verbe à la fin)." }
       ],
@@ -385,6 +405,11 @@ window.MODULE_C21 = {
       ],
       grammaire: [
         { titre: "Verbes à complément fixe et style nominal", intro: "Le registre professionnel use de verbes à préposition/cas fixe et de nominalisations.",
+        exemples: [
+          { de: "Diese Angelegenheit bedarf sorgfältiger Prüfung.", fr: "Cette affaire nécessite un examen minutieux." },
+          { de: "Man sah sich gezwungen, das Projekt aufzugeben.", fr: "On s'est vu contraint d'abandonner le projet." },
+          { de: "Die Berücksichtigung aller Faktoren ist unerlässlich.", fr: "La prise en compte de tous les facteurs est indispensable." }
+        ],
           tableau: { entetes: ["Verbe / forme", "Construction", "Exemple"], lignes: [["streben", "nach + Dat.", "nach Erfolg streben"], ["sich bewerben", "um + Akk.", "sich um eine Stelle bewerben"], ["verfügen", "über + Akk.", "über Erfahrung verfügen"], ["nominalisation", "die Vereinbarkeit von …", "die Vereinbarkeit von Beruf und Familie"]] },
           note: "« verfügen über + Akk. » (disposer de) et « streben nach + Dat. » (aspirer à) sont typiques du registre soutenu." }
       ],

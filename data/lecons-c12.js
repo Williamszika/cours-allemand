@@ -73,6 +73,11 @@ window.MODULE_C12 = {
       ],
       grammaire: [
         { attention: "En tête, l'adverbe (*vermutlich, womöglich*) entraîne l'**inversion** (verbe en 2ᵉ).", titre: "Nuancer une hypothèse sur l'avenir", intro: "On exprime la probabilité avec des modaux (dürfte) et des adverbes (vermutlich, womöglich).",
+        exemples: [
+          { de: "Es dürfte kaum ausreichen.", fr: "Cela ne devrait guère suffire." },
+          { de: "Voraussichtlich wird sich die Lage bessern.", fr: "La situation devrait probablement s'améliorer." },
+          { de: "Sollte es regnen, verschieben wir das Fest.", fr: "S'il devait pleuvoir, nous reporterions la fête." }
+        ],
           tableau: { entetes: ["Degré", "Moyen", "Exemple"], lignes: [["probable", "dürfte / wird wohl", "Die KI dürfte vieles verändern."], ["vraisemblable", "vermutlich", "Vermutlich verlieren manche ihren Job."], ["possible", "könnte / womöglich", "Womöglich entstehen neue Berufe."], ["certain", "zweifellos", "Zweifellos bringt das Risiken."]] },
           note: "Ces marqueurs (vermutlich, womöglich, zweifellos) se placent souvent en 1re position → inversion (verbe en 2e)." }
       ],
@@ -151,6 +156,11 @@ window.MODULE_C12 = {
       ],
       grammaire: [
         { attention: "*Das **lässt sich** lösen* = peut être résolu ; *ist **zu** lösen* = doit/peut être résolu.", titre: "Passif et formes de substitution", intro: "Pour un propos objectif, on emploie le passif (werden + participe) ou ses alternatives (man, sich lassen, sein + zu + Inf.).",
+        exemples: [
+          { de: "Das Problem lässt sich leicht lösen.", fr: "Le problème peut se résoudre facilement." },
+          { de: "Die Regeln sind strikt einzuhalten.", fr: "Les règles doivent être strictement respectées." },
+          { de: "Solche Fehler sind durchaus vermeidbar.", fr: "De telles erreurs sont tout à fait évitables." }
+        ],
           tableau: { entetes: ["Forme", "Exemple", "Sens"], lignes: [["passif", "Energie wird gespart.", "neutre/objectif"], ["man", "Man muss Energie sparen.", "général"], ["sich lassen", "Das lässt sich vermeiden.", "= kann vermieden werden"], ["sein + zu + Inf.", "Der Ausstoß ist zu senken.", "= muss gesenkt werden"]] },
           schemas: [{ legende: "sein + zu + infinitif = nécessité passive.", mots: [{ m: "Der CO2-Ausstoß", r: "sujet", c: "sujet" }, { m: "ist", r: "sein (2)", c: "verbe" }, { m: "dringend", r: "complément", c: "objet" }, { m: "zu senken", r: "zu + infinitif (fin)", c: "fin" }] }],
           note: "« Das lässt sich machen » et « Das ist zu machen » remplacent élégamment « Das kann/muss gemacht werden »." }
@@ -230,6 +240,11 @@ window.MODULE_C12 = {
       ],
       grammaire: [
         { attention: "Dates au **Präteritum** ; le passif (*wurde geteilt*) met l'événement au premier plan.", titre: "Récit historique : prétérit et passif", intro: "L'Histoire se raconte au Präteritum ; le passif met l'événement au premier plan (l'agent est secondaire).",
+        exemples: [
+          { de: "Das Reich zerfiel im 5. Jahrhundert.", fr: "L'empire s'effondra au Ve siècle." },
+          { de: "Die Stadt wurde mehrfach zerstört und wiederaufgebaut.", fr: "La ville fut plusieurs fois détruite et reconstruite." },
+          { de: "Damals galt diese Ansicht als revolutionär.", fr: "À l'époque, cette opinion était considérée comme révolutionnaire." }
+        ],
           tableau: { entetes: ["Forme", "Exemple"], lignes: [["Präteritum", "Deutschland verlor den Krieg."], ["Passif (prétérit)", "Das Land wurde geteilt."], ["Plusquamperfekt", "Nachdem der Krieg geendet hatte, …"], ["Passif + agent", "Die Zonen wurden von den Alliierten verwaltet."]] },
           note: "« 1949 » : neunzehnhundertneunundvierzig ; on écrit aussi « im Jahr 1949 »." }
       ],
@@ -308,6 +323,11 @@ window.MODULE_C12 = {
       ],
       grammaire: [
         { attention: "Antériorité avec *nachdem* (plus-que-parfait → prétérit) ; relatives : préposition **avant** le pronom.", titre: "Antériorité et précisions : Plusquamperfekt + relatives", intro: "Le Plusquamperfekt situe ce qui précède ; les relatives précisent personnes et lieux (verbe à la fin).",
+        exemples: [
+          { de: "Der Autor, dessen Werk ich las, war umstritten.", fr: "L'auteur dont j'ai lu l'œuvre était controversé." },
+          { de: "Nachdem man die Ergebnisse geprüft hatte, wurden sie veröffentlicht.", fr: "Après avoir vérifié les résultats, on les a publiés." },
+          { de: "Es gab Momente, in denen niemand etwas sagte.", fr: "Il y eut des moments où personne ne disait rien." }
+        ],
           tableau: { entetes: ["Outil", "Exemple"], lignes: [["Plusquamperfekt", "Nachdem die Mauer gefallen war, feierten alle."], ["relative (nom.)", "die Menschen, die flohen"], ["relative + prép.", "die Grenze, an der viele starben"], ["relative (wo)", "die Stadt, wo die Mauer stand"]] },
           schemas: [{ legende: "Relative : pronom relatif … verbe à la FIN.", mots: [{ m: "die Mauer,", r: "principale", c: "objet" }, { m: "die", r: "relatif (nom.)", c: "conj" }, { m: "Berlin jahrzehntelang", r: "complément", c: "sujet" }, { m: "teilte", r: "verbe (fin)", c: "fin" }] }],
           note: "« an der » (à laquelle) : préposition + pronom relatif au datif." }
@@ -387,6 +407,11 @@ window.MODULE_C12 = {
       ],
       grammaire: [
         { attention: "**Konjunktiv I** pour rapporter sans s'engager ; au pluriel, on passe au **Konjunktiv II**.", titre: "Rapporter des témoignages : Konjunktiv I", intro: "Pour citer un témoin sans s'engager, on emploie le discours indirect au Konjunktiv I.",
+        exemples: [
+          { de: "Der Zeuge gab an, er habe nichts gesehen.", fr: "Le témoin a déclaré n'avoir rien vu." },
+          { de: "Sie erklärte, die Vorwürfe entbehrten jeder Grundlage.", fr: "Elle a déclaré que les accusations étaient sans fondement." },
+          { de: "Es heiße, die Verhandlungen seien gescheitert.", fr: "On dit que les négociations auraient échoué." }
+        ],
           tableau: { entetes: ["Direct", "Indirect (Konjunktiv I)"], lignes: [["« Es war nicht alles schlecht. »", "Er sagt, es sei nicht alles schlecht gewesen."], ["« Wir hatten Zusammenhalt. »", "Sie sagt, sie hätten Zusammenhalt gehabt."], ["« Ich kann mich erinnern. »", "Er sagt, er könne sich erinnern."]] },
           note: "Si le Konjunktiv I = indicatif (pluriel), on emploie le Konjunktiv II (« sie hätten »)." }
       ],
@@ -465,6 +490,11 @@ window.MODULE_C12 = {
       ],
       grammaire: [
         { attention: "*gleichwohl* (néanmoins) et *infolgedessen* (par conséquent) relèvent du registre **écrit soutenu**.", titre: "Argumenter avec recul", intro: "On structure l'argumentation avec des connecteurs soutenus et on nominalise pour condenser.",
+        exemples: [
+          { de: "Zwar ist der Ansatz interessant, doch bleibt er unbewiesen.", fr: "Certes l'approche est intéressante, mais elle reste non prouvée." },
+          { de: "Man könnte einwenden, dass die Daten unvollständig sind.", fr: "On pourrait objecter que les données sont incomplètes." },
+          { de: "Letztlich hängt alles vom Kontext ab.", fr: "En fin de compte, tout dépend du contexte." }
+        ],
           tableau: { entetes: ["Fonction", "Connecteur / forme", "Exemple"], lignes: [["thèse", "es lässt sich sagen, dass", "Es lässt sich sagen, dass …"], ["concession", "zwar … gleichwohl", "Zwar schwierig, gleichwohl nötig."], ["cause nominale", "aufgrund + Gén.", "aufgrund der Krise"], ["conséquence", "infolgedessen", "Infolgedessen sank das Vertrauen."]] },
           note: "« gleichwohl » et « infolgedessen » relèvent du registre écrit soigné." }
       ],
@@ -543,6 +573,11 @@ window.MODULE_C12 = {
       ],
       grammaire: [
         { attention: "Après *etwas/nichts*, l'adjectif nominalisé prend **-es** : *etwas Besonder**es***.", titre: "Décrire l'art : participe attribut et adjectif nominalisé", intro: "Le participe peut qualifier un nom (das berührende Bild) ; l'adjectif peut devenir nom (das Schöne, etwas Besonderes).",
+        exemples: [
+          { de: "Das im 18. Jahrhundert gemalte Bild fasziniert bis heute.", fr: "Le tableau peint au XVIIIe siècle fascine encore aujourd'hui." },
+          { de: "Das Wesentliche bleibt oft unsichtbar.", fr: "L'essentiel reste souvent invisible." },
+          { de: "Die Reisenden bewunderten die Architektur.", fr: "Les voyageurs admiraient l'architecture." }
+        ],
           tableau: { entetes: ["Forme", "Exemple", "Sens"], lignes: [["participe présent", "die berührende Musik", "qui touche"], ["participe passé", "das aufgenommene Foto", "qui a été pris"], ["adjectif nominalisé", "das Schöne", "le beau"], ["après etwas/nichts", "etwas Besonderes", "quelque chose de spécial"]] },
           note: "Après etwas/nichts/viel, l'adjectif nominalisé prend une majuscule et -es : etwas Neues, nichts Gutes." }
       ],

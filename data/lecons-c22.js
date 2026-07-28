@@ -73,6 +73,11 @@ window.MODULE_C22 = {
       ],
       grammaire: [
         { titre: "L'argumentation dialectique", intro: "On expose thèse, antithèse et synthèse avec des connecteurs soutenus et le style nominal.",
+        exemples: [
+          { de: "Einerseits überzeugt das Argument, andererseits greift es zu kurz.", fr: "D'un côté l'argument convainc, de l'autre il est trop limité." },
+          { de: "Dagegen lässt sich einwenden, dass die Kosten zu hoch sind.", fr: "On peut objecter à cela que les coûts sont trop élevés." },
+          { de: "Bei genauerer Betrachtung relativiert sich diese Aussage.", fr: "À y regarder de plus près, cette affirmation se relativise." }
+        ],
           tableau: { entetes: ["Étape", "Tournure", "Exemple"], lignes: [["thèse", "Es steht außer Frage, dass", "…, dass die Technik Fortschritt bringt."], ["antithèse", "gleichwohl / indes", "Gleichwohl drohen Risiken."], ["nuance", "in dem Maße, wie", "… in dem Maße, wie wir abhängig werden."], ["synthèse", "letztlich kommt es darauf an", "Letztlich kommt es auf den Umgang an."]] },
           note: "« indes » (cependant) et « in dem Maße, wie » (dans la mesure où) sont des marqueurs C2." }
       ],
@@ -151,6 +156,11 @@ window.MODULE_C22 = {
       ],
       grammaire: [
         { titre: "Présenter un constat objectif", intro: "Le passif et ses substituts rendent le propos impersonnel ; des connecteurs marquent cause et conséquence.",
+        exemples: [
+          { de: "Die Datenlage lässt keine eindeutigen Schlüsse zu.", fr: "Les données ne permettent pas de conclusions claires." },
+          { de: "Es zeichnet sich ein klarer Trend ab.", fr: "Une tendance nette se dessine." },
+          { de: "Die Ergebnisse sprechen für sich.", fr: "Les résultats parlent d'eux-mêmes." }
+        ],
           tableau: { entetes: ["Forme/connecteur", "Exemple"], lignes: [["passif", "Schadstoffe werden freigesetzt."], ["sein + zu + Inf.", "Der Ausstoß ist zu senken."], ["conséquence", "infolgedessen / folglich", "Folglich schwindet die Artenvielfalt."], ["cause nominale", "aufgrund + Gén.", "aufgrund des Raubbaus"]] },
           note: "« Es gilt, … zu + Inf. » (il s'agit de) est une tournure soutenue d'appel à l'action." }
       ],
@@ -229,6 +239,11 @@ window.MODULE_C22 = {
       ],
       grammaire: [
         { titre: "Nécessité, possibilité et éthique", intro: "Le débat médical mobilise les modaux (müssen, dürfen, können) et un style nominal précis.",
+        exemples: [
+          { de: "Es ist geboten, verantwortungsvoll zu handeln.", fr: "Il est impératif d'agir de manière responsable." },
+          { de: "Man müsste abwägen, ob der Zweck die Mittel heiligt.", fr: "Il faudrait peser si la fin justifie les moyens." },
+          { de: "Solche Eingriffe sind ethisch fragwürdig.", fr: "De telles interventions sont éthiquement discutables." }
+        ],
           tableau: { entetes: ["Idée", "Moyen", "Exemple"], lignes: [["nécessité", "müssen / es gilt zu", "Risiken müssen abgewogen werden."], ["permission/limite", "dürfen", "Nicht alles, was möglich ist, darf man tun."], ["possibilité", "können / lassen sich", "Krankheiten lassen sich früh erkennen."], ["nominalisation", "die Früherkennung", "Die Früherkennung rettet Leben."]] },
           note: "« Nicht alles, was möglich ist, darf man tun » résume bien le dilemme éthique." }
       ],
@@ -307,6 +322,11 @@ window.MODULE_C22 = {
       ],
       grammaire: [
         { titre: "Décrire et valoriser", intro: "On valorise un profil avec des adjectifs à complément et des comparaisons.",
+        exemples: [
+          { de: "Das Werk besticht durch seine sprachliche Präzision.", fr: "L'œuvre séduit par sa précision langagière." },
+          { de: "Bemerkenswert ist vor allem die Vielschichtigkeit.", fr: "C'est surtout la complexité qui est remarquable." },
+          { de: "Es handelt sich um ein Meisterwerk seiner Zeit.", fr: "Il s'agit d'un chef-d'œuvre de son temps." }
+        ],
           tableau: { entetes: ["Structure", "Exemple"], lignes: [["sich auszeichnen durch + Akk.", "Er zeichnet sich durch Fleiß aus."], ["fähig zu + Dat.", "Sie ist zu Höchstleistungen fähig."], ["begabt in + Dat.", "begabt in Mathematik"], ["comparaison", "überdurchschnittlich begabt"]] },
           note: "« sich auszeichnen durch » (se distinguer par) valorise élégamment une qualité." }
       ],
@@ -385,6 +405,11 @@ window.MODULE_C22 = {
       ],
       grammaire: [
         { titre: "Nuancer l'émotion", intro: "On gradue l'intensité (zutiefst, überwältigend) et l'ambivalence (zwiespältig, einerseits … andererseits).",
+        exemples: [
+          { de: "Ich bin, gelinde gesagt, enttäuscht.", fr: "Je suis, pour le moins, déçu." },
+          { de: "Es erfüllt mich mit einer gewissen Wehmut.", fr: "Cela m'emplit d'une certaine mélancolie." },
+          { de: "So sehr ich es auch bedaure, ich muss ablehnen.", fr: "Aussi navré que j'en sois, je dois refuser." }
+        ],
           tableau: { entetes: ["Nuance", "Mot", "Exemple"], lignes: [["intensité forte", "zutiefst / überwältigend", "Ich war zutiefst berührt."], ["ambivalence", "zwiespältig", "Ich habe zwiespältige Gefühle."], ["atténuation", "ein wenig / leise", "eine leise Wehmut"], ["registre soutenu", "verspüren / empfinden", "Ich empfinde große Dankbarkeit."]] },
           note: "« empfinden » et « verspüren » remplacent « fühlen » dans un registre littéraire." }
       ],
@@ -463,6 +488,11 @@ window.MODULE_C22 = {
       ],
       grammaire: [
         { titre: "Exprimer valeurs et souhaits", intro: "On formule des idéaux avec le Konjunktiv II et on condense par la nominalisation.",
+        exemples: [
+          { de: "Mir liegt viel daran, dass alle gehört werden.", fr: "Il me tient à cœur que tous soient entendus." },
+          { de: "Ich wünschte, die Welt wäre gerechter.", fr: "Je voudrais que le monde soit plus juste." },
+          { de: "Solidarität sollte kein leeres Wort bleiben.", fr: "La solidarité ne devrait pas rester un mot creux." }
+        ],
           tableau: { entetes: ["Idée", "Moyen", "Exemple"], lignes: [["souhait", "würde gern / wäre schön", "Ich würde gern bewusster leben."], ["idéal", "es käme darauf an", "Es käme darauf an, Prioritäten zu setzen."], ["nominalisation", "die Suche nach Sinn", "Die Suche nach Sinn prägt uns."], ["valeur", "Wert legen auf + Akk.", "Ich lege Wert auf Selbstbestimmung."]] },
           note: "« Wert legen auf + Akk. » (attacher de l'importance à) exprime élégamment une valeur." }
       ],
@@ -541,6 +571,11 @@ window.MODULE_C22 = {
       ],
       grammaire: [
         { titre: "Décrire et juger l'art", intro: "Le participe attribut (provozierend, gemalt) et l'adjectif nominalisé (das Schöne) servent l'analyse esthétique.",
+        exemples: [
+          { de: "Das Gemälde spielt gekonnt mit Licht und Schatten.", fr: "Le tableau joue habilement avec l'ombre et la lumière." },
+          { de: "Die Komposition wirkt harmonisch, fast meditativ.", fr: "La composition paraît harmonieuse, presque méditative." },
+          { de: "Man mag den Stil kritisieren, doch seine Wirkung ist unbestreitbar.", fr: "On peut critiquer le style, mais son effet est incontestable." }
+        ],
           tableau: { entetes: ["Forme", "Exemple"], lignes: [["Partizip I attribut", "ein provozierendes Werk"], ["Partizip II attribut", "das gemalte Selbstporträt"], ["adjectif nominalisé", "das Schöne, das Wesentliche"], ["jugement", "Es lässt sich deuten als …"]] },
           note: "« Es lässt sich deuten als … » (cela peut s'interpréter comme) introduit une interprétation prudente." }
       ],
@@ -619,6 +654,11 @@ window.MODULE_C22 = {
       ],
       grammaire: [
         { titre: "Résumer une œuvre", intro: "On résume au présent (présent de narration) ou au prétérit, et on caractérise les personnages par des relatives.",
+        exemples: [
+          { de: "Der Roman handelt von der Suche nach Identität.", fr: "Le roman traite de la quête d'identité." },
+          { de: "Im Mittelpunkt steht ein moralisches Dilemma.", fr: "Au centre se trouve un dilemme moral." },
+          { de: "Der Autor zeichnet ein vielschichtiges Bild der Gesellschaft.", fr: "L'auteur brosse un portrait complexe de la société." }
+        ],
           tableau: { entetes: ["Outil", "Exemple"], lignes: [["présent de narration", "Der Roman erzählt von …"], ["prétérit (récit)", "Die Figur verließ ihre Heimat."], ["relative", "ein Held, der an sich zweifelt"], ["jugement", "Der Text besticht durch …"]] },
           note: "« bestechen durch + Akk. » (séduire par) introduit une appréciation littéraire soutenue." }
       ],
@@ -697,6 +737,11 @@ window.MODULE_C22 = {
       ],
       grammaire: [
         { titre: "Argumenter une position politique", intro: "On articule une argumentation rigoureuse par des connecteurs et un style impersonnel (passif, nominalisation).",
+        exemples: [
+          { de: "Es bedarf einer grundlegenden Reform des Systems.", fr: "Une réforme fondamentale du système est nécessaire." },
+          { de: "Wir dürfen die langfristigen Folgen nicht außer Acht lassen.", fr: "Nous ne devons pas négliger les conséquences à long terme." },
+          { de: "Nur so lässt sich nachhaltiger Wandel erreichen.", fr: "Ce n'est qu'ainsi qu'un changement durable est possible." }
+        ],
           tableau: { entetes: ["Fonction", "Moyen", "Exemple"], lignes: [["restriction", "zwar … jedoch", "Zwar sinnvoll, jedoch teuer."], ["concession", "ungeachtet + Gén.", "ungeachtet der Kritik"], ["passif", "Maßnahmen werden ergriffen", "Es werden Maßnahmen ergriffen."], ["conséquence", "mithin", "Mithin ist Handeln geboten."]] },
           note: "« ungeachtet + génitif » (nonobstant) et « mithin » (par conséquent) sont des marqueurs très soutenus." }
       ],
