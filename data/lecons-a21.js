@@ -91,6 +91,11 @@ window.MODULE_A21 = {
       ],
       grammaire: [
         { attention: "Le possessif s'accorde avec le **possesseur** ET se décline selon le **cas** : *Ich sehe **meinen** Bruder* (acc. masc.).", titre: "Les adjectifs possessifs", intro: "Ils s'accordent au genre du nom qui suit (comme ein/eine).",
+        exemples: [
+          { de: "Das ist mein Bruder und seine Frau.", fr: "C'est mon frère et sa femme." },
+          { de: "Wo sind deine Schlüssel?", fr: "Où sont tes clés ?" },
+          { de: "Unsere Lehrerin ist sehr nett.", fr: "Notre professeure est très gentille." }
+        ],
           tableau: { entetes: ["Possesseur", "masc./neutre", "féminin/pluriel"], lignes: [["mon (ich)", "mein", "meine"], ["ton (du)", "dein", "deine"], ["son (er)", "sein", "seine"], ["son (sie)", "ihr", "ihre"], ["notre (wir)", "unser", "unsere"], ["votre (Sie)", "Ihr", "Ihre"]] },
           note: "Le possessif s'accorde au nom POSSÉDÉ, pas au possesseur. À l'accusatif masculin : meinen, deinen…" }
       ],
@@ -174,6 +179,11 @@ window.MODULE_A21 = {
       ],
       grammaire: [
         { attention: "Pour le métier, **pas d'article** : *Ich arbeite **als** Lehrer* (et non « als ein Lehrer »).", titre: "Dire son métier : « als » et sans article", intro: "Pour la profession, pas d'article. « als » = en tant que.",
+        exemples: [
+          { de: "Ich arbeite als Lehrer.", fr: "Je travaille comme professeur." },
+          { de: "Sie ist Ärztin von Beruf.", fr: "Elle est médecin de profession." },
+          { de: "Er arbeitet als Ingenieur bei BMW.", fr: "Il travaille comme ingénieur chez BMW." }
+        ],
           tableau: { entetes: ["Structure", "Exemple", "Sens"], lignes: [["sein + métier", "Ich bin Lehrer.", "Je suis professeur."], ["arbeiten als", "Ich arbeite als Lehrer.", "Je travaille comme professeur."], ["bei + entreprise", "Ich arbeite bei BMW.", "Je travaille chez BMW."]] },
           note: "Féminin : on ajoute souvent -in (Lehrer → Lehrerin, Verkäufer → Verkäuferin)." }
       ],
@@ -257,6 +267,11 @@ window.MODULE_A21 = {
       ],
       grammaire: [
         { attention: "*sein* → **war**, *haben* → **hatte** : ces deux-là se disent au prétérit **même à l'oral**.", titre: "Le prétérit de « sein » et « haben »", intro: "À l'oral, on utilise le Perfekt, SAUF pour sein/haben où l'on dit war/hatte.",
+        exemples: [
+          { de: "Gestern war ich krank.", fr: "Hier j'étais malade." },
+          { de: "Wir hatten viel Spaß.", fr: "Nous nous sommes bien amusés." },
+          { de: "Warst du schon einmal in Berlin?", fr: "Étais-tu déjà allé à Berlin ?" }
+        ],
           tableau: { entetes: ["Pronom", "sein → war", "haben → hatte"], lignes: [["ich", "war", "hatte"], ["du", "warst", "hattest"], ["er/sie/es", "war", "hatte"], ["wir", "waren", "hatten"], ["ihr", "wart", "hattet"], ["sie/Sie", "waren", "hatten"]] },
           note: "Ex. : Gestern WAR ich im Kino. / Ich HATTE keine Zeit. (et non « habe gehabt »)." }
       ],
@@ -340,6 +355,11 @@ window.MODULE_A21 = {
       ],
       grammaire: [
         { attention: "*von* + datif ; on contracte souvent : *vom Montag **bis** Freitag*.", titre: "Dire une période : « von … bis »", intro: "Pour une durée datée. On lit les années sans « in ».",
+        exemples: [
+          { de: "Ich arbeite von Montag bis Freitag.", fr: "Je travaille du lundi au vendredi." },
+          { de: "Der Kurs geht von neun bis zwölf Uhr.", fr: "Le cours dure de neuf heures à midi." },
+          { de: "Von 2010 bis 2015 wohnte ich in Wien.", fr: "De 2010 à 2015 j'habitais à Vienne." }
+        ],
           tableau: { entetes: ["Allemand", "Sens"], lignes: [["von 2015 bis 2018", "de 2015 à 2018"], ["zwei Jahre lang", "pendant deux ans"], ["seit 2020", "depuis 2020"], ["1998 (neunzehnhundertachtundneunzig)", "en 1998"]] },
           note: "Les années jusqu'à 1999 se lisent en « centaines » : 1998 = neunzehnhundert-achtundneunzig." }
       ],
@@ -423,6 +443,11 @@ window.MODULE_A21 = {
       ],
       grammaire: [
         { attention: "Le pronom réfléchi s'accorde au sujet : *ich → **mich**, du → **dich*** (*Ich freue **mich***).", titre: "Les verbes réfléchis (Reflexivverben)", intro: "Avec un pronom réfléchi à l'accusatif (mich, dich, sich…).",
+        exemples: [
+          { de: "Ich wasche mich jeden Morgen.", fr: "Je me lave chaque matin." },
+          { de: "Freust du dich auf die Ferien?", fr: "As-tu hâte des vacances ?" },
+          { de: "Wir treffen uns um acht Uhr.", fr: "Nous nous retrouvons à huit heures." }
+        ],
           tableau: { entetes: ["Pronom", "Réfléchi", "Exemple"], lignes: [["ich", "mich", "ich wasche mich"], ["du", "dich", "du wäschst dich"], ["er/sie/es", "sich", "er wäscht sich"], ["wir", "uns", "wir treffen uns"], ["ihr", "euch", "ihr trefft euch"], ["sie/Sie", "sich", "sie treffen sich"]] },
           note: "Le pronom réfléchi se place après le verbe conjugué : « Ich entspanne mich am Abend »." }
       ],
@@ -521,6 +546,11 @@ window.MODULE_A21 = {
       ],
       grammaire: [
         { attention: "« que » dans une comparaison = **als** (*größer **als***), pas *wie* (réservé à l'égalité *so … wie*).", titre: "Comparatif et superlatif", intro: "Comparatif : adjectif + -er (+ als). Superlatif : am + adjectif + -sten.",
+        exemples: [
+          { de: "Anna ist größer als Tom.", fr: "Anna est plus grande que Tom." },
+          { de: "Im Sommer sind die Tage am längsten.", fr: "En été les jours sont les plus longs." },
+          { de: "Dieses Auto ist schneller als meins.", fr: "Cette voiture est plus rapide que la mienne." }
+        ],
           tableau: { entetes: ["Adjectif", "Comparatif", "Superlatif"], lignes: [["billig", "billiger", "am billigsten"], ["teuer", "teurer", "am teuersten"], ["gut", "besser", "am besten"], ["groß", "größer", "am größten"]] },
           note: "« als » = que (Das ist billiger ALS das.). Beaucoup d'adjectifs courts prennent un Umlaut (groß → größer)." }
       ],
@@ -604,6 +634,11 @@ window.MODULE_A21 = {
       ],
       grammaire: [
         { attention: "Le destinataire (à qui ?) est au **datif** : *Ich gebe **dem** Kind…* (*der* → *dem*).", titre: "Le datif du destinataire (à qui ?)", intro: "Certains verbes ont un complément au datif (la personne à qui).",
+        exemples: [
+          { de: "Ich gebe meiner Mutter ein Geschenk.", fr: "Je donne un cadeau à ma mère." },
+          { de: "Er hilft dem alten Mann.", fr: "Il aide le vieil homme." },
+          { de: "Das Buch gehört meinem Bruder.", fr: "Le livre appartient à mon frère." }
+        ],
           tableau: { entetes: ["Verbe", "Exemple", "Sens"], lignes: [["leihen", "Ich leihe dir Geld.", "Je te prête de l'argent."], ["geben", "Er gibt mir die Karte.", "Il me donne la carte."], ["gehören", "Das Geld gehört mir.", "L'argent m'appartient."], ["helfen", "Ich helfe Ihnen.", "Je vous aide."]] },
           note: "Pronoms datif : mir, dir, ihm/ihr, uns, euch, ihnen/Ihnen." }
       ],
@@ -687,6 +722,11 @@ window.MODULE_A21 = {
       ],
       grammaire: [
         { attention: "Formes irrégulières à connaître : *Ich **hätte** gern…*, ***Könnten** Sie…?*", titre: "Le Konjunktiv II (conditionnel)", intro: "Pour l'irréel/le souhait. Souvent : würde + infinitif. Mais wäre (sein), hätte (haben), könnte (können) ont une forme propre.",
+        exemples: [
+          { de: "Ich würde gern nach Japan reisen.", fr: "J'aimerais bien voyager au Japon." },
+          { de: "Hätte ich Zeit, käme ich mit.", fr: "Si j'avais le temps, je viendrais." },
+          { de: "Könntest du mir bitte helfen?", fr: "Pourrais-tu m'aider s'il te plaît ?" }
+        ],
           tableau: { entetes: ["Verbe", "Konjunktiv II", "Exemple"], lignes: [["sein", "wäre", "Wenn ich reich wäre…"], ["haben", "hätte", "Ich hätte gern ein Haus."], ["können", "könnte", "Ich könnte reisen."], ["autres verbes", "würde + Inf.", "Ich würde die Welt bereisen."]] },
           note: "Structure : « Wenn ich … wäre/hätte, würde ich … » → Si j'étais/avais…, je …rais." }
       ],
@@ -770,6 +810,11 @@ window.MODULE_A21 = {
       ],
       grammaire: [
         { attention: "*dass* rejette le verbe conjugué **à la fin** : *Ich denke, dass es gut **ist***.", titre: "La subordonnée avec « dass » (que)", intro: "Comme « weil », « dass » envoie le verbe conjugué à la FIN.",
+        exemples: [
+          { de: "Ich glaube, dass er recht hat.", fr: "Je crois qu'il a raison." },
+          { de: "Sie sagt, dass sie müde ist.", fr: "Elle dit qu'elle est fatiguée." },
+          { de: "Es ist gut, dass du kommst.", fr: "C'est bien que tu viennes." }
+        ],
           tableau: { entetes: ["Phrase", "Sens"], lignes: [["Ich denke, dass es gut ist.", "Je pense que c'est bien."], ["Ich glaube, dass er kommt.", "Je crois qu'il vient."], ["Sie sagt, dass sie keine Zeit hat.", "Elle dit qu'elle n'a pas le temps."]] },
           note: "Après dass / weil / wenn → le verbe va à la fin (subordonnée)." }
       ],
