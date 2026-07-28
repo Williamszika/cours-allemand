@@ -72,6 +72,11 @@ window.MODULE_C11 = {
       ],
       grammaire: [
         { attention: "Les expressions imagées (*aus heiterem Himmel*) ne se traduisent **pas** mot à mot.", titre: "L'idiomatisme au service du small talk", intro: "Au C1, on dépasse les formules scolaires : on emploie des expressions imagées et des relances nuancées.",
+        exemples: [
+          { de: "Wie läuft's denn so bei dir?", fr: "Alors, comment ça se passe pour toi ?" },
+          { de: "Das ist mir ehrlich gesagt schnuppe.", fr: "Franchement, ça m'est égal." },
+          { de: "Da hast du den Nagel auf den Kopf getroffen.", fr: "Là tu as mis le doigt dessus." }
+        ],
           tableau: { entetes: ["Expression", "Sens", "Registre"], lignes: [["aus heiterem Himmel", "à l'improviste", "imagé"], ["bei dem Wetter", "par ce temps", "courant"], ["das schlägt aufs Gemüt", "ça plombe le moral", "idiomatique"], ["wie man so schön sagt", "comme on dit si bien", "relance"]] },
           note: "Une relance idiomatique (« Da haben Sie recht, wie man so schön sagt… ») marque l'aisance attendue au C1." }
       ],
@@ -150,6 +155,11 @@ window.MODULE_C11 = {
       ],
       grammaire: [
         { attention: "Le style nominal se construit avec une préposition (*durch, wegen, trotz*) + nom.", titre: "Du verbe au nom : le style nominal", intro: "Au C1, l'écrit privilégie souvent la nominalisation, plus dense et abstraite.",
+        exemples: [
+          { de: "Die Durchführung des Projekts erfolgt im Frühjahr.", fr: "La réalisation du projet a lieu au printemps." },
+          { de: "Aufgrund mangelnder Beweise wurde er freigesprochen.", fr: "Faute de preuves, il a été acquitté." },
+          { de: "Zur Vermeidung von Missverständnissen folgt eine Erklärung.", fr: "Pour éviter tout malentendu, une explication suit." }
+        ],
           tableau: { entetes: ["Style verbal", "Style nominal"], lignes: [["weil man Sprachen lernt", "wegen des Sprachenlernens"], ["nachdem man sich angeeignet hat", "nach der Aneignung"], ["dass man sich verständigt", "die Verständigung"], ["indem man übt", "durch (das) Üben"]] },
           note: "La nominalisation s'accompagne de prépositions (durch, bei, trotz, wegen) et d'un éventuel génitif." }
       ],
@@ -228,6 +238,11 @@ window.MODULE_C11 = {
       ],
       grammaire: [
         { attention: "Distingue *Glück* (chance/bonheur), *Zufall* (hasard) et *Schicksal* (destin).", titre: "Chance, hasard et irréel", intro: "On distingue « Glück » (chance/bonheur), « Zufall » (hasard) et « Schicksal » (destin). L'irréel (Konjunktiv II) sert au « et si… ».",
+        exemples: [
+          { de: "Rein zufällig traf ich ihn in Paris.", fr: "Tout à fait par hasard, je l'ai rencontré à Paris." },
+          { de: "Hätte ich das gewusst, wäre ich nicht gekommen.", fr: "Si j'avais su, je ne serais pas venu." },
+          { de: "Beinahe wäre das Experiment gescheitert.", fr: "L'expérience a failli échouer." }
+        ],
           tableau: { entetes: ["Idée", "Mot / forme", "Exemple"], lignes: [["chance", "Glück haben", "Ich habe Glück gehabt."], ["hasard", "rein zufällig", "Wir trafen uns rein zufällig."], ["irréel", "hätte … gehabt", "Ohne Zufall hätte ich sie nie getroffen."], ["familier", "Schwein haben", "Da hast du Schwein gehabt."]] },
           note: "« verdanken » + datif (à qui) + accusatif (quoi) : « Das verdanke ich dir »." }
       ],
@@ -306,6 +321,11 @@ window.MODULE_C11 = {
       ],
       grammaire: [
         { attention: "*folglich/infolgedessen* (conséquence) → verbe en **2ᵉ** ; *indem* (moyen) → verbe **à la fin**.", titre: "Exprimer cause, effet et remède", intro: "On relie tension et conséquences avec des connecteurs variés et on nuance les remèdes.",
+        exemples: [
+          { de: "Die Krise führte zu massiven Entlassungen.", fr: "La crise a entraîné des licenciements massifs." },
+          { de: "Um dem entgegenzuwirken, wurden Maßnahmen ergriffen.", fr: "Pour y remédier, des mesures ont été prises." },
+          { de: "Dies hat weitreichende Folgen.", fr: "Cela a des conséquences considérables." }
+        ],
           tableau: { entetes: ["Fonction", "Connecteur", "Exemple"], lignes: [["cause", "aufgrund + Gén.", "aufgrund des Drucks"], ["conséquence", "folglich / infolgedessen", "Folglich war er erschöpft."], ["condition", "sofern", "Sofern man Pausen macht, …"], ["remède", "indem", "Man entspannt sich, indem man atmet."]] },
           note: "« infolgedessen » (par conséquent) et « folglich » sont des connecteurs soutenus de conséquence (verbe en 2e position)." }
       ],
@@ -384,6 +404,11 @@ window.MODULE_C11 = {
       ],
       grammaire: [
         { attention: "L'**ironie** dit le contraire de ce qu'on pense : attention au ton, sinon malentendu.", titre: "Humour, ironie et nuance", intro: "L'ironie dit le contraire de ce qu'on pense ; les comparaisons imagées colorent le propos.",
+        exemples: [
+          { de: "Na, das ist ja mal wieder typisch.", fr: "Eh bien, c'est bien typique une fois de plus (ironique)." },
+          { de: "Das war ja wohl kaum ein Erfolg.", fr: "Ça n'a guère été un succès (litote)." },
+          { de: "Er ist, sagen wir mal, nicht besonders fleißig.", fr: "Il n'est, disons, pas particulièrement travailleur." }
+        ],
           tableau: { entetes: ["Procédé", "Exemple", "Effet"], lignes: [["ironie", "Na toll, schon wieder Regen!", "contraire de « toll »"], ["comparaison", "Er lachte wie ein Kind.", "image"], ["litote", "nicht gerade lustig", "atténuation"], ["exagération", "Ich habe mich totgelacht.", "humour"]] },
           note: "« sich totlachen », « Tränen lachen » : l'exagération est typique de l'expression idiomatique." }
       ],
@@ -462,6 +487,11 @@ window.MODULE_C11 = {
       ],
       grammaire: [
         { attention: "Après **je** le verbe va à la **fin** ; après **desto**, en **2ᵉ** position.", titre: "Relier les facteurs : connecteurs en deux parties", intro: "Les connecteurs corrélés relient deux idées et nuancent (et… et, non seulement… mais aussi, plus… plus).",
+        exemples: [
+          { de: "Sowohl die Qualität als auch der Preis überzeugen.", fr: "Tant la qualité que le prix convainquent." },
+          { de: "Entweder wir handeln jetzt, oder es ist zu spät.", fr: "Soit nous agissons maintenant, soit il sera trop tard." },
+          { de: "Je höher der Aufwand, desto größer der Nutzen.", fr: "Plus l'effort est grand, plus le bénéfice est important." }
+        ],
           tableau: { entetes: ["Connecteur", "Sens", "Exemple"], lignes: [["sowohl … als auch", "aussi bien … que", "Erfolg verlangt sowohl Talent als auch Fleiß."], ["nicht nur … sondern auch", "non seulement … mais aussi", "Nicht nur im Sport, sondern auch im Beruf."], ["je … desto", "plus … plus", "Je härter das Training, desto größer der Erfolg."], ["zwar … aber", "certes … mais", "Zwar talentiert, aber undiszipliniert."]] },
           schemas: [{ legende: "je … desto : « desto » + comparatif + verbe à la fin… puis verbe en 2e.", mots: [{ m: "Je mehr man übt,", r: "je + comparatif (verbe fin)", c: "conj" }, { m: "desto besser", r: "desto + comparatif", c: "objet" }, { m: "wird", r: "verbe (2)", c: "verbe" }, { m: "man", r: "sujet", c: "fin" }] }],
           note: "Après « je … » le verbe va à la fin ; après « desto … » le verbe vient en 2e position." }
@@ -541,6 +571,11 @@ window.MODULE_C11 = {
       ],
       grammaire: [
         { attention: "*Ich **hätte** mehr lernen **sollen*** — ordre final : infinitif + modal (*lernen sollen*).", titre: "Regret et reproche : Konjunktiv II passé", intro: "Pour dire « j'aurais dû / je n'aurais pas dû », on emploie « hätte … sollen / können » + double infinitif à la fin.",
+        exemples: [
+          { de: "Ich hätte früher reagieren sollen.", fr: "J'aurais dû réagir plus tôt." },
+          { de: "Das hättest du mir sagen können.", fr: "Tu aurais pu me le dire." },
+          { de: "Wir hätten den Termin nicht verpassen dürfen.", fr: "Nous n'aurions pas dû manquer le rendez-vous." }
+        ],
           tableau: { entetes: ["Idée", "Forme", "Exemple"], lignes: [["regret", "hätte … sollen", "Ich hätte mehr üben sollen."], ["regret négatif", "hätte … nicht sollen", "Ich hätte das nicht sagen sollen."], ["possibilité ratée", "hätte … können", "Er hätte gewinnen können."], ["condition irréelle", "wäre … gewesen", "Mit mehr Mut wäre es anders gewesen."]] },
           schemas: [{ legende: "Regret : hätte (2) … double infinitif (fin).", mots: [{ m: "Ich", r: "sujet", c: "sujet" }, { m: "hätte", r: "hätte (2)", c: "verbe" }, { m: "mehr", r: "complément", c: "objet" }, { m: "üben sollen", r: "inf. + modal (fin)", c: "fin" }] }],
           note: "L'ordre final est « infinitif + modal à l'infinitif » : « üben sollen », « gewinnen können »." }

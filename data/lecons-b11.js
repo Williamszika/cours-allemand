@@ -72,6 +72,11 @@ window.MODULE_B11 = {
       ],
       grammaire: [
         { attention: "Choix de l'auxiliaire comme au Perfekt : **hatte** (haben) ou **war** (sein) + participe — souvent avec *nachdem*.", titre: "Le plus-que-parfait (Plusquamperfekt)", intro: "Pour une action ANTÉRIEURE à une autre action passée. hatte/war + participe.",
+        exemples: [
+          { de: "Als ich ankam, war der Zug schon abgefahren.", fr: "Quand je suis arrivé, le train était déjà parti." },
+          { de: "Nachdem sie gegessen hatte, ging sie spazieren.", fr: "Après avoir mangé, elle est allée se promener." },
+          { de: "Er hatte den Schlüssel vergessen.", fr: "Il avait oublié la clé." }
+        ],
           tableau: { entetes: ["Auxiliaire (prétérit)", "...", "Participe (fin)"], lignes: [["Ich hatte schon", "", "gegessen."], ["Er war schon", "", "gegangen."], ["Nachdem ich gegessen hatte,", "", "ging ich."]] },
           note: "Avec « nachdem » (après que) : subordonnée au plus-que-parfait, principale au prétérit/Perfekt." }
       ],
@@ -150,6 +155,11 @@ window.MODULE_B11 = {
       ],
       grammaire: [
         { attention: "*seit* (depuis) + **présent** ; *vor* (il y a) + passé : *seit zwei Jahren* ≠ *vor zwei Jahren*.", titre: "Indicateurs de temps fréquents", intro: "Pour préciser quand et à quelle fréquence.",
+        exemples: [
+          { de: "Seit drei Jahren wohne ich in Köln.", fr: "Depuis trois ans j'habite à Cologne." },
+          { de: "Vor einer Woche war ich krank.", fr: "Il y a une semaine j'étais malade." },
+          { de: "In zwei Tagen fahren wir ab.", fr: "Dans deux jours nous partons." }
+        ],
           tableau: { entetes: ["Expression", "Sens"], lignes: [["rechtzeitig", "à temps"], ["pünktlich", "ponctuellement"], ["normalerweise", "normalement"], ["meistens", "la plupart du temps"], ["selten / kaum", "rarement / à peine"]] },
           note: "En Allemagne, la ponctualité est très valorisée : « 5 Minuten vorher » = arriver 5 min en avance." }
       ],
@@ -228,6 +238,11 @@ window.MODULE_B11 = {
       ],
       grammaire: [
         { attention: "Le pronom relatif prend le **cas de sa fonction** dans la relative, et le verbe va **à la fin**.", titre: "Les propositions relatives", intro: "« der/die/das » relatifs reprennent un nom ; le verbe va à la fin de la relative.",
+        exemples: [
+          { de: "Das ist der Mann, der neben mir wohnt.", fr: "C'est l'homme qui habite à côté de moi." },
+          { de: "Die Frau, die ich gestern traf, ist Ärztin.", fr: "La femme que j'ai rencontrée hier est médecin." },
+          { de: "Das Buch, das ich lese, ist spannend.", fr: "Le livre que je lis est passionnant." }
+        ],
           tableau: { entetes: ["Antécédent", "Pronom relatif", "Exemple"], lignes: [["masculin", "der", "der Mann, der dort steht"], ["féminin", "die", "die Frau, die singt"], ["neutre", "das", "das Bild, das ich mag"], ["pluriel", "die", "die Leute, die warten"]] },
           schemas: [{ legende: "Relative : le verbe va à la fin.", mots: [{ m: "Das ist das Museum,", r: "principale", c: "objet" }, { m: "das", r: "pronom relatif", c: "conj" }, { m: "ich gestern", r: "sujet+…", c: "sujet" }, { m: "besucht habe", r: "verbe (fin)", c: "fin" }] }],
           note: "Le pronom relatif s'accorde en genre/nombre avec l'antécédent ; son cas dépend de sa fonction dans la relative." }
@@ -307,6 +322,11 @@ window.MODULE_B11 = {
       ],
       grammaire: [
         { attention: "Umlaut fréquent (*alt → älter*) ; irréguliers (*gut → besser*). « que » = **als**.", titre: "Comparatif et superlatif (révision B1)", intro: "Pour comparer des œuvres, des goûts.",
+        exemples: [
+          { de: "Dieser Weg ist kürzer als der andere.", fr: "Ce chemin est plus court que l'autre." },
+          { de: "Sie ist die beste Schülerin der Klasse.", fr: "Elle est la meilleure élève de la classe." },
+          { de: "Je mehr ich übe, desto besser werde ich.", fr: "Plus je m'entraîne, meilleur je deviens." }
+        ],
           tableau: { entetes: ["Adjectif", "Comparatif", "Superlatif"], lignes: [["schön", "schöner", "am schönsten"], ["gut", "besser", "am besten"], ["interessant", "interessanter", "am interessantesten"], ["hoch", "höher", "am höchsten"]] },
           note: "« gefallen » + datif : Das Bild gefällt mir (mieux) → … gefällt mir besser." }
       ],
@@ -385,6 +405,11 @@ window.MODULE_B11 = {
       ],
       grammaire: [
         { attention: "Reprends une **chose** par *da(r)-* (*darauf*) et interroge par *wo(r)-* (*Worauf?*).", titre: "Verbes + prépositions (travail)", intro: "Préposition fixe imposant son cas.",
+        exemples: [
+          { de: "Ich bewerbe mich um eine Stelle.", fr: "Je postule à un emploi." },
+          { de: "Sie arbeitet an einem Projekt.", fr: "Elle travaille sur un projet." },
+          { de: "Wir warten auf eine Antwort.", fr: "Nous attendons une réponse." }
+        ],
           tableau: { entetes: ["Verbe + prép.", "Cas", "Exemple"], lignes: [["sich bewerben um", "accusatif", "Ich bewerbe mich um die Stelle."], ["sich freuen auf", "accusatif", "Ich freue mich auf den Job."], ["arbeiten an", "datif", "Ich arbeite an einem Projekt."], ["sich kümmern um", "accusatif", "Er kümmert sich um die Kunden."]] },
           note: "À apprendre verbe + préposition + cas ensemble." }
       ],
@@ -463,6 +488,11 @@ window.MODULE_B11 = {
       ],
       grammaire: [
         { attention: "*Du **solltest**…* (conseil) ; reproche au passé : *Du hättest … **sollen***.", titre: "Konjunktiv II : conseil et reproche", intro: "sollte (devrait), könnte (pourrait), würde + infinitif.",
+        exemples: [
+          { de: "An deiner Stelle würde ich mehr lernen.", fr: "À ta place j'étudierais davantage." },
+          { de: "Du hättest mich anrufen sollen.", fr: "Tu aurais dû m'appeler." },
+          { de: "Wir könnten heute Abend ins Kino gehen.", fr: "Nous pourrions aller au cinéma ce soir." }
+        ],
           tableau: { entetes: ["Forme", "Exemple", "Sens"], lignes: [["sollte", "Du solltest mit dem Chef reden.", "Tu devrais parler au chef."], ["könnte", "Du könntest eine Pause machen.", "Tu pourrais faire une pause."], ["An deiner Stelle würde…", "An deiner Stelle würde ich kündigen.", "À ta place, je démissionnerais."]] },
           note: "« An deiner Stelle würde ich… » = à ta place, je…rais (conseil très courant)." }
       ],
@@ -541,6 +571,11 @@ window.MODULE_B11 = {
       ],
       grammaire: [
         { attention: "*Könnten Sie…?*, *Würden Sie…?* : le Konjunktiv II adoucit la demande.", titre: "Demander poliment (Konjunktiv II)", intro: "Plus poli que le présent.",
+        exemples: [
+          { de: "Könnten Sie mir bitte helfen?", fr: "Pourriez-vous m'aider s'il vous plaît ?" },
+          { de: "Würden Sie das bitte wiederholen?", fr: "Pourriez-vous répéter s'il vous plaît ?" },
+          { de: "Ich hätte gern einen Kaffee.", fr: "J'aimerais un café." }
+        ],
           tableau: { entetes: ["Présent", "Poli (Konjunktiv II)"], lignes: [["Können Sie…?", "Könnten Sie…?"], ["Passt Ihnen…?", "Würde Ihnen … passen?"], ["Ich will…", "Ich würde gern…"], ["Haben Sie Zeit?", "Hätten Sie Zeit?"]] },
           note: "« Würde es Ihnen passen, wenn…? » = est-ce que ça vous conviendrait si… ?" }
       ],
@@ -619,6 +654,11 @@ window.MODULE_B11 = {
       ],
       grammaire: [
         { attention: "*man* = 3ᵉ pers. du singulier (*man **macht***) ; *es ist üblich, **zu** + infinitif*.", titre: "Exprimer une norme : man / es ist üblich", intro: "Pour ce qui se fait habituellement.",
+        exemples: [
+          { de: "In Deutschland grüßt man mit Handschlag.", fr: "En Allemagne, on se salue en se serrant la main." },
+          { de: "Es ist üblich, pünktlich zu sein.", fr: "Il est d'usage d'être ponctuel." },
+          { de: "Man darf hier nicht rauchen.", fr: "On n'a pas le droit de fumer ici." }
+        ],
           tableau: { entetes: ["Structure", "Exemple", "Sens"], lignes: [["man + verbe", "Man grüßt zuerst.", "On salue d'abord."], ["es ist üblich, zu…", "Es ist üblich, pünktlich zu sein.", "Il est d'usage d'être à l'heure."], ["man soll(te)", "Man sollte höflich sein.", "On devrait être poli."]] },
           note: "« zu + infinitif » après certaines expressions : Es ist wichtig, zu grüßen." }
       ],
@@ -697,6 +737,11 @@ window.MODULE_B11 = {
       ],
       grammaire: [
         { attention: "La préposition se place **avant** le pronom relatif : *der Kollege, **mit dem** ich arbeite*.", titre: "Relatives avec préposition (B1)", intro: "La préposition se place AVANT le pronom relatif.",
+        exemples: [
+          { de: "Die Firma, für die ich arbeite, ist groß.", fr: "L'entreprise pour laquelle je travaille est grande." },
+          { de: "Der Freund, mit dem ich reise, ist Deutscher.", fr: "L'ami avec qui je voyage est allemand." },
+          { de: "Das Thema, über das wir sprachen, war interessant.", fr: "Le sujet dont nous parlions était intéressant." }
+        ],
           tableau: { entetes: ["Exemple", "Sens"], lignes: [["das Buch, über das ich spreche", "le livre dont je parle"], ["der Autor, von dem ich lese", "l'auteur que je lis"], ["die Figur, mit der ich mitfühle", "le personnage avec qui je compatis"]] },
           note: "Préposition + pronom relatif accordé : über das, von dem, mit der…" }
       ],
@@ -775,6 +820,11 @@ window.MODULE_B11 = {
       ],
       grammaire: [
         { attention: "**als** = une seule fois (passé) ; **wenn** = chaque fois / habitude.", titre: "« als » vs « wenn » au passé", intro: "« als » = une fois précise dans le passé ; « wenn » = chaque fois / répétition.",
+        exemples: [
+          { de: "Als ich klein war, wohnte ich in Bonn.", fr: "Quand j'étais petit, j'habitais à Bonn." },
+          { de: "Immer wenn es regnete, blieben wir zu Hause.", fr: "Chaque fois qu'il pleuvait, nous restions à la maison." },
+          { de: "Als der Film zu Ende war, gingen wir.", fr: "Quand le film s'est terminé, nous sommes partis." }
+        ],
           tableau: { entetes: ["Mot", "Usage", "Exemple"], lignes: [["als", "une fois (passé)", "Als ich klein war, …"], ["wenn", "chaque fois", "Immer wenn es regnete, …"], ["prétérit", "récit", "Ich spielte, ich ging, ich war"]] },
           note: "« Als » (subordonnée) envoie le verbe à la fin : « Als ich Kind war, … »." }
       ],
@@ -853,6 +903,11 @@ window.MODULE_B11 = {
       ],
       grammaire: [
         { attention: "**werden** + participe (à la fin) ; agent : *von + datif*. Au Perfekt passif : *werden → **worden***.", titre: "Le passif (Passiv)", intro: "werden (conjugué) + participe II (à la fin). On met en avant l'action, pas l'auteur.",
+        exemples: [
+          { de: "Das Haus wird renoviert.", fr: "La maison est en train d'être rénovée." },
+          { de: "Der Brief wurde gestern geschrieben.", fr: "La lettre a été écrite hier." },
+          { de: "Hier wird Deutsch gesprochen.", fr: "Ici on parle allemand." }
+        ],
           tableau: { entetes: ["Temps", "Forme", "Exemple"], lignes: [["présent", "wird + participe", "Die Nachricht wird gesendet."], ["prétérit", "wurde + participe", "Der Artikel wurde veröffentlicht."], ["avec auteur", "von + datif", "… wurde von der Zeitung veröffentlicht."]] },
           schemas: [{ legende: "Passif présent : werden (2) + participe (fin).", mots: [{ m: "Die Nachricht", r: "sujet", c: "sujet" }, { m: "wird", r: "werden (2)", c: "verbe" }, { m: "live", r: "…", c: "objet" }, { m: "gesendet", r: "participe (fin)", c: "fin" }] }],
           note: "L'auteur (facultatif) est introduit par « von + datif »." }
@@ -932,6 +987,11 @@ window.MODULE_B11 = {
       ],
       grammaire: [
         { attention: "*weil* → verbe **à la fin** ; *deshalb* → verbe en **2ᵉ** position.", titre: "Cause et conséquence : weil / deshalb", intro: "« weil » (subordonnée, verbe à la fin) ; « deshalb » (principale, verbe en 2e).",
+        exemples: [
+          { de: "Ich bleibe zu Hause, weil es regnet.", fr: "Je reste à la maison parce qu'il pleut." },
+          { de: "Es regnet, deshalb bleibe ich zu Hause.", fr: "Il pleut, c'est pourquoi je reste à la maison." },
+          { de: "Sie lernt viel, denn die Prüfung ist wichtig.", fr: "Elle étudie beaucoup, car l'examen est important." }
+        ],
           tableau: { entetes: ["Connecteur", "Position du verbe", "Exemple"], lignes: [["weil", "à la fin", "…, weil sie überzeugt."], ["deshalb", "2e position", "Sie überzeugt, deshalb kaufe ich."], ["denn", "2e position", "Ich kaufe, denn es ist gut."]] },
           note: "deshalb / deswegen / darum = c'est pourquoi (le verbe suit immédiatement)." }
       ],
@@ -1010,6 +1070,11 @@ window.MODULE_B11 = {
       ],
       grammaire: [
         { attention: "Après *ein*, l'adjectif porte la marque du genre (*ein **guter** Wein*) ; après *der*, c'est -e/-en.", titre: "L'adjectif épithète (déclinaison B1)", intro: "Après l'article indéfini, l'adjectif prend la marque du genre/cas.",
+        exemples: [
+          { de: "Ich kaufe einen roten Mantel.", fr: "J'achète un manteau rouge." },
+          { de: "Das ist ein interessantes Buch.", fr: "C'est un livre intéressant." },
+          { de: "Sie wohnt in einer schönen Wohnung.", fr: "Elle habite dans un bel appartement." }
+        ],
           tableau: { entetes: ["Cas / genre", "Exemple"], lignes: [["m. nominatif", "ein praktischer Stift"], ["m. accusatif", "einen praktischen Stift"], ["f. nom./acc.", "eine günstige Lampe"], ["n. nom./acc.", "ein hochwertiges Gerät"]] },
           note: "Au pluriel sans article : haltbare Produkte (-e). La langue publicitaire en abuse !" }
       ],
@@ -1088,6 +1153,11 @@ window.MODULE_B11 = {
       ],
       grammaire: [
         { attention: "Exigence polie : *Ich **würde** Sie bitten…* — ferme mais courtois.", titre: "Réclamer poliment (Konjunktiv II)", intro: "Plus efficace et courtois.",
+        exemples: [
+          { de: "Ich hätte eine Frage.", fr: "J'aurais une question." },
+          { de: "Könnten Sie das bitte umtauschen?", fr: "Pourriez-vous échanger ceci s'il vous plaît ?" },
+          { de: "Es wäre schön, wenn Sie mir helfen könnten.", fr: "Ce serait bien si vous pouviez m'aider." }
+        ],
           tableau: { entetes: ["Direct", "Poli"], lignes: [["Ich will mein Geld zurück.", "Ich hätte gern mein Geld zurück."], ["Tauschen Sie das um!", "Könnten Sie das umtauschen?"], ["Das ist kaputt.", "Leider funktioniert das Gerät nicht."]] },
           note: "Structure type : « Ich möchte mich über … beschweren, weil … (verbe à la fin) »." }
       ],
