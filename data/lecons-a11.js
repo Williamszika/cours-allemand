@@ -128,6 +128,11 @@ window.MODULE_A11 = {
               ["sie / Sie", "ils-elles / vous (poli)"]
             ]
           },
+          exemples: [
+            { de: "Ich bin Anna, und wer bist du?", fr: "Je suis Anna, et toi, qui es-tu ?" },
+            { de: "Wir kommen aus Frankreich.", fr: "Nous venons de France." },
+            { de: "Woher kommen Sie, Herr Klein?", fr: "D'où venez-vous, Monsieur Klein ? (Sie = vouvoiement)" }
+          ],
           note:
             "« Sie » avec majuscule = vouvoiement poli (singulier ou pluriel). « sie » minuscule = elle / ils-elles."
         },
@@ -146,6 +151,11 @@ window.MODULE_A11 = {
               ["sie/Sie", "kommen", "wohnen", "heißen", "sind"]
             ]
           },
+          exemples: [
+            { de: "Ich wohne in Berlin und arbeite hier.", fr: "J'habite à Berlin et je travaille ici." },
+            { de: "Du kommst aus Italien, oder?", fr: "Tu viens d'Italie, non ?" },
+            { de: "Er ist mein Freund. Wir sind Studenten.", fr: "Il est mon ami. Nous sommes étudiants." }
+          ],
           note:
             "« sein » (être) est irrégulier : apprenez-le par cœur. C'est le verbe le plus utilisé."
         }
@@ -282,6 +292,11 @@ window.MODULE_A11 = {
               ["10", "zehn", "100", "hundert"]
             ]
           },
+          exemples: [
+            { de: "Ich bin einundzwanzig Jahre alt.", fr: "J'ai vingt-et-un ans." },
+            { de: "Das kostet zwölf Euro.", fr: "Ça coûte douze euros." },
+            { de: "Wir sind zu dritt: eins, zwei, drei.", fr: "Nous sommes trois : un, deux, trois." }
+          ],
           note:
             "21 = einundzwanzig (un-et-vingt), 35 = fünfunddreißig (cinq-et-trente). On lit de droite à gauche !"
         },
@@ -299,6 +314,11 @@ window.MODULE_A11 = {
               ["Wie viel?", "Combien ?", "Wie alt bist du?"]
             ]
           },
+          exemples: [
+            { de: "Wie heißt du und woher kommst du?", fr: "Comment t'appelles-tu et d'où viens-tu ?" },
+            { de: "Wo wohnst du jetzt?", fr: "Où habites-tu maintenant ?" },
+            { de: "Wer ist das? — Das ist Herr Klein.", fr: "Qui est-ce ? — C'est M. Klein." }
+          ],
           note: "« Wie alt bist du? » = Quel âge as-tu ? (litt. « Comment vieux es-tu ? »)"
         }
       ],
